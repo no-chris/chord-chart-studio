@@ -1,0 +1,46 @@
+{
+  "name": "chordpro2",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^2.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "handlebars-loader": "^1.7.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.1.0",
+    "long": "^4.0.0",
+    "sass-loader": "^7.1.0",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.1.0",
+    "node-sass": "^4.11.0",
+    "prosemirror": "^0.11.1",
+    "prosemirror-example-setup": "^1.0.1",
+    "prosemirror-menu": "^1.0.5",
+    "prosemirror-model": "^1.7.0",
+    "prosemirror-schema-basic": "^1.0.0",
+    "prosemirror-schema-list": "^1.0.2",
+    "prosemirror-state": "^1.2.2",
+    "prosemirror-transform": "^1.1.3",
+    "prosemirror-view": "^1.7.1"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "dev-test": "nodemon ./src/app/app.js | webpack-dev-server --config webpack.dev.js",
+    "test": "jest",
+    "start": "webpack-dev-server --open"
+  }
+}

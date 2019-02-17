@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1550439674247" clover="3.2.0">
+  <project timestamp="1550439674247" name="All files">
+    <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6" elements="32" coveredelements="32" complexity="0" loc="20" ncloc="20" packages="1" files="1" classes="1"/>
+    <file name="songRenderer.js" path="/perso/chordPro2/src/songRenderer/songRenderer.js">
+      <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
+      <line num="2" count="11" type="stmt"/>
+      <line num="4" count="11" type="stmt"/>
+      <line num="6" count="11" type="stmt"/>
+      <line num="9" count="10" type="stmt"/>
+      <line num="10" count="10" type="stmt"/>
+      <line num="12" count="10" type="stmt"/>
+      <line num="14" count="10" type="stmt"/>
+      <line num="16" count="10" type="stmt"/>
+      <line num="17" count="30" type="stmt"/>
+      <line num="21" count="30" type="stmt"/>
+      <line num="23" count="30" type="stmt"/>
+      <line num="25" count="30" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="20" type="stmt"/>
+      <line num="27" count="20" type="stmt"/>
+      <line num="28" count="20" type="stmt"/>
+      <line num="33" count="10" type="stmt"/>
+      <line num="34" count="20" type="stmt"/>
+      <line num="35" count="30" type="stmt"/>
+      <line num="40" count="10" type="stmt"/>
+      <line num="45" count="10" type="stmt"/>
+    </file>
+  </project>
+</coverage>
