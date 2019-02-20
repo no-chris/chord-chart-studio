@@ -38,21 +38,30 @@ describe.each([
 
 
 describe.each([
-	['1 chord, 1 beat',		'Cm.',			'Cm.',		'Cm', 1, 1, 4 ],
-	['1 chord, 2 beats',    'Cm..',			'Cm..',		'Cm', 2, 2, 4 ],
-	['1 chord, 3 beats',    'Cm...',		'Cm...',	'Cm', 3, 3, 4 ],
-	['1 chord, 5 beats',    'Cm.....',		'Cm.....',	'Cm', 5, 5, 4 ],
-	['1 chord, 6 beats',    'Cm......',		'Cm......',	'Cm', 6, 6, 4 ],
-	['1 chord, 7 beats',    'Cm.......',	'Cm.......','Cm', 7, 7, 4 ],
-	['2 chord, 3 beats',    'Cm. D..',		'D..',		'D',  2, 3, 4 ],
-	['2 chord, 5 beats',    'Cm... D..',	'D..',		'D',  2, 5, 4 ],
-	['2 chord, 6 beats',    'Cm... D...',	'D...',		'D',  3, 6, 4 ],
-	['2 chord, 7 beats',    'Cm... D',		'D',		'D',  4, 7, 4 ],
-	['3 chord, 3 beats',    'C. D. E.',		'E.',		'E',  1, 3, 4 ],
-	['3 chord, 5 beats',    'C. D.. E..',	'E..',		'E',  2, 5, 4 ],
+	['1 chord, 1 beat, 4 beats/bar',	'Cm.',			'Cm.',		'Cm', 1, 1, 4 ],
+	['1 chord, 2 beats, 4 beats/bar',   'Cm..',			'Cm..',		'Cm', 2, 2, 4 ],
+	['1 chord, 3 beats, 4 beats/bar',   'Cm...',		'Cm...',	'Cm', 3, 3, 4 ],
+	['1 chord, 5 beats, 4 beats/bar',   'Cm.....',		'Cm.....',	'Cm', 5, 5, 4 ],
+	['1 chord, 6 beats, 4 beats/bar',   'Cm......',		'Cm......',	'Cm', 6, 6, 4 ],
+	['1 chord, 7 beats, 4 beats/bar',   'Cm.......',	'Cm.......','Cm', 7, 7, 4 ],
+	['2 chords, 3 beats, 4 beats/bar', 	'Cm. D..',		'D..',		'D',  2, 3, 4 ],
+	['2 chords, 5 beats, 4 beats/bar',  'Cm... D..',	'D..',		'D',  2, 5, 4 ],
+	['2 chords, 6 beats, 4 beats/bar',  'Cm... D...',	'D...',		'D',  3, 6, 4 ],
+	['2 chords, 7 beats, 4 beats/bar',  'Cm... D',		'D',		'D',  4, 7, 4 ],
+	['3 chords, 3 beats, 4 beats/bar',  'C. D. E.',		'E.',		'E',  1, 3, 4 ],
+	['3 chords, 5 beats, 4 beats/bar',  'C. D.. E..',	'E..',		'E',  2, 5, 4 ],
+
+	['1 chords, 4 beats, 5 beats/bar',  'C....',		'C....',	'C',  4, 4, 5 ],
+	['2 chords, 4 beats, 5 beats/bar',  'C.. D..',		'D..',		'D',  2, 4, 5 ],
+	['3 chords, 6 beats, 5 beats/bar',  'C.. D.. E..',	'E..',		'E',  2, 6, 5 ],
+	['3 chords, 7 beats, 5 beats/bar',  'C.. D... E..',	'E..',		'E',  2, 2, 5 ],
+	['3 chords, 8 beats, 5 beats/bar',  'C... D... E..','D...',		'D',  3, 6, 5 ],
+	['3 chords, 9 beats, 5 beats/bar',  'C... D E.',	'D',		'D',  5, 8, 5 ],
+
 ])('%s: %s',
 	(title, input, string, symbol, duration, beatCount, beatsPerBar) => {
-		const throwingFunction = () => { songRendererFactory(input); };
+		const options = { beatsPerBar };
+		const throwingFunction = () => { songRendererFactory(input, options); };
 
 		test('Throw IncorrectBeatCountException', () => {
 			expect(throwingFunction).toThrow(IncorrectBeatCountException);

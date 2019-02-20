@@ -1,11 +1,12 @@
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 
-export default function songRendererFactory(songTab) {
+export default function songRendererFactory(
+	songTab,
+	{
+		beatsPerBar = 4
+	} = {}
+) {
 	const originalTab = songTab;
-
-	const beatsPerBar = 4;
-
-
 
 	const allChords = originalTab.split(' ');
 	const allBars = [];
