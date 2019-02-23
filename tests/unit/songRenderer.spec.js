@@ -1,7 +1,8 @@
-import songRendererFactory from '../../src/songRenderer/songRenderer';
-import IncorrectBeatCountException from '../../src/songRenderer/exceptions/IncorrectBeatCountException';
+import songRendererFactory from '../../src/songRenderer';
+import IncorrectBeatCountException from '../../src/exceptions/IncorrectBeatCountException';
+import ChordsPositionMismatchException from '../../src/exceptions/ChordsPositionMismatchException';
 
-describe('songRenderer', () => {
+describe.skip('songRenderer', () => {
 	test('Factory', () => {
 		expect(songRendererFactory).toBeInstanceOf(Function);
 	});
@@ -15,7 +16,7 @@ describe('songRenderer', () => {
 });
 
 
-describe.each([
+describe.skip.each([
 	['1 chord,  1 bar',     'Cm',               '| Cm |' ],
 	['2 chords, 1 bar',     'Cm.. Em..',        '| Cm Em |' ],
 	['3 chords, 1 bar',     'Cm.. Em. G.',      '| Cm Em G |' ],
@@ -37,7 +38,7 @@ describe.each([
 	});
 
 
-describe.each([
+describe.skip.each([
 	['1 chord, 1 beat, 4 beats/bar',	'Cm.',			'Cm.',		'Cm', 1, 1, 4 ],
 	['1 chord, 2 beats, 4 beats/bar',   'Cm..',			'Cm..',		'Cm', 2, 2, 4 ],
 	['1 chord, 3 beats, 4 beats/bar',   'Cm...',		'Cm...',	'Cm', 3, 3, 4 ],
@@ -70,6 +71,8 @@ describe.each([
 		test('Add correct properties to exception', () => {
 			try {
 				throwingFunction();
+				expect(false).toBeTruthy();
+
 			} catch (e) {
 				expect(e.name).toBe('IncorrectBeatCountException');
 				expect(e.string).toBe(string);
@@ -77,6 +80,45 @@ describe.each([
 				expect(e.duration).toBe(duration);
 				expect(e.beatCount).toBe(beatCount);
 				expect(e.beatsPerBar).toBe(beatsPerBar);
+			}
+		});
+	});
+
+
+
+describe.skip.each([
+	['Starts on chord',     	'F',               'Yesterday', '| F         |' ],
+	['Explicit position, 1',    'F',               '_Yesterday', '| F         |' ],
+])('%s: %s => %s',
+	(title, input, textBase, output) => {
+		test('Renders correctly', () => {
+			const renderer = songRendererFactory(input, { textBase });
+			expect(renderer.toString()).toBe(output);
+		});
+	});
+
+
+describe.skip.each([
+	['1 chord, 2 positions',	'F',			'_Yesterday _', 	1, 2 ],
+	['2 chords, 1 position',	'F Am7', 		'_Yesterday', 		2, 1 ],
+
+])('%s: %s',
+	(title, input, textBase, chordCount, positionCount) => {
+		const options = { textBase };
+		const throwingFunction = () => { songRendererFactory(input, options); };
+
+		test('Throw ChordsPositionMismatchException', () => {
+			expect(throwingFunction).toThrow(ChordsPositionMismatchException);
+		});
+
+		test('Add correct properties to exception', () => {
+			try {
+				throwingFunction();
+				expect(false).toBeTruthy();
+			} catch (e) {
+				expect(e.name).toBe('ChordsPositionMismatchException');
+				expect(e.chordCount).toBe(chordCount);
+				expect(e.positionCount).toBe(positionCount);
 			}
 		});
 	});

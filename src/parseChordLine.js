@@ -1,19 +1,22 @@
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 
-export default function songRendererFactory(
-	songTab,
+// @todo add check on consecutive chords in a bar
+// @todo be resilient to mutliple spaces
+
+export default function parseChordLine(
+	chordLine,
 	{
 		beatsPerBar = 4
 	} = {}
 ) {
-	const originalTab = songTab;
 
-	const allChords = originalTab.split(' ');
+	const allChords = chordLine.split(' ');
 	const allBars = [];
 
 	let bar = [];
 	let chord;
 	let beatsCount = 0;
+	let chordCount = 0;
 
 	allChords.forEach(chordString => {
 		chord = {
@@ -24,6 +27,7 @@ export default function songRendererFactory(
 		beatsCount += chord.duration;
 
 		bar.push(chord);
+		chordCount++;
 
 		if (beatsCount === beatsPerBar) {
 			allBars.push(bar.slice());
@@ -53,27 +57,8 @@ export default function songRendererFactory(
 		});
 	}
 
-
-
-
-
 	return {
-
-		render() {
-
-			const lineString = allBars
-				.map(currentBar => currentBar
-					.map(chord => chord.symbol)
-					.join(' ')
-				)
-				.join(' | ');
-
-			return '| ' + lineString + ' |';
-		},
-
-
-		toString() {
-			return this.render();
-		}
+		chordCount,
+		allBars
 	};
 }
