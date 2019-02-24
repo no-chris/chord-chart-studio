@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99762c0c-8bee-4082-ae24-713ce0396d21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/songRenderer/barChord.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/songRenderer/createBarMask.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/songRenderer/exceptions/ChordsPositionMismatchException.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/songRenderer/parseChordLine.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/songRenderer/positionChord.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/songRenderer/tpl/chord.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/songRenderer/createBarMask.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/songRenderer/parseChordLine.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/songRenderer/positionChord.spec.js" afterDir="false" />
+    <list default="true" id="99762c0c-8bee-4082-ae24-713ce0396d21" name="Default Changelist" comment="added momo-chords">
+      <change afterPath="$PROJECT_DIR$/src/songRendererOld.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/songRenderer/data/song1-input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/songRenderer/data/song1-output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/songRenderer/songRenderer.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/clover.xml" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/clover.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/coverage-final.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/coverage-final.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/exceptions/IncorrectBeatCountException.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/exceptions/IncorrectBeatCountException.js.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/exceptions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/exceptions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/songRenderer.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/songRenderer.js.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/songRenderer.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/songRenderer/songRenderer.js.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/sort-arrow-sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/sort-arrow-sprite.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov.info" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/songRenderer/songRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/songRenderer/songRenderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/songRenderer/chordsLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/songRenderer/chordsLine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/songRenderer/songRenderer.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/songRenderer/songRenderer.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/createBarMask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/createBarMask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/songRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/songRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/createBarMask.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/createBarMask.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/songRenderer.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/songRenderer.spec.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,76 +36,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/songRenderer/parseChordLine.js">
+        <entry file="file://$PROJECT_DIR$/src/parseChordLine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+            <state relative-caret-position="135">
+              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/parseChordLine.spec.js">
+        <entry file="file://$PROJECT_DIR$/src/createBarMask.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
-              <folding>
-                <element signature="e#0#70#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="20" column="6" selection-start-line="12" selection-start-column="4" selection-end-line="20" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/songRenderer/barChord.js">
+        <entry file="file://$PROJECT_DIR$/tests/unit/createBarMask.spec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="36" selection-start-column="36" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/songRenderer/positionChord.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/.eslintrc.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/positionChord.spec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/chordsLine.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="65" selection-start-column="65" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/createBarMask.spec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+            <state relative-caret-position="373">
+              <caret line="34" selection-start-line="9" selection-end-line="34" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
               </folding>
@@ -117,11 +65,50 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/songRenderer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/songRenderer/createBarMask.js">
+        <entry file="file://$PROJECT_DIR$/tests/integration/songRenderer/songRenderer.spec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer.spec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/songRenderer/data/song1-input.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/songRenderer/data/song1-output.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -173,7 +160,6 @@
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/modules.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/tests/.eslintrc.js" />
         <option value="$PROJECT_DIR$/src/songs/ifIRuledTheWorld.js" />
         <option value="$PROJECT_DIR$/src/songs/tmp.html" />
         <option value="$PROJECT_DIR$/jest.config.js" />
@@ -197,8 +183,23 @@
         <option value="$PROJECT_DIR$/tests/songRenderer/createBarMask.spec.js" />
         <option value="$PROJECT_DIR$/src/songRenderer/createBarMask.js" />
         <option value="$PROJECT_DIR$/tests/unit/songRenderer/createBarMask.spec.js" />
+        <option value="$PROJECT_DIR$/src/renderSong.js" />
+        <option value="$PROJECT_DIR$/tests/integration/songRenderer.spec.js" />
+        <option value="$PROJECT_DIR$/tests/integration/songRenderer/data/song1-input.txt" />
+        <option value="$PROJECT_DIR$/src/createBarMask.js" />
+        <option value="$PROJECT_DIR$/tests/unit/createBarMask.spec.js" />
+        <option value="$PROJECT_DIR$/tests/integration/songRenderer/data/song1-output.txt" />
+        <option value="$PROJECT_DIR$/tests/.eslintrc.js" />
+        <option value="$PROJECT_DIR$/tests/integration/songRenderer/songRenderer.spec.js" />
+        <option value="$PROJECT_DIR$/src/songRenderer.js" />
       </list>
     </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
@@ -231,26 +232,26 @@
             <path>
               <item name="chordPro2" type="b2602c69:ProjectViewProjectNode" />
               <item name="chordPro2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chordPro2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chordPro2" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chordPro2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chordPro2" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
               <item name="songRenderer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chordPro2" type="b2602c69:ProjectViewProjectNode" />
               <item name="chordPro2" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chordPro2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chordPro2" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="unit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chordPro2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chordPro2" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="unit" type="462c0819:PsiDirectoryNode" />
-              <item name="songRenderer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -262,6 +263,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="11.9.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -274,14 +276,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/integration/songRenderer" />
+      <recent name="$PROJECT_DIR$/src/songs" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/tests/unit" />
       <recent name="$PROJECT_DIR$/src/songRenderer" />
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/lib/chord/src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/songRenderer" />
@@ -342,7 +345,7 @@
       <workItem from="1550440105546" duration="6615000" />
       <workItem from="1550690163314" duration="5536000" />
       <workItem from="1550787510805" duration="9347000" />
-      <workItem from="1550905043389" duration="6897000" />
+      <workItem from="1550905043389" duration="11081000" />
     </task>
     <task id="LOCAL-00001" summary="improved parser">
       <created>1550691486827</created>
@@ -351,43 +354,50 @@
       <option name="project" value="LOCAL" />
       <updated>1550691486828</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added momo-chords">
+      <created>1551022680967</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1551022680967</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Jest - 2019.02.23 at 09h 34m 08s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Jest - 2019.02.23 at 09h 34m 26s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Jest - 2019.02.23 at 09h 34m 43s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Jest - 2019.02.23 at 09h 38m 52s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Jest - 2019.02.23 at 09h 44m 41s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Jest - 2019.02.23 at 09h 45m 42s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Jest - 2019.02.23 at 09h 45m 49s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Jest - 2019.02.23 at 09h 53m 50s.xml">
-      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
     <history-entry file="Jest - 2019.02.23 at 19h 38m 54s.xml">
       <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
     <history-entry file="Jest - 2019.02.23 at 20h 06m 24s.xml">
       <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
+    <history-entry file="Jest - 2019.02.23 at 20h 41m 04s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Jest - 2019.02.24 at 16h 18m 44s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Jest - 2019.02.24 at 16h 19m 06s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Jest - 2019.02.24 at 16h 25m 29s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Jest - 2019.02.24 at 16h 30m 38s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Jest - 2019.02.24 at 16h 31m 00s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Jest - 2019.02.24 at 16h 31m 28s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Jest - 2019.02.24 at 16h 34m 33s.xml">
+      <configuration name="Jest" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52710000" />
+    <option name="totallyTimeSpent" value="56894000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="6" />
@@ -399,7 +409,7 @@
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32982457" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32982457" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.40350878" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.40350878" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -407,7 +417,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.41871345" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.41871345" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -421,7 +431,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="improved parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved parser" />
+    <MESSAGE value="added momo-chords" />
+    <option name="LAST_COMMIT_MESSAGE" value="added momo-chords" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/chord/mocha.opts" />
@@ -485,27 +496,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
           <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -552,31 +546,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/chordsLine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ifIRuledTheWorld.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/tpl/chord.hbs">
+    <entry file="file://$PROJECT_DIR$/src/tpl/chord.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exceptions/ChordsPositionMismatchException.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exceptions/IncorrectBeatCountException.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit/chordsLine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="49" selection-start-column="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/songs/tmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="19" column="161" selection-start-line="19" selection-start-column="161" selection-end-line="19" selection-end-column="161" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/songs/ifIRuledTheWorld.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-512">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -587,113 +595,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/songRenderer.js">
+    <entry file="file://$PROJECT_DIR$/src/chordsLine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-750">
-          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#8#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/songRenderer.spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" lean-forward="true" selection-start-line="40" selection-end-line="85" />
-          <folding>
-            <element signature="e#0#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/exceptions/ChordsPositionMismatchException.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/songs/tmp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="161" selection-start-line="19" selection-start-column="161" selection-end-line="19" selection-end-column="161" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/exceptions/IncorrectBeatCountException.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/barChord.js">
+    <entry file="file://$PROJECT_DIR$/src/barChord.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="36" selection-start-column="36" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/parseChordLine.spec.js">
+    <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/editor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
-            <element signature="e#0#70#0" expanded="true" />
+            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/parseChordLine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/positionChord.spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/createBarMask.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/songRenderer/positionChord.js">
+    <entry file="file://$PROJECT_DIR$/src/positionChord.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/.eslintrc.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        <state relative-caret-position="15">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/chordsLine.js">
+    <entry file="file://$PROJECT_DIR$/src/songRendererOld.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="65" selection-start-column="65" selection-end-column="65" />
+        <state relative-caret-position="-1532">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer/createBarMask.spec.js">
+    <entry file="file://$PROJECT_DIR$/tests/unit/createBarMask.spec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        <state relative-caret-position="373">
+          <caret line="34" selection-start-line="9" selection-end-line="34" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit/parseChordLine.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit/positionChord.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/createBarMask.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="6" selection-start-line="12" selection-start-column="4" selection-end-line="20" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/.eslintrc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/songRenderer/data/song1-output.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/songRenderer/data/song1-input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parseChordLine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/songRenderer/songRenderer.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit/songRenderer.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/songRenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
