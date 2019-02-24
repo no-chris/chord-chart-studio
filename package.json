@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "handlebars": "^4.1.0",
+    "momo-chords": "^0.4.3",
     "node-sass": "^4.11.0",
     "prosemirror": "^0.11.1",
     "prosemirror-example-setup": "^1.0.1",
