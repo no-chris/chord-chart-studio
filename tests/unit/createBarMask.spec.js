@@ -10,9 +10,9 @@ describe('createBarMask', () => {
 
 describe.each([
 	['1 bar / 1 chord  / 4 bpb', 			4, 'C', 			'{0}   ' ],
-	['1 bar / 2 chords (1/3) / 4 bpb', 		4, 'C. F...', 		'{0} {1}     ' ],
-	['1 bar / 2 chords (2/2) / 4 bpb', 		4, 'C.. F..', 		'{0}   {1}   ' ],
-	['1 bar / 2 chords (3/1) / 4 bpb', 		4, 'C... F.', 		'{0}     {1} ' ],
+	['1 bar / 2 chords (1/3) / 4 bpb', 		4, 'C. F...', 		'{0} {1}    ' ],
+	['1 bar / 2 chords (2/2) / 4 bpb', 		4, 'C.. F..', 		'{0}   {1}  ' ],
+	['1 bar / 2 chords (3/1) / 4 bpb', 		4, 'C... F.', 		'{0}     {1}' ],
 	['1 bar / 3 chords (1/1/2) / 4 bpb', 	4, 'C. F. G..', 	'{0} {1}   {2}' ],
 	['1 bar / 3 chords (2/1/1) / 4 bpb', 	4, 'C.. F. G.', 	'{0}   {1} {2}' ],
 	['1 bar / 4 chords / 4 bpb', 			4, 'C. F. G. Em.',	'{0}  {1}  {2}  {3}' ],
