@@ -1,3 +1,3 @@
 
 
-console.log(2 ** 8);
+window.console.log(2 ** 8);

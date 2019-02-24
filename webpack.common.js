@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const buildDir    = 'build';
 const buildDirAbs = __dirname + '/' + buildDir;
 
+// noinspection SpellCheckingInspection
 const config = {
 	mode: 'development',
 

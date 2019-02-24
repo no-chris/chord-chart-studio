@@ -13,7 +13,7 @@ export default function parseChordLine(
 	const allBars = [];
 
 	let bar = { allChords: []};
-	let chord;
+	let chord = {};
 	let beatsCount = 0;
 	let chordCount = 0;
 

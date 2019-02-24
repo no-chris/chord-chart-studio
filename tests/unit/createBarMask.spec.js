@@ -22,13 +22,11 @@ describe.each([
 	['1 bar / 2 chords (2/1) / 3 bpb', 		3, 'C.. F.',		'{0}      {1}' ],
 	['1 bar / 3 chords / 3 bpb', 			3, 'C. F. G.',		'{0}  {1}  {2}' ],
 
-	// @todo ['other', 								6, 'C.. F.. G..',	'{0}  {1}  {2}' ],
-])('Mask for %s',
-	(title, beatsPerBar, input, output) => {
-		test('Correct mask is created', () => {
-			const options = { beatsPerBar };
-			const parsed = parseChordLine(input, options);
-			const mask = createBarMask(parsed.allBars[0].allChords);
-			expect(mask).toBe(output);
-		});
+])('Mask for %s', (title, beatsPerBar, input, output) => {
+	test('Correct mask is created', () => {
+		const options = { beatsPerBar };
+		const parsed = parseChordLine(input, options);
+		const mask = createBarMask(parsed.allBars[0].allChords);
+		expect(mask).toBe(output);
 	});
+});
