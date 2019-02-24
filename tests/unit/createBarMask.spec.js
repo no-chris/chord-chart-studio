@@ -28,7 +28,7 @@ describe.each([
 		test('Correct mask is created', () => {
 			const options = { beatsPerBar };
 			const parsed = parseChordLine(input, options);
-			const mask = createBarMask(parsed.allBars[0]);
+			const mask = createBarMask(parsed.allBars[0].allChords);
 			expect(mask).toBe(output);
 		});
 	});

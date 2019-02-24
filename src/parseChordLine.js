@@ -1,7 +1,6 @@
+import _ from 'lodash';
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 
-// @todo add check on consecutive chords in a bar
-// @todo be resilient to mutliple spaces
 
 export default function parseChordLine(
 	chordLine,
@@ -10,15 +9,15 @@ export default function parseChordLine(
 	} = {}
 ) {
 
-	const allChords = chordLine.split(' ');
+	const allLineChords = chordLine.split(' ');
 	const allBars = [];
 
-	let bar = [];
+	let bar = { allChords: []};
 	let chord;
 	let beatsCount = 0;
 	let chordCount = 0;
 
-	allChords.forEach(chordString => {
+	allLineChords.forEach(chordString => {
 		chord = {
 			string: chordString,
 			duration: ((chordString.match(/\./g) || []).length) || beatsPerBar,
@@ -26,12 +25,12 @@ export default function parseChordLine(
 		};
 		beatsCount += chord.duration;
 
-		bar.push(chord);
+		bar.allChords.push(chord);
 		chordCount++;
 
 		if (beatsCount === beatsPerBar) {
-			allBars.push(bar.slice());
-			bar = [];
+			allBars.push(_.cloneDeep(bar));
+			bar = { allChords: []};
 			beatsCount = 0;
 
 		} else if (beatsCount > beatsPerBar) {

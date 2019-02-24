@@ -5,85 +5,140 @@ describe('parseChordLine', () => {
 	test('Module', () => {
 		expect(parseChordLine).toBeInstanceOf(Function);
 	});
-
-
 });
 
 
-
 describe.each([
-	['1 bar / 1 chord / 4 beats/bar', 'Cm', 4, [[
-		{ string: 'Cm', symbol: 'Cm', duration: 4 },
-	]], 1],
+	['1 bar / 1 chord / 4 beats/bar', 'Cm', 4, [
+		{
+			allChords: [
+				{ string: 'Cm', symbol: 'Cm', duration: 4 },
+			]
+		}
+	], 1],
 
-	['1 bar / 2 chords / 4 beats/bar', 'Cm.. F..', 4, [[
-		{ string: 'Cm..', symbol: 'Cm', duration: 2 },
-		{ string: 'F..', symbol: 'F', duration: 2 },
-	]], 2],
+	['1 bar / 2 chords / 4 beats/bar', 'Cm.. F..', 4, [
+		{
+			allChords: [
+				{ string: 'Cm..', symbol: 'Cm', duration: 2 },
+				{ string: 'F..', symbol: 'F', duration: 2 },
+			]
+		}
+	], 2],
 
-	['1 bar / 3 chords / 4 beats/bar', 'Cm.. F. G.', 4, [[
-		{ string: 'Cm..', symbol: 'Cm', duration: 2 },
-		{ string: 'F.', symbol: 'F', duration: 1 },
-		{ string: 'G.', symbol: 'G', duration: 1 },
-	]], 3],
+	['1 bar / 3 chords / 4 beats/bar', 'Cm.. F. G.', 4, [
+		{
+			allChords: [
+				{ string: 'Cm..', symbol: 'Cm', duration: 2 },
+				{ string: 'F.', symbol: 'F', duration: 1 },
+				{ string: 'G.', symbol: 'G', duration: 1 },
+			]
+		}
+	], 3],
 
-	['1 bar / 4 chords / 4 beats/bar', 'Cm. Em7. F. G.', 4, [[
-		{ string: 'Cm.', symbol: 'Cm', duration: 1 },
-		{ string: 'Em7.', symbol: 'Em7', duration: 1 },
-		{ string: 'F.', symbol: 'F', duration: 1 },
-		{ string: 'G.', symbol: 'G', duration: 1 },
-	]], 4],
+	['1 bar / 4 chords / 4 beats/bar', 'Cm. Em7. F. G.', 4, [
+		{
+			allChords: [
+				{ string: 'Cm.', symbol: 'Cm', duration: 1 },
+				{ string: 'Em7.', symbol: 'Em7', duration: 1 },
+				{ string: 'F.', symbol: 'F', duration: 1 },
+				{ string: 'G.', symbol: 'G', duration: 1 },
+			]
+		}
+	], 4],
 
-	['2 bars / 2 chords / 4 beats/bar', 'C F', 4, [[
-		{ string: 'C', symbol: 'C', duration: 4 },
-	], [
-		{ string: 'F', symbol: 'F', duration: 4 },
-	]], 2],
+	['2 bars / 2 chords / 4 beats/bar', 'C F', 4, [
+		{
+			allChords: [
+				{ string: 'C', symbol: 'C', duration: 4 },
+			]
+		}, {
+			allChords: [
+				{ string: 'F', symbol: 'F', duration: 4 },
+			]
+		}
+	], 2],
 
-	['2 bars / 3 chords / 4 beats/bar', 'C F.. G..', 4, [[
-		{ string: 'C', symbol: 'C', duration: 4 },
-	], [
-		{ string: 'F..', symbol: 'F', duration: 2 },
-		{ string: 'G..', symbol: 'G', duration: 2 },
-	]], 3],
+	['2 bars / 3 chords / 4 beats/bar', 'C F.. G..', 4, [
+		{
+			allChords: [
+				{ string: 'C', symbol: 'C', duration: 4 },
+			]
+		}, {
+			allChords: [
+				{ string: 'F..', symbol: 'F', duration: 2 },
+				{ string: 'G..', symbol: 'G', duration: 2 },
+			]
+		}
+	], 3],
 
-	['2 bars / 4 chords / 4 beats/bar', 'C... Em7. F. G...', 4, [[
-		{ string: 'C...', symbol: 'C', duration: 3 },
-		{ string: 'Em7.', symbol: 'Em7', duration: 1 },
-	], [
-		{ string: 'F.', symbol: 'F', duration: 1 },
-		{ string: 'G...', symbol: 'G', duration: 3 },
-	]], 4],
+	['2 bars / 4 chords / 4 beats/bar', 'C... Em7. F. G...', 4, [
+		{
+			allChords: [
+				{ string: 'C...', symbol: 'C', duration: 3 },
+				{ string: 'Em7.', symbol: 'Em7', duration: 1 },
+			]
+		}, {
+			allChords: [
+				{ string: 'F.', symbol: 'F', duration: 1 },
+				{ string: 'G...', symbol: 'G', duration: 3 },
+			]
+		}
+	], 4],
 
-	['3 bars / 4 chords / 4 beats/bar', 'C Em7. F... G', 4, [[
-		{ string: 'C', symbol: 'C', duration: 4 },
-	], [
-		{ string: 'Em7.', symbol: 'Em7', duration: 1 },
-		{ string: 'F...', symbol: 'F', duration: 3 },
-	], [
-		{ string: 'G', symbol: 'G', duration: 4 },
-	]], 4],
+	['3 bars / 4 chords / 4 beats/bar', 'C Em7. F... G', 4, [
+		{
+			allChords: [
+				{ string: 'C', symbol: 'C', duration: 4 },
+			]
+		}, {
+			allChords: [
+				{ string: 'Em7.', symbol: 'Em7', duration: 1 },
+				{ string: 'F...', symbol: 'F', duration: 3 },
+			]
+		}, {
+			allChords: [
+				{ string: 'G', symbol: 'G', duration: 4 },
+			]
+		}
+	], 4],
 
 
-	['1 bar / 1 chord / 3 beats/bar', 'C', 3, [[
-		{ string: 'C', symbol: 'C', duration: 3 },
-	]], 1],
+	['1 bar / 1 chord / 3 beats/bar', 'C', 3, [
+		{
+			allChords: [
+				{ string: 'C', symbol: 'C', duration: 3 },
+			]
+		}
+	], 1],
 
-	['1 bar / 2 chords / 3 beats/bar', 'Cm. F..', 3, [[
-		{ string: 'Cm.', symbol: 'Cm', duration: 1 },
-		{ string: 'F..', symbol: 'F', duration: 2 },
-	]], 2],
+	['1 bar / 2 chords / 3 beats/bar', 'Cm. F..', 3, [
+		{
+			allChords: [
+				{ string: 'Cm.', symbol: 'Cm', duration: 1 },
+				{ string: 'F..', symbol: 'F', duration: 2 },
+			]
+		}
+	], 2],
 
-	['1 bar / 2 chords / 3 beats/bar', 'Cm.. F.', 3, [[
-		{ string: 'Cm..', symbol: 'Cm', duration: 2 },
-		{ string: 'F.', symbol: 'F', duration: 1 },
-	]], 2],
+	['1 bar / 2 chords / 3 beats/bar', 'Cm.. F.', 3, [
+		{
+			allChords: [
+				{ string: 'Cm..', symbol: 'Cm', duration: 2 },
+				{ string: 'F.', symbol: 'F', duration: 1 },
+			]
+		}
+	], 2],
 
-	['1 bar / 3 chords / 3 beats/bar', 'Cm. F. G.', 3, [[
-		{ string: 'Cm.', symbol: 'Cm', duration: 1 },
-		{ string: 'F.', symbol: 'F', duration: 1 },
-		{ string: 'G.', symbol: 'G', duration: 1 },
-	]], 3],
+	['1 bar / 3 chords / 3 beats/bar', 'Cm. F. G.', 3, [
+		{
+			allChords: [
+				{ string: 'Cm.', symbol: 'Cm', duration: 1 },
+				{ string: 'F.', symbol: 'F', duration: 1 },
+				{ string: 'G.', symbol: 'G', duration: 1 },
+			]
+		}
+	], 3],
 
 ])('Parse correctly %s: %s',
 	(title, input, beatsPerBar, allBars, chordCount) => {
