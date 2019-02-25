@@ -8,7 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-<div id="root"></div>
-<div id="content" style="background-color: red">Content test</div>
+<style>
+    .container {
+        display: flex;
+    }
+    .left {
+        flex: 1 1 auto;
+    }
+    .right {
+        flex: 1 1 auto;
+    }
+    #editor-content {
+        display: none;
+    }
+
+</style>
+<div class="container">
+    <div class="left">
+        <strong>Source: </strong>
+        <div id="editor"></div>
+        <div id="editor-content">Content test</div>
+    </div>
+    <div class="right">
+        <strong>Rendered: </strong>
+        <pre id="rendered-song">
+        </pre>
+    </div>
+</div>
+
 </body>
 </html>
