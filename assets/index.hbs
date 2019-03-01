@@ -27,15 +27,18 @@
         flex: 1 1 auto;
         padding: 10px;
     }
-    #editor p, pre {
+    #editor p {
          margin: 0;
     }
-    #editor, pre {
+    #editor, #rendered-song {
         border: 1px solid grey;
         padding: 10px;
     }
     #editor-content {
         display: none;
+    }
+    #rendered-song {
+        white-space: pre-wrap;
     }
     .ProseMirror-focused {
         outline: none;
@@ -50,8 +53,7 @@
     </div>
     <div class="right">
         <strong>Rendered: </strong>
-        <pre id="rendered-song">
-        </pre>
+        <div id="rendered-song"></div>
     </div>
 </div>
 
