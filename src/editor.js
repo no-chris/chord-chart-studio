@@ -42,7 +42,7 @@ export default function editorFactory(renderToSelector, initialContentSelector) 
 			window.view = new EditorView(document.querySelector(renderToSelector), {
 				state: EditorState.create({
 					doc: DOMParser.fromSchema(mySchema).parse(document.querySelector(initialContentSelector)),
-					plugins: exampleSetup({ schema: mySchema })
+					plugins: exampleSetup({ schema: mySchema, menuBar: false })
 				}),
 				dispatchTransaction: (tr) => {
 					let {state} = window.view.state.applyTransaction(tr);
