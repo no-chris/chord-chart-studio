@@ -1,7 +1,10 @@
 import { Chords } from 'momo-chords';
 import replaceMultipleSpaces from './core/string/replaceMultipleSpaces';
 import parseChordLine from './parseChordLine';
-import createBarMask from './createBarMask';
+
+import simpleChordInterspacer from './interspacer/chord/simple';
+import textBarRenderer from './renderer/bar/text';
+import momoChordRenderer from './renderer/chord/momo';
 
 const chords = new Chords();
 
@@ -23,19 +26,11 @@ export default function songRendererFactory(songTxt) {
 		.map(line => {
 			if (line.type === 'chord') {
 				const parsed = parseChordLine(line.content);
-				const allBarsRendered = parsed.allBars
+				const interspaced = simpleChordInterspacer(parsed);
+
+				const allBarsRendered = interspaced.allBars
 					.map(bar => {
-						bar.mask = createBarMask(bar.allChords);
-						return bar;
-					})
-					.map(bar => {
-						bar.rendered = bar.mask;
-						bar.allChords.forEach((chord, index) => {
-							bar.rendered = bar.rendered.replace(
-								`{${index}}`,
-								chords.print(chords.parse(chord.symbol).symbol)
-							);
-						});
+						bar.rendered = textBarRenderer.render(bar, { chordRenderer: momoChordRenderer });
 						return bar.rendered;
 					});
 

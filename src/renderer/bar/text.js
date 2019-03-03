@@ -1,15 +1,22 @@
 import _ from 'lodash';
+
+import isRenderer from '../isRenderer';
+
 const defaultSpaceCount = 2;
 
 export default {
-	render(bar) {
+	render(bar, { chordRenderer } = {}) {
 		let spacesAfter = 0;
+
+		if (! isRenderer(chordRenderer)) {
+			throw new TypeError('Given chord renderer is not a valid renderer');
+		}
 
 		return bar.allChords.reduce((rendering, chord) => {
 			spacesAfter = _.isFinite(chord.spacesAfter) ? chord.spacesAfter : defaultSpaceCount;
 
 			rendering +=
-				chord.symbol +
+				chordRenderer.render(chord.symbol) +
 				' '.repeat(spacesAfter);
 
 			return rendering;

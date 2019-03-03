@@ -1,6 +1,12 @@
 import textRenderer from '../../../../src/renderer/bar/text';
 import parseChordLine from '../../../../src/parseChordLine';
 
+const chordRenderer = {
+	render(chordSymbol) {
+		return chordSymbol;
+	}
+};
+
 describe('textRenderer', () => {
 	test('Module', () => {
 		expect(textRenderer).toBeInstanceOf(Object);
@@ -21,8 +27,10 @@ describe.each([
 ])('%s: %s', (title, input, beatsPerBar, output) => {
 	test('Renders with default spacing: ' + output, () => {
 		const parsed = parseChordLine(input, { beatsPerBar });
-		const rendered = textRenderer.render(parsed.allBars[0]);
-
+		const rendered = textRenderer.render(
+			parsed.allBars[0],
+			{ chordRenderer }
+		);
 		expect(rendered).toEqual(output);
 	});
 });
@@ -44,7 +52,11 @@ describe.each([
 		parsed.allBars[0].allChords.forEach(chord => {
 			chord.spacesAfter = spacesAfter;
 		});
-		const rendered = textRenderer.render(parsed.allBars[0]);
+
+		const rendered = textRenderer.render(
+			parsed.allBars[0],
+			{ chordRenderer }
+		);
 
 		expect(rendered).toEqual(output);
 	});
