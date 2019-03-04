@@ -9,7 +9,7 @@ export default {
 		let spacesAfter = 0;
 
 		if (! isRenderer(chordRenderer)) {
-			throw new TypeError('Given chord renderer is not a valid renderer');
+			throw new TypeError('chordRenderer is not a valid renderer');
 		}
 
 		return bar.allChords.reduce((rendering, chord) => {

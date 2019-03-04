@@ -22,6 +22,12 @@ describe('Behavior', () => {
 		expect(error.beatCount).toEqual(6);
 		expect(error.beatsPerBar).toEqual(4);
 	});
+
+	test('Throw if given no parameter', () => {
+		const throwingFn = () => { throw new IncorrectBeatCountException(); };
+		expect(throwingFn).toThrow(TypeError);
+		expect(throwingFn).toThrow('IncorrectBeatCountException cannot be created without chord string, received: undefined');
+	});
 });
 
 describe.each([

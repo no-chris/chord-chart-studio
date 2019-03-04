@@ -2,14 +2,28 @@ import textRenderer from '../../../../src/renderer/bar/text';
 import parseChordLine from '../../../../src/parseChordLine';
 
 const chordRenderer = {
-	render(chordSymbol) {
-		return chordSymbol;
-	}
+	render : chordSymbol => chordSymbol
 };
 
 describe('textRenderer', () => {
 	test('Module', () => {
 		expect(textRenderer).toBeInstanceOf(Object);
+	});
+});
+
+describe.each([
+
+	['no renderer', undefined],
+	['invalid renderer', { renderFake() {} }],
+
+])('should throw with %s', (title, input) => {
+	test('Throw if not given valid chordRenderer', () => {
+		const parsed = parseChordLine('C');
+
+		const throwingFn = () => textRenderer.render(parsed, input);
+
+		expect(throwingFn).toThrow(TypeError);
+		expect(throwingFn).toThrow('chordRenderer is not a valid renderer');
 	});
 });
 
