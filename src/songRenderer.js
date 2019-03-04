@@ -10,6 +10,7 @@ const chords = new Chords();
 
 function isChordLine(line) {
 	return replaceMultipleSpaces(line, ' ')
+		.trim()
 		.split(' ')
 		.every(potentialChord => chords.isChord(potentialChord.replace(/\./g, '')));
 }

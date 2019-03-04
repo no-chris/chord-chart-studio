@@ -176,9 +176,54 @@ describe.each([
 		chordCount: 3
 	}],
 
-])('%s: %s',
+	['trim end spaces', 'Cm ', 4, {
+		allBars: [
+			{
+				allChords: [
+					{ string: 'Cm', symbol: 'Cm', duration: 4 },
+				]
+			}
+		],
+		chordCount: 1
+	}],
+
+	['trim start spaces', ' Cm', 4, {
+		allBars: [
+			{
+				allChords: [
+					{ string: 'Cm', symbol: 'Cm', duration: 4 },
+				]
+			}
+		],
+		chordCount: 1
+	}],
+
+	['trim start and end spaces', '   Cm   ', 4, {
+		allBars: [
+			{
+				allChords: [
+					{ string: 'Cm', symbol: 'Cm', duration: 4 },
+				]
+			}
+		],
+		chordCount: 1
+	}],
+
+	['handle multiple spaces between chords', 'C..     B..', 4, {
+		allBars: [
+			{
+				allChords: [
+					{ string: 'C..', symbol: 'C', duration: 2 },
+					{ string: 'B..', symbol: 'B', duration: 2 },
+				]
+			}
+		],
+		chordCount: 2
+	}],
+
+])('Should parses correctly %s: %s',
 	(title, input, beatsPerBar, expected) => {
-		test('Parses correctly', () => {
+		test('is correctly parsed', () => {
 			const options = { beatsPerBar };
 			const parsed = parseChordLine(input, options);
 

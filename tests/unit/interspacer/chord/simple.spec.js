@@ -18,8 +18,9 @@ describe.each([
 	['1 bar / 2 chords (1/3) / 4 bpb', 		4, 'C. F...', 		[1, 4] ],
 	['1 bar / 2 chords (2/2) / 4 bpb', 		4, 'C.. F..', 		[3, 2] ],
 	['1 bar / 2 chords (3/1) / 4 bpb', 		4, 'C... F.', 		[5, 0] ],
-	['1 bar / 3 chords (1/1/2) / 4 bpb', 	4, 'C. F. G..', 	[1, 3, 0] ],
-	['1 bar / 3 chords (2/1/1) / 4 bpb', 	4, 'C.. F. G.', 	[3, 1, 0] ],
+	['1 bar / 3 chords (1/1/2) / 4 bpb', 	4, 'C. F. G..', 	[1, 1, 3] ],
+	['1 bar / 3 chords (1/2/1) / 4 bpb', 	4, 'C. F.. G.', 	[1, 4, 0] ],
+	['1 bar / 3 chords (2/1/1) / 4 bpb', 	4, 'C.. F. G.', 	[4, 1, 0] ],
 	['1 bar / 4 chords / 4 bpb', 			4, 'C. F. G. Em.',	[2, 2, 2] ],
 
 ])('%s', (title, beatsPerBar, input, spacesAfter) => {

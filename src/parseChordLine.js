@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 
+import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
+import replaceMultipleSpaces from './core/string/replaceMultipleSpaces';
 
 export default function parseChordLine(
 	chordLine,
@@ -9,7 +10,9 @@ export default function parseChordLine(
 	} = {}
 ) {
 
-	const allLineChords = chordLine.split(' ');
+	const allLineChords = replaceMultipleSpaces(chordLine)
+		.trim()
+		.split(' ');
 	const allBars = [];
 
 	let bar = { allChords: []};
