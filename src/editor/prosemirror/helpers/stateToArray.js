@@ -1,3 +1,6 @@
+/**
+ * Convert a prosemirror state to an array of lines, with only text and no formatting
+ */
 export default function stateToArray(state) {
 	const json = state.toJSON();
 

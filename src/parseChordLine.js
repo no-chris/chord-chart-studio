@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
+import InvalidChordRepetitionException from './exceptions/InvalidChordRepetitionException';
 import replaceMultipleSpaces from './core/string/replaceMultipleSpaces';
 
 export default function parseChordLine(
@@ -19,6 +20,7 @@ export default function parseChordLine(
 	let chord = {};
 	let beatsCount = 0;
 	let chordCount = 0;
+	let previousChord = {};
 
 	allLineChords.forEach(chordString => {
 		chord = {
@@ -28,6 +30,17 @@ export default function parseChordLine(
 		};
 		beatsCount += chord.duration;
 
+
+		if (bar.allChords.length > 0) {
+			previousChord = bar.allChords[bar.allChords.length - 1];
+			if (previousChord.symbol === chord.symbol) {
+				throw new InvalidChordRepetitionException({
+					string: chord.string,
+					symbol: chord.symbol
+				});
+			}
+		}
+
 		bar.allChords.push(chord);
 		chordCount++;
 
@@ -35,6 +48,7 @@ export default function parseChordLine(
 			allBars.push(_.cloneDeep(bar));
 			bar = { allChords: []};
 			beatsCount = 0;
+			previousChord = {};
 
 		} else if (beatsCount > beatsPerBar) {
 			throw new IncorrectBeatCountException({

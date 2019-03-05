@@ -26,16 +26,16 @@ describe('Behavior', () => {
 	test('Throw if given no parameter', () => {
 		const throwingFn = () => { throw new IncorrectBeatCountException(); };
 		expect(throwingFn).toThrow(TypeError);
-		expect(throwingFn).toThrow('IncorrectBeatCountException cannot be created without chord string, received: undefined');
+		expect(throwingFn).toThrow('InvalidChordRepetitionException cannot be created without chord string, received: undefined');
 	});
 });
 
 describe.each([
-	['no string', 'string', 'IncorrectBeatCountException cannot be created without chord string, received: undefined'],
-	['no symbol', 'symbol', 'IncorrectBeatCountException cannot be created without chord symbol, received: undefined'],
-	['no duration', 'duration', 'IncorrectBeatCountException cannot be created without chord duration, received: undefined'],
-	['no beatCount', 'beatCount', 'IncorrectBeatCountException cannot be created without beatCount, received: undefined'],
-	['no beatsPerBar', 'beatsPerBar', 'IncorrectBeatCountException cannot be created without beatsPerBar, received: undefined'],
+	['no string', 'string', 'InvalidChordRepetitionException cannot be created without chord string, received: undefined'],
+	['no symbol', 'symbol', 'InvalidChordRepetitionException cannot be created without chord symbol, received: undefined'],
+	['no duration', 'duration', 'InvalidChordRepetitionException cannot be created without chord duration, received: undefined'],
+	['no beatCount', 'beatCount', 'InvalidChordRepetitionException cannot be created without beatCount, received: undefined'],
+	['no beatsPerBar', 'beatsPerBar', 'InvalidChordRepetitionException cannot be created without beatsPerBar, received: undefined'],
 ])('Throw TypeError on %s', (title, propertyToRemove, message) => {
 	test('Test details', () => {
 		const errorParameters = {

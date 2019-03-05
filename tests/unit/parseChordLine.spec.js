@@ -1,5 +1,6 @@
 import parseChordLine from '../../src/parseChordLine.js';
 import IncorrectBeatCountException from '../../src/exceptions/IncorrectBeatCountException';
+import InvalidChordRepetitionException from '../../src/exceptions/InvalidChordRepetitionException';
 
 describe('parseChordLine', () => {
 	test('Module', () => {
@@ -233,6 +234,7 @@ describe.each([
 
 
 describe.each([
+
 	['1 chord / 1 beat / 4 bpb',	'Cm.',			'Cm.',		'Cm', 1, 1, 4 ],
 	['1 chord / 2 beats / 4 bpb',   'Cm..',			'Cm..',		'Cm', 2, 2, 4 ],
 	['1 chord / 3 beats / 4 bpb',   'Cm...',		'Cm...',	'Cm', 3, 3, 4 ],
@@ -253,27 +255,57 @@ describe.each([
 	['3 chords / 8 beats / 5 bpb',  'C... D... E..','D...',		'D',  3, 6, 5 ],
 	['3 chords / 9 beats / 5 bpb',  'C... D E.',	'D',		'D',  5, 8, 5 ],
 
-])('Throw on %s: %s',
-	(title, input, string, symbol, duration, beatCount, beatsPerBar) => {
-		const options = { beatsPerBar };
-		const throwingFunction = () => { parseChordLine(input, options); };
+])('Throw on %s: %s', (title, input, string, symbol, duration, beatCount, beatsPerBar) => {
+	const options = { beatsPerBar };
+	const throwingFn = () => { parseChordLine(input, options); };
 
-		test('Throw IncorrectBeatCountException', () => {
-			expect(throwingFunction).toThrow(IncorrectBeatCountException);
-		});
-
-		test('Add correct properties to exception', () => {
-			try {
-				throwingFunction();
-				expect(false).toBeTruthy();
-
-			} catch (e) {
-				expect(e.name).toBe('IncorrectBeatCountException');
-				expect(e.string).toBe(string);
-				expect(e.symbol).toBe(symbol);
-				expect(e.duration).toBe(duration);
-				expect(e.beatCount).toBe(beatCount);
-				expect(e.beatsPerBar).toBe(beatsPerBar);
-			}
-		});
+	test('Throw InvalidChordRepetitionException', () => {
+		expect(throwingFn).toThrow(IncorrectBeatCountException);
 	});
+
+	test('Add correct properties to exception', () => {
+		try {
+			throwingFn();
+			expect(false).toBeTruthy();
+
+		} catch (e) {
+			expect(e.name).toBe('IncorrectBeatCountException');
+			expect(e.string).toBe(string);
+			expect(e.symbol).toBe(symbol);
+			expect(e.duration).toBe(duration);
+			expect(e.beatCount).toBe(beatCount);
+			expect(e.beatsPerBar).toBe(beatsPerBar);
+		}
+	});
+});
+
+
+describe.each([
+
+	['A. A...', 			'A...', 'A'],
+	['A.. A..', 			'A..', 	'A'],
+	['A... A.', 			'A.', 	'A'],
+	['A... B. C.. C. F.', 	'C.', 	'C'],
+	['A... B. F... F.', 	'F.', 	'F'],
+
+])('Throw if repeated chord in a bar: %s', (input, string, symbol) => {
+	const throwingFn = () => { parseChordLine(input); };
+
+	test('Throw InvalidChordRepetitionException', () => {
+		expect(throwingFn).toThrow(InvalidChordRepetitionException);
+	});
+
+
+	test('Add correct properties to exception', () => {
+		try {
+			throwingFn();
+			expect(false).toBeTruthy();
+
+		} catch (e) {
+			expect(e.name).toBe('InvalidChordRepetitionException');
+			expect(e.string).toBe(string);
+			expect(e.symbol).toBe(symbol);
+		}
+	});
+
+});
