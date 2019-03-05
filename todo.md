@@ -15,13 +15,16 @@
 
 
 # Later
-## rendering
+## Rendering
 - add aligned interspacer
 - add "chordPro" interspacer
 - add rendering switcher
 - add chord and bar styles (decorators?)
 
 
-## editor
+## Editor
 - display explicit errors to author
+
+## Tech
+- add logger
 

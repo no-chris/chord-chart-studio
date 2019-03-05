@@ -25,8 +25,10 @@ describe('Behavior', () => {
 });
 
 describe.each([
+
 	['no string', 'string', 'InvalidChordRepetitionException cannot be created without chord string, received: undefined'],
 	['no symbol', 'symbol', 'InvalidChordRepetitionException cannot be created without chord symbol, received: undefined'],
+
 ])('Throw TypeError on %s', (title, propertyToRemove, message) => {
 	test('Test details', () => {
 		const errorParameters = {
