@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-
-# Intro
+export default `# Intro
 Ab.. Cm.. Bb
 
 Ab.. Cm..
@@ -60,8 +51,4 @@ Will I rule the world.
 Every hand would be held up high,
 Every star would shine in everyone's sky.
 If the day ever dawned,
-Will I rule the world.
-
-
-</body>
-</html>
+Will I rule the world.`;

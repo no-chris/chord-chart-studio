@@ -6,3 +6,9 @@
 - parseChordLine: add check on consecutive chords in a bar
 - parseChordLine: refactor
 
+# Phase 1
+- properly wrapped text editor
++ simple rendering of chords
+- sample songs
+- tooling
+
