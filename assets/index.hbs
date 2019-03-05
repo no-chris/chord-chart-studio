@@ -38,6 +38,7 @@
     #editor, #rendered-song {
         border: 1px solid grey;
         padding: 10px;
+        background-color: beige;
     }
     #editor-content {
         display: none;
@@ -51,7 +52,8 @@
 
 </style>
 <div class="form">
-    <select class="song-selector">
+    <label for="song-selector">Song:</label>
+    <select id="song-selector" class="song-selector">
         <option value="kiss">Kiss</option>
         <option value="world">If I ruled the world</option>
     </select>

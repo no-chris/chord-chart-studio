@@ -30,12 +30,12 @@ _ Take my word we would _treasure each day that oc_curred _ _
 
 CM.. Dm7/C.. FM9/C.. CM9. Dm7/C.
 My world _ would be a _beautiful place _ _
-CM.. CM9.. Fm7.. Fm7/Bb
+CM.. CM9.. Fm7.. Fm7/Bb..
 Where we would _weave _ such wonderful _dreams _
 
 EbM.. Fm9/Eb.. EbM.. Fm9/Eb..
 My _ world _ would wear a _smile on its _face,
-Cm7.. Cm6.. Am7/5b. D7. Fm7. AbM9/Bb. |.. -
+Cm7.. Cm6.. Am7/5b. D7. Fm7. AbM9/Bb.
 Like the _man and the _moon has, _when _the moon _ _ beams _
 
 Ab.. Cm.. Bb

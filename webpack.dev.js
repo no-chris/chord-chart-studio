@@ -22,10 +22,11 @@ module.exports = merge(common, {
 		//         },
 		port: 8084, // config.devServer.port,
 		//host: '0.0.0.0', // enable this to run dev server from a docker container
+		host: '127.0.0.1',
 		inline: true,
 		watchOptions: {
 			poll: true
-		}
+		},
 	},
 
 });
