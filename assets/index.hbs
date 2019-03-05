@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ htmlWebpackPlugin.options.title }}</title>
+    <title>{{htmlWebpackPlugin.options.title}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -32,19 +32,22 @@
         flex: 1 1 auto;
         padding: 10px;
     }
+    #editor {
+        background-color: blanchedalmond;
+    }
     #editor p {
          margin: 0;
     }
     #editor, #rendered-song {
         border: 1px solid grey;
         padding: 10px;
-        background-color: beige;
     }
     #editor-content {
         display: none;
     }
     #rendered-song {
         white-space: pre-wrap;
+        background-color: beige;
     }
     .ProseMirror-focused {
         outline: none;
