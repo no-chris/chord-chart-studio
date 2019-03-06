@@ -1,7 +1,17 @@
-`npm install`
+# ChrodPro2
 
-`npm run test`
+Easily create song sheets with chords and lyrics.
 
-`npm run build`
+## Demo
 
-`npm run dev` for development server
+https://no-chris.github.io/chordPro2/ 
+
+## Dev
+
+install: `npm install`
+
+test: `npm run test`
+
+build: `npm run build`
+
+run development server on http://127.0.0.1:8084 : `npm run dev` 
