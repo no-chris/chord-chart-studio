@@ -11,22 +11,26 @@
 - ~~parseChordLine: trim spaces~~
 - ~~parseChordLine: add check on consecutive chords in a bar~~
 - ~~production build~~
-- deployment
-- docker?
+- ~~deployment~~
 
 
 
-# Later
+# Next phases
+
 ## Rendering
+- render html
 - add aligned interspacer
 - add "chordPro" interspacer
 - add rendering switcher
 - add chord and bar styles (decorators?)
-
+- add print view (cf. ultimate guitar)
 
 ## Editor
 - display explicit errors to author
 
 ## Tech
 - add logger
+
+## Dev
+- dockerize
 
