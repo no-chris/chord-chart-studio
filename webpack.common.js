@@ -2,7 +2,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const buildDir    = 'build';
+const buildDir    = 'docs';
 const buildDirAbs = __dirname + '/' + buildDir;
 
 // noinspection SpellCheckingInspection

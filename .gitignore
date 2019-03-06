@@ -1,6 +1,5 @@
 node_modules
 coverage
-build
 
 # IDE files
 .idea/**/workspace.xml

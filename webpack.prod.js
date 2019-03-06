@@ -9,7 +9,7 @@ const CleanWebpackPlugin    = require('clean-webpack-plugin');
 const CopyWebpackPlugin     = require('copy-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
-const buildDir = 'build';
+const buildDir = 'docs';
 
 module.exports = merge(common, {
 	mode: 'production',
