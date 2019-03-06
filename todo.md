@@ -10,7 +10,9 @@
 - ~~parseChordLine: be resilient to multiple spaces~~
 - ~~parseChordLine: trim spaces~~
 - ~~parseChordLine: add check on consecutive chords in a bar~~
-- tooling
+- ~~production build~~
+- deployment
+- docker?
 
 
 

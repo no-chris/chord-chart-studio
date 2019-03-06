@@ -1,14 +1,12 @@
 /* eslint-env node */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const buildDir    = 'build';
 const buildDirAbs = __dirname + '/' + buildDir;
 
 // noinspection SpellCheckingInspection
 const config = {
-	mode: 'development',
-
 	target:'web',
 
 	entry: {
@@ -26,10 +24,8 @@ const config = {
 			title: 'ChordPro2',
 			template:'assets/index.hbs'
 		}),
-		new ExtractTextPlugin({
-			//filename: 'css/[name].[contenthash].css',
-			filename: 'css/[name].css',
-			allChunks: true,
+		new MiniCssExtractPlugin({
+			filename:'css/[name].[hash].css',
 		}),
 	],
 
@@ -41,17 +37,16 @@ const config = {
 				loader: 'babel-loader'
 			},
 			{
-				test: /\.tpl$/,
+				test: /\.hbs$/,
 				loader: 'handlebars-loader'
 			},
 			{
 				test: /\.scss|sass|css$/,
-				loader: ExtractTextPlugin.extract({
-					use: [
-						{ loader: 'css-loader', options: { /* minimize: true */ } },
-						'sass-loader'
-					]
-				})
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'sass-loader',
+				],
 			},
 			{
 				test: /\.(png|jp(e*)g|svg)$/,
