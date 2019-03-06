@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const buildDir    = 'docs';
 const buildDirAbs = __dirname + '/' + buildDir;
 
-// noinspection SpellCheckingInspection
 const config = {
 	target:'web',
 
@@ -16,7 +15,6 @@ const config = {
 	output: {
 		filename: '[name].[hash].js',
 		path: buildDirAbs,
-		publicPath: '/'
 	},
 
 	plugins: [
