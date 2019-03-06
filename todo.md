@@ -1,5 +1,5 @@
 # Phase 1
-## Functionnal
+## Functional
 - ~~properly wrapped text editor~~
 - ~~simple rendering of chords~~
 - ~~sample songs~~
@@ -13,13 +13,18 @@
 - ~~production build~~
 - ~~deployment~~
 
+# Phase 2
+## Functional
+- render html
+- add aligned interspacer
+
+## Tech
+- add logger
 
 
 # Next phases
 
 ## Rendering
-- render html
-- add aligned interspacer
 - add "chordPro" interspacer
 - add rendering switcher
 - add chord and bar styles (decorators?)
@@ -29,7 +34,7 @@
 - display explicit errors to author
 
 ## Tech
-- add logger
+-
 
 ## Dev
 - dockerize
