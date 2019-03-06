@@ -34,7 +34,7 @@
 - display explicit errors to author
 
 ## Tech
--
+- deploy on https://www.netlify.com ?
 
 ## Dev
 - dockerize
