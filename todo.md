@@ -21,7 +21,7 @@
 
 ## Tech
 - add logger
-- add sass file
+- ~~add sass file~~
 
 
 # Next phases

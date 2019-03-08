@@ -1,0 +1,18 @@
+.cp2-chord-line {
+  font-weight: bold;
+  white-space: pre-wrap;
+  background-color: #e7e7ce;
+
+  .cp2-bar-separator {
+    margin: 0 10px;
+    color: #999;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

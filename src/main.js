@@ -1,3 +1,5 @@
+import '../scss/styles.scss';
+
 import editorFactory from './editor/prosemirror/editor';
 import songRenderer from './renderer/song/song';
 
