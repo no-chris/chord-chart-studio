@@ -6,4 +6,9 @@ module.exports = {
 	coveragePathIgnorePatterns: ['node_modules'],
 	coverageReporters: ['json', 'lcov', 'text', 'clover'],
 
+	transform: {
+		'\\.js$': 'babel-jest',
+		'\\.hbs$': 'jest-handlebars',
+	}
+
 };

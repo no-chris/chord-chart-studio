@@ -1,26 +1,34 @@
-import textRenderer from '../../../../src/renderer/bar/text';
+import barContentRenderer from '../../../../src/renderer/bar/barContent';
+
 import parseChordLine from '../../../../src/parseChordLine';
+import isRenderer from '../../../../src/renderer/isRenderer';
+import stripTags from '../../../../src/core/dom/stripTags';
 
 const chordRenderer = {
 	render : chordSymbol => chordSymbol
 };
 
-describe('textRenderer', () => {
+describe('barContentRenderer', () => {
 	test('Module', () => {
-		expect(textRenderer).toBeInstanceOf(Object);
+		expect(barContentRenderer).toBeInstanceOf(Object);
+	});
+
+	test('isRenderer', () => {
+		expect(isRenderer(barContentRenderer)).toEqual(true);
 	});
 });
 
 describe.each([
 
-	['no renderer', undefined],
-	['invalid renderer', { renderFake() {} }],
+	['no parameters', undefined],
+	['no renderer', { chordRenderer: undefined }],
+	['invalid renderer', { chordRenderer: { renderFake() {} }}],
 
 ])('should throw with %s', (title, input) => {
 	test('Throw if not given valid chordRenderer', () => {
 		const parsed = parseChordLine('C');
 
-		const throwingFn = () => textRenderer.render(parsed, input);
+		const throwingFn = () => barContentRenderer.render(parsed, input);
 
 		expect(throwingFn).toThrow(TypeError);
 		expect(throwingFn).toThrow('chordRenderer is not a valid renderer');
@@ -41,11 +49,11 @@ describe.each([
 ])('%s: %s', (title, input, beatsPerBar, output) => {
 	test('Renders with default spacing: ' + output, () => {
 		const parsed = parseChordLine(input, { beatsPerBar });
-		const rendered = textRenderer.render(
+		const rendered = barContentRenderer.render(
 			parsed.allBars[0],
 			{ chordRenderer }
 		);
-		expect(rendered).toEqual(output);
+		expect(stripTags(rendered)).toEqual(output);
 	});
 });
 
@@ -67,11 +75,11 @@ describe.each([
 			chord.spacesAfter = spacesAfter;
 		});
 
-		const rendered = textRenderer.render(
+		const rendered = barContentRenderer.render(
 			parsed.allBars[0],
 			{ chordRenderer }
 		);
 
-		expect(rendered).toEqual(output);
+		expect(stripTags(rendered)).toEqual(output);
 	});
 });

@@ -2,6 +2,8 @@ import _ from 'lodash';
 
 import isRenderer from '../isRenderer';
 
+import barContentTpl from './barContent.hbs';
+
 const defaultSpaceCount = 2;
 
 export default {
@@ -12,7 +14,7 @@ export default {
 			throw new TypeError('chordRenderer is not a valid renderer');
 		}
 
-		return bar.allChords.reduce((rendering, chord) => {
+		const barContent = bar.allChords.reduce((rendering, chord) => {
 			spacesAfter = _.isFinite(chord.spacesAfter) ? chord.spacesAfter : defaultSpaceCount;
 
 			rendering +=
@@ -21,5 +23,7 @@ export default {
 
 			return rendering;
 		}, '');
+
+		return barContentTpl({ barContent });
 	}
 };

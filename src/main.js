@@ -1,5 +1,7 @@
 import editorFactory from './editor/prosemirror/editor';
-import songRendererFactory from './songRenderer';
+import songRenderer from './renderer/song/song';
+
+import htmlToElement from './core/dom/htmlToElement';
 
 import kiss from './songs/kiss';
 import world from './songs/ifIRuledTheWorld';
@@ -11,9 +13,15 @@ const editorNode = document.querySelector('#editor');
 const editor = editorFactory(editorNode);
 
 const renderedSong = document.querySelector('#rendered-song');
+
 editor.on('change', (songLines) => {
-	const songRenderer = songRendererFactory(songLines.join('\n'));
-	renderedSong.innerHTML = songRenderer.toString();
+	const rendered = htmlToElement(songRenderer.render(songLines.join('\n')));
+
+	if (renderedSong.childNodes.length) {
+		renderedSong.replaceChild(rendered, renderedSong.firstChild);
+	} else {
+		renderedSong.appendChild(rendered);
+	}
 
 });
 
