@@ -20,6 +20,7 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'ChordPro2',
+			version: require('./package.json').version,
 			template:'assets/index.hbs'
 		}),
 		new MiniCssExtractPlugin({
