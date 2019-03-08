@@ -1,4 +1,4 @@
-# Phase 1
+# 0.1.0
 ## Functional
 - ~~properly wrapped text editor~~
 - ~~simple rendering of chords~~
@@ -13,13 +13,15 @@
 - ~~production build~~
 - ~~deployment~~
 
-# Phase 2
+# 0.2.0
 ## Functional
-- render html
+- ~~render html~~
 - add aligned interspacer
+- add proper styling
 
 ## Tech
 - add logger
+- add sass file
 
 
 # Next phases

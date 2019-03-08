@@ -6,6 +6,7 @@ import simpleChordInterspacer from '../../interspacer/chord/simple';
 import barContentRenderer from '../bar/barContent';
 import chordLineRenderer from '../chord/chordLine';
 import chordSymbolRenderer from '../chord/chordSymbol';
+import textLineRenderer from '../text/textLine';
 
 import songTpl from './song.hbs';
 
@@ -44,7 +45,6 @@ export default {
 							chordRenderer: chordSymbolRenderer
 						});
 
-						line.rendered = stripTags(line.rendered);
 					} catch (e) {
 						if (e instanceof InvalidChordRepetitionException) {
 							console.log('A chord cannot follow himself in the same bar: ' + e.string);
@@ -59,13 +59,13 @@ export default {
 						} else {
 							throw e;
 						}
-						line.rendered = line.content;
+						line.rendered = textLineRenderer.render(line.content);
 					}
 
 
 
 				} else {
-					line.rendered = line.content;
+					line.rendered = textLineRenderer.render(line.content);
 				}
 				return line;
 			});
