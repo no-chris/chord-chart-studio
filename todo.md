@@ -1,4 +1,4 @@
-# 0.1.0
+# v0.1.0
 ## Functional
 - ~~properly wrapped text editor~~
 - ~~simple rendering of chords~~
@@ -13,18 +13,21 @@
 - ~~production build~~
 - ~~deployment~~
 
-# 0.2.0
+# v0.2.0
 ## Functional
 - ~~render html~~
 - add aligned interspacer
-- add proper styling
+- ~~add proper styling~~
 
 ## Tech
 - add logger
 - ~~add sass file~~
+- cover renderers with real tests
+- cover dom helpers with real tests
+- add unit test for song renderer (extract renderer definition)
 
 
-# Next phases
+# Roadmap
 
 ## Rendering
 - add "chordPro" interspacer

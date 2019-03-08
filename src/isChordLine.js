@@ -3,7 +3,7 @@ import { Chords } from 'momo-chords';
 
 const chords = new Chords();
 
-export default function isChordLine(line) {
+export default function isChordLine(line = '') {
 	return replaceMultipleSpaces(line, ' ')
 		.trim()
 		.split(' ')
