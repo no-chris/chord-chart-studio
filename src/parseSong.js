@@ -1,8 +1,6 @@
 import isChordLine from './isChordLine';
 
 export default function parseSong(songTxt, { parseChordLine } = {}) {
-
-
 	return songTxt
 		.split('\n')
 		.map(string => ({ string }))

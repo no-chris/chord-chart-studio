@@ -1,8 +1,8 @@
-import { Chords } from 'momo-chords';
-import replaceMultipleSpaces from '../../core/string/replaceMultipleSpaces';
+import parseSong from '../../parseSong';
 import parseChordLine from '../../parseChordLine';
 
-import simpleChordInterspacer from '../../interspacer/chord/simple';
+import simpleChordSpacer from '../../spacer/chord/simple';
+import alignedChordSpacer from '../../spacer/chord/aligned';
 import barContentRenderer from '../bar/barContent';
 import chordLineRenderer from '../chord/chordLine';
 import chordSymbolRenderer from '../chord/chordSymbol';
@@ -10,65 +10,51 @@ import textLineRenderer from '../text/textLine';
 
 import songTpl from './song.hbs';
 
-import stripTags from '../../core/dom/stripTags';
-
 import InvalidChordRepetitionException from '../../exceptions/InvalidChordRepetitionException';
 import IncorrectBeatCountException from '../../exceptions/IncorrectBeatCountException';
 
-const chords = new Chords();
 
-function isChordLine(line) {
-	return replaceMultipleSpaces(line, ' ')
-		.trim()
-		.split(' ')
-		.every(potentialChord => chords.isChord(potentialChord.replace(/\./g, '')));
-}
 
 export default {
 	render(songTxt) {
-		const allLines = songTxt
-			.split('\n')
-			.map(line => {
-				return {
-					content: line,
-					type: isChordLine(line) ? 'chord' : 'text'
-				};
-			})
-			.map(line => {
-				if (line.type === 'chord') {
-					try {
-						const parsed = parseChordLine(line.content);
-						const interspaced = simpleChordInterspacer(parsed);
+		let allLines = parseSong(songTxt, { parseChordLine });
 
-						line.rendered = chordLineRenderer.render(interspaced, {
-							barContentRenderer: barContentRenderer,
-							chordRenderer: chordSymbolRenderer
-						});
+		//allLines = alignedChordSpacer(allLines);
 
-					} catch (e) {
-						if (e instanceof InvalidChordRepetitionException) {
-							console.log('A chord cannot follow himself in the same bar: ' + e.string);
+		allLines = allLines.map(line => {
+			if (line.type === 'chord') {
+				try {
+					const spaced = simpleChordSpacer(line.parsed);
 
-						} else if (e instanceof IncorrectBeatCountException) {
-							if (e.beatCount > e.beatsPerBar) {
-								console.log(`Duration of chord ${e.string} is too long for current bar`);
+					line.rendered = chordLineRenderer.render(spaced, {
+						barContentRenderer: barContentRenderer,
+						chordRenderer: chordSymbolRenderer
+					});
 
-							} else {
-								console.log(`Bar has insufficient beat count: increase ${e.string} duration or add another chord`);
-							}
+				} catch (e) {
+					if (e instanceof InvalidChordRepetitionException) {
+						console.log('A chord cannot follow himself in the same bar: ' + e.string);
+
+					} else if (e instanceof IncorrectBeatCountException) {
+						if (e.beatCount > e.beatsPerBar) {
+							console.log(`Duration of chord ${e.string} is too long for current bar`);
+
 						} else {
-							throw e;
+							console.log(`Bar has insufficient beat count: increase ${e.string} duration or add another chord`);
 						}
-						line.rendered = textLineRenderer.render(line.content);
+					} else {
+						throw e;
 					}
-
-
-
-				} else {
-					line.rendered = textLineRenderer.render(line.content);
+					line.rendered = textLineRenderer.render(line.string);
 				}
-				return line;
-			});
+
+
+
+			} else {
+				line.rendered = textLineRenderer.render(line.string);
+			}
+			return line;
+		});
 
 		const song = allLines
 			.map(line => line.rendered)

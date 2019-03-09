@@ -11,6 +11,10 @@ export default function parseChordLine(
 	} = {}
 ) {
 
+	if (! _.isString(chordLine)) {
+		throw new TypeError('chordLine should be a string, received: ' + chordLine);
+	}
+
 	const allLineChords = replaceMultipleSpaces(chordLine)
 		.trim()
 		.split(' ');
