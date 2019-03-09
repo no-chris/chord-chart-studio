@@ -22,7 +22,7 @@ export default function parseChordLine(
 
 	let bar = { allChords: []};
 	let chord = {};
-	let beatsCount = 0;
+	let beatCount = 0;
 	let chordCount = 0;
 	let previousChord = {};
 
@@ -30,10 +30,10 @@ export default function parseChordLine(
 		chord = {
 			string: chordString,
 			duration: ((chordString.match(/\./g) || []).length) || beatsPerBar,
-			symbol: chordString.replace(/\./g, '')
+			symbol: chordString.replace(/\./g, ''),
 		};
-		beatsCount += chord.duration;
-
+		chord.beat = beatCount + 1;
+		beatCount += chord.duration;
 
 		if (bar.allChords.length > 0) {
 			previousChord = bar.allChords[bar.allChords.length - 1];
@@ -48,31 +48,33 @@ export default function parseChordLine(
 		bar.allChords.push(chord);
 		chordCount++;
 
-		if (beatsCount === beatsPerBar) {
+		if (beatCount === beatsPerBar) {
+			bar.beatCount = beatCount;
 			allBars.push(_.cloneDeep(bar));
+
 			bar = { allChords: []};
-			beatsCount = 0;
+			beatCount = 0;
 			previousChord = {};
 
-		} else if (beatsCount > beatsPerBar) {
+		} else if (beatCount > beatsPerBar) {
 			throw new IncorrectBeatCountException({
 				message: '',
 				string: chord.string,
 				symbol: chord.symbol,
 				duration: chord.duration,
-				beatCount: beatsCount,
+				beatCount: beatCount,
 				beatsPerBar: beatsPerBar,
 			});
 		}
 	});
 
-	if (beatsCount > 0 && (beatsCount < beatsPerBar)) {
+	if (beatCount > 0 && (beatCount < beatsPerBar)) {
 		throw new IncorrectBeatCountException({
 			message: '',
 			string: chord.string,
 			symbol: chord.symbol,
 			duration: chord.duration,
-			beatCount: beatsCount,
+			beatCount: beatCount,
 			beatsPerBar: beatsPerBar,
 		});
 	}

@@ -14,8 +14,9 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4 },
-				]
+					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 1
@@ -25,9 +26,10 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm..', symbol: 'Cm', duration: 2 },
-					{ string: 'F..', symbol: 'F', duration: 2 },
-				]
+					{ string: 'Cm..', symbol: 'Cm', duration: 2, beat: 1 },
+					{ string: 'F..', symbol: 'F', duration: 2, beat: 3 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 2
@@ -37,10 +39,11 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm..', symbol: 'Cm', duration: 2 },
-					{ string: 'F.', symbol: 'F', duration: 1 },
-					{ string: 'G.', symbol: 'G', duration: 1 },
-				]
+					{ string: 'Cm..', symbol: 'Cm', duration: 2, beat: 1 },
+					{ string: 'F.', symbol: 'F', duration: 1, beat: 3 },
+					{ string: 'G.', symbol: 'G', duration: 1, beat: 4 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 3
@@ -50,11 +53,12 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm.', symbol: 'Cm', duration: 1 },
-					{ string: 'Em7.', symbol: 'Em7', duration: 1 },
-					{ string: 'F.', symbol: 'F', duration: 1 },
-					{ string: 'G.', symbol: 'G', duration: 1 },
-				]
+					{ string: 'Cm.', symbol: 'Cm', duration: 1, beat: 1 },
+					{ string: 'Em7.', symbol: 'Em7', duration: 1, beat: 2 },
+					{ string: 'F.', symbol: 'F', duration: 1, beat: 3 },
+					{ string: 'G.', symbol: 'G', duration: 1, beat: 4 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 4
@@ -64,12 +68,14 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 4 },
-				]
+					{ string: 'C', symbol: 'C', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}, {
 				allChords: [
-					{ string: 'F', symbol: 'F', duration: 4 },
-				]
+					{ string: 'F', symbol: 'F', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 2
@@ -79,13 +85,15 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 4 },
-				]
+					{ string: 'C', symbol: 'C', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}, {
 				allChords: [
-					{ string: 'F..', symbol: 'F', duration: 2 },
-					{ string: 'G..', symbol: 'G', duration: 2 },
-				]
+					{ string: 'F..', symbol: 'F', duration: 2, beat: 1 },
+					{ string: 'G..', symbol: 'G', duration: 2, beat: 3 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 3
@@ -95,14 +103,16 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C...', symbol: 'C', duration: 3 },
-					{ string: 'Em7.', symbol: 'Em7', duration: 1 },
-				]
+					{ string: 'C...', symbol: 'C', duration: 3, beat: 1 },
+					{ string: 'Em7.', symbol: 'Em7', duration: 1, beat: 4 },
+				],
+				beatCount: 4,
 			}, {
 				allChords: [
-					{ string: 'F.', symbol: 'F', duration: 1 },
-					{ string: 'G...', symbol: 'G', duration: 3 },
-				]
+					{ string: 'F.', symbol: 'F', duration: 1, beat: 1 },
+					{ string: 'G...', symbol: 'G', duration: 3, beat: 2 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 4
@@ -112,17 +122,20 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 4 },
-				]
+					{ string: 'C', symbol: 'C', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}, {
 				allChords: [
-					{ string: 'Em7.', symbol: 'Em7', duration: 1 },
-					{ string: 'F...', symbol: 'F', duration: 3 },
-				]
+					{ string: 'Em7.', symbol: 'Em7', duration: 1, beat: 1 },
+					{ string: 'F...', symbol: 'F', duration: 3, beat: 2 },
+				],
+				beatCount: 4,
 			}, {
 				allChords: [
-					{ string: 'G', symbol: 'G', duration: 4 },
-				]
+					{ string: 'G', symbol: 'G', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 4
@@ -133,8 +146,9 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 3 },
-				]
+					{ string: 'C', symbol: 'C', duration: 3, beat: 1 },
+				],
+				beatCount: 3,
 			}
 		],
 		chordCount: 1
@@ -144,9 +158,10 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm.', symbol: 'Cm', duration: 1 },
-					{ string: 'F..', symbol: 'F', duration: 2 },
-				]
+					{ string: 'Cm.', symbol: 'Cm', duration: 1, beat: 1 },
+					{ string: 'F..', symbol: 'F', duration: 2, beat: 2 },
+				],
+				beatCount: 3,
 			}
 		],
 		chordCount: 2
@@ -156,9 +171,10 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm..', symbol: 'Cm', duration: 2 },
-					{ string: 'F.', symbol: 'F', duration: 1 },
-				]
+					{ string: 'Cm..', symbol: 'Cm', duration: 2, beat: 1 },
+					{ string: 'F.', symbol: 'F', duration: 1, beat: 3 },
+				],
+				beatCount: 3,
 			}
 		],
 		chordCount: 2
@@ -168,10 +184,11 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm.', symbol: 'Cm', duration: 1 },
-					{ string: 'F.', symbol: 'F', duration: 1 },
-					{ string: 'G.', symbol: 'G', duration: 1 },
-				]
+					{ string: 'Cm.', symbol: 'Cm', duration: 1, beat: 1 },
+					{ string: 'F.', symbol: 'F', duration: 1, beat: 2 },
+					{ string: 'G.', symbol: 'G', duration: 1, beat: 3 },
+				],
+				beatCount: 3,
 			}
 		],
 		chordCount: 3
@@ -181,8 +198,9 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4 },
-				]
+					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 1
@@ -192,8 +210,9 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4 },
-				]
+					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 1
@@ -203,8 +222,9 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4 },
-				]
+					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 1
@@ -214,9 +234,10 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C..', symbol: 'C', duration: 2 },
-					{ string: 'B..', symbol: 'B', duration: 2 },
-				]
+					{ string: 'C..', symbol: 'C', duration: 2, beat: 1 },
+					{ string: 'B..', symbol: 'B', duration: 2, beat: 3 },
+				],
+				beatCount: 4,
 			}
 		],
 		chordCount: 2
