@@ -1,8 +1,11 @@
+import _ from 'lodash';
+
 import isChordLine from './isChordLine';
 
-export default function parseSong(songTxt, { parseChordLine } = {}) {
-	return songTxt
-		.split('\n')
+export default function parseSong(song, { parseChordLine } = {}) {
+	const songLines = (!_.isArray(song)) ? song.split('\n') : song;
+
+	return songLines
 		.map(string => ({ string }))
 		.map(line => {
 			if (isChordLine(line.string)) {

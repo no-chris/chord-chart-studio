@@ -24,7 +24,8 @@ export default {
 		allLines = allLines.map(line => {
 			if (line.type === 'chord') {
 				try {
-					const spaced = simpleChordSpacer(line.parsed);
+					//const spaced = simpleChordSpacer(line.parsed);
+					const spaced = alignedChordSpacer(line.parsed);
 
 					line.rendered = chordLineRenderer.render(spaced, {
 						barContentRenderer: barContentRenderer,
