@@ -1,5 +1,7 @@
 import _ from 'lodash';
 
+import getChordSymbol from './getChordSymbol';
+
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 import InvalidChordRepetitionException from './exceptions/InvalidChordRepetitionException';
 import replaceMultipleSpaces from './core/string/replaceMultipleSpaces';
@@ -30,7 +32,7 @@ export default function parseChordLine(
 		chord = {
 			string: chordString,
 			duration: ((chordString.match(/\./g) || []).length) || beatsPerBar,
-			symbol: chordString.replace(/\./g, ''),
+			symbol: getChordSymbol(chordString.replace(/\./g, '')),
 		};
 		chord.beat = beatCount + 1;
 		beatCount += chord.duration;

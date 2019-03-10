@@ -1,11 +1,9 @@
-import { Chords } from 'momo-chords';
+import getChordSymbol from '../../getChordSymbol';
 import chordSymbolTpl from './chordSymbol.hbs';
-
-const chords = new Chords();
 
 export default {
 	render(chordSymbolOriginal) {
-		const chordSymbol = chords.print(chords.parse(chordSymbolOriginal).symbol);
+		const chordSymbol = getChordSymbol(chordSymbolOriginal);
 		return chordSymbolTpl({ chordSymbol });
 	}
 };
