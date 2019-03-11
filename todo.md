@@ -16,9 +16,9 @@
 # v0.2.0
 ## Functional
 - ~~render html~~
-- add aligned rendering
+- ~~add aligned rendering~~
 - add toggler for aligned rendering
-- more song
+- more songs
 - ~~add proper styling~~
 
 ## Tech

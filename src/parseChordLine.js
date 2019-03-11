@@ -4,7 +4,6 @@ import getChordSymbol from './getChordSymbol';
 
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 import InvalidChordRepetitionException from './exceptions/InvalidChordRepetitionException';
-import replaceMultipleSpaces from './core/string/replaceMultipleSpaces';
 
 export default function parseChordLine(
 	chordLine,
@@ -12,7 +11,8 @@ export default function parseChordLine(
 		beatsPerBar = 4
 	} = {}
 ) {
-	const allLineChords = replaceMultipleSpaces(chordLine)
+	const allLineChords = chordLine
+		.replace(/  +/g, ' ')
 		.trim()
 		.split(' ');
 	const allBars = [];
