@@ -9,8 +9,13 @@ export default function parseSong(song, { parseChordLine } = {}) {
 		.map(string => ({ string }))
 		.map(line => {
 			if (isChordLine(line.string)) {
-				line.type = 'chord';
-				line.parsed = parseChordLine(line.string);
+				try {
+					line.type = 'chord';
+					line.parsed = parseChordLine(line.string);
+				} catch (e) {
+					line.type = 'text';
+					line.parsed = line.string;
+				}
 
 			} else {
 				line.type = 'text';
