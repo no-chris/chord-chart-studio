@@ -16,7 +16,9 @@
 # v0.2.0
 ## Functional
 - ~~render html~~
-- add aligned interspacer
+- add aligned rendering
+- add toggler for aligned rendering
+- more song
 - ~~add proper styling~~
 
 ## Tech
@@ -25,6 +27,7 @@
 - cover renderers with real tests
 - cover dom helpers with real tests
 - add unit test for song renderer (extract renderer definition)
+- ~~deploy on https://www.netlify.com ?~~
 
 
 # Roadmap
@@ -35,16 +38,21 @@
 
 ## Rendering
 - add "chordPro" spacer
-- add rendering switcher
+- add rendering switcher between normal / aligned / ...
 - add chord and bar styles (decorators?)
 - add print view (cf. ultimate guitar)
 - add more templates to simpleSpacer, and rename it like templateSpacer or other
+- customize momo-chords output (shorter)
+- render chorus / verse / bridge
+
+## Songbook
+- manage songs
+- ease migration from other chords formats
 
 ## Editor
 - display explicit errors to author
 
 ## Tech
-- deploy on https://www.netlify.com ?
 - make chordLine immutable
 
 ## Dev

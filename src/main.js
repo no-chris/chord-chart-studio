@@ -15,15 +15,16 @@ const editorNode = document.querySelector('#editor');
 
 const editor = editorFactory(editorNode);
 
-const renderedSong = document.querySelector('#rendered-song');
+const renderedSongContainer = document.querySelector('#rendered-song');
 
 editor.on('change', (songLines) => {
-	const rendered = htmlToElement(songRenderer.render(songLines.join('\n')));
+	const renderedSong = songRenderer.render(songLines, { alignChords: true });
+	const rendered = htmlToElement(renderedSong);
 
-	if (renderedSong.childNodes.length) {
-		renderedSong.replaceChild(rendered, renderedSong.firstChild);
+	if (renderedSongContainer.childNodes.length) {
+		renderedSongContainer.replaceChild(rendered, renderedSongContainer.firstChild);
 	} else {
-		renderedSong.appendChild(rendered);
+		renderedSongContainer.appendChild(rendered);
 	}
 
 });
