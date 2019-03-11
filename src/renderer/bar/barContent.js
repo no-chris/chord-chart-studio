@@ -4,10 +4,14 @@ import isRenderer from '../isRenderer';
 
 import barContentTpl from './barContent.hbs';
 
-const defaultSpaceCount = 2;
+const space = ' ';
+
+const defaultSpacesWithin = 0;
+const defaultSpacesAfter = 2;
 
 export default {
 	render(bar, { chordRenderer } = {}) {
+		let spacesWithin = 0;
 		let spacesAfter = 0;
 
 		if (! isRenderer(chordRenderer)) {
@@ -15,11 +19,13 @@ export default {
 		}
 
 		const barContent = bar.allChords.reduce((rendering, chord) => {
-			spacesAfter = _.isFinite(chord.spacesAfter) ? chord.spacesAfter : defaultSpaceCount;
+			spacesWithin = _.isFinite(chord.spacesWithin) ? chord.spacesWithin : defaultSpacesWithin;
+			spacesAfter = _.isFinite(chord.spacesAfter) ? chord.spacesAfter : defaultSpacesAfter;
 
 			rendering +=
 				chordRenderer.render(chord.symbol) +
-				' '.repeat(spacesAfter);
+				space.repeat(spacesWithin) +
+				space.repeat(spacesAfter);
 
 			return rendering;
 		}, '');

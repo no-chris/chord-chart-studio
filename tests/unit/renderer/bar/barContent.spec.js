@@ -83,3 +83,30 @@ describe.each([
 		expect(stripTags(rendered)).toEqual(output);
 	});
 });
+
+describe.each([
+
+	['spacesWithin = 0',  	'C. G. F..',	0, 4, 'C  G  F  '],
+	['spacesWithin = 1',  	'C. G. F..',	1, 4, 'C   G   F   '],
+	['spacesWithin = 2',  	'C. G. F..',	2, 4, 'C    G    F    '],
+	['spacesWithin = 3',  	'C. G. F..',	3, 4, 'C     G     F     '],
+	['spacesWithin = 4',  	'C. G. F..',	4, 4, 'C      G      F      '],
+	['spacesWithin = 5',  	'C. G. F..',	5, 4, 'C       G       F       '],
+	['spacesWithin = 6',  	'C. G. F..',	6, 4, 'C        G        F        '],
+
+])('%s: %s', (title, input, spacesWithin, beatsPerBar, output) => {
+	test('Respect spacesWithin value: ' + output, () => {
+		const parsed = parseChordLine(input, { beatsPerBar });
+
+		parsed.allBars[0].allChords.forEach(chord => {
+			chord.spacesWithin = spacesWithin;
+		});
+
+		const rendered = barContentRenderer.render(
+			parsed.allBars[0],
+			{ chordRenderer }
+		);
+
+		expect(stripTags(rendered)).toEqual(output);
+	});
+});
