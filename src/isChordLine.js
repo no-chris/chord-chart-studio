@@ -1,8 +1,9 @@
-import replaceMultipleSpaces from './core/string/replaceMultipleSpaces';
 import isChord from './isChord';
 
 export default function isChordLine(line = '') {
-	return replaceMultipleSpaces(line, ' ')
+	return line
+		.replace(/\t+/g, ' ')
+		.replace(/  +/g, ' ')
 		.trim()
 		.split(' ')
 		.map(potentialChord => potentialChord.replace(/\.*$/g, ''))

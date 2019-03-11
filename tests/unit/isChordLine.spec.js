@@ -14,7 +14,12 @@ describe.each([
 	[ '  A   B  ', 		true ],
 	[ '  A.  C..  ', 	true ],
 	[ 'Am7 CM7 F+ C/G', true ],
+	[ 'A.	C..', 		true ], // with 1 tab
+	[ 'A		C', 	true ], // with 2 tabs
+	[ 'A	 	C', 	true ], // with tab + space + tav
 
+	[ undefined,		false ],
+	[ '',	 			false ],
 	[ 'AB ', 			false ],
 	[ 'A H ', 			false ],
 	[ 'A C/H ', 		false ],

@@ -3,6 +3,11 @@ import _ from 'lodash';
 import isChordLine from './isChordLine';
 
 export default function parseSong(song, { parseChordLine } = {}) {
+
+	if (!_.isFunction(parseChordLine)) {
+		throw new TypeError('parseChordLine should be a function, received : ' + parseChordLine);
+	}
+
 	const songLines = (!_.isArray(song)) ? song.split('\n') : song;
 
 	return songLines
@@ -10,16 +15,16 @@ export default function parseSong(song, { parseChordLine } = {}) {
 		.map(line => {
 			if (isChordLine(line.string)) {
 				try {
-					line.type = 'chord';
 					line.parsed = parseChordLine(line.string);
+					line.type = 'chord';
 				} catch (e) {
-					line.type = 'text';
 					line.parsed = line.string;
+					line.type = 'text';
 				}
 
 			} else {
-				line.type = 'text';
 				line.parsed = line.string;
+				line.type = 'text';
 			}
 			return line;
 		});

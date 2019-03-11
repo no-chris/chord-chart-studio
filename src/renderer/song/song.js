@@ -16,7 +16,7 @@ import songTpl from './song.hbs';
 export default {
 	render(songTxt, {
 		alignChords = false
-	} = {}) {
+	}) {
 		let allLines = parseSong(songTxt, { parseChordLine });
 
 		const maxBeatsWidth = getMaxBeatsWidth(allLines);
@@ -43,9 +43,5 @@ export default {
 			.join('\n');
 
 		return songTpl({ song });
-	},
-
-	toString() {
-		return this.render();
 	}
 };
