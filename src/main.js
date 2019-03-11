@@ -7,6 +7,7 @@ import htmlToElement from './core/dom/htmlToElement';
 
 import kiss from './songs/kiss';
 import world from './songs/ifIRuledTheWorld';
+import worry from './songs/worry';
 
 
 
@@ -35,6 +36,7 @@ songSelector.addEventListener('change', (event) => {
 	switch(event.target.value) {
 	case 'kiss': editor.load(toNode(kiss)); break;
 	case 'world': editor.load(toNode(world)); break;
+	case 'worry': editor.load(toNode(worry)); break;
 	}
 });
 

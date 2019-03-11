@@ -29,17 +29,23 @@
 
 # Roadmap
 
+## General
+- Rename
+- Transpose
+
 ## Rendering
-- add "chordPro" interspacer
+- add "chordPro" spacer
 - add rendering switcher
 - add chord and bar styles (decorators?)
 - add print view (cf. ultimate guitar)
+- add more templates to simpleSpacer, and rename it like templateSpacer or other
 
 ## Editor
 - display explicit errors to author
 
 ## Tech
 - deploy on https://www.netlify.com ?
+- make chordLine immutable
 
 ## Dev
 - dockerize
