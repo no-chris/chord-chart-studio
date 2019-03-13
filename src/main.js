@@ -9,7 +9,10 @@ import kiss from './songs/kiss';
 import world from './songs/ifIRuledTheWorld';
 import worry from './songs/worry';
 
+import logFactory from  './core/logger';
+const log = logFactory.getLogger('main');
 
+log.info('info test');
 
 const editorNode = document.querySelector('#editor');
 

@@ -24,6 +24,7 @@
 
 ## Tech
 - make chordLine immutable
+- add unit test for song renderer (extract renderer definition)
 
 ## Dev
 - dockerize
@@ -38,11 +39,10 @@
 - ~~add proper styling~~
 
 ## Tech
-- add logger
+- ~~add logger~~
 - ~~add sass file~~
-- cover all renderers with real tests
+- ~~cover all renderers with real tests~~
 - ~~cover dom helpers with real tests~~
-- add unit test for song renderer (extract renderer definition)
 - ~~deploy on https://www.netlify.com ?~~
 
 # v0.1.0
