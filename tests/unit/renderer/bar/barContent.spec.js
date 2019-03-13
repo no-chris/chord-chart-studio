@@ -3,6 +3,7 @@ import barContentRenderer from '../../../../src/renderer/bar/barContent';
 import parseChordLine from '../../../../src/parseChordLine';
 import isRenderer from '../../../../src/renderer/isRenderer';
 import stripTags from '../../../../src/core/dom/stripTags';
+import htmlToElement from '../../../../src/core/dom/htmlToElement';
 
 const chordRenderer = {
 	render : chordSymbol => chordSymbol
@@ -108,5 +109,18 @@ describe.each([
 		);
 
 		expect(stripTags(rendered)).toEqual(output);
+	});
+});
+
+describe('Behaviour', () => {
+	test('Should return valid html', () => {
+		const parsed = parseChordLine('C.. G. F.');
+
+		const rendered = barContentRenderer.render(parsed.allBars[0], { chordRenderer });
+		const element = htmlToElement(rendered);
+
+		expect(element).toBeInstanceOf(Node);
+		expect(element.nodeName).toBe('SPAN');
+		expect(element.classList.contains('cp2-bar-content')).toBe(true);
 	});
 });

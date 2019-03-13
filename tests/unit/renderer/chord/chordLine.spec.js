@@ -3,6 +3,7 @@ import chordLineRenderer from '../../../../src/renderer/chord/chordLine';
 import parseChordLine from '../../../../src/parseChordLine';
 import isRenderer from '../../../../src/renderer/isRenderer';
 import stripTags from '../../../../src/core/dom/stripTags';
+import htmlToElement from '../../../../src/core/dom/htmlToElement';
 
 describe('chordLine renderer', () => {
 	test('Module', () => {
@@ -11,6 +12,20 @@ describe('chordLine renderer', () => {
 
 	test('isRenderer', () => {
 		expect(isRenderer(chordLineRenderer)).toEqual(true);
+	});
+});
+
+describe('Behaviour', () => {
+	test('Should return valid html', () => {
+		const barContentRenderer = {
+			render: () => 'C'
+		};
+		const rendered = chordLineRenderer.render(parseChordLine('C'), { barContentRenderer });
+		const element = htmlToElement(rendered);
+
+		expect(element).toBeInstanceOf(Node);
+		expect(element.nodeName).toBe('P');
+		expect(element.classList.contains('cp2-chord-line')).toBe(true);
 	});
 });
 

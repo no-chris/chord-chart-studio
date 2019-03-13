@@ -3,6 +3,7 @@
 ## General
 - Rename
 - Transpose
+- handle 3/4 signatures (and others)
 
 ## Rendering
 - add "chordPro" spacer
@@ -12,6 +13,7 @@
 - add more templates to simpleSpacer, and rename it like templateSpacer or other
 - customize momo-chords output (shorter)
 - render chorus / verse / bridge
+- automatically repeats chorus and verse
 
 ## Songbook
 - manage songs
@@ -38,8 +40,8 @@
 ## Tech
 - add logger
 - ~~add sass file~~
-- cover renderers with real tests
-- cover dom helpers with real tests
+- cover all renderers with real tests
+- ~~cover dom helpers with real tests~~
 - add unit test for song renderer (extract renderer definition)
 - ~~deploy on https://www.netlify.com ?~~
 
