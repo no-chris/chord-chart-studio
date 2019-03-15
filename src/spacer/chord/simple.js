@@ -27,20 +27,20 @@ const allMasks = {
 export default function space(chordLineInput) {
 	const chordLine = _.cloneDeep(chordLineInput);
 
-	let beatsPerBar = 0;
+	let beatCount = 0;
 	let chordPattern = '';
 	let chordSpaces = [];
 
 	chordLine.allBars.forEach(bar => {
-		beatsPerBar = 0;
+		beatCount = 0;
 		chordPattern = '';
 
 		bar.allChords.forEach(chord => {
 			chordPattern += chord.duration.toString();
-			beatsPerBar += chord.duration;
+			beatCount += chord.duration;
 		});
 
-		chordSpaces = allMasks[beatsPerBar][chordPattern];
+		chordSpaces = allMasks[beatCount][chordPattern];
 
 		for (let i = 0; i < chordPattern.length; i++) {
 			bar.allChords[i].spacesAfter = chordSpaces[i];

@@ -8,7 +8,7 @@ export default function getMaxBeatsWidth(allLines) {
 				if (!maxBeatsWidth[barIndex]) {
 					maxBeatsWidth[barIndex] = {};
 
-					for (let i = 1; i <= bar.beatCount; i++) {
+					for (let i = 1; i <= bar.timeSignature.beatCount; i++) {
 						maxBeatsWidth[barIndex][i] = 0;
 					}
 				}

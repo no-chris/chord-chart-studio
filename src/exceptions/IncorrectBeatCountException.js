@@ -6,24 +6,24 @@ export default class IncorrectBeatCountException extends Error {
 			string,
 			symbol,
 			duration,
-			beatCount,
-			beatsPerBar
+			currentBeatCount,
+			beatCount
 		} = {}
 	) {
 		if (!string || !_.isString(string)) {
-			throw new TypeError('InvalidChordRepetitionException cannot be created without chord string, received: ' + string);
+			throw new TypeError('IncorrectBeatCountException cannot be created without chord string, received: ' + string);
 		}
 		if (!symbol || !_.isString(symbol)) {
-			throw new TypeError('InvalidChordRepetitionException cannot be created without chord symbol, received: ' + symbol);
+			throw new TypeError('IncorrectBeatCountException cannot be created without chord symbol, received: ' + symbol);
 		}
 		if (!duration || !_.isFinite(duration)) {
-			throw new TypeError('InvalidChordRepetitionException cannot be created without chord duration, received: ' + duration);
+			throw new TypeError('IncorrectBeatCountException cannot be created without chord duration, received: ' + duration);
+		}
+		if (!currentBeatCount || !_.isFinite(currentBeatCount)) {
+			throw new TypeError('IncorrectBeatCountException cannot be created without currentBeatCount, received: ' + currentBeatCount);
 		}
 		if (!beatCount || !_.isFinite(beatCount)) {
-			throw new TypeError('InvalidChordRepetitionException cannot be created without beatCount, received: ' + beatCount);
-		}
-		if (!beatsPerBar || !_.isFinite(beatsPerBar)) {
-			throw new TypeError('InvalidChordRepetitionException cannot be created without beatsPerBar, received: ' + beatsPerBar);
+			throw new TypeError('IncorrectBeatCountException cannot be created without beatCount, received: ' + beatCount);
 		}
 
 		super();
@@ -32,8 +32,8 @@ export default class IncorrectBeatCountException extends Error {
 		this.string = string;
 		this.symbol = symbol;
 		this.duration = duration;
+		this.currentBeatCount = currentBeatCount;
 		this.beatCount = beatCount;
-		this.beatsPerBar = beatsPerBar;
 	}
 }
 

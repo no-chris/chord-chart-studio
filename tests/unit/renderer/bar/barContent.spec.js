@@ -38,18 +38,18 @@ describe.each([
 
 describe.each([
 
-	['1 bar / 1 chord / 4 bpb', 			'C', 			4, 'C  '],
-	['1 bar / 2 chords / 4 bpb (1/3)', 		'C. G...', 		4, 'C  G  '],
-	['1 bar / 2 chords / 4 bpb (2/2)',  	'C.. G..', 		4, 'C  G  '],
-	['1 bar / 2 chords / 4 bpb (3/1)',  	'C... G.', 		4, 'C  G  '],
-	['1 bar / 3 chords / 4 bpb (1/1/2)',  	'C. G. F..',	4, 'C  G  F  '],
-	['1 bar / 3 chords / 4 bpb (1/2/1)',  	'C. G.. F.',	4, 'C  G  F  '],
-	['1 bar / 3 chords / 4 bpb (2/1/1)',  	'C.. G. F.',	4, 'C  G  F  '],
-	['1 bar / 4 chords / 4 bpb (1/1/1/1)', 	'C. G. F. Am.',	4, 'C  G  F  Am  '],
+	['1 bar / 1 chord / 4 bpb', 			'C', 			'C  '],
+	['1 bar / 2 chords / 4 bpb (1/3)', 		'C. G...', 		'C  G  '],
+	['1 bar / 2 chords / 4 bpb (2/2)',  	'C.. G..', 		'C  G  '],
+	['1 bar / 2 chords / 4 bpb (3/1)',  	'C... G.', 		'C  G  '],
+	['1 bar / 3 chords / 4 bpb (1/1/2)',  	'C. G. F..',	'C  G  F  '],
+	['1 bar / 3 chords / 4 bpb (1/2/1)',  	'C. G.. F.',	'C  G  F  '],
+	['1 bar / 3 chords / 4 bpb (2/1/1)',  	'C.. G. F.',	'C  G  F  '],
+	['1 bar / 4 chords / 4 bpb (1/1/1/1)', 	'C. G. F. Am.',	'C  G  F  Am  '],
 
-])('%s: %s', (title, input, beatsPerBar, output) => {
+])('%s: %s', (title, input, output) => {
 	test('Renders with default spacing: ' + output, () => {
-		const parsed = parseChordLine(input, { beatsPerBar });
+		const parsed = parseChordLine(input);
 		const rendered = barContentRenderer.render(
 			parsed.allBars[0],
 			{ chordRenderer }
@@ -60,17 +60,17 @@ describe.each([
 
 describe.each([
 
-	['spacesAfter = 0',  	'C. G. F..',	0, 4, 'CGF'],
-	['spacesAfter = 1',  	'C. G. F..',	1, 4, 'C G F '],
-	['spacesAfter = 2',  	'C. G. F..',	2, 4, 'C  G  F  '],
-	['spacesAfter = 3',  	'C. G. F..',	3, 4, 'C   G   F   '],
-	['spacesAfter = 4',  	'C. G. F..',	4, 4, 'C    G    F    '],
-	['spacesAfter = 5',  	'C. G. F..',	5, 4, 'C     G     F     '],
-	['spacesAfter = 6',  	'C. G. F..',	6, 4, 'C      G      F      '],
+	['spacesAfter = 0',  	'C. G. F..',	0, 'CGF'],
+	['spacesAfter = 1',  	'C. G. F..',	1, 'C G F '],
+	['spacesAfter = 2',  	'C. G. F..',	2, 'C  G  F  '],
+	['spacesAfter = 3',  	'C. G. F..',	3, 'C   G   F   '],
+	['spacesAfter = 4',  	'C. G. F..',	4, 'C    G    F    '],
+	['spacesAfter = 5',  	'C. G. F..',	5, 'C     G     F     '],
+	['spacesAfter = 6',  	'C. G. F..',	6, 'C      G      F      '],
 
-])('%s: %s', (title, input, spacesAfter, beatsPerBar, output) => {
+])('%s: %s', (title, input, spacesAfter, output) => {
 	test('Respect spacesAfter value: ' + output, () => {
-		const parsed = parseChordLine(input, { beatsPerBar });
+		const parsed = parseChordLine(input);
 
 		parsed.allBars[0].allChords.forEach(chord => {
 			chord.spacesAfter = spacesAfter;
@@ -87,17 +87,17 @@ describe.each([
 
 describe.each([
 
-	['spacesWithin = 0',  	'C. G. F..',	0, 4, 'C  G  F  '],
-	['spacesWithin = 1',  	'C. G. F..',	1, 4, 'C   G   F   '],
-	['spacesWithin = 2',  	'C. G. F..',	2, 4, 'C    G    F    '],
-	['spacesWithin = 3',  	'C. G. F..',	3, 4, 'C     G     F     '],
-	['spacesWithin = 4',  	'C. G. F..',	4, 4, 'C      G      F      '],
-	['spacesWithin = 5',  	'C. G. F..',	5, 4, 'C       G       F       '],
-	['spacesWithin = 6',  	'C. G. F..',	6, 4, 'C        G        F        '],
+	['spacesWithin = 0',  	'C. G. F..',	0, 'C  G  F  '],
+	['spacesWithin = 1',  	'C. G. F..',	1, 'C   G   F   '],
+	['spacesWithin = 2',  	'C. G. F..',	2, 'C    G    F    '],
+	['spacesWithin = 3',  	'C. G. F..',	3, 'C     G     F     '],
+	['spacesWithin = 4',  	'C. G. F..',	4, 'C      G      F      '],
+	['spacesWithin = 5',  	'C. G. F..',	5, 'C       G       F       '],
+	['spacesWithin = 6',  	'C. G. F..',	6, 'C        G        F        '],
 
-])('%s: %s', (title, input, spacesWithin, beatsPerBar, output) => {
+])('%s: %s', (title, input, spacesWithin, output) => {
 	test('Respect spacesWithin value: ' + output, () => {
-		const parsed = parseChordLine(input, { beatsPerBar });
+		const parsed = parseChordLine(input);
 
 		parsed.allBars[0].allChords.forEach(chord => {
 			chord.spacesWithin = spacesWithin;

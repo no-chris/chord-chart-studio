@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import getChordSymbol from './getChordSymbol';
+import getTimeSignature from './getTimeSignature';
 
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 import InvalidChordRepetitionException from './exceptions/InvalidChordRepetitionException';
@@ -8,9 +9,11 @@ import InvalidChordRepetitionException from './exceptions/InvalidChordRepetition
 export default function parseChordLine(
 	chordLine,
 	{
-		beatsPerBar = 4
+		timeSignature = getTimeSignature('4/4')
 	} = {}
 ) {
+	const { beatCount } = timeSignature;
+
 	const allLineChords = chordLine
 		.replace(/  +/g, ' ')
 		.trim()
@@ -19,18 +22,18 @@ export default function parseChordLine(
 
 	let bar = { allChords: []};
 	let chord = {};
-	let beatCount = 0;
+	let currentBeatCount = 0;
 	let chordCount = 0;
 	let previousChord = {};
 
 	allLineChords.forEach(chordString => {
 		chord = {
 			string: chordString,
-			duration: ((chordString.match(/\./g) || []).length) || beatsPerBar,
+			duration: ((chordString.match(/\./g) || []).length) || beatCount,
 			symbol: getChordSymbol(chordString.replace(/\./g, '')),
 		};
-		chord.beat = beatCount + 1;
-		beatCount += chord.duration;
+		chord.beat = currentBeatCount + 1;
+		currentBeatCount += chord.duration;
 
 		if (bar.allChords.length > 0) {
 			previousChord = bar.allChords[bar.allChords.length - 1];
@@ -45,34 +48,35 @@ export default function parseChordLine(
 		bar.allChords.push(chord);
 		chordCount++;
 
-		if (beatCount === beatsPerBar) {
-			bar.beatCount = beatCount;
+		if (currentBeatCount === beatCount) {
+			bar.timeSignature = timeSignature;
+
 			allBars.push(_.cloneDeep(bar));
 
 			bar = { allChords: []};
-			beatCount = 0;
+			currentBeatCount = 0;
 			previousChord = {};
 
-		} else if (beatCount > beatsPerBar) {
+		} else if (currentBeatCount > beatCount) {
 			throw new IncorrectBeatCountException({
 				message: '',
 				string: chord.string,
 				symbol: chord.symbol,
 				duration: chord.duration,
-				beatCount: beatCount,
-				beatsPerBar: beatsPerBar,
+				currentBeatCount,
+				beatCount,
 			});
 		}
 	});
 
-	if (beatCount > 0 && (beatCount < beatsPerBar)) {
+	if (currentBeatCount > 0 && (currentBeatCount < beatCount)) {
 		throw new IncorrectBeatCountException({
 			message: '',
 			string: chord.string,
 			symbol: chord.symbol,
 			duration: chord.duration,
-			beatCount: beatCount,
-			beatsPerBar: beatsPerBar,
+			currentBeatCount,
+			beatCount,
 		});
 	}
 
