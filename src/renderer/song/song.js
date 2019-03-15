@@ -26,15 +26,15 @@ export default {
 
 				if (line.type === 'chord') {
 					const spaced = (alignChords)
-						? alignedChordSpacer(line.parsed, maxBeatsWidth)
-						: simpleChordSpacer(line.parsed);
+						? alignedChordSpacer(line.model, maxBeatsWidth)
+						: simpleChordSpacer(line.model);
 
 					line.rendered = chordLineRenderer.render(spaced, {
 						barContentRenderer: barContentRenderer,
 						chordRenderer: chordSymbolRenderer,
 					});
 
-				} else {
+				} else if (line.type === 'text') {
 					line.rendered = textLineRenderer.render(line.string);
 				}
 				return line;

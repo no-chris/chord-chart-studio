@@ -4,7 +4,7 @@ export default function getMaxBeatsWidth(allLines) {
 	allLines
 		.filter(line => line.type === 'chord')
 		.forEach(line => {
-			line.parsed.allBars.forEach((bar, barIndex) => {
+			line.model.allBars.forEach((bar, barIndex) => {
 				if (!maxBeatsWidth[barIndex]) {
 					maxBeatsWidth[barIndex] = {};
 
