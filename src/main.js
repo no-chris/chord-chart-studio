@@ -8,6 +8,7 @@ import htmlToElement from './core/dom/htmlToElement';
 import kiss from './songs/kiss';
 import world from './songs/ifIRuledTheWorld';
 import worry from './songs/worry';
+import nothing from './songs/nothingElse';
 
 import logFactory from  './core/logger';
 const log = logFactory.getLogger('main');
@@ -46,6 +47,7 @@ songSelector.addEventListener('change', (event) => {
 	case 'kiss': editor.load(toNode(kiss)); break;
 	case 'world': editor.load(toNode(world)); break;
 	case 'worry': editor.load(toNode(worry)); break;
+	case 'nothing': editor.load(toNode(nothing)); break;
 	}
 });
 
