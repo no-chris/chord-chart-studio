@@ -24,23 +24,50 @@ describe('appFactory', () => {
 		});
 	});
 
+	test('Factory should return a different object on each call', () => {
+		const app1 = appFactory();
+		const app2 = appFactory();
+		expect(app1).not.toBe(app2);
+	});
+
 	test('Event emitter', () => {
 		const app = appFactory();
 		isEventEmitter(expect, app);
 	});
 });
 
+
 describe('AreaBroker', () => {
 	test('return given areaBroker on app creation', () => {
 		const areaBroker = {};
 		const app = appFactory(areaBroker);
-		expect(app.getAreaBroker()).toEqual(areaBroker);
+		expect(app.getAreaBroker()).toBe(areaBroker);
+	});
+});
+
+
+describe('Plugin host', () => {
+	test('Should set application itself as plugin host', () => {
+		expect.assertions(1);
+
+		const app = appFactory();
+
+		const plugin = pluginFactory({
+			init() {
+				const host = this.getHost();
+				expect(host).toBe(app);
+			}
+		});
+
+		app.registerPlugin(plugin);
+
+		return app.init();
 	});
 });
 
 
 describe('Plugins lifecycle', () => {
-	test('Run plugins init() in sequence', done => {
+	test('Run plugins init() in sequence', () => {
 		expect.assertions(4);
 
 		let spy = 0;
@@ -70,15 +97,16 @@ describe('Plugins lifecycle', () => {
 
 		app.on('init', () => {
 			expect(spy).toEqual(2);
-			done();
 		});
 
 		const init = app.init();
 
 		expect(init).toBeInstanceOf(Promise);
+
+		return init;
 	});
 
-	test('Run plugins render() in sequence', done => {
+	test('Run plugins render() in sequence', () => {
 		expect.assertions(4);
 
 		let spy = 0;
@@ -108,12 +136,13 @@ describe('Plugins lifecycle', () => {
 
 		app.on('render', () => {
 			expect(spy).toEqual(2);
-			done();
 		});
 
 		const render = app.render();
 
 		expect(render).toBeInstanceOf(Promise);
+
+		return render;
 	});
 
 });

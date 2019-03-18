@@ -1,24 +1,23 @@
 import _ from 'lodash';
 import EventEmitter from 'eventemitter2';
 
-const pluginRegistry = [];
-
-async function pluginRun(method) {
-	let plugin;
-
-	for (let i = 0; i < pluginRegistry.length; i++) {
-		plugin = pluginRegistry[i];
-
-		if (_.isFunction(plugin[method])) {
-			await plugin[method]();
-		}
-	}
-	this.emit(method);
-}
-
-
 export default function appFactory(areaBroker) {
+	const pluginRegistry = [];
+
 	const app = new EventEmitter();
+
+	async function pluginRun(method) {
+		let plugin;
+
+		for (let i = 0; i < pluginRegistry.length; i++) {
+			plugin = pluginRegistry[i];
+
+			if (_.isFunction(plugin[method])) {
+				await plugin[method]();
+			}
+		}
+		this.emit(method);
+	}
 
 	return Object.assign(app, {
 		getAreaBroker() {
@@ -26,6 +25,7 @@ export default function appFactory(areaBroker) {
 		},
 
 		registerPlugin(plugin) {
+			plugin.setHost(this);
 			pluginRegistry.push(plugin);
 		},
 
