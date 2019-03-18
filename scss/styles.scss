@@ -1,53 +1,23 @@
+@import 'knacss/variables';
+@import 'knacss/mixins';
+@import 'knacss/base';
+
+@import 'colors';
+@import 'layout';
+@import 'plugins';
+
 @import 'song-rendering';
 
-body {
-  font-family: monospace;
-  font-size: 14px;
-}
-
-.form {
-  text-align: center;
-  margin: 10px;
-  font-size: 16px;
-}
-
-.container {
-  line-height: 1.6em;
-  display: flex;
-}
-
-.left {
-  flex: 1 1 auto;
-  padding: 10px;
-  border-right: 2px solid black;
-}
-
-.right {
-  flex: 1 1 auto;
-  padding: 10px;
-}
-
-#editor {
-  background-color: blanchedalmond;
-
-  p {
-    margin: 0;
-  }
-}
-
-#editor, #rendered-song {
-  border: 1px solid grey;
-  padding: 10px;
-}
-
-#editor-content {
-  display: none;
-}
 
 #rendered-song {
-  background-color: beige;
+  background-color: $silver;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 10px;
+  height: 100%;
 
   p {
     margin: 0;
   }
 }
+

@@ -6,12 +6,32 @@ import songRenderer from './renderer/song/song';
 import htmlToElement from './core/dom/htmlToElement';
 
 import kiss from './songs/kiss';
-import world from './songs/ifIRuledTheWorld';
-import worry from './songs/worry';
-import nothing from './songs/nothingElse';
 
 import logFactory from  './core/logger';
 const log = logFactory.getLogger('main');
+
+
+import areaBrokerFactory from './core/app/areaBroker';
+import appFactory from './core/app/app';
+import registerPlugins from './app/registerPlugins';
+
+
+const areas = {
+	header: '[data-area="app-header"]',
+	footer: '[data-area="app-footer"]',
+	sideBar: '[data-area="app-side-bar"]',
+	content: '[data-area="app-content"]',
+};
+
+const areaBroker = areaBrokerFactory(areas);
+const app = appFactory(areaBroker);
+registerPlugins(app);
+
+app
+	.init()
+	.then(() => {
+		return app.render();
+	});
 
 log.info('info test');
 
@@ -41,16 +61,6 @@ editor.on('change', (songLines) => {
 
 editor.load(toNode(kiss));
 
-const songSelector = document.querySelector('.song-selector');
-songSelector.addEventListener('change', (event) => {
-	switch(event.target.value) {
-	case 'kiss': editor.load(toNode(kiss)); break;
-	case 'world': editor.load(toNode(world)); break;
-	case 'worry': editor.load(toNode(worry)); break;
-	case 'nothing': editor.load(toNode(nothing)); break;
-	}
-});
-
 alignRenderingSwitch.addEventListener('change', () => {
 	editor.load(editorNode);
 });
@@ -63,3 +73,31 @@ function toNode(text) {
 		.join('');
 	return div;
 }
+
+
+
+// Drag & drop
+const body = document.body;
+body.ondragover = () => {
+	body.classList.add('hover');
+	return false;
+};
+body.ondragleave = () => {
+	body.classList.remove('hover');
+	return false;
+};
+
+body.ondrop = e => {
+	body.classList.remove('hover');
+	e.preventDefault();
+
+	const file = e.dataTransfer.files[0];
+	const reader = new FileReader();
+
+	reader.onload = function(event) {
+		editor.load(toNode(event.target.result));
+	};
+	reader.readAsText(file);
+
+	return false;
+};

@@ -8,28 +8,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-<div class="form">
-    <label for="song-selector">Song:</label>
-    <select id="song-selector" class="song-selector">
-        <option value="kiss">Kiss</option>
-        <option value="world">If I ruled the world</option>
-        <option value="worry">Don't you worry bout a thing</option>
-        <option value="nothing">Nothing else matters</option>
-    </select><br />
-    <input type="checkbox" id="aligned-rendering" checked/><label for="aligned-rendering">Aligned rendering</label>
+<div class="global-wrapper">
+    <header data-area="app-header"></header>
+    <main>
+        <section class="side-bar" data-area="app-side-bar">
+            <section class="rendering-options">
+                <input type="checkbox" id="aligned-rendering" checked/><label for="aligned-rendering">Aligned rendering</label>
+            </section>
+
+            <nav class="file-explorer">
+                <ul><li contenteditable="true">Kiss</li></ul>
+            </nav>
+        </section>
+
+        <section class="content" data-area="app-content">
+
+            <section class="left">
+                <div id="editor"></div>
+            </section>
+
+            <section class="right">
+                <div id="rendered-song"><div></div></div>
+            </section>
+        </section>
+    </main>
+    <footer data-area="app-footer"></footer>
 </div>
-<div class="container">
-    <div class="left">
-        <strong>Source: </strong>
-        <div id="editor"></div>
-        <div id="editor-content">Content test</div>
-    </div>
-    <div class="right">
-        <strong>Rendered: </strong>
-        <div id="rendered-song"><div></div></div>
-    </div>
-</div>
-<div>v{{ htmlWebpackPlugin.options.version }}</div>
 
 </body>
 </html>

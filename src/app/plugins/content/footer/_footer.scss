@@ -1,0 +1,8 @@
+.app-footer {
+  padding: $spacer-tiny $spacer-small;
+
+  @include font-size(small);
+  color: $navy;
+  background-color: $silver;
+  border-top: 1px solid $gray;
+}
