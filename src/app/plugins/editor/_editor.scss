@@ -1,18 +1,53 @@
-#editor {
-  background-color: white;
+.editor-area {
 
-  font-family: $font-family-monospace;
-  @include font-size(normal);
-  padding: 10px;
-  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
 
-  p {
-    margin: 0;
+
+  .left, .right {
+    flex: 0 1 50%;
   }
 
-  .ProseMirror-focused:focus {
-    outline: none;
+
+  .left {
+    #source {
+      background-color: white;
+
+      font-family: $font-family-monospace;
+      @include font-size(normal);
+      padding: 10px;
+      height: 100%;
+
+      p {
+        margin: 0;
+      }
+
+      .ProseMirror-focused:focus {
+        outline: none;
+      }
+    }
   }
+
+
+  .right {
+    #preview {
+      background-color: $silver;
+      font-family: monospace;
+      font-size: 14px;
+      padding: 10px;
+      height: 100%;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+
 }
+
+
 
 

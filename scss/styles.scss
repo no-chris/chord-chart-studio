@@ -4,20 +4,9 @@
 
 @import 'colors';
 @import 'layout';
+@import 'side-bar';
 @import 'plugins';
 
 @import 'song-rendering';
 
-
-#rendered-song {
-  background-color: $silver;
-  font-family: monospace;
-  font-size: 14px;
-  padding: 10px;
-  height: 100%;
-
-  p {
-    margin: 0;
-  }
-}
 
