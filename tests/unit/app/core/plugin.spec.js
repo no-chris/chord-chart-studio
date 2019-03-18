@@ -1,5 +1,5 @@
-import pluginFactory from '../../../../src/core/app/plugin';
-import isEventEmitter from '../isEventEmitter';
+import pluginFactory from '../../../../src/app/core/plugin';
+import isEventEmitter from '../../core/isEventEmitter';
 
 describe('pluginFactory', () => {
 	test('Module', () => {

@@ -1,8 +1,8 @@
-import '../scss/styles.scss';
+import '../../scss/styles.scss';
 
-import areaBrokerFactory from './core/app/areaBroker';
-import appFactory from './core/app/app';
-import registerPlugins from './app/registerPlugins';
+import areaBrokerFactory from './core/areaBroker';
+import appFactory from './core/app';
+import registerPlugins from './registerPlugins';
 
 const areas = {
 	header: '[data-area="app-header"]',

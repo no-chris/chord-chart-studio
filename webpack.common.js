@@ -9,7 +9,7 @@ const config = {
 	target:'web',
 
 	entry: {
-		main: './src/main.js'
+		main: './src/app/main.js'
 	},
 
 	output: {
@@ -38,6 +38,10 @@ const config = {
 			{
 				test: /\.hbs$/,
 				loader: 'handlebars-loader'
+			},
+			{
+				test: /\.chp$/,
+				loader: 'raw-loader'
 			},
 			{
 				test: /\.scss|sass|css$/,

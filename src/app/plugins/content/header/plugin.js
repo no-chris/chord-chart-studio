@@ -1,4 +1,4 @@
-import pluginFactory from '../../../../core/app/plugin';
+import pluginFactory from '../../../core/plugin';
 import htmlToElement from '../../../../core/dom/htmlToElement';
 
 import headerTpl from './header.hbs';

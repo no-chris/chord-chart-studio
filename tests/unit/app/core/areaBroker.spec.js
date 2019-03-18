@@ -1,4 +1,4 @@
-import areaBrokerFactory from '../../../../src/core/app/areaBroker';
+import areaBrokerFactory from '../../../../src/app/core/areaBroker';
 
 describe('areaBrokerFactory', () => {
 	test('Module', () => {

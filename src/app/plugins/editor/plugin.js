@@ -1,4 +1,4 @@
-import pluginFactory from '../../../core/app/plugin';
+import pluginFactory from '../../core/plugin';
 import htmlToElement from '../../../core/dom/htmlToElement';
 
 import editorFactory from '../../../editor/prosemirror/editor';
@@ -6,7 +6,7 @@ import songRenderer from '../../../renderer/song/song';
 
 import editorTpl from './editor.hbs';
 
-import kiss from '../../../songs/worry';
+import worry from '../../../../samples/dont-you-worry-bout-a-thing.chp';
 
 const editorPlugin = pluginFactory({
 
@@ -48,7 +48,7 @@ const editorPlugin = pluginFactory({
 		});
 
 
-		editor.load(toNode(kiss));
+		editor.load(toNode(worry));
 
 		function toNode(text) {
 			const div = document.createElement('div');

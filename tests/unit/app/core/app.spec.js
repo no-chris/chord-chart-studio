@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-import appFactory from '../../../../src/core/app/app';
-import pluginFactory from '../../../../src/core/app/plugin';
+import appFactory from '../../../../src/app/core/app';
+import pluginFactory from '../../../../src/app/core/plugin';
 
-import isEventEmitter from '../isEventEmitter';
+import isEventEmitter from '../../core/isEventEmitter';
 
 describe('appFactory', () => {
 	test('Module', () => {
@@ -38,7 +38,7 @@ describe('appFactory', () => {
 
 
 describe('AreaBroker', () => {
-	test('return given areaBroker on app creation', () => {
+	test('return given areaBroker on core creation', () => {
 		const areaBroker = {};
 		const app = appFactory(areaBroker);
 		expect(app.getAreaBroker()).toBe(areaBroker);
