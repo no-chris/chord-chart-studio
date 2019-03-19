@@ -15,4 +15,7 @@ module.exports = {
 		'\\.hbs$': 'jest-handlebars',
 	},
 
+	setupFiles: [
+		'jest-localstorage-mock'
+	]
 };
