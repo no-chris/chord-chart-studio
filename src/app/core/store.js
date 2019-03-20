@@ -1,5 +1,6 @@
 /**
  * Local storage wrapper
+ * For now, the only accepted values are objects that are automatically serialized
  */
 const store = {
 	create(key, value) {
@@ -9,11 +10,11 @@ const store = {
 		if (!key) {
 			throw new Error('Cannot create localstorage entry with empty key');
 		}
-		localStorage.setItem(key, value);
+		localStorage.setItem(key, JSON.stringify(value));
 	},
 
 	getOneByKey(key) {
-		return localStorage.getItem(key);
+		return JSON.parse(localStorage.getItem(key));
 	},
 
 	getAllByKeyPrefix(keyPrefix) {
@@ -24,7 +25,7 @@ const store = {
 		for (let i = 0; i < localStorage.length; i++) {
 			key = localStorage.key(i);
 			if (key.indexOf(keyPrefix) === 0) {
-				allEntries[key] = localStorage.getItem(key);
+				allEntries[key] = this.getOneByKey(key);
 			}
 		}
 
@@ -35,7 +36,7 @@ const store = {
 		if (!localStorage.getItem(key)) {
 			throw new Error('Cannot find and update key: ' + key);
 		}
-		localStorage.setItem(key, value);
+		localStorage.setItem(key, JSON.stringify(value));
 	},
 
 	delete(key) {
