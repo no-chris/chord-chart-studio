@@ -3,7 +3,7 @@ import EventEmitter from 'eventemitter2';
 
 import store from '../../core/store';
 
-const keyPrefix = 'chp_';
+const keyPrefix = 'song:';
 
 function fileFactory() {
 	return {

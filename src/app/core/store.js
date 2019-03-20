@@ -14,7 +14,8 @@ const store = {
 	},
 
 	getOneByKey(key) {
-		return JSON.parse(localStorage.getItem(key));
+		const value = localStorage.getItem(key);
+		return (value) ? JSON.parse(value) : value;
 	},
 
 	getAllByKeyPrefix(keyPrefix) {

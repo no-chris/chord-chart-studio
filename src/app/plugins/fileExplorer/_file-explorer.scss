@@ -1,0 +1,38 @@
+.file-explorer {
+  @include font-size(normal);
+
+  .entry-list {
+    padding-left: 0;
+    list-style: none;
+
+    .entry {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $silver;
+        color: $black;
+      }
+
+      &.active {
+        background-color: $gray;
+        color: $black;
+      }
+
+      [contenteditable="true"] {
+        background-color: $white;
+        cursor: text;
+        color: $black;
+      }
+
+      .entry-remover {
+        color: $gray;
+        @include font-size(small);
+        cursor: pointer;
+
+        &:hover {
+          color: $red;
+        }
+      }
+    }
+  }
+}
