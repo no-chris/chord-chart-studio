@@ -45,6 +45,7 @@ const editorPlugin = pluginFactory({
 
 		editor.on('change', (songLines) => {
 			previewSong(songLines, { alignChords: true });
+			app.emit('editorchange', songLines.join('\n'));
 		});
 
 
@@ -59,6 +60,8 @@ const editorPlugin = pluginFactory({
 			return div;
 		}
 
+		// listen to events
+		app.on('activatefile', file => editor.load(toNode(file.content)));
 
 
 	}

@@ -12,10 +12,6 @@ import fileEntryTpl from './entry.hbs';
 const autosaveIntervalMs = 1000;
 
 const fileExplorerPlugin = pluginFactory({
-	init() {
-		this.fm = fileManagerFactory();
-	},
-
 	render() {
 		const app = this.getHost();
 		const areaBroker = app.getAreaBroker();
@@ -29,7 +25,7 @@ const fileExplorerPlugin = pluginFactory({
 
 		// DOM elements
 		const newFileBtn = fileExplorer.querySelector('[data-action="new-file"]');
-		const deleteFileBtn = fileExplorer.querySelector('[data-action="delete-file"]')
+		const deleteFileBtn = fileExplorer.querySelector('[data-action="delete-file"]');
 		const fileList = fileExplorer.querySelector('.entry-list');
 
 
@@ -44,9 +40,10 @@ const fileExplorerPlugin = pluginFactory({
 			} else {
 				fileList.appendChild(newEntry);
 			}
+			return newEntry;
 		}
 
-		function activateFile(key) {
+		const activateFile = (key) => {
 			activeFileKey = key;
 
 			fileList.querySelectorAll('.active').forEach(active => active.classList.remove('active'));
@@ -54,7 +51,10 @@ const fileExplorerPlugin = pluginFactory({
 			if (activeFile) {
 				activeFile.classList.add('active');
 			}
-		}
+
+			const file = this.fm.getOneByKey(activeFileKey);
+			app.emit('activatefile', file);
+		};
 
 		// load existing files
 		const allFiles = this.fm.getAll();
@@ -73,8 +73,10 @@ const fileExplorerPlugin = pluginFactory({
 		const createNewFile = () => {
 			const newFile = this.fm.create();
 
-			insertFile(newFile);
+			const newFileElement = insertFile(newFile);
 			activateFile(newFile.key);
+
+			_.defer(() => makeTitleEditable(newFileElement));
 		};
 
 		const deleteFile = () => {
@@ -98,6 +100,7 @@ const fileExplorerPlugin = pluginFactory({
 			}
 		};
 
+		// todo: don't pass around event object
 		const preventEnterKey = e => {
 			if (e.which === 13) {
 				e.preventDefault();
@@ -114,21 +117,27 @@ const fileExplorerPlugin = pluginFactory({
 
 		const activateEntry = e => {
 			if (e.detail === 1) {
-				const keyElement = (e.target.dataset.key) ? e.target : e.target.closest('[data-key]'); //todo WTF?!
+				const keyElement = e.target.closest('[data-key]');
 				activateFile(keyElement.dataset.key);
 			}
 		};
 
-		const makeTitleEditable = e => {
-			if (e.target.classList.contains('entry-title')) {
-				e.target.contentEditable = true;
-				e.target.focus();
-			}
+		const makeTitleEditable = entry => {
+			const title = entry.querySelector('.entry-title');
+			title.contentEditable = true;
+			title.focus();
+
+			const range = new Range();
+			range.selectNodeContents(title);
+			const selection = window.getSelection();
+			selection.removeAllRanges();
+			selection.addRange(range);
 		};
 
 		const autosaveTitle = e => {
 			const keyElement = e.target.closest('[data-key]');
 			this.fm.updateTitle(keyElement.dataset.key, e.target.innerText); //todo sanitize
+			//todo prevent empty
 		};
 
 		const autoBlurContentEditableElements = e => {
@@ -140,6 +149,8 @@ const fileExplorerPlugin = pluginFactory({
 			});
 		};
 
+		window.addEventListener('click', autoBlurContentEditableElements);
+
 		newFileBtn.addEventListener('click', createNewFile);
 		deleteFileBtn.addEventListener('click', deleteFile);
 
@@ -147,14 +158,18 @@ const fileExplorerPlugin = pluginFactory({
 		fileList.addEventListener('keypress', blurOnEnter);
 		fileList.addEventListener('input', _.throttle(autosaveTitle, autosaveIntervalMs));
 		fileList.addEventListener('click', activateEntry);
-		fileList.addEventListener('dblclick', makeTitleEditable);
+		fileList.addEventListener('dblclick', e => makeTitleEditable(e.target.parentElement));
 
-		window.addEventListener('click', autoBlurContentEditableElements);
-
-
+		app.on('editorchange', fileContent => {
+			this.fm.updateContent(activeFileKey, fileContent);
+		});
 
 		// attach to document
 		sideBar.appendChild(fileExplorer);
+	},
+
+	init() {
+		this.fm = fileManagerFactory();
 	}
 });
 
