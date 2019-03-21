@@ -7,14 +7,15 @@
 
     .entry {
       cursor: pointer;
+      padding: $spacer-tiny;
 
       &:hover {
-        background-color: $silver;
+        background-color: rgba(white, .3);
         color: $black;
       }
 
       &.active {
-        background-color: $gray;
+        background-color: rgba(white, .6);
         color: $black;
       }
 

@@ -85,9 +85,9 @@ const fileExplorerPlugin = pluginFactory({
 			const toDelete = fileList.querySelector(`[data-key="${activeFileKey}"]`);
 
 			if (toDelete) {
-				const toActivate = (toDelete.nextSibling)
-					? toDelete.nextSibling
-					: toDelete.previousSibling;
+				const toActivate = (toDelete.previousSibling)
+					? toDelete.previousSibling
+					: toDelete.nextSibling;
 
 				fileList.removeChild(toDelete);
 
