@@ -158,7 +158,7 @@ const fileExplorerPlugin = pluginFactory({
 		fileList.addEventListener('keypress', blurOnEnter);
 		fileList.addEventListener('input', _.throttle(autosaveTitle, autosaveIntervalMs));
 		fileList.addEventListener('click', activateEntry);
-		fileList.addEventListener('dblclick', e => makeTitleEditable(e.target.parentElement));
+		fileList.addEventListener('dblclick', e => makeTitleEditable(e.target.parentElement)); //todo fix bug when click outside of title div
 
 		app.on('editorchange', fileContent => {
 			this.fm.updateContent(activeFileKey, fileContent);
