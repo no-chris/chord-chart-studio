@@ -15,7 +15,7 @@ import songTpl from './song.hbs';
 
 export default {
 	render(songTxt, {
-		alignChords = false
+		alignBars = false
 	}) {
 		let allLines = parseSong(songTxt, { parseChordLine });
 
@@ -25,7 +25,7 @@ export default {
 			.map(line => {
 
 				if (line.type === 'chord') {
-					const spaced = (alignChords)
+					const spaced = (alignBars)
 						? alignedChordSpacer(line.model, maxBeatsWidth)
 						: simpleChordSpacer(line.model);
 

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import pluginFactory from '../../../app/core/plugin';
 import htmlToElement from '../../../core/dom/htmlToElement';
 
@@ -16,7 +14,7 @@ const renderingOptionsPlugin = pluginFactory({
 
 		const alignBars = renderingOptions.querySelector('[data-option="align-bars"]');
 		alignBars.addEventListener('change', e => {
-			app.emit('option-change', {
+			app.emit('optionchange', {
 				alignBars: e.target.checked
 			});
 		});
@@ -31,13 +29,11 @@ const renderingOptionsPlugin = pluginFactory({
 		function transpose(step) {
 			const currentTransposeValue = Number.parseInt(transposeValue.innerText);
 			const newTransposeValue = currentTransposeValue + step;
-			app.emit('option-change', {
+			app.emit('optionchange', {
 				transposeValue: newTransposeValue
 			});
 			transposeValue.innerText = (newTransposeValue) > 0 ?'+' + newTransposeValue : newTransposeValue;
 		}
-
-		app.on('option-change', console.log);
 
 		// attach to document
 		header.appendChild(renderingOptions);

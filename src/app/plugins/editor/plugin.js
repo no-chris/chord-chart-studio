@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import pluginFactory from '../../core/plugin';
 import htmlToElement from '../../../core/dom/htmlToElement';
 
@@ -5,8 +7,6 @@ import editorFactory from '../../../editor/prosemirror/editor';
 import songRenderer from '../../../renderer/song/song';
 
 import editorTpl from './editor.hbs';
-
-import worry from '../../../../samples/dont-you-worry-bout-a-thing.chp';
 
 const editorPlugin = pluginFactory({
 
@@ -20,7 +20,10 @@ const editorPlugin = pluginFactory({
 		contentArea.appendChild(editorDom);
 
 
-
+		const renderingOptions = {
+			alignBars: true,
+			transposeValue: 0
+		};
 
 
 		// add editor functionality
@@ -31,8 +34,8 @@ const editorPlugin = pluginFactory({
 
 		const previewContainer = document.querySelector('#preview');
 
-		function previewSong(songLines, { alignChords = true }) {
-			const renderedSong = songRenderer.render(songLines, { alignChords });
+		function previewSong(songLines) {
+			const renderedSong = songRenderer.render(songLines, renderingOptions);
 			const rendered = htmlToElement(renderedSong);
 
 			if (previewContainer.childNodes.length) {
@@ -42,14 +45,20 @@ const editorPlugin = pluginFactory({
 			}
 		}
 
+		function refreshPreview() {
+			const songLines = editor.getContent();
+			previewSong(songLines);
+		}
 
 		editor.on('change', (songLines) => {
-			previewSong(songLines, { alignChords: true });
+			previewSong(songLines, renderingOptions);
 			app.emit('editorchange', songLines.join('\n'));
 		});
 
-
-		editor.load(toNode(worry));
+		app.on('optionchange', newOptions => {
+			_.assign(renderingOptions, newOptions);
+			refreshPreview();
+		});
 
 		function toNode(text) {
 			const div = document.createElement('div');

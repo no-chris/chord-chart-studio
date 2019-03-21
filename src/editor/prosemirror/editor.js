@@ -39,6 +39,10 @@ export default function editorFactory(renderTo) {
 				editorView = new EditorView(renderTo, { state: newState });
 			}
 			editor.emit('statechange', newState);
+		},
+
+		getContent() {
+			return stateToArray(editorView.state);
 		}
 	});
 }
