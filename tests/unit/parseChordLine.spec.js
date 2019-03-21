@@ -1,3 +1,6 @@
+jest.mock('../../src/parseChord');
+
+import parseChord from '../../src/parseChord.js';
 import parseChordLine from '../../src/parseChordLine.js';
 import getTimeSignature from '../../src/getTimeSignature';
 
@@ -15,12 +18,14 @@ const ts4_4 = getTimeSignature('4/4');
 const ts5_4 = getTimeSignature('5/4');
 const ts3_8 = getTimeSignature('3/8');
 
+parseChord.mockImplementation(chordString => ({ symbol: chordString }));
+
 describe.each([
 	['1 bar / 1 chord / 4/4', 'Cm', ts4_4, {
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+					{ string: 'Cm', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -32,8 +37,8 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm..', symbol: 'Cm', duration: 2, beat: 1 },
-					{ string: 'F..', symbol: 'F', duration: 2, beat: 3 },
+					{ string: 'Cm..', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 2, beat: 1 },
+					{ string: 'F..', symbol: 'F', model: { symbol: 'F' }, duration: 2, beat: 3 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -45,9 +50,9 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm..', symbol: 'Cm', duration: 2, beat: 1 },
-					{ string: 'F.', symbol: 'F', duration: 1, beat: 3 },
-					{ string: 'G.', symbol: 'G', duration: 1, beat: 4 },
+					{ string: 'Cm..', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 2, beat: 1 },
+					{ string: 'F.', symbol: 'F', model: { symbol: 'F' }, duration: 1, beat: 3 },
+					{ string: 'G.', symbol: 'G', model: { symbol: 'G' }, duration: 1, beat: 4 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -59,10 +64,10 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm.', symbol: 'Cm', duration: 1, beat: 1 },
-					{ string: 'Em7.', symbol: 'Em7', duration: 1, beat: 2 },
-					{ string: 'F.', symbol: 'F', duration: 1, beat: 3 },
-					{ string: 'G.', symbol: 'G', duration: 1, beat: 4 },
+					{ string: 'Cm.', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 1, beat: 1 },
+					{ string: 'Em7.', symbol: 'Em7', model: { symbol: 'Em7' }, duration: 1, beat: 2 },
+					{ string: 'F.', symbol: 'F', model: { symbol: 'F' }, duration: 1, beat: 3 },
+					{ string: 'G.', symbol: 'G', model: { symbol: 'G' }, duration: 1, beat: 4 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -74,12 +79,12 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 4, beat: 1 },
+					{ string: 'C', symbol: 'C', model: { symbol: 'C' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}, {
 				allChords: [
-					{ string: 'F', symbol: 'F', duration: 4, beat: 1 },
+					{ string: 'F', symbol: 'F', model: { symbol: 'F' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -91,13 +96,13 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 4, beat: 1 },
+					{ string: 'C', symbol: 'C', model: { symbol: 'C' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}, {
 				allChords: [
-					{ string: 'F..', symbol: 'F', duration: 2, beat: 1 },
-					{ string: 'G..', symbol: 'G', duration: 2, beat: 3 },
+					{ string: 'F..', symbol: 'F', model: { symbol: 'F' }, duration: 2, beat: 1 },
+					{ string: 'G..', symbol: 'G', model: { symbol: 'G' }, duration: 2, beat: 3 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -109,14 +114,14 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C...', symbol: 'C', duration: 3, beat: 1 },
-					{ string: 'Em7.', symbol: 'Em7', duration: 1, beat: 4 },
+					{ string: 'C...', symbol: 'C', model: { symbol: 'C' }, duration: 3, beat: 1 },
+					{ string: 'Em7.', symbol: 'Em7', model: { symbol: 'Em7' }, duration: 1, beat: 4 },
 				],
 				timeSignature: ts4_4,
 			}, {
 				allChords: [
-					{ string: 'F.', symbol: 'F', duration: 1, beat: 1 },
-					{ string: 'G...', symbol: 'G', duration: 3, beat: 2 },
+					{ string: 'F.', symbol: 'F', model: { symbol: 'F' }, duration: 1, beat: 1 },
+					{ string: 'G...', symbol: 'G', model: { symbol: 'G' }, duration: 3, beat: 2 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -128,18 +133,18 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 4, beat: 1 },
+					{ string: 'C', symbol: 'C', model: { symbol: 'C' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}, {
 				allChords: [
-					{ string: 'Em7.', symbol: 'Em7', duration: 1, beat: 1 },
-					{ string: 'F...', symbol: 'F', duration: 3, beat: 2 },
+					{ string: 'Em7.', symbol: 'Em7', model: { symbol: 'Em7' }, duration: 1, beat: 1 },
+					{ string: 'F...', symbol: 'F', model: { symbol: 'F' }, duration: 3, beat: 2 },
 				],
 				timeSignature: ts4_4,
 			}, {
 				allChords: [
-					{ string: 'G', symbol: 'G', duration: 4, beat: 1 },
+					{ string: 'G', symbol: 'G', model: { symbol: 'G' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -152,7 +157,7 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C', symbol: 'C', duration: 3, beat: 1 },
+					{ string: 'C', symbol: 'C', model: { symbol: 'C' }, duration: 3, beat: 1 },
 				],
 				timeSignature: ts3_4,
 			}
@@ -164,8 +169,8 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm.', symbol: 'Cm', duration: 1, beat: 1 },
-					{ string: 'F..', symbol: 'F', duration: 2, beat: 2 },
+					{ string: 'Cm.', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 1, beat: 1 },
+					{ string: 'F..', symbol: 'F', model: { symbol: 'F' }, duration: 2, beat: 2 },
 				],
 				timeSignature: ts3_4,
 			}
@@ -177,8 +182,8 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm..', symbol: 'Cm', duration: 2, beat: 1 },
-					{ string: 'F.', symbol: 'F', duration: 1, beat: 3 },
+					{ string: 'Cm..', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 2, beat: 1 },
+					{ string: 'F.', symbol: 'F', model: { symbol: 'F' }, duration: 1, beat: 3 },
 				],
 				timeSignature: ts3_4,
 			}
@@ -190,9 +195,9 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm.', symbol: 'Cm', duration: 1, beat: 1 },
-					{ string: 'F.', symbol: 'F', duration: 1, beat: 2 },
-					{ string: 'G.', symbol: 'G', duration: 1, beat: 3 },
+					{ string: 'Cm.', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 1, beat: 1 },
+					{ string: 'F.', symbol: 'F', model: { symbol: 'F' }, duration: 1, beat: 2 },
+					{ string: 'G.', symbol: 'G', model: { symbol: 'G' }, duration: 1, beat: 3 },
 				],
 				timeSignature: ts3_4,
 			}
@@ -204,19 +209,19 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 1, beat: 1 },
+					{ string: 'Cm', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 1, beat: 1 },
 				],
 				timeSignature: ts3_8,
 			},
 			{
 				allChords: [
-					{ string: 'F', symbol: 'F', duration: 1, beat: 1 },
+					{ string: 'F', symbol: 'F', model: { symbol: 'F' }, duration: 1, beat: 1 },
 				],
 				timeSignature: ts3_8,
 			},
 			{
 				allChords: [
-					{ string: 'G.', symbol: 'G', duration: 1, beat: 1 },
+					{ string: 'G.', symbol: 'G', model: { symbol: 'G' }, duration: 1, beat: 1 },
 				],
 				timeSignature: ts3_8,
 			}
@@ -228,7 +233,7 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+					{ string: 'Cm', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -240,7 +245,7 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+					{ string: 'Cm', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -252,7 +257,7 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'Cm', symbol: 'Cm', duration: 4, beat: 1 },
+					{ string: 'Cm', symbol: 'Cm', model: { symbol: 'Cm' }, duration: 4, beat: 1 },
 				],
 				timeSignature: ts4_4,
 			}
@@ -264,8 +269,8 @@ describe.each([
 		allBars: [
 			{
 				allChords: [
-					{ string: 'C..', symbol: 'C', duration: 2, beat: 1 },
-					{ string: 'B..', symbol: 'B', duration: 2, beat: 3 },
+					{ string: 'C..', symbol: 'C', model: { symbol: 'C' }, duration: 2, beat: 1 },
+					{ string: 'B..', symbol: 'B', model: { symbol: 'B' }, duration: 2, beat: 3 },
 				],
 				timeSignature: ts4_4,
 			}

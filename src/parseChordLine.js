@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+import parseChord from './parseChord';
 import getChordSymbol from './getChordSymbol';
 import getTimeSignature from './getTimeSignature';
 
@@ -31,6 +32,7 @@ export default function parseChordLine(
 			string: chordString,
 			duration: ((chordString.match(/\./g) || []).length) || beatCount,
 			symbol: getChordSymbol(chordString.replace(/\./g, '')),
+			model: parseChord(chordString.replace(/\./g, '')),
 		};
 		chord.beat = currentBeatCount + 1;
 		currentBeatCount += chord.duration;
