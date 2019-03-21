@@ -1,0 +1,6 @@
+.rendering-options {
+  text-align: right;
+  flex: 1 1 auto;
+
+  @include font-size(normal);
+}
