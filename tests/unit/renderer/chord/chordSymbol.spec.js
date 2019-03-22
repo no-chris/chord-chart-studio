@@ -1,4 +1,6 @@
 import chordSymbolRenderer from '../../../../src/renderer/chord/chordSymbol';
+import parseChord from '../../../../src/parseChord';
+
 import isRenderer from '../../../../src/renderer/isRenderer';
 import stripTags from '../../../../src/core/dom/stripTags';
 import htmlToElement from '../../../../src/core/dom/htmlToElement';
@@ -20,14 +22,14 @@ describe.each([
 
 ])('Render chord %s as %s', (input, output) => {
 	test('expected rendering', () => {
-		const rendered = chordSymbolRenderer.render(input);
+		const rendered = chordSymbolRenderer.render(parseChord(input));
 		expect(stripTags(rendered)).toEqual(output);
 	});
 });
 
 describe('Behaviour', () => {
 	test('Should return valid html', () => {
-		const rendered = chordSymbolRenderer.render('C');
+		const rendered = chordSymbolRenderer.render(parseChord('C'));
 		const element = htmlToElement(rendered);
 
 		expect(element).toBeInstanceOf(Node);

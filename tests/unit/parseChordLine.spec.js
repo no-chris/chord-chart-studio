@@ -1,7 +1,9 @@
 jest.mock('../../src/parseChord');
+jest.mock('../../src/getChordSymbol');
 
 import parseChord from '../../src/parseChord.js';
 import parseChordLine from '../../src/parseChordLine.js';
+import getChordSymbol from '../../src/getChordSymbol.js';
 import getTimeSignature from '../../src/getTimeSignature';
 
 import IncorrectBeatCountException from '../../src/exceptions/IncorrectBeatCountException';
@@ -19,6 +21,7 @@ const ts5_4 = getTimeSignature('5/4');
 const ts3_8 = getTimeSignature('3/8');
 
 parseChord.mockImplementation(chordString => ({ symbol: chordString }));
+getChordSymbol.mockImplementation(chordDef => chordDef.symbol);
 
 describe.each([
 	['1 bar / 1 chord / 4/4', 'Cm', ts4_4, {
@@ -291,27 +294,27 @@ describe.each([
 
 describe.each([
 
-	['1 chord / 1 beat / 4/4',	  'Cm.',			'Cm.',		'Cm', 1, 1, ts4_4 ],
-	['1 chord / 2 beats / 4/4',   'Cm..',			'Cm..',		'Cm', 2, 2, ts4_4 ],
-	['1 chord / 3 beats / 4/4',   'Cm...',			'Cm...',	'Cm', 3, 3, ts4_4 ],
-	['1 chord / 5 beats / 4/4',   'Cm.....',		'Cm.....',	'Cm', 5, 5, ts4_4 ],
-	['1 chord / 6 beats / 4/4',   'Cm......',		'Cm......',	'Cm', 6, 6, ts4_4 ],
-	['1 chord / 7 beats / 4/4',   'Cm.......',		'Cm.......','Cm', 7, 7, ts4_4 ],
-	['2 chords / 3 beats / 4/4',  'Cm. D..',		'D..',		'D',  2, 3, ts4_4 ],
-	['2 chords / 5 beats / 4/4',  'Cm... D..',		'D..',		'D',  2, 5, ts4_4 ],
-	['2 chords / 6 beats / 4/4',  'Cm... D...',		'D...',		'D',  3, 6, ts4_4 ],
-	['2 chords / 7 beats / 4/4',  'Cm... D',		'D',		'D',  4, 7, ts4_4 ],
-	['3 chords / 3 beats / 4/4',  'C. D. E.',		'E.',		'E',  1, 3, ts4_4 ],
-	['3 chords / 5 beats / 4/4',  'C. D.. E..',		'E..',		'E',  2, 5, ts4_4 ],
+	['1 chord / 1 beat / 4/4',	  'Cm.',			'Cm.',		1, 1, ts4_4 ],
+	['1 chord / 2 beats / 4/4',   'Cm..',			'Cm..',		2, 2, ts4_4 ],
+	['1 chord / 3 beats / 4/4',   'Cm...',			'Cm...',	3, 3, ts4_4 ],
+	['1 chord / 5 beats / 4/4',   'Cm.....',		'Cm.....',	5, 5, ts4_4 ],
+	['1 chord / 6 beats / 4/4',   'Cm......',		'Cm......',	6, 6, ts4_4 ],
+	['1 chord / 7 beats / 4/4',   'Cm.......',		'Cm.......',7, 7, ts4_4 ],
+	['2 chords / 3 beats / 4/4',  'Cm. D..',		'D..',		2, 3, ts4_4 ],
+	['2 chords / 5 beats / 4/4',  'Cm... D..',		'D..',		2, 5, ts4_4 ],
+	['2 chords / 6 beats / 4/4',  'Cm... D...',		'D...',		3, 6, ts4_4 ],
+	['2 chords / 7 beats / 4/4',  'Cm... D',		'D',		4, 7, ts4_4 ],
+	['3 chords / 3 beats / 4/4',  'C. D. E.',		'E.',		1, 3, ts4_4 ],
+	['3 chords / 5 beats / 4/4',  'C. D.. E..',		'E..',		2, 5, ts4_4 ],
 
-	['1 chords / 4 beats / 5/4',  'C....',			'C....',	'C',  4, 4, ts5_4 ],
-	['2 chords / 4 beats / 5/4',  'C.. D..',		'D..',		'D',  2, 4, ts5_4 ],
-	['3 chords / 6 beats / 5/4',  'C.. D.. E..',	'E..',		'E',  2, 6, ts5_4 ],
-	['3 chords / 7 beats / 5/4',  'C.. D... E..',	'E..',		'E',  2, 2, ts5_4 ],
-	['3 chords / 8 beats / 5/4',  'C... D... E..',	'D...',		'D',  3, 6, ts5_4 ],
-	['3 chords / 9 beats / 5/4',  'C... D E.',		'D',		'D',  5, 8, ts5_4 ],
+	['1 chords / 4 beats / 5/4',  'C....',			'C....',	4, 4, ts5_4 ],
+	['2 chords / 4 beats / 5/4',  'C.. D..',		'D..',		2, 4, ts5_4 ],
+	['3 chords / 6 beats / 5/4',  'C.. D.. E..',	'E..',		2, 6, ts5_4 ],
+	['3 chords / 7 beats / 5/4',  'C.. D... E..',	'E..',		2, 2, ts5_4 ],
+	['3 chords / 8 beats / 5/4',  'C... D... E..',	'D...',		3, 6, ts5_4 ],
+	['3 chords / 9 beats / 5/4',  'C... D E.',		'D',		5, 8, ts5_4 ],
 
-])('Throw on %s: %s', (title, input, string, symbol, duration, currentBeatCount, timeSignature) => {
+])('Throw on %s: %s', (title, input, string, duration, currentBeatCount, timeSignature) => {
 	const throwingFn = () => { parseChordLine(input, { timeSignature }); };
 
 	test('Throw InvalidChordRepetitionException', () => {
@@ -326,7 +329,6 @@ describe.each([
 		} catch (e) {
 			expect(e.name).toBe('IncorrectBeatCountException');
 			expect(e.string).toBe(string);
-			expect(e.symbol).toBe(symbol);
 			expect(e.duration).toBe(duration);
 			expect(e.currentBeatCount).toBe(currentBeatCount);
 			expect(e.beatCount).toBe(timeSignature.beatCount);
@@ -337,13 +339,13 @@ describe.each([
 
 describe.each([
 
-	['A. A...', 			'A...', 'A'],
-	['A.. A..', 			'A..', 	'A'],
-	['A... A.', 			'A.', 	'A'],
-	['A... B. C.. C. F.', 	'C.', 	'C'],
-	['A... B. F... F.', 	'F.', 	'F'],
+	['A. A...', 			'A...'],
+	['A.. A..', 			'A..'],
+	['A... A.', 			'A.'],
+	['A... B. C.. C. F.', 	'C.'],
+	['A... B. F... F.', 	'F.'],
 
-])('Throw if repeated chord in a bar: %s', (input, string, symbol) => {
+])('Throw if repeated chord in a bar: %s', (input, string) => {
 	const throwingFn = () => { parseChordLine(input); };
 
 	test('Throw InvalidChordRepetitionException', () => {
@@ -359,7 +361,6 @@ describe.each([
 		} catch (e) {
 			expect(e.name).toBe('InvalidChordRepetitionException');
 			expect(e.string).toBe(string);
-			expect(e.symbol).toBe(symbol);
 		}
 	});
 

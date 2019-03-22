@@ -23,7 +23,7 @@ export default {
 			spacesAfter = _.isFinite(chord.spacesAfter) ? chord.spacesAfter : defaultSpacesAfter;
 
 			rendering +=
-				chordRenderer.render(chord.symbol) +
+				chordRenderer.render(chord.model) +
 				space.repeat(spacesWithin) +
 				space.repeat(spacesAfter);
 

@@ -1,4 +1,5 @@
 import getChordSymbol from '../../src/getChordSymbol';
+import parseChord from '../../src/parseChord';
 
 describe('getChordSymbol', () => {
 	test('Module', () => {
@@ -13,6 +14,7 @@ describe.each([
 
 ])('getChordSymbol() for %s', (input, output) => {
 	test('returns ' + output, () => {
-		expect(getChordSymbol(input)).toEqual(output);
+		const parsed = parseChord(input);
+		expect(getChordSymbol(parsed)).toEqual(output);
 	});
 });

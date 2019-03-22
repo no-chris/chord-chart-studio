@@ -23,26 +23,27 @@ export default function parseChordLine(
 
 	let bar = { allChords: []};
 	let chord = {};
+	let model = {};
 	let currentBeatCount = 0;
 	let chordCount = 0;
 	let previousChord = {};
 
 	allLineChords.forEach(chordString => {
+		model = parseChord(chordString.replace(/\./g, ''));
 		chord = {
 			string: chordString,
 			duration: ((chordString.match(/\./g) || []).length) || beatCount,
-			symbol: getChordSymbol(chordString.replace(/\./g, '')),
-			model: parseChord(chordString.replace(/\./g, '')),
+			symbol: getChordSymbol(model),
+			model,
 		};
 		chord.beat = currentBeatCount + 1;
 		currentBeatCount += chord.duration;
 
 		if (bar.allChords.length > 0) {
 			previousChord = bar.allChords[bar.allChords.length - 1];
-			if (previousChord.symbol === chord.symbol) {
+			if (_.isEqual(previousChord.model, chord.model)) {
 				throw new InvalidChordRepetitionException({
 					string: chord.string,
-					symbol: chord.symbol
 				});
 			}
 		}
@@ -63,7 +64,6 @@ export default function parseChordLine(
 			throw new IncorrectBeatCountException({
 				message: '',
 				string: chord.string,
-				symbol: chord.symbol,
 				duration: chord.duration,
 				currentBeatCount,
 				beatCount,
@@ -75,7 +75,6 @@ export default function parseChordLine(
 		throw new IncorrectBeatCountException({
 			message: '',
 			string: chord.string,
-			symbol: chord.symbol,
 			duration: chord.duration,
 			currentBeatCount,
 			beatCount,
