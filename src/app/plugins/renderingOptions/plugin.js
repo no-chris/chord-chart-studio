@@ -12,6 +12,8 @@ const renderingOptionsPlugin = pluginFactory({
 		const renderingOptions = new DocumentFragment();
 		renderingOptions.appendChild(htmlToElement(renderingOptionsTpl()));
 
+
+		// align bars
 		const alignBars = renderingOptions.querySelector('[data-option="align-bars"]');
 		alignBars.addEventListener('change', e => {
 			app.emit('optionchange', {
@@ -19,6 +21,8 @@ const renderingOptionsPlugin = pluginFactory({
 			});
 		});
 
+
+		// transpose
 		const transposeDown = renderingOptions.querySelector('[data-option="transpose-down"]');
 		const transposeUp = renderingOptions.querySelector('[data-option="transpose-up"]');
 		const transposeValue = renderingOptions.querySelector('[data-option="transpose-value"]');
@@ -34,6 +38,28 @@ const renderingOptionsPlugin = pluginFactory({
 			});
 			transposeValue.innerText = (newTransposeValue) > 0 ?'+' + newTransposeValue : newTransposeValue;
 		}
+
+
+		// Harmonize accidentals
+		const harmonizeAccidentals = renderingOptions.querySelector('[data-option="harmonize-accidentals"]');
+		harmonizeAccidentals.addEventListener('change', () => {
+			const checked = harmonizeAccidentals.querySelector('input[name="ha"]:checked');
+			app.emit('optionchange', {
+				harmonizeAccidentals: (checked.value === 'true')
+			});
+		});
+
+		// accidentals type
+		const accidentalsType = renderingOptions.querySelector('[data-option="accidentals-type"]');
+		accidentalsType.addEventListener('change', () => {
+			const checked = accidentalsType.querySelector('input[name="ht"]:checked');
+			app.emit('optionchange', {
+				accidentalsType: checked.value
+			});
+		});
+
+
+		// app.on('optionchange', console.log);
 
 		// attach to document
 		header.appendChild(renderingOptions);

@@ -3,4 +3,11 @@
   flex: 1 1 auto;
 
   @include font-size(normal);
+
+  display: flex;
+  justify-content: flex-end;
+
+  .panel {
+     flex: 0 1 auto;
+  }
 }
