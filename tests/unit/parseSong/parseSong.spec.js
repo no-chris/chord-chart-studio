@@ -11,29 +11,57 @@ describe('parseSong', () => {
 });
 
 describe('parseSong', () => {
-	test('Correctly parses song', () => {
+	test('Correctly detect and parses chordlines', () => {
 		const parseChordLine = chordLine => chordLine;
 
 		const input = fs.readFileSync(testData + '/input.txt', 'utf8');
 
 		const expected = [
-			{ type: 'chord', 			string: 'C.. G..' },
-			{ type: 'text', 			string: 'When I find myself in times of trouble' },
-			{ type: 'chord', 			string: 'Am.. F..' },
-			{ type: 'text', 			string: 'Mother mary comes to me' },
-			{ type: 'chord', 			string: 'C.. G..' },
-			{ type: 'text', 			string: 'Speaking words of wisdom' },
-			{ type: 'chord', 			string: 'F. Em. Dm. C.' },
-			{ type: 'text', 			string: 'Let it be' },
-			{ type: 'text', 			string: '' },
-			{ type: 'chord', 			string: 'Am.. G..' },
-			{ type: 'text', 			string: 'Let it be, let it be' },
-			{ type: 'chord', 			string: 'C.. F..' },
-			{ type: 'text', 			string: 'Let it be, let it be' },
-			{ type: 'chord', 			string: 'C.. G..' },
-			{ type: 'text', 			string: 'Whispers words of wisdom' },
-			{ type: 'chord', 			string: 'F. Em. Dm. C.' },
-			{ type: 'text', 			string: 'Let it be' },
+			{type: 'chord', string: 'C.. G..', model: parseChordLine('C.. G..')},
+			{type: 'text', string: 'When I find myself in times of trouble'},
+			{type: 'chord', string: 'Am.. F..', model: parseChordLine('Am.. F..')},
+			{type: 'text', string: 'Mother mary comes to me'},
+			{type: 'chord', string: 'C.. G..', model: parseChordLine('C.. G..')},
+			{type: 'text', string: 'Speaking words of wisdom'},
+			{type: 'chord', string: 'F. Em. Dm. C.', model: parseChordLine('F. Em. Dm. C.')},
+			{type: 'text', string: 'Let it be'},
+			{type: 'text', string: ''},
+			{type: 'chord', string: 'Am.. G..', model: parseChordLine('Am.. G..')},
+			{type: 'text', string: 'Let it be, let it be'},
+			{type: 'chord', string: 'C.. F..', model: parseChordLine('C.. F..')},
+			{type: 'text', string: 'Let it be, let it be'},
+			{type: 'chord', string: 'C.. G..', model: parseChordLine('C.. G..')},
+			{type: 'text', string: 'Whispers words of wisdom'},
+			{type: 'chord', string: 'F. Em. Dm. C.', model: parseChordLine('F. Em. Dm. C.')},
+			{type: 'text', string: 'Let it be'},
+		];
+
+		expect(parseSong(input, {parseChordLine})).toEqual(expected);
+	});
+
+	test('Set chordline as text if parsing fails', () => {
+		const parseChordLine = chordLine => { throw new Error(chordLine); };
+		const input = 'C. D.. E..';
+		const expected = [
+			{ type: 'text',	string: input }
+		];
+
+		expect(parseSong(input, { parseChordLine })).toEqual(expected);
+	});
+
+	test('Also accept an array as an input', () => {
+		const parseChordLine = chordLine => chordLine;
+		const input = [
+			'C.. G..',
+			'When I find myself in times of trouble',
+			'Am.. F..',
+			'Mother mary comes to me'
+		];
+		const expected = [
+			{ type: 'chord', 	string: 'C.. G..', model: parseChordLine('C.. G..') },
+			{ type: 'text', 	string: 'When I find myself in times of trouble' },
+			{ type: 'chord', 	string: 'Am.. F..', model: parseChordLine('Am.. F..') },
+			{ type: 'text', 	string: 'Mother mary comes to me' },
 		];
 		expected.forEach(line => {
 			if (line.type === 'chord') {
@@ -43,7 +71,9 @@ describe('parseSong', () => {
 
 		expect(parseSong(input, { parseChordLine })).toEqual(expected);
 	});
+});
 
+describe('timeSignature', () => {
 	test('Correctly interpret time signature', () => {
 		expect.assertions(4);
 
@@ -80,52 +110,14 @@ describe('parseSong', () => {
 
 		const expected = [
 			{ type: 'time-signature', 	string: '6/8' },
-			{ type: 'chord', 			string: 'Em D. C.' },
+			{ type: 'chord', 			string: 'Em D. C.', model: 'Em D. C.' },
 			{ type: 'text', 			string: 'So close, no matter how far' },
 			{ type: 'time-signature', 	string: '4/4' },
-			{ type: 'chord', 			string: 'C.. G..' },
+			{ type: 'chord', 			string: 'C.. G..', model: 'C.. G..' },
 			{ type: 'text', 			string: 'When I find myself in times of trouble' },
 			{ type: 'time-signature', 	string: '3/4' },
-			{ type: 'chord', 			string: 'D D C A' },
+			{ type: 'chord', 			string: 'D D C A', model: 'D D C A' },
 			{ type: 'text', 			string: 'Never cared for what they know' },
-		];
-		expected.forEach(line => {
-			if (line.type === 'chord') {
-				line.model = line.string;
-			}
-		});
-
-		expect(parseSong(input, { parseChordLine })).toEqual(expected);
-	});
-
-	test('Also accept an array as an input', () => {
-		const parseChordLine = chordLine => chordLine;
-		const input = [
-			'C.. G..',
-			'When I find myself in times of trouble',
-			'Am.. F..',
-			'Mother mary comes to me'
-		];
-		const expected = [
-			{ type: 'chord', 	string: 'C.. G..' },
-			{ type: 'text', 	string: 'When I find myself in times of trouble' },
-			{ type: 'chord', 	string: 'Am.. F..' },
-			{ type: 'text', 	string: 'Mother mary comes to me' },
-		];
-		expected.forEach(line => {
-			if (line.type === 'chord') {
-				line.model = parseChordLine(line.string);
-			}
-		});
-
-		expect(parseSong(input, { parseChordLine })).toEqual(expected);
-	});
-
-	test('Set chordline as text if parsing fails', () => {
-		const parseChordLine = chordLine => { throw new Error(chordLine); };
-		const input = 'C. D.. E..';
-		const expected = [
-			{ type: 'text',	string: input }
 		];
 
 		expect(parseSong(input, { parseChordLine })).toEqual(expected);
