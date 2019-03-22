@@ -148,7 +148,7 @@ describe.each([
 	test('Correctly computes the maximum width for each beat', () => {
 		const parsedSong = parseSong(input, { parseChordLine });
 
-		const maxBeatsWidth = getMaxBeatsWidth(parsedSong);
+		const maxBeatsWidth = getMaxBeatsWidth(parsedSong.allLines);
 		expect(maxBeatsWidth).toEqual(output);
 	});
 });

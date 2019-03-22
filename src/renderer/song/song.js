@@ -22,7 +22,7 @@ export default {
 		alignBars = false,
 		transposeValue = 0
 	}) {
-		let allLines = parseSong(songTxt, { parseChordLine });
+		let allLines = parseSong(songTxt, { parseChordLine }).allLines;
 
 		allLines = transposeSong(allLines, transposeValue, false);
 		allLines = renderSymbols(allLines);

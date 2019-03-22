@@ -19,7 +19,7 @@ D D
 I just want your extra time and your...Kiss
 		`;
 		const parsed = parseSong(song, { parseChordLine });
-		const applied = applyOnAllChords(parsed, () => true);
+		const applied = applyOnAllChords(parsed.allLines, () => true);
 
 		expect(parsed).not.toBe(applied);
 	});
@@ -41,7 +41,7 @@ D D
 I just want your extra time and your...Kiss
 		`;
 		const parsed = parseSong(song, { parseChordLine });
-		const applied = applyOnAllChords(parsed, chord => chord.applied = true);
+		const applied = applyOnAllChords(parsed.allLines, chord => chord.applied = true);
 
 		applied.forEach(line => {
 			if (line.type === 'chord') {
