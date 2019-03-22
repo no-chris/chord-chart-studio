@@ -5,6 +5,10 @@ import getMaxBeatsWidth from '../../getMaxBeatsWidth';
 
 import simpleChordSpacer from '../../spacer/chord/simple';
 import alignedChordSpacer from '../../spacer/chord/aligned';
+
+import transposeSong from '../transposeSong';
+import renderSymbols from '../renderSymbols';
+
 import barContentRenderer from '../bar/barContent';
 import chordLineRenderer from '../chord/chordLine';
 import chordSymbolRenderer from '../chord/chordSymbol';
@@ -15,9 +19,13 @@ import songTpl from './song.hbs';
 
 export default {
 	render(songTxt, {
-		alignBars = false
+		alignBars = false,
+		transposeValue = 0
 	}) {
 		let allLines = parseSong(songTxt, { parseChordLine });
+
+		allLines = transposeSong(allLines, transposeValue, false);
+		allLines = renderSymbols(allLines);
 
 		const maxBeatsWidth = getMaxBeatsWidth(allLines);
 

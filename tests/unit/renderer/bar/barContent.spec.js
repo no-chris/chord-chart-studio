@@ -1,13 +1,12 @@
 import barContentRenderer from '../../../../src/renderer/bar/barContent';
 
 import parseChordLine from '../../../../src/parseChordLine';
-import getChordSymbol from '../../../../src/getChordSymbol';
 import isRenderer from '../../../../src/renderer/isRenderer';
 import stripTags from '../../../../src/core/dom/stripTags';
 import htmlToElement from '../../../../src/core/dom/htmlToElement';
 
 const chordRenderer = {
-	render : chordDef => getChordSymbol(chordDef)
+	render : chordSymbol => chordSymbol
 };
 
 describe('barContentRenderer', () => {
