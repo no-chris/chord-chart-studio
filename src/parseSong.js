@@ -8,6 +8,8 @@ const defaultTimeSignature = '4/4';
 
 export default function parseSong(song, { parseChordLine } = {}) {
 
+	const allChords = [];
+
 	if (!_.isFunction(parseChordLine)) {
 		throw new TypeError('parseChordLine should be a function, received : ' + parseChordLine);
 	}
@@ -25,8 +27,17 @@ export default function parseSong(song, { parseChordLine } = {}) {
 
 			} else if (isChordLine(line.string)) {
 				try {
-					line.model = parseChordLine(line.string, { timeSignature });
 					line.type = 'chord';
+					line.model = parseChordLine(line.string, { timeSignature });
+
+					line.model.allBars.forEach(bar => {
+						bar.allChords.forEach(chord => {
+							if (isNewChord(allChords, chord)) {
+								allChords.push(chord);
+							}
+						});
+					});
+
 				} catch (e) {
 					line.type = 'text';
 				}
@@ -38,6 +49,14 @@ export default function parseSong(song, { parseChordLine } = {}) {
 		});
 
 	return {
-		allLines
+		allLines,
+		allChords
 	};
+}
+
+
+function isNewChord(allChords, newChord) {
+	return allChords.every(chord => {
+		return !(_.isEqual(chord, newChord));
+	});
 }

@@ -1,8 +1,17 @@
 import fs from 'fs';
 import parseSong from '../../../src/parseSong';
+import parseChord from '../../../src/parseChord';
+
+import parseChordLine from '../../../src/parseChordLine';
 import getTimeSignature from '../../../src/getTimeSignature';
 
 const testData = __dirname + '/data';
+
+const mockParseChordLine = () => ({
+	allBars: [{
+		allChords: []
+	}]
+});
 
 describe('parseSong', () => {
 	test('Module', () => {
@@ -13,7 +22,6 @@ describe('parseSong', () => {
 describe('Global', () => {
 
 	test('Accept multiline string as an input', () => {
-		const parseChordLine = chordLine => chordLine;
 		const input = `C.. G..
 When I find myself in times of trouble
 Am.. F..
@@ -24,6 +32,12 @@ Mother mary comes to me`;
 				{ type: 'text', 	string: 'When I find myself in times of trouble' },
 				{ type: 'chord', 	string: 'Am.. F..', model: parseChordLine('Am.. F..') },
 				{ type: 'text', 	string: 'Mother mary comes to me' },
+			],
+			allChords: [
+				parseChord('C'),
+				parseChord('G'),
+				parseChord('Am'),
+				parseChord('F')
 			]
 		};
 
@@ -31,7 +45,6 @@ Mother mary comes to me`;
 	});
 
 	test('Also accept array as an input', () => {
-		const parseChordLine = chordLine => chordLine;
 		const input = [
 			'C.. G..',
 			'When I find myself in times of trouble',
@@ -44,6 +57,12 @@ Mother mary comes to me`;
 				{ type: 'text', 	string: 'When I find myself in times of trouble' },
 				{ type: 'chord', 	string: 'Am.. F..', model: parseChordLine('Am.. F..') },
 				{ type: 'text', 	string: 'Mother mary comes to me' },
+			],
+			allChords: [
+				parseChord('C'),
+				parseChord('G'),
+				parseChord('Am'),
+				parseChord('F')
 			]
 		};
 
@@ -53,42 +72,40 @@ Mother mary comes to me`;
 
 describe('Chord Lines', () => {
 	test('Correctly detect and parses chord lines', () => {
-		const parseChordLine = chordLine => chordLine;
-
 		const input = fs.readFileSync(testData + '/input.txt', 'utf8');
 
 		const expected = [
-			{type: 'chord', string: 'C.. G..', model: parseChordLine('C.. G..')},
+			{type: 'chord', string: 'C.. G..', model: mockParseChordLine('C.. G..')},
 			{type: 'text', string: 'When I find myself in times of trouble'},
-			{type: 'chord', string: 'Am.. F..', model: parseChordLine('Am.. F..')},
+			{type: 'chord', string: 'Am.. F..', model: mockParseChordLine('Am.. F..')},
 			{type: 'text', string: 'Mother mary comes to me'},
-			{type: 'chord', string: 'C.. G..', model: parseChordLine('C.. G..')},
+			{type: 'chord', string: 'C.. G..', model: mockParseChordLine('C.. G..')},
 			{type: 'text', string: 'Speaking words of wisdom'},
-			{type: 'chord', string: 'F. Em. Dm. C.', model: parseChordLine('F. Em. Dm. C.')},
+			{type: 'chord', string: 'F. Em. Dm. C.', model: mockParseChordLine('F. Em. Dm. C.')},
 			{type: 'text', string: 'Let it be'},
 			{type: 'text', string: ''},
-			{type: 'chord', string: 'Am.. G..', model: parseChordLine('Am.. G..')},
+			{type: 'chord', string: 'Am.. G..', model: mockParseChordLine('Am.. G..')},
 			{type: 'text', string: 'Let it be, let it be'},
-			{type: 'chord', string: 'C.. F..', model: parseChordLine('C.. F..')},
+			{type: 'chord', string: 'C.. F..', model: mockParseChordLine('C.. F..')},
 			{type: 'text', string: 'Let it be, let it be'},
-			{type: 'chord', string: 'C.. G..', model: parseChordLine('C.. G..')},
+			{type: 'chord', string: 'C.. G..', model: mockParseChordLine('C.. G..')},
 			{type: 'text', string: 'Whispers words of wisdom'},
-			{type: 'chord', string: 'F. Em. Dm. C.', model: parseChordLine('F. Em. Dm. C.')},
+			{type: 'chord', string: 'F. Em. Dm. C.', model: mockParseChordLine('F. Em. Dm. C.')},
 			{type: 'text', string: 'Let it be'},
 		];
 
-		const parsed = parseSong(input, {parseChordLine});
+		const parsed = parseSong(input, {parseChordLine: mockParseChordLine});
 		expect(parsed.allLines).toEqual(expected);
 	});
 
 	test('Set chordline as text if parsing fails', () => {
-		const parseChordLine = chordLine => { throw new Error(chordLine); };
+		const localParseChordLine = chordLine => { throw new Error(chordLine); };
 		const input = 'C. D.. E..';
 		const expected = [
 			{ type: 'text',	string: input }
 		];
 
-		const parsed = parseSong(input, {parseChordLine});
+		const parsed = parseSong(input, {parseChordLine: localParseChordLine});
 		expect(parsed.allLines).toEqual(expected);
 	});
 
@@ -104,7 +121,7 @@ describe('timeSignature', () => {
 		const ts4_4 = getTimeSignature('4/4');
 		const ts6_8 = getTimeSignature('6/8');
 
-		const parseChordLine = (chordLine, { timeSignature }) => {
+		const localParseChordLine = (chordLine, { timeSignature }) => {
 			callCount++;
 
 			if (callCount === 1) {
@@ -114,7 +131,7 @@ describe('timeSignature', () => {
 			} else {
 				expect(timeSignature).toEqual(ts3_4);
 			}
-			return chordLine;
+			return mockParseChordLine();
 		};
 
 		const input = [
@@ -131,17 +148,17 @@ describe('timeSignature', () => {
 
 		const expected = [
 			{ type: 'time-signature', 	string: '6/8' },
-			{ type: 'chord', 			string: 'Em D. C.', model: 'Em D. C.' },
+			{ type: 'chord', 			string: 'Em D. C.', model: mockParseChordLine('Em D. C.') },
 			{ type: 'text', 			string: 'So close, no matter how far' },
 			{ type: 'time-signature', 	string: '4/4' },
-			{ type: 'chord', 			string: 'C.. G..', model: 'C.. G..' },
+			{ type: 'chord', 			string: 'C.. G..', model: mockParseChordLine('C.. G..') },
 			{ type: 'text', 			string: 'When I find myself in times of trouble' },
 			{ type: 'time-signature', 	string: '3/4' },
-			{ type: 'chord', 			string: 'D D C A', model: 'D D C A' },
+			{ type: 'chord', 			string: 'D D C A', model: mockParseChordLine('D D C A') },
 			{ type: 'text', 			string: 'Never cared for what they know' },
 		];
 
-		const parsed = parseSong(input, {parseChordLine});
+		const parsed = parseSong(input, {parseChordLine: localParseChordLine});
 		expect(parsed.allLines).toEqual(expected);
 	});
 });
