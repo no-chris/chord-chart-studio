@@ -3,3 +3,4 @@
 - mock parseChordLine instead of passing it as parameter
 - UNIT tests: parseChord / renderSymbols / transposeSong
 - add 2 beats to simple spacer
+- use error reports instead of exceptions
