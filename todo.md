@@ -2,3 +2,4 @@
 - add type definitions for Time signature, chords, etc. all parsed outputs
 - mock parseChordLine instead of passing it as parameter
 - UNIT tests: parseChord / renderSymbols / transposeSong
+- add 2 beats to simple spacer
