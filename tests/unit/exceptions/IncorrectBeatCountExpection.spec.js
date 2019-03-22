@@ -10,14 +10,12 @@ describe('Behavior', () => {
 	test('Correctly fills exception properties', () => {
 		const error = new IncorrectBeatCountException({
 			string: 'Cm7...',
-			symbol: 'Cm7',
 			duration: 3,
 			currentBeatCount: 6,
 			beatCount: 4
 		});
 		expect(error).toBeInstanceOf(IncorrectBeatCountException);
 		expect(error.string).toEqual('Cm7...');
-		expect(error.symbol).toEqual('Cm7');
 		expect(error.duration).toEqual(3);
 		expect(error.currentBeatCount).toEqual(6);
 		expect(error.beatCount).toEqual(4);
@@ -32,7 +30,6 @@ describe('Behavior', () => {
 
 describe.each([
 	['no string', 'string', 'IncorrectBeatCountException cannot be created without chord string, received: undefined'],
-	['no symbol', 'symbol', 'IncorrectBeatCountException cannot be created without chord symbol, received: undefined'],
 	['no duration', 'duration', 'IncorrectBeatCountException cannot be created without chord duration, received: undefined'],
 	['no currentBeatCount', 'currentBeatCount', 'IncorrectBeatCountException cannot be created without currentBeatCount, received: undefined'],
 	['no beatCount', 'beatCount', 'IncorrectBeatCountException cannot be created without beatCount, received: undefined'],
@@ -40,7 +37,6 @@ describe.each([
 	test('Test details', () => {
 		const errorParameters = {
 			string: 'Cm7...',
-			symbol: 'Cm7',
 			duration: 3,
 			currentBeatCount: 6,
 			BeatCount: 4
