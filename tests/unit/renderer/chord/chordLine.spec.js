@@ -1,6 +1,7 @@
 import chordLineRenderer from '../../../../src/renderer/chord/chordLine';
 
 import parseChordLine from '../../../../src/parseChordLine';
+import getChordSymbol from '../../../../src/getChordSymbol';
 import isRenderer from '../../../../src/renderer/isRenderer';
 import stripTags from '../../../../src/core/dom/stripTags';
 import htmlToElement from '../../../../src/core/dom/htmlToElement';
@@ -55,7 +56,7 @@ describe.each([
 	test('expected rendering', () => {
 		const barContentRenderer = {
 			render: bar => bar.allChords
-				.map(chord => chord.symbol)
+				.map(chord => getChordSymbol(chord.model))
 				.join(' ')
 		};
 		const chordLine = parseChordLine(input);

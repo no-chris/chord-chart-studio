@@ -32,8 +32,8 @@ export default function parseSong(song, { parseChordLine } = {}) {
 
 					line.model.allBars.forEach(bar => {
 						bar.allChords.forEach(chord => {
-							if (isNewChord(allChords, chord)) {
-								allChords.push(chord);
+							if (isNewChord(allChords, chord.model)) {
+								allChords.push(chord.model);
 							}
 						});
 					});

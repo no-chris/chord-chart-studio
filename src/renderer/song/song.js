@@ -6,8 +6,8 @@ import getMaxBeatsWidth from '../../getMaxBeatsWidth';
 import simpleChordSpacer from '../../spacer/chord/simple';
 import alignedChordSpacer from '../../spacer/chord/aligned';
 
-import transposeSong from '../transposeSong';
-import renderSymbols from '../renderSymbols';
+import transposeChord from '../transposeChord';
+import { forEachChordInSong } from '../helper/songs';
 
 import barContentRenderer from '../bar/barContent';
 import chordLineRenderer from '../chord/chordLine';
@@ -15,6 +15,7 @@ import chordSymbolRenderer from '../chord/chordSymbol';
 import textLineRenderer from '../text/textLine';
 
 import songTpl from './song.hbs';
+import getChordSymbol from '../../getChordSymbol';
 
 
 export default {
@@ -24,8 +25,14 @@ export default {
 	}) {
 		let allLines = parseSong(songTxt, { parseChordLine }).allLines;
 
-		allLines = transposeSong(allLines, transposeValue, false);
-		allLines = renderSymbols(allLines);
+		allLines = forEachChordInSong(allLines, (chord) => {
+			chord.transposedModel = transposeChord(chord.model, transposeValue, false);
+		});
+		allLines = forEachChordInSong(allLines, (chord) => {
+			chord.symbol = (chord.transposedModel)
+				? getChordSymbol(chord.transposedModel)
+				: getChordSymbol(chord.model);
+		});
 
 		const maxBeatsWidth = getMaxBeatsWidth(allLines);
 

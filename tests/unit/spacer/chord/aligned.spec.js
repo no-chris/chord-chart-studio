@@ -1,5 +1,7 @@
 import alignedSpacer from '../../../../src/spacer/chord/aligned';
 import parseChordLine from '../../../../src/parseChordLine';
+import getChordSymbol from '../../../../src/getChordSymbol';
+import { forEachChordInChordLine } from '../../../../src/renderer/helper/songs';
 
 describe('alignedSpacer', () => {
 	test('Module', () => {
@@ -74,7 +76,9 @@ describe.each([
 
 ])('Aligned spacer: %s', (title, chordLine, maxBeatWidth, spacesWithin, spacesAfter) => {
 	test('Correctly fills .spacesWithin and .spacesAfter properties', () => {
-		const parsed = parseChordLine(chordLine);
+		let parsed = parseChordLine(chordLine);
+		parsed = forEachChordInChordLine(parsed, chord => chord.symbol = getChordSymbol(chord.model));
+
 		const spaced = alignedSpacer(parsed, maxBeatWidth);
 
 		let chordIndex = 0;

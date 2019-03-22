@@ -2,8 +2,11 @@ import barContentRenderer from '../../../../src/renderer/bar/barContent';
 
 import parseChordLine from '../../../../src/parseChordLine';
 import isRenderer from '../../../../src/renderer/isRenderer';
+import getChordSymbol from '../../../../src/getChordSymbol';
 import stripTags from '../../../../src/core/dom/stripTags';
 import htmlToElement from '../../../../src/core/dom/htmlToElement';
+
+import { forEachChordInChordLine } from '../../../../src/renderer/helper/songs';
 
 const chordRenderer = {
 	render : chordSymbol => chordSymbol
@@ -49,7 +52,9 @@ describe.each([
 
 ])('%s: %s', (title, input, output) => {
 	test('Renders with default spacing: ' + output, () => {
-		const parsed = parseChordLine(input);
+		let parsed = parseChordLine(input);
+		parsed = forEachChordInChordLine(parsed, chord => chord.symbol = getChordSymbol(chord.model));
+
 		const rendered = barContentRenderer.render(
 			parsed.allBars[0],
 			{ chordRenderer }
@@ -70,7 +75,8 @@ describe.each([
 
 ])('%s: %s', (title, input, spacesAfter, output) => {
 	test('Respect spacesAfter value: ' + output, () => {
-		const parsed = parseChordLine(input);
+		let parsed = parseChordLine(input);
+		parsed = forEachChordInChordLine(parsed, chord => chord.symbol = getChordSymbol(chord.model));
 
 		parsed.allBars[0].allChords.forEach(chord => {
 			chord.spacesAfter = spacesAfter;
@@ -97,7 +103,8 @@ describe.each([
 
 ])('%s: %s', (title, input, spacesWithin, output) => {
 	test('Respect spacesWithin value: ' + output, () => {
-		const parsed = parseChordLine(input);
+		let parsed = parseChordLine(input);
+		parsed = forEachChordInChordLine(parsed, chord => chord.symbol = getChordSymbol(chord.model));
 
 		parsed.allBars[0].allChords.forEach(chord => {
 			chord.spacesWithin = spacesWithin;
@@ -114,7 +121,8 @@ describe.each([
 
 describe('Behaviour', () => {
 	test('Should return valid html', () => {
-		const parsed = parseChordLine('C.. G. F.');
+		let parsed = parseChordLine('C.. G. F.');
+		parsed = forEachChordInChordLine(parsed, chord => chord.symbol = getChordSymbol(chord.model));
 
 		const rendered = barContentRenderer.render(parsed.allBars[0], { chordRenderer });
 		const element = htmlToElement(rendered);

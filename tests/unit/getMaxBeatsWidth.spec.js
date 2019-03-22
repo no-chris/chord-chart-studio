@@ -3,6 +3,8 @@ import getMaxBeatsWidth from '../../src/getMaxBeatsWidth';
 import parseChordLine from '../../src/parseChordLine';
 import parseSong from '../../src/parseSong';
 
+import renderSymbols from '../../src/renderer/renderSymbols';
+
 describe('getMaxBeatsWidth', () => {
 	test('Module', () => {
 		expect(getMaxBeatsWidth).toBeInstanceOf(Function);
@@ -147,6 +149,7 @@ describe.each([
 ])('getMaxBeatsWidth(): %s', (title, input, output) => {
 	test('Correctly computes the maximum width for each beat', () => {
 		const parsedSong = parseSong(input, { parseChordLine });
+		parsedSong.allLines = renderSymbols(parsedSong.allLines);
 
 		const maxBeatsWidth = getMaxBeatsWidth(parsedSong.allLines);
 		expect(maxBeatsWidth).toEqual(output);
