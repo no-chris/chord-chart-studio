@@ -31,6 +31,12 @@ module.exports = {
 		'semi': [
 			'error',
 			'always'
-		]
+		],
+		'no-shadow': [
+			'error',
+			{
+				'builtinGlobals': true
+			}
+		],
 	}
 };
