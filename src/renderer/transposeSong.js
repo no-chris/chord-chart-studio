@@ -1,17 +1,29 @@
 import _ from 'lodash';
 import transposeChord from './transposeChord';
+import getMainAccidental from './getMainAccidental';
 
-export default function transposeSong(songLines, value, useFlats) {
-	const transposed = _.cloneDeep(songLines);
+import { forEachChordInSong } from './helper/songs';
 
-	transposed.forEach(line => {
-		if (line.type === 'chord') {
-			line.model.allBars.forEach(bar => {
-				bar.allChords.forEach(chord => {
-					chord.transposedModel = transposeChord(chord.model, value, useFlats);
-				});
-			});
-		}
-	});
+export default function transposeSong(allLines, allChords, {
+	transposeValue = 0,
+	accidentalsType = 'auto',
+	harmonizeAccidentals = true
+} = {}) {
+	let transposed = _.cloneDeep(allLines);
+
+	let accidental = (accidentalsType === 'auto')
+		? getMainAccidental(allChords)
+		: accidentalsType;
+
+	if (harmonizeAccidentals || transposeValue !== 0) {
+		transposed = forEachChordInSong(transposed, (chord) => {
+			chord.transposedModel = transposeChord(
+				chord.model,
+				transposeValue,
+				accidental === 'flat'
+			);
+		});
+	}
+
 	return transposed;
 }

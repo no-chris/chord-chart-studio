@@ -6,7 +6,7 @@ import getMaxBeatsWidth from '../../getMaxBeatsWidth';
 import simpleChordSpacer from '../../spacer/chord/simple';
 import alignedChordSpacer from '../../spacer/chord/aligned';
 
-import transposeChord from '../transposeChord';
+import transposeSong from '../transposeSong';
 import { forEachChordInSong } from '../helper/songs';
 
 import barContentRenderer from '../bar/barContent';
@@ -21,12 +21,17 @@ import getChordSymbol from '../../getChordSymbol';
 export default {
 	render(songTxt, {
 		alignBars = false,
-		transposeValue = 0
+		transposeValue = 0,
+		accidentalsType = 'auto',
+		harmonizeAccidentals = true
 	}) {
-		let allLines = parseSong(songTxt, { parseChordLine }).allLines;
+		const parsedSong = parseSong(songTxt, { parseChordLine });
+		let { allLines, allChords } = parsedSong;
 
-		allLines = forEachChordInSong(allLines, (chord) => {
-			chord.transposedModel = transposeChord(chord.model, transposeValue, false);
+		allLines = transposeSong(allLines, allChords,  {
+			transposeValue,
+			accidentalsType,
+			harmonizeAccidentals
 		});
 		allLines = forEachChordInSong(allLines, (chord) => {
 			chord.symbol = (chord.transposedModel)
@@ -54,6 +59,7 @@ export default {
 				}
 				return line;
 			})
+			.filter(line => line.rendered)
 			.map(line => line.rendered)
 			.join('\n');
 

@@ -20,16 +20,17 @@ describe('songRenderer', () => {
 
 describe.each([
 
-	['song1', 'song1-input.txt', 'song1-output-simple.txt', undefined ],
-	['song1', 'song1-input.txt', 'song1-output-simple.txt', false ],
-	['song1', 'song1-input.txt', 'song1-output-aligned.txt', true ],
+	['base rendering', 		'song1-input.txt', 'song1-output-simple.txt', 		{} ],
+	['no transposing', 		'song1-input.txt', 'song1-output-simple.txt', 		{ alignBars: false, harmonizeAccidentals: false } ],
+	['aligned rendering', 	'song1-input.txt', 'song1-output-aligned.txt', 		{ alignBars: true } ],
+	['transposed', 			'song1-input.txt', 'song1-output-transposed.txt', 	{ transposeValue: -5 } ],
 
-])('Render %s', (title, inputFile, outputFile, alignBars) => {
-	test('render()', () => {
+])('Render song: %s', (title, inputFile, outputFile, options) => {
+	test('produces expected rendering', () => {
 		const input = fs.readFileSync(path.resolve(dataFolder, inputFile), 'utf8');
 		const output = fs.readFileSync(path.resolve(dataFolder, outputFile), 'utf8');
 
-		const rendered = songRenderer.render(input, { alignBars });
+		const rendered = songRenderer.render(input, options);
 
 		expect(stripTags(rendered)).toEqual(output);
 	});

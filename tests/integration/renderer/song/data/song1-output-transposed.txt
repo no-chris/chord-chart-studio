@@ -1,17 +1,16 @@
 Imagine
 John Lennon
-4/4
 
-C... CM7. F
+|G     Gmaj7|C   |
 Imagine there's no heaven
-C... CM7. F
+|G     Gmaj7|C   |
 It's easy if you try
-C... CM7. F
+|G     Gmaj7|C   |
 No hell below us
-C... CM7. F
+|G     Gmaj7|C   |
 Above us only sky
 
-F.. Am/E.. Dm7.. F/C..
+|C   Em/B  |Am7   C/G  |
 Imagine all the people
-G... C/G. G7
+|D     G/D|D7   |
 Living for today
