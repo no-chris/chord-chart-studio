@@ -3,7 +3,7 @@ import parseSong from '../../../src/parseSong';
 import parseChord from '../../../src/parseChord';
 
 import parseChordLine from '../../../src/parseChordLine';
-import getTimeSignature from '../../../src/getTimeSignature';
+import parseTimeSignature from '../../../src/parseTimeSignature';
 
 const testData = __dirname + '/data';
 
@@ -117,9 +117,9 @@ describe('timeSignature', () => {
 
 		let callCount = 0;
 
-		const ts3_4 = getTimeSignature('3/4');
-		const ts4_4 = getTimeSignature('4/4');
-		const ts6_8 = getTimeSignature('6/8');
+		const ts3_4 = parseTimeSignature('3/4');
+		const ts4_4 = parseTimeSignature('4/4');
+		const ts6_8 = parseTimeSignature('6/8');
 
 		const localParseChordLine = (chordLine, { timeSignature }) => {
 			callCount++;

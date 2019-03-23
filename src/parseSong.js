@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import isChordLine from './isChordLine';
 import isTimeSignature from './isTimeSignatureString';
-import getTimeSignature from './getTimeSignature';
+import parseTimeSignature from './parseTimeSignature';
 
 const defaultTimeSignature = '4/4';
 
@@ -14,7 +14,7 @@ export default function parseSong(song, { parseChordLine } = {}) {
 		throw new TypeError('parseChordLine should be a function, received : ' + parseChordLine);
 	}
 
-	let timeSignature = getTimeSignature(defaultTimeSignature);
+	let timeSignature = parseTimeSignature(defaultTimeSignature);
 
 	const songLines = (!_.isArray(song)) ? song.split('\n') : song;
 
@@ -22,7 +22,7 @@ export default function parseSong(song, { parseChordLine } = {}) {
 		.map(string => ({ string }))
 		.map(line => {
 			if (isTimeSignature(line.string)) {
-				timeSignature = getTimeSignature(line.string);
+				timeSignature = parseTimeSignature(line.string);
 				line.type = 'time-signature';
 
 			} else if (isChordLine(line.string)) {

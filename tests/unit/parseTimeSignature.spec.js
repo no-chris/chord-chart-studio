@@ -1,8 +1,8 @@
-import getTimeSignature from '../../src/getTimeSignature';
+import parseTimeSignature from '../../src/parseTimeSignature';
 
-describe('getTimeSignature', () => {
+describe('parseTimeSignature', () => {
 	test('Module', () => {
-		expect(getTimeSignature).toBeInstanceOf(Function);
+		expect(parseTimeSignature).toBeInstanceOf(Function);
 	});
 });
 
@@ -22,7 +22,7 @@ describe.each([
 
 ])('Time signature of %s', (string, count, value, beatCount) => {
 	test('Correctly gets definition', () => {
-		expect(getTimeSignature(string)).toEqual({ string, count, value, beatCount });
+		expect(parseTimeSignature(string)).toEqual({ string, count, value, beatCount });
 	});
 });
 
@@ -35,7 +35,7 @@ describe.each([
 
 ])('Invalid time signature of %s', (string) => {
 	test('Throws TypeError', () => {
-		const throwingFn = () => getTimeSignature(string);
+		const throwingFn = () => parseTimeSignature(string);
 		expect(throwingFn).toThrow(TypeError);
 	});
 });

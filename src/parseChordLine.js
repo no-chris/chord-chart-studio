@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 import parseChord from './parseChord';
-import getTimeSignature from './getTimeSignature';
+import parseTimeSignature from './parseTimeSignature';
 
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 import InvalidChordRepetitionException from './exceptions/InvalidChordRepetitionException';
@@ -9,7 +9,7 @@ import InvalidChordRepetitionException from './exceptions/InvalidChordRepetition
 export default function parseChordLine(
 	chordLine,
 	{
-		timeSignature = getTimeSignature('4/4')
+		timeSignature = parseTimeSignature('4/4')
 	} = {}
 ) {
 	const { beatCount } = timeSignature;

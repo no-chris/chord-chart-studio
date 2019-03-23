@@ -1,6 +1,6 @@
 import simpleSpacer from '../../../../src/spacer/chord/simple';
 import parseChordLine from '../../../../src/parseChordLine';
-import getTimeSignature from '../../../../src/getTimeSignature';
+import parseTimeSignature from '../../../../src/parseTimeSignature';
 
 describe('simpleSpacer', () => {
 	test('Module', () => {
@@ -8,8 +8,8 @@ describe('simpleSpacer', () => {
 	});
 });
 
-const ts4_4 = getTimeSignature('4/4');
-const ts3_4 = getTimeSignature('3/4');
+const ts4_4 = parseTimeSignature('4/4');
+const ts3_4 = parseTimeSignature('3/4');
 
 describe.each([
 

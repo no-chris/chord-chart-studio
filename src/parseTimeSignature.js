@@ -1,6 +1,14 @@
 import isTimeSignatureString from './isTimeSignatureString';
 
-export default function getTimeSignature(string) {
+/**
+* @typedef {Object} TimeSignature
+* @property {String} string - original string
+* @property {Number} count - upper part of time signature
+* @property {Number} value - lower part of time signature
+* @property {Number} beatCount - number of beats per bar
+*/
+
+export default function parseTimeSignature(string) {
 	if (!isTimeSignatureString(string)) {
 		throw new TypeError('Expected time signature string, received: ' + string);
 	}

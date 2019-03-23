@@ -4,7 +4,7 @@ jest.mock('../../src/getChordSymbol');
 import parseChord from '../../src/parseChord.js';
 import parseChordLine from '../../src/parseChordLine.js';
 import getChordSymbol from '../../src/getChordSymbol.js';
-import getTimeSignature from '../../src/getTimeSignature';
+import parseTimeSignature from '../../src/parseTimeSignature';
 
 import IncorrectBeatCountException from '../../src/exceptions/IncorrectBeatCountException';
 import InvalidChordRepetitionException from '../../src/exceptions/InvalidChordRepetitionException';
@@ -15,10 +15,10 @@ describe('parseChordLine', () => {
 	});
 });
 
-const ts3_4 = getTimeSignature('3/4');
-const ts4_4 = getTimeSignature('4/4');
-const ts5_4 = getTimeSignature('5/4');
-const ts3_8 = getTimeSignature('3/8');
+const ts3_4 = parseTimeSignature('3/4');
+const ts4_4 = parseTimeSignature('4/4');
+const ts5_4 = parseTimeSignature('5/4');
+const ts3_8 = parseTimeSignature('3/8');
 
 parseChord.mockImplementation(chordString => ({ symbol: chordString }));
 getChordSymbol.mockImplementation(chordDef => chordDef.symbol);
