@@ -11,7 +11,7 @@ export default function getMainAccidental(allChords) {
 
 			if (accidental === 'b') {
 				flatCount++;
-			} else if (accidental === '#') {
+			} else {
 				sharpCount++;
 			}
 		}
