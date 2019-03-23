@@ -1,11 +1,8 @@
-import fs from 'fs';
-import parseSong from '../../../src/parseSong';
-import parseChord from '../../../src/parseChord';
+import parseSong from '../../src/parseSong';
+import parseChord from '../../src/parseChord';
 
-import parseChordLine from '../../../src/parseChordLine';
-import parseTimeSignature from '../../../src/parseTimeSignature';
-
-const testData = __dirname + '/data';
+import parseChordLine from '../../src/parseChordLine';
+import parseTimeSignature from '../../src/parseTimeSignature';
 
 const mockParseChordLine = () => ({
 	allBars: [{
@@ -72,7 +69,23 @@ Mother mary comes to me`;
 
 describe('Chord Lines', () => {
 	test('Correctly detect and parses chord lines', () => {
-		const input = fs.readFileSync(testData + '/input.txt', 'utf8');
+		const input = `C.. G..
+When I find myself in times of trouble
+Am.. F..
+Mother mary comes to me
+C.. G..
+Speaking words of wisdom
+F. Em. Dm. C.
+Let it be
+
+Am.. G..
+Let it be, let it be
+C.. F..
+Let it be, let it be
+C.. G..
+Whispers words of wisdom
+F. Em. Dm. C.
+Let it be`;
 
 		const expected = [
 			{type: 'chord', string: 'C.. G..', model: mockParseChordLine('C.. G..')},
