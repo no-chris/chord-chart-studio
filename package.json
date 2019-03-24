@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "author": "",
-  "license": "AGPL",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
