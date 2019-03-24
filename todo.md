@@ -1,3 +1,1 @@
-- add type definitions for chordLine & song (all parsed outputs)
-- mock parseChordLine instead of passing it as parameter? and renderers also?
-- UNIT tests: parseChord / transposeSong
+- mock renderers instead of passing them as parameters
