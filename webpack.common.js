@@ -1,9 +1,10 @@
 /* eslint-env node */
+const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const buildDir    = 'docs';
-const buildDirAbs = __dirname + '/' + buildDir;
 
 const config = {
 	target:'web',
@@ -14,7 +15,7 @@ const config = {
 
 	output: {
 		filename: '[name].[hash].js',
-		path: buildDirAbs,
+		path: path.resolve(process.cwd(), buildDir),
 	},
 
 	plugins: [
