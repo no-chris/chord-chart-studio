@@ -1,6 +1,6 @@
-export default (expect, object) => {
-	expect(object).toBeInstanceOf(Object);
-	expect(object.emit).toBeInstanceOf(Function);
-	expect(object.on).toBeInstanceOf(Function);
-	expect(object.off).toBeInstanceOf(Function);
+export default (jExpect, object) => {
+	jExpect(object).toBeInstanceOf(Object);
+	jExpect(object.emit).toBeInstanceOf(Function);
+	jExpect(object.on).toBeInstanceOf(Function);
+	jExpect(object.off).toBeInstanceOf(Function);
 };

@@ -1,7 +1,7 @@
 import stateToArray from '../../../../src/editor/prosemirror/helpers/stateToArray';
 
 import { EditorState } from 'prosemirror-state';
-import { DOMParser } from 'prosemirror-model';
+import { DOMParser as pmDOMParser } from 'prosemirror-model';
 import editorSchema from '../../../../src/editor/prosemirror/schema';
 
 
@@ -40,7 +40,7 @@ describe('Behaviour', () => {
 		div.innerHTML = input;
 
 		const state = EditorState.create({
-			doc: DOMParser.fromSchema(editorSchema).parse(div),
+			doc: pmDOMParser.fromSchema(editorSchema).parse(div),
 		});
 
 		expect(stateToArray(state)).toEqual(expected);

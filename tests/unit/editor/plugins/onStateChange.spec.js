@@ -1,14 +1,14 @@
 import onStateChange from '../../../../src/editor/prosemirror/plugins/onStateChange';
 
 import EventEmitter from 'eventemitter2';
-import { Plugin } from 'prosemirror-state';
+import { Plugin as pmPlugin } from 'prosemirror-state';
 
 describe('onStateChange', () => {
 	test('Module', () => {
 		expect(onStateChange).toBeInstanceOf(Function);
 	});
 	test('Factory', () => {
-		expect(onStateChange()).toBeInstanceOf(Plugin);
+		expect(onStateChange()).toBeInstanceOf(pmPlugin);
 	});
 });
 
