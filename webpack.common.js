@@ -20,7 +20,7 @@ const config = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'ChordPro2',
+			title: 'Universal Chord Charts',
 			version: require('./package.json').version,
 			template:'assets/index.hbs'
 		}),
