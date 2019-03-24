@@ -41,10 +41,6 @@ const config = {
 				loader: 'handlebars-loader'
 			},
 			{
-				test: /\.chp$/,
-				loader: 'raw-loader'
-			},
-			{
 				test: /\.scss|sass|css$/,
 				use: [
 					MiniCssExtractPlugin.loader,
