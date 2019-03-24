@@ -3,6 +3,7 @@ import _ from 'lodash';
 import isChordLine from './isChordLine';
 import isTimeSignature from './isTimeSignatureString';
 import parseTimeSignature from './parseTimeSignature';
+import getAllChordsInSong from './getAllChordsInSong';
 
 /**
  * @typedef {Object} SongLine
@@ -35,8 +36,6 @@ const defaultTimeSignature = '4/4';
  */
 export default function parseSong(song, { parseChordLine } = {}) {
 
-	const allChords = [];
-
 	if (!_.isFunction(parseChordLine)) {
 		throw new TypeError('parseChordLine should be a function, received : ' + parseChordLine);
 	}
@@ -57,8 +56,6 @@ export default function parseSong(song, { parseChordLine } = {}) {
 					line.type = 'chord';
 					line.model = parseChordLine(line.string, { timeSignature });
 
-					saveChordsFromLine(allChords, line);
-
 				} catch (e) {
 					line.type = 'text';
 				}
@@ -69,28 +66,11 @@ export default function parseSong(song, { parseChordLine } = {}) {
 			return line;
 		});
 
+
+	const allChords = getAllChordsInSong(allLines);
+
 	return {
 		allLines,
 		allChords
 	};
-}
-
-
-function saveChordsFromLine(allChords, chordLine) {
-	let i;
-
-	chordLine.model.allBars.forEach(bar => {
-		bar.allChords.forEach(chord => {
-			i = _.findIndex(allChords, o => _.isEqual(o.model, chord.model));
-
-			if (i === -1) {
-				allChords.push({
-					model: _.cloneDeep(chord.model),
-					occurrences: 1
-				});
-			} else {
-				allChords[i].occurrences++;
-			}
-		});
-	});
 }
