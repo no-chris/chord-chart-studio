@@ -3,6 +3,7 @@ coverage
 
 # IDE files
 .idea/**/workspace.xml
+.idea/statistic.xml
 
 # Macos
 .DS_Store
