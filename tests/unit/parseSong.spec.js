@@ -31,10 +31,10 @@ Mother mary comes to me`;
 				{ type: 'text', 	string: 'Mother mary comes to me' },
 			],
 			allChords: [
-				parseChord('C'),
-				parseChord('G'),
-				parseChord('Am'),
-				parseChord('F')
+				{ model: parseChord('C'), occurrences: 1 },
+				{ model: parseChord('G'), occurrences: 1 },
+				{ model: parseChord('Am'), occurrences: 1 },
+				{ model: parseChord('F'), occurrences: 1 },
 			]
 		};
 
@@ -56,10 +56,10 @@ Mother mary comes to me`;
 				{ type: 'text', 	string: 'Mother mary comes to me' },
 			],
 			allChords: [
-				parseChord('C'),
-				parseChord('G'),
-				parseChord('Am'),
-				parseChord('F')
+				{ model: parseChord('C'), occurrences: 1 },
+				{ model: parseChord('G'), occurrences: 1 },
+				{ model: parseChord('Am'), occurrences: 1 },
+				{ model: parseChord('F'), occurrences: 1 },
 			]
 		};
 
@@ -67,7 +67,7 @@ Mother mary comes to me`;
 	});
 });
 
-describe('Chord Lines', () => {
+describe('ChordLines', () => {
 	test('Correctly detect and parses chord lines', () => {
 		const input = `C.. G..
 When I find myself in times of trouble
@@ -122,6 +122,33 @@ Let it be`;
 		expect(parsed.allLines).toEqual(expected);
 	});
 
+});
+
+
+describe('allChords', () => {
+	test('Correctly detect and count occurrences of all chords', () => {
+		const input = `C.. G..
+Am.. F..
+C.. G..
+F. Em. Dm. C.
+
+Am.. G..
+C.. F..
+C.. G..
+F. Em. Dm. C.`;
+
+		const expected = [
+			{ model: parseChord('C'), occurrences: 6 },
+			{ model: parseChord('G'), occurrences: 4 },
+			{ model: parseChord('Am'), occurrences: 2 },
+			{ model: parseChord('F'), occurrences: 4 },
+			{ model: parseChord('Em'), occurrences: 2 },
+			{ model: parseChord('Dm'), occurrences: 2 },
+		];
+
+		const parsed = parseSong(input, {parseChordLine});
+		expect(parsed.allChords).toEqual(expected);
+	});
 });
 
 describe('timeSignature', () => {

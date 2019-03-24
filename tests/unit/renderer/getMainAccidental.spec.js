@@ -1,5 +1,6 @@
 import getMainAccidental from '../../../src/renderer/getMainAccidental';
-import parseChord from '../../../src/parseChord';
+import parseSong from '../../../src/parseSong';
+import parseChordLine from '../../../src/parseChordLine';
 
 describe('getMainAccidental', () => {
 	test('Module', () => {
@@ -9,18 +10,20 @@ describe('getMainAccidental', () => {
 
 describe.each([
 
-	['no accidentals', 	['A', 'B', 'C'], 'sharp'],
+	['no accidentals', 	'A B C', 'sharp'],
 
-	['all flats', 			['Ab', 'Bb', 'Db', 'Gb'], 'flat'],
-	['3 flats, 1 sharp',	['Ab', 'Bb', 'Db', 'G#'], 'flat'],
-	['2 flats, 2 sharps',	['Ab', 'Bb', 'D#', 'G#'], 'sharp'],
-	['1 flat, 3 sharp',		['Ab', 'F#', 'D#', 'G#'], 'sharp'],
-	['all sharps',			['A#', 'F#', 'D#', 'G#'], 'sharp'],
+	['all flats', 			'Ab Bb Db Gb', 'flat'],
+	['3 flats, 1 sharp',	'Ab Bb Db G#', 'flat'],
+	['2 flats, 2 sharps',	'Ab Bb D# G#', 'sharp'],
+	['1 flat, 3 sharp',		'Ab F# D# G#', 'sharp'],
+	['all sharps',			'A# F# D# G#', 'sharp'],
 
-])('Detect accidentals for: ', (title, input, output) => {
-	test(input.join(' ') + ' => ' + output, () => {
-		const allChords = input.map(chord => parseChord(chord));
+	['number of chord occurrences have priority over number of distinct chords', 'Ab Ab Ab G# C#', 'flat'],
 
-		expect(getMainAccidental(allChords)).toEqual(output);
+])('Detect accidentals for: %s', (title, input, output) => {
+	test(input + ' => ' + output, () => {
+		const parsed = parseSong(input, { parseChordLine });
+
+		expect(getMainAccidental(parsed.allChords)).toEqual(output);
 	});
 });
