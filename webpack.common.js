@@ -9,7 +9,7 @@ const config = {
 	target:'web',
 
 	entry: {
-		main: './src/main.js'
+		main: './src/app/main.js'
 	},
 
 	output: {
@@ -20,6 +20,7 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'ChordPro2',
+			version: require('./package.json').version,
 			template:'assets/index.hbs'
 		}),
 		new MiniCssExtractPlugin({
@@ -37,6 +38,10 @@ const config = {
 			{
 				test: /\.hbs$/,
 				loader: 'handlebars-loader'
+			},
+			{
+				test: /\.chp$/,
+				loader: 'raw-loader'
 			},
 			{
 				test: /\.scss|sass|css$/,

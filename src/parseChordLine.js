@@ -1,42 +1,75 @@
 import _ from 'lodash';
 
+import parseChord from './parseChord';
+import parseTimeSignature from './parseTimeSignature';
+
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 import InvalidChordRepetitionException from './exceptions/InvalidChordRepetitionException';
-import replaceMultipleSpaces from './core/string/replaceMultipleSpaces';
 
+/**
+ * @typedef {Object} ChordLine
+ * @type {Object}
+ * @property {Number} chordCount - number of chords in the line
+ * @property {Bar[]} allBars
+ */
+
+/**
+ * @typedef {Object} Bar
+ * @type {Object}
+ * @property {TimeSignature} timeSignature
+ * @property {ChordLineChord[]} allChords
+ */
+
+/**
+ * @typedef {Object} ChordLineChord
+ * @type {Object}
+ * @property {String} string - original chord string
+ * @property {ChordDef} model
+ * @property {Number} duration - number of beats the chord lasts
+ * @property {Number} beat - beat on which the chord starts
+ */
+
+/**
+ * @param {String} chordLine
+ * @param {TimeSignature} timeSignature
+ * @returns {ChordLine}
+ */
 export default function parseChordLine(
 	chordLine,
 	{
-		beatsPerBar = 4
+		timeSignature = parseTimeSignature('4/4')
 	} = {}
 ) {
+	const { beatCount } = timeSignature;
 
-	const allLineChords = replaceMultipleSpaces(chordLine)
+	const allLineChords = chordLine
+		.replace(/  +/g, ' ')
 		.trim()
 		.split(' ');
 	const allBars = [];
 
 	let bar = { allChords: []};
 	let chord = {};
-	let beatsCount = 0;
+	let model = {};
+	let currentBeatCount = 0;
 	let chordCount = 0;
 	let previousChord = {};
 
 	allLineChords.forEach(chordString => {
+		model = parseChord(chordString.replace(/\./g, ''));
 		chord = {
 			string: chordString,
-			duration: ((chordString.match(/\./g) || []).length) || beatsPerBar,
-			symbol: chordString.replace(/\./g, '')
+			duration: ((chordString.match(/\./g) || []).length) || beatCount,
+			model,
 		};
-		beatsCount += chord.duration;
-
+		chord.beat = currentBeatCount + 1;
+		currentBeatCount += chord.duration;
 
 		if (bar.allChords.length > 0) {
 			previousChord = bar.allChords[bar.allChords.length - 1];
-			if (previousChord.symbol === chord.symbol) {
+			if (_.isEqual(previousChord.model, chord.model)) {
 				throw new InvalidChordRepetitionException({
 					string: chord.string,
-					symbol: chord.symbol
 				});
 			}
 		}
@@ -44,32 +77,33 @@ export default function parseChordLine(
 		bar.allChords.push(chord);
 		chordCount++;
 
-		if (beatsCount === beatsPerBar) {
+		if (currentBeatCount === beatCount) {
+			bar.timeSignature = timeSignature;
+
 			allBars.push(_.cloneDeep(bar));
+
 			bar = { allChords: []};
-			beatsCount = 0;
+			currentBeatCount = 0;
 			previousChord = {};
 
-		} else if (beatsCount > beatsPerBar) {
+		} else if (currentBeatCount > beatCount) {
 			throw new IncorrectBeatCountException({
 				message: '',
 				string: chord.string,
-				symbol: chord.symbol,
 				duration: chord.duration,
-				beatCount: beatsCount,
-				beatsPerBar: beatsPerBar,
+				currentBeatCount,
+				beatCount,
 			});
 		}
 	});
 
-	if (beatsCount > 0 && (beatsCount < beatsPerBar)) {
+	if (currentBeatCount > 0 && (currentBeatCount < beatCount)) {
 		throw new IncorrectBeatCountException({
 			message: '',
 			string: chord.string,
-			symbol: chord.symbol,
 			duration: chord.duration,
-			beatCount: beatsCount,
-			beatsPerBar: beatsPerBar,
+			currentBeatCount,
+			beatCount,
 		});
 	}
 

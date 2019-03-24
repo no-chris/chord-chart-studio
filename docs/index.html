@@ -6,60 +6,16 @@
     <title>ChordPro2</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="css/vendors~main.75e961f948b5810db4d3.css" rel="stylesheet"></head>
+<link href="css/vendors~main.cbd691569599521e2359.css" rel="stylesheet"><link href="css/main.cbd691569599521e2359.css" rel="stylesheet"></head>
 <body>
-<style>
-    body {
-        font-family: monospace;
-        font-size: 14px;
-    }
-    .form {
-        text-align: center;
-        margin: 10px;
-        font-size: 16px;
-    }
-    .container {
-        line-height: 1.6em;
-
-        display: flex;
-    }
-    .left {
-        flex: 1 1 auto;
-        padding: 10px;
-        border-right: 2px solid black;
-    }
-    .right {
-        flex: 1 1 auto;
-        padding: 10px;
-    }
-    #editor {
-        background-color: blanchedalmond;
-    }
-    #editor p {
-         margin: 0;
-    }
-    #editor, #rendered-song {
-        border: 1px solid grey;
-        padding: 10px;
-    }
-    #editor-content {
-        display: none;
-    }
-    #rendered-song {
-        white-space: pre-wrap;
-        background-color: beige;
-    }
-    .ProseMirror-focused {
-        outline: none;
-    }
-
-</style>
 <div class="form">
     <label for="song-selector">Song:</label>
     <select id="song-selector" class="song-selector">
         <option value="kiss">Kiss</option>
         <option value="world">If I ruled the world</option>
-    </select>
+        <option value="worry">Don't you worry bout a thing</option>
+    </select><br />
+    <input type="checkbox" id="aligned-rendering" checked/><label for="aligned-rendering">Aligned rendering</label>
 </div>
 <div class="container">
     <div class="left">
@@ -69,9 +25,10 @@
     </div>
     <div class="right">
         <strong>Rendered: </strong>
-        <div id="rendered-song"></div>
+        <div id="rendered-song"><div></div></div>
     </div>
 </div>
+<div>v0.2.0</div>
 
-<script type="text/javascript" src="vendors~main.75e961f948b5810db4d3.js"></script><script type="text/javascript" src="main.75e961f948b5810db4d3.js"></script></body>
+<script type="text/javascript" src="vendors~main.cbd691569599521e2359.js"></script><script type="text/javascript" src="main.cbd691569599521e2359.js"></script></body>
 </html>

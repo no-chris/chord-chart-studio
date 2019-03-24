@@ -1,7 +1,7 @@
-import { Plugin } from 'prosemirror-state';
+import { Plugin as pmPlugin } from 'prosemirror-state';
 
 export default function onStateChangeFactory(editor) {
-	return new Plugin({
+	return new pmPlugin({
 		key: 'onStateChange',
 		view: () => {
 			return {

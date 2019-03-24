@@ -1,6 +1,6 @@
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
-import { DOMParser } from 'prosemirror-model';
+import { DOMParser as pmDOMParser } from 'prosemirror-model';
 import getPlugins from './getPlugins';
 import editorSchema from './schema';
 
@@ -28,7 +28,7 @@ export default function editorFactory(renderTo) {
 	return Object.assign(editor, {
 		load(newContent) {
 			const newState = EditorState.create({
-				doc: DOMParser.fromSchema(editorSchema).parse(newContent),
+				doc: pmDOMParser.fromSchema(editorSchema).parse(newContent),
 				plugins: editorPlugins
 			});
 
@@ -39,6 +39,10 @@ export default function editorFactory(renderTo) {
 				editorView = new EditorView(renderTo, { state: newState });
 			}
 			editor.emit('statechange', newState);
+		},
+
+		getContent() {
+			return stateToArray(editorView.state);
 		}
 	});
 }

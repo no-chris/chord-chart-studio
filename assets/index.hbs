@@ -3,74 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{htmlWebpackPlugin.options.title}}</title>
+    <title>{{ htmlWebpackPlugin.options.title }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-<style>
-    body {
-        font-family: monospace;
-        font-size: 14px;
-    }
-    .form {
-        text-align: center;
-        margin: 10px;
-        font-size: 16px;
-    }
-    .container {
-        line-height: 1.6em;
-
-        display: flex;
-    }
-    .left {
-        flex: 1 1 auto;
-        padding: 10px;
-        border-right: 2px solid black;
-    }
-    .right {
-        flex: 1 1 auto;
-        padding: 10px;
-    }
-    #editor {
-        background-color: blanchedalmond;
-    }
-    #editor p {
-         margin: 0;
-    }
-    #editor, #rendered-song {
-        border: 1px solid grey;
-        padding: 10px;
-    }
-    #editor-content {
-        display: none;
-    }
-    #rendered-song {
-        white-space: pre-wrap;
-        background-color: beige;
-    }
-    .ProseMirror-focused {
-        outline: none;
-    }
-
-</style>
-<div class="form">
-    <label for="song-selector">Song:</label>
-    <select id="song-selector" class="song-selector">
-        <option value="kiss">Kiss</option>
-        <option value="world">If I ruled the world</option>
-    </select>
-</div>
-<div class="container">
-    <div class="left">
-        <strong>Source: </strong>
-        <div id="editor"></div>
-        <div id="editor-content">Content test</div>
-    </div>
-    <div class="right">
-        <strong>Rendered: </strong>
-        <div id="rendered-song"></div>
-    </div>
+<div class="app-wrapper">
+    <header data-area="app-header"></header>
+    <main>
+        <section class="app-side-bar" data-area="app-side-bar"></section>
+        <section class="app-content" data-area="app-content"></section>
+    </main>
+    <footer data-area="app-footer"></footer>
 </div>
 
 </body>
