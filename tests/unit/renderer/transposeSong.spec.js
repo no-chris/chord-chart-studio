@@ -1,6 +1,5 @@
 import transposeSong from '../../../src/renderer/transposeSong';
 import parseSong from '../../../src/parseSong';
-import parseChordLine from '../../../src/parseChordLine';
 
 describe('transposeSong', () => {
 	test('Module', () => {
@@ -8,7 +7,7 @@ describe('transposeSong', () => {
 	});
 
 	test('Does not mutate input', () => {
-		const parsed = parseSong('C.. Dm.. E.. F. G.', { parseChordLine });
+		const parsed = parseSong('C.. Dm.. E.. F. G.');
 		const transposedLines = transposeSong(parsed.allLines, parsed.allChords, { harmonizeAccidentals: false});
 
 		expect(transposedLines).not.toBe(parsed.allLines);
@@ -34,7 +33,7 @@ describe.each([
 
 ])('Should %s', (title, song, transposedRootNotes, options) => {
 	test('Correctly transpose with ' + JSON.stringify(options), () => {
-		const parsed = parseSong(song, { parseChordLine });
+		const parsed = parseSong(song);
 		const transposed = transposeSong(parsed.allLines, parsed.allChords, options);
 
 		expect(transposed[0].model.allBars[0].allChords[0].transposedModel.symbol.rootNote).toBe(transposedRootNotes[0]);
@@ -51,7 +50,7 @@ describe.each([
 
 ])('Should not transpose when: %s', (title, song, options) => {
 	test('does not transpose with ' + JSON.stringify(options), () => {
-		const parsed = parseSong(song, { parseChordLine });
+		const parsed = parseSong(song);
 		const transposed = transposeSong(parsed.allLines, parsed.allChords, options);
 
 		expect(transposed[0].model.allBars[0].allChords[0].transposedModel).toBeUndefined();

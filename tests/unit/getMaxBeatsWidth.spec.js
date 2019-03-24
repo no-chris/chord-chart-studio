@@ -1,6 +1,5 @@
 import getMaxBeatsWidth from '../../src/getMaxBeatsWidth';
 
-import parseChordLine from '../../src/parseChordLine';
 import parseSong from '../../src/parseSong';
 
 import getChordSymbol from '../../src/getChordSymbol';
@@ -149,7 +148,7 @@ describe.each([
 
 ])('getMaxBeatsWidth(): %s', (title, input, output) => {
 	test('Correctly computes the maximum width for each beat', () => {
-		const parsedSong = parseSong(input, { parseChordLine });
+		const parsedSong = parseSong(input);
 		let { allLines } = parsedSong;
 
 		allLines = forEachChordInSong(allLines, chord => chord.symbol = getChordSymbol(chord.model));

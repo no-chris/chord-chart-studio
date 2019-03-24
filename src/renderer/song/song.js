@@ -1,5 +1,4 @@
 import parseSong from '../../parseSong';
-import parseChordLine from '../../parseChordLine';
 
 import getMaxBeatsWidth from '../../getMaxBeatsWidth';
 
@@ -25,7 +24,7 @@ export default {
 		accidentalsType = 'auto',
 		harmonizeAccidentals = true
 	}) {
-		const parsedSong = parseSong(songTxt, { parseChordLine });
+		const parsedSong = parseSong(songTxt);
 		let { allLines, allChords } = parsedSong;
 
 		allLines = transposeSong(allLines, allChords,  {

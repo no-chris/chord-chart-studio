@@ -1,6 +1,5 @@
 import getMainAccidental from '../../../src/renderer/getMainAccidental';
 import parseSong from '../../../src/parseSong';
-import parseChordLine from '../../../src/parseChordLine';
 
 describe('getMainAccidental', () => {
 	test('Module', () => {
@@ -22,7 +21,7 @@ describe.each([
 
 ])('Detect accidentals for: %s', (title, input, output) => {
 	test(input + ' => ' + output, () => {
-		const parsed = parseSong(input, { parseChordLine });
+		const parsed = parseSong(input);
 
 		expect(getMainAccidental(parsed.allChords)).toEqual(output);
 	});

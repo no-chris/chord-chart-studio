@@ -1,4 +1,5 @@
 import { forEachChordInSong, forEachChordInChordLine } from '../../../../src/renderer/helper/songs';
+
 import parseSong from '../../../../src/parseSong';
 import parseChordLine from '../../../../src/parseChordLine';
 
@@ -18,7 +19,7 @@ Ain't no particular sign I'm more compatible with
 D D
 I just want your extra time and your...Kiss
 		`;
-		const parsed = parseSong(song, { parseChordLine });
+		const parsed = parseSong(song);
 		const applied = forEachChordInSong(parsed.allLines, () => true);
 
 		expect(parsed).not.toBe(applied);
@@ -37,7 +38,7 @@ Ain't no particular sign I'm more compatible with
 D D
 I just want your extra time and your...Kiss
 		`;
-		const parsed = parseSong(song, { parseChordLine });
+		const parsed = parseSong(song);
 		const applied = forEachChordInSong(parsed.allLines, chord => chord.applied = true);
 
 		applied.forEach(line => {
