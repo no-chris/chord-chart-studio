@@ -3,8 +3,7 @@ import _ from 'lodash';
 import pluginFactory from '../../core/plugin';
 import htmlToElement from '../../../core/dom/htmlToElement';
 
-import editorFactory from '../../../editor/prosemirror/editor';
-import songRenderer from '../../../renderer/song/song';
+import { editorFactory, songRenderer } from '@touffi/ucc/src/index-editor';
 
 import editorTpl from './editor.hbs';
 

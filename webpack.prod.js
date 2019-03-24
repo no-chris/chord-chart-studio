@@ -29,7 +29,7 @@ module.exports = merge(common, {
 	},
 
 	plugins: [
-		new CleanWebpackPlugin({ verbose: true }),
+		new CleanWebpackPlugin(),
 		new webpack.HashedModuleIdsPlugin(),
 		new CopyWebpackPlugin([
 			{ from: 'assets/css', to: 'css'},

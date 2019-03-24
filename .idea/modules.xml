@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../ucc/.idea/ucc.iml" filepath="$PROJECT_DIR$/../ucc/.idea/ucc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ucc-demo.iml" filepath="$PROJECT_DIR$/.idea/ucc-demo.iml" />
     </modules>
   </component>

@@ -4,7 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const buildDir    = 'docs';
+const buildDir = 'docs';
 
 const config = {
 	target:'web',
