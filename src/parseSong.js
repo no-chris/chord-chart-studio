@@ -2,7 +2,10 @@ import _ from 'lodash';
 
 import isChordLine from './isChordLine';
 import isTimeSignature from './isTimeSignatureString';
+
 import parseTimeSignature from './parseTimeSignature';
+import parseChordLine from './parseChordLine';
+
 import getAllChordsInSong from './getAllChordsInSong';
 
 /**
@@ -10,7 +13,7 @@ import getAllChordsInSong from './getAllChordsInSong';
  * @type {Object}
  * @property {String} string - original line in source file
  * @property {String} type - chord|text|time-signature|...
- * @property {ChordLine} model
+ * @property {ChordLine|TimeSignature} model
  */
 
 /**
@@ -27,18 +30,16 @@ import getAllChordsInSong from './getAllChordsInSong';
  * @property {number} occurrences - number of times the chord appears in the song
  */
 
+/**
+ * @type {string}
+ */
 const defaultTimeSignature = '4/4';
 
 /**
  * @param {string|array} song
- * @param {Function} parseChordLine
  * @returns {Song}
  */
-export default function parseSong(song, { parseChordLine } = {}) {
-
-	if (!_.isFunction(parseChordLine)) {
-		throw new TypeError('parseChordLine should be a function, received : ' + parseChordLine);
-	}
+export default function parseSong(song) {
 
 	let timeSignature = parseTimeSignature(defaultTimeSignature);
 
@@ -49,7 +50,9 @@ export default function parseSong(song, { parseChordLine } = {}) {
 		.map(line => {
 			if (isTimeSignature(line.string)) {
 				timeSignature = parseTimeSignature(line.string);
+
 				line.type = 'time-signature';
+				line.model = timeSignature;
 
 			} else if (isChordLine(line.string)) {
 				try {
