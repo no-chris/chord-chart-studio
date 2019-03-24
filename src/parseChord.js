@@ -4,12 +4,18 @@ const chords = new Chords();
 
 /**
  * @see https://github.com/mdanka/momo-chords/blob/master/src/types.ts
- *
+ */
+
+/**
  * @typedef {Object} ChordDef
+ * @type {Object}
  * @property {ChordSymbol} symbol
  * @property {Object} structure - whether each degree (1, 2, 3... 11) is present (true/false) in the chord
- *
+ */
+
+/**
  * @typedef {Object} ChordSymbol
+ * @type {Object}
  * @property {String} rootNote
  * @property {String} [bassNote]
  * @property {String} quality

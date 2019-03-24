@@ -6,6 +6,34 @@ import parseTimeSignature from './parseTimeSignature';
 import IncorrectBeatCountException from './exceptions/IncorrectBeatCountException';
 import InvalidChordRepetitionException from './exceptions/InvalidChordRepetitionException';
 
+/**
+ * @typedef {Object} ChordLine
+ * @type {Object}
+ * @property {Number} chordCount - number of chords in the line
+ * @property {Bar[]} allBars
+ */
+
+/**
+ * @typedef {Object} Bar
+ * @type {Object}
+ * @property {TimeSignature} timeSignature
+ * @property {ChordLineChord[]} allChords
+ */
+
+/**
+ * @typedef {Object} ChordLineChord
+ * @type {Object}
+ * @property {String} string - original chord string
+ * @property {ChordDef} model
+ * @property {Number} duration - number of beats the chord lasts
+ * @property {Number} beat - beat on which the chord starts
+ */
+
+/**
+ * @param {String} chordLine
+ * @param {TimeSignature} timeSignature
+ * @returns {ChordLine}
+ */
 export default function parseChordLine(
 	chordLine,
 	{

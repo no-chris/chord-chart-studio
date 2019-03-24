@@ -1,9 +1,14 @@
 import _ from 'lodash';
 
-export function forEachChordInSong(songLines, fn) {
-	const newSongLines = _.cloneDeep(songLines);
+/**
+ * @param {SongLine[]} allLines
+ * @param {Function} fn - to execute on each chord
+ * @returns {SongLine[]}
+ */
+export function forEachChordInSong(allLines, fn) {
+	const newLines = _.cloneDeep(allLines);
 
-	newSongLines.forEach(line => {
+	newLines.forEach(line => {
 		if (line.type === 'chord') {
 			line.model.allBars.forEach(bar => {
 				bar.allChords.forEach(chord => {
@@ -12,9 +17,14 @@ export function forEachChordInSong(songLines, fn) {
 			});
 		}
 	});
-	return newSongLines;
+	return newLines;
 }
 
+/**
+ * @param {ChordLine[]} chordLine
+ * @param {Function} fn - to execute on each chord
+ * @returns {ChordLine[]}
+ */
 export function forEachChordInChordLine(chordLine, fn) {
 	const newChordLine = _.cloneDeep(chordLine);
 

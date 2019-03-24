@@ -1,13 +1,18 @@
 import isTimeSignatureString from './isTimeSignatureString';
 
 /**
-* @typedef {Object} TimeSignature
-* @property {String} string - original string
-* @property {Number} count - upper part of time signature
-* @property {Number} value - lower part of time signature
-* @property {Number} beatCount - number of beats per bar
-*/
+ * @typedef {Object} TimeSignature
+ * @type {Object}
+ * @property {String} string - original string
+ * @property {Number} count - upper part of time signature
+ * @property {Number} value - lower part of time signature
+ * @property {Number} beatCount - number of beats per bar
+ */
 
+/**
+ * @param {String} string
+ * @returns {TimeSignature}
+ */
 export default function parseTimeSignature(string) {
 	if (!isTimeSignatureString(string)) {
 		throw new TypeError('Expected time signature string, received: ' + string);

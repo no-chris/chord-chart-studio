@@ -4,6 +4,14 @@ import getMainAccidental from './getMainAccidental';
 
 import { forEachChordInSong } from './helper/songs';
 
+/**
+ * @param {SongLine[]} allLines
+ * @param {SongChord[]} allChords
+ * @param transposeValue
+ * @param accidentalsType
+ * @param harmonizeAccidentals
+ * @returns {SongLine[]} - with added transposedModel property on each chord if needed
+ */
 export default function transposeSong(allLines, allChords, {
 	transposeValue = 0,
 	accidentalsType = 'auto',

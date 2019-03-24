@@ -1,3 +1,7 @@
+/**
+ * @param {SongLine[]} allLines
+ * @returns {Array}
+ */
 export default function getMaxBeatsWidth(allLines) {
 	const maxBeatsWidth = [];
 
