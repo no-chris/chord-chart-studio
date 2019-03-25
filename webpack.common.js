@@ -22,7 +22,8 @@ const config = {
 		new HtmlWebpackPlugin({
 			title: 'Universal Chord Charts',
 			version: require('./package.json').version,
-			template:'assets/index.hbs'
+			template:'assets/index.hbs',
+			inlineSource: '.(js|css)$'
 		}),
 		new MiniCssExtractPlugin({
 			filename:'css/[name].[hash].css',
