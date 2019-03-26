@@ -3,7 +3,7 @@ import _ from 'lodash';
 import pluginFactory from '../../core/plugin';
 import htmlToElement from '../../../core/dom/htmlToElement';
 
-import { editorFactory, songRenderer } from '@touffi/ucc/src/index-editor';
+import { editorFactory, parseSong, renderSong } from '@touffi/ucc/src/index-editor';
 
 import editorTpl from './editor.hbs';
 
@@ -34,7 +34,8 @@ const editorPlugin = pluginFactory({
 		const previewContainer = document.querySelector('#preview');
 
 		function previewSong(songLines) {
-			const renderedSong = songRenderer.render(songLines, renderingOptions);
+			const parsedSong = parseSong(songLines);
+			const renderedSong = renderSong(parsedSong, renderingOptions);
 			const rendered = htmlToElement(renderedSong);
 
 			if (previewContainer.childNodes.length) {
