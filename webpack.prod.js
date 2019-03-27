@@ -44,7 +44,7 @@ module.exports = merge(common, {
 		new HtmlWebpackInlineSourcePlugin(),
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static',
-			openAnalyzer: true,
+			openAnalyzer: false,
 		}),
 	],
 });
