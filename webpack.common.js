@@ -3,7 +3,6 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BundleAnalyzerPlugin 	= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const buildDir = 'docs';
 
@@ -28,10 +27,6 @@ const config = {
 		}),
 		new MiniCssExtractPlugin({
 			filename:'css/[name].[hash].css',
-		}),
-		new BundleAnalyzerPlugin({
-			analyzerMode: 'static',
-			openAnalyzer: true,
 		}),
 	],
 

@@ -65,7 +65,9 @@
     "sloc": "echo \"Source code:\" > SLOC && npx sloc src >> SLOC && echo \"Tests:\" >> SLOC && npx sloc tests >> SLOC && echo \"Total:\" >> SLOC && npx sloc src tests >> SLOC",
     "outdated": "npm outdated",
     "audit": "npm audit",
-    "build": "npm run lint && npm run test && npm run bundle && npm run size && npm run sloc && npm run outdated && npm run audit"
+    "build": "npm run lint && npm run test && npm run bundle && npm run size && npm run sloc && npm run outdated && npm run audit",
+
+    "unit": "jest tests/unit"
   },
   "size-limit": [
     {

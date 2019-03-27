@@ -9,7 +9,7 @@ const renderingOptionsPlugin = pluginFactory({
 		const areaBroker = app.getAreaBroker();
 		const header = areaBroker.getHeader();
 
-		const renderingOptions = new DocumentFragment();
+		const renderingOptions = document.createDocumentFragment();
 		renderingOptions.appendChild(htmlToElement(renderingOptionsTpl()));
 
 

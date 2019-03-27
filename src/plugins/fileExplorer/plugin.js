@@ -19,7 +19,7 @@ const fileExplorerPlugin = pluginFactory({
 		const areaBroker = app.getAreaBroker();
 		const sideBar = areaBroker.getSideBar();
 
-		const fileExplorer = new DocumentFragment();
+		const fileExplorer = document.createDocumentFragment();
 		fileExplorer.appendChild(htmlToElement(fileExplorerTpl()));
 
 
