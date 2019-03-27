@@ -3,6 +3,10 @@ module.exports = {
 		'browser': true,
 		'es6': true
 	},
+	'plugins': [
+		'import',
+		'no-unsanitized'
+	],
 	'extends': 'eslint:recommended',
 	'globals': {
 		'Atomics': 'readonly',
@@ -13,30 +17,26 @@ module.exports = {
 		'sourceType': 'module'
 	},
 	'rules': {
-		'indent': [
-			'error',
-			'tab',
-			{
-				'SwitchCase': 1
-			}
-		],
-		'linebreak-style': [
-			'error',
-			'unix'
-		],
-		'quotes': [
-			'error',
-			'single'
-		],
-		'semi': [
-			'error',
-			'always'
-		],
-		'no-shadow': [
+		'indent': 				[ 'error', 'tab', { 'SwitchCase': 1 } ],
+		'linebreak-style': 		[ 'error',  'unix' ],
+		'quotes': 				[ 'error',  'single' ],
+		'semi': 				[ 'error',  'always' ],
+		'no-shadow': 			[ 'error',  { 'builtinGlobals': true } ],
+
+		'no-restricted-imports':[
 			'error',
 			{
-				'builtinGlobals': true
+				paths: [
+					{
+						name: 'lodash',
+						message: 'Please do not import lodash as a whole: import individual lodash functions instead.'
+					}
+				]
 			}
 		],
+
+		'no-unsanitized/property': 	[ 'error', { escape: { methods: ['escapeHTML'] } } ],
+		'no-unsanitized/method': 	[ 'error' ],
+
 	}
 };

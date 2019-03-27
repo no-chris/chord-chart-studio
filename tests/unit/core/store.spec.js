@@ -1,4 +1,4 @@
-import store from '../../../../src/app/core/store';
+import store from '../../../src/core/store';
 
 describe('store', () => {
 	test('Module', () => {

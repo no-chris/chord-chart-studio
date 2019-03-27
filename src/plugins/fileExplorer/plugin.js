@@ -2,8 +2,8 @@ import _sortBy from 'lodash/sortBy';
 import _defer from 'lodash/defer';
 import _throttle from 'lodash/throttle';
 
-import pluginFactory from '../../../app/core/plugin';
-import htmlToElement from '../../../core/dom/htmlToElement';
+import pluginFactory from '../../core/plugin';
+import htmlToElement from '../../core/dom/htmlToElement';
 
 import fileManagerFactory from './fileManager';
 

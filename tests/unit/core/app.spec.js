@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-import appFactory from '../../../../src/app/core/app';
-import pluginFactory from '../../../../src/app/core/plugin';
+import appFactory from '../../../src/core/app';
+import pluginFactory from '../../../src/core/plugin';
 
-import isEventEmitter from '../../core/isEventEmitter';
+import isEventEmitter from './isEventEmitter';
 
 describe('appFactory', () => {
 	test('Module', () => {

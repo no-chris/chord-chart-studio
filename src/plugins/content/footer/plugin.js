@@ -1,5 +1,5 @@
 import pluginFactory from '../../../core/plugin';
-import htmlToElement from '../../../../core/dom/htmlToElement';
+import htmlToElement from '../../../core/dom/htmlToElement';
 
 import footerTpl from './footer.hbs';
 

@@ -11,7 +11,7 @@ const config = {
 	target:'web',
 
 	entry: {
-		main: './src/app/main.js'
+		main: './src/main.js'
 	},
 
 	output: {

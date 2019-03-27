@@ -1,5 +1,5 @@
-import pluginFactory from '../../../app/core/plugin';
-import htmlToElement from '../../../core/dom/htmlToElement';
+import pluginFactory from '../../core/plugin';
+import htmlToElement from '../../core/dom/htmlToElement';
 
 import renderingOptionsTpl from './renderingOptions.hbs';
 
