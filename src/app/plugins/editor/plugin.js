@@ -1,11 +1,12 @@
-import _ from 'lodash';
+import _assign from 'lodash/assign';
 
 import pluginFactory from '../../core/plugin';
 import htmlToElement from '../../../core/dom/htmlToElement';
 
-import { editorFactory, parseSong, renderSong } from '@touffi/ucc/src/index-editor';
+import { editorFactory, parseSong, renderSong } from '@touffi/ucc/src/ucc-editor';
 
 import editorTpl from './editor.hbs';
+
 
 const editorPlugin = pluginFactory({
 
@@ -25,16 +26,26 @@ const editorPlugin = pluginFactory({
 		};
 
 
-		// add editor functionality
-		const editorNode = document.querySelector('#source');
-
-		const editor = editorFactory(editorNode);
-
-
+		const editorContainer = document.querySelector('#source');
 		const previewContainer = document.querySelector('#preview');
 
-		function previewSong(songLines) {
-			const parsedSong = parseSong(songLines);
+		const editor = editorFactory(editorContainer);
+
+		editor.on('change', (song) => {
+			previewSong(song, renderingOptions);
+			app.emit('editorchange', song);
+		});
+
+		app.on('optionchange', newOptions => {
+			_assign(renderingOptions, newOptions);
+			refreshPreview();
+		});
+
+		app.on('activatefile', file => editor.load(file.content));
+
+
+		function previewSong(song) {
+			const parsedSong = parseSong(song);
 			const renderedSong = renderSong(parsedSong, renderingOptions);
 			const rendered = htmlToElement(renderedSong);
 
@@ -46,32 +57,9 @@ const editorPlugin = pluginFactory({
 		}
 
 		function refreshPreview() {
-			const songLines = editor.getContent();
-			previewSong(songLines);
+			const song = editor.getContent();
+			previewSong(song);
 		}
-
-		editor.on('change', (songLines) => {
-			previewSong(songLines, renderingOptions);
-			app.emit('editorchange', songLines.join('\n'));
-		});
-
-		app.on('optionchange', newOptions => {
-			_.assign(renderingOptions, newOptions);
-			refreshPreview();
-		});
-
-		function toNode(text) {
-			const div = document.createElement('div');
-			div.innerHTML = text
-				.split('\n')
-				.map(line => `<p>${line}</p>`)
-				.join('');
-			return div;
-		}
-
-		// listen to events
-		app.on('activatefile', file => editor.load(toNode(file.content)));
-
 
 	}
 });
