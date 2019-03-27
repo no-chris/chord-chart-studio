@@ -1,9 +1,10 @@
 import addEventEmitter from './addEventEmitter';
+import _assign from 'lodash/assign';
 
-export default function pluginFactory(pluginDef) {
+export default function pluginFactory(pluginDef = {}) {
 	let host;
 
-	return Object.assign(pluginDef, addEventEmitter({
+	const pluginBase = addEventEmitter({
 		getHost() {
 			if (!host) {
 				throw new Error('Plugin\'s host has not been setup, cannot retrieve it');
@@ -17,5 +18,9 @@ export default function pluginFactory(pluginDef) {
 			}
 			host = newHost;
 		}
-	}));
+	});
+
+	_assign(pluginDef, pluginBase);
+
+	return pluginDef;
 }

@@ -1,11 +1,12 @@
 /* eslint-env node */
 const presets = [
 	[
-		'@babel/env',
+		'@babel/preset-env',
 		{
 			targets: {
-				node: 'current'
+				browsers: 'defaults'
 			},
+			corejs: '3.0',
 			useBuiltIns: 'usage',
 		},
 	],

@@ -1,16 +1,23 @@
 import pluginFactory from '../../../src/core/plugin';
-import isEventEmitter from './isEventEmitter';
 
 describe('pluginFactory', () => {
 	test('Module', () => {
 		expect(pluginFactory).toBeInstanceOf(Function);
 	});
 
-	test('Event emitter', () => {
-		const plugin = pluginFactory();
-		isEventEmitter(expect, plugin);
-	});
-});
+	describe.each([
+		'on',
+		'once',
+		'off',
+		'emit',
+		'getHost',
+		'setHost',
+	])('API: .%s()', (method) => {
+		test('Method exists', () => {
+			const plugin = pluginFactory();
+			expect(plugin[method]).toBeInstanceOf(Function);
+		});
+	});});
 
 describe('set/getHost()', () => {
 	test('should allow to set and retrieve host', () => {
