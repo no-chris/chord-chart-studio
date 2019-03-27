@@ -50,10 +50,10 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "dompurify": "^1.0.10",
     "eventemitter2": "^5.0.1",
     "handlebars": "^4.1.1",
     "lodash": "^4.17.11",
-    "loglevel": "^1.6.1",
     "nanoid": "^2.0.1"
   },
   "scripts": {
@@ -64,7 +64,8 @@
     "size": "size-limit",
     "sloc": "echo \"Source code:\" > SLOC && npx sloc src >> SLOC && echo \"Tests:\" >> SLOC && npx sloc tests >> SLOC && echo \"Total:\" >> SLOC && npx sloc src tests >> SLOC",
     "outdated": "npm outdated",
-    "build": "npm run lint && npm run test && npm run bundle && npm run size && npm run sloc && npm outdated"
+    "audit": "npm audit",
+    "build": "npm run lint && npm run test && npm run bundle && npm run size && npm run sloc && npm run outdated && npm run audit"
   },
   "size-limit": [
     {
