@@ -4,7 +4,7 @@ Easily create song sheets with chords and lyrics.
 
 ## Demo
 
-https://no-chris.github.io/chordPro2/ 
+https://xxx
 
 ## Dev
 

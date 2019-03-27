@@ -1,27 +1,29 @@
 /* eslint-env node */
+const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const buildDir    = 'docs';
-const buildDirAbs = __dirname + '/' + buildDir;
+const buildDir = 'docs';
 
 const config = {
 	target:'web',
 
 	entry: {
-		main: './src/app/main.js'
+		main: './src/main.js'
 	},
 
 	output: {
 		filename: '[name].[hash].js',
-		path: buildDirAbs,
+		path: path.resolve(process.cwd(), buildDir),
 	},
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'ChordPro2',
+			title: 'Universal Chord Charts',
 			version: require('./package.json').version,
-			template:'assets/index.hbs'
+			template:'assets/index.hbs',
+			inlineSource: '.(js|css)$'
 		}),
 		new MiniCssExtractPlugin({
 			filename:'css/[name].[hash].css',
@@ -38,10 +40,6 @@ const config = {
 			{
 				test: /\.hbs$/,
 				loader: 'handlebars-loader'
-			},
-			{
-				test: /\.chp$/,
-				loader: 'raw-loader'
 			},
 			{
 				test: /\.scss|sass|css$/,
