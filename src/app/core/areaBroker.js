@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _forEach from 'lodash/forEach';
 
 /**
  * @param areas - key/value pairs where key = areaId and value = cssSelector
@@ -9,7 +9,7 @@ export default function areaBrokerFactory(areas) {
 
 	let getterName;
 
-	_.forEach(areas,  (cssSelector, areaId) => {
+	_forEach(areas,  (cssSelector, areaId) => {
 		getterName = 'get' + areaId.charAt(0).toUpperCase() + areaId.slice(1);
 
 		areaBroker[getterName] = () => {

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _isFunction from 'lodash/isFunction';
 import EventEmitter from 'eventemitter2';
 
 export default function appFactory(areaBroker) {
@@ -12,7 +12,7 @@ export default function appFactory(areaBroker) {
 		for (let i = 0; i < pluginRegistry.length; i++) {
 			plugin = pluginRegistry[i];
 
-			if (_.isFunction(plugin[method])) {
+			if (_isFunction(plugin[method])) {
 				await plugin[method]();
 			}
 		}

@@ -1,4 +1,6 @@
-import _ from 'lodash';
+import _sortBy from 'lodash/sortBy';
+import _defer from 'lodash/defer';
+import _throttle from 'lodash/throttle';
 
 import pluginFactory from '../../../app/core/plugin';
 import htmlToElement from '../../../core/dom/htmlToElement';
@@ -58,7 +60,7 @@ const fileExplorerPlugin = pluginFactory({
 
 		// load existing files
 		const allFiles = this.fm.getAll();
-		const sortedFiles = _.sortBy(allFiles, o => o.title);
+		const sortedFiles = _sortBy(allFiles, o => o.title);
 
 		if (sortedFiles.length) {
 			sortedFiles.forEach( file => {
@@ -76,7 +78,7 @@ const fileExplorerPlugin = pluginFactory({
 			const newFileElement = insertFile(newFile);
 			activateFile(newFile.key);
 
-			_.defer(() => makeTitleEditable(newFileElement));
+			_defer(() => makeTitleEditable(newFileElement));
 		};
 
 		const deleteFile = () => {
@@ -156,7 +158,7 @@ const fileExplorerPlugin = pluginFactory({
 
 		fileList.addEventListener('keypress', preventEnterKey);
 		fileList.addEventListener('keypress', blurOnEnter);
-		fileList.addEventListener('input', _.throttle(autosaveTitle, autosaveIntervalMs));
+		fileList.addEventListener('input', _throttle(autosaveTitle, autosaveIntervalMs));
 		fileList.addEventListener('click', activateEntry);
 		fileList.addEventListener('dblclick', e => makeTitleEditable(e.target.parentElement)); //todo fix bug when click outside of title div
 

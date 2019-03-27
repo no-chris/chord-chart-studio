@@ -1,0 +1,54 @@
+Source code:
+
+---------- Result ------------
+
+            Physical :  814
+              Source :  576
+             Comment :  64
+ Single-line comment :  16
+       Block comment :  48
+               Mixed :  3
+ Empty block comment :  5
+               Empty :  182
+               To Do :  0
+
+Number of files read :  27
+
+----------------------------
+
+Tests:
+
+---------- Result ------------
+
+            Physical :  641
+              Source :  499
+             Comment :  0
+ Single-line comment :  0
+       Block comment :  0
+               Mixed :  0
+ Empty block comment :  0
+               Empty :  142
+               To Do :  0
+
+Number of files read :  8
+
+----------------------------
+
+Total:
+
+---------- Result ------------
+
+            Physical :  1455
+              Source :  1075
+             Comment :  64
+ Single-line comment :  16
+       Block comment :  48
+               Mixed :  3
+ Empty block comment :  5
+               Empty :  324
+               To Do :  0
+
+Number of files read :  35
+
+----------------------------
+
