@@ -1,5 +1,5 @@
 import nanoid from 'nanoid';
-import EventEmitter from 'eventemitter2';
+import addEventEmitter from '../../core/addEventEmitter';
 
 import store from '../../core/store';
 
@@ -14,9 +14,7 @@ function fileFactory() {
 }
 
 export default function fileExplorerFactory() {
-	const fileManager = new EventEmitter();
-
-	return Object.assign(fileManager, {
+	return addEventEmitter({
 		create() {
 			const newFile = fileFactory();
 

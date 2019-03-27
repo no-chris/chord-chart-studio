@@ -1,11 +1,9 @@
-import EventEmitter from 'eventemitter2';
+import addEventEmitter from './addEventEmitter';
 
 export default function pluginFactory(pluginDef) {
-	const plugin = new EventEmitter();
-
 	let host;
 
-	return Object.assign(plugin, pluginDef, {
+	return Object.assign(pluginDef, addEventEmitter({
 		getHost() {
 			if (!host) {
 				throw new Error('Plugin\'s host has not been setup, cannot retrieve it');
@@ -19,5 +17,5 @@ export default function pluginFactory(pluginDef) {
 			}
 			host = newHost;
 		}
-	});
+	}));
 }

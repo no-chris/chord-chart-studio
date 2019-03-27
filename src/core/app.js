@@ -1,10 +1,8 @@
 import _isFunction from 'lodash/isFunction';
-import EventEmitter from 'eventemitter2';
+import addEventEmitter from './addEventEmitter';
 
 export default function appFactory(areaBroker) {
 	const pluginRegistry = [];
-
-	const app = new EventEmitter();
 
 	async function pluginRun(method) {
 		let plugin;
@@ -19,7 +17,7 @@ export default function appFactory(areaBroker) {
 		this.emit(method);
 	}
 
-	return Object.assign(app, {
+	return addEventEmitter({
 		getAreaBroker() {
 			return areaBroker;
 		},
