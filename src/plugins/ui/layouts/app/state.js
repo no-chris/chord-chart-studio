@@ -1,7 +1,7 @@
-import plugin from './plugin';
 import createAction from '../../../../core/createAction';
+import pluginId from './id';
 
-export const initialState = {
+const initialState = {
 	isLeftBarCollapsed: false,
 	isRightBarCollapsed: false,
 };
@@ -13,8 +13,8 @@ export const initialState = {
  * ==============
  */
 
-const TOGGLE_LEFT_BAR = plugin.id + '_toggleLeftBar';
-const TOGGLE_RIGHT_BAR = plugin.id + '_toggleRightBar';
+const TOGGLE_LEFT_BAR = pluginId + '_toggleLeftBar';
+const TOGGLE_RIGHT_BAR = pluginId + '_toggleRightBar';
 
 export function toggleLeftBar(dispatch) {
 	dispatch(createAction(TOGGLE_LEFT_BAR));
@@ -57,9 +57,9 @@ export function reducers(state = initialState, action) {
  */
 
 export function getIsLeftBarCollapsed(state) {
-	return state[plugin.id].isLeftBarCollapsed;
+	return state[pluginId].isLeftBarCollapsed;
 }
 
 export function getIsRightBarCollapsed(state) {
-	return state[plugin.id].isRightBarCollapsed;
+	return state[pluginId].isRightBarCollapsed;
 }

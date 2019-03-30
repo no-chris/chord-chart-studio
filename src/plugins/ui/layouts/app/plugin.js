@@ -1,16 +1,12 @@
 import pluginFactory from '../../../../core/pluginFactory';
-import { initialState, reducers } from './state';
+import pluginId from './id';
 
-const pluginId = 'ui_app_layout';
+import { reducers } from './state';
 
-const headerPlugin = pluginFactory(pluginId, {
-	getInitialState() {
-		return initialState; // needed ?
-	},
-
+const plugin = pluginFactory(pluginId, {
 	getReducers() {
 		return reducers;
 	},
 });
 
-export default headerPlugin;
+export default plugin;

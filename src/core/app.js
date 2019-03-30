@@ -42,10 +42,9 @@ export default function appFactory(areaBroker) {
 		},
 
 		setInitialState() {
-			const initialState = pluginGet('getInitialState');
 			const allReducters = pluginGet('getReducers');
 
-			state.createStore(allReducters, initialState);
+			state.createStore(allReducters, {});
 
 		},
 

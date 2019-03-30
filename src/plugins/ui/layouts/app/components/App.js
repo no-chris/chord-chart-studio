@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Nav from './Nav';
 import Logo from './Logo';
+import Footer from './Footer';
 
 import { toggleLeftBar, toggleRightBar, getIsLeftBarCollapsed, getIsRightBarCollapsed } from '../state';
 
@@ -47,7 +48,9 @@ export default connect(
 					<Nav active={activeRoute} />
 				</section>
 				<section data-area="app-content">Tab</section>
-				<section data-area="app-footer">Footer</section>
+				<section data-area="app-footer">
+					<Footer/>
+				</section>
 			</section>
 			<section data-area="app-sidebar-right" className={(isRightBarCollapsed) ? 'is-collapsed' : ''}>
 				<div className="collapser" onClick={_toggleRightBar}></div>

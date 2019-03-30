@@ -2,7 +2,6 @@
   padding: $spacer-tiny $spacer-small;
 
   @include font-size(small);
-  color: $navy;
-  background-color: $silver;
-  border-top: 1px solid $gray;
+  color: $c-prim-txt;
+  background-color: $c-prim;
 }
