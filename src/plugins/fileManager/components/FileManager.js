@@ -53,32 +53,35 @@ export default connect(
 
 		return (
 			<div className="fm">
-				<div className="fm-collapsed">
+				<div className="sidebar-collapsed">
 					<Icon iconName="file_copy" />
 				</div>
-				<FileActions
-					createFile={_createFile}
-					deleteFile={() => _deleteFile(selected)}
-					enableRename={() => _enableRename(selected)}
-				/>
-				<ul className="fm-entry-list">
-					{
-						allFiles.map(file =>
-							<FileEntry
-								title={file.title}
-								defaultTitle={defaultTitle}
-								fileKey={file.key}
-								isSelected={selected === file.key}
-								isRenamed={renamed === file.key}
-								selectFile={_selectFile}
-								renameFile={_renameFile}
-								enableRename={_enableRename}
-								key={file.key}
-							/>
-						)
-					}
 
-				</ul>
+				<div className="sidebar-expanded">
+					<FileActions
+						createFile={_createFile}
+						deleteFile={() => _deleteFile(selected)}
+						enableRename={() => _enableRename(selected)}
+					/>
+					<ul className="fm-entry-list">
+						{
+							allFiles.map(file =>
+								<FileEntry
+									title={file.title}
+									defaultTitle={defaultTitle}
+									fileKey={file.key}
+									isSelected={selected === file.key}
+									isRenamed={renamed === file.key}
+									selectFile={_selectFile}
+									renameFile={_renameFile}
+									enableRename={_enableRename}
+									key={file.key}
+								/>
+							)
+						}
+
+					</ul>
+				</div>
 			</div>
 		);
 	}

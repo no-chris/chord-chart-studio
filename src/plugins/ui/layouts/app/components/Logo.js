@@ -5,7 +5,13 @@ import Icon from '../../../../../ui/Icon.js';
 export default function Logo() {
 	return (
 		<div className="logo">
-			<Icon iconName="queue_music" /><span className="is-ext">Universal Chords Charts</span>
+			<div className="sidebar-collapsed">
+				<Icon iconName="queue_music" />
+			</div>
+
+			<div className="sidebar-expanded">
+				<Icon iconName="queue_music" />Universal Chords Charts
+			</div>
 		</div>
 	);
 }

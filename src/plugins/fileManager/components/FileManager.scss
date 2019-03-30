@@ -5,110 +5,96 @@
 /* ================================= */
 
 .fm {
-  .fm-collapsed {
-    display: none;
-    padding: $spacer-small;
-  }
+  .sidebar-expanded {
 
-  .fm-action-list {
-    padding: $spacer-small;
+    .fm-action-list {
+      padding: $spacer-small;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
 
-    .fm-action {
-      padding: $spacer-tiny;
-      margin-right: $spacer-tiny;
+      .fm-action {
+        flex: 0 1 auto;
+        padding: $spacer-tiny;
+        margin-right: $spacer-tiny;
+        white-space: nowrap;
+      }
+
     }
 
-  }
+    .fm-entry-list {
+      padding-left: 0;
 
-  .fm-entry-list {
-    padding-left: 0;
+      .fm-entry {
 
-    .fm-entry {
-
-      input {
-        width: 100%;
-        padding: $spacer-extra-tiny $spacer-small;
+        input {
+          width: 100%;
+          padding: $spacer-extra-tiny $spacer-small;
+        }
       }
     }
   }
 }
 
 
-
-.is-collapsed {
-  .fm {
-    .fm-collapsed {
-      display: block;
-    }
-
-    .fm-action-list {
-      display: none;
-    }
-
-    .fm-entry-list {
-      display: none;
-    }
-  }
-
-
-}
 
 /* ================================= */
 /*                Skin               */
 /* ================================= */
 
 .fm {
-  @include font-size(small);
-  color: $c-prim-ultralight;
+  .sidebar-expanded {
 
-  .fm-action-list {
+    @include font-size(small);
+    color: $c-prim-ultralight;
 
-    .fm-action {
+    .fm-action-list {
+      .fm-action {
 
-      &:hover {
-        background-color: rgba(white, .3);
-        cursor: pointer;
-      }
+        &:hover {
+          background-color: rgba(white, .3);
+          cursor: pointer;
+        }
 
-    }
-
-    .material-icons {
-      @include font-size(normal);
-      vertical-align: middle;
-    }
-  }
-
-  .fm-entry-list {
-    list-style: none;
-
-    .fm-entry {
-      cursor: pointer;
-
-      input {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        color: $c-prim-txt;
-        outline: none;
-      }
-
-      &:hover {
-        background-color: rgba(white, .3);
-      }
-
-      &.selected {
-        background-color: $c-sec;
-
-        input {
-          color: $c-sec-txt;
+        .material-icons {
+          @include font-size(normal);
+          vertical-align: middle;
         }
       }
+    }
 
-      &.renamed {
+    .fm-entry-list {
+      list-style: none;
+
+      .fm-entry {
+        cursor: pointer;
+
         input {
-          background-color: $white;
-          cursor: text;
-          color: $black;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          color: $c-prim-txt;
+          outline: none;
+        }
+
+        &:hover {
+          background-color: rgba(white, .3);
+        }
+
+        &.selected {
+          background-color: $c-sec;
+
+          input {
+            color: $c-sec-txt;
+          }
+        }
+
+        &.renamed {
+          input {
+            background-color: $white;
+            cursor: text;
+            color: $black;
+          }
         }
       }
     }

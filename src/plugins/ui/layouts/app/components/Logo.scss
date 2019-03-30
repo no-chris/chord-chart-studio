@@ -1,29 +1,19 @@
 .logo {
-  margin: $spacer-tiny $spacer-small;
-  padding-bottom: $spacer-tiny;
+  .sidebar-expanded {
+    margin: $spacer-tiny $spacer-small;
+    padding-bottom: $spacer-tiny;
 
-  @include font-size(base);
-  font-family: $font-family-headings;
-  font-weight: 700;
-  color: $c-prim-txt;
-  border-bottom: 1px solid $c-prim-light;
+    @include font-size(base);
+    font-family: $font-family-headings;
+    font-weight: 700;
+    color: $c-prim-txt;
+    border-bottom: 1px solid $c-prim-light;
 
-  i {
-    margin-right: $spacer-tiny;
-    vertical-align: middle;
-
-    @include font-size(normal);
-    color: $c-prim-ultralight;
-  }
-}
-
-.is-collapsed {
-  .logo {
-    text-align: center;
-
-    i {
-      margin-right: 0;
-      @include font-size(base);
+    .material-icons {
+      @include font-size(normal);
+      margin-right: $spacer-tiny;
+      vertical-align: middle;
     }
   }
+
 }

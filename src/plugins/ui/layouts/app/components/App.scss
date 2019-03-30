@@ -25,10 +25,23 @@ html, body, #app {
     flex-direction: row;
     flex-wrap: nowrap;
 
+    .sidebar-collapsed {
+      display:none;
+      padding: $spacer-tiny $spacer-small;
+    }
+
     &.is-collapsed {
       width: 48px;
 
-      .is-ext {
+      .sidebar-collapsed {
+        display:block;
+      }
+
+      .sidebar-expanded {
+        display: none;
+      }
+
+      .collapser {
         display: none;
       }
     }
@@ -38,7 +51,7 @@ html, body, #app {
     }
 
     .collapser {
-      flex: 0 0 6px;
+      flex: 0 0 8px;
     }
   }
 
@@ -67,8 +80,26 @@ html, body, #app {
 /* ================================= */
 
 .app-wrapper {
+  [data-area="app-sidebar-left"],
+  [data-area="app-sidebar-right"] {
+    .sidebar-collapsed {
+      color: $c-prim-txt;
+      text-align: center;
+    }
+
+    &.is-collapsed {
+      cursor: pointer;
+    }
+  }
+
   [data-area="app-sidebar-left"] {
     background-color: $c-prim-dark;
+
+    &.is-collapsed {
+      &:hover {
+        background-color: lighten($c-prim-dark, 5%);
+      }
+    }
 
     .collapser {
       background-color: lighten($c-prim-dark, 30%);
@@ -82,8 +113,8 @@ html, body, #app {
 
   [data-area="app-main"] {
     [data-area="app-header"] {
-      background-color: $c-prim;
-      border-bottom: 4px solid $c-prim-dark;
+      background-color: $c-prim-light;
+      border-bottom: 5px solid $c-prim-dark;
     }
 
     [data-area="app-main"] {
@@ -98,6 +129,12 @@ html, body, #app {
   [data-area="app-sidebar-right"] {
     background-color: $c-prim-ultralight;
 
+    &.is-collapsed {
+      &:hover {
+        background-color: darken($c-prim-ultralight, 10%);
+      }
+    }
+
     .collapser {
       background-color: darken($c-prim-ultralight, 10%);
 
@@ -107,5 +144,4 @@ html, body, #app {
       }
     }
   }
-
 }

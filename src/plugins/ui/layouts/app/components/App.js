@@ -5,41 +5,52 @@ import Nav from './Nav';
 import Logo from './Logo';
 import Footer from './Footer';
 
-import { toggleLeftBar, toggleRightBar, getIsLeftBarCollapsed, getIsRightBarCollapsed } from '../state';
+import {
+	toggleLeftBar,
+	toggleRightBar,
+	getIsLeftBarCollapsed,
+	getIsRightBarCollapsed
+} from '../state';
 
 
-function mapStateToProps(state) {
-	return {
-		isLeftBarCollapsed: getIsLeftBarCollapsed(state),
-		isRightBarCollapsed: getIsRightBarCollapsed(state),
-	};
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		_toggleLeftBar: () => toggleLeftBar(dispatch),
-		_toggleRightBar: () => toggleRightBar(dispatch),
-	};
-}
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+	state => ({
+		isLeftBarCollapsed: getIsLeftBarCollapsed(state),
+		isRightBarCollapsed: getIsRightBarCollapsed(state),
+	}),
+
+	dispatch => ({
+		_toggleLeftBar: () => toggleLeftBar(dispatch),
+		_toggleRightBar: () => toggleRightBar(dispatch),
+	})
 
 )(function App(props) {
 	const {
 		leftBar,
 		activeRoute,
-		isRightBarCollapsed,
 		isLeftBarCollapsed,
+		isRightBarCollapsed,
 		_toggleRightBar,
 		_toggleLeftBar
 	} = props;
 
+	function expandLeftBar() {
+		if (isLeftBarCollapsed) {
+			_toggleLeftBar();
+		}
+	}
+
+	function expandRightBar() {
+		if (isRightBarCollapsed) {
+			_toggleRightBar();
+		}
+	}
+
 	return (
 		<div className="app-wrapper">
 			<section data-area="app-sidebar-left" className={isLeftBarCollapsed ? 'is-collapsed' : ''}>
-				<div className="content">
+				<div className="content" onClick={expandLeftBar}>
 					<Logo />
 					{leftBar}
 				</div>
@@ -56,7 +67,7 @@ export default connect(
 			</section>
 			<section data-area="app-sidebar-right" className={(isRightBarCollapsed) ? 'is-collapsed' : ''}>
 				<div className="collapser" onClick={_toggleRightBar}></div>
-				<div className="content"></div>
+				<div className="content" onClick={expandRightBar}></div>
 			</section>
 		</div>
 	);
