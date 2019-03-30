@@ -1,0 +1,56 @@
+/* ================================= */
+/*               Layout              */
+/* ================================= */
+
+.main-nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+    li {
+      display: inline-block;
+      padding: $spacer-tiny $spacer-medium;
+
+      i {
+        margin-right: $spacer-tiny;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+
+/* ================================= */
+/*                Skin               */
+/* ================================= */
+
+.main-nav {
+  ul {
+    list-style-type: none;
+    @include font-size(base);
+    font-family: $font-family-headings;
+    font-weight: 400;
+    vertical-align: middle;
+    color: $c-prim-ultradark;
+
+    li {
+      cursor: pointer;
+
+      i {
+        @include font-size(normal);
+      }
+
+      &:hover {
+        background-color: $c-prim-light;
+      }
+
+      &.active {
+        background-color: $c-prim-dark;
+        color: $c-prim-txt;
+      }
+    }
+  }
+}
+

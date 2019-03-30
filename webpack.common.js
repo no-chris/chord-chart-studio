@@ -33,7 +33,7 @@ const config = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader'
 			},
@@ -60,7 +60,15 @@ const config = {
 				}]
 			}
 		]
-	}
+	},
+
+	resolve: {
+		extensions: ['.js', '.jsx'],
+		alias: {
+			react: path.resolve(path.join(__dirname, './node_modules/react')),
+			'react-dom': path.resolve(path.join(__dirname, './node_modules/react-dom'))
+		}
+	},
 };
 
 module.exports = config;

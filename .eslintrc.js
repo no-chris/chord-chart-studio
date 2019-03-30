@@ -5,16 +5,22 @@ module.exports = {
 	},
 	'plugins': [
 		'import',
-		'no-unsanitized'
+		'no-unsanitized',
+		'react-hooks'
 	],
-	'extends': 'eslint:recommended',
+
+	'extends': [
+		'eslint:recommended',
+		'plugin:react/recommended',
+	],
 	'globals': {
 		'Atomics': 'readonly',
 		'SharedArrayBuffer': 'readonly'
 	},
 	'parserOptions': {
 		'ecmaVersion': 2018,
-		'sourceType': 'module'
+		'sourceType': 'module',
+		'jsx': true,
 	},
 	'rules': {
 		'complexity': 				[ 'error', { max: 10 } ],
@@ -44,5 +50,16 @@ module.exports = {
 		'no-unsanitized/property': 	[ 'error', { escape: { methods: ['escapeHTML'] } } ],
 		'no-unsanitized/method': 	[ 'error' ],
 
+		'react/prop-types': 		[ 'off' ],
+
+		'react-hooks/rules-of-hooks': [ 'error' ],
+		'react-hooks/exhaustive-deps': [ 'warn' ]
+
+	},
+	'settings': {
+		'react': {
+			'pragma': 'React',
+			'version': 'detect'
+		},
 	}
 };

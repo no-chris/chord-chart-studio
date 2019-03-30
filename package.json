@@ -20,6 +20,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
@@ -29,6 +30,8 @@
     "eslint": "^5.15.3",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-no-unsanitized": "^3.0.2",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "handlebars-loader": "^1.7.1",
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^3.2.0",
@@ -56,7 +59,12 @@
     "handlebars": "^4.1.1",
     "lodash": "^4.17.11",
     "nanoid": "^2.0.1",
-    "tiny-emitter": "^2.1.0"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "tiny-emitter": "^2.1.0",
+    "universal-router": "^8.1.0"
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",

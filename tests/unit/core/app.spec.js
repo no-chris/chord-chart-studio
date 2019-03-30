@@ -1,9 +1,7 @@
 import _ from 'lodash';
 
 import appFactory from '../../../src/core/app';
-import pluginFactory from '../../../src/core/plugin';
-
-import isEventEmitter from './isEventEmitter';
+import pluginFactory from '../../../src/core/pluginFactory';
 
 describe('appFactory', () => {
 	test('Module', () => {
@@ -13,9 +11,14 @@ describe('appFactory', () => {
 	test('API', () => {
 		const app = appFactory();
 		const api = [
+			'on',
+			'once',
+			'off',
+			'emit',
+
 			'registerPlugin',
-			'getAreaBroker',
-			'init'
+			'init',
+			'render',
 		];
 		expect.assertions(api.length);
 
@@ -28,20 +31,6 @@ describe('appFactory', () => {
 		const app1 = appFactory();
 		const app2 = appFactory();
 		expect(app1).not.toBe(app2);
-	});
-
-	test('Event emitter', () => {
-		const app = appFactory();
-		isEventEmitter(expect, app);
-	});
-});
-
-
-describe('AreaBroker', () => {
-	test('return given areaBroker on core creation', () => {
-		const areaBroker = {};
-		const app = appFactory(areaBroker);
-		expect(app.getAreaBroker()).toBe(areaBroker);
 	});
 });
 

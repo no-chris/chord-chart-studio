@@ -2,7 +2,7 @@ import _sortBy from 'lodash/sortBy';
 import _defer from 'lodash/defer';
 import _throttle from 'lodash/throttle';
 
-import pluginFactory from '../../core/plugin';
+import pluginFactory from '../../core/pluginFactory';
 import htmlToElement from '../../core/dom/htmlToElement';
 
 import fileManagerFactory from './fileManager';

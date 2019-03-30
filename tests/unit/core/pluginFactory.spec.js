@@ -1,4 +1,4 @@
-import pluginFactory from '../../../src/core/plugin';
+import pluginFactory from '../../../src/core/pluginFactory';
 
 describe('pluginFactory', () => {
 	test('Module', () => {
@@ -10,6 +10,7 @@ describe('pluginFactory', () => {
 		'once',
 		'off',
 		'emit',
+
 		'getHost',
 		'setHost',
 	])('API: .%s()', (method) => {

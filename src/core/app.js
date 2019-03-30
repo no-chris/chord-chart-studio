@@ -1,4 +1,7 @@
 import _isFunction from 'lodash/isFunction';
+
+import state from './state';
+
 import addEventEmitter from './addEventEmitter';
 
 export default function appFactory(areaBroker) {
@@ -17,6 +20,17 @@ export default function appFactory(areaBroker) {
 		this.emit(method);
 	}
 
+	function pluginGet(method) {
+		const allResults = {};
+
+		pluginRegistry.forEach(plugin => {
+			if (_isFunction(plugin[method])) {
+				allResults[plugin.id] = plugin[method]();
+			}
+		});
+		return allResults;
+	}
+
 	return addEventEmitter({
 		getAreaBroker() {
 			return areaBroker;
@@ -27,7 +41,17 @@ export default function appFactory(areaBroker) {
 			pluginRegistry.push(plugin);
 		},
 
+		setInitialState() {
+			const initialState = pluginGet('getInitialState');
+			const allReducters = pluginGet('getReducers');
+
+			state.createStore(allReducters, initialState);
+
+		},
+
 		init() {
+			this.setInitialState();
+
 			return pluginRun.call(this, 'init');
 		},
 

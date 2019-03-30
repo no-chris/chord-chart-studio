@@ -1,10 +1,9 @@
-
 import '../scss/styles.scss';
+
 import app from './app';
+import router from './router';
 
 app.init()
 	.then(() => {
-		return app.render();
+		router.navigateTo('/edit');
 	});
-
-

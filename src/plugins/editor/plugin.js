@@ -1,6 +1,6 @@
 import _assign from 'lodash/assign';
 
-import pluginFactory from '../../core/plugin';
+import pluginFactory from '../../core/pluginFactory';
 import htmlToElement from '../../core/dom/htmlToElement';
 
 import { editorFactory, parseSong, renderSong } from '@touffi/ucc/src/ucc-editor';
