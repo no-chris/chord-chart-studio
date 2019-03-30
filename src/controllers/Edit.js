@@ -1,15 +1,16 @@
 import React from 'react';
 
 import AppLayout from '../plugins/ui/layouts/app/components/App';
+import FileManager from '../plugins/fileManager/components/FileManager';
 
-export default class Edit extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+export default function Edit() {
 
-	render() {
-		return (
-			<AppLayout activeRoute="edit"/>
-		);
-	}
+	const fm = <FileManager />;
+
+	return (
+		<AppLayout
+			activeRoute="edit"
+			leftBar={fm}
+		/>
+	);
 }

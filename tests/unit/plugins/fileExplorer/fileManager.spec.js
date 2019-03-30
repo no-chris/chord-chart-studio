@@ -1,6 +1,6 @@
 jest.mock('../../../../src/core/store');
 
-import fileManagerFactory from '../../../../src/plugins/fileExplorer/fileManager';
+import fileManagerFactory from '../../../../src/plugins/fileManager/services/fileManager';
 import storeMock from '../../../../src/core/store';
 
 import nanoid from 'nanoid';

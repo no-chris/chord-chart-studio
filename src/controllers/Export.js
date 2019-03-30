@@ -1,15 +1,16 @@
 import React from 'react';
 
 import AppLayout from '../plugins/ui/layouts/app/components/App';
+import FileManager from '../plugins/fileManager/components/FileManager';
 
-export default class Export extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+export default function Edit() {
 
-	render() {
-		return (
-			<AppLayout activeRoute="export"/>
-		);
-	}
+	const fm = <FileManager />;
+
+	return (
+		<AppLayout
+			activeRoute="export"
+			leftBar={fm}
+		/>
+	);
 }

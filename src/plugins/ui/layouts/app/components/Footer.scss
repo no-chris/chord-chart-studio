@@ -1,7 +1,7 @@
 .app-footer {
-  padding: $spacer-tiny $spacer-small;
+  padding: $spacer-extra-tiny $spacer-small;
 
-  @include font-size(small);
+  @include font-size(tiny);
   color: $c-prim-txt;
   background-color: $c-prim;
 }

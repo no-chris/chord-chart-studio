@@ -58,6 +58,10 @@ $font-sizes: (
                 desktop : 1.4rem
         ),
         small: (
+                mobile  : 1.0rem,
+                desktop : 1.2rem
+        ),
+        tiny: (
                 mobile  : 0.8rem,
                 desktop : 1rem
         )
@@ -98,6 +102,7 @@ $grid-gutters: (
 ) !default;
 
 // Spacings
+$spacer-extra-tiny       : .25rem  !default;
 $spacer-tiny             : .5rem  !default;
 $spacer-tiny-plus        : .7rem !default;
 $spacer-small            : 1rem !default;

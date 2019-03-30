@@ -1,14 +1,15 @@
 import nanoid from 'nanoid';
-import addEventEmitter from '../../core/addEventEmitter';
+import addEventEmitter from '../../../core/addEventEmitter';
 
-import store from '../../core/store';
+import store from '../../../core/store';
 
 const keyPrefix = 'song:';
+const defaultTitle = 'untitled'; //todo: have this as a create() parameter
 
 function fileFactory() {
 	return {
 		key: keyPrefix + nanoid(20),
-		title: 'untitled', //todo: translate!
+		title: defaultTitle,
 		content: ''
 	};
 }

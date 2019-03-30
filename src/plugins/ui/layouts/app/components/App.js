@@ -28,6 +28,7 @@ export default connect(
 
 )(function App(props) {
 	const {
+		leftBar,
 		activeRoute,
 		isRightBarCollapsed,
 		isLeftBarCollapsed,
@@ -40,6 +41,7 @@ export default connect(
 			<section data-area="app-sidebar-left" className={isLeftBarCollapsed ? 'is-collapsed' : ''}>
 				<div className="content">
 					<Logo />
+					{leftBar}
 				</div>
 				<div className="collapser" onClick={_toggleLeftBar}></div>
 			</section>
