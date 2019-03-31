@@ -10,7 +10,7 @@ export default function FileEntry(props) {
 		defaultTitle,
 		selectFile,
 		enableRename,
-		renameFile
+		renameFile,
 	} = props;
 
 	const classList = ['fm-entry'];
@@ -27,7 +27,7 @@ export default function FileEntry(props) {
 		if (isRenamed) {
 			inputRef.current.focus();
 		}
-	});
+	}, [isRenamed, inputRef]);
 
 	function handleClick() {
 		if (!isSelected) {

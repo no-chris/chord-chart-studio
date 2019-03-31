@@ -60,7 +60,9 @@ export default connect(
 				<section data-area="app-header">
 					<Nav active={activeRoute} />
 				</section>
-				<section data-area="app-content">Tab</section>
+				<section data-area="app-content">
+					{props.children}
+				</section>
 				<section data-area="app-footer">
 					<Footer/>
 				</section>

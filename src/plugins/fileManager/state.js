@@ -3,21 +3,25 @@ import _findIndex from 'lodash/findIndex';
 
 import createAction from '../../core/createAction';
 import pluginId from './id';
-
 import fileManagerFactory from './services/fileManager';
+
+import { openSong } from '../songRenderer/state'; //fixme: this beaks plugin encapsulation
+
 
 const fileManager = fileManagerFactory();
 
-
-const sortedFiles = _sortBy(fileManager.getAll(), o => o.title);
-
 const initialState = {
-	allFiles: sortedFiles,
-	selected: (sortedFiles.length) ? sortedFiles[0].key : '',
+	allFiles: [],
+	selected: '',
 	renamed: '',
 	defaultTitle: 'Untitled'
 };
 
+
+// Helpers
+function sortFilesBySongTitle(allFiles) {
+	return _sortBy(allFiles, o => (o.title || '').toLowerCase());
+}
 
 /**
  * ==============
@@ -30,40 +34,64 @@ const CREATE_FILE = pluginId + '_createFile';
 const DELETE_FILE = pluginId + '_deleteFile';
 const RENAME_FILE = pluginId + '_renameFile';
 const ENABLE_RENAME = pluginId + '_enableRename';
+const LOAD_ALL_FILES = pluginId + '_loadAllFiles';
 
-export function selectFile(dispatch, fileKey) {
-	dispatch(
-		createAction(SELECT_FILE, { fileKey })
-	);
+
+export function selectFile(fileKey) {
+	return dispatch => {
+		const selectedSong = fileManager.getOneByKey(fileKey);
+
+		dispatch(createAction(SELECT_FILE, { fileKey }));
+		dispatch(openSong(selectedSong.content));
+	};
 }
 
-export function createFile(dispatch) {
+export function createFile() {
 	const newFile = fileManager.create();
-	dispatch(
-		createAction(CREATE_FILE, { newFile })
-	);
+	return dispatch => {
+		dispatch(createAction(CREATE_FILE, { newFile }));
+		dispatch(selectFile(newFile.key));
+		dispatch(enableRename(newFile.key));
+	};
 }
 
-export function deleteFile(dispatch, fileKey) {
-	fileManager.deleteOne(fileKey);
-	dispatch(
-		createAction(DELETE_FILE, { fileKey })
-	);
+export function deleteFile(fileKey) {
+	return (dispatch, getState) => {
+		const allFiles = getAllFiles(getState());
+		const toDeleteIndex = _findIndex(allFiles, o => o.key === fileKey);
+
+		let toSelectAfterDelete = '';
+
+		if (allFiles[toDeleteIndex + 1]) {
+			toSelectAfterDelete = allFiles[toDeleteIndex + 1].key;
+
+		} else if (allFiles[toDeleteIndex - 1]) {
+			toSelectAfterDelete = allFiles[toDeleteIndex - 1].key;
+		}
+
+		fileManager.deleteOne(fileKey);
+
+		dispatch(createAction(DELETE_FILE, { toDeleteIndex }));
+		dispatch(selectFile(toSelectAfterDelete));
+	};
 }
 
-export function renameFile(dispatch, fileKey, title) {
+export function renameFile(fileKey, title) {
 	fileManager.updateTitle(fileKey, title);
-	dispatch(
-		createAction(RENAME_FILE, { fileKey, title })
-	);
+	return createAction(RENAME_FILE, { fileKey, title });
 }
 
-export function enableRename(dispatch, fileKey) {
-	dispatch(
-		createAction(ENABLE_RENAME, { fileKey })
-	);
+export function enableRename(fileKey) {
+	return createAction(ENABLE_RENAME, { fileKey });
 }
 
+export function loadAllFromStorage() {
+	const allFiles = sortFilesBySongTitle(fileManager.getAll());
+	return dispatch => {
+		dispatch(createAction(LOAD_ALL_FILES, { allFiles }));
+		dispatch(openSong(allFiles[0].content));
+	};
+}
 
 /**
  * ==============
@@ -73,6 +101,17 @@ export function enableRename(dispatch, fileKey) {
 
 export function reducers(state = initialState, action) {
 	switch (action.type) {
+		case LOAD_ALL_FILES: {
+			const { allFiles } = action.payload;
+			const selected = allFiles[0].key;
+
+			return {
+				...state,
+				allFiles,
+				selected
+			};
+		}
+
 		case SELECT_FILE: {
 			const { fileKey } = action.payload;
 			return {
@@ -91,32 +130,19 @@ export function reducers(state = initialState, action) {
 					...state.allFiles.slice(0, currentFileIndex + 1),
 					newFile,
 					...state.allFiles.slice(currentFileIndex + 1)
-				],
-				selected: newFile.key,
-				renamed: newFile.key,
+				]
 			};
 		}
 
 		case DELETE_FILE: {
-			const { fileKey } = action.payload;
-			const toDeleteIndex = _findIndex(state.allFiles, o => o.key === fileKey);
-
-			let selected = '';
-
-			if (typeof state.allFiles[toDeleteIndex + 1] !== 'undefined') {
-				selected = state.allFiles[toDeleteIndex + 1].key;
-
-			} else if (typeof state.allFiles[toDeleteIndex - 1] !== 'undefined') {
-				selected = state.allFiles[toDeleteIndex - 1].key;
-			}
+			const { toDeleteIndex } = action.payload;
 
 			return {
 				...state,
 				allFiles: [
 					...state.allFiles.slice(0, toDeleteIndex),
 					...state.allFiles.slice(toDeleteIndex + 1)
-				],
-				selected
+				]
 			};
 		}
 

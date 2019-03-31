@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -10,7 +10,8 @@ import {
 	createFile,
 	deleteFile,
 	renameFile,
-	enableRename
+	enableRename,
+	loadAllFromStorage
 } from '../state';
 
 import FileActions from './FileActions';
@@ -25,64 +26,59 @@ export default connect(
 		defaultTitle: getDefaultTitle(state),
 	}),
 
-	dispatch => ({
-		_selectFile: selectFile.bind(null, dispatch),
-		_createFile: createFile.bind(null, dispatch),
-		_deleteFile: deleteFile.bind(null, dispatch),
-		_renameFile: renameFile.bind(null, dispatch),
-		_enableRename: enableRename.bind(null, dispatch),
-	})
-
-)(class FileManager extends React.Component {
-	constructor(props) {
-		super(props);
+	{
+		selectFile,
+		createFile,
+		deleteFile,
+		renameFile,
+		enableRename,
+		loadAllFromStorage
 	}
 
-	render() {
-		const {
-			allFiles,
-			selected,
-			renamed,
-			defaultTitle,
-			_selectFile,
-			_createFile,
-			_deleteFile,
-			_renameFile,
-			_enableRename
-		} = this.props;
+)(function FileManager(props) {
+	const {
+		allFiles,
+		selected,
+		renamed,
+		defaultTitle,
+	} = props;
 
-		return (
-			<div className="fm">
-				<div className="sidebar-collapsed">
-					<Icon iconName="file_copy" />
-				</div>
+	useEffect(() => {
+		if (!allFiles.length) {
+			props.loadAllFromStorage();
+		}
+	});
 
-				<div className="sidebar-expanded">
-					<FileActions
-						createFile={_createFile}
-						deleteFile={() => _deleteFile(selected)}
-						enableRename={() => _enableRename(selected)}
-					/>
-					<ul className="fm-entry-list">
-						{
-							allFiles.map(file =>
-								<FileEntry
-									title={file.title}
-									defaultTitle={defaultTitle}
-									fileKey={file.key}
-									isSelected={selected === file.key}
-									isRenamed={renamed === file.key}
-									selectFile={_selectFile}
-									renameFile={_renameFile}
-									enableRename={_enableRename}
-									key={file.key}
-								/>
-							)
-						}
-
-					</ul>
-				</div>
+	return (
+		<div className="fm">
+			<div className="sidebar-collapsed">
+				<Icon iconName="file_copy" />
 			</div>
-		);
-	}
+
+			<div className="sidebar-expanded">
+				<FileActions
+					createFile={props.createFile}
+					deleteFile={() => props.deleteFile(selected)}
+					enableRename={() => props.enableRename(selected)}
+				/>
+				<ul className="fm-entry-list">
+					{
+						allFiles.map(file =>
+							<FileEntry
+								title={file.title}
+								defaultTitle={defaultTitle}
+								fileKey={file.key}
+								isSelected={selected === file.key}
+								isRenamed={renamed === file.key}
+								selectFile={props.selectFile}
+								renameFile={props.renameFile}
+								enableRename={props.enableRename}
+								key={file.key}
+							/>
+						)
+					}
+				</ul>
+			</div>
+		</div>
+	);
 });

@@ -10,7 +10,7 @@ function fileFactory() {
 	return {
 		key: keyPrefix + nanoid(20),
 		title: defaultTitle,
-		content: ''
+		content: 'New song!'
 	};
 }
 
