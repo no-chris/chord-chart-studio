@@ -2,8 +2,8 @@ import React from 'react';
 
 import AppLayout from '../ui/layout/app/containers/App';
 import FileManager from '../fileManager/containers/FileManager';
-import SongRenderer from '../editor/playRenderer/containers/PlayRenderer';
-import PrintPreview from '../editor/printPreview/PrintPreview';
+import SongRenderer from '../songRenderers/playRenderer/containers/PlayRenderer';
+import PrintPreview from '../songRenderers/printPreview/PrintPreview';
 
 export default function Print() {
 

@@ -1,13 +1,13 @@
-jest.mock('../../../../src/core/store');
+jest.mock('../../../../src/core/localStorage');
 
-import fileManagerFactory from '../../../../src/core/fileManager';
-import storeMock from '../../../../src/core/store';
+import fileManager from '../../../../src/fileManager/model/fileManager';
+import storeMock from '../../../../src/core/localStorage';
 
 import nanoid from 'nanoid';
 
-describe('fileManagerFactory', () => {
+describe('fileManager', () => {
 	test('Module', () => {
-		expect(fileManagerFactory).toBeInstanceOf(Function);
+		expect(fileManager).toBeInstanceOf(Object);
 	});
 });
 
@@ -24,21 +24,45 @@ describe('Create', () => {
 	test('should return and persist a new file', () => {
 		nanoid.mockReturnValue('A1B2C3');
 
-		const fm = fileManagerFactory();
-		const newFile = fm.create();
+		const newFile = fileManager.create();
 
 		expect(storeMock.create).toHaveBeenCalledTimes(1);
 		expect(storeMock.create).toHaveBeenCalledWith(newFile.key, newFile);
 
 		expect(newFile.key).toBe('song:A1B2C3');
-		expect(newFile.title).toBe('untitled');
+		expect(newFile.title).toBe('');
 		expect(newFile.content).toBe('');
+	});
+
+	test('should allow to set title', () => {
+		nanoid.mockReturnValue('A1B2C3');
+
+		const newFile = fileManager.create({ title: 'myTitle' });
+
+		expect(storeMock.create).toHaveBeenCalledTimes(1);
+		expect(storeMock.create).toHaveBeenCalledWith(newFile.key, newFile);
+
+		expect(newFile.key).toBe('song:A1B2C3');
+		expect(newFile.title).toBe('myTitle');
+		expect(newFile.content).toBe('');
+	});
+
+	test('should allow to set content', () => {
+		nanoid.mockReturnValue('A1B2C3');
+
+		const newFile = fileManager.create({ content: 'myContent' });
+
+		expect(storeMock.create).toHaveBeenCalledTimes(1);
+		expect(storeMock.create).toHaveBeenCalledWith(newFile.key, newFile);
+
+		expect(newFile.key).toBe('song:A1B2C3');
+		expect(newFile.title).toBe('');
+		expect(newFile.content).toBe('myContent');
 	});
 });
 
 describe('Read', () => {
 	test('should return all created files', () => {
-		const fm = fileManagerFactory();
 		const allFilesExpected = {
 			'song:key1': { key: 'song:key1' },
 			'song:key2': { key: 'song:key2' },
@@ -47,7 +71,7 @@ describe('Read', () => {
 
 		storeMock.getAllByKeyPrefix.mockReturnValue(allFilesExpected);
 
-		const allFiles = fm.getAll();
+		const allFiles = fileManager.getAll();
 
 		expect(storeMock.getAllByKeyPrefix).toHaveBeenCalledTimes(1);
 		expect(storeMock.getAllByKeyPrefix).toHaveBeenCalledWith('song:');
@@ -55,12 +79,11 @@ describe('Read', () => {
 	});
 
 	test('should return one file', () => {
-		const fm = fileManagerFactory();
 		const fileExpected = { key: 'song:key1' };
 
 		storeMock.getOneByKey.mockReturnValue(fileExpected);
 
-		const file = fm.getOneByKey('song:key1');
+		const file = fileManager.getOneByKey('song:key1');
 
 		expect(storeMock.getOneByKey).toHaveBeenCalledTimes(1);
 		expect(storeMock.getOneByKey).toHaveBeenCalledWith('song:key1');
@@ -70,7 +93,6 @@ describe('Read', () => {
 
 describe('Update', () => {
 	test('should update file title', () => {
-		const fm = fileManagerFactory();
 		const file = {
 			key: 'song:key1',
 			title: 'first title',
@@ -79,7 +101,7 @@ describe('Update', () => {
 
 		storeMock.getOneByKey.mockReturnValue(file);
 
-		fm.updateTitle('song:key1', 'this is a new title');
+		fileManager.updateTitle('song:key1', 'this is a new title');
 
 		file.title = 'this is a new title';
 
@@ -88,7 +110,6 @@ describe('Update', () => {
 	});
 
 	test('should update file title', () => {
-		const fm = fileManagerFactory();
 		const file = {
 			key: 'song:key1',
 			title: 'title',
@@ -97,7 +118,7 @@ describe('Update', () => {
 
 		storeMock.getOneByKey.mockReturnValue(file);
 
-		fm.updateContent('song:key1', 'this is a new content');
+		fileManager.updateContent('song:key1', 'this is a new content');
 
 		file.title = 'this is a new content';
 
@@ -108,8 +129,7 @@ describe('Update', () => {
 
 describe('Delete', () => {
 	test('should delete file from persistence', () => {
-		const fm = fileManagerFactory();
-		fm.deleteOne('song:key1');
+		fileManager.deleteOne('song:key1');
 
 		expect(storeMock.delete).toHaveBeenCalledTimes(1);
 		expect(storeMock.delete).toHaveBeenCalledWith('song:key1');

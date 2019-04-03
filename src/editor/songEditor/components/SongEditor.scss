@@ -29,6 +29,12 @@
     .prosemirror-wrapper {
       .ProseMirror {
         outline: none;
+        font-family: $font-family-monospace;
+        @include font-size(normal);
+
+        p {
+          margin: 0;
+        }
       }
 
       border: 1px solid $c-prim-light;

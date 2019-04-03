@@ -19,7 +19,7 @@ export const getAllFilesTitles = createDeepEqualSelector(
 );
 
 export function getSelectedFile(state) {
-	return _find(state.fileManager.allFiles, o => o.key === state.fileManager.selected) || {};
+	return _find(state.fileManager.allFiles, o => o.key === state.fileManager.selected);
 }
 
 export function getSelectedFileKey(state) {

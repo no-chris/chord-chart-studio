@@ -1,7 +1,7 @@
 import _findIndex from 'lodash/findIndex';
 import _sortBy from 'lodash/sortBy';
 
-import fileManager from '../core/fileManager';
+import fileManager from './model/fileManager';
 import createAction from '../core/createAction';
 
 import {

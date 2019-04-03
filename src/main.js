@@ -1,9 +1,8 @@
 import '../scss/styles.scss';
 
-import app from './app';
+import state from './state';
 import router from './router';
+import reducers from './reducers';
 
-app.init()
-	.then(() => {
-		router.navigateTo('/edit');
-	});
+state.createStore(reducers, {});
+router.navigateTo('/edit');

@@ -1,23 +1,18 @@
 import nanoid from 'nanoid';
 
-import store from './store';
+import store from '../../core/localStorage';
 
 const keyPrefix = 'song:';
-const defaultTitle = 'untitled'; //todo: have this as a create() parameter
-
-function fileFactory() {
-	return {
-		key: keyPrefix + nanoid(20),
-		title: defaultTitle,
-		content: 'New song!'
-	};
-}
 
 export default {
-	create() {
-		const newFile = fileFactory();
-
-		store.create(newFile.key, newFile);
+	create({ title = '', content = ''} = {}) {
+		const key = keyPrefix + nanoid(20);
+		const newFile = {
+			key,
+			title,
+			content
+		};
+		store.create(key, newFile);
 
 		return newFile;
 	},

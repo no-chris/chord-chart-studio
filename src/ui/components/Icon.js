@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Icon(props) {
+export default React.memo(function Icon(props) {
 	const { iconName } = props;
 
 	const classList = ['material-icons'];
@@ -8,4 +8,4 @@ export default function Icon(props) {
 	return (
 		<i className={classList.join(' ')}>{iconName}</i>
 	);
-}
+});

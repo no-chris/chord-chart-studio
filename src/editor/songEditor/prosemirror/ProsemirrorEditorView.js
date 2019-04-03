@@ -45,7 +45,7 @@ export default function ProseMirrorEditorView(props) {
 
 	useEffect(() => {
 		/**
-		 * Editor is recreated on first render or on file change.
+		 * Editor is recreated on component mount and on file change.
 		 * The later is needed as we need to to re-bind the change handler with the new file id.
 		 */
 		if (!editorView.current || (previousFileKey !== selectedFileKey)) {

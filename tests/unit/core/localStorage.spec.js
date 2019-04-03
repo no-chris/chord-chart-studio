@@ -1,4 +1,4 @@
-import store from '../../../src/core/store';
+import store from '../../../src/core/localStorage';
 
 describe('store', () => {
 	test('Module', () => {

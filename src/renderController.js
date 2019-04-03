@@ -4,12 +4,10 @@ import { Provider } from 'react-redux';
 
 import state from './state';
 
-import app from './app';
-
 export default function renderController(Controller) {
 	ReactDom.render(
 		<Provider store={state.getStore()}>
-			<Controller app={app} />
+			<Controller />
 		</Provider>,
 		document.getElementById('app')
 	);
