@@ -1,7 +1,9 @@
 import React from 'react';
 
-import AppLayout from '../plugins/ui/layouts/app/components/App';
-import FileManager from '../plugins/fileManager/components/FileManager';
+import AppLayout from '../ui/layout/app/containers/App';
+import FileManager from '../fileManager/containers/FileManager';
+import SongRenderer from '../editor/playRenderer/containers/PlayRenderer';
+import PrintPreview from '../editor/printPreview/PrintPreview';
 
 export default function Print() {
 
@@ -11,6 +13,10 @@ export default function Print() {
 		<AppLayout
 			activeRoute="print"
 			leftBar={fm}
-		/>
+		>
+			<PrintPreview>
+				<SongRenderer />
+			</PrintPreview>
+		</AppLayout>
 	);
 }

@@ -1,11 +1,10 @@
 import React from 'react';
 
-import AppLayout from '../plugins/ui/layouts/app/components/App';
-import FileManager from '../plugins/fileManager/components/FileManager';
-import SongRenderer from '../plugins/songRenderer/components/SongRenderer';
+import AppLayout from '../ui/layout/app/containers/App';
+import FileManager from '../fileManager/containers/FileManager';
+import SongEditor from '../editor/songEditor/components/SongEditor';
 
 export default function Edit() {
-
 	const fm = <FileManager />;
 
 	return (
@@ -13,7 +12,7 @@ export default function Edit() {
 			activeRoute="edit"
 			leftBar={fm}
 		>
-			<SongRenderer />
+			<SongEditor />
 		</AppLayout>
 	);
 }

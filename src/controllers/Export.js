@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AppLayout from '../plugins/ui/layouts/app/components/App';
-import FileManager from '../plugins/fileManager/components/FileManager';
+import AppLayout from '../ui/layout/app/containers/App';
+import FileManager from '../fileManager/containers/FileManager';
 
 export default function Export() {
 

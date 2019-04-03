@@ -1,0 +1,41 @@
+.song-editor {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  .song-editor-source,
+  .song-editor-preview {
+    flex: 0 1 50%;
+    padding: $spacer-small;
+
+    .prosemirror-wrapper,
+    .ProseMirror {
+      height: 100%;
+      overflow-y: scroll;
+    }
+
+    .prosemirror-wrapper {
+      padding: $spacer-tiny;
+    }
+  }
+}
+
+.song-editor {
+  .song-editor-source {
+
+    .prosemirror-wrapper {
+      .ProseMirror {
+        outline: none;
+      }
+
+      border: 1px solid $c-prim-light;
+    }
+  }
+  .song-editor-preview {
+    border-left: 1px solid $c-prim-light;
+  }
+
+}

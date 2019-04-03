@@ -1,0 +1,34 @@
+.pp {
+  background-color: grey;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+
+  .pp-page {
+    background-color: white;
+    margin: 0 auto;
+    border: black 1px solid;
+
+    width: 210mm;
+    height: 297mm;
+    padding: 15mm;
+  }
+
+}
+
+
+@media print {
+  .container {
+    padding: 0;
+    background-color: transparent;
+  }
+  .page {
+    background-color: red;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+  }
+}

@@ -1,8 +1,10 @@
-@import '../src/plugins/ui/layouts/app/components/App';
-@import '../src/plugins/ui/layouts/app/components/Nav';
-@import '../src/plugins/ui/layouts/app/components/Logo';
-@import '../src/plugins/ui/layouts/app/components/Footer';
+@import '../src/ui/layout/app/containers/App';
+@import '../src/ui/layout/app/components/Nav';
+@import '../src/ui/layout/app/components/Logo';
+@import '../src/ui/layout/app/components/Footer';
 
-@import '../src/plugins/editor/editor';
-@import '../src/plugins/fileManager/components/FileManager';
+@import '../src/editor/printPreview/PrintPreview';
+
+@import '../src/editor/songEditor/components/SongEditor';
+@import '../src/fileManager/containers/FileManager';
 @import '../src/plugins/renderingOptions/rendering-options';

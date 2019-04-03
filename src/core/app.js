@@ -1,6 +1,6 @@
 import _isFunction from 'lodash/isFunction';
 
-import state from './state';
+import state from '../state';
 
 import addEventEmitter from './addEventEmitter';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import AppLayout from '../plugins/ui/layouts/app/components/App';
-import FileManager from '../plugins/fileManager/components/FileManager';
-import SongRenderer from '../plugins/songRenderer/components/SongRenderer';
+import AppLayout from '../ui/layout/app/containers/App';
+import FileManager from '../fileManager/containers/FileManager';
+import SongRenderer from '../editor/playRenderer/containers/PlayRenderer';
 
 
 export default function Play() {
