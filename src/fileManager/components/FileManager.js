@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Icon from '../../ui/components/Icon';
 import FileActions from './FileActions';
@@ -6,25 +6,18 @@ import FileEntry from './FileEntry';
 
 export default function FileManager(props) {
 	const {
-		allFiles,
+		allTitles,
 		selected,
 		renamed,
 		defaultTitle,
 
-		loadAllFromStorage,
 		selectFile,
 		createFile,
 		deleteFile,
 		enableRename,
-		renameFile,
+		updateFile,
 
 	} = props;
-
-	useEffect(() => {
-		if (!allFiles.length) {
-			loadAllFromStorage();
-		}
-	});
 
 	return (
 		<div className="fm">
@@ -34,23 +27,23 @@ export default function FileManager(props) {
 
 			<div className="sidebar-expanded">
 				<FileActions
-					createFile={createFile}
+					createFile={() => createFile(defaultTitle)}
 					deleteFile={() => deleteFile(selected)}
 					enableRename={() => enableRename(selected)}
 				/>
 				<ul className="fm-entry-list">
 					{
-						allFiles.map(file =>
+						allTitles.map(file =>
 							<FileEntry
 								title={file.title}
 								defaultTitle={defaultTitle}
-								fileKey={file.key}
-								isSelected={selected === file.key}
-								isRenamed={renamed === file.key}
+								fileId={file.id}
+								isSelected={selected === file.id}
+								isRenamed={renamed === file.id}
 								selectFile={selectFile}
-								renameFile={renameFile}
+								updateFile={updateFile}
 								enableRename={enableRename}
-								key={file.key}
+								key={file.id}
 							/>
 						)
 					}

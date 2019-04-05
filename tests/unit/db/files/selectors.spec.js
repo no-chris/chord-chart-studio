@@ -4,6 +4,21 @@ import * as selectors from '../../../../src/db/files/selectors';
 
 describe('db/files: selectors', () => {
 	describe('getAllTitles()', () => {
+		test('should return an empty array if no files are presents', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {}
+					}
+				}
+			};
+			const expected = [];
+
+			const result = selectors.getAllTitles(state);
+
+			expect(result).toEqual(expected);
+		});
+
 		test('should return all titles alpha sorted', () => {
 			const state = {
 				db: {

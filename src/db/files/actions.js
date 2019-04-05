@@ -21,9 +21,6 @@ export const updateFile = (id, { title, content } = {}) => {
 	if (!id) {
 		throw new TypeError('Cannot update a file without an id');
 	}
-	if (!title && !content) {
-		return;
-	}
 	const payload = {
 		id,
 		title,
@@ -34,9 +31,6 @@ export const updateFile = (id, { title, content } = {}) => {
 
 
 export const deleteFile = (id) => {
-	if (!id) {
-		throw new TypeError('Cannot delete a file without an id');
-	}
 	return createAction(actionTypes.DB_FILES_DELETE, { id });
 };
 

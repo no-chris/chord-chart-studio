@@ -81,12 +81,6 @@ describe('db/files: actions creators', () => {
 			expect(actual).toEqual(expected);
 		});
 
-		test('should return undefined if no content is provided', () => {
-			const actual = actions.updateFile('myUUID');
-
-			expect(actual).toBeUndefined();
-		});
-
 		test('should throw if given no id', () => {
 			const throwingFn = () => actions.updateFile(undefined, {
 				title: 'myNewTitle',
@@ -110,13 +104,6 @@ describe('db/files: actions creators', () => {
 			const actual = actions.deleteFile('myUUID');
 
 			expect(actual).toEqual(expected);
-		});
-
-		test('should throw if given no id', () => {
-			const throwingFn = () => actions.deleteFile();
-
-			expect(throwingFn).toThrow(TypeError);
-			expect(throwingFn).toThrow('Cannot delete a file without an id');
 		});
 	});
 

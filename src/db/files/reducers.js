@@ -25,6 +25,10 @@ export default (state = initialState, action = {}) => {
 		case actionTypes.DB_FILES_UPDATE: {
 			const { id, title, content } = action.payload;
 
+			if ((!title && !content) || !state.allFiles[id]) {
+				return state;
+			}
+
 			const allFiles = { ...state.allFiles };
 
 			allFiles[id] = { ...allFiles[id] };
@@ -43,6 +47,10 @@ export default (state = initialState, action = {}) => {
 
 		case actionTypes.DB_FILES_DELETE: {
 			const { id } = action.payload;
+
+			if (!id || !state.allFiles[id]) {
+				return state;
+			}
 
 			const allFiles = { ...state.allFiles };
 			delete allFiles[id];

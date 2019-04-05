@@ -1,25 +1,27 @@
 import { connect } from 'react-redux';
 
-import { selectFile, createFile, deleteFile, renameFile, enableRename, loadAllFromStorage } from '../actions';
-import { getAllFilesTitles, getDefaultTitle, getSelectedFileKey, getRenamedFileKey } from '../selectors';
+import { selectFile, enableRename } from '../actions';
+import { getDefaultTitle, getSelectedId, getRenamedId } from '../selectors';
+
+import { createFile, updateFile, deleteFile } from '../../db/files/actions';
+import { getAllTitles } from '../../db/files/selectors';
 
 import FileManager from '../components/FileManager';
 
 export default connect(
 	state => ({
-		allFiles: getAllFilesTitles(state),
-		selected: getSelectedFileKey(state),
-		renamed: getRenamedFileKey(state),
+		selected: getSelectedId(state),
+		renamed: getRenamedId(state),
 		defaultTitle: getDefaultTitle(state),
+		allTitles: getAllTitles(state),
 	}),
 
 	{
 		selectFile,
 		createFile,
 		deleteFile,
-		renameFile,
+		updateFile,
 		enableRename,
-		loadAllFromStorage,
 	}
 
 )(FileManager);

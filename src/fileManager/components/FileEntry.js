@@ -4,13 +4,13 @@ export default function FileEntry(props) {
 	const [ title, setTitle ] = useState(props.title);
 
 	const {
-		fileKey,
+		fileId,
 		isSelected,
 		isRenamed,
 		defaultTitle,
 		selectFile,
 		enableRename,
-		renameFile,
+		updateFile,
 	} = props;
 
 	const classList = ['fm-entry'];
@@ -31,12 +31,12 @@ export default function FileEntry(props) {
 
 	function handleClick() {
 		if (!isSelected) {
-			selectFile(fileKey);
+			selectFile(fileId);
 		}
 	}
 
 	function handleDoubleClick(e) {
-		enableRename(fileKey);
+		enableRename(fileId);
 		e.target.select();
 	}
 
@@ -55,15 +55,12 @@ export default function FileEntry(props) {
 	}
 
 	function handleFocus(e) {
-		console.log('focusing');
 		if (isRenamed) {
 			e.target.select();
 		}
 	}
 
 	function handleBlur(e) {
-		console.log('bluring');
-
 		if (isRenamed) {
 			const newTitle = e.target.value;
 			saveTitle(newTitle);
@@ -73,7 +70,9 @@ export default function FileEntry(props) {
 	function saveTitle(newTitle) {
 		newTitle = newTitle || defaultTitle;
 
-		renameFile(fileKey, newTitle);
+		updateFile(fileId, {
+			title: newTitle
+		});
 		setTitle(newTitle);
 
 		inputRef.current.scrollLeft = 0;

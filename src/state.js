@@ -1,18 +1,14 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-let store;
+import reducers from './reducers';
 
-import fileManager from './fileManager/reducers';
-import ui from './ui/reducers';
+let store;
 
 export default {
 	createStore(allReducers, initialState) {
 		store = createStore(
-			combineReducers({
-				fileManager,
-				ui
-			}),
+			reducers,
 			initialState,
 			compose(
 				applyMiddleware(thunk),

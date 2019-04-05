@@ -12,9 +12,11 @@ describe('db/files: reducers', () => {
 
 	const initialState = deepFreeze(reducers());
 
-	test('Unknown action', () => {
-		const state = reducers(initialState);
-		expect(state).toBe(initialState);
+	describe('Unknown action', () => {
+		test('should return un-mutated state', () => {
+			const state = reducers(initialState);
+			expect(state).toBe(initialState);
+		});
 	});
 
 	describe(actionTypes.DB_FILES_CREATE, () => {
@@ -121,6 +123,22 @@ describe('db/files: reducers', () => {
 
 			expect(state2).toEqual(expected);
 		});
+
+		test('should return same state if given invalid id', () => {
+			uuid.v4.mockReturnValue('myUUID');
+			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
+			const state2 = reducers(state1, actions.updateFile('idontexist', { title: 'myNewTitle' }));
+
+			expect(state2).toBe(state1);
+		});
+
+		test('should return same state if given no title or content', () => {
+			uuid.v4.mockReturnValue('myUUID');
+			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
+			const state2 = reducers(state1, actions.updateFile('myUUID'));
+
+			expect(state2).toBe(state1);
+		});
 	});
 
 
@@ -134,6 +152,22 @@ describe('db/files: reducers', () => {
 			const state2 = reducers(state1, actions.deleteFile('myUUID'));
 
 			expect(state2).toEqual(expected);
+		});
+
+		test('returns unmodified state if given no id', () => {
+			uuid.v4.mockReturnValue('myUUID');
+			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
+			const state2 = reducers(state1, actions.deleteFile());
+
+			expect(state2).toBe(state1);
+		});
+
+		test('returns unmodified state if given inexistant id', () => {
+			uuid.v4.mockReturnValue('myUUID');
+			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
+			const state2 = reducers(state1, actions.deleteFile('idontexist'));
+
+			expect(state2).toBe(state1);
 		});
 	});
 

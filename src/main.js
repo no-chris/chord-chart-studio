@@ -5,4 +5,5 @@ import router from './router';
 import reducers from './reducers';
 
 state.createStore(reducers, {});
+
 router.navigateTo('/edit');
