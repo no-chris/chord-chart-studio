@@ -1,7 +1,7 @@
 import * as actions from '../../../src/fileManager/actions';
 import * as actionsTypes from '../../../src/fileManager/actionsTypes';
 
-describe('fileManager/actions creators', () => {
+describe('fileManager: actions creators', () => {
 
 	describe('selectFile()', () => {
 		test('should return a valid action', () => {

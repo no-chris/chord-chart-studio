@@ -7,7 +7,7 @@ import {
 	DB_FILES_CREATE,
 	DB_FILES_UPDATE,
 	DB_FILES_DELETE
-} from '../db/files/actionTypes';
+} from '../db/files/actionsTypes';
 
 const initialState = {
 	selected: '',

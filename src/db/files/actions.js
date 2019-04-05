@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 
 import createAction from '../../core/createAction';
-import * as actionTypes from './actionTypes';
+import * as actionTypes from './actionsTypes';
 
 
 export const createFile = (title) => {

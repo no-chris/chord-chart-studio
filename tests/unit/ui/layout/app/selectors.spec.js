@@ -1,0 +1,35 @@
+import * as selectors from '../../../../../src/ui/layout/app/selectors';
+
+describe('ui/layout/app: selectors', () => {
+
+	describe('isLeftBarCollapsed()', () => {
+		test('should return isLeftBarCollapsed', () => {
+			const state = {
+				ui: {
+					layout: {
+						app: {
+							isLeftBarCollapsed: true
+						}
+					}
+				}
+			};
+			expect(selectors.isLeftBarCollapsed(state)).toBe(true);
+		});
+	});
+
+	describe('isRightBarCollapsed()', () => {
+		test('should return isRightBarCollapsed', () => {
+			const state = {
+				ui: {
+					layout: {
+						app: {
+							isRightBarCollapsed: true
+						}
+					}
+				}
+			};
+			expect(selectors.isRightBarCollapsed(state)).toBe(true);
+		});
+	});
+
+});

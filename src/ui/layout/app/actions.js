@@ -1,10 +1,11 @@
-import { TOGGLE_LEFT_BAR, TOGGLE_RIGHT_BAR } from './actions-types';
+import {
+	UI_LAYOUT_APP_TOGGLE_LEFT_BAR,
+	UI_LAYOUT_APP_TOGGLE_RIGHT_BAR
+} from './actionsTypes';
+
 import createAction from '../../../core/createAction';
 
-export function toggleLeftBar() {
-	return createAction(TOGGLE_LEFT_BAR);
-}
+export const toggleLeftBar = () => createAction(UI_LAYOUT_APP_TOGGLE_LEFT_BAR);
 
-export function toggleRightBar() {
-	return createAction(TOGGLE_RIGHT_BAR);
-}
+export const toggleRightBar = () => createAction(UI_LAYOUT_APP_TOGGLE_RIGHT_BAR);
+

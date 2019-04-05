@@ -6,7 +6,7 @@ import uuid from 'uuid';
 import reducers from '../../../src/fileManager/reducers';
 import * as fmActionsTypes from '../../../src/fileManager/actionsTypes';
 import * as fmActions from '../../../src/fileManager/actions';
-import * as dbFilesActionsTypes from '../../../src/db/files/actionTypes';
+import * as dbFilesActionsTypes from '../../../src/db/files/actionsTypes';
 import * as dbFilesActions from '../../../src/db/files/actions';
 
 describe('fileManager: reducers', () => {

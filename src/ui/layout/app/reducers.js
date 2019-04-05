@@ -1,19 +1,22 @@
-import { TOGGLE_RIGHT_BAR, TOGGLE_LEFT_BAR } from './actions-types';
+import {
+	UI_LAYOUT_APP_TOGGLE_RIGHT_BAR,
+	UI_LAYOUT_APP_TOGGLE_LEFT_BAR
+} from './actionsTypes';
 
 const initialState = {
 	isLeftBarCollapsed: false,
 	isRightBarCollapsed: false,
 };
 
-export default function reducers(state = initialState, action) {
+export default function reducers(state = initialState, action = {}) {
 	switch (action.type) {
-		case TOGGLE_LEFT_BAR: {
+		case UI_LAYOUT_APP_TOGGLE_LEFT_BAR: {
 			return {
 				...state,
 				isLeftBarCollapsed: !state.isLeftBarCollapsed
 			};
 		}
-		case TOGGLE_RIGHT_BAR: {
+		case UI_LAYOUT_APP_TOGGLE_RIGHT_BAR: {
 			return {
 				...state,
 				isRightBarCollapsed: !state.isRightBarCollapsed

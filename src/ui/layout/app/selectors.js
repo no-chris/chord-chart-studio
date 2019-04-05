@@ -1,7 +1,3 @@
-export function isLeftBarCollapsed(state) {
-	return state.ui.layout.app.isLeftBarCollapsed;
-}
+export const isLeftBarCollapsed = (state) => state.ui.layout.app.isLeftBarCollapsed;
 
-export function isRightBarCollapsed(state) {
-	return state.ui.layout.app.isRightBarCollapsed;
-}
+export const isRightBarCollapsed = (state) => state.ui.layout.app.isRightBarCollapsed;

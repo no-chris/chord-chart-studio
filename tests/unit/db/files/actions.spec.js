@@ -1,7 +1,7 @@
 jest.mock('uuid');
 
 import * as actions from '../../../../src/db/files/actions';
-import * as actionTypes from '../../../../src/db/files/actionTypes';
+import * as actionTypes from '../../../../src/db/files/actionsTypes';
 
 import uuid from 'uuid';
 
