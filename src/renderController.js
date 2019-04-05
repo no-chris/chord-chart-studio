@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 
-import state from './state';
+import state from './state/state';
 
 export default function renderController(Controller) {
 	ReactDom.render(

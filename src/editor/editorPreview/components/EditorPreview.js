@@ -11,7 +11,7 @@ function EditorPreview(props) {
 }
 
 EditorPreview.defaultProps = {
-	selectedFile: { content: 'YES' }
+	selectedFile: { content: 'YES' } //todo: wtf ?
 };
 
 export default EditorPreview;

@@ -1,19 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getSelectedFile } from '../../../fileManager/selectors';
+import { getSelectedId } from '../../../fileManager/selectors';
+import { getOne } from '../../../db/files/selectors';
 
 import renderSong from '../../../core/renderSong';
 
 export default connect(
 	state => ({
-		selectedFile: getSelectedFile(state)
+		selectedFile: getOne(state, getSelectedId(state))
 	}),
 
 	{}
 
 )(function SongRenderer(props) {
-	const { selectedFile } = props;
+	const { selectedFile = {} } = props; //todo fix this
 
 	const renderedSong = (selectedFile.content) ? renderSong(selectedFile.content) : '';
 

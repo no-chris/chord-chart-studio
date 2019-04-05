@@ -36,7 +36,7 @@ export default function App(props) {
 			</section>
 			<section data-area="app-sidebar-right" className={(isRightBarCollapsed) ? 'is-collapsed' : ''}>
 				<div className="collapser" onClick={toggleRightBar} />
-				<div className="content" onClick={(isRightBarCollapsed) ? toggleLeftBar : null} />
+				<div className="content" onClick={(isRightBarCollapsed) ? toggleRightBar : null} />
 			</section>
 		</div>
 	);

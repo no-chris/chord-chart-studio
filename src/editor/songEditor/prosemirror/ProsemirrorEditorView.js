@@ -20,7 +20,7 @@ function createEditorState(editorContent) {
 	});
 }
 
-function createEditorView(editorState, onEditorChange, fileKey) {
+function createEditorView(editorState, onEditorChange, fileId) {
 	const editorView = new EditorView(null, {
 		state: editorState,
 		dispatchTransaction: transaction => {
@@ -29,7 +29,7 @@ function createEditorView(editorState, onEditorChange, fileKey) {
 			editorView.updateState(state);
 
 			if (transactions.some(tr => tr.docChanged)) {
-				onEditorChange(fileKey, stateToText(state));
+				onEditorChange(fileId, stateToText(state));
 			}
 		},
 	});
@@ -37,27 +37,48 @@ function createEditorView(editorState, onEditorChange, fileKey) {
 }
 
 export default function ProseMirrorEditorView(props) {
-	const { selectedFileKey, editorContent, onEditorChange } = props;
+	const { selectedFileId, editorContent, onEditorChange } = props;
 
 	const editorView = useRef();
 	const editorDom = useRef();
-	const previousFileKey = usePrevious(selectedFileKey);
+	const previousFileId = usePrevious(selectedFileId);
+
+	/**
+	 * Editor is recreated on component mount and on file change.
+	 * The later is needed as we need to to re-bind the change handler with the new file id.
+	 */
+	function shouldCreateEditor() {
+		return selectedFileId && (!editorView.current || (previousFileId !== selectedFileId));
+	}
+
+	// Editor has been previously created, but now no file is selected anymore
+	function isEditorOrphan() {
+		return editorExists() && !selectedFileId;
+	}
+
+	function editorExists() {
+		return editorView.current && editorView.current.dom.parentNode;
+	}
+
+	function destroyEditor() {
+		editorView.current.dom.parentNode.removeChild(editorView.current.dom);
+	}
 
 	useEffect(() => {
-		/**
-		 * Editor is recreated on component mount and on file change.
-		 * The later is needed as we need to to re-bind the change handler with the new file id.
-		 */
-		if (!editorView.current || (previousFileKey !== selectedFileKey)) {
-			if (editorView.current && editorView.current.dom.parentNode) {
-				editorView.current.dom.parentNode.removeChild(editorView.current.dom);
+
+		if (shouldCreateEditor()) {
+			if (editorExists()) {
+				destroyEditor();
 			}
 
 			const editorState = createEditorState(editorContent);
-			editorView.current = createEditorView(editorState, onEditorChange, selectedFileKey);
+			editorView.current = createEditorView(editorState, onEditorChange, selectedFileId);
 			editorDom.current.appendChild(editorView.current.dom);
 
-			editorView.current.focus();
+			//editorView.current.focus();
+
+		} else if (isEditorOrphan()) {
+			destroyEditor();
 		}
 	});
 

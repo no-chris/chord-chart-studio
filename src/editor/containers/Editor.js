@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { getSelectedId } from '../../fileManager/selectors';
 import { getOne } from '../../db/files/selectors';
-import { updateFileContent } from '../../fileManager/actions';
+import { updateFile } from '../../db/files/actions';
 
 import EditorLayout from '../components/EditorLayout';
 
@@ -12,7 +12,7 @@ export default connect(
 	}),
 
 	{
-		updateFileContent
+		updateFile
 	}
 
 )(EditorLayout);

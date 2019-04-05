@@ -1,20 +1,21 @@
 import React from 'react';
-import _throttle from 'lodash/throttle';
 
 import ProseMirrorEditorView from '../prosemirror/ProsemirrorEditorView';
 
 export default function SongEditor(props) {
-	const { selectedFile } = props;
+	const { selectedFile, updateFile } = props;
 
-	function handleEditorChange(fileKey, newContent) {
-		props.updateFileContent(fileKey, newContent);
+	function handleEditorChange(fileId, newContent) {
+		updateFile(fileId, {
+			content: newContent
+		});
 	}
 
 	return (
 		<ProseMirrorEditorView
 			editorContent={selectedFile.content}
-			onEditorChange={_throttle(handleEditorChange, 1000)}
-			selectedFileKey={selectedFile.key}
+			onEditorChange={handleEditorChange}
+			selectedFileId={selectedFile.id}
 		/>
 	);
 }
