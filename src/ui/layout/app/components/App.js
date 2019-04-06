@@ -11,6 +11,7 @@ export default function App(props) {
 		toggleRightBar,
 
 		leftBar,
+		rightBar,
 		activeRoute,
 	} = props;
 
@@ -36,7 +37,9 @@ export default function App(props) {
 			</section>
 			<section data-area="app-sidebar-right" className={(isRightBarCollapsed) ? 'is-collapsed' : ''}>
 				<div className="collapser" onClick={toggleRightBar} />
-				<div className="content" onClick={(isRightBarCollapsed) ? toggleRightBar : null} />
+				<div className="content" onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
+					{rightBar}
+				</div>
 			</section>
 		</div>
 	);

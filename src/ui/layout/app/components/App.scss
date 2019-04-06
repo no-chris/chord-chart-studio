@@ -83,7 +83,6 @@ html, body, #app {
   [data-area="app-sidebar-left"],
   [data-area="app-sidebar-right"] {
     .sidebar-collapsed {
-      color: $c-prim-txt;
       text-align: center;
     }
 
@@ -93,6 +92,7 @@ html, body, #app {
   }
 
   [data-area="app-sidebar-left"] {
+    color: $c-prim-txt;
     background-color: $c-prim-dark;
 
     &.is-collapsed {
@@ -127,9 +127,11 @@ html, body, #app {
   }
 
   [data-area="app-sidebar-right"] {
+    color: $c-prim-dark;
     background-color: $c-prim-ultralight;
 
     &.is-collapsed {
+
       &:hover {
         background-color: darken($c-prim-ultralight, 10%);
       }
