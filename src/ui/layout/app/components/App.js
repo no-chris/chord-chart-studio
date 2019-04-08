@@ -15,9 +15,19 @@ export default function App(props) {
 		activeRoute,
 	} = props;
 
+	const sidebarLeftClassNames = ['sidebar'];
+	if (isLeftBarCollapsed) {
+		sidebarLeftClassNames.push('is-collapsed');
+	}
+
+	const sidebarRightClassNames = ['sidebar'];
+	if (isRightBarCollapsed) {
+		sidebarRightClassNames.push('is-collapsed');
+	}
+
 	return (
 		<div className="app-wrapper">
-			<section data-area="app-sidebar-left" className={isLeftBarCollapsed ? 'is-collapsed' : ''}>
+			<section data-area="app-sidebar-left" className={sidebarLeftClassNames.join(' ')}>
 				<div className="content" onClick={(isLeftBarCollapsed) ? toggleLeftBar : null}>
 					<Logo />
 					{leftBar}
@@ -35,7 +45,7 @@ export default function App(props) {
 					<Footer/>
 				</section>
 			</section>
-			<section data-area="app-sidebar-right" className={(isRightBarCollapsed) ? 'is-collapsed' : ''}>
+			<section data-area="app-sidebar-right" className={sidebarRightClassNames.join(' ')}>
 				<div className="collapser" onClick={toggleRightBar} />
 				<div className="content" onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
 					{rightBar}

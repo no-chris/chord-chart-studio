@@ -1,7 +1,7 @@
 {
   "name": "@touffi/ucc-demo",
   "version": "0.5.0",
-  "description": "Demo site for the Universal Chords Charts lib",
+  "description": "Chords Charts Studio",
   "private": false,
   "author": "Christophe Noël",
   "license": "MIT",

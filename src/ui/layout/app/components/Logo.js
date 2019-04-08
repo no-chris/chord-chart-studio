@@ -10,7 +10,7 @@ export default React.memo(function Logo() {
 			</div>
 
 			<div className="sidebar-expanded">
-				<Icon iconName="queue_music" />Universal Chords Charts
+				<Icon iconName="queue_music" />Chords Charts Studio
 			</div>
 		</div>
 	);

@@ -1,0 +1,40 @@
+.option-toggle {
+
+  display: flex;
+
+  .option-toggle-desc {
+    flex: 1 1 auto;
+  }
+  .option-toggle-icon {
+    flex: 0 0 auto;
+  }
+
+  .icon {
+    vertical-align: middle;
+  }
+}
+
+
+
+.option-toggle {
+  &.option-toggle-off {
+    .icon {
+      color: $c-prim-light;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.options-panel-entry-disabled {
+  .option-toggle {
+    &:hover {
+      cursor: default;
+    }
+    .icon {
+      color: inherit;
+    }
+  }
+}

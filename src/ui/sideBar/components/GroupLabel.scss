@@ -1,0 +1,12 @@
+
+.option-group-label {
+
+  @include font-size(normal);
+  font-weight: $weight-bold;
+
+  .icon {
+    vertical-align: middle;
+  }
+}
+
+

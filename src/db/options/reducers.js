@@ -9,16 +9,16 @@ export default (state = initialState, action = {}) => {
 		case actionTypes.DB_OPTION_SET: {
 			const { context, key, value } = action.payload;
 
-			const contextOptions = { ...state.options[context] };
-			contextOptions[key] = value;
+			const contextOptions = { ...state[context] };
+			contextOptions[key] = {
+				...contextOptions[key],
+				value
+			};
 
 			const newState = {
 				...state,
-				options: {
-					...state.options
-				}
 			};
-			newState.options[context] = contextOptions;
+			newState[context] = contextOptions;
 
 			return newState;
 		}
