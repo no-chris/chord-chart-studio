@@ -1,20 +1,22 @@
 import * as selectors from '../../../../src/db/options/selectors';
 
 describe('db/options: selectors', () => {
-	describe('getOption()', () => {
+	describe('getOptionValue()', () => {
 		test('should return required option', () => {
 			const state = {
 				db: {
 					options: {
 						rendering: {
-							transposeValue: 3
+							transposeValue: {
+								value: 3
+							}
 						}
 					}
 				}
 			};
 			const expected = 3;
 
-			const result = selectors.getOption(state, 'rendering', 'transposeValue');
+			const result = selectors.getOptionValue(state, 'rendering', 'transposeValue');
 
 			expect(result).toEqual(expected);
 		});
@@ -24,12 +26,14 @@ describe('db/options: selectors', () => {
 				db: {
 					options: {
 						rendering: {
-							transposeValue: 3
+							transposeValue: {
+								value: 3
+							}
 						}
 					}
 				}
 			};
-			const result = selectors.getOption(state, 'user', 'theme');
+			const result = selectors.getOptionValue(state, 'user', 'theme');
 
 			expect(result).toBeUndefined();
 		});
@@ -39,12 +43,14 @@ describe('db/options: selectors', () => {
 				db: {
 					options: {
 						rendering: {
-							transposeValue: 3
+							transposeValue: {
+								value: 3
+							}
 						}
 					}
 				}
 			};
-			const result = selectors.getOption(state, 'rendering', 'fontSize');
+			const result = selectors.getOptionValue(state, 'rendering', 'fontSize');
 
 			expect(result).toBeUndefined();
 		});
@@ -56,9 +62,15 @@ describe('db/options: selectors', () => {
 				db: {
 					options: {
 						rendering: {
-							transposeValue: 3,
-							fontSize: 4,
-							simplify: true,
+							transposeValue: {
+								value: 3
+							},
+							fontSize: {
+								value: 4
+							},
+							simplify: {
+								value: true
+							},
 						}
 					}
 				}
@@ -79,12 +91,14 @@ describe('db/options: selectors', () => {
 				db: {
 					options: {
 						rendering: {
-							transposeValue: 3
+							transposeValue: {
+								value: 3
+							}
 						}
 					}
 				}
 			};
-			const result = selectors.getOption(state, 'user');
+			const result = selectors.getContext(state, 'user');
 
 			expect(result).toBeUndefined();
 		});

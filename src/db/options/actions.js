@@ -2,7 +2,7 @@ import createAction from '../../core/createAction';
 import * as actionTypes from './actionsTypes';
 
 
-export const setOption = (context, key, value) => {
+export const setOptionValue = (context, key, value) => {
 	if (!context) {
 		throw new TypeError('Cannot set an option without a context');
 	}
@@ -14,6 +14,6 @@ export const setOption = (context, key, value) => {
 		key,
 		value
 	};
-	return createAction(actionTypes.DB_OPTION_SET, payload);
+	return createAction(actionTypes.DB_OPTION_SET_OPTION_VALUE, payload);
 };
 

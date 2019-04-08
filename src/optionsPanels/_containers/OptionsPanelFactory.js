@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { getOptionValue } from '../../db/options/selectors';
-import { setOption } from '../../db/options/actions';
+import { setOptionValue } from '../../db/options/actions';
 
 export default function OptionsPanelFactory(allPanelEntries, allWidgets, component) {
 	return connect(
@@ -26,7 +26,7 @@ export default function OptionsPanelFactory(allPanelEntries, allWidgets, compone
 		},
 
 		{
-			setOption
+			setOption: setOptionValue
 		}
 
 	)(component);

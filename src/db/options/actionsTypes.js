@@ -1,1 +1,1 @@
-export const DB_OPTION_SET = 'db/options/set';
+export const DB_OPTION_SET_OPTION_VALUE = 'db/options/setOptionValue';

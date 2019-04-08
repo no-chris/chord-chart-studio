@@ -15,65 +15,47 @@ describe('db/options: reducers', () => {
 		});
 	});
 
-	describe(actionTypes.DB_OPTION_SET, () => {
-		test('should allow to set an option in a new context', () => {
+	describe(actionTypes.DB_OPTION_SET_OPTION_VALUE, () => {
+		const startState = deepFreeze({
+			rendering: {
+				transposeValue: {
+					value: 0,
+					default: 0,
+				},
+			}
+		});
+
+		test('should allow to set an option value of an existing option', () => {
 			const expected = {
-				options: {
-					rendering: {
-						transposeValue: 3,
-					}
+				rendering: {
+					transposeValue: {
+						value: 3,
+						default: 0,
+					},
 				}
 			};
 
-			const action = actions.setOption('rendering', 'transposeValue', 3);
-			const actual = reducers(initialState, action);
+			const action = actions.setOptionValue('rendering', 'transposeValue', 3);
+			const actual = reducers(startState, action);
 
 			expect(actual).toEqual(expected);
 		});
 
-		test('should allow to add an option to an existing context', () => {
-			const expected = {
-				options: {
-					rendering: {
-						transposeValue: 3,
-						fontSize: 4,
-					}
-				}
-			};
+		test('should fail silently if trying to set a value of an non existing context', () => {
+			const action = actions.setOptionValue('newContext', 'newOption', 3);
+			const actual = reducers(startState, action);
 
-			const action1 = actions.setOption('rendering', 'transposeValue', 3);
-			const state1 = deepFreeze(reducers(initialState, action1));
-
-			const action2 = actions.setOption('rendering', 'fontSize', 4);
-			const state2 = deepFreeze(reducers(state1, action2));
-
-			expect(state2).toEqual(expected);
+			expect(actual).toBe(startState);
 		});
 
-		test('should allow to create multiple contexts', () => {
-			const expected = {
-				options: {
-					rendering: {
-						transposeValue: 3,
-						fontSize: 4,
-					},
-					user: {
-						theme: 'dark'
-					}
-				}
-			};
+		test('should fail silently if trying to set a value of an non existing option', () => {
+			const action = actions.setOptionValue('rendering', 'newOption', 3);
+			const actual = reducers(startState, action);
 
-			const action1 = actions.setOption('rendering', 'transposeValue', 3);
-			const state1 = deepFreeze(reducers(initialState, action1));
-
-			const action2 = actions.setOption('rendering', 'fontSize', 4);
-			const state2 = deepFreeze(reducers(state1, action2));
-
-			const action3 = actions.setOption('user', 'theme', 'dark');
-			const state3 = deepFreeze(reducers(state2, action3));
-
-			expect(state3).toEqual(expected);
+			expect(actual).toBe(startState);
 		});
+
+
 	});
 
 
