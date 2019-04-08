@@ -8,7 +8,11 @@ export default function Slider(props) {
 	} = props;
 
 	function handleChange(e) {
-		setOption(widget.option.context, widget.option.key, e.target.value);
+		setOption(
+			widget.option.context,
+			widget.option.key,
+			Number.parseInt(e.target.value)
+		);
 	}
 
 	return (

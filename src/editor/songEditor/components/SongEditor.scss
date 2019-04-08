@@ -42,6 +42,8 @@
   }
   .song-editor-preview {
     border-left: 1px solid $c-prim-light;
+
+    overflow-y: scroll;
   }
 
 }

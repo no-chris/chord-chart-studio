@@ -198,7 +198,7 @@ export default {
 				},
 				{
 					label: 'Flats (b)',
-					value: 'flats'
+					value: 'flat'
 				},
 			],
 		},

@@ -4,3 +4,4 @@
 - unit tests
 - what to do with unknown options ? Don't display them if not in allWidgets
 - have a clear entry point for each feature module
+- remove old fileManager
