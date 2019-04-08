@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function slider(props) {
+export default function Slider(props) {
 	const {
 		widget,
 		value,

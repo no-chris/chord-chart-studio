@@ -26,13 +26,13 @@ export default {
 		},
 		option: {
 			context: 'rendering',
-			key: 'fontSize'
+			key: 'documentSize'
 		}
 	},
 
 	columnsCount: {
 		label: 'Columns',
-		type: 'range',
+		type: 'slider',
 		typeOption: {
 			min: 1,
 			max: 3
@@ -139,7 +139,7 @@ export default {
 
 	transposeValue: {
 		label: 'Transpose',
-		type: 'range',
+		type: 'slider',
 		typeOption: {
 			min: -11,
 			max: 11,
@@ -162,7 +162,7 @@ export default {
 
 	capoPosition: {
 		label: 'Add capo on fret',
-		type: 'range',
+		type: 'slider',
 		typeOption: {
 			min: 0,
 			max: 11,
@@ -214,7 +214,7 @@ export default {
 
 	fontSize: {
 		label: 'Font size',
-		type: 'select',
+		type: 'slider',
 		typeOption: {
 			min: -5,
 			max: +5,

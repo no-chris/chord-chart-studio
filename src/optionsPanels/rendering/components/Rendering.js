@@ -3,6 +3,7 @@ import React from 'react';
 import OptionPanel from '../../_components/OptionsPanel';
 
 import GroupLabel from '../../../ui/sideBar/components/GroupLabel';
+import Select from '../../../ui/sideBar/components/Select';
 import Slider from '../../../ui/sideBar/components/Slider';
 import Toggle from '../../../ui/sideBar/components/Toggle';
 import Icon from '../../../ui/components/Icon';
@@ -10,9 +11,9 @@ import Icon from '../../../ui/components/Icon';
 function getEntryComponent(type) {
 	switch (type) {
 		case 'groupLabel': 	return GroupLabel;
-		case 'select': 		return Toggle;
+		case 'select': 		return Select;
+		case 'slider': 		return Slider;
 		case 'toggle': 		return Toggle;
-		case 'range': 		return Slider;
 	}
 }
 
