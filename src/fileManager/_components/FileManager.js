@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../ui/components/Icon';
+import Icon from '../../ui/_components/Icon';
 import FileActions from './FileActions';
 import FileEntry from './FileEntry';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../ui/components/Icon';
+import Icon from '../../ui/_components/Icon';
 
 export default React.memo(function FileActionEntry(props) {
 	const { icon, text, action } = props;

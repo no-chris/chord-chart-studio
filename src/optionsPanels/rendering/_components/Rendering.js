@@ -2,11 +2,11 @@ import React from 'react';
 
 import OptionPanel from '../../_components/OptionsPanel';
 
-import GroupLabel from '../../../ui/sideBar/components/GroupLabel';
-import Select from '../../../ui/sideBar/components/Select';
-import Slider from '../../../ui/sideBar/components/Slider';
-import Toggle from '../../../ui/sideBar/components/Toggle';
-import Icon from '../../../ui/components/Icon';
+import GroupLabel from '../../../ui/sideBar/_components/GroupLabel';
+import Select from '../../../ui/sideBar/_components/Select';
+import Slider from '../../../ui/sideBar/_components/Slider';
+import Toggle from '../../../ui/sideBar/_components/Toggle';
+import Icon from '../../../ui/_components/Icon';
 
 function getEntryComponent(type) {
 	switch (type) {

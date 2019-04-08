@@ -1,5 +1,5 @@
-import * as actions from '../../../../../src/ui/layout/app/actions';
-import * as actionsTypes from '../../../../../src/ui/layout/app/actionsTypes';
+import * as actions from '../../../../../src/ui/layout/app/_state/actions';
+import * as actionsTypes from '../../../../../src/ui/layout/app/_state/actionsTypes';
 
 describe('ui/layout/app: actions creators', () => {
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getSelectedId } from '../../../fileManager/selectors';
+import { getSelectedId } from '../../../fileManager/_state/selectors';
 import { getOne } from '../../../db/files/selectors';
 
 import PlayRenderer from '../_components/PlayRenderer';

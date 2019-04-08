@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AppLayout from '../ui/layout/app/containers/App';
-import FileManager from '../fileManager/containers/FileManager';
-import Editor from '../editor/containers/Editor';
-import RightBarPanel from '../optionsPanels/rendering/containers/Rendering';
+import AppLayout from '../ui/layout/app/_containers/App';
+import FileManager from '../fileManager/_containers/FileManager';
+import Editor from '../editor/_containers/Editor';
+import RightBarPanel from '../optionsPanels/rendering/_containers/Rendering';
 
 export default function Edit() {
 	const fm = <FileManager />;

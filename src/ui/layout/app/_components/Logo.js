@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../../components/Icon.js';
+import Icon from '../../../_components/Icon.js';
 
 export default React.memo(function Logo() {
 	return (

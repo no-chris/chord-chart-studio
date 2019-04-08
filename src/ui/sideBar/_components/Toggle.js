@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../components/Icon';
+import Icon from '../../_components/Icon';
 
 export default function Toggle(props) {
 	const {

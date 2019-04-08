@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../../components/Icon.js';
+import Icon from '../../../_components/Icon.js';
 import router from '../../../../router';
 
 export default React.memo(function NavEntry(props) {

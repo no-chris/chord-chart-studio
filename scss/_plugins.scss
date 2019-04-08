@@ -1,15 +1,15 @@
-@import '../src/ui/layout/app/components/App';
-@import '../src/ui/layout/app/components/Nav';
-@import '../src/ui/layout/app/components/Logo';
-@import '../src/ui/layout/app/components/Footer';
+@import '../src/ui/layout/app/_components/App';
+@import '../src/ui/layout/app/_components/Nav';
+@import '../src/ui/layout/app/_components/Logo';
+@import '../src/ui/layout/app/_components/Footer';
 
 @import '../src/ui/sideBar/optionsPanels';
-@import '../src/ui/sideBar/components/GroupLabel';
-@import '../src/ui/sideBar/components/Select';
-@import '../src/ui/sideBar/components/Slider';
-@import '../src/ui/sideBar/components/Toggle';
+@import '../src/ui/sideBar/_components/GroupLabel';
+@import '../src/ui/sideBar/_components/Select';
+@import '../src/ui/sideBar/_components/Slider';
+@import '../src/ui/sideBar/_components/Toggle';
 
 @import '../src/songRenderers/printPreview/_components/PrintPreview';
 
-@import '../src/editor/songEditor/components/SongEditor';
-@import '../src/fileManager/components/FileManager';
+@import '../src/editor/songEditor/_components/SongEditor';
+@import '../src/fileManager/_components/FileManager';

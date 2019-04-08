@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Rendering from '../components/Rendering';
+import Rendering from '../_components/Rendering';
 
 import allWidgets from '../allWidgets';
 import allPanelEntries from '../allPanelEntries';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import SelectChoice from './SelectChoice';
 
-import Icon from '../../components/Icon';
+import Icon from '../../_components/Icon';
 
 export default function Select(props) {
 	const [ isOpen, setIsOpen ] = useState(false);

@@ -1,4 +1,4 @@
-import FileManager from '../../../../src/fileManager/components/FileManager';
+import FileManager from '../../../../src/fileManager/_components/FileManager';
 
 describe('FileManager', () => {
 	test('Module', () => {

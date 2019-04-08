@@ -1,4 +1,4 @@
-import createAction from '../core/createAction';
+import createAction from '../../core/createAction';
 
 import * as actionsTypes from './actionsTypes';
 

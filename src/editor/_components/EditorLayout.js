@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SongEditor from '../SongEditor/components/SongEditor';
+import SongEditor from '../songEditor/_components/SongEditor';
 import EditorPreview from '../../songRenderers/editorPreview/_components/EditorPreview';
 
 export default function EditorLayout(props) {

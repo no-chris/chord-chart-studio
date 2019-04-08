@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
-import { toggleLeftBar, toggleRightBar} from '../actions';
-import { isLeftBarCollapsed, isRightBarCollapsed } from '../selectors';
+import { toggleLeftBar, toggleRightBar} from '../_state/actions';
+import { isLeftBarCollapsed, isRightBarCollapsed } from '../_state/selectors';
 
-import App from '../components/App';
+import App from '../_components/App';
 
 
 export default connect(

@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import { selectFile, enableRename } from '../actions';
-import { getDefaultTitle, getSelectedId, getRenamedId } from '../selectors';
+import { selectFile, enableRename } from '../_state/actions';
+import { getDefaultTitle, getSelectedId, getRenamedId } from '../_state/selectors';
 
 import { createFile, updateFile, deleteFile } from '../../db/files/actions';
 import { getAllTitles } from '../../db/files/selectors';
 
-import FileManager from '../components/FileManager';
+import FileManager from '../_components/FileManager';
 
 export default connect(
 	state => ({
