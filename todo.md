@@ -7,7 +7,8 @@
 - remove old fileManager
 - add id enricher middleware
 - better encapsulation for icons in tests? Well anyway it will break on lib change because icons names are differents...
-
+- react strict mode
+- react error boundaries
 
 ## Component checklist
 - memo ?
