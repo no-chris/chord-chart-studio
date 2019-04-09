@@ -6,3 +6,4 @@
 - have a clear entry point for each feature module
 - remove old fileManager
 - add id enricher middleware
+- better encapsulation for icons in tests? Well anyway it will break on lib change because icons names are differents...

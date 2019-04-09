@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Icon from '../../../_components/Icon';
 
 export default function GroupLabel(props) {
-	const { icon, label } = props;
+	const {
+		icon,
+		label
+	} = props;
 
 	return (
 		<div className={'optionGroupLabel'}>
@@ -10,3 +15,8 @@ export default function GroupLabel(props) {
 		</div>
 	);
 }
+
+GroupLabel.propTypes = {
+	icon: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+};

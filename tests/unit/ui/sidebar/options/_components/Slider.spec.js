@@ -38,6 +38,15 @@ describe('Slider', () => {
 
 			getByText('+8');
 		});
+
+		test('should not display "+" symbol if showPlusSymbol === false', () => {
+			const { queryByText } = render(<Slider
+				{...props}
+				showPlusSymbol={false}
+			/>);
+
+			expect(queryByText('+8')).toBeNull();
+		});
 	});
 
 	describe('onChange()', () => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import SelectChoice from './SelectChoice';
 
@@ -20,9 +21,7 @@ export default function Select(props) {
 	const iconName = (isOpen) ? 'keyboard_arrow_down' : 'keyboard_arrow_right';
 
 	function toggleChoices() {
-		if (isEnabled) {
-			setIsOpen(!isOpen);
-		}
+		setIsOpen(!isOpen);
 	}
 
 	const renderedChoices = (!isOpen)
@@ -45,7 +44,7 @@ export default function Select(props) {
 		<div className={'option optionSelect'}>
 			<div
 				className={'optionSelect-title'}
-				onClick={toggleChoices}
+				onClick={(isEnabled) ? toggleChoices : null}
 			>
 				<div className={'optionSelect-desc'}>{label}</div>
 				<div className={'optionSelect-toggle'}>
@@ -57,3 +56,12 @@ export default function Select(props) {
 	);
 }
 
+Select.propTypes = {
+	isEnabled: PropTypes.bool.isRequired,
+	label: PropTypes.string.isRequired,
+	allChoices: PropTypes.array.isRequired,
+	optionContext: PropTypes.string.isRequired,
+	optionKey: PropTypes.string.isRequired,
+	optionValue: PropTypes.string.isRequired,
+	setOption: PropTypes.func.isRequired
+};
