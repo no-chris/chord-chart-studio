@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default React.memo(function Footer() {
+function Footer() {
 	return (
-		<div className="app-footer">
-			Universal Chord Charts - lib: v0.2.0 / demo: v0.5.0
+		<div className="appFooter">
+			Chords Charts Studio v0.5.0 - Universal Chords Charts v0.2.0
 		</div>
 	);
-});
+}
+
+export default React.memo(Footer);

@@ -24,6 +24,7 @@ html, body, #app {
     flex-direction: row;
     flex-wrap: nowrap;
 
+    .sidebar-isCollapsed,
     .sidebar-collapsed {
       display:none;
       padding: $spacer-tiny $spacer-small;
@@ -32,10 +33,12 @@ html, body, #app {
     &.is-collapsed {
       width: 48px;
 
+      .sidebar-isCollapsed,
       .sidebar-collapsed {
         display:block;
       }
 
+      .sidebar-isExpanded,
       .sidebar-expanded {
         display: none;
       }
@@ -82,6 +85,7 @@ html, body, #app {
 .app-wrapper {
   [data-area="app-sidebar-left"],
   [data-area="app-sidebar-right"] {
+    .sidebar-isCollapsed,
     .sidebar-collapsed {
       text-align: center;
     }

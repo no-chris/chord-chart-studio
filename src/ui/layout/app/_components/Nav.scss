@@ -1,19 +1,17 @@
-/* ================================= */
-/*               Layout              */
-/* ================================= */
+// Structure
 
-.main-nav {
-  ul {
+.mainNav {
+  .mainNav-entries {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
 
-    li {
+    .mainNavEntry {
       display: inline-block;
       padding: 0 $spacer-medium;
 
-      i {
+      .icon {
         margin-right: $spacer-tiny;
         vertical-align: middle;
       }
@@ -22,12 +20,10 @@
 }
 
 
-/* ================================= */
-/*                Skin               */
-/* ================================= */
+// Skin
 
-.main-nav {
-  ul {
+.mainNav {
+  .mainNav-entries {
     list-style-type: none;
     @include font-size(base);
     font-family: $font-family-headings;
@@ -35,10 +31,10 @@
     vertical-align: middle;
     color: $c-prim-ultradark;
 
-    li {
+    .mainNavEntry {
       cursor: pointer;
 
-      i {
+      .icon {
         @include font-size(normal);
       }
 
@@ -46,7 +42,7 @@
         background-color: $c-prim-light;
       }
 
-      &.active {
+      &.mainNavEntry-isActive {
         background-color: $c-prim-dark;
         color: $c-prim-txt;
       }

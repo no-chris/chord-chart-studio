@@ -1,40 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import NavEntry from './NavEntry.js';
 
-export default React.memo(function Nav(props) {
-	const { active } = props;
-
-	const allEntries = [
-		{
-			id: 'edit',
-			text: 'Edit',
-			icon: 'create',
-			link: '/edit',
-		},
-		{
-			id: 'play',
-			text: 'Play',
-			icon: 'music_note',
-			link: '/play',
-		},
-		{
-			id: 'print',
-			text: 'Print / PDF',
-			icon: 'print',
-			link: '/print',
-		},
-		{
-			id: 'export',
-			text: 'Export',
-			icon: 'save_alt',
-			link: '/export',
-		},
-	];
+function Nav(props) {
+	const {
+		active,
+		allEntries,
+	} = props;
 
 	return (
-		<nav className="main-nav">
-			<ul>
+		<nav className={'mainNav'}>
+			<ul className={'mainNav-entries'}>
 				{
 					allEntries.map((entry, key) =>
 						<NavEntry
@@ -47,4 +24,18 @@ export default React.memo(function Nav(props) {
 			</ul>
 		</nav>
 	);
-});
+}
+
+Nav.propTypes = {
+	active: PropTypes.string.isRequired,
+	allEntries: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			label: PropTypes.string.isRequired,
+			icon: PropTypes.string.isRequired,
+			link: PropTypes.string.isRequired,
+		})
+	),
+};
+
+export default React.memo(Nav);

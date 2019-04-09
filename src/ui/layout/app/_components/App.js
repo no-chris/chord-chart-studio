@@ -1,7 +1,9 @@
 import React from 'react';
-import Logo from './Logo';
+import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
 import Footer from './Footer';
+
+import allNavEntries from '../allNavEntries';
 
 export default function App(props) {
 	const {
@@ -36,7 +38,10 @@ export default function App(props) {
 			</section>
 			<section data-area="app-main">
 				<section data-area="app-header">
-					<Nav active={activeRoute} />
+					<Nav
+						active={activeRoute}
+						allEntries={allNavEntries}
+					/>
 				</section>
 				<section data-area="app-content">
 					{props.children}

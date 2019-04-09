@@ -1,17 +1,19 @@
 import React from 'react';
 
-import Icon from '../../../_components/Icon.js';
+import Icon from '../../_components/Icon.js';
 
-export default React.memo(function Logo() {
+function Logo() {
 	return (
 		<div className="logo">
-			<div className="sidebar-collapsed">
+			<div className="sidebar-isCollapsed">
 				<Icon iconName="queue_music" />
 			</div>
 
-			<div className="sidebar-expanded">
+			<div className="sidebar-isExpanded">
 				<Icon iconName="queue_music" />Chords Charts Studio
 			</div>
 		</div>
 	);
-});
+}
+
+export default React.memo(Logo);

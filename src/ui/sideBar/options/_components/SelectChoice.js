@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Icon from '../../../_components/Icon';
 
-export default function SelectChoice(props) {
+function SelectChoice(props) {
 	const {
 		isActive,
 		label,
@@ -35,3 +35,6 @@ SelectChoice.propTypes = {
 	label: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
 };
+
+export default React.memo(SelectChoice);
+

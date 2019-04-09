@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Slider(props) {
+function Slider(props) {
 	const {
 		isEnabled,
 		label,
@@ -61,3 +61,5 @@ Slider.propTypes = {
 Slider.defaultProps = {
 	showPlusSymbol: true
 };
+
+export default React.memo(Slider);

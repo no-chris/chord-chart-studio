@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Icon from '../../../_components/Icon';
 
-export default function Toggle(props) {
+function Toggle(props) {
 	const {
 		isEnabled,
 		label,
@@ -43,3 +43,5 @@ Toggle.propTypes = {
 	optionValue: PropTypes.bool.isRequired,
 	setOption: PropTypes.func.isRequired,
 };
+
+export default React.memo(Toggle);

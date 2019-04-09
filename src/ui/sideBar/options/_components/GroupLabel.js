@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Icon from '../../../_components/Icon';
 
-export default function GroupLabel(props) {
+function GroupLabel(props) {
 	const {
 		icon,
 		label
@@ -20,3 +20,5 @@ GroupLabel.propTypes = {
 	icon: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 };
+
+export default React.memo(GroupLabel);

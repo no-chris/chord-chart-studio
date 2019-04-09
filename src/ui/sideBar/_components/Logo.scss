@@ -1,5 +1,5 @@
 .logo {
-  .sidebar-expanded {
+  .sidebar-isExpanded {
     margin: $spacer-tiny $spacer-small;
     padding-bottom: $spacer-tiny;
 
@@ -9,7 +9,7 @@
     color: $c-prim-txt;
     border-bottom: 1px solid $c-prim-light;
 
-    .material-icons {
+    .icon {
       @include font-size(normal);
       margin-right: $spacer-tiny;
       vertical-align: middle;
