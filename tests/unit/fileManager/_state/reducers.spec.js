@@ -3,11 +3,11 @@ jest.mock('uuid');
 import deepFreeze from 'deep-freeze';
 import uuid from 'uuid';
 
-import reducers from '../../../src/fileManager/_state/reducers';
-import * as fmActionsTypes from '../../../src/fileManager/_state/actionsTypes';
-import * as fmActions from '../../../src/fileManager/_state/actions';
-import * as dbFilesActionsTypes from '../../../src/db/files/actionsTypes';
-import * as dbFilesActions from '../../../src/db/files/actions';
+import reducers from '../../../../src/fileManager/_state/reducers';
+import * as fmActionsTypes from '../../../../src/fileManager/_state/actionsTypes';
+import * as fmActions from '../../../../src/fileManager/_state/actions';
+import * as dbFilesActionsTypes from '../../../../src/db/files/actionsTypes';
+import * as dbFilesActions from '../../../../src/db/files/actions';
 
 describe('fileManager: reducers', () => {
 	const initialState = deepFreeze(reducers());

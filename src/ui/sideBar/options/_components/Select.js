@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import SelectChoice from './SelectChoice';
 
-import Icon from '../../_components/Icon';
+import Icon from '../../../_components/Icon';
 
 export default function Select(props) {
 	const [ isOpen, setIsOpen ] = useState(false);
@@ -25,7 +25,7 @@ export default function Select(props) {
 	const choices = (!isOpen)
 		? null
 		: (
-			<div className={'option-select-choices'}>
+			<div className={'optionSelect-choices'}>
 				{widget.typeOption.choices.map(choice =>
 					<SelectChoice
 						key={choice.value}
@@ -39,13 +39,13 @@ export default function Select(props) {
 
 
 	return (
-		<div className={'option option-select'}>
+		<div className={'option optionSelect'}>
 			<div
-				className={'option-select-title'}
+				className={'optionSelect-title'}
 				onClick={toggleChoices}
 			>
-				<div className={'option-select-desc'}>{widget.label}</div>
-				<div className={'option-select-toggle'}>
+				<div className={'optionSelect-desc'}>{widget.label}</div>
+				<div className={'optionSelect-toggle'}>
 					<Icon iconName={iconName} />
 				</div>
 			</div>

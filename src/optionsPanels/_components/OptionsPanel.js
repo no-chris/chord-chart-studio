@@ -12,8 +12,8 @@ export default function OptionsPanel(props) {
 	} = props;
 
 	const classNames = [
-		'options-panel',
-		'options-panel-' + id
+		'optionsPanel',
+		'optionsPanel-' + id
 	];
 
 	let widget;

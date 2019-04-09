@@ -1,4 +1,4 @@
-import * as selectors from '../../../src/fileManager/_state/selectors';
+import * as selectors from '../../../../src/fileManager/_state/selectors';
 
 describe('fileManager: selectors', () => {
 

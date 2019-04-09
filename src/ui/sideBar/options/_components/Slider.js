@@ -17,11 +17,11 @@ export default function Slider(props) {
 
 	return (
 		<div
-			className={'option option-slider'}
+			className={'option optionSlider'}
 		>
-			<div className={'option-slider-desc'}>{widget.label}</div>
-			<div className={'option-slider-value'}>{(value > 0) ? '+' + value : value}</div>
-			<div className={'option-slider-range'}>
+			<div className={'optionSlider-desc'}>{widget.label}</div>
+			<div className={'optionSlider-value'}>{(value > 0) ? '+' + value : value}</div>
+			<div className={'optionSlider-range'}>
 				<input
 					min={widget.typeOption.min}
 					max={widget.typeOption.max}

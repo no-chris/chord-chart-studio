@@ -20,7 +20,7 @@ export default function FileManager(props) {
 	} = props;
 
 	return (
-		<div className="fm">
+		<div className="file-manager">
 			<div className="sidebar-collapsed">
 				<Icon iconName="file_copy" />
 			</div>

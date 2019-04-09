@@ -1,0 +1,43 @@
+.sidebar {
+  .optionsPanel {
+
+    @include font-size(small);
+
+    .icon {
+      @include font-size(base);
+    }
+
+    .optionsPanelEntry {
+
+      @import './_components/GroupLabel';
+      @import './_components/Select';
+      @import './_components/Slider';
+      @import './_components/Toggle';
+
+      .option {
+        padding: $spacer-tiny $spacer-small-plus $spacer-tiny $spacer-tiny;
+        border-bottom: 1px dotted $c-prim-light;
+      }
+
+      .optionGroupLabel {
+        padding: $spacer-medium $spacer-tiny $spacer-tiny;
+        border-bottom: 1px dotted $c-prim-light;
+      }
+
+      &:not(.optionsPanelEntry-isDisabled):hover .option {
+        background-color: rgba($c-prim, 0.1);
+      }
+
+      &:not(.optionsPanelEntry-isDisabled):hover .optionSelect,
+      &:not(.optionsPanelEntry-isDisabled):hover .optionToggle {
+        cursor: pointer;
+      }
+    }
+
+    .optionsPanelEntry-isDisabled {
+      .option {
+        color: rgba($c-prim, 0.5);
+      }
+    }
+  }
+}

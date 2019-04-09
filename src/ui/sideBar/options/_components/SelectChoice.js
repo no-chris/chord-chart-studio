@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../_components/Icon';
+import Icon from '../../../_components/Icon';
 
 export default function SelectChoice(props) {
 	const {
@@ -9,9 +9,9 @@ export default function SelectChoice(props) {
 		onClick
 	} = props;
 
-	const classNames = ['option-select-choice'];
+	const classNames = ['optionSelectChoice'];
 	if (isActive) {
-		classNames.push('is-active');
+		classNames.push('optionSelectChoice-isActive');
 	}
 
 	return (
@@ -19,10 +19,10 @@ export default function SelectChoice(props) {
 			className={classNames.join(' ')}
 			onClick={onClick}
 		>
-			<div className={'checked'}>
+			<div className={'optionSelectChoice-check'}>
 				{isActive && <Icon iconName={'check'} />}
 			</div>
-			<div className={'label'}>
+			<div className={'optionSelectChoice-label'}>
 				{label}
 			</div>
 		</div>

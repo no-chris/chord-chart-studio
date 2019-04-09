@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze';
 
-import reducers from '../../../../../src/ui/layout/app/_state/reducers';
-import * as actions from '../../../../../src/ui/layout/app/_state/actions';
-import * as actionsTypes from '../../../../../src/ui/layout/app/_state/actionsTypes';
+import reducers from '../../../../../../src/ui/layout/app/_state/reducers';
+import * as actions from '../../../../../../src/ui/layout/app/_state/actions';
+import * as actionsTypes from '../../../../../../src/ui/layout/app/_state/actionsTypes';
 
 const initialState = deepFreeze(reducers());
 

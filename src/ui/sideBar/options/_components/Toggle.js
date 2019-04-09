@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../_components/Icon';
+import Icon from '../../../_components/Icon';
 
 export default function Toggle(props) {
 	const {
@@ -10,9 +10,9 @@ export default function Toggle(props) {
 		setOption
 	} = props;
 
-	const classNames = ['option', 'option-toggle'];
+	const classNames = ['option', 'optionToggle'];
 	classNames.push(
-		(value === true) ? 'option-toggle-on' : 'option-toggle-off'
+		(value === true) ? 'optionToggle-isOn' : 'optionToggle-isOff'
 	);
 
 	function handleClick() {
@@ -24,8 +24,8 @@ export default function Toggle(props) {
 			className={classNames.join(' ')}
 			onClick={(panelEntry.isEnabled) ? handleClick : null}
 		>
-			<div className={'option-toggle-desc'}>{widget.label}</div>
-			<div className={'option-toggle-icon'}>
+			<div className={'optionToggle-desc'}>{widget.label}</div>
+			<div className={'optionToggle-icon'}>
 				<Icon iconName={(value === true) ? 'toggle_on' : 'toggle_off' } />
 			</div>
 		</div>

@@ -1,5 +1,5 @@
-import * as actions from '../../../src/fileManager/_state/actions';
-import * as actionsTypes from '../../../src/fileManager/_state/actionsTypes';
+import * as actions from '../../../../src/fileManager/_state/actions';
+import * as actionsTypes from '../../../../src/fileManager/_state/actionsTypes';
 
 describe('fileManager: actions creators', () => {
 

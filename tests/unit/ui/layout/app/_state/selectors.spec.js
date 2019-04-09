@@ -1,4 +1,4 @@
-import * as selectors from '../../../../../src/ui/layout/app/_state/selectors';
+import * as selectors from '../../../../../../src/ui/layout/app/_state/selectors';
 
 describe('ui/layout/app: selectors', () => {
 

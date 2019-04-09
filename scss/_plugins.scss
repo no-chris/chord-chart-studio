@@ -3,11 +3,7 @@
 @import '../src/ui/layout/app/_components/Logo';
 @import '../src/ui/layout/app/_components/Footer';
 
-@import '../src/ui/sideBar/optionsPanels';
-@import '../src/ui/sideBar/_components/GroupLabel';
-@import '../src/ui/sideBar/_components/Select';
-@import '../src/ui/sideBar/_components/Slider';
-@import '../src/ui/sideBar/_components/Toggle';
+@import '../src/ui/sideBar/options/options';
 
 @import '../src/songRenderers/printPreview/_components/PrintPreview';
 

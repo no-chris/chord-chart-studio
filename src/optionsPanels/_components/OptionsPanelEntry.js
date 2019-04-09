@@ -3,12 +3,12 @@ import React from 'react';
 export default function OptionsPanelEntry(props) {
 	const { isEnabled, isVisible } = props;
 
-	const classNames = ['options-panel-entry'];
+	const classNames = ['optionsPanelEntry'];
 	if (!isEnabled) {
-		classNames.push('options-panel-entry-disabled');
+		classNames.push('optionsPanelEntry-isDisabled');
 	}
 	if (!isVisible) {
-		classNames.push('options-panel-entry-hidden');
+		classNames.push('optionsPanelEntry-isHidden');
 	}
 
 	return (

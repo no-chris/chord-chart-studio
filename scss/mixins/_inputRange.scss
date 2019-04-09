@@ -1,27 +1,28 @@
+// Adapted from https://github.com/Jimdo/range-slider-sass
 
-// https://github.com/Jimdo/range-slider-sass
-
-// The draghandle
 $thumb-color: $c-prim-ultradark !default;
 $thumb-radius: 0 !default;
 $thumb-height: 10px !default;
 $thumb-width: 15px !default;
-$thumb-border-width: 0 !default;
-$thumb-border-color: #000 !default;
 $thumb-shadow-size: 0 !default;
 $thumb-shadow-blur: 0 !default;
 $thumb-shadow-color: rgba(0, 0, 0, 0) !default;
+$thumb-border-width: 0 !default;
+$thumb-border-color: black !default;
 
-// The range
 $track-color: $c-prim-light !default;
 $track-radius: 0 !default;
 $track-width: 100% !default;
 $track-height: 10px !default;
-$track-border-width: 0 !default;
-$track-border-color: #000 !default;
 $track-shadow-size: 0 !default;
 $track-shadow-blur: 0 !default;
 $track-shadow-color: rgba(0, 0, 0, 0) !default;
+$track-border-width: 0 !default;
+$track-border-color: black !default;
+
+@mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
+  box-shadow: $shadow-size $shadow-size $shadow-blur $shadow-color, 0 0 $shadow-size lighten($shadow-color, 5%);
+}
 
 @mixin track {
   width: $track-width;
@@ -31,6 +32,7 @@ $track-shadow-color: rgba(0, 0, 0, 0) !default;
 }
 
 @mixin thumb {
+  //@include shadow($thumb-shadow-size, $thumb-shadow-blur, $thumb-shadow-color);
   width: $thumb-width;
   height: $thumb-height;
   cursor: pointer;
@@ -50,6 +52,7 @@ $track-shadow-color: rgba(0, 0, 0, 0) !default;
 
   &::-webkit-slider-runnable-track {
     @include track;
+    //@include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
     border: $track-border-width solid $track-border-color;
     border-radius: $track-radius;
     background: $track-color;
@@ -67,6 +70,7 @@ $track-shadow-color: rgba(0, 0, 0, 0) !default;
 
   &::-moz-range-track {
     @include track;
+    //@include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
     border: $track-border-width solid $track-border-color;
     border-radius: $track-radius;
     background: $track-color;
@@ -85,12 +89,14 @@ $track-shadow-color: rgba(0, 0, 0, 0) !default;
   }
 
   &::-ms-fill-lower {
+    //@include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
     border: $track-border-width solid $track-border-color;
     border-radius: $track-radius * 2;
     background: $track-color;
   }
 
   &::-ms-fill-upper {
+    //@include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
     border: $track-border-width solid $track-border-color;
     border-radius: $track-radius * 2;
     background: $track-color;
@@ -108,32 +114,3 @@ $track-shadow-color: rgba(0, 0, 0, 0) !default;
     background: $track-color;
   }
 }
-
-
-
-
-.option-slider {
-
-  display: flex;
-  flex-wrap: wrap;
-
-  .option-slider-desc {
-    flex: 1 1 auto;
-  }
-  .option-slider-value {
-    flex: 0 0 auto;
-    vertical-align: middle;
-
-    @include font-size(small);
-  }
-
-  .option-slider-range {
-    flex: 1 1 100%;
-
-    input[type="range"] {
-      @include input-type-range;
-    }
-  }
-}
-
-
