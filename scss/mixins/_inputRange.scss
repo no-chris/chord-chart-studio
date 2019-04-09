@@ -113,4 +113,20 @@ $track-border-color: black !default;
   &:focus::-ms-fill-upper {
     background: $track-color;
   }
+
+  &:disabled::-moz-range-track,
+  &:disabled::-moz-range-thumb {
+    cursor: default;
+  }
+
+  &:disabled::-webkit-slider-runnable-track,
+  &:disabled::-webkit-slider-thumb {
+    cursor: default;
+  }
+
+  &:disabled::-ms-track,
+  &:disabled::-ms-thumb {
+    cursor: default;
+  }
+
 }

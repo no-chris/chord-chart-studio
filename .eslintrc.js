@@ -50,7 +50,7 @@ module.exports = {
 		'no-unsanitized/property': 	[ 'error', { escape: { methods: ['escapeHTML'] } } ],
 		'no-unsanitized/method': 	[ 'error' ],
 
-		'react/prop-types': 		[ 'off' ],
+		'react/prop-types': 		[ 'warn' ],
 
 		'react-hooks/rules-of-hooks': [ 'error' ],
 		'react-hooks/exhaustive-deps': [ 'warn' ]

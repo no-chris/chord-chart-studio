@@ -13,7 +13,6 @@ export default {
 	createStore() {
 		const persistedState = loadState();
 		const initialState = _defaultsDeep(persistedState, seed);
-		console.log(initialState);
 
 		store = createStore(
 			allReducers,

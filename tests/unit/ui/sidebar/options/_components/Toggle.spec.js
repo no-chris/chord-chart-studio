@@ -10,21 +10,17 @@ afterEach(cleanup);
 
 describe('Toggle', () => {
 
-	let widget;
-	let panelEntry;
+	let props;
 	const setOption = jest.fn();
 
 	beforeEach(() => {
-		widget = {
+		props = {
+			isEnabled: true,
 			label: 'myLabel',
-			option: {
-				context: 'myContext',
-				key: 'myKey'
-			}
-		};
-
-		panelEntry = {
-			isEnabled: true
+			optionContext: 'myContext',
+			optionKey: 'myKey',
+			optionValue: true,
+			setOption,
 		};
 
 		setOption.mockReset();
@@ -34,12 +30,9 @@ describe('Toggle', () => {
 	describe('Toggle state', () => {
 		test('Should render "on" state if value === true', () => {
 			const { container, getByText } = render(<Toggle
-				value={true}
-				panelEntry={panelEntry}
-				widget={widget}
-				setOption={setOption}
+				{...props}
 			/>);
-			getByText(widget.label);
+			getByText(props.label);
 			getByText('toggle_on');
 
 			expect(container.firstChild).toHaveClass('optionToggle-isOn');
@@ -47,12 +40,10 @@ describe('Toggle', () => {
 
 		test('Should render "off" state if value === false', () => {
 			const { container, getByText } = render(<Toggle
-				value={false}
-				panelEntry={panelEntry}
-				widget={widget}
-				setOption={setOption}
+				{...props}
+				optionValue={false}
 			/>);
-			getByText(widget.label);
+			getByText(props.label);
 			getByText('toggle_off');
 
 			expect(container.firstChild).toHaveClass('optionToggle-isOff');
@@ -62,10 +53,8 @@ describe('Toggle', () => {
 	describe('onClick()', () => {
 		test('should not respond to click if option is disabled', () => {
 			const { container } = render(<Toggle
-				value={true}
-				panelEntry={{ isEnabled: false }}
-				widget={widget}
-				setOption={setOption}
+				{...props}
+				isEnabled={false}
 			/>);
 
 			fireEvent.click(container.firstChild);
@@ -75,10 +64,7 @@ describe('Toggle', () => {
 
 		test('should setOption to false on click if value === true', () => {
 			const { container } = render(<Toggle
-				value={true}
-				panelEntry={panelEntry}
-				widget={widget}
-				setOption={setOption}
+				{...props}
 			/>);
 
 			fireEvent.click(container.firstChild);
@@ -89,10 +75,8 @@ describe('Toggle', () => {
 
 		test('should setOption to true on click if value === false', () => {
 			const { container } = render(<Toggle
-				value={false}
-				panelEntry={panelEntry}
-				widget={widget}
-				setOption={setOption}
+				{...props}
+				optionValue={false}
 			/>);
 
 			fireEvent.click(container.firstChild);

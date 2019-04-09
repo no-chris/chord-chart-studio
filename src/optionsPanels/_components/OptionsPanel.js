@@ -31,16 +31,27 @@ export default function OptionsPanel(props) {
 
 			return (
 				<OptionsPanelEntry
-					key={panelEntry.widgetId + panelEntry.key }
+					key={panelEntry.widgetId + (panelEntry.key || '') }
 					isEnabled={panelEntry.isEnabled}
 					isVisible={panelEntry.isVisible}
 				>
-					<WidgetComponent
-						panelEntry={panelEntry}
-						widget={widget}
-						value={value}
-						setOption={setOption}
-					/>
+					{
+						(panelEntry.isCustomWidget)
+							?
+							<WidgetComponent
+								{...panelEntry}
+							/>
+							:
+							<WidgetComponent
+								isEnabled={panelEntry.isEnabled}
+								{...widget.typeOption}
+								label={widget.label}
+								optionContext={widget.option.context}
+								optionKey={widget.option.key}
+								optionValue={value}
+								setOption={setOption}
+							/>
+					}
 				</OptionsPanelEntry>
 			);
 		});

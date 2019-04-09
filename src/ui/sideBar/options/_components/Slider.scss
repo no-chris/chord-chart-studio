@@ -17,6 +17,11 @@
 
     input[type="range"] {
       @include input-type-range;
+
+      &:disabled {
+        opacity: .35;
+        cursor: default;
+      }
     }
   }
 }

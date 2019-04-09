@@ -13,7 +13,7 @@ export default {
 		label: 'Document size',
 		type: 'select',
 		typeOption: {
-			choices: [
+			allChoices: [
 				{
 					label: 'A4',
 					value: 'a4'
@@ -60,7 +60,7 @@ export default {
 		label: 'Rendering style',
 		type: 'select',
 		typeOption: {
-			choices: [
+			allChoices: [
 				{
 					label: 'UCC',
 					value: 'ucc'
@@ -99,7 +99,7 @@ export default {
 		label: 'Instrument',
 		type: 'select',
 		typeOption: {
-			choices: [
+			allChoices: [
 				{
 					label: 'Guitar',
 					value: 'guitar'
@@ -170,7 +170,7 @@ export default {
 		},
 		option: {
 			context: 'rendering',
-			key: 'capo'
+			key: 'capoPosition'
 		}
 	},
 
@@ -187,7 +187,7 @@ export default {
 		label: 'Preferred accidentals',
 		type: 'select',
 		typeOption: {
-			choices: [
+			allChoices: [
 				{
 					label: 'Auto',
 					value: 'auto'
@@ -230,7 +230,7 @@ export default {
 		label: 'Font style',
 		type: 'select',
 		typeOption: {
-			choices: [
+			allChoices: [
 				{
 					label: 'Roboto',
 					value: 'roboto'
@@ -256,7 +256,7 @@ export default {
 		label: 'Chords color',
 		type: 'select',
 		typeOption: {
-			choices: [
+			allChoices: [
 				{
 					label: 'Black',
 					value: 'black'

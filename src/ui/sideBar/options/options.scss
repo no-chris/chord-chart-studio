@@ -14,14 +14,17 @@
       @import './_components/Slider';
       @import './_components/Toggle';
 
+      .option,
+      .optionGroupLabel {
+        border-bottom: 1px dotted $c-prim-light;
+      }
+
       .option {
         padding: $spacer-tiny $spacer-small-plus $spacer-tiny $spacer-tiny;
-        border-bottom: 1px dotted $c-prim-light;
       }
 
       .optionGroupLabel {
         padding: $spacer-medium $spacer-tiny $spacer-tiny;
-        border-bottom: 1px dotted $c-prim-light;
       }
 
       &:not(.optionsPanelEntry-isDisabled):hover .option {
