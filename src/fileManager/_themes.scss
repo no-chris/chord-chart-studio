@@ -1,0 +1,15 @@
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                action-bgHover: cv(dark-background, light20),
+
+                fileEntry-txt: cv(dark-foreground),
+                fileEntry-txtActive: cv(dark-background),
+                fileEntry-txtRenamed: cv(dark-background),
+                fileEntry-bgActive: cv(dark-accent),
+                fileEntry-bgHover: cv(dark-background, light20),
+                fileEntry-bgRenamed: cv(dark-foreground),
+        ),
+);

@@ -9,8 +9,7 @@
   }
 
   .icon {
+    @include font-size(base);
     vertical-align: middle;
   }
 }
-
-

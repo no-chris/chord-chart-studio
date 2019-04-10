@@ -1,0 +1,22 @@
+@import '../../../../scss/abstract';
+
+
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                song-txt: cv(dark-foreground, dark10),
+        ),
+);
+
+
+.playRenderer {
+  padding: $spacer-small;
+}
+
+.pr-SongRenderer {
+  @include themify($themes) {
+    color: themed('song-txt');
+  }
+}

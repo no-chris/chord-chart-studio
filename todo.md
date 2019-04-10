@@ -10,6 +10,9 @@
 - react strict mode
 - react error boundaries
 - CSS: decide what to do with the font size mixin
+- icon:    vertical-align: middle;
+- check structure/skin/layout
+
 
 ## Component checklist
 - memo ?

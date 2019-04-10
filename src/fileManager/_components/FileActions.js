@@ -24,7 +24,7 @@ export default React.memo(function FileActions(props) {
 	];
 
 	return (
-		<div className="fm-action-list">
+		<div className="fileManager-actionsList">
 			{
 				allActions.map((action, key) =>
 					<FileActionEntry {...action} key={key} />

@@ -43,7 +43,8 @@
 .sb-optionSelectChoice-check {
   flex: 0 0 20px;
 
-  .icon {
+  // artificially increase specificity to override sb-option default
+  .sb-option & .icon {
     @include font-size(small)
   }
 }

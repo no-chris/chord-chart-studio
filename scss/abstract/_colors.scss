@@ -20,7 +20,7 @@ $c-sec-light: #fffd61;
 
 // https://coolors.co/f4f4f4-161925-2e4052-336699-faa916
 $whiteSmoke: rgba(244, 244, 244, 1);
-$eerieBlack: rgba(22, 25, 37, 1);
+$onyx: rgba(48, 56, 70, 1);
 $charcoal: rgba(46, 64, 82, 1);
 $lapisLazuli: rgba(49, 107, 165, 1);
 $darkTangerine: rgba(250, 169, 22, 1);
@@ -28,7 +28,7 @@ $darkTangerine: rgba(250, 169, 22, 1);
 $colors: (
         // Dark theme
         dark-foreground: $whiteSmoke,
-        dark-background: $eerieBlack,
+        dark-background: $onyx,
         dark-accent: $darkTangerine,
         dark-primary: $charcoal,
         dark-secondary: $lapisLazuli,

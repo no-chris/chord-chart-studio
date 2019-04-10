@@ -13,12 +13,12 @@ export default function FileEntry(props) {
 		updateFile,
 	} = props;
 
-	const classList = ['fm-entry'];
+	const classList = ['fileManagerEntry'];
 	if (isSelected) {
-		classList.push('selected');
+		classList.push('fileManagerEntry-isSelected');
 	}
 	if (isRenamed) {
-		classList.push('renamed');
+		classList.push('fileManagerEntry-isRenamed');
 	}
 
 	const inputRef = React.createRef();
@@ -86,8 +86,8 @@ export default function FileEntry(props) {
 			onKeyPress={handleKeyPress}
 		>
 			<input
+				className="fileManagerEntry-input"
 				ref={inputRef}
-				className="entry-title"
 				type="text"
 				value={title}
 				readOnly={(isRenamed) ? null : 'readOnly'}

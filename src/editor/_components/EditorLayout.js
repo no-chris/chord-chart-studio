@@ -1,3 +1,5 @@
+import './EditorLayout.scss';
+
 import React from 'react';
 
 import SongEditor from '../songEditor/_components/SongEditor';
@@ -7,14 +9,14 @@ export default function EditorLayout(props) {
 	const { selectedFile, updateFile } = props;
 
 	return (
-		<div className="song-editor">
-			<div className="song-editor-source">
+		<div className="songEditor">
+			<div className="songEditor-source">
 				<SongEditor
 					selectedFile={selectedFile}
 					updateFile={updateFile}
 				/>
 			</div>
-			<div className="song-editor-preview">
+			<div className="songEditor-preview">
 				<EditorPreview
 					selectedFile={selectedFile}
 				/>

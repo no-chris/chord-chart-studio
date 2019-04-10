@@ -9,10 +9,6 @@
 
 .sb-optionsPanel {
   @include font-size(small);
-
-  .icon {
-    @include font-size(base);
-  }
 }
 
 
@@ -33,6 +29,10 @@
     @include themify($themes) {
       background-color: themed('option-bgHover');
     }
+  }
+
+  .icon {
+    @include font-size(big);
   }
 }
 

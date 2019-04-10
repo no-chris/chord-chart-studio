@@ -4,6 +4,7 @@ import React from 'react';
 import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
 import Footer from './Footer';
+import Icon from '../../../_components/Icon';
 
 import allNavEntries from '../allNavEntries';
 
@@ -36,7 +37,9 @@ export default function App(props) {
 					<Logo />
 					{leftBar}
 				</div>
-				<div className="appLayout-sidebarCollapser appLayout-leftBarCollapser" onClick={toggleLeftBar} />
+				<div className="appLayout-sidebarCollapser appLayout-leftBarCollapser" onClick={toggleLeftBar}>
+					<Icon iconName={'keyboard_arrow_left'} />
+				</div>
 			</section>
 			<section className="appLayout-main">
 				<section className="appLayout-header">
@@ -53,7 +56,9 @@ export default function App(props) {
 				</section>
 			</section>
 			<section className={sidebarRightClassNames.join(' ')}>
-				<div className="appLayout-sidebarCollapser appLayout-rightBarCollapser" onClick={toggleRightBar} />
+				<div className="appLayout-sidebarCollapser appLayout-rightBarCollapser" onClick={toggleRightBar}>
+					<Icon iconName={'keyboard_arrow_right'} />
+				</div>
 				<div className="appLayout-sidebarContent appLayout-rightBarContent" onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
 					{rightBar}
 				</div>

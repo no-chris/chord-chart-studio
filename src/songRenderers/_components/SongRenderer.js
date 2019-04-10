@@ -1,3 +1,5 @@
+import './SongRenderer.scss';
+
 import _pick from 'lodash/pick';
 import React from 'react';
 
@@ -18,7 +20,7 @@ export default function SongRenderer(props) {
 	const renderedSong = (content) ? renderSong(content, renderOptions) : ''; // todo: make the lib resilient to this!
 
 	return (
-		<div className="song-renderer">
+		<div className={'songRenderer'}>
 			<div dangerouslySetInnerHTML={{ __html: renderedSong }} />
 		</div>
 	);

@@ -1,59 +1,43 @@
 @import '../../../../../scss/abstract';
 @import '../themes';
 
-// Structure
 
-.mainNav {
-  .mainNav-entries {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+.mainNav-entries {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 
-    .mainNavEntry {
-      display: inline-block;
-      padding: 0 $spacer-medium;
-
-      .icon {
-        margin-right: $spacer-tiny;
-        vertical-align: middle;
-      }
-    }
-  }
+  list-style-type: none;
+  @include font-size(base);
+  font-family: $font-family-headings;
+  font-weight: 400;
+  vertical-align: middle;
 }
 
 
-// Skin
+.mainNavEntry {
+  display: inline-block;
+  padding: 0 $spacer-medium;
+  cursor: pointer;
 
-.mainNav {
-  .mainNav-entries {
-    list-style-type: none;
-    @include font-size(base);
-    font-family: $font-family-headings;
-    font-weight: 400;
+  .icon {
+    margin-right: $spacer-tiny;
     vertical-align: middle;
+    @include font-size(normal);
+  }
 
-    .mainNavEntry {
-      cursor: pointer;
+  &:hover {
+    @include themify($themes) {
+      color: themed('header-txtHover');
+      background-color: themed('header-bgHover');
+    }
+  }
 
-      .icon {
-        @include font-size(normal);
-      }
-
-      &:hover {
-        @include themify($themes) {
-          color: themed('header-txtHover');
-          background-color: themed('header-bgHover');
-        }
-      }
-
-      &.mainNavEntry-isActive {
-        @include themify($themes) {
-          color: themed('header-txtActive');
-          background-color: themed('header-bgActive');
-        }
-      }
+  &.mainNavEntry-isActive{
+    @include themify($themes) {
+      color: themed('header-txtActive');
+      background-color: themed('header-bgActive');
     }
   }
 }
-

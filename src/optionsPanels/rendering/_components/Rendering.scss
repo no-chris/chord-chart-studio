@@ -8,6 +8,8 @@
 }
 
 .renderingOptionsPanel-isCollapsed {
+  padding: $spacer-small 0;
+
   .appLayout-sidebar:not(.appLayout-sidebar-isCollapsed) & {
     display:none;
   }

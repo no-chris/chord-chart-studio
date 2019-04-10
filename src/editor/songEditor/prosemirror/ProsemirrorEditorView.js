@@ -1,3 +1,5 @@
+import './ProsemirrorEditorView.scss';
+
 import React, { useEffect, useRef } from 'react';
 
 import { EditorState } from 'prosemirror-state';
@@ -83,7 +85,7 @@ export default function ProseMirrorEditorView(props) {
 	});
 
 	return (
-		<div className="prosemirror-wrapper" ref={editorDom} />
+		<div className="prosemirrorWrapper" ref={editorDom} />
 	);
 }
 

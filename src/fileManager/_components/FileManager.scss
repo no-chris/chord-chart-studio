@@ -1,102 +1,99 @@
+@import '../../../scss/abstract';
+@import '../themes';
 
 
-/* ================================= */
-/*              Layout               */
-/* ================================= */
+.fileManager-isExpanded {
+  @include font-size(small);
 
-.file-manager {
-  .sidebar-expanded {
+  .appLayout-sidebar-isCollapsed & {
+    display:none;
+  }
+}
 
-    .fm-action-list {
-      padding: $spacer-small;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
 
-      .fm-action {
-        flex: 0 1 auto;
-        padding: $spacer-tiny;
-        margin-right: $spacer-tiny;
-        white-space: nowrap;
-      }
+.fileManager-isCollapsed {
+  padding: $spacer-small 0;
+  .appLayout-sidebar:not(.appLayout-sidebar-isCollapsed) & {
+    display:none;
+  }
+}
 
+
+.fileManager-actionsList {
+  padding: $spacer-small;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.fileManager-action {
+  flex: 0 1 auto;
+  padding: $spacer-tiny;
+  margin-right: $spacer-tiny;
+  white-space: nowrap;
+
+  &:hover {
+    @include themify($themes) {
+      background-color: themed('action-bgHover');
     }
+    cursor: pointer;
+  }
 
-    .fm-entry-list {
-      padding-left: 0;
+  .icon {
+    @include font-size(normal);
+    vertical-align: middle;
+  }
+}
 
-      .fm-entry {
 
-        input {
-          width: 100%;
-          padding: $spacer-extra-tiny $spacer-small;
-        }
-      }
+.fileManager-entriesList {
+  padding-left: 0;
+  list-style: none;
+}
+
+
+.fileManagerEntry {
+  cursor: pointer;
+
+  &:hover {
+    @include themify($themes) {
+      background-color: themed('fileEntry-bgHover');
+    }
+  }
+
+  &.fileManagerEntry-isSelected {
+    @include themify($themes) {
+      background-color: themed('fileEntry-bgActive');
     }
   }
 }
 
 
+.fileManagerEntry-input {
+  width: 100%;
+  padding: $spacer-extra-tiny $spacer-small;
 
-/* ================================= */
-/*                Skin               */
-/* ================================= */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  @include themify($themes) {
+    color: themed('fileEntry-txt');
+  }
 
-.file-manager {
-  .sidebar-expanded {
-
-    @include font-size(small);
-    color: $c-prim-ultralight;
-
-    .fm-action-list {
-      .fm-action {
-
-        &:hover {
-          background-color: rgba(white, .3);
-          cursor: pointer;
-        }
-
-        .material-icons {
-          @include font-size(normal);
-          vertical-align: middle;
-        }
-      }
-    }
-
-    .fm-entry-list {
-      list-style: none;
-
-      .fm-entry {
-        cursor: pointer;
-
-        input {
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
-          color: $c-prim-txt;
-          outline: none;
-        }
-
-        &:hover {
-          background-color: rgba(white, .3);
-        }
-
-        &.selected {
-          background-color: $c-sec;
-
-          input {
-            color: $c-sec-txt;
-          }
-        }
-
-        &.renamed {
-          input {
-            background-color: white;
-            cursor: text;
-            color: black;
-          }
-        }
-      }
+  .fileManagerEntry-isSelected & {
+    @include themify($themes) {
+      color: themed('fileEntry-txtActive');
     }
   }
+
+  .fileManagerEntry-isRenamed & {
+    @include themify($themes) {
+      background-color: themed('fileEntry-bgRenamed');
+      color: themed('fileEntry-txtRenamed');
+    }
+    cursor: text;
+  }
 }
+

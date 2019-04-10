@@ -77,7 +77,8 @@ html, body, #app {
 
 
 .appLayout-sidebarCollapser {
-  flex: 0 0 8px;
+  flex: 0 0 12px;
+  display: flex;
 
   @include themify($themes) {
     background-color: themed('leftBar-collapser-bg');
@@ -90,6 +91,18 @@ html, body, #app {
 
   .appLayout-sidebar-isCollapsed & {
     display: none;
+  }
+
+  .icon {
+    flex: 1 1 auto;
+    align-self: center;
+    font-weight: $weight-bold;
+
+    @include font-size(small);
+
+    @include themify($themes) {
+      color: themed('leftBar-collapser-txt');
+    }
   }
 }
 
@@ -130,6 +143,7 @@ html, body, #app {
   @include themify($themes) {
     color: themed('footer-txt');
     background-color: themed('footer-bg');
+    border-top: 1px solid themed('footer-border');
   }
 }
 

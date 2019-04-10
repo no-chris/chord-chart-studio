@@ -1,3 +1,5 @@
+import './FileManager.scss';
+
 import React from 'react';
 
 import Icon from '../../ui/_components/Icon';
@@ -20,18 +22,18 @@ export default function FileManager(props) {
 	} = props;
 
 	return (
-		<div className="file-manager">
-			<div className="sidebar-collapsed">
+		<div className="fileManager">
+			<div className="fileManager-isCollapsed">
 				<Icon iconName="file_copy" />
 			</div>
 
-			<div className="sidebar-expanded">
+			<div className="fileManager-isExpanded">
 				<FileActions
 					createFile={() => createFile(defaultTitle)}
 					deleteFile={() => deleteFile(selected)}
 					enableRename={() => enableRename(selected)}
 				/>
-				<ul className="fm-entry-list">
+				<ul className="fileManager-entriesList">
 					{
 						allTitles.map(file =>
 							<FileEntry
