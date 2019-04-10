@@ -28,11 +28,11 @@ function Slider(props) {
 
 	return (
 		<div
-			className={'option optionSlider'}
+			className={'sb-option sb-optionSlider'}
 		>
-			<div className={'optionSlider-desc'}>{label}</div>
-			<div className={'optionSlider-value'}>{valueDisplay}</div>
-			<div className={'optionSlider-range'}>
+			<div className={'sb-optionSlider-desc'}>{label}</div>
+			<div className={'sb-optionSlider-value'}>{valueDisplay}</div>
+			<div className={'sb-optionSlider-range'}>
 				<input
 					min={min}
 					max={max}

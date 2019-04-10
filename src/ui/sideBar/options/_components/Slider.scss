@@ -1,29 +1,31 @@
-.optionSlider {
+.sb-optionSlider {
   display: flex;
   flex-wrap: wrap;
-
-  .optionSlider-desc {
-    flex: 1 1 auto;
-  }
-  .optionSlider-value {
-    flex: 0 0 auto;
-    vertical-align: middle;
-
-    @include font-size(small);
-  }
-
-  .optionSlider-range {
-    flex: 1 1 100%;
-
-    input[type="range"] {
-      @include input-type-range;
-
-      &:disabled {
-        opacity: .35;
-        cursor: default;
-      }
-    }
-  }
 }
 
 
+.sb-optionSlider-desc {
+  flex: 1 1 auto;
+}
+
+
+.sb-optionSlider-value {
+  flex: 0 0 auto;
+  vertical-align: middle;
+
+  @include font-size(small);
+}
+
+
+.sb-optionSlider-range {
+  flex: 1 1 100%;
+
+  input[type="range"] {
+    @include input-type-range;
+
+    &:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+  }
+}

@@ -8,7 +8,6 @@ import allPanelEntries from '../allPanelEntries';
 import OptionsPanelFactory from '../../_containers/OptionsPanelFactory';
 
 function RenderingContainer(props) {
-
 	return <Rendering {...props} />;
 }
 

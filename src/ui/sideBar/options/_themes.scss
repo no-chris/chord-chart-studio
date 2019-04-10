@@ -1,0 +1,12 @@
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                option-isDisabled: cv(dark-primary, light30),
+                option-bgHover: cv(dark-primary, light20),
+                option-border: cv(dark-primary, light30),
+
+                toggle-icon-isOff: cv(dark-foreground, dark30),
+        ),
+);

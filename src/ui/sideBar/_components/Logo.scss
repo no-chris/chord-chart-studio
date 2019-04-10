@@ -22,7 +22,7 @@
 }
 
 .logo-isCollapsed {
-  :not(.appLayout-sidebar-isCollapsed) & {
+  .appLayout-sidebar:not(.appLayout-sidebar-isCollapsed) & {
     display:none;
   }
 }

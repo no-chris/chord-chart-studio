@@ -1,0 +1,14 @@
+@import '../../../../scss/abstract';
+
+
+.renderingOptionsPanel-isExpanded {
+  .appLayout-sidebar-isCollapsed & {
+    display:none;
+  }
+}
+
+.renderingOptionsPanel-isCollapsed {
+  .appLayout-sidebar:not(.appLayout-sidebar-isCollapsed) & {
+    display:none;
+  }
+}

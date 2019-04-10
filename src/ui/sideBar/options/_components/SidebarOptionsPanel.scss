@@ -1,0 +1,38 @@
+@import '../../../../../scss/abstract';
+@import '../_themes.scss';
+
+@import 'GroupLabel';
+@import 'Select';
+@import 'Slider';
+@import 'Toggle';
+
+
+.sb-optionsPanel {
+  @include font-size(small);
+
+  .icon {
+    @include font-size(base);
+  }
+}
+
+
+.sb-option {
+  padding: $spacer-tiny $spacer-small-plus $spacer-tiny $spacer-tiny;
+
+  @include themify($themes) {
+    border-bottom: 1px dotted themed('option-border');
+  }
+
+  .optionsPanelEntry-isDisabled & {
+    @include themify($themes) {
+      color: themed('option-isDisabled');
+    }
+  }
+
+  .optionsPanelEntry:not(.optionsPanelEntry-isDisabled) &:hover {
+    @include themify($themes) {
+      background-color: themed('option-bgHover');
+    }
+  }
+}
+

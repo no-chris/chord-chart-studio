@@ -13,9 +13,9 @@ function Toggle(props) {
 		setOption
 	} = props;
 
-	const classNames = ['option', 'optionToggle'];
+	const classNames = ['sb-option', 'sb-optionToggle'];
 	classNames.push(
-		(optionValue === true) ? 'optionToggle-isOn' : 'optionToggle-isOff'
+		(optionValue === true) ? 'sb-optionToggle-isOn' : 'sb-optionToggle-isOff'
 	);
 
 	function handleClick() {
@@ -27,8 +27,8 @@ function Toggle(props) {
 			className={classNames.join(' ')}
 			onClick={(isEnabled) ? handleClick : null}
 		>
-			<div className={'optionToggle-desc'}>{label}</div>
-			<div className={'optionToggle-icon'}>
+			<div className={'sb-optionToggle-desc'}>{label}</div>
+			<div className={'sb-optionToggle-icon'}>
 				<Icon iconName={(optionValue === true) ? 'toggle_on' : 'toggle_off' } />
 			</div>
 		</div>

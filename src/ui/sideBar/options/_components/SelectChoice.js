@@ -10,9 +10,9 @@ function SelectChoice(props) {
 		onClick
 	} = props;
 
-	const classNames = ['optionSelectChoice'];
+	const classNames = ['sb-optionSelectChoice'];
 	if (isActive) {
-		classNames.push('optionSelectChoice-isActive');
+		classNames.push('sb-optionSelectChoice-isActive');
 	}
 
 	return (
@@ -20,10 +20,10 @@ function SelectChoice(props) {
 			className={classNames.join(' ')}
 			onClick={onClick}
 		>
-			<div className={'optionSelectChoice-check'}>
+			<div className={'sb-optionSelectChoice-check'}>
 				{isActive && <Icon iconName={'check'} />}
 			</div>
-			<div className={'optionSelectChoice-label'}>
+			<div className={'sb-optionSelectChoice-label'}>
 				{label}
 			</div>
 		</div>

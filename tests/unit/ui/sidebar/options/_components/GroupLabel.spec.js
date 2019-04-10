@@ -29,7 +29,7 @@ describe('GroupLabel', () => {
 			getByText('myLabel');
 			getByText('myIcon');
 
-			expect(container.firstChild).toHaveClass('optionGroupLabel');
+			expect(container.firstChild).toHaveClass('sb-optionGroupLabel');
 		});
 	});
 

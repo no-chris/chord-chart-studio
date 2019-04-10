@@ -35,7 +35,7 @@ describe('Toggle', () => {
 			getByText(props.label);
 			getByText('toggle_on');
 
-			expect(container.firstChild).toHaveClass('optionToggle-isOn');
+			expect(container.firstChild).toHaveClass('sb-optionToggle-isOn');
 		});
 
 		test('Should render "off" state if value === false', () => {
@@ -46,7 +46,7 @@ describe('Toggle', () => {
 			getByText(props.label);
 			getByText('toggle_off');
 
-			expect(container.firstChild).toHaveClass('optionToggle-isOff');
+			expect(container.firstChild).toHaveClass('sb-optionToggle-isOff');
 		});
 	});
 

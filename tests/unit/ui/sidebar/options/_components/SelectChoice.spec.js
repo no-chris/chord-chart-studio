@@ -30,7 +30,7 @@ describe('SelectChoice', () => {
 				{...props}
 			/>);
 
-			expect(container.firstChild).toHaveClass('optionSelectChoice-isActive');
+			expect(container.firstChild).toHaveClass('sb-optionSelectChoice-isActive');
 		});
 
 		test('Should not add the "active" class if isActive === false', () => {
@@ -39,7 +39,7 @@ describe('SelectChoice', () => {
 				isActive={false}
 			/>);
 
-			expect(container.firstChild).not.toHaveClass('optionSelectChoice-isActive');
+			expect(container.firstChild).not.toHaveClass('sb-optionSelectChoice-isActive');
 		});
 	});
 

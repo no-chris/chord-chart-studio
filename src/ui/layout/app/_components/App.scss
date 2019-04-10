@@ -109,7 +109,7 @@ html, body, #app {
   @include themify($themes) {
     color: themed('header-txt');
     background-color: themed('header-bg');
-    border-bottom: 5px solid themed('header-border');
+    border-bottom: 2px solid themed('header-border');
   }
 }
 

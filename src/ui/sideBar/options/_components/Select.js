@@ -27,7 +27,7 @@ export default function Select(props) {
 	const renderedChoices = (!isOpen)
 		? null
 		: (
-			<div className={'optionSelect-choices'}>
+			<div className={'sb-optionSelect-choices'}>
 				{allChoices.map(choice =>
 					<SelectChoice
 						key={choice.value}
@@ -41,13 +41,13 @@ export default function Select(props) {
 
 
 	return (
-		<div className={'option optionSelect'}>
+		<div className={'sb-option sb-optionSelect'}>
 			<div
-				className={'optionSelect-title'}
+				className={'sb-optionSelect-title'}
 				onClick={(isEnabled) ? toggleChoices : null}
 			>
-				<div className={'optionSelect-desc'}>{label}</div>
-				<div className={'optionSelect-toggle'}>
+				<div className={'sb-optionSelect-desc'}>{label}</div>
+				<div className={'sb-optionSelect-toggle'}>
 					<Icon iconName={iconName} />
 				</div>
 			</div>
