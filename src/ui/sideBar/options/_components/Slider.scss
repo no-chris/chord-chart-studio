@@ -21,7 +21,12 @@
   flex: 1 1 100%;
 
   input[type="range"] {
-    @include input-type-range;
+    @include themify($themes) {
+      @include input-type-range(
+              $thumb-color: themed('range-thumb'),
+              $track-color: themed('range-track')
+      );
+    }
 
     &:disabled {
       opacity: .35;

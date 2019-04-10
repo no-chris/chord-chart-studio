@@ -1,5 +1,17 @@
 @import '../../../../scss/abstract';
 
+
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                logo-txt: cv(dark-foreground),
+                logo-border: cv(dark-foreground, fade),
+        ),
+);
+
+
 .logo-isExpanded {
   margin: $spacer-tiny $spacer-small;
   padding-bottom: $spacer-tiny;
@@ -7,8 +19,11 @@
   @include font-size(base);
   font-family: $font-family-headings;
   font-weight: 700;
-  color: $c-prim-txt;
-  border-bottom: 1px solid $c-prim-light;
+
+  @include themify($themes) {
+    color: themed('logo-txt');
+    border-bottom: 1px dotted themed('logo-border');
+  }
 
   .icon {
     @include font-size(normal);

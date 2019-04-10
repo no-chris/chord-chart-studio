@@ -79,15 +79,7 @@ html, body, #app {
 .appLayout-sidebarCollapser {
   flex: 0 0 12px;
   display: flex;
-
-  @include themify($themes) {
-    background-color: themed('leftBar-collapser-bg');
-    cursor: pointer;
-
-    &:hover {
-      background-color: themed('leftBar-collapser-bgHover');
-    }
-  }
+  cursor: pointer;
 
   .appLayout-sidebar-isCollapsed & {
     display: none;
@@ -99,13 +91,40 @@ html, body, #app {
     font-weight: $weight-bold;
 
     @include font-size(small);
-
-    @include themify($themes) {
-      color: themed('leftBar-collapser-txt');
-    }
   }
 }
 
+
+.appLayout-leftBarCollapser {
+  @include themify($themes) {
+    background-color: themed('leftBar-collapser-bg');
+    border-right: 1px solid themed('leftBar-collapser-border');
+
+    &:hover {
+      background-color: themed('leftBar-collapser-bgHover');
+    }
+  }
+
+  @include themify($themes) {
+    color: themed('leftBar-collapser-txt');
+  }
+}
+
+
+.appLayout-rightBarCollapser {
+  @include themify($themes) {
+    background-color: themed('rightBar-collapser-bg');
+    border-left: 1px solid themed('rightBar-collapser-border');
+
+    &:hover {
+      background-color: themed('rightBar-collapser-bgHover');
+    }
+  }
+
+  @include themify($themes) {
+    color: themed('rightBar-collapser-txt');
+  }
+}
 
 .appLayout-main {
   flex-grow: 1;

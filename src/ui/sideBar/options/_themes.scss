@@ -1,6 +1,9 @@
 $themes: (
         light: (
 
+                // for testing purposes
+                range-thumb: cv(dark-accent, dark20),
+                range-track: cv(dark-accent, light30),
         ),
         dark: (
                 option-isDisabled: cv(dark-background, light30),
@@ -8,5 +11,8 @@ $themes: (
                 option-border: cv(dark-background, light30),
 
                 toggle-icon-isOff: cv(dark-foreground, dark30),
+
+                range-thumb: cv(dark-background, dark20),
+                range-track: cv(dark-background, light30),
         ),
 );
