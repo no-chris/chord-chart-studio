@@ -1,12 +1,10 @@
-@import 'knacss/variables';
-@import 'knacss/mixins';
-@import 'knacss/base';
+@import '../node_modules/normalize.css/normalize.css';
+
+@import './abstract';
+@import './base';
 
 
-@import 'colors';
-@import 'base-skin';
 
-@import 'mixins/_inputRange';
 
 @import 'plugins';
 

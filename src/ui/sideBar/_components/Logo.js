@@ -1,3 +1,5 @@
+import './Logo.scss';
+
 import React from 'react';
 
 import Icon from '../../_components/Icon.js';
@@ -5,11 +7,11 @@ import Icon from '../../_components/Icon.js';
 function Logo() {
 	return (
 		<div className="logo">
-			<div className="sidebar-isCollapsed">
+			<div className="logo-isCollapsed">
 				<Icon iconName="queue_music" />
 			</div>
 
-			<div className="sidebar-isExpanded">
+			<div className="logo-isExpanded">
 				<Icon iconName="queue_music" />Chords Charts Studio
 			</div>
 		</div>

@@ -9,6 +9,7 @@
 - better encapsulation for icons in tests? Well anyway it will break on lib change because icons names are differents...
 - react strict mode
 - react error boundaries
+- CSS: decide what to do with the font size mixin
 
 ## Component checklist
 - memo ?

@@ -1,0 +1,38 @@
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                leftBar-txt: cv(dark-foreground),
+                leftBar-bg: cv(dark-primary),
+                leftBar-bgHover: cv(dark-primary, light10),
+                leftBar-border: cv(dark-foreground, dark10),
+
+                leftBar-collapser-bg: cv(dark-foreground, dark10),
+                leftBar-collapser-bgHover: cv(dark-foreground, dark30),
+
+                header-txt: cv(dark-foreground, fade),
+                header-txtHover: cv(dark-foreground),
+                header-txtActive: cv(dark-foreground),
+
+                header-bg: cv(dark-secondary),
+                header-bgHover: cv(dark-secondary, light10),
+                header-bgActive: cv(dark-secondary, dark20),
+
+                header-border: cv(dark-secondary, dark20),
+
+                content-txt: cv(dark-foreground),
+                content-bg: cv(dark-background),
+
+                footer-txt: cv(dark-foreground),
+                footer-bg: cv(dark-secondary),
+
+                rightBar-txt: cv(dark-foreground),
+                rightBar-bg: cv(dark-primary),
+                rightBar-bgHover: cv(dark-primary, light10),
+                rightBar-border: cv(dark-foreground, dark10),
+
+                rightBar-collapser-bg: cv(dark-primary, light10),
+                rightBar-collapser-bgHover: cv(dark-primary, dark10),
+        ),
+);

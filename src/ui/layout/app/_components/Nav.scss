@@ -1,3 +1,6 @@
+@import '../../../../../scss/abstract';
+@import '../themes';
+
 // Structure
 
 .mainNav {
@@ -29,7 +32,6 @@
     font-family: $font-family-headings;
     font-weight: 400;
     vertical-align: middle;
-    color: $c-prim-ultradark;
 
     .mainNavEntry {
       cursor: pointer;
@@ -39,12 +41,17 @@
       }
 
       &:hover {
-        background-color: $c-prim-light;
+        @include themify($themes) {
+          color: themed('header-txtHover');
+          background-color: themed('header-bgHover');
+        }
       }
 
       &.mainNavEntry-isActive {
-        background-color: $c-prim-dark;
-        color: $c-prim-txt;
+        @include themify($themes) {
+          color: themed('header-txtActive');
+          background-color: themed('header-bgActive');
+        }
       }
     }
   }

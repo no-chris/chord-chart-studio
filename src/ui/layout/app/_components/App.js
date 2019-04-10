@@ -1,3 +1,5 @@
+import './App.scss';
+
 import React from 'react';
 import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
@@ -17,42 +19,42 @@ export default function App(props) {
 		activeRoute,
 	} = props;
 
-	const sidebarLeftClassNames = ['sidebar'];
+	const sidebarLeftClassNames = ['appLayout-sidebar', 'appLayout-leftBar'];
 	if (isLeftBarCollapsed) {
-		sidebarLeftClassNames.push('is-collapsed');
+		sidebarLeftClassNames.push('appLayout-sidebar-isCollapsed');
 	}
 
-	const sidebarRightClassNames = ['sidebar'];
+	const sidebarRightClassNames = ['appLayout-sidebar', 'appLayout-rightBar'];
 	if (isRightBarCollapsed) {
-		sidebarRightClassNames.push('is-collapsed');
+		sidebarRightClassNames.push('appLayout-sidebar-isCollapsed');
 	}
 
 	return (
-		<div className="app-wrapper">
-			<section data-area="app-sidebar-left" className={sidebarLeftClassNames.join(' ')}>
-				<div className="content" onClick={(isLeftBarCollapsed) ? toggleLeftBar : null}>
+		<div className="appLayout-wrapper">
+			<section className={sidebarLeftClassNames.join(' ')}>
+				<div className="appLayout-sidebarContent appLayout-leftBarContent" onClick={(isLeftBarCollapsed) ? toggleLeftBar : null}>
 					<Logo />
 					{leftBar}
 				</div>
-				<div className="collapser" onClick={toggleLeftBar} />
+				<div className="appLayout-sidebarCollapser appLayout-leftBarCollapser" onClick={toggleLeftBar} />
 			</section>
-			<section data-area="app-main">
-				<section data-area="app-header">
+			<section className="appLayout-main">
+				<section className="appLayout-header">
 					<Nav
 						active={activeRoute}
 						allEntries={allNavEntries}
 					/>
 				</section>
-				<section data-area="app-content">
+				<section className="appLayout-content">
 					{props.children}
 				</section>
-				<section data-area="app-footer">
+				<section className="appLayout-footer">
 					<Footer/>
 				</section>
 			</section>
-			<section data-area="app-sidebar-right" className={sidebarRightClassNames.join(' ')}>
-				<div className="collapser" onClick={toggleRightBar} />
-				<div className="content" onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
+			<section className={sidebarRightClassNames.join(' ')}>
+				<div className="appLayout-sidebarCollapser appLayout-rightBarCollapser" onClick={toggleRightBar} />
+				<div className="appLayout-sidebarContent appLayout-rightBarContent" onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
 					{rightBar}
 				</div>
 			</section>

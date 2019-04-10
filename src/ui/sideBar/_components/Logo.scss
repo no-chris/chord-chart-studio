@@ -1,19 +1,28 @@
-.logo {
-  .sidebar-isExpanded {
-    margin: $spacer-tiny $spacer-small;
-    padding-bottom: $spacer-tiny;
+@import '../../../../scss/abstract';
 
-    @include font-size(base);
-    font-family: $font-family-headings;
-    font-weight: 700;
-    color: $c-prim-txt;
-    border-bottom: 1px solid $c-prim-light;
+.logo-isExpanded {
+  margin: $spacer-tiny $spacer-small;
+  padding-bottom: $spacer-tiny;
 
-    .icon {
-      @include font-size(normal);
-      margin-right: $spacer-tiny;
-      vertical-align: middle;
-    }
+  @include font-size(base);
+  font-family: $font-family-headings;
+  font-weight: 700;
+  color: $c-prim-txt;
+  border-bottom: 1px solid $c-prim-light;
+
+  .icon {
+    @include font-size(normal);
+    margin-right: $spacer-tiny;
+    vertical-align: middle;
   }
 
+  .appLayout-sidebar-isCollapsed & {
+    display:none;
+  }
+}
+
+.logo-isCollapsed {
+  :not(.appLayout-sidebar-isCollapsed) & {
+    display:none;
+  }
 }
