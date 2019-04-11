@@ -5,6 +5,7 @@
 - add id enricher middleware
 - react strict mode
 - react error boundaries
+- remove handlebars
 
 - CSS: decide what to do with the font size mixin
 - CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)

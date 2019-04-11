@@ -1,6 +1,6 @@
 import _defaultsDeep from 'lodash/defaultsDeep';
 
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, compose } from 'redux';
 
 import { loadState, saveState } from './localStorage';
 import allReducers from './reducers';
@@ -10,7 +10,7 @@ import seed from './seed';
 let store;
 
 export default {
-	createStore() {
+	create() {
 		const persistedState = loadState();
 		const initialState = _defaultsDeep(persistedState, seed);
 
@@ -18,7 +18,6 @@ export default {
 			allReducers,
 			initialState,
 			compose(
-				//applyMiddleware(thunk),
 				window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true })
 			)
 		);
@@ -28,7 +27,7 @@ export default {
 		});
 	},
 
-	getStore() {
+	get() {
 		return store;
 	}
 };
