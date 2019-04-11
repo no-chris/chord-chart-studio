@@ -36,12 +36,14 @@ export default function FileEntry(props) {
 	}
 
 	function handleDoubleClick(e) {
-		enableRename(fileId);
-		e.target.select();
+		if (!isRenamed) {
+			enableRename(fileId);
+			e.target.select();
+		}
 	}
 
 	function handleKeyPress(e) {
-		if (e.which === 13) {
+		if (isRenamed && e.which === 13) {
 			e.preventDefault();
 			window.getSelection().removeAllRanges();
 
@@ -83,7 +85,6 @@ export default function FileEntry(props) {
 			className={classList.join(' ')}
 			onClick={handleClick}
 			onDoubleClick={handleDoubleClick}
-			onKeyPress={handleKeyPress}
 		>
 			<input
 				className={'fileManagerEntry-input'}
@@ -95,6 +96,7 @@ export default function FileEntry(props) {
 				onChange={handleChange}
 				onBlur={handleBlur}
 				onFocus={handleFocus}
+				onKeyPress={handleKeyPress}
 			/>
 		</li>
 	);
