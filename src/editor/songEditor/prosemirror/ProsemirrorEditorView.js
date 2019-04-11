@@ -1,6 +1,7 @@
 import './ProsemirrorEditorView.scss';
 
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
@@ -23,19 +24,18 @@ function createEditorState(editorContent) {
 }
 
 function createEditorView(editorState, onEditorChange, fileId) {
-	const editorView = new EditorView(null, {
+	return new EditorView(null, {
 		state: editorState,
-		dispatchTransaction: transaction => {
-			const { state, transactions } = editorView.state.applyTransaction(transaction);
+		dispatchTransaction: function dispatchTransaction(transaction) {
+			const { state, transactions } = this.state.applyTransaction(transaction);
 
-			editorView.updateState(state);
+			this.updateState(state);
 
 			if (transactions.some(tr => tr.docChanged)) {
 				onEditorChange(fileId, stateToText(state));
 			}
 		},
 	});
-	return editorView;
 }
 
 export default function ProseMirrorEditorView(props) {
@@ -67,7 +67,6 @@ export default function ProseMirrorEditorView(props) {
 	}
 
 	useEffect(() => {
-
 		if (shouldCreateEditor()) {
 			if (editorExists()) {
 				destroyEditor();
@@ -77,7 +76,8 @@ export default function ProseMirrorEditorView(props) {
 			editorView.current = createEditorView(editorState, onEditorChange, selectedFileId);
 			editorDom.current.appendChild(editorView.current.dom);
 
-			//editorView.current.focus();
+			// expose editor instance as a component property for unit tests
+			ProseMirrorEditorView.editorView = editorView.current;
 
 		} else if (isEditorOrphan()) {
 			destroyEditor();
@@ -88,6 +88,12 @@ export default function ProseMirrorEditorView(props) {
 		<div className={'prosemirrorWrapper'} ref={editorDom} />
 	);
 }
+
+ProseMirrorEditorView.propTypes = {
+	selectedFileId: PropTypes.string.isRequired,
+	editorContent: PropTypes.string.isRequired,
+	onEditorChange: PropTypes.func.isRequired,
+};
 
 function usePrevious(value) {
 	const ref = useRef();

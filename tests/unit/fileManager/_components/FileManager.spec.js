@@ -331,7 +331,7 @@ describe('FileManager', () => {
 
 
 	describe('deleteFile', () => {
-		test('should call deleteFile() Delete Action click with selected id', () => {
+		test('should call deleteFile() on Delete Action click with selected id', () => {
 			const { getByText } = render(<FileManager
 				{...props}
 				selected={props.allTitles[2].id}
