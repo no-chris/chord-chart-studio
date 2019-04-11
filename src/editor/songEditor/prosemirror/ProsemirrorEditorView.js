@@ -85,7 +85,7 @@ export default function ProseMirrorEditorView(props) {
 	});
 
 	return (
-		<div className="prosemirrorWrapper" ref={editorDom} />
+		<div className={'prosemirrorWrapper'} ref={editorDom} />
 	);
 }
 

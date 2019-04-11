@@ -11,7 +11,7 @@ export default function Export() {
 
 	return (
 		<AppLayout
-			activeRoute="export"
+			activeRoute={'export'}
 			leftBar={fm}
 			rightBar={rightBarPanel}
 		>

@@ -11,7 +11,7 @@ export default function Play() {
 
 	return (
 		<AppLayout
-			activeRoute="play"
+			activeRoute={'play'}
 			leftBar={fm}
 			rightBar={rightBarPanel}
 		>

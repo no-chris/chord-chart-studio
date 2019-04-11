@@ -11,7 +11,7 @@ export default function Edit() {
 
 	return (
 		<AppLayout
-			activeRoute="edit"
+			activeRoute={'edit'}
 			leftBar={fm}
 			rightBar={rightBarPanel}
 		>

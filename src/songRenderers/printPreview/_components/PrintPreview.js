@@ -8,8 +8,8 @@ export default function EditorPreview(props) {
 	const { selectedFile } = props;
 
 	return (
-		<div className="printPreview">
-			<div className="printPreview-page pp-SongRenderer">
+		<div className={'printPreview'}>
+			<div className={'printPreview-page pp-SongRenderer'}>
 				<SongRenderer content={selectedFile.content} />
 			</div>
 		</div>

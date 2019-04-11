@@ -86,9 +86,9 @@ export default function FileEntry(props) {
 			onKeyPress={handleKeyPress}
 		>
 			<input
-				className="fileManagerEntry-input"
+				className={'fileManagerEntry-input'}
 				ref={inputRef}
-				type="text"
+				type={'text'}
 				value={title}
 				readOnly={(isRenamed) ? null : 'readOnly'}
 				autoFocus={(isRenamed) ? 'autoFocus' : null}

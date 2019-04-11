@@ -11,7 +11,7 @@ export default function Print() {
 
 	return (
 		<AppLayout
-			activeRoute="print"
+			activeRoute={'print'}
 			leftBar={fm}
 			rightBar={rightBarPanel}
 		>
