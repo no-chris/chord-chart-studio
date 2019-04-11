@@ -5,10 +5,6 @@
 .sb-optionToggle {
   display: flex;
 
-  .icon {
-    vertical-align: middle;
-  }
-
   .optionsPanelEntry:not(.optionsPanelEntry-isDisabled) &:hover {
     cursor: pointer;
   }
@@ -29,6 +25,21 @@
   .icon {
     @include themify($themes) {
       color: themed('toggle-icon-isOff');
+    }
+  }
+}
+
+
+.sb-optionToggle-icon {
+  .icon {
+    @include font-size(big);
+  }
+
+  .sb-optionToggle-isOff & {
+    .icon {
+      @include themify($themes) {
+        color: themed('toggle-icon-isOff');
+      }
     }
   }
 }

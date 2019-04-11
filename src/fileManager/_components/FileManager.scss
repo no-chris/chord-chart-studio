@@ -5,7 +5,7 @@
 .fileManager-isExpanded {
   @include font-size(small);
 
-  .appLayout-sidebar-isCollapsed & {
+  .leftBar-isCollapsed & {
     display:none;
   }
 }
@@ -13,7 +13,7 @@
 
 .fileManager-isCollapsed {
   padding: $spacer-small 0;
-  .appLayout-sidebar:not(.appLayout-sidebar-isCollapsed) & {
+  .leftBar:not(.leftBar-isCollapsed) & {
     display:none;
   }
 }
@@ -27,7 +27,7 @@
 }
 
 
-.fileManager-action {
+.fileManagerAction {
   flex: 0 1 auto;
   padding: $spacer-tiny;
   margin-right: $spacer-tiny;
@@ -39,13 +39,14 @@
     }
     cursor: pointer;
   }
-
-  .icon {
-    @include font-size(normal);
-    vertical-align: middle;
-  }
 }
 
+
+.fileManagerAction-icon {
+  .icon {
+    @include font-size(normal);
+  }
+}
 
 .fileManager-entriesList {
   padding-left: 0;

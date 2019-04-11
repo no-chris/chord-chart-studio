@@ -7,9 +7,11 @@
   @include themify($themes) {
     border-bottom: 1px dotted themed('option-border');
   }
+}
 
+
+.sb-optionGroupLabel-icon {
   .icon {
     @include font-size(base);
-    vertical-align: middle;
   }
 }

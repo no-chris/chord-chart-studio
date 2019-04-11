@@ -1,10 +1,10 @@
-// Source: https://coolors.co/f4f4f4-303846-2e4052-316ba5-faa916
+// Source: https://coolors.co/f4f4f4-2e4052-303846-293132-fabf2b
 
 $whiteSmoke: rgba(244, 244, 244, 1);
 $onyx: rgba(48, 56, 70, 1);
 $charcoal: rgba(46, 64, 82, 1);
-$lapisLazuli: rgba(49, 107, 165, 1);
-$darkTangerine: rgba(250, 169, 22, 1);
+$gunMetal: rgba(41, 49, 50, 1);
+$saffron: rgba(250, 191, 43, 1);
 
 $colors: (
         // Light theme
@@ -12,9 +12,9 @@ $colors: (
         // Dark theme
         dark-foreground: $whiteSmoke,
         dark-background: $onyx,
-        dark-accent: $darkTangerine,
+        dark-accent: $saffron,
         dark-primary: $charcoal,
-        dark-secondary: $lapisLazuli,
+        dark-secondary: $gunMetal,
 );
 
 

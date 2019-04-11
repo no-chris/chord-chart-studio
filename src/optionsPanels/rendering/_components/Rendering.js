@@ -8,12 +8,14 @@ import SidebarOptionPanel from '../../../ui/sideBar/options/_components/SidebarO
 
 export default function Rendering(props) {
 	return (
-		<div className="renderingOptionsPanel">
-			<div className="renderingOptionsPanel-isCollapsed">
-				<Icon iconName="settings" />
+		<div className={'renderingOptionsPanel'}>
+			<div className={'renderingOptionsPanel-isCollapsed'}>
+				<span className={'renderingOptionsPanel-icon'}>
+					<Icon iconName={'settings'} />
+				</span>
 			</div>
 
-			<div className="renderingOptionsPanel-isExpanded">
+			<div className={'renderingOptionsPanel-isExpanded'}>
 				<SidebarOptionPanel
 					{...props}
 					id={'rendering'}

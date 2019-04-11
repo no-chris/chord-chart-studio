@@ -23,7 +23,7 @@ function NavEntry(props) {
 			className={classNames.join(' ')}
 			onClick={() => router.navigateTo(link)}
 		>
-			<Icon iconName={icon} />{label}
+			<span className={'mainNavEntry-icon'}><Icon iconName={icon} /></span>{label}
 		</li>
 	);
 }

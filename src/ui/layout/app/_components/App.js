@@ -20,46 +20,50 @@ export default function App(props) {
 		activeRoute,
 	} = props;
 
-	const sidebarLeftClassNames = ['appLayout-sidebar', 'appLayout-leftBar'];
+	const sidebarLeftClassNames = ['leftBar'];
 	if (isLeftBarCollapsed) {
-		sidebarLeftClassNames.push('appLayout-sidebar-isCollapsed');
+		sidebarLeftClassNames.push('leftBar-isCollapsed');
 	}
 
-	const sidebarRightClassNames = ['appLayout-sidebar', 'appLayout-rightBar'];
+	const sidebarRightClassNames = ['rightBar'];
 	if (isRightBarCollapsed) {
-		sidebarRightClassNames.push('appLayout-sidebar-isCollapsed');
+		sidebarRightClassNames.push('rightBar-isCollapsed');
 	}
 
 	return (
-		<div className="appLayout-wrapper">
+		<div className={'appLayout-wrapper'}>
 			<section className={sidebarLeftClassNames.join(' ')}>
-				<div className="appLayout-sidebarContent appLayout-leftBarContent" onClick={(isLeftBarCollapsed) ? toggleLeftBar : null}>
+				<div className={'leftBar-content'} onClick={(isLeftBarCollapsed) ? toggleLeftBar : null}>
 					<Logo />
 					{leftBar}
 				</div>
-				<div className="appLayout-sidebarCollapser appLayout-leftBarCollapser" onClick={toggleLeftBar}>
-					<Icon iconName={'keyboard_arrow_left'} />
+				<div className={'leftBar-collapser'} onClick={toggleLeftBar}>
+					<span className={'leftBar-collapserIcon'}>
+						<Icon iconName={'keyboard_arrow_left'} />
+					</span>
 				</div>
 			</section>
-			<section className="appLayout-main">
-				<section className="appLayout-header">
+			<section className={'appLayout-main'}>
+				<section className={'appLayout-header'}>
 					<Nav
 						active={activeRoute}
 						allEntries={allNavEntries}
 					/>
 				</section>
-				<section className="appLayout-content">
+				<section className={'appLayout-content'}>
 					{props.children}
 				</section>
-				<section className="appLayout-footer">
+				<section className={'appLayout-footer'}>
 					<Footer/>
 				</section>
 			</section>
 			<section className={sidebarRightClassNames.join(' ')}>
-				<div className="appLayout-sidebarCollapser appLayout-rightBarCollapser" onClick={toggleRightBar}>
-					<Icon iconName={'keyboard_arrow_right'} />
+				<div className={'rightBar-collapser'} onClick={toggleRightBar}>
+					<span className={'rightBar-collapserIcon'}>
+						<Icon iconName={'keyboard_arrow_right'} />
+					</span>
 				</div>
-				<div className="appLayout-sidebarContent appLayout-rightBarContent" onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
+				<div className={'rightBar-content'} onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
 					{rightBar}
 				</div>
 			</section>

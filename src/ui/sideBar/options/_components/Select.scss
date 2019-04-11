@@ -17,9 +17,13 @@
 
 .sb-optionSelect-toggle {
   flex: 0 0 auto;
+}
 
+
+
+.sb-optionSelect-icon {
   .icon {
-    vertical-align: middle;
+    @include font-size(big);
   }
 }
 
@@ -42,9 +46,11 @@
 
 .sb-optionSelectChoice-check {
   flex: 0 0 20px;
+}
 
-  // artificially increase specificity to override sb-option default
-  .sb-option & .icon {
+
+.sb-optionSelectChoice-checkIcon {
+  .icon {
     @include font-size(small)
   }
 }

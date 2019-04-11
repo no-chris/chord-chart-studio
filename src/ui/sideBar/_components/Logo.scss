@@ -25,21 +25,22 @@ $themes: (
     border-bottom: 1px dotted themed('logo-border');
   }
 
-  .icon {
-    @include font-size(normal);
-    margin-right: $spacer-tiny;
-    vertical-align: middle;
-  }
-
-  .appLayout-sidebar-isCollapsed & {
+  .leftBar-isCollapsed & {
     display:none;
   }
 }
 
+
+.logo-icon {
+  @include font-size(normal);
+  margin-right: $spacer-tiny;
+}
+
+
 .logo-isCollapsed {
   padding: $spacer-small 0;
 
-  .appLayout-sidebar:not(.appLayout-sidebar-isCollapsed) & {
+  .leftBar:not(.leftBar-isCollapsed) & {
     display:none;
   }
 }

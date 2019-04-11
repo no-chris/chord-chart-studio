@@ -2,7 +2,7 @@
 
 
 .renderingOptionsPanel-isExpanded {
-  .appLayout-sidebar-isCollapsed & {
+  .rightBar-isCollapsed & {
     display:none;
   }
 }
@@ -10,7 +10,7 @@
 .renderingOptionsPanel-isCollapsed {
   padding: $spacer-small 0;
 
-  .appLayout-sidebar:not(.appLayout-sidebar-isCollapsed) & {
+  .rightBar:not(.rightBar-isCollapsed) & {
     display:none;
   }
 }

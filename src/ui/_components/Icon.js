@@ -1,3 +1,5 @@
+import './Icon.scss';
+
 import React from 'react';
 
 export default React.memo(function Icon(props) {

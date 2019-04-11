@@ -29,7 +29,9 @@ function Toggle(props) {
 		>
 			<div className={'sb-optionToggle-desc'}>{label}</div>
 			<div className={'sb-optionToggle-icon'}>
-				<Icon iconName={(optionValue === true) ? 'toggle_on' : 'toggle_off' } />
+				<span className={'sb-optionToggle-icon'}>
+					<Icon iconName={(optionValue === true) ? 'toggle_on' : 'toggle_off' } />
+				</span>
 			</div>
 		</div>
 	);

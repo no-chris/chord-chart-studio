@@ -11,7 +11,7 @@ function GroupLabel(props) {
 
 	return (
 		<div className={'sb-optionGroupLabel'}>
-			<Icon iconName={icon} /> {label}
+			<span className={'sb-optionGroupLabel-icon'}><Icon iconName={icon} /></span> {label}
 		</div>
 	);
 }

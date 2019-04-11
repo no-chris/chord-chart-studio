@@ -48,7 +48,9 @@ export default function Select(props) {
 			>
 				<div className={'sb-optionSelect-desc'}>{label}</div>
 				<div className={'sb-optionSelect-toggle'}>
-					<Icon iconName={iconName} />
+					<span className={'sb-optionSelect-icon'}>
+						<Icon iconName={iconName} />
+					</span>
 				</div>
 			</div>
 			{renderedChoices}

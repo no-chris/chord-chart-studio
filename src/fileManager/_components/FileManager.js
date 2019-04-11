@@ -22,18 +22,20 @@ export default function FileManager(props) {
 	} = props;
 
 	return (
-		<div className="fileManager">
-			<div className="fileManager-isCollapsed">
-				<Icon iconName="file_copy" />
+		<div className={'fileManager'}>
+			<div className={'fileManager-isCollapsed'}>
+				<span className={'fileManager-icon'}>
+					<Icon iconName={'file_copy'} />
+				</span>
 			</div>
 
-			<div className="fileManager-isExpanded">
+			<div className={'fileManager-isExpanded'}>
 				<FileActions
 					createFile={() => createFile(defaultTitle)}
 					deleteFile={() => deleteFile(selected)}
 					enableRename={() => enableRename(selected)}
 				/>
-				<ul className="fileManager-entriesList">
+				<ul className={'fileManager-entriesList'}>
 					{
 						allTitles.map(file =>
 							<FileEntry

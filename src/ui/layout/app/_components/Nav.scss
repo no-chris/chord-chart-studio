@@ -21,12 +21,6 @@
   padding: 0 $spacer-medium;
   cursor: pointer;
 
-  .icon {
-    margin-right: $spacer-tiny;
-    vertical-align: middle;
-    @include font-size(normal);
-  }
-
   &:hover {
     @include themify($themes) {
       color: themed('header-txtHover');
@@ -39,5 +33,13 @@
       color: themed('header-txtActive');
       background-color: themed('header-bgActive');
     }
+  }
+}
+
+
+.mainNavEntry-icon {
+  .icon {
+    margin-right: $spacer-tiny;
+    @include font-size(normal);
   }
 }

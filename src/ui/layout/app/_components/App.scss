@@ -18,7 +18,9 @@ html, body, #app {
 }
 
 
-.appLayout-sidebar {
+// Sidebars
+
+.leftBar {
   flex-shrink: 0;
   width: 15%;
 
@@ -26,18 +28,15 @@ html, body, #app {
   flex-direction: row;
   flex-wrap: nowrap;
 
-  &.appLayout-sidebar-isCollapsed {
+  &.leftBar-isCollapsed {
     width: 48px;
   }
-}
 
-
-.appLayout-leftBar {
   @include themify($themes) {
     color: themed('leftBar-txt');
     background-color: themed('leftBar-bg');
 
-    &.appLayout-sidebar-isCollapsed {
+    &.leftBar-isCollapsed {
       border-right: 1px solid themed('leftBar-border');
 
       &:hover {
@@ -48,12 +47,23 @@ html, body, #app {
 }
 
 
-.appLayout-rightBar {
+.rightBar {
+  flex-shrink: 0;
+  width: 15%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  &.rightBar-isCollapsed {
+    width: 48px;
+  }
+
   @include themify($themes) {
     color: themed('rightBar-txt');
     background-color: themed('rightBar-bg');
 
-    &.appLayout-sidebar-isCollapsed {
+    &.rightBar-isCollapsed {
       border-left: 1px solid themed('rightBar-border');
 
       &:hover {
@@ -64,11 +74,11 @@ html, body, #app {
 }
 
 
-.appLayout-sidebarContent {
+.leftBar-content {
   overflow-y: scroll;
   flex: 1 1 auto;
 
-  .appLayout-sidebar-isCollapsed & {
+  .leftBar-isCollapsed & {
     padding: $spacer-tiny $spacer-small;
     text-align: center;
     cursor: pointer;
@@ -76,26 +86,28 @@ html, body, #app {
 }
 
 
-.appLayout-sidebarCollapser {
-  flex: 0 0 12px;
-  display: flex;
-  cursor: pointer;
+.rightBar-content {
+  overflow-y: scroll;
+  flex: 1 1 auto;
 
-  .appLayout-sidebar-isCollapsed & {
-    display: none;
-  }
-
-  .icon {
-    flex: 1 1 auto;
-    align-self: center;
-    font-weight: $weight-bold;
-
-    @include font-size(small);
+  .rightBar-isCollapsed & {
+    padding: $spacer-tiny $spacer-small;
+    text-align: center;
+    cursor: pointer;
   }
 }
 
 
-.appLayout-leftBarCollapser {
+
+.leftBar-collapser {
+  flex: 0 0 12px;
+  display: flex;
+  cursor: pointer;
+
+  .leftBar-isCollapsed & {
+    display: none;
+  }
+
   @include themify($themes) {
     background-color: themed('leftBar-collapser-bg');
     border-right: 1px solid themed('leftBar-collapser-border');
@@ -111,7 +123,26 @@ html, body, #app {
 }
 
 
-.appLayout-rightBarCollapser {
+.leftBar-collapserIcon {
+  flex: 1 1 auto;
+  align-self: center;
+  font-weight: $weight-bold;
+
+  .icon {
+    @include font-size(small);
+  }
+}
+
+
+.rightBar-collapser {
+  flex: 0 0 12px;
+  display: flex;
+  cursor: pointer;
+
+  .rightBar-isCollapsed & {
+    display: none;
+  }
+
   @include themify($themes) {
     background-color: themed('rightBar-collapser-bg');
     border-left: 1px solid themed('rightBar-collapser-border');
@@ -125,6 +156,21 @@ html, body, #app {
     color: themed('rightBar-collapser-txt');
   }
 }
+
+
+.rightBar-collapserIcon {
+  flex: 1 1 auto;
+  align-self: center;
+  font-weight: $weight-bold;
+
+  .icon {
+    @include font-size(small);
+  }
+}
+
+
+
+// Main area
 
 .appLayout-main {
   flex-grow: 1;

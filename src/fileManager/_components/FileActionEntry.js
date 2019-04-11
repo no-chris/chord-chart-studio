@@ -6,10 +6,10 @@ export default React.memo(function FileActionEntry(props) {
 	const { icon, text, action } = props;
 
 	return (
-		<span className="fileManager-action" onClick={action}>
-			<Icon
-				iconName={icon}
-			/> {text}
+		<span className={'fileManagerAction'} onClick={action}>
+			<span className={'fileManagerAction-icon'}>
+				<Icon iconName={icon} /> {text}
+			</span>
 		</span>
 	);
 });
