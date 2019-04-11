@@ -1,6 +1,8 @@
 import './App.scss';
 
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
 import Footer from './Footer';
@@ -8,7 +10,7 @@ import Icon from '../../../_components/Icon';
 
 import allNavEntries from '../allNavEntries';
 
-export default function App(props) {
+function App(props) {
 	const {
 		isLeftBarCollapsed,
 		isRightBarCollapsed,
@@ -20,24 +22,24 @@ export default function App(props) {
 		activeRoute,
 	} = props;
 
-	const sidebarLeftClassNames = ['leftBar'];
+	const leftBarClassNames = ['leftBar'];
 	if (isLeftBarCollapsed) {
-		sidebarLeftClassNames.push('leftBar-isCollapsed');
+		leftBarClassNames.push('leftBar-isCollapsed');
 	}
 
-	const sidebarRightClassNames = ['rightBar'];
+	const rightBarClassNames = ['rightBar'];
 	if (isRightBarCollapsed) {
-		sidebarRightClassNames.push('rightBar-isCollapsed');
+		rightBarClassNames.push('rightBar-isCollapsed');
 	}
 
 	return (
 		<div className={'appLayout-wrapper'}>
-			<section className={sidebarLeftClassNames.join(' ')}>
+			<section className={leftBarClassNames.join(' ')}>
 				<div className={'leftBar-content'} onClick={(isLeftBarCollapsed) ? toggleLeftBar : null}>
 					<Logo />
 					{leftBar}
 				</div>
-				<div className={'leftBar-collapser'} onClick={toggleLeftBar}>
+				<div className={'leftBar-collapser'} onClick={toggleLeftBar} data-testid={'leftBar-collapser'}>
 					<span className={'leftBar-collapserIcon'}>
 						<Icon iconName={'keyboard_arrow_left'} />
 					</span>
@@ -57,8 +59,8 @@ export default function App(props) {
 					<Footer/>
 				</section>
 			</section>
-			<section className={sidebarRightClassNames.join(' ')}>
-				<div className={'rightBar-collapser'} onClick={toggleRightBar}>
+			<section className={rightBarClassNames.join(' ')}>
+				<div className={'rightBar-collapser'} onClick={toggleRightBar} data-testid={'rightBar-collapser'}>
 					<span className={'rightBar-collapserIcon'}>
 						<Icon iconName={'keyboard_arrow_right'} />
 					</span>
@@ -70,3 +72,22 @@ export default function App(props) {
 		</div>
 	);
 }
+
+App.propTypes = {
+	children: PropTypes.element,
+	isLeftBarCollapsed: PropTypes.bool,
+	isRightBarCollapsed: PropTypes.bool,
+	toggleLeftBar: PropTypes.func.isRequired,
+	toggleRightBar: PropTypes.func.isRequired,
+
+	leftBar: PropTypes.element.isRequired,
+	rightBar: PropTypes.element.isRequired,
+	activeRoute: PropTypes.string.isRequired,
+};
+
+App.defaultProps = {
+	isLeftBarCollapsed: false,
+	isRightBarCollapsed: false,
+};
+
+export default App;

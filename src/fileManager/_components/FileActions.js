@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import FileActionEntry from './FileActionEntry';
 
-export default React.memo(function FileActions(props) {
+function FileActions(props) {
 	const { createFile, deleteFile, enableRename } = props;
 
 	const allActions = [
@@ -32,4 +33,12 @@ export default React.memo(function FileActions(props) {
 			}
 		</div>
 	);
-});
+}
+
+FileActions.propTypes = {
+	createFile: PropTypes.func.isRequired,
+	deleteFile: PropTypes.func.isRequired,
+	enableRename: PropTypes.func.isRequired,
+};
+
+export default React.memo(FileActions);

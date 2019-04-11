@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Icon from '../../ui/_components/Icon';
 
-export default React.memo(function FileActionEntry(props) {
+function FileActionEntry(props) {
 	const { icon, text, action } = props;
 
 	return (
@@ -12,4 +13,12 @@ export default React.memo(function FileActionEntry(props) {
 			</span>
 		</span>
 	);
-});
+}
+
+FileActionEntry.propTypes = {
+	icon: PropTypes.string.isRequired,
+	text: PropTypes.string.isRequired,
+	action: PropTypes.func.isRequired,
+};
+
+export default React.memo(FileActionEntry);

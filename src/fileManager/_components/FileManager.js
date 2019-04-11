@@ -1,12 +1,13 @@
 import './FileManager.scss';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Icon from '../../ui/_components/Icon';
 import FileActions from './FileActions';
 import FileEntry from './FileEntry';
 
-export default function FileManager(props) {
+function FileManager(props) {
 	const {
 		allTitles,
 		selected,
@@ -56,3 +57,23 @@ export default function FileManager(props) {
 		</div>
 	);
 }
+
+FileManager.propTypes = {
+	allTitles: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.string.isRequired,
+			id: PropTypes.string.isRequired,
+		})
+	).isRequired,
+	selected: PropTypes.string.isRequired,
+	renamed: PropTypes.string.isRequired,
+	defaultTitle: PropTypes.string.isRequired,
+
+	selectFile: PropTypes.func.isRequired,
+	createFile: PropTypes.func.isRequired,
+	deleteFile: PropTypes.func.isRequired,
+	enableRename: PropTypes.func.isRequired,
+	updateFile: PropTypes.func.isRequired,
+};
+
+export default FileManager;

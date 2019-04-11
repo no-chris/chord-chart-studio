@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-export default function FileEntry(props) {
+function FileEntry(props) {
 	const [ title, setTitle ] = useState(props.title);
 
-	const {
-		fileId,
-		isSelected,
-		isRenamed,
-		defaultTitle,
-		selectFile,
-		enableRename,
-		updateFile,
-	} = props;
+	const { fileId, isSelected, isRenamed, defaultTitle, selectFile, enableRename, updateFile } = props;
 
 	const classList = ['fileManagerEntry'];
 	if (isSelected) {
@@ -101,3 +94,16 @@ export default function FileEntry(props) {
 		</li>
 	);
 }
+
+FileEntry.propTypes = {
+	title: PropTypes.string.isRequired,
+	fileId: PropTypes.string.isRequired,
+	isSelected: PropTypes.bool.isRequired,
+	isRenamed: PropTypes.bool.isRequired,
+	defaultTitle: PropTypes.string.isRequired,
+	selectFile: PropTypes.func.isRequired,
+	enableRename: PropTypes.func.isRequired,
+	updateFile: PropTypes.func.isRequired,
+};
+
+export default FileEntry;
