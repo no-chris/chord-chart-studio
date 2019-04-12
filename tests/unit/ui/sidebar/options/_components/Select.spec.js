@@ -15,7 +15,7 @@ describe('Select', () => {
 
 	beforeEach(() => {
 		props = {
-			isEnabled: true,
+			isInteractable: true,
 			label: 'myLabel',
 			allChoices: [
 				{ label: 'myChoice1', value: 'choice1' },
@@ -36,7 +36,7 @@ describe('Select', () => {
 		test('should not respond to click if option is disabled', () => {
 			const { getByText, queryByText } = render(<Select
 				{...props}
-				isEnabled={false}
+				isInteractable={false}
 			/>);
 
 			const selectTitle = getByText(props.label);

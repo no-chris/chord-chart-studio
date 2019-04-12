@@ -5,8 +5,31 @@
 .sb-optionToggle {
   display: flex;
 
-  .optionsPanelEntry:not(.optionsPanelEntry-isDisabled) &:hover {
+  @include font-size(small);
+
+  padding: $spacer-tiny $spacer-small-plus $spacer-tiny $spacer-small;
+
+  @include themify($themes) {
+    border-bottom: 1px dotted themed('option-border');
+  }
+
+  .sb-optionsGroup & {
+    @include themify($themes) {
+      background-color: themed('optionsGroup-option-bg');
+    }
+  }
+
+  &.sb-optionToggle-isNotInteractable {
+    @include themify($themes) {
+      color: themed('option-isDisabled');
+    }
+  }
+
+  &:hover:not(.sb-optionToggle-isNotInteractable) {
     cursor: pointer;
+    @include themify($themes) {
+      background-color: themed('option-bgHover');
+    }
   }
 }
 

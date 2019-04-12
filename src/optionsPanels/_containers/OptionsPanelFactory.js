@@ -3,24 +3,31 @@ import { connect } from 'react-redux';
 import { getOptionValue } from '../../db/options/selectors';
 import { setOptionValue } from '../../db/options/actions';
 
-export default function OptionsPanelFactory(allPanelEntries, allWidgets, component) {
+export default function OptionsPanelFactory(panelLayout, widgetsInitialState, component) {
 	return connect(
 		state => {
 			const stateToProps = {
-				allWidgets,
-				allPanelEntries
+				panelLayout,
+				widgetsInitialState,
 			};
 
 			let widget;
-			allPanelEntries
-				.filter(panelEntry => {
-					widget = allWidgets[panelEntry.widgetId];
-					return typeof widget.option !== 'undefined';
-				})
-				.forEach(panelEntry => {
-					widget = allWidgets[panelEntry.widgetId];
+			let groupWidget;
+
+			panelLayout.widgetsOrder.forEach(widgetId => {
+				widget = panelLayout.allWidgets[widgetId];
+
+				if (widget.type === 'optionsGroup') {
+					widget.groupWidgetsOrder.forEach(groupWidgetId => {
+						groupWidget = widget.allGroupWidgets[groupWidgetId];
+
+						stateToProps[groupWidget.option.key] = getOptionValue(state, groupWidget.option.context, groupWidget.option.key);
+					});
+
+				} else {
 					stateToProps[widget.option.key] = getOptionValue(state, widget.option.context, widget.option.key);
-				});
+				}
+			});
 
 			return stateToProps;
 		},

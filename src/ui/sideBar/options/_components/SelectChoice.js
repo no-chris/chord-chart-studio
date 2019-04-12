@@ -1,3 +1,5 @@
+import './Select.scss';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,7 +7,7 @@ import Icon from '../../../_components/Icon';
 
 function SelectChoice(props) {
 	const {
-		isActive,
+		isSelected,
 		label,
 		onClick
 	} = props;
@@ -13,8 +15,8 @@ function SelectChoice(props) {
 	let checkIcon;
 	const classNames = ['sb-optionSelectChoice'];
 
-	if (isActive) {
-		classNames.push('sb-optionSelectChoice-isActive');
+	if (isSelected) {
+		classNames.push('sb-optionSelectChoice-isSelected');
 		checkIcon = (
 			<span className={'sb-optionSelectChoice-checkIcon'}>
 				<Icon iconName={'check'} />
@@ -29,7 +31,7 @@ function SelectChoice(props) {
 			onClick={onClick}
 		>
 			<div className={'sb-optionSelectChoice-check'}>
-				{isActive && checkIcon}
+				{isSelected && checkIcon}
 			</div>
 			<div className={'sb-optionSelectChoice-label'}>
 				{label}

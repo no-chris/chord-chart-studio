@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import OptionsPanelEntry from './OptionsPanelEntry';
-
-export default function OptionsPanel(props) {
+function OptionsPanel(props) {
 	const {
 		id,
-		allWidgets,
-		allPanelEntries,
+		panelLayout,
+		widgetsInitialState,
 		setOption,
 		getEntryComponent,
 	} = props;
@@ -17,44 +16,70 @@ export default function OptionsPanel(props) {
 	];
 
 	let widget;
+	let groupWidget;
+
 	let WidgetComponent;
-	let value;
+	let GroupComponent;
 
-	const renderedWidgets = allPanelEntries
-		.filter(panelEntry => panelEntry.isVisible)
-		.map(panelEntry => {
+	const renderedWidgets = panelLayout.widgetsOrder.map(widgetId => {
+		widget = panelLayout.allWidgets[widgetId];
 
-			widget = allWidgets[panelEntry.widgetId];
-			WidgetComponent = getEntryComponent(widget.type);
+		if (widget.type === 'optionsGroup') {
+			const renderedGroupWidgets = widget.groupWidgetsOrder.map(groupWidgetId => {
+				groupWidget = widget.allGroupWidgets[groupWidgetId];
 
-			value = (widget.option) ? props[widget.option.key] : null;
+				return renderWidget(
+					groupWidgetId,
+					groupWidget,
+					widgetsInitialState[groupWidgetId]
+				);
+			});
+
+			GroupComponent = getEntryComponent(widget.type);
 
 			return (
-				<OptionsPanelEntry
-					key={panelEntry.widgetId + (panelEntry.key || '') }
-					isEnabled={panelEntry.isEnabled}
-					isVisible={panelEntry.isVisible}
+				<GroupComponent
+					key={widgetId}
+					isInteractable={widgetsInitialState[widgetId].isInteractable}
+					label={widget.label}
+					icon={widget.icon}
 				>
-					{
-						(panelEntry.isCustomWidget)
-							?
-							<WidgetComponent
-								{...panelEntry}
-							/>
-							:
-							<WidgetComponent
-								isEnabled={panelEntry.isEnabled}
-								{...widget.typeOption}
-								label={widget.label}
-								optionContext={widget.option.context}
-								optionKey={widget.option.key}
-								optionValue={value}
-								setOption={setOption}
-							/>
-					}
-				</OptionsPanelEntry>
+					{renderedGroupWidgets}
+				</GroupComponent>
 			);
-		});
+
+		} else {
+			return renderWidget(
+				widgetId,
+				widget,
+				widgetsInitialState[widgetId]
+			);
+		}
+
+	});
+
+
+
+	function renderWidget(widgetId, localWidget, state) {
+		WidgetComponent = getEntryComponent(localWidget.type);
+
+		return (
+			<WidgetComponent
+				key={widgetId}
+				isInteractable={state.isInteractable}
+				isVisible={state.isVisible}
+				isCollapsed={state.isCollapsed}
+
+				optionContext={localWidget.option.context}
+				optionKey={localWidget.option.key}
+				optionValue={props[localWidget.option.key]}
+				setOption={setOption}
+
+				label={localWidget.label}
+				{...localWidget.typeOption}
+			/>
+		);
+	}
 
 	return (
 		<div className={classNames.join(' ')}>
@@ -62,3 +87,16 @@ export default function OptionsPanel(props) {
 		</div>
 	);
 }
+
+//OptionsPanel.propTypes = {
+	// id: PropTypes.string.isRequired,
+	// allWidgets: PropTypes.objectOf(
+	// 	PropTypes.object
+	// ).isRequired,
+	// allPanelEntries: PropTypes.object.isRequired,
+	// setOption: PropTypes.func.isRequired,
+	// // The function that maps a component with its Id in the widget declaration
+	// getEntryComponent: PropTypes.func.isRequired,
+//};
+
+export default OptionsPanel;

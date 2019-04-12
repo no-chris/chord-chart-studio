@@ -5,11 +5,11 @@ import SelectChoice from './SelectChoice';
 
 import Icon from '../../../_components/Icon';
 
-export default function Select(props) {
+function Select(props) {
 	const [ isOpen, setIsOpen ] = useState(false);
 
 	const {
-		isEnabled,
+		isInteractable,
 		label,
 		allChoices,
 		optionContext,
@@ -17,6 +17,11 @@ export default function Select(props) {
 		optionValue,
 		setOption
 	} = props;
+
+	const classNames = ['sb-optionSelect'];
+	if (!isInteractable) {
+		classNames.push('sb-optionSelect-isNotInteractable');
+	}
 
 	const iconName = (isOpen) ? 'keyboard_arrow_down' : 'keyboard_arrow_right';
 
@@ -32,7 +37,7 @@ export default function Select(props) {
 					<SelectChoice
 						key={choice.value}
 						label={choice.label}
-						isActive={(optionValue === choice.value)}
+						isSelected={(optionValue === choice.value)}
 						onClick={() => setOption(optionContext, optionKey, choice.value)}
 					/>
 				)}
@@ -41,10 +46,10 @@ export default function Select(props) {
 
 
 	return (
-		<div className={'sb-option sb-optionSelect'}>
+		<div className={classNames.join(' ')}>
 			<div
 				className={'sb-optionSelect-title'}
-				onClick={(isEnabled) ? toggleChoices : null}
+				onClick={(isInteractable) ? toggleChoices : null}
 			>
 				<div className={'sb-optionSelect-desc'}>{label}</div>
 				<div className={'sb-optionSelect-toggle'}>
@@ -59,7 +64,7 @@ export default function Select(props) {
 }
 
 Select.propTypes = {
-	isEnabled: PropTypes.bool.isRequired,
+	isInteractable: PropTypes.bool.isRequired,
 	label: PropTypes.string.isRequired,
 	allChoices: PropTypes.array.isRequired,
 	optionContext: PropTypes.string.isRequired,
@@ -67,3 +72,5 @@ Select.propTypes = {
 	optionValue: PropTypes.string.isRequired,
 	setOption: PropTypes.func.isRequired
 };
+
+export default Select;

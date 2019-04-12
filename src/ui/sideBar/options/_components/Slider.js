@@ -1,9 +1,11 @@
+import './Slider.scss';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
 function Slider(props) {
 	const {
-		isEnabled,
+		isInteractable,
 		label,
 		min,
 		max,
@@ -13,6 +15,11 @@ function Slider(props) {
 		optionValue,
 		setOption
 	} = props;
+
+	const classNames = ['sb-optionSlider'];
+	if (!isInteractable) {
+		classNames.push('sb-optionSlider-isNotInteractable');
+	}
 
 	function handleChange(e) {
 		setOption(
@@ -27,9 +34,7 @@ function Slider(props) {
 		: optionValue;
 
 	return (
-		<div
-			className={'sb-option sb-optionSlider'}
-		>
+		<div className={classNames.join(' ')}>
 			<div className={'sb-optionSlider-desc'}>{label}</div>
 			<div className={'sb-optionSlider-value'}>{valueDisplay}</div>
 			<div className={'sb-optionSlider-range'}>
@@ -38,8 +43,8 @@ function Slider(props) {
 					max={max}
 					value={optionValue}
 					type={'range'}
-					onChange={(isEnabled) ? handleChange : null}
-					disabled={!isEnabled}
+					onChange={(isInteractable) ? handleChange : null}
+					disabled={!isInteractable}
 				/>
 			</div>
 		</div>
@@ -47,7 +52,7 @@ function Slider(props) {
 }
 
 Slider.propTypes = {
-	isEnabled: PropTypes.bool.isRequired,
+	isInteractable: PropTypes.bool.isRequired,
 	label: PropTypes.string.isRequired,
 	min: PropTypes.number.isRequired,
 	max: PropTypes.number.isRequired,

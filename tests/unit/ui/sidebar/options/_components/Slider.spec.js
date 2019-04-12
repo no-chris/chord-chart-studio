@@ -15,7 +15,7 @@ describe('Slider', () => {
 
 	beforeEach(() => {
 		props = {
-			isEnabled: true,
+			isInteractable: true,
 			label: 'myLabel',
 			min: -10,
 			max: 10,
@@ -53,7 +53,7 @@ describe('Slider', () => {
 		test('should not respond to change if option is disabled', () => {
 			const { getByDisplayValue } = render(<Slider
 				{...props}
-				isEnabled={false}
+				isInteractable={false}
 			/>);
 
 			const input = getByDisplayValue('8');

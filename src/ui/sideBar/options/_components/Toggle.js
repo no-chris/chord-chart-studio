@@ -1,3 +1,5 @@
+import './Toggle.scss';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,7 +7,7 @@ import Icon from '../../../_components/Icon';
 
 function Toggle(props) {
 	const {
-		isEnabled,
+		isInteractable,
 		label,
 		optionContext,
 		optionKey,
@@ -13,10 +15,13 @@ function Toggle(props) {
 		setOption
 	} = props;
 
-	const classNames = ['sb-option', 'sb-optionToggle'];
+	const classNames = ['sb-optionToggle'];
 	classNames.push(
 		(optionValue === true) ? 'sb-optionToggle-isOn' : 'sb-optionToggle-isOff'
 	);
+	if (!isInteractable) {
+		classNames.push('sb-optionToggle-isNotInteractable');
+	}
 
 	function handleClick() {
 		setOption(optionContext, optionKey, !optionValue);
@@ -25,7 +30,7 @@ function Toggle(props) {
 	return (
 		<div
 			className={classNames.join(' ')}
-			onClick={(isEnabled) ? handleClick : null}
+			onClick={(isInteractable) ? handleClick : null}
 		>
 			<div className={'sb-optionToggle-desc'}>{label}</div>
 			<div className={'sb-optionToggle-icon'}>
@@ -38,7 +43,7 @@ function Toggle(props) {
 }
 
 Toggle.propTypes = {
-	isEnabled: PropTypes.bool.isRequired,
+	isInteractable: PropTypes.bool.isRequired,
 	label: PropTypes.string.isRequired,
 	optionContext: PropTypes.string.isRequired,
 	optionKey: PropTypes.string.isRequired,

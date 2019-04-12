@@ -6,8 +6,12 @@ $themes: (
                 range-track: cv(dark-accent, light30),
         ),
         dark: (
+                optionsGroup-bgHover: cv(dark-background, light20),
+                optionsGroup-border: cv(dark-foreground, fade),
+                optionsGroup-option-bg: cv(dark-background, dark10),
+
                 option-isDisabled: cv(dark-background, light30),
-                option-bgHover: cv(dark-background, light20),
+                option-bgHover: cv(dark-background, light10),
                 option-border: cv(dark-background, light30),
 
                 toggle-icon-isOff: cv(dark-foreground, dark30),

@@ -15,7 +15,7 @@ describe('Toggle', () => {
 
 	beforeEach(() => {
 		props = {
-			isEnabled: true,
+			isInteractable: true,
 			label: 'myLabel',
 			optionContext: 'myContext',
 			optionKey: 'myKey',
@@ -54,7 +54,7 @@ describe('Toggle', () => {
 		test('should not respond to click if option is disabled', () => {
 			const { container } = render(<Toggle
 				{...props}
-				isEnabled={false}
+				isInteractable={false}
 			/>);
 
 			fireEvent.click(container.firstChild);
