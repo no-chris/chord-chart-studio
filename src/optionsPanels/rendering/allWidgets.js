@@ -1,49 +1,9 @@
-export const widgetsInitialState = {
-	style:			{ isInteractable: true , isVisible: true, isCollapsed: true },
-	styleUcc: 		{ isInteractable: true , isVisible: true },
-	styleChordpro: 	{ isInteractable: true , isVisible: true },
-
-	layout: 				{ isInteractable: true , isVisible: true, isCollapsed: true },
-	documentSize: 			{ isInteractable: true , isVisible: true, isCollapsed: true },
-	documentSizeA4: 		{ isInteractable: true , isVisible: true },
-	documentSizeIpad: 		{ isInteractable: true , isVisible: true },
-	columnsCount: 			{ isInteractable: false , isVisible: true },
-	columnBreakOnParagraph: { isInteractable: true , isVisible: true },
-
-	helpers: 				{ isInteractable: true , isVisible: true, isCollapsed: true },
-	alignBars: 				{ isInteractable: true , isVisible: true },
-	showChords: 			{ isInteractable: false , isVisible: true },
-	instrument: 			{ isInteractable: true , isVisible: true, isCollapsed: true },
-	instrumentGuitar: 		{ isInteractable: true , isVisible: true },
-	instrumentUkulele: 		{ isInteractable: true , isVisible: true },
-	instrumentPiano: 		{ isInteractable: true , isVisible: false },
-	instrumentMandolin: 	{ isInteractable: true , isVisible: false },
-	showStrummingPattern: 	{ isInteractable: true , isVisible: true },
-
-	chords: 					{ isInteractable: true , isVisible: true },
-	transposeValue: 			{ isInteractable: true , isVisible: true },
-	simplifyChords: 			{ isInteractable: true , isVisible: true },
-	capoPosition: 				{ isInteractable: true , isVisible: true },
-	harmonizeAccidentals: 		{ isInteractable: true , isVisible: true },
-	preferredAccidentals: 		{ isInteractable: true , isVisible: true, isCollapsed: true },
-	preferredAccidentalsAuto: 	{ isInteractable: true , isVisible: true },
-	preferredAccidentalsSharp: 	{ isInteractable: true , isVisible: true },
-	preferredAccidentalsFlat: 	{ isInteractable: true , isVisible: true },
-
-	format: 			{ isInteractable: false , isVisible: true },
-	fontSize: 			{ isInteractable: true , isVisible: true },
-	fontStyle: 			{ isInteractable: true , isVisible: true, isCollapsed: true },
-	fontStyleRoboto: 	{ isInteractable: true , isVisible: true },
-	highlightChords: 	{ isInteractable: true , isVisible: true },
-	chordsColor: 		{ isInteractable: true , isVisible: true, isCollapsed: true },
-	chordsColorBlack: 	{ isInteractable: true , isVisible: true },
-	chordsColorRed: 	{ isInteractable: true , isVisible: true },
-};
-
-
-export const panelLayout = {
+/* eslint-disable max-lines */
+export default {
 	widgetsOrder: [
 		'style',
+		'alignBars',
+
 		'layout',
 		'helpers',
 		'chords',
@@ -73,6 +33,15 @@ export const panelLayout = {
 				key: 'style'
 			},
 		},
+		alignBars: {
+			label: 'Align bars',
+			type: 'toggle',
+			option: {
+				context: 'rendering',
+				key: 'alignBars'
+			},
+		},
+
 
 
 		layout: {
@@ -140,22 +109,12 @@ export const panelLayout = {
 			icon: 'remove_red_eye',
 
 			groupWidgetsOrder: [
-				'alignBars',
 				'showChords',
 				'instrument',
 				'showStrummingPattern',
 			],
 
 			allGroupWidgets: {
-				alignBars: {
-					label: 'Align bars',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'alignBars'
-					},
-				},
-
 				showChords: {
 					label: 'Show chords diagrams',
 					type: 'toggle',

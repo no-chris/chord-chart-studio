@@ -7,8 +7,9 @@ import NavEntry from './NavEntry.js';
 
 function Nav(props) {
 	const {
-		active,
+		currentMode,
 		allEntries,
+		setEditorMode,
 	} = props;
 
 	return (
@@ -18,7 +19,8 @@ function Nav(props) {
 					allEntries.map((entry, key) =>
 						<NavEntry
 							key={key}
-							isActive={(entry.id === active)}
+							isActive={(entry.editorMode === currentMode)}
+							setEditorMode={setEditorMode}
 							{...entry}
 						/>
 					)
@@ -29,13 +31,14 @@ function Nav(props) {
 }
 
 Nav.propTypes = {
-	active: PropTypes.string.isRequired,
+	currentMode: PropTypes.string.isRequired,
+	setEditorMode: PropTypes.func.isRequired,
 	allEntries: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,
 			label: PropTypes.string.isRequired,
 			icon: PropTypes.string.isRequired,
-			link: PropTypes.string.isRequired,
+			editorMode: PropTypes.string.isRequired,
 		})
 	),
 };

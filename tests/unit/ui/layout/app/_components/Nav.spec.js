@@ -1,19 +1,17 @@
 import React from 'react';
 
-jest.mock('../../../../../../src/router');
-
 import { render, cleanup, fireEvent } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
 import Nav from '../../../../../../src/ui/layout/app/_components/Nav';
 
-import router from '../../../../../../src/router';
 
 afterEach(cleanup);
 
 describe('Nav', () => {
 
 	let props = {};
+	const setEditorMode = jest.fn();
 
 	beforeEach(() => {
 		props = {
@@ -22,25 +20,25 @@ describe('Nav', () => {
 					id: 'nav1',
 					label: 'Nav1',
 					icon: 'icon1',
-					link: '/link1',
+					editorMode: 'mode1',
 				},
 				{
 					id: 'nav2',
 					label: 'Nav2',
 					icon: 'icon2',
-					link: '/link2',
+					editorMode: 'mode2',
 				},
 				{
 					id: 'nav3',
 					label: 'Nav3',
 					icon: 'icon3',
-					link: '/link3',
+					editorMode: 'mode3',
 				},
 			],
-			active: 'nav1',
+			currentMode: 'mode1',
+			setEditorMode
 		};
-
-		router.navigateTo.mockClear();
+		setEditorMode.mockClear();
 	});
 
 
@@ -78,17 +76,17 @@ describe('Nav', () => {
 			const entry1 = getByText(props.allEntries[0].label);
 			fireEvent.click(entry1);
 
-			expect(router.navigateTo).toHaveBeenCalledWith(props.allEntries[0].link);
+			expect(setEditorMode).toHaveBeenCalledWith(props.allEntries[0].editorMode);
 
 			const entry2 = getByText(props.allEntries[1].label);
 			fireEvent.click(entry2);
 
-			expect(router.navigateTo).toHaveBeenCalledWith(props.allEntries[1].link);
+			expect(setEditorMode).toHaveBeenCalledWith(props.allEntries[1].editorMode);
 
 			const entry3 = getByText(props.allEntries[2].label);
 			fireEvent.click(entry3);
 
-			expect(router.navigateTo).toHaveBeenCalledWith(props.allEntries[2].link);
+			expect(setEditorMode).toHaveBeenCalledWith(props.allEntries[2].editorMode);
 		});
 	});
 

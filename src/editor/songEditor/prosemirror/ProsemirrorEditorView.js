@@ -38,7 +38,7 @@ function createEditorView(editorState, onEditorChange, fileId) {
 	});
 }
 
-export default function ProseMirrorEditorView(props) {
+function ProseMirrorEditorView(props) {
 	const { selectedFileId, editorContent, onEditorChange } = props;
 
 	const editorView = useRef();
@@ -89,11 +89,18 @@ export default function ProseMirrorEditorView(props) {
 	);
 }
 
+ProseMirrorEditorView.defaultProps = {
+	selectedFileId: '',
+	editorContent: '',
+};
+
 ProseMirrorEditorView.propTypes = {
-	selectedFileId: PropTypes.string.isRequired,
-	editorContent: PropTypes.string.isRequired,
+	selectedFileId: PropTypes.string,
+	editorContent: PropTypes.string,
 	onEditorChange: PropTypes.func.isRequired,
 };
+
+export default ProseMirrorEditorView;
 
 
 // @see https://reactjs.org/docs/hooks-faq.html#how-to-get-the-previous-props-or-state

@@ -15,7 +15,7 @@ describe('SelectChoice', () => {
 
 	beforeEach(() => {
 		props = {
-			isActive: true,
+			isSelected: true,
 			label: 'myLabel',
 			onClick,
 		};
@@ -25,21 +25,21 @@ describe('SelectChoice', () => {
 
 
 	describe('Active choice', () => {
-		test('Should add the "active" class if isActive === true', () => {
+		test('Should add the "isSelected" class if isSelected === true', () => {
 			const { container } = render(<SelectChoice
 				{...props}
 			/>);
 
-			expect(container.firstChild).toHaveClass('sb-optionSelectChoice-isActive');
+			expect(container.firstChild).toHaveClass('sb-optionSelectChoice-isSelected');
 		});
 
-		test('Should not add the "active" class if isActive === false', () => {
+		test('Should not add the "isSelected" class if isSelected === false', () => {
 			const { container } = render(<SelectChoice
 				{...props}
-				isActive={false}
+				isSelected={false}
 			/>);
 
-			expect(container.firstChild).not.toHaveClass('sb-optionSelectChoice-isActive');
+			expect(container.firstChild).not.toHaveClass('sb-optionSelectChoice-isSelected');
 		});
 	});
 

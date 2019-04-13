@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 import { getOptionValue } from '../../db/options/selectors';
 import { setOptionValue } from '../../db/options/actions';
 
-export default function OptionsPanelFactory(panelLayout, widgetsInitialState, component) {
+export default function OptionsPanelFactory(allWidgets, getNonInteractableWidgets, getNonVisibleWidgets, component) {
 	return connect(
 		state => {
 			const stateToProps = {
-				panelLayout,
-				widgetsInitialState,
+				allWidgets,
+				nonInteractableWidgets: getNonInteractableWidgets(state),
+				nonVisibleWidgets: getNonVisibleWidgets(state),
 			};
 
 			let widget;
 			let groupWidget;
 
-			panelLayout.widgetsOrder.forEach(widgetId => {
-				widget = panelLayout.allWidgets[widgetId];
+			allWidgets.widgetsOrder.forEach(widgetId => {
+				widget = allWidgets.allWidgets[widgetId];
 
 				if (widget.type === 'optionsGroup') {
 					widget.groupWidgetsOrder.forEach(groupWidgetId => {

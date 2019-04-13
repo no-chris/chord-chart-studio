@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../../../_components/Icon.js';
-import router from '../../../../router';
 
 function NavEntry(props) {
 	const {
 		label,
 		icon,
-		link,
+		editorMode,
+		setEditorMode,
 		isActive,
 	} = props;
 
@@ -18,10 +18,14 @@ function NavEntry(props) {
 		classNames.push('mainNavEntry-isActive');
 	}
 
+	function handleClick() {
+		setEditorMode(editorMode);
+	}
+
 	return (
 		<li
 			className={classNames.join(' ')}
-			onClick={() => router.navigateTo(link)}
+			onClick={handleClick}
 		>
 			<span className={'mainNavEntry-icon'}><Icon iconName={icon} /></span>{label}
 		</li>
@@ -31,7 +35,8 @@ function NavEntry(props) {
 NavEntry.propTypes = {
 	label: PropTypes.string.isRequired,
 	icon: PropTypes.string.isRequired,
-	link: PropTypes.string.isRequired,
+	editorMode: PropTypes.string.isRequired,
+	setEditorMode: PropTypes.func.isRequired,
 	isActive: PropTypes.bool.isRequired,
 };
 

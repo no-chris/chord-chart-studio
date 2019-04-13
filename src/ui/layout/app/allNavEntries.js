@@ -3,24 +3,24 @@ export default [
 		id: 'edit',
 		label: 'Edit',
 		icon: 'create',
-		link: '/edit',
+		editorMode: 'edit',
 	},
 	{
 		id: 'play',
 		label: 'Play',
 		icon: 'music_note',
-		link: '/play',
+		editorMode: 'play',
 	},
 	{
 		id: 'print',
 		label: 'Print / PDF',
 		icon: 'print',
-		link: '/print',
+		editorMode: 'print',
 	},
 	{
 		id: 'export',
 		label: 'Export',
 		icon: 'save_alt',
-		link: '/export',
+		editorMode: 'export',
 	},
 ];

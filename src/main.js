@@ -5,4 +5,4 @@ import router from './router';
 
 store.create();
 
-router.navigateTo('/edit');
+router.navigateTo('/editor');

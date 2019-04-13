@@ -14,12 +14,13 @@ function App(props) {
 	const {
 		isLeftBarCollapsed,
 		isRightBarCollapsed,
+		editorMode,
 		toggleLeftBar,
 		toggleRightBar,
+		setEditorMode,
 
 		leftBar,
 		rightBar,
-		activeRoute,
 	} = props;
 
 	const leftBarClassNames = ['leftBar'];
@@ -48,8 +49,9 @@ function App(props) {
 			<section className={'appLayout-main'}>
 				<section className={'appLayout-header'}>
 					<Nav
-						active={activeRoute}
 						allEntries={allNavEntries}
+						currentMode={editorMode}
+						setEditorMode={setEditorMode}
 					/>
 				</section>
 				<section className={'appLayout-content'}>
@@ -75,14 +77,17 @@ function App(props) {
 
 App.propTypes = {
 	children: PropTypes.element,
+
 	isLeftBarCollapsed: PropTypes.bool,
 	isRightBarCollapsed: PropTypes.bool,
 	toggleLeftBar: PropTypes.func.isRequired,
 	toggleRightBar: PropTypes.func.isRequired,
 
+	editorMode: PropTypes.string.isRequired,
+	setEditorMode: PropTypes.func.isRequired,
+
 	leftBar: PropTypes.element.isRequired,
 	rightBar: PropTypes.element.isRequired,
-	activeRoute: PropTypes.string.isRequired,
 };
 
 App.defaultProps = {

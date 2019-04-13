@@ -41,7 +41,7 @@ function SelectChoice(props) {
 }
 
 SelectChoice.propTypes = {
-	isActive: PropTypes.bool.isRequired,
+	isSelected: PropTypes.bool.isRequired,
 	label: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
 };

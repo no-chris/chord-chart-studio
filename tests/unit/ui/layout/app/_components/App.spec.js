@@ -1,8 +1,5 @@
 import React from 'react';
 
-// avoid circular dependencies
-jest.mock('../../../../../../src/router');
-
 import { render, cleanup, fireEvent } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
@@ -16,13 +13,16 @@ describe('App', () => {
 	let props = {};
 	const toggleLeftBar = jest.fn();
 	const toggleRightBar = jest.fn();
+	const setEditorMode = jest.fn();
 
 	beforeEach(() => {
 		props = {
 			isLeftBarCollapsed:false,
 			isRightBarCollapsed: false,
+			editorMode: 'edit',
 			toggleLeftBar,
 			toggleRightBar,
+			setEditorMode,
 
 			leftBar: <div>leftBarDiv</div>,
 			rightBar: <div>rightBarDiv</div>,

@@ -19,8 +19,16 @@ function OptionsGroup(props) {
 		classNames.push('sb-optionsGroup-isNotInteractable');
 	}
 
+	if (shouldBeClosed()) {
+		setIsOpen(false);
+	}
+
 	function shouldBeInteractable() {
 		return isInteractable && props.children && props.children.length > 0;
+	}
+
+	function shouldBeClosed() {
+		return isOpen && (!props.children || props.children.length === 0);
 	}
 
 	function handleClick() {

@@ -1,11 +1,12 @@
 import './EditorLayout.scss';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import SongEditor from '../songEditor/_components/SongEditor';
-import EditorPreview from '../../songRenderers/editorPreview/_components/EditorPreview';
+import SongEditor from './SongEditor';
+import EditorPreview from '../../../songRenderers/editorPreview/_components/EditorPreview';
 
-export default function EditorLayout(props) {
+function EditorLayout(props) {
 	const { selectedFile, updateFile } = props;
 
 	return (
@@ -25,6 +26,9 @@ export default function EditorLayout(props) {
 	);
 }
 
-EditorLayout.defaultProps ={
-	selectedFile: { content: '' }
+EditorLayout.propTypes = {
+	selectedFile: PropTypes.object,
+	updateFile: PropTypes.func.isRequired,
 };
+
+export default EditorLayout;
