@@ -1,5 +1,5 @@
 {
-  "name": "@touffi/ucc-demo",
+  "name": "@touffi/chords-charts-studio",
   "version": "0.5.0",
   "description": "Chords Charts Studio",
   "private": false,
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/no-chris/ucc-demo.git"
+    "url": "git+https://github.com/no-chris/chords-charts-studio.git"
   },
   "bugs": {
-    "url": "https://github.com/no-chris/ucc-demo/issues"
+    "url": "https://github.com/no-chris/chords-charts-studio/issues"
   },
-  "homepage": "https://github.com/no-chris/ucc-demo#readme",
+  "homepage": "https://github.com/no-chris/chords-charts-studio#readme",
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",

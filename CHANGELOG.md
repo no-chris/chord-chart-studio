@@ -6,6 +6,7 @@
 
 - Moved to React/Redux
 - Changed license
+- Changed name
 
 ---
 
