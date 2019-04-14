@@ -23,7 +23,7 @@ function createEditorState(editorContent) {
 	});
 }
 
-function createEditorView(editorState, onEditorChange, fileId) {
+function createEditorView(editorState, updateFile, fileId) {
 	return new EditorView(null, {
 		state: editorState,
 		dispatchTransaction: function dispatchTransaction(transaction) {
@@ -32,14 +32,14 @@ function createEditorView(editorState, onEditorChange, fileId) {
 			this.updateState(state);
 
 			if (transactions.some(tr => tr.docChanged)) {
-				onEditorChange(fileId, stateToText(state));
+				updateFile(fileId, { content: stateToText(state) });
 			}
 		},
 	});
 }
 
 function ProseMirrorEditorView(props) {
-	const { selectedFileId, editorContent, onEditorChange } = props;
+	const { selectedFileId, editorContent, updateFile } = props;
 
 	const editorView = useRef();
 	const editorDom = useRef();
@@ -73,7 +73,7 @@ function ProseMirrorEditorView(props) {
 			}
 
 			const editorState = createEditorState(editorContent);
-			editorView.current = createEditorView(editorState, onEditorChange, selectedFileId);
+			editorView.current = createEditorView(editorState, updateFile, selectedFileId);
 			editorDom.current.appendChild(editorView.current.dom);
 
 			// expose editor instance as a component property for unit tests
@@ -97,7 +97,7 @@ ProseMirrorEditorView.defaultProps = {
 ProseMirrorEditorView.propTypes = {
 	selectedFileId: PropTypes.string,
 	editorContent: PropTypes.string,
-	onEditorChange: PropTypes.func.isRequired,
+	updateFile: PropTypes.func.isRequired,
 };
 
 export default ProseMirrorEditorView;

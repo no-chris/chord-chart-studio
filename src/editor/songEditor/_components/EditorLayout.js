@@ -3,8 +3,8 @@ import './EditorLayout.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SongEditor from './SongEditor';
 import EditorPreview from '../../../songRenderers/editorPreview/_components/EditorPreview';
+import ProseMirrorEditorView from '../prosemirror/ProsemirrorEditorView';
 
 function EditorLayout(props) {
 	const { selectedFile, updateFile } = props;
@@ -12,9 +12,10 @@ function EditorLayout(props) {
 	return (
 		<div className={'songEditor'}>
 			<div className={'songEditor-source'}>
-				<SongEditor
-					selectedFile={selectedFile}
+				<ProseMirrorEditorView
+					editorContent={selectedFile.content}
 					updateFile={updateFile}
+					selectedFileId={selectedFile.id}
 				/>
 			</div>
 			<div className={'songEditor-preview'}>

@@ -10,15 +10,15 @@ afterEach(cleanup);
 describe('ProsemirrorEditorView', () => {
 
 	let props = {};
-	const onEditorChange = jest.fn();
+	const updateFile = jest.fn();
 
 	beforeEach(() => {
 		props = {
 			selectedFileId: 'myId',
 			editorContent: 'mySong in editor',
-			onEditorChange,
+			updateFile,
 		};
-		onEditorChange.mockClear();
+		updateFile.mockClear();
 	});
 
 	describe('Rendering and DOM updated', () => {
@@ -112,7 +112,7 @@ describe('ProsemirrorEditorView', () => {
 	});
 
 	describe('onChange()', () => {
-		test('should call the onEditorChange callback', () => {
+		test('should call the updateFile callback', () => {
 			const { getByText } = render(<ProsemirrorEditorView
 				{...props}
 			/>);
@@ -122,10 +122,10 @@ describe('ProsemirrorEditorView', () => {
 				ProsemirrorEditorView.editorView.state.tr.insertText('Modified: ')
 			);
 
-			expect(onEditorChange).toHaveBeenCalledWith('myId', 'Modified: mySong in editor');
+			expect(updateFile).toHaveBeenCalledWith('myId', { content: 'Modified: mySong in editor' });
 		});
 
-		test('should not call the onEditorChange callback if transaction does not result in doc change', () => {
+		test('should not call the updateFile callback if transaction does not result in doc change', () => {
 			const { getByText } = render(<ProsemirrorEditorView
 				{...props}
 			/>);
@@ -143,7 +143,7 @@ describe('ProsemirrorEditorView', () => {
 				ProsemirrorEditorView.editorView.state.tr
 			);
 
-			expect(onEditorChange).not.toHaveBeenCalled();
+			expect(updateFile).not.toHaveBeenCalled();
 
 			document.getSelection = undefined;
 		});
