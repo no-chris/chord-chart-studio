@@ -1,0 +1,68 @@
+@import '../../../../../scss/abstract';
+@import '../_themes.scss';
+
+
+.sb-optionToggle {
+  display: flex;
+
+  @include font-size(small);
+
+  padding: $spacer-tiny $spacer-small-plus $spacer-tiny $spacer-small;
+
+  @include themify($themes) {
+    border-bottom: 1px dotted themed('option-border');
+  }
+
+  .sb-optionsGroup & {
+    @include themify($themes) {
+      background-color: themed('optionsGroup-option-bg');
+    }
+  }
+
+  &.sb-optionToggle-isNotInteractable {
+    @include themify($themes) {
+      color: themed('option-isDisabled');
+    }
+  }
+
+  &:hover:not(.sb-optionToggle-isNotInteractable) {
+    cursor: pointer;
+    @include themify($themes) {
+      background-color: themed('option-bgHover');
+    }
+  }
+}
+
+
+.sb-optionToggle-desc {
+  flex: 1 1 auto;
+}
+
+
+.sb-optionToggle-icon {
+  flex: 0 0 auto;
+}
+
+
+.sb-optionToggle-isOff {
+  .icon {
+    @include themify($themes) {
+      color: themed('toggle-icon-isOff');
+    }
+  }
+}
+
+
+.sb-optionToggle-icon {
+  .icon {
+    @include font-size(big);
+  }
+
+  .sb-optionToggle-isOff & {
+    .icon {
+      @include themify($themes) {
+        color: themed('toggle-icon-isOff');
+      }
+    }
+  }
+}

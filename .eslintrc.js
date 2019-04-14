@@ -5,16 +5,22 @@ module.exports = {
 	},
 	'plugins': [
 		'import',
-		'no-unsanitized'
+		'no-unsanitized',
+		'react-hooks'
 	],
-	'extends': 'eslint:recommended',
+
+	'extends': [
+		'eslint:recommended',
+		'plugin:react/recommended',
+	],
 	'globals': {
 		'Atomics': 'readonly',
 		'SharedArrayBuffer': 'readonly'
 	},
 	'parserOptions': {
 		'ecmaVersion': 2018,
-		'sourceType': 'module'
+		'sourceType': 'module',
+		'jsx': true,
 	},
 	'rules': {
 		'complexity': 				[ 'error', { max: 10 } ],
@@ -23,8 +29,7 @@ module.exports = {
 		'max-depth': 				[ 'error', 4 ],
 		'max-len': 					[ 'error', {'code': 150 } ],
 		'max-lines': 				[ 'error', { max: 300, skipBlankLines: true, skipComments: true, } ],
-		'max-lines-per-function': 	[ 'warn', { max: 50, skipBlankLines: true, skipComments: true, }],
-		'max-params': 				[ 'warn', { max: 3 } ],
+		'max-params': 				[ 'warn', { max: 4 } ],
 		'no-shadow': 				[ 'error', { 'builtinGlobals': true } ],
 		'quotes': 					[ 'error',  'single' ],
 		'semi': 					[ 'error',  'always' ],
@@ -44,5 +49,16 @@ module.exports = {
 		'no-unsanitized/property': 	[ 'error', { escape: { methods: ['escapeHTML'] } } ],
 		'no-unsanitized/method': 	[ 'error' ],
 
+		'react/prop-types': 		[ 'error' ],
+
+		'react-hooks/rules-of-hooks': [ 'error' ],
+		'react-hooks/exhaustive-deps': [ 'warn' ]
+
+	},
+	'settings': {
+		'react': {
+			'pragma': 'React',
+			'version': 'detect'
+		},
 	}
 };

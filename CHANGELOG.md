@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.5.0 (14/04/2019)
+
+#### New features:
+
+- Moved to React/Redux
+- Changed license
+
+---
+
 ## v0.4.0 (27/03/2019)
 
 #### New features:

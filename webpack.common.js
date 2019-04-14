@@ -20,10 +20,8 @@ const config = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Universal Chord Charts',
-			version: require('./package.json').version,
-			template:'assets/index.hbs',
-			inlineSource: '.(js|css)$'
+			title: 'Chords Charts Studio',
+			template:'assets/index.html',
 		}),
 		new MiniCssExtractPlugin({
 			filename:'css/[name].[hash].css',
@@ -33,7 +31,7 @@ const config = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader'
 			},
@@ -60,7 +58,15 @@ const config = {
 				}]
 			}
 		]
-	}
+	},
+
+	resolve: {
+		extensions: ['.js', '.jsx'],
+		alias: {
+			react: path.resolve(path.join(__dirname, './node_modules/react')),
+			'react-dom': path.resolve(path.join(__dirname, './node_modules/react-dom'))
+		}
+	},
 };
 
 module.exports = config;

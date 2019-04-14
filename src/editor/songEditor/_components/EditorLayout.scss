@@ -1,0 +1,25 @@
+@import '../../../../scss/abstract';
+
+.songEditor {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.songEditor-source {
+  flex: 0 1 50%;
+  display: flex;
+  overflow-y: scroll;
+}
+
+.songEditor-preview {
+  flex: 0 1 50%;
+  padding: $spacer-small;
+
+  overflow-y: scroll;
+}
+
+

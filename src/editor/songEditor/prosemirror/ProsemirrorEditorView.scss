@@ -1,0 +1,40 @@
+@import '../../../../scss/abstract';
+
+
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                editor-txt: cv(dark-foreground, dark10),
+                editor-bg: cv(dark-primary, dark10),
+        ),
+);
+
+
+.prosemirrorWrapper {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  padding: $spacer-small;
+
+  @include themify($themes) {
+    background-color: themed('editor-bg');
+  }
+}
+
+
+.ProseMirror {
+  overflow-y: scroll;
+
+  outline: none;
+  font-family: $font-family-monospace;
+  @include font-size(normal);
+
+  @include themify($themes) {
+    color: themed('editor-txt');
+  }
+
+  p {
+    margin: 0;
+  }
+}

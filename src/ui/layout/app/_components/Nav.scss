@@ -1,0 +1,45 @@
+@import '../../../../../scss/abstract';
+@import '../themes';
+
+
+.mainNav-entries {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+  list-style-type: none;
+  @include font-size(base);
+  font-family: $font-family-headings;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+
+.mainNavEntry {
+  display: inline-block;
+  padding: 0 $spacer-medium;
+  cursor: pointer;
+
+  &:hover {
+    @include themify($themes) {
+      color: themed('header-txtHover');
+      background-color: themed('header-bgHover');
+    }
+  }
+
+  &.mainNavEntry-isActive{
+    @include themify($themes) {
+      color: themed('header-txtActive');
+      background-color: themed('header-bgActive');
+    }
+  }
+}
+
+
+.mainNavEntry-icon {
+  .icon {
+    margin-right: $spacer-tiny;
+    @include font-size(normal);
+  }
+}

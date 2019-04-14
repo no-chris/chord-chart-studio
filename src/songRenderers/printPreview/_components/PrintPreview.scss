@@ -1,0 +1,38 @@
+@import '../../../../scss/abstract';
+
+
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                song-txt: cv(dark-background),
+                song-bg: cv(dark-foreground),
+
+                desktop-bg: cv(dark-primary),
+        ),
+);
+
+
+.printPreview {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+
+  @include themify($themes) {
+    background-color: themed('desktop-bg');
+  }
+}
+
+
+.printPreview-page {
+  margin: 0 auto;
+
+  width: 210mm;
+  height: 297mm;
+  padding: 15mm;
+
+  background-color: white;
+  border: black 1px solid;
+}

@@ -1,26 +1,10 @@
-import htmlToElement from './core/dom/htmlToElement';
+import '../scss/styles.scss';
 
-import areaBrokerFactory from './core/areaBroker';
-import appFactory from './core/app';
-import registerPlugins from './plugins/registerPlugins';
+import { createStore } from './state/store';
+import router from './router';
 
-import appTpl from './app.hbs';
+export default function run() {
+	createStore();
 
-
-document.body.appendChild(
-	htmlToElement(appTpl())
-);
-
-const areas = {
-	header: '[data-area="app-header"]',
-	footer: '[data-area="app-footer"]',
-	sideBar: '[data-area="app-side-bar"]',
-	content: '[data-area="app-content"]',
-};
-
-const areaBroker = areaBrokerFactory(areas);
-const app = appFactory(areaBroker);
-
-registerPlugins(app);
-
-export default app;
+	return router.navigateTo('/editor');
+}

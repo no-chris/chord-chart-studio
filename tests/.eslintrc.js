@@ -4,7 +4,13 @@ module.exports = {
 		'node': true,
 	},
 	'rules': {
+		'max-len':                [ 'error', { 'code': 200 } ],
+		'max-lines':	 		  [ 'error', { max: 500, skipBlankLines: true, skipComments: true, } ],
+		'max-params': 			  [ 'error', { max: 10 } ],
+
 		'no-restricted-imports':  [ 'off' ],
 		'no-unsanitized/property':[ 'off' ],
+
+		'react/prop-types': 		[ 'off' ],
 	}
 };
