@@ -1,11 +1,11 @@
 # Tech debt
-- unit / integration / functional tests 100%
-- what to do with unknown options ? Don't display them if not in allWidgets
-- have a clear entry point for each feature module
-- add id enricher middleware
 - react strict mode
 - react error boundaries
-- remove handlebars
+- remove handlebars (but depends on UCC...)
+- host React on CDN
+
+- have a clear entry point for each feature module
+- add id enricher middleware ?
 
 - CSS: decide what to do with the font size mixin
 - CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)

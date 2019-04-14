@@ -8,7 +8,6 @@ const TerserPlugin       	= require('terser-webpack-plugin');
 const CleanWebpackPlugin    = require('clean-webpack-plugin');
 const CopyWebpackPlugin     = require('copy-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const BundleAnalyzerPlugin 	= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
@@ -41,7 +40,6 @@ module.exports = merge(common, {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('production')
 		}),
-		new HtmlWebpackInlineSourcePlugin(),
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static',
 			openAnalyzer: false,

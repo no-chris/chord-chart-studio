@@ -21,9 +21,7 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'Chords Charts Studio',
-			version: require('./package.json').version,
-			template:'assets/index.hbs',
-			inlineSource: '.(js|css)$'
+			template:'assets/index.html',
 		}),
 		new MiniCssExtractPlugin({
 			filename:'css/[name].[hash].css',
