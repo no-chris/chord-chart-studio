@@ -1,8 +1,3 @@
-import '../scss/styles.scss';
+import run from './app';
 
-import { createStore } from './state/store';
-import router from './router';
-
-createStore();
-
-router.navigateTo('/editor');
+run();
