@@ -1,8 +1,9 @@
 import './Icon.scss';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default React.memo(function Icon(props) {
+function Icon(props) {
 	const { iconName } = props;
 
 	const classList = ['icon', 'material-icons'];
@@ -10,4 +11,10 @@ export default React.memo(function Icon(props) {
 	return (
 		<i className={classList.join(' ')}>{iconName}</i>
 	);
-});
+}
+
+Icon.propTypes = {
+	iconName: PropTypes.string.isRequired,
+};
+
+export default React.memo(Icon);

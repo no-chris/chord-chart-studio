@@ -2,10 +2,11 @@ import './SongRenderer.scss';
 
 import _pick from 'lodash/pick';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import renderSong from '../../core/renderSong';
 
-export default function SongRenderer(props) {
+function SongRenderer(props) {
 	const {
 		content
 	} = props;
@@ -17,11 +18,19 @@ export default function SongRenderer(props) {
 		'transposeValue'
 	]);
 
-	const renderedSong = (content) ? renderSong(content, renderOptions) : ''; // todo: make the lib resilient to this!
-
 	return (
 		<div className={'songRenderer'}>
-			<div dangerouslySetInnerHTML={{ __html: renderedSong }} />
+			<div dangerouslySetInnerHTML={{ __html: renderSong(content, renderOptions) }} />
 		</div>
 	);
 }
+
+SongRenderer.propTypes = {
+	content: PropTypes.string
+};
+
+SongRenderer.defaultProps = {
+	content: ''
+};
+
+export default SongRenderer;

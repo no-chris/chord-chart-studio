@@ -1,10 +1,11 @@
 import './PlayRenderer.scss';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SongRenderer from '../../_containers/SongRenderer';
 
-export default function EditorPreview(props) {
+function PlayRenderer(props) {
 	const { selectedFile } = props;
 
 	return (
@@ -14,3 +15,8 @@ export default function EditorPreview(props) {
 	);
 }
 
+PlayRenderer.propTypes = {
+	selectedFile: PropTypes.object.isRequired,
+};
+
+export default PlayRenderer;
