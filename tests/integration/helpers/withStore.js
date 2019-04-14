@@ -23,3 +23,7 @@ export function withStore(Container) {
 export function getState() {
 	return getStore().getState();
 }
+
+export function dispatch(action) {
+	return getStore().dispatch(action);
+}
