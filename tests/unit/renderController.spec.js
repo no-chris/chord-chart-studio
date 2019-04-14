@@ -5,9 +5,9 @@ import React from 'react';
 import 'jest-dom/extend-expect';
 
 import renderController from '../../src/renderController';
-import store from '../../src/state/store';
+import { getStore } from '../../src/state/store';
 
-beforeEach(store.get.mockClear);
+beforeEach(getStore.mockClear);
 
 describe('renderController', () => {
 	test('Module', () => {
@@ -29,7 +29,7 @@ describe('renderController', () => {
 			dispatch: jest.fn(),
 		};
 		mockStore.getState.mockReturnValue({ foo: 'bar' });
-		store.get.mockReturnValue(mockStore);
+		getStore.mockReturnValue(mockStore);
 
 		document.body.innerHTML = '<div id="app"></div>';
 

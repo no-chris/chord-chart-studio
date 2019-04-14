@@ -1,8 +1,8 @@
 import '../scss/styles.scss';
 
-import store from './state/store';
+import { createStore } from './state/store';
 import router from './router';
 
-store.create();
+createStore();
 
 router.navigateTo('/editor');

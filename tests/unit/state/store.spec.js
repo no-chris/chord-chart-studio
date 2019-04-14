@@ -1,13 +1,12 @@
 jest.mock('../../../src/state/reducers');
 
-import store  from '../../../src/state/store';
+import { createStore, getStore }  from '../../../src/state/store';
 import reducers  from '../../../src/state/reducers';
 
 describe('store', () => {
 	test('Module', () => {
-		expect(store).toBeInstanceOf(Object);
-		expect(store.get).toBeInstanceOf(Function);
-		expect(store.create).toBeInstanceOf(Function);
+		expect(createStore).toBeInstanceOf(Function);
+		expect(getStore).toBeInstanceOf(Function);
 	});
 });
 
@@ -31,8 +30,8 @@ describe('localStorage persistence', () => {
 
 		reducers.mockReturnValue(state);
 
-		store.create();
-		const reduxStore = store.get();
+		createStore();
+		const reduxStore = getStore();
 
 		expect(reduxStore.getState()).toEqual(state);
 	});
@@ -41,8 +40,8 @@ describe('localStorage persistence', () => {
 		const initialState = {};
 		reducers.mockReturnValue(initialState);
 
-		store.create();
-		const reduxStore = store.get();
+		createStore();
+		const reduxStore = getStore();
 
 		const modifiedState = { foo: 'bar' };
 		reducers.mockReturnValue(modifiedState);
@@ -53,11 +52,14 @@ describe('localStorage persistence', () => {
 	});
 
 
-	test('should enable devTools', () => {
+	test('should enable devTools in browser', () => {
 		window.__REDUX_DEVTOOLS_EXTENSION__ = jest.fn();
 
-		store.create();
+		createStore();
 
 		expect(window.__REDUX_DEVTOOLS_EXTENSION__).toHaveBeenCalledTimes(1);
+
+		delete window.__REDUX_DEVTOOLS_EXTENSION__;
 	});
+
 });
