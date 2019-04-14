@@ -6,7 +6,7 @@ function OptionsPanel(props) {
 		id,
 		allWidgets,
 		nonInteractableWidgets,
-		nonVisibleWidgets,
+		hiddenWidgets,
 		setOption,
 		getEntryComponent,
 	} = props;
@@ -25,7 +25,7 @@ function OptionsPanel(props) {
 
 	const renderedWidgets = allWidgets.widgetsOrder
 		.filter(widgetId => {
-			return !(nonVisibleWidgets.includes(widgetId));
+			return !(hiddenWidgets.includes(widgetId));
 		})
 		.map(widgetId => {
 			widget = allWidgets.allWidgets[widgetId];
@@ -33,7 +33,7 @@ function OptionsPanel(props) {
 			if (widget.type === 'optionsGroup') {
 				renderedGroupWidgets = widget.groupWidgetsOrder
 					.filter(groupWidgetId => {
-						return !(nonVisibleWidgets.includes(groupWidgetId));
+						return !(hiddenWidgets.includes(groupWidgetId));
 					})
 					.map(groupWidgetId => {
 						groupWidget = widget.allGroupWidgets[groupWidgetId];
@@ -84,7 +84,7 @@ function OptionsPanel(props) {
 				setOption={setOption}
 
 				label={localWidget.label}
-				{...localWidget.typeOption}
+				{...localWidget.typeOptions}
 			/>
 		);
 	}
@@ -100,7 +100,7 @@ OptionsPanel.propTypes = {
 	id: PropTypes.string.isRequired,
 	allWidgets: PropTypes.object.isRequired,
 	nonInteractableWidgets: PropTypes.arrayOf(PropTypes.string).isRequired,
-	nonVisibleWidgets: PropTypes.arrayOf(PropTypes.string).isRequired,
+	hiddenWidgets: PropTypes.arrayOf(PropTypes.string).isRequired,
 	setOption: PropTypes.func.isRequired,
 	getEntryComponent: PropTypes.func.isRequired,
 };

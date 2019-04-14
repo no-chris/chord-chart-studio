@@ -10,5 +10,7 @@ module.exports = {
 
 		'no-restricted-imports':  [ 'off' ],
 		'no-unsanitized/property':[ 'off' ],
+
+		'react/prop-types': 		[ 'off' ],
 	}
 };

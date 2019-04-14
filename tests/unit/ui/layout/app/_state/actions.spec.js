@@ -27,4 +27,19 @@ describe('ui/layout/app: actions creators', () => {
 		});
 	});
 
+	describe('setEditorMode()', () => {
+		test('should return a valid action', () => {
+			const expected = {
+				type: actionsTypes.UI_LAYOUT_APP_SET_EDITOR_MODE,
+				payload: {
+					mode: 'myMode'
+				}
+			};
+
+			const actual = actions.setEditorMode('myMode') ;
+
+			expect(actual).toEqual(expected);
+		});
+	});
+
 });

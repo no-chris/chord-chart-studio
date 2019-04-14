@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { getOptionValue } from '../../db/options/selectors';
 import { setOptionValue } from '../../db/options/actions';
 
-export default function OptionsPanelFactory(allWidgets, getNonInteractableWidgets, getNonVisibleWidgets, component) {
+export default function OptionsPanelFactory(allWidgets, getNonInteractableWidgets, getHiddenWidgets, component) {
 	return connect(
 		state => {
 			const stateToProps = {
 				allWidgets,
 				nonInteractableWidgets: getNonInteractableWidgets(state),
-				nonVisibleWidgets: getNonVisibleWidgets(state),
+				hiddenWidgets: getHiddenWidgets(state),
 			};
 
 			let widget;

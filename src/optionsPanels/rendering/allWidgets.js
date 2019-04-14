@@ -14,7 +14,7 @@ export default {
 		style: {
 			label: 'Rendering style',
 			type: 'select',
-			typeOption: {
+			typeOptions: {
 				allChoices: [
 					{
 						id: 'styleUcc',
@@ -58,7 +58,7 @@ export default {
 				documentSize: {
 					label: 'Document size',
 					type: 'select',
-					typeOption: {
+					typeOptions: {
 						allChoices: [
 							{
 								id: 'documentSizeA4',
@@ -81,7 +81,7 @@ export default {
 				columnsCount: {
 					label: 'Columns',
 					type: 'slider',
-					typeOption: {
+					typeOptions: {
 						min: 1,
 						max: 3
 					},
@@ -127,7 +127,7 @@ export default {
 				instrument: {
 					label: 'Instrument',
 					type: 'select',
-					typeOption: {
+					typeOptions: {
 						allChoices: [
 							{
 								id: 'instrumentGuitar',
@@ -186,7 +186,7 @@ export default {
 				transposeValue: {
 					label: 'Transpose',
 					type: 'slider',
-					typeOption: {
+					typeOptions: {
 						min: -11,
 						max: 11,
 						showPlusSymbol: true,
@@ -209,7 +209,7 @@ export default {
 				capoPosition: {
 					label: 'Add capo on fret',
 					type: 'slider',
-					typeOption: {
+					typeOptions: {
 						min: 0,
 						max: 11,
 						showPlusSymbol: false,
@@ -232,7 +232,7 @@ export default {
 				preferredAccidentals: {
 					label: 'Preferred accidentals',
 					type: 'select',
-					typeOption: {
+					typeOptions: {
 						allChoices: [
 							{
 								id: 'preferredAccidentalsAuto',
@@ -276,7 +276,7 @@ export default {
 				fontSize: {
 					label: 'Font size',
 					type: 'slider',
-					typeOption: {
+					typeOptions: {
 						min: -5,
 						max: +5,
 						showPlusSymbol: true,
@@ -290,7 +290,7 @@ export default {
 				fontStyle: {
 					label: 'Font style',
 					type: 'select',
-					typeOption: {
+					typeOptions: {
 						allChoices: [
 							{
 								id: 'fontStyleRoboto',
@@ -317,7 +317,7 @@ export default {
 				chordsColor: {
 					label: 'Chords color',
 					type: 'select',
-					typeOption: {
+					typeOptions: {
 						allChoices: [
 							{
 								id: 'chordsColor',

@@ -37,4 +37,14 @@ describe('ui/layout/app: reducers', () => {
 		});
 	});
 
+
+	describe(actionsTypes.UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
+		test('should set editorMode', () => {
+			expect(initialState.editorMode).toBe('edit');
+
+			const newState =reducers(initialState, actions.setEditorMode('myMode1'));
+			expect(newState.editorMode).toBe('myMode1');
+		});
+	});
+
 });

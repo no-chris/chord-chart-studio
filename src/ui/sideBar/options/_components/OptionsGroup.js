@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Icon from '../../../_components/Icon';
 
 function OptionsGroup(props) {
-	const [ isOpen, setIsOpen ] = useState(false);
+	const [ isOpened, setIsOpened ] = useState(props.isOpened);
 
 	const {
 		isInteractable,
@@ -20,7 +20,7 @@ function OptionsGroup(props) {
 	}
 
 	if (shouldBeClosed()) {
-		setIsOpen(false);
+		setIsOpened(false);
 	}
 
 	function shouldBeInteractable() {
@@ -28,11 +28,11 @@ function OptionsGroup(props) {
 	}
 
 	function shouldBeClosed() {
-		return isOpen && (!props.children || props.children.length === 0);
+		return isOpened && (!props.children || props.children.length === 0);
 	}
 
 	function handleClick() {
-		setIsOpen(!isOpen);
+		setIsOpened(!isOpened);
 	}
 
 	return (
@@ -46,22 +46,27 @@ function OptionsGroup(props) {
 				</div>
 				<div className={'sb-optionsGroup-toggle'}>
 					<span className={'sb-optionsGroup-iconToggle'}>
-						<Icon iconName={(isOpen) ? 'unfold_less' : 'unfold_more' } />
+						<Icon iconName={(isOpened) ? 'unfold_less' : 'unfold_more' } />
 					</span>
 				</div>
 			</div>
 			<div className={'sb-optionsGroup-content'}>
-				{isOpen && props.children}
+				{isOpened && props.children}
 			</div>
 		</div>
 	);
 }
 
 OptionsGroup.propTypes = {
+	isOpened: PropTypes.bool,
 	isInteractable: PropTypes.bool.isRequired,
 	icon: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	children: PropTypes.arrayOf(PropTypes.element),
+};
+
+OptionsGroup.defaultProps = {
+	isOpened: false,
 };
 
 export default OptionsGroup;

@@ -38,7 +38,7 @@ export const getNonInteractableWidgets = (state) => {
 	return nonInteractableWidgets;
 };
 
-export const getNonVisibleWidgets = (state) => {
+export const getHiddenWidgets = (state) => {
 	const nonVisibleWidgets = [];
 
 	const showChords = getOptionValue(state, 'rendering', 'showChords');

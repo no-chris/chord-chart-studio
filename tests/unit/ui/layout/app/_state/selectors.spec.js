@@ -32,4 +32,19 @@ describe('ui/layout/app: selectors', () => {
 		});
 	});
 
+	describe('getEditorMode()', () => {
+		test('should return editorMode', () => {
+			const state = {
+				ui: {
+					layout: {
+						app: {
+							editorMode: 'myMode'
+						}
+					}
+				}
+			};
+			expect(selectors.getEditorMode(state)).toBe('myMode');
+		});
+	});
+
 });

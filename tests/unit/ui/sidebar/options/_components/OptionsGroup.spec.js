@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, cleanup, fireEvent, act } from 'react-testing-library';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
 import OptionGroup from '../../../../../../src/ui/sideBar/options/_components/OptionsGroup';
@@ -19,6 +19,7 @@ describe('OptionGroup', () => {
 			isInteractable: true,
 			label: 'myLabel',
 			icon: 'myIcon',
+			isOpened: false,
 		};
 	});
 
@@ -33,14 +34,30 @@ describe('OptionGroup', () => {
 			getByText(props.icon);
 		});
 
-		test('should NOT render children by default', () => {
+		test('should NOT render children by default if isOpened === false', () => {
 			const { queryByText } = render(
-				<OptionGroup {...props}>
+				<OptionGroup
+					{...props}
+					isOpened={false}
+				>
 					{children}
 				</OptionGroup>
 			);
 
 			expect(queryByText(childrenTxt)).toBeNull();
+		});
+
+		test('should render children by default if isOpened === true', () => {
+			const { getByText } = render(
+				<OptionGroup
+					{...props}
+					isOpened={true}
+				>
+					{children}
+				</OptionGroup>
+			);
+
+			getByText(childrenTxt);
 		});
 	});
 
@@ -108,24 +125,13 @@ describe('OptionGroup', () => {
 			getByText('unfold_more');
 		});
 
-		test('should be closed if no children are passed', () => {
-			const { getByText, queryByText, rerender } = render(
-				<OptionGroup {...props}>
-					{children}
-				</OptionGroup>
+		test('should be closed if no children are passed, even if isOpenned === true', () => {
+			const { getByText, queryByText } = render(
+				<OptionGroup
+					{...props}
+					isOpened={true}
+				/>
 			);
-			const myLabel = getByText(props.label);
-
-			// first open it
-			fireEvent.click(myLabel);
-
-			getByText(childrenTxt);
-			getByText('unfold_less');
-
-			act(() => {
-				rerender(<OptionGroup {...props} />);
-			});
-
 			expect(queryByText(childrenTxt)).toBeNull();
 			getByText('unfold_more');
 		});
