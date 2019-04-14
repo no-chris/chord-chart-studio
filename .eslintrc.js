@@ -29,7 +29,7 @@ module.exports = {
 		'max-depth': 				[ 'error', 4 ],
 		'max-len': 					[ 'error', {'code': 150 } ],
 		'max-lines': 				[ 'error', { max: 300, skipBlankLines: true, skipComments: true, } ],
-		'max-params': 				[ 'warn', { max: 3 } ],
+		'max-params': 				[ 'warn', { max: 4 } ],
 		'no-shadow': 				[ 'error', { 'builtinGlobals': true } ],
 		'quotes': 					[ 'error',  'single' ],
 		'semi': 					[ 'error',  'always' ],
@@ -49,7 +49,7 @@ module.exports = {
 		'no-unsanitized/property': 	[ 'error', { escape: { methods: ['escapeHTML'] } } ],
 		'no-unsanitized/method': 	[ 'error' ],
 
-		'react/prop-types': 		[ 'warn' ],
+		'react/prop-types': 		[ 'error' ],
 
 		'react-hooks/rules-of-hooks': [ 'error' ],
 		'react-hooks/exhaustive-deps': [ 'warn' ]
