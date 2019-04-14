@@ -259,5 +259,35 @@ describe('"Rendering" option panel', () => {
 
 			getByText(allWidgets.allWidgets.layout.allGroupWidgets.columnBreakOnParagraph.label);
 		});
+
+		test('PreferredAccidentals should only be displayed if harmonizeAccidentals === true', () => {
+			dispatch(appActions.setEditorMode('play'));
+			dispatch(optionsActions.setOptionValue('rendering', 'harmonizeAccidentals', true));
+
+			const { getByText, queryByText } = render(withStore(
+				<Rendering />
+			));
+
+			const chords = getByText(allWidgets.allWidgets.chords.label);
+
+			act(() => {
+				fireEvent.click(chords);
+			});
+
+			const harmonizeAccidentals = getByText(allWidgets.allWidgets.chords.allGroupWidgets.harmonizeAccidentals.label);
+			getByText(allWidgets.allWidgets.chords.allGroupWidgets.preferredAccidentals.label);
+
+			act(() => {
+				fireEvent.click(harmonizeAccidentals);
+			});
+
+			expect(queryByText(allWidgets.allWidgets.chords.allGroupWidgets.preferredAccidentals.label)).toBeNull();
+
+			act(() => {
+				fireEvent.click(harmonizeAccidentals);
+			});
+
+			getByText(allWidgets.allWidgets.chords.allGroupWidgets.preferredAccidentals.label);
+		});
 	});
 });

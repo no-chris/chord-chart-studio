@@ -41,12 +41,16 @@ export const getHiddenWidgets = (state) => {
 
 	const showChords = getOptionValue(state, 'rendering', 'showChords');
 	const columnsCount = getOptionValue(state, 'rendering', 'columnsCount');
+	const harmonizeAccidentals = getOptionValue(state, 'rendering', 'harmonizeAccidentals');
 
 	if (!showChords) {
 		nonVisibleWidgets.push('instrument');
 	}
 	if (columnsCount < 2) {
 		nonVisibleWidgets.push('columnBreakOnParagraph');
+	}
+	if (!harmonizeAccidentals) {
+		nonVisibleWidgets.push('preferredAccidentals');
 	}
 
 	return nonVisibleWidgets;
