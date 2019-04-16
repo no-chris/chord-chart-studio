@@ -1,0 +1,11 @@
+.ucc-line {
+  margin: 0;
+  @include font-size(normal);
+  font-family: $font-family-monospace;
+  white-space: pre-wrap;
+}
+
+.ucc-chord-line {
+  font-weight: 700;
+  background-color: rgba(#000, .05);
+}

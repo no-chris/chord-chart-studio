@@ -25,14 +25,24 @@ $themes: (
   }
 }
 
-
 .printPreview-page {
   margin: 0 auto;
 
   width: 210mm;
   height: 297mm;
   padding: 15mm;
+  margin-bottom: $spacer-medium;
 
   background-color: white;
   border: black 1px solid;
+}
+
+.printPreview-page-isHidden {
+  visibility: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.printPreview-pageContent {
+  height: 100%;
 }
