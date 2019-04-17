@@ -22,12 +22,18 @@ function PrintPreview(props) {
 
 	return (
 		<div className={'printPreview'}>
-			<AllPages allLines={allLines} />
+			<AllPages
+				allLines={allLines}
+				columnsCount={props.columnsCount}
+				columnBreakOnParagraph={props.columnBreakOnParagraph}
+			/>
 		</div>
 	);
 }
 PrintPreview.propTypes = {
 	selectedFile: PropTypes.object.isRequired,
+	columnsCount: PropTypes.number.isRequired,
+	columnBreakOnParagraph: PropTypes.bool.isRequired,
 };
 
 export default PrintPreview;

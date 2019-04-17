@@ -26,23 +26,45 @@ $themes: (
 }
 
 .printPreview-page {
-  margin: 0 auto;
-
   width: 210mm;
   height: 297mm;
-  padding: 15mm;
-  margin-bottom: $spacer-medium;
+  position: relative;
+
+  margin: 0 auto $spacer-medium;
 
   background-color: white;
-  border: black 1px solid;
-}
-
-.printPreview-page-isHidden {
-  visibility: hidden;
-  position: absolute;
-  z-index: -1;
+  border: black 1px solid; //todo: black ??
 }
 
 .printPreview-pageContent {
-  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 15mm;
+}
+
+.printPreview-pageColumn {
+  flex: 1 1 0;
+  margin: 0 $spacer-tiny-plus;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+
+.measuring-node {
+  visibility: hidden;
+  position: absolute;
+  z-index: -1;
 }

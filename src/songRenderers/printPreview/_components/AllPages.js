@@ -43,29 +43,23 @@ function getOuterHeight(el) {
 
 
 function getPageHeight(container) {
-	const pageContent = container.querySelector('.printPreview-pageContent');
-	return pageContent.offsetHeight;
+	const pageContent = container.querySelector('.printPreview-pageColumn');
+	return pageContent.clientHeight;
 }
 
-
-
-function AllPages(props) {
-	const [ allLinesHeight, setAllLinesHeight ] = useState([]);
-	const [ pageHeight, setPageHeight ] = useState(0);
-
-	const { allLines } = props;
-
+function splitAllLinesInParts(allLines, allLinesHeight, pageHeight) {
 	const songParts = [];
 
 	if (pageHeight > 0) {
-		let acc = 0;
+		let currentPartHeight = 0;
 		let partIndex = 0;
 
 		songParts[partIndex] = [];
+
 		allLinesHeight.forEach((lineHeight, index) => {
-			acc += lineHeight;
-			if (acc > pageHeight) {
-				acc = 0;
+			currentPartHeight += lineHeight;
+			if (currentPartHeight > pageHeight) {
+				currentPartHeight = lineHeight;
 				partIndex++;
 				songParts[partIndex] = [];
 			}
@@ -73,18 +67,55 @@ function AllPages(props) {
 		});
 	}
 
+	return songParts;
+}
+
+function mapPartsToPageColumns(songParts, columnsCount) {
+	const allPagesColumns = [];
+
+	let columnIndex = 0;
+	let pageIndex = 0;
+
+	allPagesColumns[pageIndex] = [];
+
+	songParts.forEach(part => {
+		if (columnIndex === columnsCount) {
+			columnIndex = 0;
+			pageIndex++;
+			allPagesColumns[pageIndex] = [];
+		}
+		allPagesColumns[pageIndex].push(part);
+		columnIndex++;
+	});
+
+	return allPagesColumns;
+}
+
+function AllPages(props) {
+	const [ allLinesHeight, setAllLinesHeight ] = useState([]);
+	const [ pageHeight, setPageHeight ] = useState(0);
+
+	const { allLines, columnsCount, columnBreakOnParagraph } = props;
+
+	let allPagesColumns = [];
+
+	if (pageHeight > 0) {
+		const songParts = splitAllLinesInParts(allLines, allLinesHeight, pageHeight);
+		allPagesColumns = mapPartsToPageColumns(songParts, columnsCount);
+	}
+
 	useEffect(() => {
 		const getDimensions = async () => {
-			const linesHeight = await getDomDimension(Page, { pageLines: allLines }, getAllLinesHeight);
-			const pHeight = await getDomDimension(Page, {} , getPageHeight);
+			const linesHeight = await getDomDimension(Page, { allColumnsLines: [allLines, []], columnsCount }, getAllLinesHeight);
+			const pHeight = await getDomDimension(Page, { allColumnsLines: [[], []] } , getPageHeight);
 			setAllLinesHeight(linesHeight);
 			setPageHeight(pHeight);
 		};
 		getDimensions();
-	}, [allLines]);
+	}, [allLines, columnsCount]);
 
-	const allPagesRendered = songParts.map((partLines, index) => {
-		return <Page key={index} pageLines={partLines} />;
+	const allPagesRendered = allPagesColumns.map((pageColumns, index) => {
+		return <Page key={index} allColumnsLines={pageColumns} />;
 	});
 
 	return (
@@ -95,7 +126,9 @@ function AllPages(props) {
 }
 
 AllPages.propTypes = {
-	allLines: PropTypes.arrayOf(PropTypes.string).isRequired
+	allLines: PropTypes.arrayOf(PropTypes.string).isRequired,
+	columnsCount: PropTypes.number.isRequired,
+	columnBreakOnParagraph: PropTypes.bool.isRequired,
 };
 
 export default AllPages;

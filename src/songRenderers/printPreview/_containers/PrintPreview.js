@@ -6,6 +6,8 @@ import PrintPreview from '../_components/PrintPreview';
 
 export default connect(
 	state => ({
+		columnsCount: getOptionValue(state, 'rendering', 'columnsCount'),
+		columnBreakOnParagraph: getOptionValue(state, 'rendering', 'columnBreakOnParagraph'),
 		accidentalsType: getOptionValue(state, 'rendering', 'preferredAccidentals'),
 		alignBars: getOptionValue(state, 'rendering', 'alignBars'),
 		harmonizeAccidentals: getOptionValue(state, 'rendering', 'harmonizeAccidentals'),
