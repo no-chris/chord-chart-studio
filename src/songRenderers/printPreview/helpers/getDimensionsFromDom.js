@@ -1,9 +1,11 @@
+import './getDimensionsFromDom.scss';
+
 import ReactDOM from 'react-dom';
 import React from 'react';
 
 export default function getDimensionsFromDom(component, measuringFn) {
 	const container = document.createElement('div');
-	container.classList.add('.measuring-node');
+	container.classList.add('measuring-node');
 	document.body.appendChild(container);
 
 	return new Promise(resolve => {
