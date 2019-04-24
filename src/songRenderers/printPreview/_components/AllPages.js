@@ -49,7 +49,7 @@ function AllPages(props) {
 				getAllLinesHeight
 			);
 
-			// then get available height in a normal empty
+			// then get available height in a normal empty page
 			const normalPageHeight = await getDimensionsFromDom(
 				<Page
 					allColumnsLines={padColumns(columnsCount)}
@@ -57,17 +57,26 @@ function AllPages(props) {
 				getPageHeight
 			);
 
-			const dimensions = {
+			const allLinesWithHeight = allLines.map((line, index) => ({
+				content: line,
+				height: allLinesHeight[index]
+			}));
+
+			const mapped = mapLinesToColumns(allLinesWithHeight, {
+				columnsCount,
+				columnBreakOnParagraph,
 				normalPageHeight,
-				allLinesHeight,
-			};
-			setAllPagesColumns(mapLinesToColumns(allLines, columnsCount, dimensions));
+			});
+			setAllPagesColumns(mapped);
 		};
 		getDimensions();
-	}, [allLines, columnsCount]);
+	}, [allLines, columnsCount, columnBreakOnParagraph]);
 
 	const allPagesRendered = allPagesColumns.map((pageColumns, index) => {
-		return <Page key={index} allColumnsLines={padColumns(columnsCount, pageColumns)} />;
+		return <Page
+			key={index}
+			allColumnsLines={padColumns(columnsCount, pageColumns)}
+		/>;
 	});
 
 	return (
@@ -78,11 +87,7 @@ function AllPages(props) {
 }
 
 AllPages.propTypes = {
-	allLines: PropTypes.arrayOf(
-		PropTypes.objectOf({
-			content: PropTypes.string
-		})
-	).isRequired,
+	allLines: PropTypes.arrayOf(PropTypes.string).isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
 };

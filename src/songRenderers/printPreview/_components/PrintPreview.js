@@ -18,9 +18,7 @@ function PrintPreview(props) {
 		'transposeValue'
 	]);
 
-	const allLines = renderSong(selectedFile.content, renderOptions)
-		.split('\n')
-		.map(line => ({ content: line }));
+	const allLines = renderSong(selectedFile.content, renderOptions).split('\n');
 
 	return (
 		<div className={'printPreview'}>

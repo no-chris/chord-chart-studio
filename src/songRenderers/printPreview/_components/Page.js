@@ -7,9 +7,7 @@ function Page(props) {
 	const { allColumnsLines } = props;
 
 	const allSectionsRendered = allColumnsLines.map((columnLines, index) => {
-		const columnLinesTxt = columnLines
-			.map(line => line.content)
-			.join('\n');
+		const columnLinesTxt = columnLines.join('\n');
 
 		return (
 			<div
