@@ -22,6 +22,7 @@ function getPageHeight(container) {
 }
 
 
+// make sure we always have the correct number of columns by adding empty ones if needed
 function padColumns(columnCount, allColumns = []) {
 	for (let i = 0; i < columnCount; i++) {
 		if (!allColumns[i]) {
@@ -77,7 +78,11 @@ function AllPages(props) {
 }
 
 AllPages.propTypes = {
-	allLines: PropTypes.arrayOf(PropTypes.string).isRequired,
+	allLines: PropTypes.arrayOf(
+		PropTypes.objectOf({
+			content: PropTypes.string
+		})
+	).isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
 };

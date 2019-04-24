@@ -6,7 +6,8 @@ module.exports = {
 	'plugins': [
 		'import',
 		'no-unsanitized',
-		'react-hooks'
+		'react-hooks',
+		'jam3', // for dangerouslySetInnerHTML
 	],
 
 	'extends': [
@@ -46,13 +47,15 @@ module.exports = {
 			}
 		],
 
+		'jam3/no-sanitizer-with-danger': ['error', { wrapperName: ['escapeHTML'] }],
+
 		'no-unsanitized/property': 	[ 'error', { escape: { methods: ['escapeHTML'] } } ],
 		'no-unsanitized/method': 	[ 'error' ],
 
 		'react/prop-types': 		[ 'error' ],
 
 		'react-hooks/rules-of-hooks': [ 'error' ],
-		'react-hooks/exhaustive-deps': [ 'warn' ]
+		'react-hooks/exhaustive-deps': [ 'warn' ],
 
 	},
 	'settings': {
