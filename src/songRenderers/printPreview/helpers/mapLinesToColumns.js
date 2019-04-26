@@ -4,26 +4,30 @@ const cssClasses = {
 	textLine: 'ucc-text-line',
 };
 
+
 /**
  * @param {Object[]} allLinesWithHeight
  * @param {String} allLinesWithHeight.content
  * @param {Number} allLinesWithHeight.height
  * @param {Number} columnsCount
- * @param {Boolean} columnBreakOnParagraph
  * @param {Number} firstPageHeight
  * @param {Number} normalPageHeight
+ * @param {Boolean} columnBreakOnParagraph
+ * @param {Boolean} noEmptyLinesOnColumnStart
+ * @param {Boolean} noOrphanTextLine
  * @returns {Array} array of pages, as array of columns
  */
 export default function mapLinesToColumns(allLinesWithHeight, {
 	columnsCount,
-	columnBreakOnParagraph,
+	firstPageHeight,
 	normalPageHeight,
+	columnBreakOnParagraph,
 	noEmptyLinesOnColumnStart = true,
 	noOrphanTextLine = true,
 }) {
 	const layout = layoutFactory({
 		columnsCount,
-		firstPageHeight: normalPageHeight, //todo: fix this
+		firstPageHeight,
 		normalPageHeight,
 		noEmptyLinesOnColumnStart,
 	});
@@ -31,7 +35,7 @@ export default function mapLinesToColumns(allLinesWithHeight, {
 	let buffer = [];
 	let bufferHeight = 0;
 
-	const pageHeight = normalPageHeight; //todo: fix this
+	const pageHeight = firstPageHeight || normalPageHeight;
 
 	if (pageHeight > 0) {
 		allLinesWithHeight.forEach((line, lineIndex) => {
@@ -64,7 +68,7 @@ export default function mapLinesToColumns(allLinesWithHeight, {
 }
 
 /**
- * Try to spot the case where the line is empty and will be rendered as the first line
+ * Try to spot the case where the line is empty and would be rendered as the first line
  * of the next column, which we may want to avoid
  */
 function shouldRenderLine(layout, line, buffer, noEmptyLinesOnColumnStart) {
@@ -132,7 +136,7 @@ function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 	}
 
 	function getMaxColumnHeight() {
-		return (pageIndex === 0) ? firstPageHeight : normalPageHeight;
+		return (pageIndex === 0 && firstPageHeight) ? firstPageHeight : normalPageHeight;
 	}
 
 	function shouldChangeColumn(nextHeight) {
@@ -171,7 +175,7 @@ function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 		},
 
 		fitsOnNextColumn(bufferHeight) {
-			const nextColumnHeight = (pageIndex === 0 && columnIndex < columnsCount)
+			const nextColumnHeight = (pageIndex === 0 && columnIndex < columnsCount && firstPageHeight)
 				? firstPageHeight
 				: normalPageHeight;
 			return bufferHeight <= nextColumnHeight;

@@ -295,3 +295,32 @@ describe('columnBreakOnParagraph', () => {
 		expect(allPagesColumns).toEqual(expected);
 	});
 });
+
+describe('firstPageHeight', () => {
+	test('allows a different column height for the first page', () => {
+		const allLinesWithHeight = getLinesWithHeight({ from: 1, to: 20, height: 20 });
+
+		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
+			columnsCount: 3,
+			noOrphanTextLine: true,
+			columnBreakOnParagraph: true,
+			firstPageHeight: 50,
+			normalPageHeight: 100,
+		});
+
+		const expected = [
+			[
+				getLines({ from: 1, to: 2}),
+				getLines({ from: 3, to: 4}),
+				getLines({ from: 5, to: 6}),
+			],
+			[
+				getLines({ from: 7, to: 11}),
+				getLines({ from: 12, to: 16}),
+				getLines({ from: 17, to: 20}),
+			],
+		];
+
+		expect(allPagesColumns).toEqual(expected);
+	});
+});
