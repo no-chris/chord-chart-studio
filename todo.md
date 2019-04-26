@@ -9,6 +9,11 @@
 - CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)
 
 
+Print feature:
+- don't split chordline with relevant text line
+- break only on paragraph
+- 
+
 ## Component checklist
 - memo ?
 - propTypes ?

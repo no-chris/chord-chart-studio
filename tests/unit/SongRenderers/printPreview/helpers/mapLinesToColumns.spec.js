@@ -8,8 +8,8 @@ describe('mapLinesToColumns', () => {
 
 function getLines({ from, to }) {
 	const count = to - from + 1;
-	const lines = new Array(count).fill('line');
-	return lines.map((line, index) => line + (from + index));
+	const lines = new Array(count).fill('<div class="ucc-text-line">{CONTENT}</div>');
+	return lines.map((line, index) => line.replace('{CONTENT}', 'line' + (from + index)));
 }
 
 function getLinesWithHeight({ from, to, height }) {
@@ -131,11 +131,11 @@ describe('noEmptyLinesOnColumnStart', () => {
 
 	const allLinesWithHeight = getLinesWithHeight({ from: 1, to: 20, height: 20 });
 	allLinesWithHeight[5].content =
-	allLinesWithHeight[6].content =
-	allLinesWithHeight[7].content =
-	allLinesWithHeight[13].content =
-	allLinesWithHeight[14].content =
-	allLinesWithHeight[15].content = emptyLine;
+		allLinesWithHeight[6].content =
+			allLinesWithHeight[7].content =
+				allLinesWithHeight[13].content =
+					allLinesWithHeight[14].content =
+						allLinesWithHeight[15].content = emptyLine;
 
 	test('should not allow empty lines on column start with noEmptyLinesOnColumnStart = true', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
@@ -152,7 +152,35 @@ describe('noEmptyLinesOnColumnStart', () => {
 		expect(allPagesColumns).toEqual(expected);
 	});
 
-	test('should not allow empty lines on column start with noEmptyLinesOnColumnStart = false', () => {
+	test('edge case if blank line is "part" of a non breakable block: empty line should not disappear', () => {
+		const chordLine = '<div class="ucc-chord-line">C F G</div>';
+		const textLine = '<div class="ucc-text-line">My verse</div>';
+
+		const allLinesWithHeightLocal =
+			[
+				chordLine, textLine, chordLine, textLine, chordLine,
+				textLine, emptyLine, chordLine, textLine
+			]
+				.map(line => ({ content: line, height: 20 }));
+
+		const allPagesColumns = mapLinesToColumns(allLinesWithHeightLocal, {
+			columnsCount: 2,
+			noEmptyLinesOnColumnStart: true,
+			noOrphanTextLine: true,
+			normalPageHeight: 100,
+		});
+
+		const expected = [
+			[
+				[chordLine, textLine, chordLine, textLine],
+				[chordLine, textLine, emptyLine, chordLine, textLine],
+			],
+		];
+
+		expect(allPagesColumns).toEqual(expected);
+	});
+
+	test('should allow empty lines on column start with noEmptyLinesOnColumnStart = false', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
 			columnsCount: 2,
 			noEmptyLinesOnColumnStart: false,
@@ -167,6 +195,40 @@ describe('noEmptyLinesOnColumnStart', () => {
 			[
 				[...getLines({ from: 11, to: 13 }), emptyLine, emptyLine],
 				[emptyLine, ...getLines({ from: 17, to: 20 })],
+			],
+		];
+
+		expect(allPagesColumns).toEqual(expected);
+	});
+});
+
+describe('noOrphanTextLine', () => {
+	const chordLine = '<div class="ucc-chord-line">C F G</div>';
+	const textLine = '<div class="ucc-text-line">My verse</div>';
+
+	const allLinesWithHeight = new Array(20)
+		.fill(textLine)
+		.map((_, index) => (index % 2 === 0) ? chordLine : textLine)
+		.map(line => ({ content: line, height: 20 }));
+
+	test('should not allow to break a chord line from its associated text line if noOrphanTextLine = true', () => {
+		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
+			columnsCount: 2,
+			noOrphanTextLine: true,
+			normalPageHeight: 100,
+		});
+
+		const expected = [
+			[
+				[chordLine, textLine, chordLine, textLine],
+				[chordLine, textLine, chordLine, textLine],
+			],
+			[
+				[chordLine, textLine, chordLine, textLine],
+				[chordLine, textLine, chordLine, textLine],
+			],
+			[
+				[chordLine, textLine, chordLine, textLine],
 			],
 		];
 
