@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Page from './Page';
+import PageHeader from './PageHeader';
 
 import mapLinesToColumns from '../helpers/mapLinesToColumns';
 import getDimensionsFromDom from '../helpers/getDimensionsFromDom';
@@ -16,9 +17,13 @@ function getAllLinesHeight(container) {
 }
 
 
-function getPageHeight(container) {
-	const pageContent = container.querySelector('.printPreview-pageColumn');
-	return pageContent.clientHeight;
+function getPagesHeight(container) {
+	const pageContent = container.querySelector('.printPreview-pageContent');
+	const pageColumnWrapper = container.querySelector('.printPreview-pageColumnWrapper');
+	return {
+		firstPageHeight: pageColumnWrapper.clientHeight,
+		normalPageHeight: pageContent.clientHeight,
+	};
 }
 
 
@@ -36,7 +41,11 @@ function padColumns(columnCount, allColumns = []) {
 function AllPages(props) {
 	const [ allPagesColumns, setAllPagesColumns ] = useState([]);
 
-	const { allLines, columnsCount, columnBreakOnParagraph } = props;
+	const { title, allLines, columnsCount, columnBreakOnParagraph } = props;
+
+	const pageHeader = (
+		<PageHeader title={title} />
+	);
 
 	useEffect(() => {
 		const getDimensions = async () => {
@@ -49,12 +58,13 @@ function AllPages(props) {
 				getAllLinesHeight
 			);
 
-			// then get available height in a normal empty page
-			const normalPageHeight = await getDimensionsFromDom(
+			// then get available height in both first and subsequent pages
+			const { normalPageHeight, firstPageHeight } = await getDimensionsFromDom(
 				<Page
+					pageHeader={<PageHeader title={title} />}
 					allColumnsLines={padColumns(columnsCount)}
 				/>,
-				getPageHeight
+				getPagesHeight
 			);
 
 			const allLinesWithHeight = allLines.map((line, index) => ({
@@ -66,15 +76,17 @@ function AllPages(props) {
 				columnsCount,
 				columnBreakOnParagraph,
 				normalPageHeight,
+				firstPageHeight,
 			});
 			setAllPagesColumns(mapped);
 		};
 		getDimensions();
-	}, [allLines, columnsCount, columnBreakOnParagraph]);
+	}, [allLines, columnsCount, columnBreakOnParagraph, title]);
 
 	const allPagesRendered = allPagesColumns.map((pageColumns, index) => {
 		return <Page
 			key={index}
+			pageHeader={(index === 0) && <PageHeader title={title} />}
 			allColumnsLines={padColumns(columnsCount, pageColumns)}
 		/>;
 	});
@@ -87,6 +99,7 @@ function AllPages(props) {
 }
 
 AllPages.propTypes = {
+	title: PropTypes.string.isRequired,
 	allLines: PropTypes.arrayOf(PropTypes.string).isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,

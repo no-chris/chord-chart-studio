@@ -23,6 +23,7 @@ function PrintPreview(props) {
 	return (
 		<div className={'printPreview'}>
 			<AllPages
+				title={selectedFile.title}
 				allLines={allLines}
 				columnsCount={props.columnsCount}
 				columnBreakOnParagraph={props.columnBreakOnParagraph}

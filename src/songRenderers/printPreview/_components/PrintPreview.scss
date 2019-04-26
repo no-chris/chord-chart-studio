@@ -32,17 +32,40 @@ $themes: (
   background-color: white;
 }
 
-.printPreview-pageContent {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+// This wrapper is used for the page margin and to fill all available height
+.printPreview-pageContentWrapper {
+  padding: 15mm;
 
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  margin: 15mm;
+}
+
+// Flex container for header + columnsWrapper
+.printPreview-pageContent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  height: 100%;
+}
+
+.printPreview-pageHeader {
+  @include font-size(big);
+  font-weight: $weight-bold;
+
+  margin-bottom: $spacer-small;
+}
+
+// flex container for columns
+.printPreview-pageColumnWrapper {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .printPreview-pageColumn {

@@ -11,9 +11,10 @@
 - check for outdated nodejs
 
 Print feature:
-- don't split chordline with relevant text line
-- break only on paragraph
-- 
++ don't split chordline with relevant text line
++ break only on paragraph
+- margin setting
+- print media query
 
 ## Component checklist
 - memo ?
