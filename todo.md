@@ -8,6 +8,7 @@
 - CSS: decide what to do with the font size mixin
 - CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)
 
+- check for outdated nodejs
 
 Print feature:
 - don't split chordline with relevant text line

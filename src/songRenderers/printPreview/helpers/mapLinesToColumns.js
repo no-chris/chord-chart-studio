@@ -1,27 +1,3 @@
-/**
- * Documentation
- * https://mermaidjs.github.io/mermaid-live-editor
- *
-
- graph TD
- A[getNextLine] --> B(put in buffer)
- B --> C(increase bufferHeight)
- C --> D{Fits on<br />current column?}
- D -- YES --> E{isBreakable?}
- E -- NO --> A
- E -- YES --> F(Flush here)
- F --> G(decrease<br />remaining space)
- D -- NO --> H{isBreakable?}
- H -- NO --> A
- H -- YES --> I{Fits on<br />next column?}
- I -- YES --> J(Flush on<br />next column)
- I -- NO --> K(Dumb Flush)
-
- classDef center text-align:center;
- class A,B,C,D,E,F,G,H,I center
-
- */
-
 const cssClasses = {
 	emptyLine: 'ucc-empty-line',
 	chordLine: 'ucc-chord-line',
@@ -29,18 +5,18 @@ const cssClasses = {
 };
 
 /**
- *
  * @param {Object[]} allLinesWithHeight
  * @param {String} allLinesWithHeight.content
  * @param {Number} allLinesWithHeight.height
- * @param columnsCount
- * @param columnBreakOnParagraph
- * @param normalPageHeight
- * @returns {*[]}
+ * @param {Number} columnsCount
+ * @param {Boolean} columnBreakOnParagraph
+ * @param {Number} firstPageHeight
+ * @param {Number} normalPageHeight
+ * @returns {Array} array of pages, as array of columns
  */
 export default function mapLinesToColumns(allLinesWithHeight, {
 	columnsCount,
-	//columnBreakOnParagraph,
+	columnBreakOnParagraph,
 	normalPageHeight,
 	noEmptyLinesOnColumnStart = true,
 	noOrphanTextLine = true,
@@ -63,20 +39,24 @@ export default function mapLinesToColumns(allLinesWithHeight, {
 			if (shouldRenderLine(layout, line, buffer, noEmptyLinesOnColumnStart)) {
 				buffer.push(line);
 				bufferHeight += line.height;
+			}
 
-				if (isBreakable(line, allLinesWithHeight[lineIndex + 1], { noOrphanTextLine })) {
-					if (layout.fitsOnCurrentColumn(bufferHeight)) {
-						layout.insert(buffer);
+			if (buffer.length > 0 && isBreakable(
+				line,
+				allLinesWithHeight[lineIndex + 1],
+				{ noOrphanTextLine, columnBreakOnParagraph }
+			)) {
+				if (layout.fitsOnCurrentColumn(bufferHeight)) {
+					layout.insert(buffer);
 
-					} else if (layout.fitsOnNextColumn(bufferHeight)) {
-						layout.insertOnNextColumn(buffer);
+				} else if (layout.fitsOnNextColumn(bufferHeight)) {
+					layout.insertOnNextColumn(buffer);
 
-					} else {
-						layout.insert(buffer);
-					}
-					buffer = [];
-					bufferHeight = 0;
+				} else {
+					layout.insert(buffer);
 				}
+				buffer = [];
+				bufferHeight = 0;
 			}
 		});
 	}
@@ -96,8 +76,21 @@ function shouldRenderLine(layout, line, buffer, noEmptyLinesOnColumnStart) {
 	);
 }
 
-function isBreakable(currentLine, nextLine, { noOrphanTextLine }) {
-	return !(isChordLine(currentLine) && isTextLine(nextLine) && noOrphanTextLine === true);
+function isBreakable(currentLine, nextLine, { noOrphanTextLine, columnBreakOnParagraph }) {
+	if (isEmptyLine(currentLine) || !nextLine) {
+		return true;
+	}
+
+	const wouldProduceOrphanTextLine = isChordLine(currentLine) && isTextLine(nextLine);
+	if (noOrphanTextLine === true && wouldProduceOrphanTextLine) {
+		return false;
+	}
+
+	const isEndOfParagraph = isEmptyLine(nextLine);
+	if (columnBreakOnParagraph === true && !isEndOfParagraph) {
+		return false;
+	}
+	return true;
 }
 
 function isEmptyLine(line) {

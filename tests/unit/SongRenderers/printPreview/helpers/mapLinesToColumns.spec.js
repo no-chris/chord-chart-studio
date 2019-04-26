@@ -6,10 +6,18 @@ describe('mapLinesToColumns', () => {
 	});
 });
 
+const chordLine = '<div class="ucc-chord-line">C F G</div>';
+const textLine = '<div class="ucc-text-line">{CONTENT}</div>';
+const emptyLine = '<div class="ucc-empty-line"> </div>';
+
+function getTextLine(index) {
+	return textLine.replace('{CONTENT}', 'textLine ' + index);
+}
+
 function getLines({ from, to }) {
 	const count = to - from + 1;
 	const lines = new Array(count).fill('<div class="ucc-text-line">{CONTENT}</div>');
-	return lines.map((line, index) => line.replace('{CONTENT}', 'line' + (from + index)));
+	return lines.map((line, index) => line.replace('{CONTENT}', 'myVerse' + (from + index)));
 }
 
 function getLinesWithHeight({ from, to, height }) {
@@ -127,8 +135,6 @@ describe.each([
 
 
 describe('noEmptyLinesOnColumnStart', () => {
-	const emptyLine = '<div class="ucc-empty-line"> </div>';
-
 	const allLinesWithHeight = getLinesWithHeight({ from: 1, to: 20, height: 20 });
 	allLinesWithHeight[5].content =
 		allLinesWithHeight[6].content =
@@ -153,13 +159,10 @@ describe('noEmptyLinesOnColumnStart', () => {
 	});
 
 	test('edge case if blank line is "part" of a non breakable block: empty line should not disappear', () => {
-		const chordLine = '<div class="ucc-chord-line">C F G</div>';
-		const textLine = '<div class="ucc-text-line">My verse</div>';
-
 		const allLinesWithHeightLocal =
 			[
-				chordLine, textLine, chordLine, textLine, chordLine,
-				textLine, emptyLine, chordLine, textLine
+				chordLine, getTextLine(1), chordLine, getTextLine(2), chordLine,
+				getTextLine(3), emptyLine, chordLine, getTextLine(4)
 			]
 				.map(line => ({ content: line, height: 20 }));
 
@@ -172,8 +175,8 @@ describe('noEmptyLinesOnColumnStart', () => {
 
 		const expected = [
 			[
-				[chordLine, textLine, chordLine, textLine],
-				[chordLine, textLine, emptyLine, chordLine, textLine],
+				[chordLine, getTextLine(1), chordLine, getTextLine(2)],
+				[chordLine, getTextLine(3), emptyLine, chordLine, getTextLine(4)],
 			],
 		];
 
@@ -203,12 +206,9 @@ describe('noEmptyLinesOnColumnStart', () => {
 });
 
 describe('noOrphanTextLine', () => {
-	const chordLine = '<div class="ucc-chord-line">C F G</div>';
-	const textLine = '<div class="ucc-text-line">My verse</div>';
-
 	const allLinesWithHeight = new Array(20)
 		.fill(textLine)
-		.map((_, index) => (index % 2 === 0) ? chordLine : textLine)
+		.map((_, index) => (index % 2 === 0) ? chordLine : getTextLine(index))
 		.map(line => ({ content: line, height: 20 }));
 
 	test('should not allow to break a chord line from its associated text line if noOrphanTextLine = true', () => {
@@ -220,16 +220,76 @@ describe('noOrphanTextLine', () => {
 
 		const expected = [
 			[
-				[chordLine, textLine, chordLine, textLine],
-				[chordLine, textLine, chordLine, textLine],
+				[chordLine, getTextLine(1), chordLine, getTextLine(3)],
+				[chordLine, getTextLine(5), chordLine, getTextLine(7)],
 			],
 			[
-				[chordLine, textLine, chordLine, textLine],
-				[chordLine, textLine, chordLine, textLine],
+				[chordLine, getTextLine(9), chordLine, getTextLine(11)],
+				[chordLine, getTextLine(13), chordLine, getTextLine(15)],
 			],
 			[
-				[chordLine, textLine, chordLine, textLine],
+				[chordLine, getTextLine(17), chordLine, getTextLine(19)],
 			],
+		];
+
+		expect(allPagesColumns).toEqual(expected);
+	});
+});
+
+describe('columnBreakOnParagraph', () => {
+	test('should not split a paragraph in the middle', () => {
+		const allLinesWithHeight = [
+			getTextLine(1), getTextLine(2), emptyLine,
+			getTextLine(3), getTextLine(4), getTextLine(5), getTextLine(6), getTextLine(7), emptyLine,
+			getTextLine(8), getTextLine(9)
+		]
+			.map(line => ({ content: line, height: 20 }));
+
+		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
+			columnsCount: 2,
+			noOrphanTextLine: true,
+			columnBreakOnParagraph: true,
+			normalPageHeight: 100,
+		});
+
+		const expected = [
+			[
+				[getTextLine(1), getTextLine(2), emptyLine],
+				[getTextLine(3), getTextLine(4), getTextLine(5), getTextLine(6), getTextLine(7)],
+			],
+			[
+				[getTextLine(8), getTextLine(9)],
+			],
+		];
+
+		expect(allPagesColumns).toEqual(expected);
+	});
+
+	test('should just "dumb"-render lines if block is too long for a single column', () => {
+		const allLinesWithHeight = [
+			getTextLine(1), getTextLine(2), emptyLine,
+			getTextLine(3), getTextLine(4), getTextLine(5), getTextLine(6), getTextLine(7),
+			getTextLine(8), getTextLine(9), getTextLine(10), getTextLine(11), emptyLine,
+			getTextLine(12), getTextLine(13), getTextLine(14),
+		]
+			.map(line => ({ content: line, height: 20 }));
+
+		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
+			columnsCount: 3,
+			noOrphanTextLine: true,
+			columnBreakOnParagraph: true,
+			normalPageHeight: 100,
+		});
+
+		const expected = [
+			[
+				[getTextLine(1), getTextLine(2), emptyLine, getTextLine(3), getTextLine(4)],
+				[getTextLine(5), getTextLine(6), getTextLine(7), getTextLine(8), getTextLine(9)],
+				[getTextLine(10), getTextLine(11), emptyLine],
+			],
+			[
+				[getTextLine(12), getTextLine(13), getTextLine(14)]
+			]
 		];
 
 		expect(allPagesColumns).toEqual(expected);
