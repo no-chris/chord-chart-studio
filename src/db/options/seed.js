@@ -8,6 +8,11 @@ export default {
 			default: 'a4',
 			resetOnSongChange: false,
 		},
+		documentMargins: {
+			value: 3,
+			default: 3,
+			resetOnSongChange: false,
+		},
 		columnsCount: {
 			value: 1,
 			default: 1,
@@ -87,19 +92,24 @@ export default {
 			default: 0,
 			resetOnSongChange: false,
 		},
+		printFontSize: {
+			value: 0,
+			default: 0,
+			resetOnSongChange: false,
+		},
 		fontStyle: {
 			value: 'roboto',
 			default: 'roboto',
 			resetOnSongChange: false,
 		},
-		highlightChords: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
 		chordsColor: {
 			value: 'black',
 			default: 'black',
+			resetOnSongChange: false,
+		},
+		highlightChords: {
+			value: true,
+			default: true,
 			resetOnSongChange: false,
 		},
 	}

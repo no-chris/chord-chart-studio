@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import escapeHTML from '../../../core/escapeHTML';
 
 function Page(props) {
-	const { pageHeader, allColumnsLines } = props;
+	const { pageHeader, allColumnsLines, documentSize, documentMargins, printFontSize } = props;
 
 	const allSectionsRendered = allColumnsLines.map((columnLines, index) => {
 		const columnLinesTxt = columnLines.join('\n');
@@ -18,9 +18,16 @@ function Page(props) {
 		);
 	});
 
+	const pageClasses = ['printPreview-page'];
+	pageClasses.push('printPreview-page--' + documentSize);
+	pageClasses.push('printPreview-page--font' + printFontSize);
+
+	const pageContentWrapperClasses = ['printPreview-pageContentWrapper'];
+	pageContentWrapperClasses.push('printPreview-pageContentWrapper--padding' + documentMargins);
+
 	return (
-		<div className={'printPreview-page'}>
-			<div className={'printPreview-pageContentWrapper'}>
+		<div className={pageClasses.join(' ')}>
+			<div className={pageContentWrapperClasses.join(' ')}>
 				<div className={'printPreview-pageContent'}>
 					{pageHeader}
 					<div className={'printPreview-pageColumnWrapper'}>
@@ -37,6 +44,9 @@ Page.defaultProps = {
 Page.propTypes = {
 	pageHeader: PropTypes.element,
 	allColumnsLines: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+	documentSize: PropTypes.string.isRequired,
+	documentMargins: PropTypes.number.isRequired,
+	printFontSize: PropTypes.number.isRequired,
 };
 
 export default React.memo(Page);

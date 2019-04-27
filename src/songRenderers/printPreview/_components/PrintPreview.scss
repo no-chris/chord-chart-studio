@@ -23,18 +23,16 @@ $themes: (
 }
 
 .printPreview-page {
-  width: 210mm;
-  height: 297mm;
+  // see size and font-size definitions below
+
   position: relative;
-
   margin: $spacer-medium auto;
-
   background-color: white;
 }
 
-// This wrapper is used for the page margin and to fill all available height
+// This wrapper is used for the page padding and to fill all available height
 .printPreview-pageContentWrapper {
-  padding: 15mm;
+  // see padding definitions below
 
   position: absolute;
   top: 0;
@@ -80,3 +78,70 @@ $themes: (
     margin-right: 0;
   }
 }
+
+
+// Document Size definitions
+.printPreview-page--a4 {
+  width: 210mm;
+  height: 297mm;
+}
+
+.printPreview-page--booxmax2pro {
+  width: 698px;
+  height: 930px;
+}
+
+
+// Margin definitions
+.printPreview-pageContentWrapper--padding1 {
+  padding: 3mm;
+}
+.printPreview-pageContentWrapper--padding2 {
+  padding: 6mm;
+}
+.printPreview-pageContentWrapper--padding3 {
+  padding: 9mm;
+}
+.printPreview-pageContentWrapper--padding4 {
+  padding: 12mm;
+}
+.printPreview-pageContentWrapper--padding5 {
+  padding: 15mm;
+}
+
+
+// Font size definitions
+.printPreview-page--font-5 {
+  font-size: 7px;
+}
+.printPreview-page--font-4 {
+  font-size: 8px;
+}
+.printPreview-page--font-3 {
+  font-size: 9px;
+}
+.printPreview-page--font-2 {
+  font-size: 10px;
+}
+.printPreview-page--font-1 {
+  font-size: 11px;
+}
+.printPreview-page--font0 {
+  font-size: 12px;
+}
+.printPreview-page--font1 {
+  font-size: 13px;
+}
+.printPreview-page--font2 {
+  font-size: 14px;
+}
+.printPreview-page--font3 {
+  font-size: 15px;
+}
+.printPreview-page--font4 {
+  font-size: 16px;
+}
+.printPreview-page--font5 {
+  font-size: 17px;
+}
+

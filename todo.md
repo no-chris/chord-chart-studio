@@ -13,8 +13,11 @@
 Print feature:
 + don't split chordline with relevant text line
 + break only on paragraph
-- margin setting
++ document size
++ margin setting
++ font size setting
 - print media query
+- unit tests
 
 ## Component checklist
 - memo ?

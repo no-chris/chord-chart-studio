@@ -15,7 +15,7 @@ function PrintPreview(props) {
 		'alignBars',
 		'harmonizeAccidentals',
 		'accidentalsType',
-		'transposeValue'
+		'transposeValue',
 	]);
 
 	const allLines = renderSong(selectedFile.content, renderOptions).split('\n');
@@ -27,6 +27,9 @@ function PrintPreview(props) {
 				allLines={allLines}
 				columnsCount={props.columnsCount}
 				columnBreakOnParagraph={props.columnBreakOnParagraph}
+				documentSize={props.documentSize}
+				documentMargins={props.documentMargins}
+				printFontSize={props.printFontSize}
 			/>
 		</div>
 	);
@@ -35,6 +38,9 @@ PrintPreview.propTypes = {
 	selectedFile: PropTypes.object.isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
+	documentSize: PropTypes.string.isRequired,
+	documentMargins: PropTypes.number.isRequired,
+	printFontSize: PropTypes.number.isRequired,
 };
 
 export default PrintPreview;

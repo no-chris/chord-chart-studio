@@ -41,11 +41,15 @@ function padColumns(columnCount, allColumns = []) {
 function AllPages(props) {
 	const [ allPagesColumns, setAllPagesColumns ] = useState([]);
 
-	const { title, allLines, columnsCount, columnBreakOnParagraph } = props;
-
-	const pageHeader = (
-		<PageHeader title={title} />
-	);
+	const {
+		title,
+		allLines,
+		columnsCount,
+		columnBreakOnParagraph,
+		documentSize,
+		documentMargins,
+		printFontSize,
+	} = props;
 
 	useEffect(() => {
 		const getDimensions = async () => {
@@ -54,6 +58,9 @@ function AllPages(props) {
 				<Page
 					allColumnsLines={padColumns(columnsCount, [allLines])}
 					columnsCount={columnsCount}
+					documentSize={documentSize}
+					documentMargins={documentMargins}
+					printFontSize={printFontSize}
 				/>,
 				getAllLinesHeight
 			);
@@ -63,6 +70,9 @@ function AllPages(props) {
 				<Page
 					pageHeader={<PageHeader title={title} />}
 					allColumnsLines={padColumns(columnsCount)}
+					documentSize={documentSize}
+					documentMargins={documentMargins}
+					printFontSize={printFontSize}
 				/>,
 				getPagesHeight
 			);
@@ -81,13 +91,16 @@ function AllPages(props) {
 			setAllPagesColumns(mapped);
 		};
 		getDimensions();
-	}, [allLines, columnsCount, columnBreakOnParagraph, title]);
+	}, [allLines, columnsCount, columnBreakOnParagraph, title, documentSize, documentMargins, printFontSize]);
 
 	const allPagesRendered = allPagesColumns.map((pageColumns, index) => {
 		return <Page
 			key={index}
-			pageHeader={(index === 0) && <PageHeader title={title} />}
+			pageHeader={(index === 0) ? <PageHeader title={title} /> : null}
 			allColumnsLines={padColumns(columnsCount, pageColumns)}
+			documentSize={documentSize}
+			documentMargins={documentMargins}
+			printFontSize={printFontSize}
 		/>;
 	});
 
@@ -103,6 +116,9 @@ AllPages.propTypes = {
 	allLines: PropTypes.arrayOf(PropTypes.string).isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
+	documentSize: PropTypes.string.isRequired,
+	documentMargins: PropTypes.number.isRequired,
+	printFontSize: PropTypes.number.isRequired,
 };
 
 export default AllPages;
