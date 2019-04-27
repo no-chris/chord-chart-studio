@@ -231,33 +231,42 @@ describe('"Rendering" option panel', () => {
 			getByText(allWidgets.allWidgets.helpers.allGroupWidgets.instrument.label);
 		});
 
-		test('columnBreakOnParagraph should only be displayed if columnsCount >= 2', () => {
-			dispatch(appActions.setEditorMode('play'));
-			dispatch(optionsActions.setOptionValue('rendering', 'columnsCount', 2));
+		test('fontSize / printFontSize should be displayed depending on editor mode', () => {
+			dispatch(appActions.setEditorMode('edit'));
 
 			const { getByText, queryByText } = render(withStore(
 				<Rendering />
 			));
 
-			const layout = getByText(allWidgets.allWidgets.layout.label);
+			const layout = getByText(allWidgets.allWidgets.format.label);
 
 			act(() => {
 				fireEvent.click(layout);
 			});
 
-			getByText(allWidgets.allWidgets.layout.allGroupWidgets.columnBreakOnParagraph.label);
+			getByText(allWidgets.allWidgets.format.allGroupWidgets.fontSize.label);
+			expect(queryByText(allWidgets.allWidgets.format.allGroupWidgets.printFontSize.label)).toBeNull();
 
 			act(() => {
-				dispatch(optionsActions.setOptionValue('rendering', 'columnsCount', 1));
+				dispatch(appActions.setEditorMode('play'));
 			});
 
-			expect(queryByText(allWidgets.allWidgets.layout.allGroupWidgets.columnBreakOnParagraph.label)).toBeNull();
+			getByText(allWidgets.allWidgets.format.allGroupWidgets.fontSize.label);
+			expect(queryByText(allWidgets.allWidgets.format.allGroupWidgets.printFontSize.label)).toBeNull();
 
 			act(() => {
-				dispatch(optionsActions.setOptionValue('rendering', 'columnsCount', 2));
+				dispatch(appActions.setEditorMode('print'));
 			});
 
-			getByText(allWidgets.allWidgets.layout.allGroupWidgets.columnBreakOnParagraph.label);
+			expect(queryByText(allWidgets.allWidgets.format.allGroupWidgets.fontSize.label)).toBeNull();
+			getByText(allWidgets.allWidgets.format.allGroupWidgets.printFontSize.label);
+
+			act(() => {
+				dispatch(appActions.setEditorMode('export'));
+			});
+
+			getByText(allWidgets.allWidgets.format.allGroupWidgets.fontSize.label);
+			expect(queryByText(allWidgets.allWidgets.format.allGroupWidgets.printFontSize.label)).toBeNull();
 		});
 
 		test('PreferredAccidentals should only be displayed if harmonizeAccidentals === true', () => {

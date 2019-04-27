@@ -106,7 +106,7 @@ export default {
 				},
 
 				columnBreakOnParagraph: {
-					label: 'Page/column break on paragraph',
+					label: 'Break on paragraph',
 					type: 'toggle',
 					option: {
 						context: 'rendering',
@@ -303,7 +303,7 @@ export default {
 				},
 
 				printFontSize: {
-					label: 'Font size',
+					label: 'Font size (print)',
 					type: 'slider',
 					typeOptions: {
 						min: -5,
