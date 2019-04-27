@@ -16,7 +16,7 @@ Print feature:
 + document size
 + margin setting
 + font size setting
-- print media query
++ print media query
 - unit tests
 
 ## Component checklist

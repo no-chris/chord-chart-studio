@@ -20,6 +20,11 @@ $themes: (
   @include themify($themes) {
     background-color: themed('desktop-bg');
   }
+
+  @media print {
+    background-color: white !important;
+    overflow-y: auto;
+  }
 }
 
 .printPreview-page {
@@ -28,6 +33,11 @@ $themes: (
   position: relative;
   margin: $spacer-medium auto;
   background-color: white;
+
+  @media print {
+    margin: 0;
+    page-break-after: auto;
+  }
 }
 
 // This wrapper is used for the page padding and to fill all available height
