@@ -21,7 +21,7 @@ function PrintPreview(props) {
 	const allLines = renderSong(selectedFile.content, renderOptions).split('\n');
 
 	return (
-		<div className={'printPreview'}>
+		<div className={'printPreview'} data-testid={'printPreview'}>
 			<AllPages
 				title={selectedFile.title}
 				allLines={allLines}

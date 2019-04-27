@@ -1,41 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Page from './Page';
 import PageHeader from './PageHeader';
 
 import mapLinesToColumns from '../helpers/mapLinesToColumns';
-import getDimensionsFromDom from '../helpers/getDimensionsFromDom';
-
-
-function getAllLinesHeight(container) {
-	const allLinesHeight = [];
-	container.querySelectorAll('.ucc-line').forEach(line => {
-		allLinesHeight.push(line.offsetHeight);
-	});
-	return allLinesHeight;
-}
-
-
-function getPagesHeight(container) {
-	const pageContent = container.querySelector('.printPreview-pageContent');
-	const pageColumnWrapper = container.querySelector('.printPreview-pageColumnWrapper');
-	return {
-		firstPageHeight: pageColumnWrapper.clientHeight,
-		normalPageHeight: pageContent.clientHeight,
-	};
-}
-
-
-// make sure we always have the correct number of columns by adding empty ones if needed
-function padColumns(columnCount, allColumns = []) {
-	for (let i = 0; i < columnCount; i++) {
-		if (!allColumns[i]) {
-			allColumns.push([]);
-		}
-	}
-	return allColumns;
-}
+import getAllLinesHeight from '../helpers/getAllLinesHeight';
+import getPagesHeight from '../helpers/getPagesHeight';
+import padColumns from '../helpers/padColumns';
 
 
 function AllPages(props) {
@@ -51,31 +23,18 @@ function AllPages(props) {
 		printFontSize,
 	} = props;
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const getDimensions = async () => {
-			// first, render all lines in a column of the expected width to compute height for each individual line
-			const allLinesHeight = await getDimensionsFromDom(
-				<Page
-					allColumnsLines={padColumns(columnsCount, [allLines])}
-					columnsCount={columnsCount}
-					documentSize={documentSize}
-					documentMargins={documentMargins}
-					printFontSize={printFontSize}
-				/>,
-				getAllLinesHeight
-			);
+			const pageOptions = {
+				columnsCount,
+				documentSize,
+				documentMargins,
+				printFontSize
+			};
 
-			// then get available height in both first and subsequent pages
-			const { normalPageHeight, firstPageHeight } = await getDimensionsFromDom(
-				<Page
-					pageHeader={<PageHeader title={title} />}
-					allColumnsLines={padColumns(columnsCount)}
-					documentSize={documentSize}
-					documentMargins={documentMargins}
-					printFontSize={printFontSize}
-				/>,
-				getPagesHeight
-			);
+			const allLinesHeight = await getAllLinesHeight(allLines, pageOptions);
+
+			const { normalPageHeight, firstPageHeight } = await getPagesHeight(title, pageOptions);
 
 			const allLinesWithHeight = allLines.map((line, index) => ({
 				content: line,
@@ -88,10 +47,19 @@ function AllPages(props) {
 				normalPageHeight,
 				firstPageHeight,
 			});
+
 			setAllPagesColumns(mapped);
 		};
 		getDimensions();
-	}, [allLines, columnsCount, columnBreakOnParagraph, title, documentSize, documentMargins, printFontSize]);
+	}, [
+		allLines,
+		title,
+		columnsCount,
+		columnBreakOnParagraph,
+		documentSize,
+		documentMargins,
+		printFontSize,
+	]);
 
 	const allPagesRendered = allPagesColumns.map((pageColumns, index) => {
 		return <Page

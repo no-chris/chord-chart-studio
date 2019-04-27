@@ -13,6 +13,7 @@ function Page(props) {
 			<div
 				key={index}
 				className={'printPreview-pageColumn'}
+				data-testid={'printPreview-pageColumn'}
 				dangerouslySetInnerHTML={{ __html: escapeHTML(columnLinesTxt) }}
 			/>
 		);
@@ -26,8 +27,14 @@ function Page(props) {
 	pageContentWrapperClasses.push('printPreview-pageContentWrapper--padding' + documentMargins);
 
 	return (
-		<div className={pageClasses.join(' ')}>
-			<div className={pageContentWrapperClasses.join(' ')}>
+		<div
+			className={pageClasses.join(' ')}
+			data-testid={'printPreview-page'}
+		>
+			<div
+				className={pageContentWrapperClasses.join(' ')}
+				data-testid={'printPreview-pageContentWrapper'}
+			>
 				<div className={'printPreview-pageContent'}>
 					{pageHeader}
 					<div className={'printPreview-pageColumnWrapper'}>
@@ -43,7 +50,11 @@ Page.defaultProps = {
 };
 Page.propTypes = {
 	pageHeader: PropTypes.element,
-	allColumnsLines: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+	allColumnsLines: PropTypes.arrayOf(
+		PropTypes.arrayOf(
+			PropTypes.string
+		)
+	),
 	documentSize: PropTypes.string.isRequired,
 	documentMargins: PropTypes.number.isRequired,
 	printFontSize: PropTypes.number.isRequired,

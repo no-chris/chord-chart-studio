@@ -18,6 +18,7 @@ Print feature:
 + font size setting
 + print media query
 - unit tests
+- export PDF ?
 
 ## Component checklist
 - memo ?

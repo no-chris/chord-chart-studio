@@ -22,7 +22,8 @@ describe('Editor', () => {
 
 		dispatch(createFile('mySongTitle'));
 		dispatch(updateFile('myId', {
-			content: 'mySongContent'
+			content: 'mySongContent',
+			title: 'mySongTitle'
 		}));
 		dispatch(selectFile('myId'));
 	});
@@ -52,11 +53,11 @@ describe('Editor', () => {
 		test('Print', () => {
 			dispatch(setEditorMode('print'));
 
-			const { getAllByText } = render(withStore(
+			const { getAllByTestId } = render(withStore(
 				<Editor />
 			));
 
-			expect(getAllByText('mySongContent').length).toBe(1);
+			expect(getAllByTestId('printPreview').length).toBe(1);
 		});
 
 		test('Export', () => {
