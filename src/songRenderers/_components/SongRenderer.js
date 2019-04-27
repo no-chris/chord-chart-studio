@@ -4,6 +4,8 @@ import _pick from 'lodash/pick';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import escapeHTML from '../../core/escapeHTML';
+
 import renderSong from '../../core/renderSong';
 
 function SongRenderer(props) {
@@ -20,7 +22,7 @@ function SongRenderer(props) {
 
 	return (
 		<div className={'songRenderer'}>
-			<div dangerouslySetInnerHTML={{ __html: renderSong(content, renderOptions) }} />
+			<div dangerouslySetInnerHTML={{ __html: escapeHTML(renderSong(content, renderOptions)) }} />
 		</div>
 	);
 }

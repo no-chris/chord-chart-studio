@@ -102,7 +102,7 @@
     {
       "path": "./docs/vendors*.js",
       "webpack": false,
-      "limit": "170 KB"
+      "limit": "175 KB"
     }
   ]
 }
