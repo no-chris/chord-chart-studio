@@ -6,13 +6,7 @@ $themes: (
 
         ),
         dark: (
-                song-txt: cv(dark-foreground, dark10),
+
         ),
 );
 
-
-.ep-SongRenderer {
-  @include themify($themes) {
-    color: themed('song-txt');
-  }
-}

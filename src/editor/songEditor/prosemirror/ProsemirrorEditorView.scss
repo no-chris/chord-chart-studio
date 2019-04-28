@@ -28,7 +28,7 @@ $themes: (
 
   outline: none;
   font-family: $font-family-monospace;
-  @include font-size(normal);
+  @include font-size(small);
 
   @include themify($themes) {
     color: themed('editor-txt');

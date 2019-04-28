@@ -3,7 +3,7 @@ import './EditorLayout.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import EditorPreview from '../../../songRenderers/editorPreview/_components/EditorPreview';
+import EditorPreview from '../../../songRenderers/editorPreview/_containers/EditorPreview';
 import ProseMirrorEditorView from '../prosemirror/ProsemirrorEditorView';
 
 function EditorLayout(props) {

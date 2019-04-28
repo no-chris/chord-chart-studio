@@ -103,8 +103,8 @@ export default {
 			resetOnSongChange: false,
 		},
 		chordsColor: {
-			value: 'black',
-			default: 'black',
+			value: 'yellow',
+			default: 'yellow',
 			resetOnSongChange: false,
 		},
 		highlightChords: {

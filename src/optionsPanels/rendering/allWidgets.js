@@ -341,13 +341,23 @@ export default {
 						allChoices: [
 							{
 								id: 'chordsColor',
-								label: 'Black',
-								value: 'black'
+								label: 'Base',
+								value: 'base'
 							},
 							{
 								id: 'chordsColorRed',
 								label: 'Red',
 								value: 'red'
+							},
+							{
+								id: 'chordsColorYellow',
+								label: 'Yellow',
+								value: 'yellow'
+							},
+							{
+								id: 'chordsColorGreen',
+								label: 'Green',
+								value: 'green'
 							},
 						],
 					},

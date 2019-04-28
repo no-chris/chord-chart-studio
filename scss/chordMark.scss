@@ -1,0 +1,114 @@
+@import './abstract';
+
+
+$themes: (
+        light: (
+
+        ),
+        dark: (
+                song-txt: cv(dark-foreground, dark10),
+
+                chords-bg: cv(dark-primary, light10),
+
+                chords-txt-base: cv(dark-foreground, dark10),
+                barSeparator-txt-base: cv(dark-foreground, light30),
+
+                chords-txt-red: cv(dark-red),
+                barSeparator-txt-red: cv(dark-red, light30),
+
+                chords-txt-yellow: cv(dark-yellow, dark10),
+                barSeparator-txt-yellow: cv(dark-yellow, light30),
+
+                chords-txt-green: cv(dark-green),
+                barSeparator-txt-green: cv(dark-green, light30),
+
+        ),
+);
+
+
+
+
+.cmLine {
+  margin: 0;
+  font-family: $font-family-monospace;
+  white-space: pre-wrap;
+
+  .ep-SongRenderer & {
+    @include font-size(small);
+  }
+}
+
+.cmChordLine {
+  .cmChordLine--chordsColor-base & {
+    @include themify($themes) {
+      color: themed('chords-txt-base');
+    }
+  }
+  .cmChordLine--chordsColor-red & {
+    @include themify($themes) {
+      color: themed('chords-txt-red');
+    }
+  }
+  .cmChordLine--chordsColor-yellow & {
+    @include themify($themes) {
+      color: themed('chords-txt-yellow');
+    }
+  }
+  .cmChordLine--chordsColor-green & {
+    @include themify($themes) {
+      color: themed('chords-txt-green');
+    }
+  }
+
+  .cmChordLine--highlightChords & {
+    @include themify($themes) {
+      background-color: themed('chords-bg');
+    }
+  }
+
+
+}
+
+.cmTextLine {
+  @include themify($themes) {
+    color: themed('song-txt');
+  }
+}
+
+.cmChordSymbol {
+  font-weight: 700;
+}
+
+.cmBarSeparator {
+  margin: 0 10px;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  .cmChordLine--chordsColor-base & {
+    @include themify($themes) {
+      color: themed('barSeparator-base');
+    }
+  }
+  .cmChordLine--chordsColor-red & {
+    @include themify($themes) {
+      color: themed('barSeparator-red') !important;
+    }
+  }
+  .cmChordLine--chordsColor-yellow & {
+    @include themify($themes) {
+      color: themed('barSeparator-yellow');
+    }
+  }
+  .cmChordLine--chordsColor-green & {
+    @include themify($themes) {
+      color: themed('barSeparator-green');
+    }
+  }
+
+}

@@ -12,6 +12,10 @@ export const getNonInteractableWidgets = (state) => {
 			nonInteractableWidgets.push('helpers');
 			nonInteractableWidgets.push('layout');
 			nonInteractableWidgets.push('style');
+			nonInteractableWidgets.push('fontSize');
+			nonInteractableWidgets.push('fontSize');
+			nonInteractableWidgets.push('fontStyle');
+
 			break;
 		}
 		case 'play': {
