@@ -97,7 +97,7 @@ export default {
 					type: 'slider',
 					typeOptions: {
 						min: 1,
-						max: 3
+						max: 4
 					},
 					option: {
 						context: 'rendering',
