@@ -43,7 +43,7 @@ export const getNonInteractableWidgets = (state) => {
 };
 
 export const getHiddenWidgets = (state) => {
-	const nonVisibleWidgets = [];
+	const hiddenWidgets = [];
 
 	const editorMode = getEditorMode(state);
 
@@ -51,17 +51,21 @@ export const getHiddenWidgets = (state) => {
 	const harmonizeAccidentals = getOptionValue(state, 'rendering', 'harmonizeAccidentals');
 
 	if (!showChords) {
-		nonVisibleWidgets.push('instrument');
+		hiddenWidgets.push('instrument');
 	}
 	if (!harmonizeAccidentals) {
-		nonVisibleWidgets.push('preferredAccidentals');
+		hiddenWidgets.push('preferredAccidentals');
 	}
 
 	if (editorMode === 'print') {
-		nonVisibleWidgets.push('fontSize');
+		hiddenWidgets.push('fontSize');
 	} else {
-		nonVisibleWidgets.push('printFontSize');
+		hiddenWidgets.push('printFontSize');
 	}
 
-	return nonVisibleWidgets;
+	hiddenWidgets.push('helpers');
+	hiddenWidgets.push('simplifyChords');
+	hiddenWidgets.push('capoPosition');
+
+	return hiddenWidgets;
 };

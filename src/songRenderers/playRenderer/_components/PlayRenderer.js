@@ -11,7 +11,7 @@ function PlayRenderer(props) {
 	const classNames = ['playRenderer'];
 	classNames.push('playRenderer--columns-' + columnsCount);
 	classNames.push('cmLine--fontSize' + fontSize);
-	classNames.push('cmChordLine--chordsColor-' + chordsColor);
+	classNames.push('cmChordSymbol--chordsColor-' + chordsColor);
 	if (highlightChords) {
 		classNames.push('cmChordLine--highlightChords');
 	}

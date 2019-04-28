@@ -13,16 +13,17 @@ $themes: (
                 printPreview-chords-bg: cv(dark-foreground),
 
                 chords-txt-base: cv(dark-foreground, dark10),
-                barSeparator-txt-base: cv(dark-foreground, light30),
+                barSeparator-txt-base: cv(dark-foreground, dark30),
+                printPreview-barSeparator-txt-base: cv(dark-foreground, dark30),
 
                 chords-txt-red: cv(dark-red),
-                barSeparator-txt-red: cv(dark-red, light30),
+                barSeparator-txt-red: cv(dark-red, light10),
 
                 chords-txt-yellow: cv(dark-yellow, dark10),
-                barSeparator-txt-yellow: cv(dark-yellow, light30),
+                barSeparator-txt-yellow: cv(dark-yellow, dark20),
 
                 chords-txt-green: cv(dark-green),
-                barSeparator-txt-green: cv(dark-green, light30),
+                barSeparator-txt-green: cv(dark-green, light10),
 
         ),
 );
@@ -77,27 +78,6 @@ $themes: (
 
 
 .cmChordLine {
-  .cmChordLine--chordsColor-base & {
-    @include themify($themes) {
-      color: themed('chords-txt-base');
-    }
-  }
-  .cmChordLine--chordsColor-red & {
-    @include themify($themes) {
-      color: themed('chords-txt-red');
-    }
-  }
-  .cmChordLine--chordsColor-yellow & {
-    @include themify($themes) {
-      color: themed('chords-txt-yellow');
-    }
-  }
-  .cmChordLine--chordsColor-green & {
-    @include themify($themes) {
-      color: themed('chords-txt-green');
-    }
-  }
-
   .playRenderer.cmChordLine--highlightChords &,
   .editorPreview.cmChordLine--highlightChords & {
     @include themify($themes) {
@@ -113,6 +93,7 @@ $themes: (
 
 }
 
+
 .cmTextLine {
   .editorPreview & {
     @include themify($themes) {
@@ -121,13 +102,37 @@ $themes: (
   }
 }
 
+
 .cmChordSymbol {
   font-weight: 700;
 
   .exportPreview & {
     font-weight: normal;
   }
+
+  .cmChordSymbol--chordsColor-base & {
+    @include themify($themes) {
+      color: themed('chords-txt-base');
+    }
+  }
+  .cmChordSymbol--chordsColor-red & {
+    @include themify($themes) {
+      color: themed('chords-txt-red');
+    }
+  }
+  .cmChordSymbol--chordsColor-yellow & {
+    @include themify($themes) {
+      color: themed('chords-txt-yellow');
+    }
+  }
+  .cmChordSymbol--chordsColor-green & {
+    @include themify($themes) {
+      color: themed('chords-txt-green');
+    }
+  }
+
 }
+
 
 .cmBarSeparator {
   margin: 0 10px;
@@ -140,24 +145,30 @@ $themes: (
     margin-right: 0;
   }
 
-  .cmChordLine--chordsColor-base & {
+  .cmChordSymbol--chordsColor-base & {
     @include themify($themes) {
-      color: themed('barSeparator-base');
+      color: themed('barSeparator-txt-base');
     }
   }
-  .cmChordLine--chordsColor-red & {
+  .cmChordSymbol--chordsColor-red & {
     @include themify($themes) {
-      color: themed('barSeparator-red') !important;
+      color: themed('barSeparator-txt-red');
     }
   }
-  .cmChordLine--chordsColor-yellow & {
+  .cmChordSymbol--chordsColor-yellow & {
     @include themify($themes) {
-      color: themed('barSeparator-yellow');
+      color: themed('barSeparator-txt-yellow');
     }
   }
-  .cmChordLine--chordsColor-green & {
+  .cmChordSymbol--chordsColor-green & {
     @include themify($themes) {
-      color: themed('barSeparator-green');
+      color: themed('barSeparator-txt-green');
+    }
+  }
+
+  .printPreview & {
+    @include themify($themes) {
+      color: themed('printPreview-barSeparator-txt-base');
     }
   }
 

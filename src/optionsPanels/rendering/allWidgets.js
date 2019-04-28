@@ -21,11 +21,11 @@ export default {
 						label: 'ChordMark',
 						value: 'chordmark'
 					},
-					{
-						id: 'styleChordpro',
-						label: 'ChordPro',
-						value: 'chordpro'
-					},
+					// {
+					// 	id: 'styleChordpro',
+					// 	label: 'ChordPro',
+					// 	value: 'chordpro'
+					// },
 				],
 			},
 			option: {

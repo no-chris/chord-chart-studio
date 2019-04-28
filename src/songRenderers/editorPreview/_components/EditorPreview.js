@@ -9,7 +9,7 @@ function EditorPreview(props) {
 	const { selectedFile, chordsColor, highlightChords } = props;
 
 	const classNames = ['editorPreview'];
-	classNames.push('cmChordLine--chordsColor-' + chordsColor);
+	classNames.push('cmChordSymbol--chordsColor-' + chordsColor);
 	if (highlightChords) {
 		classNames.push('cmChordLine--highlightChords');
 	}
