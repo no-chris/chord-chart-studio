@@ -17,9 +17,9 @@ export default {
 			typeOptions: {
 				allChoices: [
 					{
-						id: 'styleUcc',
-						label: 'UCC',
-						value: 'ucc'
+						id: 'styleChordMark',
+						label: 'ChordMark',
+						value: 'chordmark'
 					},
 					{
 						id: 'styleChordpro',

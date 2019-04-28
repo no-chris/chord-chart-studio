@@ -30,7 +30,7 @@ export const getNonInteractableWidgets = (state) => {
 	}
 
 	const style = getOptionValue(state, 'rendering', 'style');
-	if (style !== 'ucc') {
+	if (style !== 'chordmark') {
 		nonInteractableWidgets.push('alignBars');
 	}
 

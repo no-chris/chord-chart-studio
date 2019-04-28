@@ -28,8 +28,8 @@ export default {
 		/** Display */
 
 		style: {
-			value: 'ucc',
-			default: 'ucc',
+			value: 'chordmark',
+			default: 'chordmark',
 			resetOnSongChange: false,
 		},
 		alignBars: {

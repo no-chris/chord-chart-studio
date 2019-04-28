@@ -146,13 +146,13 @@ describe('"Rendering" option panel', () => {
 				fireEvent.click(styleWidget);
 			});
 
-			const uccOption = getByText('UCC');
+			const cmOption = getByText('ChordMark');
 			const chordProOption = getByText('ChordPro');
 
 			act(() => {
-				fireEvent.click(uccOption);
+				fireEvent.click(cmOption);
 			});
-			expect(optionsSelectors.getOptionValue(getState(), 'rendering', 'style')).toBe('ucc');
+			expect(optionsSelectors.getOptionValue(getState(), 'rendering', 'style')).toBe('chordmark');
 
 			act(() => {
 				fireEvent.click(chordProOption);
@@ -160,9 +160,9 @@ describe('"Rendering" option panel', () => {
 			expect(optionsSelectors.getOptionValue(getState(), 'rendering', 'style')).toBe('chordpro');
 
 			act(() => {
-				fireEvent.click(uccOption);
+				fireEvent.click(cmOption);
 			});
-			expect(optionsSelectors.getOptionValue(getState(), 'rendering', 'style')).toBe('ucc');
+			expect(optionsSelectors.getOptionValue(getState(), 'rendering', 'style')).toBe('chordmark');
 		});
 	});
 
@@ -182,11 +182,11 @@ describe('"Rendering" option panel', () => {
 				fireEvent.click(styleWidget);
 			});
 
-			const uccOption = getByText('UCC');
+			const cmOption = getByText('ChordMark');
 			const chordProOption = getByText('ChordPro');
 
 			act(() => {
-				fireEvent.click(uccOption);
+				fireEvent.click(cmOption);
 			});
 			expect(alignBarWidget.closest('.sb-optionToggle-isNotInteractable')).toBeNull();
 
@@ -196,7 +196,7 @@ describe('"Rendering" option panel', () => {
 			expect(alignBarWidget.closest('.sb-optionToggle-isNotInteractable')).toBeInstanceOf(Element);
 
 			act(() => {
-				fireEvent.click(uccOption);
+				fireEvent.click(cmOption);
 			});
 			expect(alignBarWidget.closest('.sb-optionToggle-isNotInteractable')).toBeNull();
 		});

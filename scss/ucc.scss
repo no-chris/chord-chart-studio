@@ -1,19 +1,19 @@
-.ucc-line {
+.cmLine {
   margin: 0;
   //@include font-size(small);
   font-family: $font-family-monospace;
   white-space: pre-wrap;
 }
 
-.ucc-chord-line {
+.cmChordLine {
   background-color: rgba(#000, .05);
 }
 
-.ucc-chord-symbol {
+.cmChordSymbol {
   font-weight: 700;
 }
 
-.ucc-bar-separator {
+.cmBarSeparator {
   margin: 0 10px;
   color: #aaa;
 
