@@ -1,12 +1,12 @@
 {
   "name": "@touffi/chords-charts-studio",
-  "version": "6",
+  "version": "0.6.0",
   "description": "Chords Charts Studio",
-  "private": false,
+  "private": true,
   "author": "Christophe Noël",
   "license": "",
   "engines": {
-    "node": ">=11.0"
+    "node": ">=12.0"
   },
   "repository": {
     "type": "git",
