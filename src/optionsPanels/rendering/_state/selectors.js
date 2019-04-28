@@ -13,7 +13,6 @@ export const getNonInteractableWidgets = (state) => {
 			nonInteractableWidgets.push('layout');
 			nonInteractableWidgets.push('style');
 			nonInteractableWidgets.push('fontSize');
-			nonInteractableWidgets.push('fontSize');
 			nonInteractableWidgets.push('fontStyle');
 
 			break;
@@ -21,9 +20,11 @@ export const getNonInteractableWidgets = (state) => {
 		case 'play': {
 			nonInteractableWidgets.push('documentSize');
 			nonInteractableWidgets.push('documentMargins');
+			nonInteractableWidgets.push('columnBreakOnParagraph');
 			break;
 		}
 		case 'print': {
+			nonInteractableWidgets.push('chordsColor');
 			break;
 		}
 		case 'export': {

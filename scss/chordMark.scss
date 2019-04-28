@@ -8,7 +8,7 @@ $themes: (
         dark: (
                 song-txt: cv(dark-foreground, dark10),
 
-                chords-bg: cv(dark-primary, light10),
+                chords-bg: cv(dark-background, light10),
 
                 chords-txt-base: cv(dark-foreground, dark10),
                 barSeparator-txt-base: cv(dark-foreground, light30),
@@ -36,7 +36,42 @@ $themes: (
   .ep-SongRenderer & {
     @include font-size(small);
   }
+  
+  .cmLine--fontSize-5 & {
+    font-size: 7px;
+  }
+  .cmLine--fontSize-4 & {
+    font-size: 8px;
+  }
+  .cmLine--fontSize-3 & {
+    font-size: 9px;
+  }
+  .cmLine--fontSize-2 & {
+    font-size: 10px;
+  }
+  .cmLine--fontSize-1 & {
+    font-size: 11px;
+  }
+  .cmLine--fontSize0 & {
+    font-size: 12px;
+  }
+  .cmLine--fontSize1 & {
+    font-size: 13px;
+  }
+  .cmLine--fontSize2 & {
+    font-size: 14px;
+  }
+  .cmLine--fontSize3 & {
+    font-size: 15px;
+  }
+  .cmLine--fontSize4 & {
+    font-size: 16px;
+  }
+  .cmLine--fontSize5 & {
+    font-size: 17px;
+  }
 }
+
 
 .cmChordLine {
   .cmChordLine--chordsColor-base & {
