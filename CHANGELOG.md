@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.6.0 (28/04/2019)
+
+#### New features:
+
+- Added print preview functionality
+- adopted new versioning schema as semver does not make sense here
+
+---
+
 ## v0.5.0 (14/04/2019)
 
 #### New features:

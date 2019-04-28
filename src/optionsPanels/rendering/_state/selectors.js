@@ -16,6 +16,7 @@ export const getNonInteractableWidgets = (state) => {
 		}
 		case 'play': {
 			nonInteractableWidgets.push('documentSize');
+			nonInteractableWidgets.push('documentMargins');
 			break;
 		}
 		case 'print': {
@@ -39,14 +40,22 @@ export const getNonInteractableWidgets = (state) => {
 export const getHiddenWidgets = (state) => {
 	const nonVisibleWidgets = [];
 
+	const editorMode = getEditorMode(state);
+
 	const showChords = getOptionValue(state, 'rendering', 'showChords');
-	const columnsCount = getOptionValue(state, 'rendering', 'columnsCount');
+	const harmonizeAccidentals = getOptionValue(state, 'rendering', 'harmonizeAccidentals');
 
 	if (!showChords) {
 		nonVisibleWidgets.push('instrument');
 	}
-	if (columnsCount < 2) {
-		nonVisibleWidgets.push('columnBreakOnParagraph');
+	if (!harmonizeAccidentals) {
+		nonVisibleWidgets.push('preferredAccidentals');
+	}
+
+	if (editorMode === 'print') {
+		nonVisibleWidgets.push('fontSize');
+	} else {
+		nonVisibleWidgets.push('printFontSize');
 	}
 
 	return nonVisibleWidgets;

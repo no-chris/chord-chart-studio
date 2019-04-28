@@ -4,10 +4,16 @@ import { Provider } from 'react-redux';
 
 import { getStore } from './state/store';
 
+import ErrorBoundary from './ui/_components/ErrorBoundary';
+
 export default function renderController(Controller) {
 	ReactDom.render(
 		<Provider store={getStore()}>
-			<Controller />
+			<React.StrictMode>
+				<ErrorBoundary>
+					<Controller />
+				</ErrorBoundary>
+			</React.StrictMode>
 		</Provider>,
 		document.getElementById('app')
 	);

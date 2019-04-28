@@ -44,6 +44,10 @@ html, body, #app {
       }
     }
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 
@@ -70,6 +74,10 @@ html, body, #app {
         background-color: themed('rightBar-bgHover');
       }
     }
+  }
+
+  @media print {
+    display: none;
   }
 }
 
@@ -189,6 +197,10 @@ html, body, #app {
     background-color: themed('header-bg');
     border-bottom: 2px solid themed('header-border');
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 
@@ -198,6 +210,10 @@ html, body, #app {
 
   @include themify($themes) {
     background-color: themed('content-bg');
+  }
+
+  @media print {
+    overflow-y: visible;
   }
 }
 
@@ -209,6 +225,10 @@ html, body, #app {
     color: themed('footer-txt');
     background-color: themed('footer-bg');
     border-top: 1px solid themed('footer-border');
+  }
+
+  @media print {
+    display: none;
   }
 }
 

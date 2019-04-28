@@ -51,6 +51,7 @@ export default {
 
 			groupWidgetsOrder: [
 				'documentSize',
+				'documentMargins',
 				'columnsCount',
 				'columnBreakOnParagraph',
 			],
@@ -66,15 +67,28 @@ export default {
 								value: 'a4'
 							},
 							{
-								id: 'documentSizeIpad',
-								label: 'iPad',
-								value: 'ipad'
+								id: 'documentSizeBooxMax2Pro',
+								label: 'Boox Max 2 Pro',
+								value: 'booxmax2pro'
 							},
 						],
 					},
 					option: {
 						context: 'rendering',
 						key: 'documentSize'
+					},
+				},
+
+				documentMargins: {
+					label: 'Margins',
+					type: 'slider',
+					typeOptions: {
+						min: 1,
+						max: 5
+					},
+					option: {
+						context: 'rendering',
+						key: 'documentMargins'
 					},
 				},
 
@@ -267,9 +281,10 @@ export default {
 
 			groupWidgetsOrder: [
 				'fontSize',
+				'printFontSize',
 				'fontStyle',
-				'highlightChords',
 				'chordsColor',
+				'highlightChords',
 			],
 
 			allGroupWidgets: {
@@ -284,6 +299,20 @@ export default {
 					option: {
 						context: 'rendering',
 						key: 'fontSize'
+					},
+				},
+
+				printFontSize: {
+					label: 'Font size (print)',
+					type: 'slider',
+					typeOptions: {
+						min: -5,
+						max: +5,
+						showPlusSymbol: true,
+					},
+					option: {
+						context: 'rendering',
+						key: 'printFontSize'
 					},
 				},
 
@@ -302,15 +331,6 @@ export default {
 					option: {
 						context: 'rendering',
 						key: 'fontStyle'
-					},
-				},
-
-				highlightChords: {
-					label: 'Highlight Chords',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'highlightChords'
 					},
 				},
 
@@ -334,6 +354,15 @@ export default {
 					option: {
 						context: 'rendering',
 						key: 'chordsColor'
+					},
+				},
+
+				highlightChords: {
+					label: 'Highlight Chords',
+					type: 'toggle',
+					option: {
+						context: 'rendering',
+						key: 'highlightChords'
 					},
 				},
 			}
