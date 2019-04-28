@@ -8,7 +8,7 @@ import SongRenderer from '../../_containers/SongRenderer';
 function EditorPreview(props) {
 	const { selectedFile, chordsColor, highlightChords } = props;
 
-	const classNames = ['ep-SongRenderer'];
+	const classNames = ['editorPreview'];
 	classNames.push('cmChordLine--chordsColor-' + chordsColor);
 	if (highlightChords) {
 		classNames.push('cmChordLine--highlightChords');

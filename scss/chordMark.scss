@@ -4,11 +4,13 @@
 $themes: (
         light: (
 
+
         ),
         dark: (
                 song-txt: cv(dark-foreground, dark10),
 
                 chords-bg: cv(dark-background, light10),
+                printPreview-chords-bg: cv(dark-foreground),
 
                 chords-txt-base: cv(dark-foreground, dark10),
                 barSeparator-txt-base: cv(dark-foreground, light30),
@@ -33,7 +35,8 @@ $themes: (
   font-family: $font-family-monospace;
   white-space: pre-wrap;
 
-  .ep-SongRenderer & {
+  .editorPreview &,
+  .exportPreview & {
     @include font-size(small);
   }
   
@@ -95,9 +98,15 @@ $themes: (
     }
   }
 
-  .cmChordLine--highlightChords & {
+  .playRenderer.cmChordLine--highlightChords &,
+  .editorPreview.cmChordLine--highlightChords & {
     @include themify($themes) {
       background-color: themed('chords-bg');
+    }
+  }
+  .printPreview.cmChordLine--highlightChords & {
+    @include themify($themes) {
+      background-color: themed('printPreview-chords-bg');
     }
   }
 
@@ -105,13 +114,19 @@ $themes: (
 }
 
 .cmTextLine {
-  @include themify($themes) {
-    color: themed('song-txt');
+  .editorPreview & {
+    @include themify($themes) {
+      color: themed('song-txt');
+    }
   }
 }
 
 .cmChordSymbol {
   font-weight: 700;
+
+  .exportPreview & {
+    font-weight: normal;
+  }
 }
 
 .cmBarSeparator {

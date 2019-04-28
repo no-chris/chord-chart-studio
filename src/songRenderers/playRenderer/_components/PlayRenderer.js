@@ -8,8 +8,8 @@ import SongRenderer from '../../_containers/SongRenderer';
 function PlayRenderer(props) {
 	const { selectedFile, fontSize, chordsColor, highlightChords, columnsCount } = props;
 
-	const classNames = ['pr-SongRenderer'];
-	classNames.push('pr-SongRenderer--columns-' + columnsCount);
+	const classNames = ['playRenderer'];
+	classNames.push('playRenderer--columns-' + columnsCount);
 	classNames.push('cmLine--fontSize' + fontSize);
 	classNames.push('cmChordLine--chordsColor-' + chordsColor);
 	if (highlightChords) {
@@ -18,8 +18,8 @@ function PlayRenderer(props) {
 
 
 	return (
-		<div className={'pr-SongRendererWrapper1'}>
-			<div className={'pr-SongRendererWrapper2'}>
+		<div className={'playRendererWrapper1'}>
+			<div className={'playRendererWrapper2'}>
 				<div className={classNames.join(' ')}>
 					<SongRenderer content={selectedFile.content} />
 				</div>

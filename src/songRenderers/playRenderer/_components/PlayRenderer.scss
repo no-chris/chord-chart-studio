@@ -12,11 +12,11 @@ $themes: (
 
 // Those wrapper are used so the columned div can use height: 100% inside a div with margins
 // We use the trick with an "absolute" positioned that fills the available height
-.pr-SongRendererWrapper1 {
+.playRendererWrapper1 {
   position: relative; // needs to be relative so the "absolute" trick works to fill the height
   height: 100%;
 }
-.pr-SongRendererWrapper2 {
+.playRendererWrapper2 {
   margin: $spacer-small;
 
   position: absolute;
@@ -26,26 +26,26 @@ $themes: (
   left: 0;
 }
 
-.pr-SongRenderer {
+.playRenderer {
   @include themify($themes) {
     color: themed('song-txt');
   }
 }
 
-.pr-SongRenderer--columns-1 {
+.playRenderer--columns-1 {
   column-count: 1;
 }
-.pr-SongRenderer--columns-2 {
+.playRenderer--columns-2 {
   column-count: 2;
   column-fill: auto;
   height: 100%;
 }
-.pr-SongRenderer--columns-3 {
+.playRenderer--columns-3 {
   column-count: 3;
   column-fill: auto;
   height: 100%;
 }
-.pr-SongRenderer--columns-4 {
+.playRenderer--columns-4 {
   column-count: 4;
   column-fill: auto;
   height: 100%;

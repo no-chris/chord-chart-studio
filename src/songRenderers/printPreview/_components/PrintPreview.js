@@ -9,7 +9,7 @@ import AllPages from './AllPages';
 
 
 function PrintPreview(props) {
-	const { selectedFile } = props;
+	const { selectedFile, highlightChords } = props;
 
 	const renderOptions = _pick(props, [
 		'alignBars',
@@ -20,8 +20,13 @@ function PrintPreview(props) {
 
 	const allLines = renderSong(selectedFile.content, renderOptions).split('\n');
 
+	const classNames = ['printPreview'];
+	if (highlightChords) {
+		classNames.push('cmChordLine--highlightChords');
+	}
+
 	return (
-		<div className={'printPreview'} data-testid={'printPreview'}>
+		<div className={classNames.join(' ')} data-testid={'printPreview'}>
 			<AllPages
 				title={selectedFile.title}
 				allLines={allLines}
@@ -41,6 +46,7 @@ PrintPreview.propTypes = {
 	documentSize: PropTypes.string.isRequired,
 	documentMargins: PropTypes.number.isRequired,
 	printFontSize: PropTypes.number.isRequired,
+	highlightChords: PropTypes.bool.isRequired,
 };
 
 export default PrintPreview;
