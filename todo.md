@@ -1,5 +1,7 @@
 # Tech debt
-- remove handlebars (but depends on UCC...)
+
+## Build & tooling
+- remove handlebars (but depends on CM...)
 - host React on CDN
 
 - have a clear entry point for each feature module
@@ -19,6 +21,15 @@ Print feature:
 + print media query
 - unit tests
 - export PDF ?
+
+
+
+## Studio
+- refactor chordMark CSS
+- expandSectionRepeats as user option
+- autoRepeatChords as user option
+- dim repeated lines in editor
+
 
 ## Component checklist
 - memo ?

@@ -6,7 +6,14 @@ $themes: (
 
         ),
         dark: (
-
+                editorPreview-txt: cv(dark-foreground, dark10),
         ),
 );
 
+.editorPreview {
+  @include themify($themes) {
+		color: themed('editorPreview-txt');
+    background-color: themed('editorPreview-bg');
+  }
+
+}

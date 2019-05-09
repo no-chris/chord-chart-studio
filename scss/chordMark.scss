@@ -2,32 +2,57 @@
 
 
 $themes: (
-        light: (
+	light: (
 
 
-        ),
-        dark: (
-                song-txt: cv(dark-foreground, dark10),
+	),
+	dark: (
+		// editorPreview
+		editor-line-txt: cv(dark-foreground, dark10),
 
-                chords-bg: cv(dark-background, light10),
-                printPreview-chords-bg: cv(dark-foreground),
+		editor-sectionTitle-border: cv(dark-foreground, dark30),
 
-                chords-txt-base: cv(dark-foreground, dark10),
-                barSeparator-txt-base: cv(dark-foreground, dark30),
-                printPreview-barSeparator-txt-base: cv(dark-foreground, dark30),
+		editor-chordSymbol-txt: cv(dark-foreground, dark10),
+		editor-chordSymbol-bg: cv(dark-secondary, light10),
+		editor-barSeparator-txt: cv(dark-foreground, dark30),
+		editor-chordLineRepeat-txt: cv(dark-secondary, light20),
 
-                chords-txt-red: cv(dark-red),
-                barSeparator-txt-red: cv(dark-red, light10),
+		editor-lineRepeat-txt: cv(dark-secondary, light20),
 
-                chords-txt-yellow: cv(dark-yellow, dark10),
-                barSeparator-txt-yellow: cv(dark-yellow, dark20),
 
-                chords-txt-green: cv(dark-green),
-                barSeparator-txt-green: cv(dark-green, light10),
+		// playRenderer
+		play-line-txt: cv(dark-foreground, dark10),
 
-        ),
+		play-sectionTitle-border: cv(dark-foreground, fade),
+
+		play-chordSymbol-txt--base: cv(dark-foreground, dark10),
+		play-barSeparator-txt--base: cv(dark-foreground, dark30),
+
+		play-chordSymbol-txt--red: cv(dark-red),
+		play-barSeparator-txt--red: cv(dark-red, light10),
+
+		play-chordSymbol-txt--yellow: cv(dark-yellow, dark10),
+		play-barSeparator-txt--yellow: cv(dark-yellow, dark20),
+
+		play-chordSymbol-txt--green: cv(dark-green),
+		play-barSeparator-txt--green: cv(dark-green, light10),
+
+		play-chordSymbol-bg: cv(dark-secondary, light3),
+
+
+		// printRenderer
+		print-song-txt: cv(dark-background),
+
+		print-chordSymbol-bg: cv(dark-foreground, dark5),
+		print-barSeparator-txt: cv(dark-foreground, dark30),
+
+
+		// exportPreview
+		export-song-txt: cv(dark-background),
+
+
+	),
 );
-
 
 
 
@@ -36,102 +61,169 @@ $themes: (
   font-family: $font-family-monospace;
   white-space: pre-wrap;
 
-  .editorPreview &,
+
+  // editorPreview
+  .editorPreview & {
+		padding: 0 $spacer-small;
+		@include font-size(small);
+  }
   .exportPreview & {
     @include font-size(small);
   }
-  
-  .cmLine--fontSize-5 & {
-    font-size: 7px;
-  }
-  .cmLine--fontSize-4 & {
-    font-size: 8px;
-  }
-  .cmLine--fontSize-3 & {
-    font-size: 9px;
-  }
-  .cmLine--fontSize-2 & {
-    font-size: 10px;
-  }
-  .cmLine--fontSize-1 & {
-    font-size: 11px;
-  }
-  .cmLine--fontSize0 & {
-    font-size: 12px;
-  }
-  .cmLine--fontSize1 & {
-    font-size: 13px;
-  }
-  .cmLine--fontSize2 & {
-    font-size: 14px;
-  }
-  .cmLine--fontSize3 & {
-    font-size: 15px;
-  }
-  .cmLine--fontSize4 & {
-    font-size: 16px;
-  }
-  .cmLine--fontSize5 & {
-    font-size: 17px;
-  }
+
+
+	// playRenderer
+	.playRenderer {
+		padding: 0 $spacer-small;
+	}
+	.playRenderer.cmLine--fontSize-5 & {
+		font-size: 7px;
+	}
+	.playRenderer.cmLine--fontSize-4 & {
+		font-size: 8px;
+	}
+	.playRenderer.cmLine--fontSize-3 & {
+		font-size: 9px;
+	}
+	.playRenderer.cmLine--fontSize-2 & {
+		font-size: 10px;
+	}
+	.playRenderer.cmLine--fontSize-1 & {
+		font-size: 11px;
+	}
+	.playRenderer.cmLine--fontSize0 & {
+		font-size: 12px;
+	}
+	.playRenderer.cmLine--fontSize1 & {
+		font-size: 13px;
+	}
+	.playRenderer.cmLine--fontSize2 & {
+		font-size: 14px;
+	}
+	.playRenderer.cmLine--fontSize3 & {
+		font-size: 15px;
+	}
+	.playRenderer.cmLine--fontSize4 & {
+		font-size: 16px;
+	}
+	.playRenderer.cmLine--fontSize5 & {
+		font-size: 17px;
+	}
+
+
+	// printPreview
+	.printPreview & {
+		color: black;
+	}
+
+
+	// exportRenderer
+	.playRenderer {
+		padding: 0 $spacer-small;
+	}
 }
 
-
-.cmChordLine {
-  .playRenderer.cmChordLine--highlightChords &,
-  .editorPreview.cmChordLine--highlightChords & {
-    @include themify($themes) {
-      background-color: themed('chords-bg');
-    }
-  }
-  .printPreview.cmChordLine--highlightChords & {
-    @include themify($themes) {
-      background-color: themed('printPreview-chords-bg');
-    }
-  }
-
-
-}
 
 
 .cmTextLine {
+
+  // editorPreview
   .editorPreview & {
     @include themify($themes) {
-      color: themed('song-txt');
+      color: themed('editor-line-txt');
     }
   }
+  .editorPreview .cmLine--isFromSectionRepeat & {
+		opacity: 0.5;
+  }
+
+
+	// playRenderer
+	.playRenderer & {
+		@include themify($themes) {
+			color: themed('play-line-txt');
+		}
+	}
+
+
+	// printPreview
+	.printPreview & {
+		@include themify($themes) {
+			color: themed('print-song-txt');
+		}
+	}
 }
+
+
+
+.cmChordLine {
+
+}
+
 
 
 .cmChordSymbol {
-  font-weight: 700;
 
+  // editorPreview
+  .editorPreview & {
+    font-weight: $weight-bold;
+    @include themify($themes) {
+      color: themed('editor-chordSymbol-txt');
+      background-color: themed('editor-chordSymbol-bg');
+    }
+  }
+	.editorPreview .cmLine--isFromSectionRepeat &,
+  .editorPreview .cmLine--isFromAutoRepeatChords &,
+  .editorPreview .cmLine--isFromChordLineRepeater & {
+		opacity: 0.3;
+		background-color: transparent;
+	}
+
+
+	// playRenderer
+	.playRenderer.cmChordSymbol--chordsColor-base & {
+		@include themify($themes) {
+			color: themed('play-chordSymbol-txt--base');
+		}
+	}
+	.playRenderer.cmChordSymbol--chordsColor-red & {
+		@include themify($themes) {
+			color: themed('play-chordSymbol-txt--red');
+		}
+	}
+	.playRenderer.cmChordSymbol--chordsColor-yellow & {
+		@include themify($themes) {
+			color: themed('play-chordSymbol-txt--yellow');
+		}
+	}
+	.playRenderer.cmChordSymbol--chordsColor-green & {
+		@include themify($themes) {
+			color: themed('play-chordSymbol-txt--green');
+		}
+	}
+	.playRenderer.cmChordLine--highlightChords & {
+		@include themify($themes) {
+			background-color: themed('play-chordSymbol-bg');
+		}
+	}
+
+
+	// printPreview
+	.printPreview & {
+		font-weight: $weight-bold;
+	}
+	.printPreview.cmChordLine--highlightChords & {
+		@include themify($themes) {
+			background-color: themed('print-chordSymbol-bg');
+		}
+	}
+
+	// exportPreview
   .exportPreview & {
     font-weight: normal;
   }
-
-  .cmChordSymbol--chordsColor-base & {
-    @include themify($themes) {
-      color: themed('chords-txt-base');
-    }
-  }
-  .cmChordSymbol--chordsColor-red & {
-    @include themify($themes) {
-      color: themed('chords-txt-red');
-    }
-  }
-  .cmChordSymbol--chordsColor-yellow & {
-    @include themify($themes) {
-      color: themed('chords-txt-yellow');
-    }
-  }
-  .cmChordSymbol--chordsColor-green & {
-    @include themify($themes) {
-      color: themed('chords-txt-green');
-    }
-  }
-
 }
+
 
 
 .cmBarSeparator {
@@ -145,31 +237,125 @@ $themes: (
     margin-right: 0;
   }
 
-  .cmChordSymbol--chordsColor-base & {
+  // editorPreview
+  .editorPreview & {
     @include themify($themes) {
-      color: themed('barSeparator-txt-base');
+      color: themed('editor-barSeparator-txt');
     }
   }
-  .cmChordSymbol--chordsColor-red & {
+  .editorPreview .cmLine--isFromChordLineRepeater &,
+	.editorPreview .cmLine--isFromSectionRepeat & {
+		opacity: 0.3;
+	}
+
+
+	// playRenderer
+  .playRenderer.cmChordSymbol--chordsColor-base & {
     @include themify($themes) {
-      color: themed('barSeparator-txt-red');
+      color: themed('play-barSeparator-txt--base');
     }
   }
-  .cmChordSymbol--chordsColor-yellow & {
+  .playRenderer.cmChordSymbol--chordsColor-red & {
     @include themify($themes) {
-      color: themed('barSeparator-txt-yellow');
+      color: themed('play-barSeparator-txt--red');
     }
   }
-  .cmChordSymbol--chordsColor-green & {
+  .playRenderer.cmChordSymbol--chordsColor-yellow & {
     @include themify($themes) {
-      color: themed('barSeparator-txt-green');
+      color: themed('play-barSeparator-txt--yellow');
+    }
+  }
+  .playRenderer.cmChordSymbol--chordsColor-green & {
+    @include themify($themes) {
+      color: themed('play-barSeparator-txt--green');
     }
   }
 
+
+	// printPreview
   .printPreview & {
     @include themify($themes) {
-      color: themed('printPreview-barSeparator-txt-base');
+      color: themed('print-barSeparator-txt');
     }
   }
 
+}
+
+
+
+.cmSectionLabel {
+	.editorPreview &,
+	.playRenderer &,
+	.printPreview & {
+		display: block;
+		margin-bottom: $spacer-tiny;
+		font-weight: $weight-bold;
+		font-family: $font-family-base;
+		font-size: 90% !important;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		line-height: 2em;
+		border-bottom-style: dotted;
+		border-bottom-width: 1px;
+	}
+
+
+
+  // editorPreview
+  .editorPreview & {
+
+    @include themify($themes) {
+      color: themed('editor-line-txt');
+      border-color: themed('editor-sectionTitle-border');
+    }
+  }
+  .editorPreview .cmLine--isFromSectionRepeat & {
+		opacity: 0.3;
+	}
+
+
+	// playRenderer
+	.playRenderer & {
+		@include themify($themes) {
+			color: themed('play-line-txt');
+			border-color: themed('play-sectionTitle-border');
+		}
+	}
+
+
+	// exportPreview
+	.exportPreview & {
+		text-transform: uppercase;
+	}
+}
+
+
+
+.cmTimeSignature {
+
+	.editorPreview &,
+	.playRenderer &,
+	.printPreview & {
+		font-weight: $weight-bold;
+		font-family: $font-family-base;
+		font-size: 90%;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		line-height: 2em;
+	}
+
+
+  // editorPreview
+  .editorPreview & {
+    @include themify($themes) {
+      color: themed('editor-line-txt');
+    }
+  }
+
+	// playRenderer
+	.playRenderer & {
+		@include themify($themes) {
+			color: themed('play-line-txt');
+		}
+	}
 }

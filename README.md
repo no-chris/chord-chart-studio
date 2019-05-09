@@ -1,6 +1,6 @@
-# ChrodPro2
+# ChrodMark
 
-Easily create song sheets with chords and lyrics.
+Better chord charts: write less, do more.
 
 ## Demo
 

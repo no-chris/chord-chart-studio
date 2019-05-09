@@ -6,13 +6,9 @@ import PropTypes from 'prop-types';
 import SongRenderer from '../../_containers/SongRenderer';
 
 function EditorPreview(props) {
-	const { selectedFile, chordsColor, highlightChords } = props;
+	const { selectedFile } = props;
 
 	const classNames = ['editorPreview'];
-	classNames.push('cmChordSymbol--chordsColor-' + chordsColor);
-	if (highlightChords) {
-		classNames.push('cmChordLine--highlightChords');
-	}
 
 	return (
 		<div className={classNames.join(' ')}>
@@ -23,8 +19,6 @@ function EditorPreview(props) {
 
 EditorPreview.propTypes = {
 	selectedFile: PropTypes.object.isRequired,
-	chordsColor: PropTypes.string.isRequired,
-	highlightChords: PropTypes.bool.isRequired,
 };
 
 export default EditorPreview;

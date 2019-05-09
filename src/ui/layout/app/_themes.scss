@@ -17,17 +17,14 @@ $themes: (
                 header-txtHover: cv(dark-foreground),
                 header-txtActive: cv(dark-foreground),
 
-                header-bg: cv(dark-secondary),
-                header-bgHover: cv(dark-secondary, light10),
-                header-bgActive: cv(dark-secondary, dark20),
+                header-bg: cv(dark-background),
+                header-bgHover: cv(dark-background, light10),
+                header-bgActive: cv(dark-background, dark10),
 
-                header-border: cv(dark-secondary, dark20),
+                header-border: cv(dark-background, dark10),
 
-                content-txt: cv(dark-foreground),
-                content-bg: cv(dark-primary),
-
-                footer-txt: cv(dark-foreground),
-                footer-bg: cv(dark-secondary),
+                footer-txt: cv(dark-foreground, fade),
+                footer-bg: cv(dark-background),
 
                 footer-border: cv(dark-secondary, dark20),
 

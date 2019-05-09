@@ -1,25 +1,19 @@
 @import '../../../../scss/abstract';
 
-
 $themes: (
-        light: (
+	light: (
 
-        ),
-        dark: (
-                editor-txt: cv(dark-foreground, dark10),
-                editor-bg: cv(dark-primary, dark10),
-        ),
+	),
+	dark: (
+		editor-txt: cv(dark-foreground, dark10),
+	),
 );
 
 
 .prosemirrorWrapper {
   flex: 1 1 auto;
   overflow-y: scroll;
-  padding: $spacer-small;
-
-  @include themify($themes) {
-    background-color: themed('editor-bg');
-  }
+  padding: $spacer-small 0;
 }
 
 
@@ -36,5 +30,7 @@ $themes: (
 
   p {
     margin: 0;
+		padding: 0 $spacer-small;
   }
+
 }
