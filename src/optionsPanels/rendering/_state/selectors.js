@@ -32,10 +32,10 @@ export const getNonInteractableWidgets = (state) => {
 		}
 	}
 
-	const style = getOptionValue(state, 'rendering', 'style');
-	if (style !== 'chordmark') {
-		nonInteractableWidgets.push('alignBars');
-	}
+	//const style = getOptionValue(state, 'rendering', 'style');
+	//if (style !== 'chordmark') {
+	//	nonInteractableWidgets.push('alignBars');
+	//}
 
 	return nonInteractableWidgets;
 };
@@ -45,12 +45,12 @@ export const getHiddenWidgets = (state) => {
 
 	const editorMode = getEditorMode(state);
 
-	const showChords = getOptionValue(state, 'rendering', 'showChords');
+	//const showChords = getOptionValue(state, 'rendering', 'showChords');
 	const harmonizeAccidentals = getOptionValue(state, 'rendering', 'harmonizeAccidentals');
 
-	if (!showChords) {
-		hiddenWidgets.push('instrument');
-	}
+	//if (!showChords) {
+	//	hiddenWidgets.push('instrument');
+	//}
 	if (!harmonizeAccidentals) {
 		hiddenWidgets.push('preferredAccidentals');
 	}

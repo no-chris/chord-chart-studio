@@ -20,7 +20,7 @@ function PlayRenderer(props) {
 	return (
 		<div className={'playRendererWrapper1'}>
 			<div className={'playRendererWrapper2'}>
-				<div className={classNames.join(' ')}>
+				<div className={classNames.join(' ')} data-testid={'playRenderer'}>
 					<SongRenderer content={selectedFile.content} />
 				</div>
 			</div>
