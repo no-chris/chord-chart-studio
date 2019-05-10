@@ -8,7 +8,6 @@ export const getNonInteractableWidgets = (state) => {
 
 	switch (editorMode) {
 		case 'edit': {
-			nonInteractableWidgets.push('alignBars');
 			nonInteractableWidgets.push('helpers');
 			nonInteractableWidgets.push('layout');
 			nonInteractableWidgets.push('style');

@@ -1,6 +1,27 @@
 export default {
 	rendering: {
 
+		style: {
+			value: 'chordmark',
+			default: 'chordmark',
+			resetOnSongChange: false,
+		},
+		alignBars: {
+			value: true,
+			default: true,
+			resetOnSongChange: false,
+		},
+		autoRepeatChords: {
+			value: true,
+			default: true,
+			resetOnSongChange: false,
+		},
+		expandSectionRepeats: {
+			value: true,
+			default: true,
+			resetOnSongChange: false,
+		},
+
 		/** Layout */
 
 		documentSize: {
@@ -27,16 +48,6 @@ export default {
 
 		/** Display */
 
-		style: {
-			value: 'chordmark',
-			default: 'chordmark',
-			resetOnSongChange: false,
-		},
-		alignBars: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
 		showChords: {
 			value: true,
 			default: true,

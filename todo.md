@@ -10,25 +10,8 @@
 - CSS: decide what to do with the font size mixin
 - CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)
 
-- check for outdated nodejs
+- disable some optinos for authoring: alignBars (true), autoRepeatChords (true), expandSectionRepeats (true)
 
-Print feature:
-+ don't split chordline with relevant text line
-+ break only on paragraph
-+ document size
-+ margin setting
-+ font size setting
-+ print media query
-- unit tests
-- export PDF ?
-
-
-
-## Studio
-- refactor chordMark CSS
-- expandSectionRepeats as user option
-- autoRepeatChords as user option
-- dim repeated lines in editor
 
 
 ## Component checklist

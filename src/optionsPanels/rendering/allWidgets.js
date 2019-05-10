@@ -3,6 +3,8 @@ export default {
 	widgetsOrder: [
 		'style',
 		'alignBars',
+		'autoRepeatChords',
+		'expandSectionRepeats',
 
 		'layout',
 		'helpers',
@@ -39,6 +41,22 @@ export default {
 			option: {
 				context: 'rendering',
 				key: 'alignBars'
+			},
+		},
+		autoRepeatChords: {
+			label: 'Auto repeat chords',
+			type: 'toggle',
+			option: {
+				context: 'rendering',
+				key: 'autoRepeatChords'
+			},
+		},
+		expandSectionRepeats: {
+			label: 'Expand section repeats',
+			type: 'toggle',
+			option: {
+				context: 'rendering',
+				key: 'expandSectionRepeats'
 			},
 		},
 

@@ -17,7 +17,9 @@ function SongRenderer(props) {
 		'alignBars',
 		'harmonizeAccidentals',
 		'accidentalsType',
-		'transposeValue'
+		'transposeValue',
+		'autoRepeatChords',
+		'expandSectionRepeats',
 	]);
 
 	return (
