@@ -16,6 +16,8 @@ function PrintPreview(props) {
 		'harmonizeAccidentals',
 		'accidentalsType',
 		'transposeValue',
+		'autoRepeatChords',
+		'expandSectionRepeats',
 	]);
 
 	const allLines = renderSong(selectedFile.content, renderOptions).split('\n');
