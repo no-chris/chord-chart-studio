@@ -98,7 +98,7 @@
     {
       "path": "./docs/main.*.js",
       "webpack": false,
-      "limit": "15 KB"
+      "limit": "17 KB"
     },
     {
       "path": "./docs/vendors*.js",
