@@ -66,7 +66,7 @@ OptionsGroup.propTypes = {
 };
 
 OptionsGroup.defaultProps = {
-	isOpened: false,
+	isOpened: true,
 };
 
 export default OptionsGroup;

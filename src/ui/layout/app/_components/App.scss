@@ -208,10 +208,6 @@ html, body, #app {
   overflow-y: auto;
   flex-grow: 1;
 
-  @include themify($themes) {
-    background-color: themed('content-bg');
-  }
-
   @media print {
     overflow-y: visible;
   }

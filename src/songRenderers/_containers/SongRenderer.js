@@ -10,5 +10,7 @@ export default connect(
 		alignBars: getOptionValue(state, 'rendering', 'alignBars'),
 		harmonizeAccidentals: getOptionValue(state, 'rendering', 'harmonizeAccidentals'),
 		transposeValue: getOptionValue(state, 'rendering', 'transposeValue'),
+		autoRepeatChords: getOptionValue(state, 'rendering', 'autoRepeatChords'),
+		expandSectionRepeats: getOptionValue(state, 'rendering', 'expandSectionRepeats'),
 	})
 )(SongRenderer);

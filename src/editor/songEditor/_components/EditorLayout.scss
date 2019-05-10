@@ -1,5 +1,16 @@
 @import '../../../../scss/abstract';
 
+$themes: (
+	light: (
+
+	),
+	dark: (
+		editorSrc-bg: cv(dark-secondary, dark10),
+		editorPreview-bg: cv(dark-secondary),
+	),
+);
+
+
 .songEditor {
   width: 100%;
   height: 100%;
@@ -7,19 +18,29 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+
+  @include font-size(small);
 }
 
 .songEditor-source {
   flex: 0 1 50%;
   display: flex;
   overflow-y: scroll;
+
+	@include themify($themes) {
+		background-color: themed('editorSrc-bg');
+	}
 }
 
 .songEditor-preview {
   flex: 0 1 50%;
-  padding: $spacer-small;
+  padding: $spacer-small 0;
 
   overflow-y: scroll;
+
+	@include themify($themes) {
+		background-color: themed('editorPreview-bg');
+	}
 }
 
 

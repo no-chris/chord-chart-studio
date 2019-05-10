@@ -1,5 +1,7 @@
 # Tech debt
-- remove handlebars (but depends on UCC...)
+
+## Build & tooling
+- remove handlebars (but depends on CM...)
 - host React on CDN
 
 - have a clear entry point for each feature module
@@ -8,17 +10,9 @@
 - CSS: decide what to do with the font size mixin
 - CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)
 
-- check for outdated nodejs
+- disable some optinos for authoring: alignBars (true), autoRepeatChords (true), expandSectionRepeats (true)
 
-Print feature:
-+ don't split chordline with relevant text line
-+ break only on paragraph
-+ document size
-+ margin setting
-+ font size setting
-+ print media query
-- unit tests
-- export PDF ?
+
 
 ## Component checklist
 - memo ?

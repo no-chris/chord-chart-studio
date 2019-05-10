@@ -1,6 +1,6 @@
-import { renderSong as renderSongUcc, parseSong } from '@touffi/ucc';
+import { renderSong as renderSongCm, parseSong } from '@touffi/chord-mark';
 
 export default function renderSong(songTxt, renderOptions) {
 	const parsed = parseSong(songTxt);
-	return renderSongUcc(parsed, renderOptions);
+	return renderSongCm(parsed, renderOptions);
 }

@@ -8,8 +8,10 @@ import SongRenderer from '../../_containers/SongRenderer';
 function EditorPreview(props) {
 	const { selectedFile } = props;
 
+	const classNames = ['editorPreview'];
+
 	return (
-		<div className={'ep-SongRenderer'}>
+		<div className={classNames.join(' ')}>
 			<SongRenderer content={selectedFile.content} />
 		</div>
 	);

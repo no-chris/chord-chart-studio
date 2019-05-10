@@ -8,18 +8,21 @@ export const getNonInteractableWidgets = (state) => {
 
 	switch (editorMode) {
 		case 'edit': {
-			nonInteractableWidgets.push('alignBars');
 			nonInteractableWidgets.push('helpers');
 			nonInteractableWidgets.push('layout');
 			nonInteractableWidgets.push('style');
+			nonInteractableWidgets.push('format');
+
 			break;
 		}
 		case 'play': {
 			nonInteractableWidgets.push('documentSize');
 			nonInteractableWidgets.push('documentMargins');
+			nonInteractableWidgets.push('columnBreakOnParagraph');
 			break;
 		}
 		case 'print': {
+			nonInteractableWidgets.push('chordsColor');
 			break;
 		}
 		case 'export': {
@@ -29,34 +32,38 @@ export const getNonInteractableWidgets = (state) => {
 		}
 	}
 
-	const style = getOptionValue(state, 'rendering', 'style');
-	if (style !== 'ucc') {
-		nonInteractableWidgets.push('alignBars');
-	}
+	//const style = getOptionValue(state, 'rendering', 'style');
+	//if (style !== 'chordmark') {
+	//	nonInteractableWidgets.push('alignBars');
+	//}
 
 	return nonInteractableWidgets;
 };
 
 export const getHiddenWidgets = (state) => {
-	const nonVisibleWidgets = [];
+	const hiddenWidgets = [];
 
 	const editorMode = getEditorMode(state);
 
-	const showChords = getOptionValue(state, 'rendering', 'showChords');
+	//const showChords = getOptionValue(state, 'rendering', 'showChords');
 	const harmonizeAccidentals = getOptionValue(state, 'rendering', 'harmonizeAccidentals');
 
-	if (!showChords) {
-		nonVisibleWidgets.push('instrument');
-	}
+	//if (!showChords) {
+	//	hiddenWidgets.push('instrument');
+	//}
 	if (!harmonizeAccidentals) {
-		nonVisibleWidgets.push('preferredAccidentals');
+		hiddenWidgets.push('preferredAccidentals');
 	}
 
 	if (editorMode === 'print') {
-		nonVisibleWidgets.push('fontSize');
+		hiddenWidgets.push('fontSize');
 	} else {
-		nonVisibleWidgets.push('printFontSize');
+		hiddenWidgets.push('printFontSize');
 	}
 
-	return nonVisibleWidgets;
+	hiddenWidgets.push('helpers');
+	hiddenWidgets.push('simplifyChords');
+	hiddenWidgets.push('capoPosition');
+
+	return hiddenWidgets;
 };

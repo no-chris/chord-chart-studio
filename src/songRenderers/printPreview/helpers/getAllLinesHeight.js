@@ -7,7 +7,7 @@ import { getOffsetHeight } from './element';
 import Page from '../_components/Page';
 
 const cssSelectors = {
-	line: '.ucc-line',
+	line: '.cmLine',
 };
 
 export default async function getAllLinesHeight(allLines, {

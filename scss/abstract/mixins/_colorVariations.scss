@@ -7,6 +7,10 @@
 // With these limitations, this function does not support
 // adjust-color, scale-color & change-color.
 $variations: (
+        light3: (
+                function: lighten,
+                parameters: 3%
+        ),
         light10: (
                 function: lighten,
                 parameters: 10%
@@ -18,6 +22,10 @@ $variations: (
         light30: (
                 function: lighten,
                 parameters: 30%
+        ),
+        dark5: (
+                function: darken,
+                parameters: 5%
         ),
         dark10: (
                 function: darken,

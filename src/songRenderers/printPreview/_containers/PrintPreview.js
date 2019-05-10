@@ -15,5 +15,8 @@ export default connect(
 		harmonizeAccidentals: getOptionValue(state, 'rendering', 'harmonizeAccidentals'),
 		transposeValue: getOptionValue(state, 'rendering', 'transposeValue'),
 		printFontSize: getOptionValue(state, 'rendering', 'printFontSize'),
+		highlightChords: getOptionValue(state, 'rendering', 'highlightChords'),
+		autoRepeatChords: getOptionValue(state, 'rendering', 'autoRepeatChords'),
+		expandSectionRepeats: getOptionValue(state, 'rendering', 'expandSectionRepeats'),
 	})
 )(PrintPreview);

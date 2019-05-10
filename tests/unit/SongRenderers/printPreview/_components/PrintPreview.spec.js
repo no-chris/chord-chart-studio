@@ -22,7 +22,7 @@ describe('PrintPreview', () => {
 
 	// 200 lines
 	const selectedFile = {
-		content: '<div class="ucc-line">myVerse</div>\n'.repeat(199),
+		content: '<div class="cmLine">myVerse</div>\n'.repeat(199),
 		title: 'myTitle'
 	};
 
@@ -59,19 +59,19 @@ describe('PrintPreview', () => {
 
 				expect(allPages.length).toBe(2);
 
-				expect(allPages[0].querySelectorAll('.ucc-line').length).toBe(90);
-				expect(allPages[1].querySelectorAll('.ucc-line').length).toBe(110);
+				expect(allPages[0].querySelectorAll('.cmLine').length).toBe(90);
+				expect(allPages[1].querySelectorAll('.cmLine').length).toBe(110);
 
 				const allColumns = getAllByTestId('printPreview-pageColumn');
 
 				expect(allColumns.length).toBe(6);
 
-				expect(allColumns[0].querySelectorAll('.ucc-line').length).toBe(30);
-				expect(allColumns[1].querySelectorAll('.ucc-line').length).toBe(30);
-				expect(allColumns[2].querySelectorAll('.ucc-line').length).toBe(30);
-				expect(allColumns[3].querySelectorAll('.ucc-line').length).toBe(40);
-				expect(allColumns[4].querySelectorAll('.ucc-line').length).toBe(40);
-				expect(allColumns[5].querySelectorAll('.ucc-line').length).toBe(30);
+				expect(allColumns[0].querySelectorAll('.cmLine').length).toBe(30);
+				expect(allColumns[1].querySelectorAll('.cmLine').length).toBe(30);
+				expect(allColumns[2].querySelectorAll('.cmLine').length).toBe(30);
+				expect(allColumns[3].querySelectorAll('.cmLine').length).toBe(40);
+				expect(allColumns[4].querySelectorAll('.cmLine').length).toBe(40);
+				expect(allColumns[5].querySelectorAll('.cmLine').length).toBe(30);
 
 				done();
 			});

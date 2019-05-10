@@ -5,7 +5,7 @@ import React from 'react';
 function Footer() {
 	return (
 		<div className={'appFooter'}>
-			Chords Charts Studio v0.6.0 - ChordMark v0.2.0
+			Chords Charts Studio v0.7.0 - ChordMark v0.3.0
 		</div>
 	);
 }

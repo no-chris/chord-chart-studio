@@ -1,7 +1,7 @@
-jest.mock('@touffi/ucc');
+jest.mock('@touffi/chord-mark');
 
 import renderSong from '../../../src/core/renderSong';
-import { renderSong as renderSongUcc, parseSong } from '@touffi/ucc';
+import { renderSong as renderSongCm, parseSong } from '@touffi/chord-mark';
 
 describe('renderSong', () => {
 	test('Module', () => {
@@ -12,7 +12,7 @@ describe('renderSong', () => {
 describe('renderSong()', () => {
 	test('Test details', () => {
 		parseSong.mockImplementation(input => 'parsed: ' + input);
-		renderSongUcc.mockImplementation(input => 'rendered: ' + input);
+		renderSongCm.mockImplementation(input => 'rendered: ' + input);
 
 		const input = 'mySong';
 		const rendered = renderSong(input);

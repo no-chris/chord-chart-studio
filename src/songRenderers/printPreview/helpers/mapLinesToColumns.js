@@ -1,7 +1,7 @@
 const cssClasses = {
-	emptyLine: 'ucc-empty-line',
-	chordLine: 'ucc-chord-line',
-	textLine: 'ucc-text-line',
+	emptyLine: 'cmEmptyLine',
+	chordLine: 'cmChordLine',
+	textLine: 'cmTextLine',
 };
 
 

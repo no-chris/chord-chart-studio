@@ -3,6 +3,8 @@ export default {
 	widgetsOrder: [
 		'style',
 		'alignBars',
+		'autoRepeatChords',
+		'expandSectionRepeats',
 
 		'layout',
 		'helpers',
@@ -17,15 +19,15 @@ export default {
 			typeOptions: {
 				allChoices: [
 					{
-						id: 'styleUcc',
-						label: 'UCC',
-						value: 'ucc'
+						id: 'styleChordMark',
+						label: 'ChordMark',
+						value: 'chordmark'
 					},
-					{
-						id: 'styleChordpro',
-						label: 'ChordPro',
-						value: 'chordpro'
-					},
+					// {
+					// 	id: 'styleChordpro',
+					// 	label: 'ChordPro',
+					// 	value: 'chordpro'
+					// },
 				],
 			},
 			option: {
@@ -39,6 +41,22 @@ export default {
 			option: {
 				context: 'rendering',
 				key: 'alignBars'
+			},
+		},
+		autoRepeatChords: {
+			label: 'Auto repeat chords',
+			type: 'toggle',
+			option: {
+				context: 'rendering',
+				key: 'autoRepeatChords'
+			},
+		},
+		expandSectionRepeats: {
+			label: 'Expand section repeats',
+			type: 'toggle',
+			option: {
+				context: 'rendering',
+				key: 'expandSectionRepeats'
 			},
 		},
 
@@ -97,7 +115,7 @@ export default {
 					type: 'slider',
 					typeOptions: {
 						min: 1,
-						max: 3
+						max: 4
 					},
 					option: {
 						context: 'rendering',
@@ -341,13 +359,23 @@ export default {
 						allChoices: [
 							{
 								id: 'chordsColor',
-								label: 'Black',
-								value: 'black'
+								label: 'Base',
+								value: 'base'
 							},
 							{
 								id: 'chordsColorRed',
 								label: 'Red',
 								value: 'red'
+							},
+							{
+								id: 'chordsColorYellow',
+								label: 'Yellow',
+								value: 'yellow'
+							},
+							{
+								id: 'chordsColorGreen',
+								label: 'Green',
+								value: 'green'
 							},
 						],
 					},

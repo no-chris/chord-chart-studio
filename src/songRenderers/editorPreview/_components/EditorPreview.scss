@@ -6,13 +6,14 @@ $themes: (
 
         ),
         dark: (
-                song-txt: cv(dark-foreground, dark10),
+                editorPreview-txt: cv(dark-foreground, dark10),
         ),
 );
 
-
-.ep-SongRenderer {
+.editorPreview {
   @include themify($themes) {
-    color: themed('song-txt');
+		color: themed('editorPreview-txt');
+    background-color: themed('editorPreview-bg');
   }
+
 }

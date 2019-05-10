@@ -6,9 +6,9 @@ describe('mapLinesToColumns', () => {
 	});
 });
 
-const chordLine = '<div class="ucc-chord-line">C F G</div>';
-const textLine = '<div class="ucc-text-line">{CONTENT}</div>';
-const emptyLine = '<div class="ucc-empty-line"> </div>';
+const chordLine = '<div class="cmChordLine">C F G</div>';
+const textLine = '<div class="cmTextLine">{CONTENT}</div>';
+const emptyLine = '<div class="cmEmptyLine"> </div>';
 
 function getTextLine(index) {
 	return textLine.replace('{CONTENT}', 'textLine ' + index);
@@ -16,7 +16,7 @@ function getTextLine(index) {
 
 function getLines({ from, to }) {
 	const count = to - from + 1;
-	const lines = new Array(count).fill('<div class="ucc-text-line">{CONTENT}</div>');
+	const lines = new Array(count).fill('<div class="cmTextLine">{CONTENT}</div>');
 	return lines.map((line, index) => line.replace('{CONTENT}', 'myVerse' + (from + index)));
 }
 
