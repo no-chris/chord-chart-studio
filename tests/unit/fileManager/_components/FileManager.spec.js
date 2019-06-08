@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, cleanup, fireEvent, act } from 'react-testing-library';
+import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import 'jest-dom/extend-expect';
 
 import FileManager from '../../../../src/fileManager/_components/FileManager';

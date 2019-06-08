@@ -3,7 +3,7 @@ import _ from 'lodash';
 import React from 'react';
 import { withStore, getState, resetStore, dispatch } from '../../../helpers/withStore';
 
-import { render, cleanup, fireEvent, act } from 'react-testing-library';
+import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import 'jest-dom/extend-expect';
 
 import Rendering from '../../../../../src/optionsPanels/rendering/_containers/Rendering';

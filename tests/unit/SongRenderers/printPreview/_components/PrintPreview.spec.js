@@ -4,7 +4,7 @@ jest.mock('../../../../../src/songRenderers/printPreview/helpers/getPagesHeight'
 import _ from 'lodash';
 import React from 'react';
 
-import { render, cleanup, act } from 'react-testing-library';
+import { render, cleanup, act } from '@testing-library/react';
 import 'jest-dom/extend-expect';
 
 import 'jest-dom/extend-expect';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStore, getState, resetStore } from '../../helpers/withStore';
 
-import { render, cleanup, fireEvent, act } from 'react-testing-library';
+import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import 'jest-dom/extend-expect';
 
 import FileManager from '../../../../src/fileManager/_containers/FileManager';
