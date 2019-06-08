@@ -16,13 +16,15 @@ export default async function getAllLinesHeight(allLines, {
 	documentMargins,
 	printFontSize
 }) {
-	const component = <Page
-		allColumnsLines={padColumns(columnsCount, [allLines])}
-		columnsCount={columnsCount}
-		documentSize={documentSize}
-		documentMargins={documentMargins}
-		printFontSize={printFontSize}
-	/>;
+	const component = <div className={'printPreview'}>
+		<Page
+			allColumnsLines={padColumns(columnsCount, [allLines])}
+			columnsCount={columnsCount}
+			documentSize={documentSize}
+			documentMargins={documentMargins}
+			printFontSize={printFontSize}
+		/>
+	</div>;
 
 	const measuringFn = (container) => {
 		const allLinesHeight = [];
