@@ -212,6 +212,7 @@ export default {
 				'capoPosition',
 				'harmonizeAccidentals',
 				'preferredAccidentals',
+				'useShortNamings',
 			],
 
 			allGroupWidgets: {
@@ -231,7 +232,26 @@ export default {
 
 				simplifyChords: {
 					label: 'Simplify chords',
-					type: 'toggle',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'simplifyChordsNone',
+								label: 'None',
+								value: 'none',
+							},
+							{
+								id: 'simplifyChordsMax',
+								label: 'Max',
+								value: 'max',
+							},
+							{
+								id: 'simplifyChordsCore',
+								label: 'Core',
+								value: 'core',
+							},
+						],
+					},
 					option: {
 						context: 'rendering',
 						key: 'simplifyChords'
@@ -286,6 +306,15 @@ export default {
 					option: {
 						context: 'rendering',
 						key: 'preferredAccidentals'
+					},
+				},
+
+				useShortNamings: {
+					label: 'Use short names',
+					type: 'toggle',
+					option: {
+						context: 'rendering',
+						key: 'useShortNamings'
 					},
 				},
 			}

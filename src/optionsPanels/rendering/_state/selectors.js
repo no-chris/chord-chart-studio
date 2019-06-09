@@ -62,7 +62,7 @@ export const getHiddenWidgets = (state) => {
 	}
 
 	hiddenWidgets.push('helpers');
-	hiddenWidgets.push('simplifyChords');
+	//hiddenWidgets.push('simplifyChords');
 	hiddenWidgets.push('capoPosition');
 
 	return hiddenWidgets;

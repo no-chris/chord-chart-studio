@@ -20,6 +20,9 @@ function SongRenderer(props) {
 		'transposeValue',
 		'autoRepeatChords',
 		'expandSectionRepeats',
+		'useShortNamings',
+		'useShortNamings',
+		'simplifyChords',
 	]);
 
 	return (
