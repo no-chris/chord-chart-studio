@@ -18,5 +18,7 @@ export default connect(
 		highlightChords: getOptionValue(state, 'rendering', 'highlightChords'),
 		autoRepeatChords: getOptionValue(state, 'rendering', 'autoRepeatChords'),
 		expandSectionRepeats: getOptionValue(state, 'rendering', 'expandSectionRepeats'),
+		useShortNamings: getOptionValue(state, 'rendering', 'useShortNamings'),
+		simplifyChords: getOptionValue(state, 'rendering', 'simplifyChords'),
 	})
 )(PrintPreview);

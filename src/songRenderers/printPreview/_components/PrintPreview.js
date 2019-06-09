@@ -18,9 +18,11 @@ function PrintPreview(props) {
 		'transposeValue',
 		'autoRepeatChords',
 		'expandSectionRepeats',
+		'useShortNamings',
+		'simplifyChords',
 	]);
 
-	const allLines = renderSong(selectedFile.content, renderOptions).split('\n');
+	const allLines = renderSong(selectedFile.content || '', renderOptions).split('\n');
 
 	const classNames = ['printPreview'];
 	if (highlightChords) {

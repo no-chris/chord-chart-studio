@@ -12,5 +12,7 @@ export default connect(
 		transposeValue: getOptionValue(state, 'rendering', 'transposeValue'),
 		autoRepeatChords: getOptionValue(state, 'rendering', 'autoRepeatChords'),
 		expandSectionRepeats: getOptionValue(state, 'rendering', 'expandSectionRepeats'),
+		useShortNamings: getOptionValue(state, 'rendering', 'useShortNamings'),
+		simplifyChords: getOptionValue(state, 'rendering', 'simplifyChords'),
 	})
 )(SongRenderer);
