@@ -287,7 +287,8 @@ $themes: (
 	.editorPreview &,
 	.playRenderer &,
 	.printPreview & {
-		display: block;
+		display: inline-block; // and not "block", so we don't have collapsing borders
+		width: 100%;
 		margin-bottom: $spacer-tiny;
 		font-weight: $weight-bold;
 		font-family: $font-family-base;

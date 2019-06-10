@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, cleanup, act } from 'react-testing-library';
+import { render, cleanup, act } from '@testing-library/react';
 import 'jest-dom/extend-expect';
 
 import ProsemirrorEditorView from '../../../../../src/editor/songEditor/prosemirror/ProsemirrorEditorView';
@@ -112,6 +112,20 @@ describe('ProsemirrorEditorView', () => {
 	});
 
 	describe('onChange()', () => {
+
+		beforeAll(() => {
+			global.MutationObserver = class {
+				constructor() {}
+				disconnect() {}
+				observe() {}
+				takeRecords() { return []; }
+			};
+		});
+
+		afterAll(() => {
+			delete global.MutationObserver;
+		});
+
 		test('should call the updateFile callback', () => {
 			const { getByText } = render(<ProsemirrorEditorView
 				{...props}

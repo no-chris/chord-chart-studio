@@ -93,6 +93,11 @@ export default {
 			default: 'auto',
 			resetOnSongChange: true,
 		},
+		useShortNamings: {
+			value: true,
+			default: true,
+			resetOnSongChange: false,
+		},
 
 
 

@@ -5,7 +5,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 
 const TerserPlugin       	= require('terser-webpack-plugin');
-const CleanWebpackPlugin    = require('clean-webpack-plugin');
+const { CleanWebpackPlugin }= require('clean-webpack-plugin');
 const CopyWebpackPlugin     = require('copy-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 const BundleAnalyzerPlugin 	= require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
