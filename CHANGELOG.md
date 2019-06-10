@@ -1,3 +1,22 @@
+### 0.8.0 (2019-06-10)
+
+##### Build System / Dependencies
+
+*  update dependencies and fix unit tests ([f19b9181](https://github.com/no-chris/chords-charts-studio/commit/f19b9181bedd280bf428cfaf8c130513040f53b6))
+*  Add changelog generation scripts ([d884d227](https://github.com/no-chris/chords-charts-studio/commit/d884d227c27c505e98f1671421ca5b9a7f760787))
+*  build ([ddede306](https://github.com/no-chris/chords-charts-studio/commit/ddede306656b565402f0d4783d45e035fbb1ca2f))
+
+##### New Features
+
+* **chordmark:**
+  *  Expose new ChordMark options: Simplify and ShortNamings ([e2bc8561](https://github.com/no-chris/chords-charts-studio/commit/e2bc8561d4f1a29dec00e76ff7b10cc7ef580197))
+  *  Expose new ChordMark options: Simplify and ShortNamings ([69340d68](https://github.com/no-chris/chords-charts-studio/commit/69340d68aa80e50672612037e5396a59a3820dce))
+* **build:**  Update dependencies ([a38f61e3](https://github.com/no-chris/chords-charts-studio/commit/a38f61e305fbbb89ecdf6b37f7ac21177afe67e1))
+
+##### Bug Fixes
+
+* **print:**  Fix lines height not correctly detected ([98b8bfd6](https://github.com/no-chris/chords-charts-studio/commit/98b8bfd678e79f677196454c9ce2a29a6710400b))
+
 ### 0.7.0 (2019-05-10)
 
 ##### Build System / Dependencies
