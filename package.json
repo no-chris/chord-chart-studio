@@ -92,7 +92,10 @@
     "outdated": "npm outdated",
     "audit": "npm audit",
     "build": "npm run lint && npm run test && npm run bundle && npm run size && npm run sloc && npm run outdated && npm run audit",
-    "unit": "jest tests/unit"
+    "unit": "jest tests/unit",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "size-limit": [
     {
