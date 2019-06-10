@@ -112,6 +112,20 @@ describe('ProsemirrorEditorView', () => {
 	});
 
 	describe('onChange()', () => {
+
+		beforeAll(() => {
+			global.MutationObserver = class {
+				constructor() {}
+				disconnect() {}
+				observe() {}
+				takeRecords() { return []; }
+			};
+		});
+
+		afterAll(() => {
+			delete global.MutationObserver;
+		});
+
 		test('should call the updateFile callback', () => {
 			const { getByText } = render(<ProsemirrorEditorView
 				{...props}
