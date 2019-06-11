@@ -7,7 +7,7 @@ import 'jest-dom/extend-expect';
 
 import 'jest-dom/extend-expect';
 
-import PlayRenderer from '../../../../../src/songRenderers/playRenderer/_components/playRenderer';
+import PlayRenderer from '../../../../../src/songRenderers/playRenderer/_components/PlayRenderer';
 
 
 afterEach(cleanup);
