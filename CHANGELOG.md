@@ -1,5 +1,9 @@
 #### 0.8.2 (2019-06-15)
 
+##### New Features
+
+* **chordmark:**  Bump chordmark ([3a6c243e](https://github.com/no-chris/chords-charts-studio/commit/3a6c243e2cd439b6170015cadb6e54f9a95b8a1c))
+
 ##### Bug Fixes
 
 *  allow local development with linked npm modules ([54c470d4](https://github.com/no-chris/chords-charts-studio/commit/54c470d476d73c1eee81557845d06ad7ea81b96f))
