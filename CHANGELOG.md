@@ -1,3 +1,9 @@
+#### 0.8.1 (2019-06-15)
+
+##### Bug Fixes
+
+*  fix import case ([2b5fb87c](https://github.com/no-chris/chords-charts-studio/commit/2b5fb87c6ef988b259583c97e7a090283d9a6cbb))
+
 ### 0.8.0 (2019-06-10)
 
 ##### Build System / Dependencies
