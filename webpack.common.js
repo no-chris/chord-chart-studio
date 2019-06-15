@@ -65,7 +65,8 @@ const config = {
 		alias: {
 			react: path.resolve(path.join(__dirname, './node_modules/react')),
 			'react-dom': path.resolve(path.join(__dirname, './node_modules/react-dom'))
-		}
+		},
+		symlinks: false,
 	},
 };
 
