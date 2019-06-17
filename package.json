@@ -61,7 +61,7 @@
   "dependencies": {
     "@testing-library/react": "^8.0.1",
     "chord-mark": "^0.5.3",
-    "core-js": "^3.0.1",
+    "core-js": "^3.1.4",
     "dompurify": "^1.0.10",
     "handlebars": "^4.1.2",
     "lodash": "^4.17.11",
