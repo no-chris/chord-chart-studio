@@ -1,4 +1,6 @@
-# ChrodMark
+[![Netlify Status](https://api.netlify.com/api/v1/badges/798258e3-e398-445f-aab0-3ebed107a749/deploy-status)](https://app.netlify.com/sites/chords-charts-studio/deploys)
+
+# Chords Charts Studio
 
 Better chord charts: write less, do more.
 
