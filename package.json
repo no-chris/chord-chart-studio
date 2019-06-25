@@ -33,7 +33,7 @@
     "eslint-plugin-jam3": "^0.2.1",
     "eslint-plugin-no-unsanitized": "^3.0.2",
     "eslint-plugin-react": "^7.13.0",
-    "eslint-plugin-react-hooks": "^1.6.0",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "generate-changelog": "^1.7.1",
     "handlebars-loader": "^1.7.1",
     "html-webpack-inline-source-plugin": "0.0.10",
