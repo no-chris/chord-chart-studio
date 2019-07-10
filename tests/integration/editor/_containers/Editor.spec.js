@@ -4,7 +4,7 @@ import React from 'react';
 import { withStore, resetStore, dispatch } from '../../helpers/withStore';
 
 import { render, cleanup } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 import Editor from '../../../../src/editor/_containers/Editor';
 import { createFile, updateFile } from '../../../../src/db/files/actions';

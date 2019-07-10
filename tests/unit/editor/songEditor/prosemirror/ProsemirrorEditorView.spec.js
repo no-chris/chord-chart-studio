@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, cleanup, act } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 import ProsemirrorEditorView from '../../../../../src/editor/songEditor/prosemirror/ProsemirrorEditorView';
 

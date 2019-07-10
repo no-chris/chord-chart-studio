@@ -4,7 +4,7 @@ import React from 'react';
 import { withStore, getState, resetStore, dispatch } from '../../../helpers/withStore';
 
 import { render, cleanup, fireEvent, act } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 import Rendering from '../../../../../src/optionsPanels/rendering/_containers/Rendering';
 import allWidgets from '../../../../../src/optionsPanels/rendering/allWidgets';

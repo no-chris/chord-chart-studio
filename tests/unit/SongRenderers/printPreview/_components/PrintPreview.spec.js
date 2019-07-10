@@ -5,9 +5,9 @@ import _ from 'lodash';
 import React from 'react';
 
 import { render, cleanup, act } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 import PrintPreview from '../../../../../src/songRenderers/printPreview/_components/PrintPreview';
 import getAllLinesHeight from '../../../../../src/songRenderers/printPreview/helpers/getAllLinesHeight';

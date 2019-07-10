@@ -3,9 +3,9 @@ jest.mock('../../../../../src/songRenderers/_containers/SongRenderer');
 import React from 'react';
 
 import { render, cleanup } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 import PlayRenderer from '../../../../../src/songRenderers/playRenderer/_components/PlayRenderer';
 

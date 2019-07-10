@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 import App from '../../../../../../src/ui/layout/app/_components/App';
 
