@@ -74,8 +74,8 @@ export default {
 			resetOnSongChange: true,
 		},
 		simplifyChords: {
-			value: false,
-			default: false,
+			value: 'none',
+			default: 'none',
 			resetOnSongChange: true,
 		},
 		capoPosition: {

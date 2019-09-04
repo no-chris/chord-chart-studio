@@ -40,107 +40,99 @@ describe('PrintPreview', () => {
 			documentSize: 'a4',
 			documentMargins: 3,
 			printFontSize: 1,
+			highlightChords: false,
 		};
 	});
 
 	describe('Layout', () => {
-		test('Should spread all lines over pages and columns', (done) => {
+		test('Should spread all lines over pages and columns', async (done) => {
 			let result = {};
 
-			act(() => {
+			await act(async () => {
 				result = render(<PrintPreview {...props} />);
 			});
 
 			const { getAllByTestId } = result;
 
-			//fixme: next React release should fix this with async act
-			process.nextTick(() => {
-				const allPages = getAllByTestId('printPreview-page');
 
-				expect(allPages.length).toBe(2);
+			const allPages = getAllByTestId('printPreview-page');
 
-				expect(allPages[0].querySelectorAll('.cmLine').length).toBe(90);
-				expect(allPages[1].querySelectorAll('.cmLine').length).toBe(110);
+			expect(allPages.length).toBe(2);
 
-				const allColumns = getAllByTestId('printPreview-pageColumn');
+			expect(allPages[0].querySelectorAll('.cmLine').length).toBe(90);
+			expect(allPages[1].querySelectorAll('.cmLine').length).toBe(110);
 
-				expect(allColumns.length).toBe(6);
+			const allColumns = getAllByTestId('printPreview-pageColumn');
 
-				expect(allColumns[0].querySelectorAll('.cmLine').length).toBe(30);
-				expect(allColumns[1].querySelectorAll('.cmLine').length).toBe(30);
-				expect(allColumns[2].querySelectorAll('.cmLine').length).toBe(30);
-				expect(allColumns[3].querySelectorAll('.cmLine').length).toBe(40);
-				expect(allColumns[4].querySelectorAll('.cmLine').length).toBe(40);
-				expect(allColumns[5].querySelectorAll('.cmLine').length).toBe(30);
+			expect(allColumns.length).toBe(6);
 
-				done();
-			});
+			expect(allColumns[0].querySelectorAll('.cmLine').length).toBe(30);
+			expect(allColumns[1].querySelectorAll('.cmLine').length).toBe(30);
+			expect(allColumns[2].querySelectorAll('.cmLine').length).toBe(30);
+			expect(allColumns[3].querySelectorAll('.cmLine').length).toBe(40);
+			expect(allColumns[4].querySelectorAll('.cmLine').length).toBe(40);
+			expect(allColumns[5].querySelectorAll('.cmLine').length).toBe(30);
+
+			done();
 		});
 	});
 
 
 	describe('pageHeader', () => {
-		test('Should render pageHeader on first page only', (done) => {
+		test('Should render pageHeader on first page only', async (done) => {
 			let result = {};
 
-			act(() => {
+			await act(async () => {
 				result = render(<PrintPreview {...props} />);
 			});
 
 			const { getAllByTestId } = result;
 
-			//fixme: next React release should fix this with async act
-			process.nextTick(() => {
-				const allPages = getAllByTestId('printPreview-page');
+			const allPages = getAllByTestId('printPreview-page');
 
-				expect(allPages[0].querySelector('.printPreview-pageHeader')).toBeInstanceOf(Element);
-				expect(allPages[1].querySelector('.printPreview-pageHeader')).toBeNull();
+			expect(allPages[0].querySelector('.printPreview-pageHeader')).toBeInstanceOf(Element);
+			expect(allPages[1].querySelector('.printPreview-pageHeader')).toBeNull();
 
-				done();
-			});
+			done();
 		});
 	});
 
 
 	describe('Formatting options', () => {
-		test('Should add relevant classes to support formatting options', (done) => {
+		test('Should add relevant classes to support formatting options', async (done) => {
 			let result = {};
 
-			act(() => {
+			await act(async () => {
 				result = render(<PrintPreview {...props} />);
 			});
 
 			const { getAllByTestId, rerender } = result;
 
-			//fixme: next React release should fix this with async act
-			process.nextTick(() => {
-				let allPages = getAllByTestId('printPreview-page');
-				expect(allPages[0]).toHaveClass('printPreview-page--a4');
-				expect(allPages[0]).toHaveClass('printPreview-page--font1');
 
-				let allPageContentWrappers = getAllByTestId('printPreview-pageContentWrapper');
-				expect(allPageContentWrappers[0]).toHaveClass('printPreview-pageContentWrapper--padding3');
+			let allPages = getAllByTestId('printPreview-page');
+			expect(allPages[0]).toHaveClass('printPreview-page--a4');
+			expect(allPages[0]).toHaveClass('printPreview-page--font1');
 
-				act(() => {
-					rerender(<PrintPreview
-						{...props}
-						documentSize={'ipad'}
-						documentMargins={-2}
-						printFontSize={-4}
-					/>);
-				});
+			let allPageContentWrappers = getAllByTestId('printPreview-pageContentWrapper');
+			expect(allPageContentWrappers[0]).toHaveClass('printPreview-pageContentWrapper--padding3');
 
-				process.nextTick(() => {
-					allPages = getAllByTestId('printPreview-page');
-					expect(allPages[0]).toHaveClass('printPreview-page--ipad');
-					expect(allPages[0]).toHaveClass('printPreview-page--font-4');
-
-					allPageContentWrappers = getAllByTestId('printPreview-pageContentWrapper');
-					expect(allPageContentWrappers[0]).toHaveClass('printPreview-pageContentWrapper--padding-2');
-
-					done();
-				});
+			await act(async () => {
+				rerender(<PrintPreview
+					{...props}
+					documentSize={'ipad'}
+					documentMargins={-2}
+					printFontSize={-4}
+				/>);
 			});
+
+			allPages = getAllByTestId('printPreview-page');
+			expect(allPages[0]).toHaveClass('printPreview-page--ipad');
+			expect(allPages[0]).toHaveClass('printPreview-page--font-4');
+
+			allPageContentWrappers = getAllByTestId('printPreview-pageContentWrapper');
+			expect(allPageContentWrappers[0]).toHaveClass('printPreview-pageContentWrapper--padding-2');
+
+			done();
 
 		});
 	});

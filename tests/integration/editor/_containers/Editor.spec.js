@@ -1,6 +1,7 @@
 jest.mock('uuid');
 
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { withStore, resetStore, dispatch } from '../../helpers/withStore';
 
 import { render, cleanup } from '@testing-library/react';
@@ -50,12 +51,18 @@ describe('Editor', () => {
 			expect(getAllByText('mySongContent').length).toBe(1);
 		});
 
-		test('Print', () => {
+		test('Print', async () => {
+			let result = {};
+
 			dispatch(setEditorMode('print'));
 
-			const { getAllByTestId } = render(withStore(
-				<Editor />
-			));
+			await act(async() => {
+				result = render(withStore(
+					<Editor />
+				));
+			});
+
+			const { getAllByTestId } = result;
 
 			expect(getAllByTestId('printPreview').length).toBe(1);
 		});
