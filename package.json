@@ -55,7 +55,7 @@
     "sloc": "^0.2.1",
     "terser-webpack-plugin": "^1.4.1",
     "url-loader": "^2.1.0",
-    "webpack": "^4.39.3",
+    "webpack": "^4.41.0",
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0",
