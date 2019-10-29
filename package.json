@@ -78,7 +78,7 @@
     "prosemirror-schema-basic": "^1.0.1",
     "prosemirror-state": "^1.2.4",
     "prosemirror-transform": "^1.1.5",
-    "prosemirror-view": "^1.11.6",
+    "prosemirror-view": "^1.12.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
