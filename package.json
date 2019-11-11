@@ -74,7 +74,7 @@
     "prosemirror-commands": "^1.0.7",
     "prosemirror-history": "^1.0.4",
     "prosemirror-keymap": "^1.0.1",
-    "prosemirror-model": "^1.7.3",
+    "prosemirror-model": "^1.8.0",
     "prosemirror-schema-basic": "^1.0.1",
     "prosemirror-state": "^1.2.4",
     "prosemirror-transform": "^1.1.5",
