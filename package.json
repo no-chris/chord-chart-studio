@@ -65,7 +65,7 @@
     "@size-limit/webpack": "^2.1.6",
     "chord-mark": "^0.5.3",
     "core-js": "^3.2.1",
-    "dompurify": "^2.0.5",
+    "dompurify": "^2.0.8",
     "file-loader": "^4.2.0",
     "handlebars": "^4.4.3",
     "lodash": "^4.17.15",
