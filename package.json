@@ -67,7 +67,7 @@
     "chord-mark": "^0.5.3",
     "core-js": "^3.6.4",
     "dompurify": "^2.0.8",
-    "file-loader": "^5.0.2",
+    "file-loader": "^5.1.0",
     "handlebars": "^4.7.3",
     "lodash": "^4.17.15",
     "normalize.css": "^8.0.1",
