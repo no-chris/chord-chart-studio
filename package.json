@@ -81,7 +81,7 @@
     "prosemirror-transform": "^1.2.3",
     "prosemirror-view": "^1.14.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
