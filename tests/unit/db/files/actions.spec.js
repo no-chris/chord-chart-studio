@@ -3,13 +3,13 @@ jest.mock('uuid');
 import * as actions from '../../../../src/db/files/actions';
 import * as actionTypes from '../../../../src/db/files/actionsTypes';
 
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 describe('db/files: actions creators', () => {
 
 	describe('createFile()', () => {
 		test('should create valid action', () => {
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 
 			const expected = {
 				type: actionTypes.DB_FILES_CREATE,

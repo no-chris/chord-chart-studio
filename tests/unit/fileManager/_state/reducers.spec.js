@@ -1,7 +1,7 @@
 jest.mock('uuid');
 
 import deepFreeze from 'deep-freeze';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import reducers from '../../../../src/fileManager/_state/reducers';
 import * as fmActionsTypes from '../../../../src/fileManager/_state/actionsTypes';
@@ -70,7 +70,7 @@ describe('fileManager: reducers', () => {
 				selected: 'myId',
 				renamed: 'myId'
 			};
-			uuid.v4.mockReturnValue('myId');
+			uuidv4.mockReturnValue('myId');
 
 			const state = reducers(initialState, dbFilesActions.createFile('myTitle'));
 			expect(state).toEqual(expected);
@@ -89,7 +89,7 @@ describe('fileManager: reducers', () => {
 				...originalState,
 				renamed: ''
 			};
-			uuid.v4.mockReturnValue('myId');
+			uuidv4.mockReturnValue('myId');
 
 			const state = reducers(originalState, dbFilesActions.updateFile('myId', { title: 'myNewTitle' }));
 			expect(state).toEqual(expected);
@@ -109,7 +109,7 @@ describe('fileManager: reducers', () => {
 				selected: '',
 				renamed: ''
 			};
-			uuid.v4.mockReturnValue('myId');
+			uuidv4.mockReturnValue('myId');
 
 			const state = reducers(originalState, dbFilesActions.deleteFile('myId'));
 			expect(state).toEqual(expected);

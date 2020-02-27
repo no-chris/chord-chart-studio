@@ -6,7 +6,7 @@ import reducers from '../../../../src/db/files/reducers';
 import * as actions from '../../../../src/db/files/actions';
 import * as actionTypes from '../../../../src/db/files/actionsTypes';
 
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 describe('db/files: reducers', () => {
 
@@ -21,7 +21,7 @@ describe('db/files: reducers', () => {
 
 	describe(actionTypes.DB_FILES_CREATE, () => {
 		test('should create a new file on a empty list', () => {
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 
 			const expected = {
 				allFiles: {
@@ -55,10 +55,10 @@ describe('db/files: reducers', () => {
 				}
 			};
 
-			uuid.v4.mockReturnValue('myUUID1');
+			uuidv4.mockReturnValue('myUUID1');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle1')));
 
-			uuid.v4.mockReturnValue('myUUID2');
+			uuidv4.mockReturnValue('myUUID2');
 			const state2 = reducers(state1, actions.createFile('myTitle2'));
 
 			expect(state2).toEqual(expected);
@@ -76,7 +76,7 @@ describe('db/files: reducers', () => {
 					},
 				}
 			};
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.updateFile('myUUID', {
 				title: 'myNewTitle',
@@ -96,7 +96,7 @@ describe('db/files: reducers', () => {
 					},
 				}
 			};
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.updateFile('myUUID', {
 				title: 'myNewTitle',
@@ -115,7 +115,7 @@ describe('db/files: reducers', () => {
 					},
 				}
 			};
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.updateFile('myUUID', {
 				content: 'myNewContent',
@@ -125,7 +125,7 @@ describe('db/files: reducers', () => {
 		});
 
 		test('should return same state if given invalid id', () => {
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.updateFile('idontexist', { title: 'myNewTitle' }));
 
@@ -133,7 +133,7 @@ describe('db/files: reducers', () => {
 		});
 
 		test('should return same state if given no title or content', () => {
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.updateFile('myUUID'));
 
@@ -147,7 +147,7 @@ describe('db/files: reducers', () => {
 			const expected = {
 				allFiles: {}
 			};
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.deleteFile('myUUID'));
 
@@ -155,7 +155,7 @@ describe('db/files: reducers', () => {
 		});
 
 		test('returns unmodified state if given no id', () => {
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.deleteFile());
 
@@ -163,7 +163,7 @@ describe('db/files: reducers', () => {
 		});
 
 		test('returns unmodified state if given inexistant id', () => {
-			uuid.v4.mockReturnValue('myUUID');
+			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(reducers(initialState, actions.createFile('myTitle')));
 			const state2 = reducers(state1, actions.deleteFile('idontexist'));
 

@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import createAction from '../../core/createAction';
 import * as actionTypes from './actionsTypes';
@@ -9,7 +9,7 @@ export const createFile = (title) => {
 		throw new TypeError('Cannot create a file without title');
 	}
 	const payload = {
-		id: uuid.v4(),
+		id: uuidv4(),
 		title,
 		content: ''
 	};

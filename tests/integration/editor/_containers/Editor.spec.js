@@ -12,8 +12,8 @@ import { createFile, updateFile } from '../../../../src/db/files/actions';
 import { selectFile } from '../../../../src/fileManager/_state/actions';
 import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
 
-import uuid from 'uuid';
-uuid.v4.mockReturnValue('myId');
+import { v4 as uuidv4 } from 'uuid';
+uuidv4.mockReturnValue('myId');
 
 afterEach(cleanup);
 
