@@ -86,7 +86,7 @@
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
     "universal-router": "^9.0.0",
-    "uuid": "^7.0.1"
+    "uuid": "^8.1.0"
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
