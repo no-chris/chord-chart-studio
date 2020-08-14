@@ -68,7 +68,7 @@
     "dompurify": "^2.0.11",
     "file-loader": "^6.0.0",
     "handlebars": "^4.7.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "prosemirror-commands": "^1.1.4",
