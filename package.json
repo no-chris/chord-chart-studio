@@ -23,7 +23,7 @@
     "@babel/preset-react": "^7.10.1",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "@size-limit/preset-app": "^4.5.1",
-    "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^10.3.0",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
