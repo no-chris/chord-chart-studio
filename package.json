@@ -1,6 +1,6 @@
 {
   "name": "@touffi/chords-charts-studio",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Chords Charts Studio",
   "private": true,
   "author": "Christophe Noël",
@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@size-limit/webpack": "^4.9.1",
-    "chord-mark": "^0.5.4",
+    "chord-mark": "^0.5.5",
     "core-js": "^3.8.2",
     "dompurify": "^2.2.6",
     "file-loader": "^6.2.0",
@@ -95,8 +95,9 @@
     "sloc": "echo \"Source code:\" > SLOC && npx sloc src >> SLOC && echo \"Tests:\" >> SLOC && npx sloc tests >> SLOC && echo \"Total:\" >> SLOC && npx sloc src tests >> SLOC",
     "outdated": "npm outdated",
     "audit": "npm audit",
-    "build": "npm run lint && npm run test && npm run bundle && npm run size && npm run sloc",
+    "build": "npm run lint && npm run test && npm run version && npm run bundle && npm run size && npm run sloc",
     "unit": "jest tests/unit",
+    "version": "node ./src/ui/layout/app/createGetVersions.js",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
     "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
