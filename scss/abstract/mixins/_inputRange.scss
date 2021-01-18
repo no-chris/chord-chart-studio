@@ -39,7 +39,7 @@
   $track-shadow-size: 0,
   $track-shadow-blur: 0,
   $track-shadow-color: rgba(0, 0, 0, 0),
-  $track-border-width: 0,
+  $track-border-width: 0,  // might not be taken into account everywhere, see below
   $track-border-color: black
 ) {
 
@@ -62,7 +62,9 @@
   &::-webkit-slider-thumb {
     @include thumb($thumb-width, $thumb-height, $thumb-border-width, $thumb-border-color, $thumb-radius, $thumb-color);
     -webkit-appearance: none;
-    margin-top: ((-#{$track-border-width} * 2) + $track-height) / (2 - $thumb-height / 2);
+    //margin-top: ((-#{$track-border-width} * 2) + $track-height) / (2 - $thumb-height / 2);
+    // the build fails with $track-border-width = 0
+		margin-top: ($track-height) / (2 - $thumb-height / 2);
   }
 
   &:focus::-webkit-slider-runnable-track {

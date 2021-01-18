@@ -1,7 +1,7 @@
 /* eslint-env node */
 const webpack = require('webpack');
 
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
 
 const TerserPlugin       	= require('terser-webpack-plugin');
@@ -17,12 +17,18 @@ module.exports = merge(common, {
 
 	optimization: {
 		splitChunks: {
-			chunks: 'all'
+			chunks: 'all',
+			cacheGroups: {
+				commons: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					chunks: 'all'
+				}
+			}
 		},
+		minimize: true,
 		minimizer: [
-			new TerserPlugin({
-				sourceMap: true,
-			}),
+			new TerserPlugin(),
 			new OptimizeCssnanoPlugin({
 				sourceMap: true,
 			}),
@@ -31,7 +37,7 @@ module.exports = merge(common, {
 
 	plugins: [
 		new CleanWebpackPlugin(),
-		new webpack.HashedModuleIdsPlugin(),
+		new webpack.ids.HashedModuleIdsPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('production')
 		}),

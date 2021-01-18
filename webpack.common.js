@@ -14,7 +14,7 @@ const config = {
 	},
 
 	output: {
-		filename: '[name].[hash].js',
+		filename: '[name].[fullhash].js',
 		path: path.resolve(process.cwd(), buildDir),
 	},
 
@@ -24,7 +24,7 @@ const config = {
 			template:'assets/index.html',
 		}),
 		new MiniCssExtractPlugin({
-			filename:'css/[name].[hash].css',
+			filename:'css/[name].[fullhash].css',
 		}),
 	],
 
@@ -53,7 +53,7 @@ const config = {
 					loader: 'url-loader',
 					options: {
 						limit: 8000,
-						name: 'images/[hash]-[name].[ext]'
+						name: 'images/[fullhash]-[name].[ext]'
 					}
 				}]
 			}
