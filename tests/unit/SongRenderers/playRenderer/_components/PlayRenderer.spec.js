@@ -1,4 +1,4 @@
-jest.mock('../../../../../src/songRenderers/_containers/SongRenderer');
+jest.mock('../../../../../src/songRenderers/_containers/SongRenderer', () => () => 'MySong');
 
 import React from 'react';
 
