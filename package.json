@@ -63,7 +63,7 @@
   "dependencies": {
     "@size-limit/webpack": "^4.9.1",
     "chord-mark": "^0.5.5",
-    "core-js": "^3.8.2",
+    "core-js": "^3.8.3",
     "dompurify": "^2.2.6",
     "file-loader": "^6.2.0",
     "handlebars": "^4.7.6",
