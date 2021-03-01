@@ -20,7 +20,7 @@
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.8",
-    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-react": "^7.12.13",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "@size-limit/preset-app": "^4.9.1",
     "@testing-library/jest-dom": "^5.11.9",
