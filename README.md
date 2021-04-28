@@ -1,3 +1,4 @@
+[![build](https://github.com/no-chris/chords-charts-studio/actions/workflows/build.yml/badge.svg)](https://github.com/no-chris/chords-charts-studio/actions/workflows/build.yml)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/798258e3-e398-445f-aab0-3ebed107a749/deploy-status)](https://app.netlify.com/sites/chords-charts-studio/deploys)
 
 # Chords Charts Studio
