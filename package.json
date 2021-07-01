@@ -19,7 +19,7 @@
   "devDependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.12.13",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "@size-limit/preset-app": "^4.9.1",
