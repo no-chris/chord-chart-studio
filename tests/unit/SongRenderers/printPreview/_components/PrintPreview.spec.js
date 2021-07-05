@@ -45,7 +45,7 @@ describe('PrintPreview', () => {
 	});
 
 	describe('Layout', () => {
-		test('Should spread all lines over pages and columns', async (done) => {
+		test('Should spread all lines over pages and columns', async () => {
 			let result = {};
 
 			await act(async () => {
@@ -73,13 +73,12 @@ describe('PrintPreview', () => {
 			expect(allColumns[4].querySelectorAll('.cmLine').length).toBe(40);
 			expect(allColumns[5].querySelectorAll('.cmLine').length).toBe(30);
 
-			done();
 		});
 	});
 
 
 	describe('pageHeader', () => {
-		test('Should render pageHeader on first page only', async (done) => {
+		test('Should render pageHeader on first page only', async () => {
 			let result = {};
 
 			await act(async () => {
@@ -92,14 +91,12 @@ describe('PrintPreview', () => {
 
 			expect(allPages[0].querySelector('.printPreview-pageHeader')).toBeInstanceOf(Element);
 			expect(allPages[1].querySelector('.printPreview-pageHeader')).toBeNull();
-
-			done();
 		});
 	});
 
 
 	describe('Formatting options', () => {
-		test('Should add relevant classes to support formatting options', async (done) => {
+		test('Should add relevant classes to support formatting options', async () => {
 			let result = {};
 
 			await act(async () => {
@@ -131,8 +128,6 @@ describe('PrintPreview', () => {
 
 			allPageContentWrappers = getAllByTestId('printPreview-pageContentWrapper');
 			expect(allPageContentWrappers[0]).toHaveClass('printPreview-pageContentWrapper--padding-2');
-
-			done();
 
 		});
 	});

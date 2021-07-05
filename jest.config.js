@@ -1,5 +1,6 @@
 /* eslint-env node */
 module.exports = {
+	testEnvironment: 'jsdom',
 
 	collectCoverage: true,
 	collectCoverageFrom: [
@@ -8,14 +9,17 @@ module.exports = {
 		'!**/node_modules/**'
 	],
 	coverageDirectory: '<rootDir>/coverage',
-	coveragePathIgnorePatterns: ['node_modules'],
+	coveragePathIgnorePatterns: [
+		'node_modules',
+		'src/ui/layout/app/createGetVersions.js'
+	],
 	coverageReporters: ['json', 'lcov', 'text', 'clover'],
 	coverageThreshold: {
 		'global': {
-			'branches': 35,
-			'functions': 50,
-			'lines': 50,
-			'statements': -100
+			'branches': 99,
+			'functions': 99,
+			'lines': 99,
+			'statements': 100
 		}
 	},
 
