@@ -2,6 +2,7 @@
 export default {
 	widgetsOrder: [
 		'style',
+		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
 		'expandSectionRepeats',
@@ -33,6 +34,14 @@ export default {
 			option: {
 				context: 'rendering',
 				key: 'style'
+			},
+		},
+		alignChordsWithLyrics: {
+			label: 'Align chords with lyrics',
+			type: 'toggle',
+			option: {
+				context: 'rendering',
+				key: 'alignChordsWithLyrics'
 			},
 		},
 		alignBars: {

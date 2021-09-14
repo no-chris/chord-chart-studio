@@ -6,6 +6,11 @@ export default {
 			default: 'chordmark',
 			resetOnSongChange: false,
 		},
+		alignChordsWithLyrics: {
+			value: true,
+			default: true,
+			resetOnSongChange: false,
+		},
 		alignBars: {
 			value: true,
 			default: true,

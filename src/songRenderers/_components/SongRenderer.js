@@ -15,6 +15,7 @@ function SongRenderer(props) {
 
 	const renderOptions = _pick(props, [
 		'alignBars',
+		'alignChordsWithLyrics',
 		'harmonizeAccidentals',
 		'accidentalsType',
 		'transposeValue',
