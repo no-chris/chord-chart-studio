@@ -12,6 +12,7 @@ function PrintPreview(props) {
 	const { selectedFile, highlightChords } = props;
 
 	const renderOptions = _pick(props, [
+		'alignChordsWithLyrics',
 		'alignBars',
 		'harmonizeAccidentals',
 		'accidentalsType',
