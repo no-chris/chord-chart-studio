@@ -8,6 +8,7 @@ export default connect(
 	state => ({
 		accidentalsType: getOptionValue(state, 'rendering', 'preferredAccidentals'),
 		alignBars: getOptionValue(state, 'rendering', 'alignBars'),
+		chordsAndLyricsDisplay: getOptionValue(state, 'rendering', 'chordsAndLyricsDisplay'),
 		alignChordsWithLyrics: getOptionValue(state, 'rendering', 'alignChordsWithLyrics'),
 		harmonizeAccidentals: getOptionValue(state, 'rendering', 'harmonizeAccidentals'),
 		transposeValue: getOptionValue(state, 'rendering', 'transposeValue'),

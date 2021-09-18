@@ -6,6 +6,11 @@ export default {
 			default: 'chordmark',
 			resetOnSongChange: false,
 		},
+		chordsAndLyricsDisplay: {
+			value: 'all',
+			default: 'all',
+			resetOnSongChange: false,
+		},
 		alignChordsWithLyrics: {
 			value: true,
 			default: true,

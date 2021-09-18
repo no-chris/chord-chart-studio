@@ -2,6 +2,7 @@
 export default {
 	widgetsOrder: [
 		'style',
+		'chordsAndLyricsDisplay',
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
@@ -34,6 +35,38 @@ export default {
 			option: {
 				context: 'rendering',
 				key: 'style'
+			},
+		},
+		chordsAndLyricsDisplay: {
+			label: 'Chords and lyrics',
+			type: 'select',
+			typeOptions: {
+				allChoices: [
+					{
+						id: 'cldisplayAll',
+						label: 'Display both',
+						value: 'all'
+					},
+					{
+						id: 'cldisplayLyrics',
+						label: 'Lyrics only',
+						value: 'lyrics'
+					},
+					{
+						id: 'cldisplayChords',
+						label: 'Chords only',
+						value: 'chords'
+					},
+					{
+						id: 'cldisplayChordsFirstLyricLine',
+						label: 'Chords + First lyric line',
+						value: 'chordsFirstLyricLine'
+					},
+				],
+			},
+			option: {
+				context: 'rendering',
+				key: 'chordsAndLyricsDisplay'
 			},
 		},
 		alignChordsWithLyrics: {
