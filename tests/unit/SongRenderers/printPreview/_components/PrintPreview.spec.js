@@ -77,12 +77,30 @@ describe('PrintPreview', () => {
 	});
 
 
+	describe('Empty document', () => {
+		test('does not break with empty document', async () => {
+			let result = {};
+
+			await act(async () => {
+				result = render(<PrintPreview {...props} selectedFile={{}}/>);
+			});
+
+			const { getByTestId } = result;
+
+			const preview = getByTestId('printPreview');
+
+			expect(preview).toBeInstanceOf(Element);
+			expect(preview).toBeInTheDocument();
+		});
+	});
+
+
 	describe('pageHeader', () => {
 		test('Should render pageHeader on first page only', async () => {
 			let result = {};
 
 			await act(async () => {
-				result = render(<PrintPreview {...props} />);
+				result = render(<PrintPreview {...props}/>);
 			});
 
 			const { getAllByTestId } = result;

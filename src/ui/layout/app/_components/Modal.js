@@ -11,7 +11,7 @@ function Modal(props) {
 	}
 
 	return (
-		<section className={'modal-Overlay'}>
+		<section className={'modal-Overlay'} data-testid={'modal-overlay'}>
 			<div className={'modal-Container'}>
 				<div>MODALICA</div>
 				<button onClick={closeModal}>CLOSE ME!</button>	

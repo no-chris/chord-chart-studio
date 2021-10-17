@@ -1,0 +1,22 @@
+@import '../../../../../scss/abstract';
+@import '../themes';
+
+.modal-Overlay {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.7;
+	background-color: black;
+}
+
+.modal-Container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	opacity: 1;
+	background-color: white;
+}

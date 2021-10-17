@@ -17,6 +17,7 @@ describe('FileManager', () => {
 	const deleteFile = jest.fn();
 	const enableRename = jest.fn();
 	const updateFile = jest.fn();
+	const openModal = jest.fn();
 
 	window.getSelection = () => ({
 		removeAllRanges: jest.fn()
@@ -40,6 +41,7 @@ describe('FileManager', () => {
 			deleteFile,
 			enableRename,
 			updateFile,
+			openModal,
 		};
 
 		selectFile.mockReset();
@@ -47,6 +49,7 @@ describe('FileManager', () => {
 		deleteFile.mockReset();
 		enableRename.mockReset();
 		updateFile.mockReset();
+		openModal.mockReset();
 	});
 
 
@@ -341,6 +344,20 @@ describe('FileManager', () => {
 			fireEvent.click(input);
 
 			expect(deleteFile).toHaveBeenCalledWith(props.allTitles[2].id);
+		});
+	});
+
+
+	describe('import', () => {
+		test('should call openModal() on import action with "importFile" parameter', () => {
+			const { getByText } = render(<FileManager
+				{...props}
+			/>);
+			const input = getByText('Import');
+
+			fireEvent.click(input);
+
+			expect(openModal).toHaveBeenCalledWith('importFile');
 		});
 	});
 

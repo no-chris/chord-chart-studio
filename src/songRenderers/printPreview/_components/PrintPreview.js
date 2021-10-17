@@ -34,7 +34,7 @@ function PrintPreview(props) {
 	return (
 		<div className={classNames.join(' ')} data-testid={'printPreview'}>
 			<AllPages
-				title={selectedFile.title}
+				title={selectedFile.title || ''}
 				allLines={allLines}
 				columnsCount={props.columnsCount}
 				columnBreakOnParagraph={props.columnBreakOnParagraph}
