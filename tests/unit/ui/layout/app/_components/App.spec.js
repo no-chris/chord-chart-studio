@@ -12,6 +12,7 @@ describe('App', () => {
 	const toggleLeftBar = jest.fn();
 	const toggleRightBar = jest.fn();
 	const setEditorMode = jest.fn();
+	const closeModal = jest.fn();
 
 	beforeEach(() => {
 		props = {
@@ -21,10 +22,12 @@ describe('App', () => {
 			toggleLeftBar,
 			toggleRightBar,
 			setEditorMode,
+			closeModal,
 
 			leftBar: <div>leftBarDiv</div>,
 			rightBar: <div>rightBarDiv</div>,
 			activeRoute: 'play',
+			activeModal: 'none',
 		};
 
 		toggleLeftBar.mockClear();
@@ -85,4 +88,17 @@ describe('App', () => {
 
 		expect(toggleRightBar).toHaveBeenCalledTimes(1);
 	});
+
+	test('should openModal if active modal is different than "none"', () => {
+		const { getByTestId } = render(<App
+			{...props}
+			activeModal={'myModal'}
+		/>);
+
+		const modal = getByTestId('modal-overlay');
+		
+		expect(modal).toBeInstanceOf(Element);
+		expect(modal).toBeInTheDocument();
+	});
+
 });

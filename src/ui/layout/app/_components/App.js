@@ -7,14 +7,17 @@ import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
 import Footer from './Footer';
 import Icon from '../../../_components/Icon';
+import Modal from './Modal';
 
 import allNavEntries from '../allNavEntries';
 
 function App(props) {
 	const {
+		activeModal,
+		closeModal,
+		editorMode,
 		isLeftBarCollapsed,
 		isRightBarCollapsed,
-		editorMode,
 		toggleLeftBar,
 		toggleRightBar,
 		setEditorMode,
@@ -87,6 +90,7 @@ function App(props) {
 					{rightBar}
 				</div>
 			</section>
+			<Modal activeModal={activeModal} closeModal={closeModal} />
 		</div>
 	);
 }
@@ -105,6 +109,9 @@ App.propTypes = {
 
 	leftBar: PropTypes.element.isRequired,
 	rightBar: PropTypes.element.isRequired,
+
+	activeModal: PropTypes.string.isRequired,
+	closeModal: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
