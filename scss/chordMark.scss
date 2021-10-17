@@ -133,6 +133,7 @@ $themes: (
       color: themed('editor-line-txt');
     }
   }
+	.editorPreview .cmLine--isFromSectionCopy &,
   .editorPreview .cmLine--isFromSectionRepeat & {
 		opacity: 0.5;
   }
@@ -174,6 +175,7 @@ $themes: (
   }
 	.editorPreview .cmLine--isFromSectionRepeat &,
   .editorPreview .cmLine--isFromAutoRepeatChords &,
+	.editorPreview .cmLine--isFromSectionCopy &,
   .editorPreview .cmLine--isFromChordLineRepeater & {
 		opacity: 0.3;
 		background-color: transparent;
@@ -244,6 +246,7 @@ $themes: (
     }
   }
   .editorPreview .cmLine--isFromChordLineRepeater &,
+  .editorPreview .cmLine--isFromSectionCopy &,
 	.editorPreview .cmLine--isFromSectionRepeat & {
 		opacity: 0.3;
 	}
@@ -310,6 +313,7 @@ $themes: (
       border-color: themed('editor-sectionTitle-border');
     }
   }
+	.editorPreview .cmLine--isFromSectionCopy &,
   .editorPreview .cmLine--isFromSectionRepeat & {
 		opacity: 0.3;
 	}
