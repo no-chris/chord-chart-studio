@@ -1,0 +1,19 @@
+{
+	"name": "Chord Charts Studios",
+	"description": "Browser extension to import chords",
+	"version": "1.0",
+	"manifest_version": 3,
+	"action": {
+		"default_popup": "build/popup.html"
+	},
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://*.ultimate-guitar.com/*"],
+			"js": ["build/ultimateGuitar.js"]
+		}
+	]
+}

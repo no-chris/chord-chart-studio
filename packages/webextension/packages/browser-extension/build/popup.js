@@ -1,0 +1,1 @@
+console.log("in popup.JS"),chrome.runtime.onMessage.addListener((function(e,o,a){"tabData"===e.type&&(console.log(e.payload),a("received tabDataMessage!"))})),chrome.storage.sync.get(["tabData"],(function(e){console.log("")}));
