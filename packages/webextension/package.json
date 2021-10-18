@@ -1,0 +1,18 @@
+{
+  "name": "chord-charts-studio",
+  "version": "0.9.0",
+  "description": "The ultimate chord charts editor",
+  "main": "index.js",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//no-chris/chord-charts-studio.git"
+  },
+  "author": "Christophe Noël",
+  "license": "LicenseRef-LICENSE"
+}
