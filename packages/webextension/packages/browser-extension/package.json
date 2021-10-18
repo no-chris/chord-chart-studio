@@ -1,0 +1,16 @@
+{
+  "name": "browser-extension",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Browser extension for Chord Charts Studio",
+  "author": "Christophe Noël",
+  "license": "LicenseRef-LICENSE",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "prettier": "^2.4.1"
+  }
+}
