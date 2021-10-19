@@ -6,6 +6,8 @@ import PrintPreview from '../_components/PrintPreview';
 
 export default connect(
 	state => ({
+		chordsAndLyricsDisplay: getOptionValue(state, 'rendering', 'chordsAndLyricsDisplay'),
+		alignChordsWithLyrics: getOptionValue(state, 'rendering', 'alignChordsWithLyrics'),
 		columnsCount: getOptionValue(state, 'rendering', 'columnsCount'),
 		columnBreakOnParagraph: getOptionValue(state, 'rendering', 'columnBreakOnParagraph'),
 		documentSize: getOptionValue(state, 'rendering', 'documentSize'),
