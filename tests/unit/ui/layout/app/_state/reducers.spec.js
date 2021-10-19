@@ -7,7 +7,6 @@ import * as actionsTypes from '../../../../../../src/ui/layout/app/_state/action
 const initialState = deepFreeze(reducers());
 
 describe('ui/layout/app: reducers', () => {
-
 	describe('Unknown action', () => {
 		test('should return un-mutated state', () => {
 			const state = reducers(initialState);
@@ -15,36 +14,51 @@ describe('ui/layout/app: reducers', () => {
 		});
 	});
 
-
 	describe(actionsTypes.UI_LAYOUT_APP_TOGGLE_LEFT_BAR, () => {
 		test('should toggle left bar state', () => {
-			const state1 = deepFreeze(reducers(initialState, actions.toggleLeftBar()));
-			expect(state1.isLeftBarCollapsed).toBe(!initialState.isLeftBarCollapsed);
+			const state1 = deepFreeze(
+				reducers(initialState, actions.toggleLeftBar())
+			);
+			expect(state1.isLeftBarCollapsed).toBe(
+				!initialState.isLeftBarCollapsed
+			);
 
-			const state2 = deepFreeze(reducers(state1, actions.toggleLeftBar()));
-			expect(state2.isLeftBarCollapsed).toBe(!!initialState.isLeftBarCollapsed);
+			const state2 = deepFreeze(
+				reducers(state1, actions.toggleLeftBar())
+			);
+			expect(state2.isLeftBarCollapsed).toBe(
+				!!initialState.isLeftBarCollapsed
+			);
 		});
 	});
-
 
 	describe(actionsTypes.UI_LAYOUT_APP_TOGGLE_RIGHT_BAR, () => {
 		test('should toggle right bar state', () => {
-			const state1 = deepFreeze(reducers(initialState, actions.toggleRightBar()));
-			expect(state1.isRightBarCollapsed).toBe(!initialState.isRightBarCollapsed);
+			const state1 = deepFreeze(
+				reducers(initialState, actions.toggleRightBar())
+			);
+			expect(state1.isRightBarCollapsed).toBe(
+				!initialState.isRightBarCollapsed
+			);
 
-			const state2 = deepFreeze(reducers(state1, actions.toggleRightBar()));
-			expect(state2.isRightBarCollapsed).toBe(!!initialState.isRightBarCollapsed);
+			const state2 = deepFreeze(
+				reducers(state1, actions.toggleRightBar())
+			);
+			expect(state2.isRightBarCollapsed).toBe(
+				!!initialState.isRightBarCollapsed
+			);
 		});
 	});
-
 
 	describe(actionsTypes.UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
 		test('should set editorMode', () => {
 			expect(initialState.editorMode).toBe('edit');
 
-			const newState =reducers(initialState, actions.setEditorMode('myMode1'));
+			const newState = reducers(
+				initialState,
+				actions.setEditorMode('myMode1')
+			);
 			expect(newState.editorMode).toBe('myMode1');
 		});
 	});
-
 });

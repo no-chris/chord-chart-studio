@@ -15,13 +15,13 @@ export default function reducers(state = initialState, action = {}) {
 		case UI_LAYOUT_APP_TOGGLE_LEFT_BAR: {
 			return {
 				...state,
-				isLeftBarCollapsed: !state.isLeftBarCollapsed
+				isLeftBarCollapsed: !state.isLeftBarCollapsed,
 			};
 		}
 		case UI_LAYOUT_APP_TOGGLE_RIGHT_BAR: {
 			return {
 				...state,
-				isRightBarCollapsed: !state.isRightBarCollapsed
+				isRightBarCollapsed: !state.isRightBarCollapsed,
 			};
 		}
 		case UI_LAYOUT_APP_SET_EDITOR_MODE: {

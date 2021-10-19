@@ -8,9 +8,9 @@ describe('db/files: selectors', () => {
 			const state = {
 				db: {
 					files: {
-						allFiles: {}
-					}
-				}
+						allFiles: {},
+					},
+				},
 			};
 			const expected = [];
 
@@ -24,12 +24,24 @@ describe('db/files: selectors', () => {
 				db: {
 					files: {
 						allFiles: {
-							id1: { id: 'id1', title: 'CCC', content: 'content1' },
-							id2: { id: 'id2', title: 'aaa', content: 'content2' },
-							id3: { id: 'id3', title: 'BBB', content: 'content3' },
-						}
-					}
-				}
+							id1: {
+								id: 'id1',
+								title: 'CCC',
+								content: 'content1',
+							},
+							id2: {
+								id: 'id2',
+								title: 'aaa',
+								content: 'content2',
+							},
+							id3: {
+								id: 'id3',
+								title: 'BBB',
+								content: 'content3',
+							},
+						},
+					},
+				},
 			};
 			const expected = [
 				{ id: 'id2', title: 'aaa' },
@@ -46,12 +58,24 @@ describe('db/files: selectors', () => {
 				db: {
 					files: {
 						allFiles: {
-							id1: { id: 'id1', title: 'CCC', content: 'content1' },
-							id2: { id: 'id2', title: 'aaa', content: 'content2' },
-							id3: { id: 'id3', title: 'BBB', content: 'content3' },
-						}
-					}
-				}
+							id1: {
+								id: 'id1',
+								title: 'CCC',
+								content: 'content1',
+							},
+							id2: {
+								id: 'id2',
+								title: 'aaa',
+								content: 'content2',
+							},
+							id3: {
+								id: 'id3',
+								title: 'BBB',
+								content: 'content3',
+							},
+						},
+					},
+				},
 			};
 			const result1 = selectors.getAllTitles(state);
 			const result2 = selectors.getAllTitles(state);
@@ -64,12 +88,24 @@ describe('db/files: selectors', () => {
 				db: {
 					files: {
 						allFiles: {
-							id1: { id: 'id1', title: 'CCC', content: 'content1' },
-							id2: { id: 'id2', title: 'aaa', content: 'content2' },
-							id3: { id: 'id3', title: 'BBB', content: 'content3' },
-						}
-					}
-				}
+							id1: {
+								id: 'id1',
+								title: 'CCC',
+								content: 'content1',
+							},
+							id2: {
+								id: 'id2',
+								title: 'aaa',
+								content: 'content2',
+							},
+							id3: {
+								id: 'id3',
+								title: 'BBB',
+								content: 'content3',
+							},
+						},
+					},
+				},
 			};
 			const state2 = _.cloneDeep(state1);
 			state2.db.files.allFiles.id1.content = 'newContent1';
@@ -83,17 +119,20 @@ describe('db/files: selectors', () => {
 		});
 	});
 
-
 	describe('getOne()', () => {
 		test('should return requested file', () => {
 			const state = {
 				db: {
 					files: {
 						allFiles: {
-							id1: { id: 'id1', title: 'CCC', content: 'content1' },
-						}
-					}
-				}
+							id1: {
+								id: 'id1',
+								title: 'CCC',
+								content: 'content1',
+							},
+						},
+					},
+				},
 			};
 			const expected = { id: 'id1', title: 'CCC', content: 'content1' };
 
@@ -106,14 +145,13 @@ describe('db/files: selectors', () => {
 			const state = {
 				db: {
 					files: {
-						allFiles: {}
-					}
-				}
+						allFiles: {},
+					},
+				},
 			};
 			const result = selectors.getOne(state, 'id1');
 
 			expect(result).toBeUndefined();
 		});
 	});
-
 });

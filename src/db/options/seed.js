@@ -1,6 +1,5 @@
 export default {
 	rendering: {
-
 		style: {
 			value: 'chordmark',
 			default: 'chordmark',
@@ -55,7 +54,6 @@ export default {
 			resetOnSongChange: false,
 		},
 
-
 		/** Display */
 
 		showChords: {
@@ -73,8 +71,6 @@ export default {
 			default: true,
 			resetOnSongChange: false,
 		},
-
-
 
 		/** Customize Chords */
 
@@ -109,8 +105,6 @@ export default {
 			resetOnSongChange: false,
 		},
 
-
-
 		/** Format */
 
 		fontSize: {
@@ -138,5 +132,5 @@ export default {
 			default: true,
 			resetOnSongChange: false,
 		},
-	}
+	},
 };

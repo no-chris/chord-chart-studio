@@ -4,7 +4,6 @@ const cssClasses = {
 	textLine: 'cmTextLine',
 };
 
-
 /**
  * @param {Object[]} allLinesWithHeight
  * @param {String} allLinesWithHeight.content
@@ -17,14 +16,17 @@ const cssClasses = {
  * @param {Boolean} noOrphanTextLine
  * @returns {Array} array of pages, as array of columns
  */
-export default function mapLinesToColumns(allLinesWithHeight, {
-	columnsCount,
-	firstPageHeight,
-	normalPageHeight,
-	columnBreakOnParagraph,
-	noEmptyLinesOnColumnStart = true,
-	noOrphanTextLine = true,
-}) {
+export default function mapLinesToColumns(
+	allLinesWithHeight,
+	{
+		columnsCount,
+		firstPageHeight,
+		normalPageHeight,
+		columnBreakOnParagraph,
+		noEmptyLinesOnColumnStart = true,
+		noOrphanTextLine = true,
+	}
+) {
 	const layout = layoutFactory({
 		columnsCount,
 		firstPageHeight,
@@ -39,23 +41,29 @@ export default function mapLinesToColumns(allLinesWithHeight, {
 
 	if (pageHeight > 0) {
 		allLinesWithHeight.forEach((line, lineIndex) => {
-
-			if (shouldRenderLine(layout, line, buffer, noEmptyLinesOnColumnStart)) {
+			if (
+				shouldRenderLine(
+					layout,
+					line,
+					buffer,
+					noEmptyLinesOnColumnStart
+				)
+			) {
 				buffer.push(line);
 				bufferHeight += line.height;
 			}
 
-			if (buffer.length > 0 && isBreakable(
-				line,
-				allLinesWithHeight[lineIndex + 1],
-				{ noOrphanTextLine, columnBreakOnParagraph }
-			)) {
+			if (
+				buffer.length > 0 &&
+				isBreakable(line, allLinesWithHeight[lineIndex + 1], {
+					noOrphanTextLine,
+					columnBreakOnParagraph,
+				})
+			) {
 				if (layout.fitsOnCurrentColumn(bufferHeight)) {
 					layout.insert(buffer);
-
 				} else if (layout.fitsOnNextColumn(bufferHeight)) {
 					layout.insertOnNextColumn(buffer);
-
 				} else {
 					layout.insert(buffer);
 				}
@@ -73,19 +81,24 @@ export default function mapLinesToColumns(allLinesWithHeight, {
  */
 function shouldRenderLine(layout, line, buffer, noEmptyLinesOnColumnStart) {
 	return !(
-		isEmptyLine(line)
-		&& !layout.fitsOnCurrentColumn(line.height)
-		&& buffer.length === 0
-		&& noEmptyLinesOnColumnStart === true
+		isEmptyLine(line) &&
+		!layout.fitsOnCurrentColumn(line.height) &&
+		buffer.length === 0 &&
+		noEmptyLinesOnColumnStart === true
 	);
 }
 
-function isBreakable(currentLine, nextLine, { noOrphanTextLine, columnBreakOnParagraph }) {
+function isBreakable(
+	currentLine,
+	nextLine,
+	{ noOrphanTextLine, columnBreakOnParagraph }
+) {
 	if (isEmptyLine(currentLine) || !nextLine) {
 		return true;
 	}
 
-	const wouldProduceOrphanTextLine = isChordLine(currentLine) && isTextLine(nextLine);
+	const wouldProduceOrphanTextLine =
+		isChordLine(currentLine) && isTextLine(nextLine);
 	if (noOrphanTextLine === true && wouldProduceOrphanTextLine) {
 		return false;
 	}
@@ -113,7 +126,6 @@ function hasClass(line, className) {
 	return line.indexOf(className) > -1;
 }
 
-
 function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 	const allPagesColumns = [];
 
@@ -126,7 +138,7 @@ function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 	allPagesColumns[pageIndex][columnIndex] = [];
 
 	function flushBuffer(buffer) {
-		buffer.forEach(line => {
+		buffer.forEach((line) => {
 			if (shouldChangeColumn(currentColumnHeight + line.height)) {
 				changeColumn();
 			}
@@ -136,7 +148,9 @@ function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 	}
 
 	function getMaxColumnHeight() {
-		return (pageIndex === 0 && firstPageHeight) ? firstPageHeight : normalPageHeight;
+		return pageIndex === 0 && firstPageHeight
+			? firstPageHeight
+			: normalPageHeight;
 	}
 
 	function shouldChangeColumn(nextHeight) {
@@ -157,7 +171,7 @@ function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 	}
 
 	function shouldChangePage() {
-		return columnIndex === (columnsCount - 1);
+		return columnIndex === columnsCount - 1;
 	}
 
 	return {
@@ -171,13 +185,14 @@ function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 		},
 
 		fitsOnCurrentColumn(bufferHeight) {
-			return (currentColumnHeight + bufferHeight) <= maxColumnHeight;
+			return currentColumnHeight + bufferHeight <= maxColumnHeight;
 		},
 
 		fitsOnNextColumn(bufferHeight) {
-			const nextColumnHeight = (pageIndex === 0 && columnIndex < columnsCount && firstPageHeight)
-				? firstPageHeight
-				: normalPageHeight;
+			const nextColumnHeight =
+				pageIndex === 0 && columnIndex < columnsCount && firstPageHeight
+					? firstPageHeight
+					: normalPageHeight;
 			return bufferHeight <= nextColumnHeight;
 		},
 
@@ -186,4 +201,3 @@ function layoutFactory({ firstPageHeight, normalPageHeight, columnsCount }) {
 		},
 	};
 }
-

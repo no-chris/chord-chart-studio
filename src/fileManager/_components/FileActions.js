@@ -10,27 +10,25 @@ function FileActions(props) {
 		{
 			icon: 'add_circle',
 			text: 'New',
-			action: createFile
+			action: createFile,
 		},
 		{
 			icon: 'create',
 			text: 'Rename',
-			action: enableRename
+			action: enableRename,
 		},
 		{
 			icon: 'delete',
 			text: 'Delete',
-			action: deleteFile
+			action: deleteFile,
 		},
 	];
 
 	return (
 		<div className={'fileManager-actionsList'}>
-			{
-				allActions.map((action, key) =>
-					<FileActionEntry {...action} key={key} />
-				)
-			}
+			{allActions.map((action, key) => (
+				<FileActionEntry {...action} key={key} />
+			))}
 		</div>
 	);
 }

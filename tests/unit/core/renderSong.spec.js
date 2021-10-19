@@ -11,6 +11,8 @@ describe('renderSong()', () => {
 		const input = 'mySong';
 		const rendered = renderSong(input);
 
-		expect(rendered).toEqual('<p class="cmLine"><span class="cmLyricLine">mySong</span></p>');
+		expect(rendered).toEqual(
+			'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>'
+		);
 	});
 });

@@ -6,7 +6,6 @@ import * as actionTypes from '../../../../src/db/files/actionsTypes';
 import { v4 as uuidv4 } from 'uuid';
 
 describe('db/files: actions creators', () => {
-
 	describe('createFile()', () => {
 		test('should create valid action', () => {
 			uuidv4.mockReturnValue('myUUID');
@@ -16,8 +15,8 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					title: 'myTitle',
-					content: ''
-				}
+					content: '',
+				},
 			};
 			const actual = actions.createFile('myTitle');
 
@@ -32,7 +31,6 @@ describe('db/files: actions creators', () => {
 		});
 	});
 
-
 	describe('updateFile()', () => {
 		test('should allow update of both title and content', () => {
 			const expected = {
@@ -40,8 +38,8 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					title: 'myNewTitle',
-					content: 'myNewContent'
-				}
+					content: 'myNewContent',
+				},
 			};
 			const actual = actions.updateFile('myUUID', {
 				title: 'myNewTitle',
@@ -57,7 +55,7 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					title: 'myNewTitle',
-				}
+				},
 			};
 			const actual = actions.updateFile('myUUID', {
 				title: 'myNewTitle',
@@ -72,7 +70,7 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					content: 'myNewContent',
-				}
+				},
 			};
 			const actual = actions.updateFile('myUUID', {
 				content: 'myNewContent',
@@ -82,29 +80,28 @@ describe('db/files: actions creators', () => {
 		});
 
 		test('should throw if given no id', () => {
-			const throwingFn = () => actions.updateFile(undefined, {
-				title: 'myNewTitle',
-				content: 'myNewContent',
-			});
+			const throwingFn = () =>
+				actions.updateFile(undefined, {
+					title: 'myNewTitle',
+					content: 'myNewContent',
+				});
 
 			expect(throwingFn).toThrow(TypeError);
 			expect(throwingFn).toThrow('Cannot update a file without an id');
 		});
 	});
 
-
 	describe('deleteFile()', () => {
 		test('should create valid action', () => {
 			const expected = {
 				type: actionTypes.DB_FILES_DELETE,
 				payload: {
-					id: 'myUUID'
-				}
+					id: 'myUUID',
+				},
 			};
 			const actual = actions.deleteFile('myUUID');
 
 			expect(actual).toEqual(expected);
 		});
 	});
-
 });

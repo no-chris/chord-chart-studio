@@ -10,10 +10,7 @@ export default function Edit() {
 	const rightBarPanel = <RightBarPanel />;
 
 	return (
-		<AppLayout
-			leftBar={fm}
-			rightBar={rightBarPanel}
-		>
+		<AppLayout leftBar={fm} rightBar={rightBarPanel}>
 			<Editor />
 		</AppLayout>
 	);

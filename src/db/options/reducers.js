@@ -14,7 +14,7 @@ export default (state = initialState, action = {}) => {
 			const contextOptions = { ...state[context] };
 			contextOptions[key] = {
 				...contextOptions[key],
-				value
+				value,
 			};
 
 			const newState = {

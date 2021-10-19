@@ -5,7 +5,6 @@ import * as actions from '../../../../src/db/options/actions';
 import * as actionTypes from '../../../../src/db/options/actionsTypes';
 
 describe('db/options: reducers', () => {
-
 	const initialState = deepFreeze(reducers());
 
 	describe('Unknown action', () => {
@@ -22,7 +21,7 @@ describe('db/options: reducers', () => {
 					value: 0,
 					default: 0,
 				},
-			}
+			},
 		});
 
 		test('should allow to set an option value of an existing option', () => {
@@ -32,10 +31,14 @@ describe('db/options: reducers', () => {
 						value: 3,
 						default: 0,
 					},
-				}
+				},
 			};
 
-			const action = actions.setOptionValue('rendering', 'transposeValue', 3);
+			const action = actions.setOptionValue(
+				'rendering',
+				'transposeValue',
+				3
+			);
 			const actual = reducers(startState, action);
 
 			expect(actual).toEqual(expected);
@@ -54,9 +57,5 @@ describe('db/options: reducers', () => {
 
 			expect(actual).toBe(startState);
 		});
-
-
 	});
-
-
 });

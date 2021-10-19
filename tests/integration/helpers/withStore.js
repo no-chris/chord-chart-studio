@@ -13,11 +13,7 @@ export function resetStore() {
 }
 
 export function withStore(Container) {
-	return (
-		<Provider store={getStore()}>
-			{Container}
-		</Provider>
-	);
+	return <Provider store={getStore()}>{Container}</Provider>;
 }
 
 export function getState() {

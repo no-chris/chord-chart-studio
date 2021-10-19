@@ -1,233 +1,215 @@
 @import '../../../../../scss/abstract';
 @import '../themes';
 
-
-html, body, #app {
-  height: 100%;
-  padding: 0;
+html,
+body,
+#app {
+	height: 100%;
+	padding: 0;
 }
-
 
 .appLayout-wrapper {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 }
-
 
 // Sidebars
 
 .leftBar {
-  flex-shrink: 0;
-  width: 15%;
+	flex-shrink: 0;
+	width: 15%;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 
-  &.leftBar-isCollapsed {
-    width: 48px;
-  }
+	&.leftBar-isCollapsed {
+		width: 48px;
+	}
 
-  @include themify($themes) {
-    color: themed('leftBar-txt');
-    background-color: themed('leftBar-bg');
+	@include themify($themes) {
+		color: themed('leftBar-txt');
+		background-color: themed('leftBar-bg');
 
-    &.leftBar-isCollapsed {
-      border-right: 1px solid themed('leftBar-border');
+		&.leftBar-isCollapsed {
+			border-right: 1px solid themed('leftBar-border');
 
-      &:hover {
-        background-color: themed('leftBar-bgHover');
-      }
-    }
-  }
+			&:hover {
+				background-color: themed('leftBar-bgHover');
+			}
+		}
+	}
 
-  @media print {
-    display: none;
-  }
+	@media print {
+		display: none;
+	}
 }
-
 
 .rightBar {
-  flex-shrink: 0;
-  width: 15%;
+	flex-shrink: 0;
+	width: 15%;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 
-  &.rightBar-isCollapsed {
-    width: 48px;
-  }
+	&.rightBar-isCollapsed {
+		width: 48px;
+	}
 
-  @include themify($themes) {
-    color: themed('rightBar-txt');
-    background-color: themed('rightBar-bg');
+	@include themify($themes) {
+		color: themed('rightBar-txt');
+		background-color: themed('rightBar-bg');
 
-    &.rightBar-isCollapsed {
-      border-left: 1px solid themed('rightBar-border');
+		&.rightBar-isCollapsed {
+			border-left: 1px solid themed('rightBar-border');
 
-      &:hover {
-        background-color: themed('rightBar-bgHover');
-      }
-    }
-  }
+			&:hover {
+				background-color: themed('rightBar-bgHover');
+			}
+		}
+	}
 
-  @media print {
-    display: none;
-  }
+	@media print {
+		display: none;
+	}
 }
-
 
 .leftBar-content {
-  overflow-y: scroll;
-  flex: 1 1 auto;
+	overflow-y: scroll;
+	flex: 1 1 auto;
 
-  .leftBar-isCollapsed & {
-    padding: $spacer-tiny $spacer-small;
-    text-align: center;
-    cursor: pointer;
-  }
+	.leftBar-isCollapsed & {
+		padding: $spacer-tiny $spacer-small;
+		text-align: center;
+		cursor: pointer;
+	}
 }
-
 
 .rightBar-content {
-  overflow-y: scroll;
-  flex: 1 1 auto;
+	overflow-y: scroll;
+	flex: 1 1 auto;
 
-  .rightBar-isCollapsed & {
-    padding: $spacer-tiny $spacer-small;
-    text-align: center;
-    cursor: pointer;
-  }
+	.rightBar-isCollapsed & {
+		padding: $spacer-tiny $spacer-small;
+		text-align: center;
+		cursor: pointer;
+	}
 }
-
-
 
 .leftBar-collapser {
-  flex: 0 0 12px;
-  display: flex;
-  cursor: pointer;
+	flex: 0 0 12px;
+	display: flex;
+	cursor: pointer;
 
-  .leftBar-isCollapsed & {
-    display: none;
-  }
+	.leftBar-isCollapsed & {
+		display: none;
+	}
 
-  @include themify($themes) {
-    background-color: themed('leftBar-collapser-bg');
-    border-right: 1px solid themed('leftBar-collapser-border');
+	@include themify($themes) {
+		background-color: themed('leftBar-collapser-bg');
+		border-right: 1px solid themed('leftBar-collapser-border');
 
-    &:hover {
-      background-color: themed('leftBar-collapser-bgHover');
-    }
-  }
+		&:hover {
+			background-color: themed('leftBar-collapser-bgHover');
+		}
+	}
 
-  @include themify($themes) {
-    color: themed('leftBar-collapser-txt');
-  }
+	@include themify($themes) {
+		color: themed('leftBar-collapser-txt');
+	}
 }
-
 
 .leftBar-collapserIcon {
-  flex: 1 1 auto;
-  align-self: center;
-  font-weight: $weight-bold;
+	flex: 1 1 auto;
+	align-self: center;
+	font-weight: $weight-bold;
 
-  .icon {
-    @include font-size(small);
-  }
+	.icon {
+		@include font-size(small);
+	}
 }
-
 
 .rightBar-collapser {
-  flex: 0 0 12px;
-  display: flex;
-  cursor: pointer;
+	flex: 0 0 12px;
+	display: flex;
+	cursor: pointer;
 
-  .rightBar-isCollapsed & {
-    display: none;
-  }
+	.rightBar-isCollapsed & {
+		display: none;
+	}
 
-  @include themify($themes) {
-    background-color: themed('rightBar-collapser-bg');
-    border-left: 1px solid themed('rightBar-collapser-border');
+	@include themify($themes) {
+		background-color: themed('rightBar-collapser-bg');
+		border-left: 1px solid themed('rightBar-collapser-border');
 
-    &:hover {
-      background-color: themed('rightBar-collapser-bgHover');
-    }
-  }
+		&:hover {
+			background-color: themed('rightBar-collapser-bgHover');
+		}
+	}
 
-  @include themify($themes) {
-    color: themed('rightBar-collapser-txt');
-  }
+	@include themify($themes) {
+		color: themed('rightBar-collapser-txt');
+	}
 }
-
 
 .rightBar-collapserIcon {
-  flex: 1 1 auto;
-  align-self: center;
-  font-weight: $weight-bold;
+	flex: 1 1 auto;
+	align-self: center;
+	font-weight: $weight-bold;
 
-  .icon {
-    @include font-size(small);
-  }
+	.icon {
+		@include font-size(small);
+	}
 }
-
-
 
 // Main area
 
 .appLayout-main {
-  flex-grow: 1;
+	flex-grow: 1;
 
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
 }
-
 
 .appLayout-header {
-  flex-shrink: 0;
+	flex-shrink: 0;
 
-  @include themify($themes) {
-    color: themed('header-txt');
-    background-color: themed('header-bg');
-    border-bottom: 2px solid themed('header-border');
-  }
+	@include themify($themes) {
+		color: themed('header-txt');
+		background-color: themed('header-bg');
+		border-bottom: 2px solid themed('header-border');
+	}
 
-  @media print {
-    display: none;
-  }
+	@media print {
+		display: none;
+	}
 }
-
 
 .appLayout-content {
-  overflow-y: auto;
-  flex-grow: 1;
+	overflow-y: auto;
+	flex-grow: 1;
 
-  @media print {
-    overflow-y: visible;
-  }
+	@media print {
+		overflow-y: visible;
+	}
 }
-
 
 .appLayout-footer {
-  flex-shrink: 0;
+	flex-shrink: 0;
 
-  @include themify($themes) {
-    color: themed('footer-txt');
-    background-color: themed('footer-bg');
-    border-top: 1px solid themed('footer-border');
-  }
+	@include themify($themes) {
+		color: themed('footer-txt');
+		background-color: themed('footer-bg');
+		border-top: 1px solid themed('footer-border');
+	}
 
-  @media print {
-    display: none;
-  }
+	@media print {
+		display: none;
+	}
 }
-
-
-
-

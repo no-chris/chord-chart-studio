@@ -1,7 +1,7 @@
 @import '../../../../../scss/abstract';
 
 .appFooter {
-  padding: $spacer-extra-tiny $spacer-small;
+	padding: $spacer-extra-tiny $spacer-small;
 
-  @include font-size(tiny);
+	@include font-size(tiny);
 }

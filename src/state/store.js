@@ -18,12 +18,13 @@ const logger = () => next => action => {
 storeEnhancers.push(applyMiddleware(logger));
 /* */
 
-
 let store;
 
 export function createStore() {
 	if (window.__REDUX_DEVTOOLS_EXTENSION__) {
-		storeEnhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true }));
+		storeEnhancers.push(
+			window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true })
+		);
 	}
 
 	const persistedState = loadState();

@@ -1,13 +1,12 @@
 import * as selectors from '../../../../src/fileManager/_state/selectors';
 
 describe('fileManager: selectors', () => {
-
 	describe('getSelectedId()', () => {
 		test('should return selected Id', () => {
 			const state = {
 				fileManager: {
-					selected: 'myId'
-				}
+					selected: 'myId',
+				},
 			};
 			expect(selectors.getSelectedId(state)).toBe('myId');
 		});
@@ -17,8 +16,8 @@ describe('fileManager: selectors', () => {
 		test('should return renamed Id', () => {
 			const state = {
 				fileManager: {
-					renamed: 'myId'
-				}
+					renamed: 'myId',
+				},
 			};
 			expect(selectors.getRenamedId(state)).toBe('myId');
 		});
@@ -28,8 +27,8 @@ describe('fileManager: selectors', () => {
 		test('should return default title', () => {
 			const state = {
 				fileManager: {
-					defaultTitle: 'default'
-				}
+					defaultTitle: 'default',
+				},
 			};
 			expect(selectors.getDefaultTitle(state)).toBe('default');
 		});

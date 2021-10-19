@@ -1,21 +1,21 @@
 # Tech debt
 
 ## Build & tooling
-- remove handlebars (but depends on CM...)
-- host React on CDN
 
-- have a clear entry point for each feature module
-- add id enricher middleware ?
+-   remove handlebars (but depends on CM...)
+-   host React on CDN
 
-- CSS: decide what to do with the font size mixin
-- CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)
+-   have a clear entry point for each feature module
+-   add id enricher middleware ?
 
-- disable some optinos for authoring: alignBars (true), autoRepeatChords (true), expandSectionRepeats (true)
+-   CSS: decide what to do with the font size mixin
+-   CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)
 
-
+-   disable some optinos for authoring: alignBars (true), autoRepeatChords (true), expandSectionRepeats (true)
 
 ## Component checklist
-- memo ?
-- propTypes ?
-- defaultProps ?
-- visual re-render check
+
+-   memo ?
+-   propTypes ?
+-   defaultProps ?
+-   visual re-render check

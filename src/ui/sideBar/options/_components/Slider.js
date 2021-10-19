@@ -13,7 +13,7 @@ function Slider(props) {
 		optionContext,
 		optionKey,
 		optionValue,
-		setOption
+		setOption,
 	} = props;
 
 	const classNames = ['sb-optionSlider'];
@@ -22,16 +22,11 @@ function Slider(props) {
 	}
 
 	function handleChange(e) {
-		setOption(
-			optionContext,
-			optionKey,
-			Number.parseInt(e.target.value)
-		);
+		setOption(optionContext, optionKey, Number.parseInt(e.target.value));
 	}
 
-	const valueDisplay = (optionValue > 0 && showPlusSymbol)
-		? '+' + optionValue
-		: optionValue;
+	const valueDisplay =
+		optionValue > 0 && showPlusSymbol ? '+' + optionValue : optionValue;
 
 	return (
 		<div className={classNames.join(' ')}>
@@ -43,7 +38,7 @@ function Slider(props) {
 					max={max}
 					value={optionValue}
 					type={'range'}
-					onChange={(isInteractable) ? handleChange : null}
+					onChange={isInteractable ? handleChange : null}
 					disabled={!isInteractable}
 				/>
 			</div>
@@ -64,7 +59,7 @@ Slider.propTypes = {
 };
 
 Slider.defaultProps = {
-	showPlusSymbol: true
+	showPlusSymbol: true,
 };
 
 export default React.memo(Slider);

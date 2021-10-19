@@ -4,6 +4,4 @@ import { connect } from 'react-redux';
 
 import EditorPreview from '../_components/EditorPreview';
 
-export default connect(
-	() => ({})
-)(EditorPreview);
+export default connect(() => ({}))(EditorPreview);

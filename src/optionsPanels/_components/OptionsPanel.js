@@ -11,10 +11,7 @@ function OptionsPanel(props) {
 		getEntryComponent,
 	} = props;
 
-	const classNames = [
-		'optionsPanel',
-		'optionsPanel-' + id
-	];
+	const classNames = ['optionsPanel', 'optionsPanel-' + id];
 
 	let widget, groupWidget;
 
@@ -24,21 +21,23 @@ function OptionsPanel(props) {
 	let renderedGroupWidgets;
 
 	const renderedWidgets = allWidgets.widgetsOrder
-		.filter(widgetId => {
-			return !(hiddenWidgets.includes(widgetId));
+		.filter((widgetId) => {
+			return !hiddenWidgets.includes(widgetId);
 		})
-		.map(widgetId => {
+		.map((widgetId) => {
 			widget = allWidgets.allWidgets[widgetId];
 
 			if (widget.type === 'optionsGroup') {
 				renderedGroupWidgets = widget.groupWidgetsOrder
-					.filter(groupWidgetId => {
-						return !(hiddenWidgets.includes(groupWidgetId));
+					.filter((groupWidgetId) => {
+						return !hiddenWidgets.includes(groupWidgetId);
 					})
-					.map(groupWidgetId => {
+					.map((groupWidgetId) => {
 						groupWidget = widget.allGroupWidgets[groupWidgetId];
 
-						isGroupWidgetInteractable = !(nonInteractableWidgets.includes(widgetId)) && !(nonInteractableWidgets.includes(groupWidgetId));
+						isGroupWidgetInteractable =
+							!nonInteractableWidgets.includes(widgetId) &&
+							!nonInteractableWidgets.includes(groupWidgetId);
 
 						return renderWidget(
 							groupWidgetId,
@@ -48,7 +47,8 @@ function OptionsPanel(props) {
 					});
 
 				GroupComponent = getEntryComponent(widget.type);
-				isGroupInteractable = !(nonInteractableWidgets.includes(widgetId));
+				isGroupInteractable =
+					!nonInteractableWidgets.includes(widgetId);
 
 				return (
 					<GroupComponent
@@ -60,12 +60,11 @@ function OptionsPanel(props) {
 						{renderedGroupWidgets}
 					</GroupComponent>
 				);
-
 			} else {
 				return renderWidget(
 					widgetId,
 					widget,
-					!(nonInteractableWidgets.includes(widgetId))
+					!nonInteractableWidgets.includes(widgetId)
 				);
 			}
 		});
@@ -77,23 +76,17 @@ function OptionsPanel(props) {
 			<WidgetComponent
 				key={widgetId}
 				isInteractable={isInteractable}
-
 				optionContext={localWidget.option.context}
 				optionKey={localWidget.option.key}
 				optionValue={props[localWidget.option.key]}
 				setOption={setOption}
-
 				label={localWidget.label}
 				{...localWidget.typeOptions}
 			/>
 		);
 	}
 
-	return (
-		<div className={classNames.join(' ')}>
-			{renderedWidgets}
-		</div>
-	);
+	return <div className={classNames.join(' ')}>{renderedWidgets}</div>;
 }
 
 OptionsPanel.propTypes = {

@@ -8,15 +8,19 @@ describe('db/options: selectors', () => {
 					options: {
 						rendering: {
 							transposeValue: {
-								value: 3
-							}
-						}
-					}
-				}
+								value: 3,
+							},
+						},
+					},
+				},
 			};
 			const expected = 3;
 
-			const result = selectors.getOptionValue(state, 'rendering', 'transposeValue');
+			const result = selectors.getOptionValue(
+				state,
+				'rendering',
+				'transposeValue'
+			);
 
 			expect(result).toEqual(expected);
 		});
@@ -27,11 +31,11 @@ describe('db/options: selectors', () => {
 					options: {
 						rendering: {
 							transposeValue: {
-								value: 3
-							}
-						}
-					}
-				}
+								value: 3,
+							},
+						},
+					},
+				},
 			};
 			const result = selectors.getOptionValue(state, 'user', 'theme');
 
@@ -44,13 +48,17 @@ describe('db/options: selectors', () => {
 					options: {
 						rendering: {
 							transposeValue: {
-								value: 3
-							}
-						}
-					}
-				}
+								value: 3,
+							},
+						},
+					},
+				},
 			};
-			const result = selectors.getOptionValue(state, 'rendering', 'fontSize');
+			const result = selectors.getOptionValue(
+				state,
+				'rendering',
+				'fontSize'
+			);
 
 			expect(result).toBeUndefined();
 		});
@@ -63,17 +71,17 @@ describe('db/options: selectors', () => {
 					options: {
 						rendering: {
 							transposeValue: {
-								value: 3
+								value: 3,
 							},
 							fontSize: {
-								value: 4
+								value: 4,
 							},
 							simplify: {
-								value: true
+								value: true,
 							},
-						}
-					}
-				}
+						},
+					},
+				},
 			};
 			const expected = {
 				transposeValue: 3,
@@ -92,17 +100,15 @@ describe('db/options: selectors', () => {
 					options: {
 						rendering: {
 							transposeValue: {
-								value: 3
-							}
-						}
-					}
-				}
+								value: 3,
+							},
+						},
+					},
+				},
 			};
 			const result = selectors.getContext(state, 'user');
 
 			expect(result).toBeUndefined();
 		});
-
 	});
-
 });

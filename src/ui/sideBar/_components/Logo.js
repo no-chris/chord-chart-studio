@@ -12,7 +12,10 @@ function Logo() {
 			</div>
 
 			<div className={'logo-isExpanded'}>
-				<span className={'logo-icon'}><Icon iconName={'queue_music'} /></span>Chords Charts Studio
+				<span className={'logo-icon'}>
+					<Icon iconName={'queue_music'} />
+				</span>
+				Chords Charts Studio
 			</div>
 		</div>
 	);

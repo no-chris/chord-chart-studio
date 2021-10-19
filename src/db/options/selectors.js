@@ -11,5 +11,5 @@ export const getContext = (state, context) => {
 	if (!state.db.options[context]) {
 		return;
 	}
-	return _mapValues(state.db.options[context], option => option.value);
+	return _mapValues(state.db.options[context], (option) => option.value);
 };

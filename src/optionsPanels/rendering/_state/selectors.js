@@ -47,8 +47,17 @@ export const getHiddenWidgets = (state) => {
 	const editorMode = getEditorMode(state);
 
 	//const showChords = getOptionValue(state, 'rendering', 'showChords');
-	const harmonizeAccidentals = getOptionValue(state, 'rendering', 'harmonizeAccidentals');
-	const chordsAndLyricsDisplay = getOptionValue(state, 'rendering', 'chordsAndLyricsDisplay');
+	const harmonizeAccidentals = getOptionValue(
+		state,
+		'rendering',
+		'harmonizeAccidentals'
+	);
+	/*
+	const chordsAndLyricsDisplay = getOptionValue(
+		state,
+		'rendering',
+		'chordsAndLyricsDisplay'
+	);
 
 	//if (!showChords) {
 	//	hiddenWidgets.push('instrument');
@@ -56,6 +65,8 @@ export const getHiddenWidgets = (state) => {
 	if (chordsAndLyricsDisplay !== 'all') {
 		hiddenWidgets.push('alignChordsWithLyrics');
 	}
+	
+	 */
 	if (!harmonizeAccidentals) {
 		hiddenWidgets.push('preferredAccidentals');
 	}

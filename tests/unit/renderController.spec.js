@@ -15,11 +15,7 @@ describe('renderController', () => {
 	});
 
 	const controller = () => {
-		return (
-			<div className={'rendererController'}>
-				myController
-			</div>
-		);
+		return <div className={'rendererController'}>myController</div>;
 	};
 
 	test('Should render component given as an parameter', () => {
@@ -39,6 +35,3 @@ describe('renderController', () => {
 		expect(rendered).toBeInstanceOf(Element);
 	});
 });
-
-
-

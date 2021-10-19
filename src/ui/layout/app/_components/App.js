@@ -36,11 +36,18 @@ function App(props) {
 	return (
 		<div className={'appLayout-wrapper'}>
 			<section className={leftBarClassNames.join(' ')}>
-				<div className={'leftBar-content'} onClick={(isLeftBarCollapsed) ? toggleLeftBar : null}>
+				<div
+					className={'leftBar-content'}
+					onClick={isLeftBarCollapsed ? toggleLeftBar : null}
+				>
 					<Logo />
 					{leftBar}
 				</div>
-				<div className={'leftBar-collapser'} onClick={toggleLeftBar} data-testid={'leftBar-collapser'}>
+				<div
+					className={'leftBar-collapser'}
+					onClick={toggleLeftBar}
+					data-testid={'leftBar-collapser'}
+				>
 					<span className={'leftBar-collapserIcon'}>
 						<Icon iconName={'keyboard_arrow_left'} />
 					</span>
@@ -58,16 +65,23 @@ function App(props) {
 					{props.children}
 				</section>
 				<section className={'appLayout-footer'}>
-					<Footer/>
+					<Footer />
 				</section>
 			</section>
 			<section className={rightBarClassNames.join(' ')}>
-				<div className={'rightBar-collapser'} onClick={toggleRightBar} data-testid={'rightBar-collapser'}>
+				<div
+					className={'rightBar-collapser'}
+					onClick={toggleRightBar}
+					data-testid={'rightBar-collapser'}
+				>
 					<span className={'rightBar-collapserIcon'}>
 						<Icon iconName={'keyboard_arrow_right'} />
 					</span>
 				</div>
-				<div className={'rightBar-content'} onClick={(isRightBarCollapsed) ? toggleRightBar : null}>
+				<div
+					className={'rightBar-content'}
+					onClick={isRightBarCollapsed ? toggleRightBar : null}
+				>
 					{rightBar}
 				</div>
 			</section>

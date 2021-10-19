@@ -19,7 +19,7 @@ const version = {
 	'chord-mark': chordMarkVersion,
 };
 
-const serialized = JSON.stringify(version).replace(/"/g, '\'');
+const serialized = JSON.stringify(version).replace(/"/g, "'");
 
 const fileContent = `export default () => (${serialized});`;
 

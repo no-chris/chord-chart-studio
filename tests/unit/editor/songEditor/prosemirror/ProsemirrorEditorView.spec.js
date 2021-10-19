@@ -8,7 +8,6 @@ import ProsemirrorEditorView from '../../../../../src/editor/songEditor/prosemir
 afterEach(cleanup);
 
 describe('ProsemirrorEditorView', () => {
-
 	let props = {};
 	const updateFile = jest.fn();
 
@@ -23,9 +22,7 @@ describe('ProsemirrorEditorView', () => {
 
 	describe('Rendering and DOM updated', () => {
 		test('Should create Prosemirror editor with correct content', () => {
-			const { getByText } = render(<ProsemirrorEditorView
-				{...props}
-			/>);
+			const { getByText } = render(<ProsemirrorEditorView {...props} />);
 			const pm = getByText(props.editorContent).closest('.ProseMirror');
 
 			expect(pm).toBeInstanceOf(Element);
@@ -35,19 +32,18 @@ describe('ProsemirrorEditorView', () => {
 			let result = {};
 
 			act(() => {
-				result = render(<ProsemirrorEditorView
-					{...props}
-				/>);
+				result = render(<ProsemirrorEditorView {...props} />);
 			});
 			const { rerender, getByText } = result;
 			const pm1 = getByText(props.editorContent).closest('.ProseMirror');
 
 			act(() => {
-				rerender(<ProsemirrorEditorView
-					{...props}
-					editorContent={'myNewContent'}
-				/>);
-
+				rerender(
+					<ProsemirrorEditorView
+						{...props}
+						editorContent={'myNewContent'}
+					/>
+				);
 			});
 			// changes are managed by Prosemirror itself, not via props changes, so 'myNewContent' should not be reflected here
 			const pm2 = getByText(props.editorContent).closest('.ProseMirror');
@@ -60,21 +56,24 @@ describe('ProsemirrorEditorView', () => {
 			let result = {};
 
 			act(() => {
-				result = render(<ProsemirrorEditorView
-					{...props}
-					selectedFileId={'myId1'}
-				/>);
+				result = render(
+					<ProsemirrorEditorView
+						{...props}
+						selectedFileId={'myId1'}
+					/>
+				);
 			});
 			const { rerender, getByText } = result;
 			const pm1 = getByText(props.editorContent).closest('.ProseMirror');
 
 			act(() => {
-				rerender(<ProsemirrorEditorView
-					{...props}
-					selectedFileId={'myId2'}
-					editorContent={'myNewContent'}
-				/>);
-
+				rerender(
+					<ProsemirrorEditorView
+						{...props}
+						selectedFileId={'myId2'}
+						editorContent={'myNewContent'}
+					/>
+				);
 			});
 			const pm2 = getByText('myNewContent').closest('.ProseMirror');
 
@@ -86,23 +85,25 @@ describe('ProsemirrorEditorView', () => {
 			let result = {};
 
 			act(() => {
-				result = render(<ProsemirrorEditorView
-					{...props}
-					selectedFileId={'myId1'}
-				/>);
+				result = render(
+					<ProsemirrorEditorView
+						{...props}
+						selectedFileId={'myId1'}
+					/>
+				);
 			});
 			const { container, rerender, getByText, queryByText } = result;
 
 			// check that has been rendered first
 			getByText(props.editorContent);
-			expect(container.querySelector('.ProseMirror')).toBeInstanceOf(Element);
+			expect(container.querySelector('.ProseMirror')).toBeInstanceOf(
+				Element
+			);
 
 			act(() => {
-				rerender(<ProsemirrorEditorView
-					{...props}
-					selectedFileId={''}
-				/>);
-
+				rerender(
+					<ProsemirrorEditorView {...props} selectedFileId={''} />
+				);
 			});
 
 			// check that has been destroyed
@@ -112,13 +113,14 @@ describe('ProsemirrorEditorView', () => {
 	});
 
 	describe('onChange()', () => {
-
 		beforeAll(() => {
 			global.MutationObserver = class {
 				constructor() {}
 				disconnect() {}
 				observe() {}
-				takeRecords() { return []; }
+				takeRecords() {
+					return [];
+				}
 			};
 		});
 
@@ -127,22 +129,22 @@ describe('ProsemirrorEditorView', () => {
 		});
 
 		test('should call the updateFile callback', () => {
-			const { getByText } = render(<ProsemirrorEditorView
-				{...props}
-			/>);
+			const { getByText } = render(<ProsemirrorEditorView {...props} />);
 			getByText(props.editorContent).closest('.ProseMirror');
 
 			ProsemirrorEditorView.editorView.dispatch(
-				ProsemirrorEditorView.editorView.state.tr.insertText('Modified: ')
+				ProsemirrorEditorView.editorView.state.tr.insertText(
+					'Modified: '
+				)
 			);
 
-			expect(updateFile).toHaveBeenCalledWith('myId', { content: 'Modified: mySong in editor' });
+			expect(updateFile).toHaveBeenCalledWith('myId', {
+				content: 'Modified: mySong in editor',
+			});
 		});
 
 		test('should not call the updateFile callback if transaction does not result in doc change', () => {
-			const { getByText } = render(<ProsemirrorEditorView
-				{...props}
-			/>);
+			const { getByText } = render(<ProsemirrorEditorView {...props} />);
 			getByText(props.editorContent).closest('.ProseMirror');
 
 			// mock getSelection to prevent Prosemirror error
@@ -161,6 +163,5 @@ describe('ProsemirrorEditorView', () => {
 
 			document.getSelection = undefined;
 		});
-
 	});
 });

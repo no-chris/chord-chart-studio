@@ -8,9 +8,7 @@ function Icon(props) {
 
 	const classList = ['icon', 'material-icons'];
 
-	return (
-		<i className={classList.join(' ')}>{iconName}</i>
-	);
+	return <i className={classList.join(' ')}>{iconName}</i>;
 }
 
 Icon.propTypes = {

@@ -1,19 +1,15 @@
 @import '../../../../scss/abstract';
 
-
 $themes: (
-        light: (
-
-        ),
-        dark: (
-                editorPreview-txt: cv(dark-foreground, dark10),
-        ),
+	light: (),
+	dark: (
+		editorPreview-txt: cv(dark-foreground, dark10),
+	),
 );
 
 .editorPreview {
-  @include themify($themes) {
+	@include themify($themes) {
 		color: themed('editorPreview-txt');
-    background-color: themed('editorPreview-bg');
-  }
-
+		background-color: themed('editorPreview-bg');
+	}
 }

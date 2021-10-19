@@ -16,10 +16,7 @@ export default function Rendering(props) {
 			</div>
 
 			<div className={'renderingOptionsPanel-isExpanded'}>
-				<SidebarOptionPanel
-					{...props}
-					id={'rendering'}
-				/>
+				<SidebarOptionPanel {...props} id={'rendering'} />
 			</div>
 		</div>
 	);
