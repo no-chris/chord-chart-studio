@@ -1,17 +1,16 @@
 import * as selectors from '../../../../../../src/ui/layout/app/_state/selectors';
 
 describe('ui/layout/app: selectors', () => {
-
 	describe('isLeftBarCollapsed()', () => {
 		test('should return isLeftBarCollapsed', () => {
 			const state = {
 				ui: {
 					layout: {
 						app: {
-							isLeftBarCollapsed: true
-						}
-					}
-				}
+							isLeftBarCollapsed: true,
+						},
+					},
+				},
 			};
 			expect(selectors.isLeftBarCollapsed(state)).toBe(true);
 		});
@@ -23,10 +22,10 @@ describe('ui/layout/app: selectors', () => {
 				ui: {
 					layout: {
 						app: {
-							isRightBarCollapsed: true
-						}
-					}
-				}
+							isRightBarCollapsed: true,
+						},
+					},
+				},
 			};
 			expect(selectors.isRightBarCollapsed(state)).toBe(true);
 		});
@@ -38,13 +37,12 @@ describe('ui/layout/app: selectors', () => {
 				ui: {
 					layout: {
 						app: {
-							editorMode: 'myMode'
-						}
-					}
-				}
+							editorMode: 'myMode',
+						},
+					},
+				},
 			};
 			expect(selectors.getEditorMode(state)).toBe('myMode');
 		});
 	});
-
 });

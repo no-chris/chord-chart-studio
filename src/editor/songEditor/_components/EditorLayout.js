@@ -19,9 +19,7 @@ function EditorLayout(props) {
 				/>
 			</div>
 			<div className={'songEditor-preview'}>
-				<EditorPreview
-					selectedFile={selectedFile}
-				/>
+				<EditorPreview selectedFile={selectedFile} />
 			</div>
 		</div>
 	);

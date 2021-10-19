@@ -1,26 +1,22 @@
 @import '../../../../scss/abstract';
 
-
 $themes: (
-	light: (
-
-	),
+	light: (),
 	dark: (
 		song-txt: cv(dark-background),
 		song-bg: cv(dark-foreground),
 	),
 );
 
-
 .exportPreview {
-  padding: $spacer-small;
-  @include themify($themes) {
-    background-color: themed('song-bg');
-  }
+	padding: $spacer-small;
+	@include themify($themes) {
+		background-color: themed('song-bg');
+	}
 }
 
 .exp-SongRenderer {
-  @include themify($themes) {
-    color: themed('song-txt');
-  }
+	@include themify($themes) {
+		color: themed('song-txt');
+	}
 }

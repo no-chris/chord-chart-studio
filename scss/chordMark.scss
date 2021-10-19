@@ -1,76 +1,50 @@
 @import './abstract';
 
-
 $themes: (
-	light: (
-
-
-	),
+	light: (),
 	dark: (
 		// editorPreview
 		editor-line-txt: cv(dark-foreground, dark10),
-
 		editor-sectionTitle-border: cv(dark-foreground, dark30),
-
 		editor-chordSymbol-txt: cv(dark-foreground, dark10),
 		editor-chordSymbol-bg: cv(dark-secondary, light10),
 		editor-barSeparator-txt: cv(dark-foreground, dark30),
 		editor-chordLineRepeat-txt: cv(dark-secondary, light20),
-
 		editor-lineRepeat-txt: cv(dark-secondary, light20),
-
-
 		// playRenderer
 		play-line-txt: cv(dark-foreground, dark10),
-
 		play-sectionTitle-border: cv(dark-foreground, fade),
-
 		play-chordSymbol-txt--base: cv(dark-foreground, dark10),
 		play-barSeparator-txt--base: cv(dark-foreground, dark30),
-
 		play-chordSymbol-txt--red: cv(dark-red),
 		play-barSeparator-txt--red: cv(dark-red, light10),
-
 		play-chordSymbol-txt--yellow: cv(dark-yellow, dark10),
 		play-barSeparator-txt--yellow: cv(dark-yellow, dark20),
-
 		play-chordSymbol-txt--green: cv(dark-green),
 		play-barSeparator-txt--green: cv(dark-green, light10),
-
 		play-chordSymbol-bg: cv(dark-secondary, light3),
-
-
 		// printRenderer
 		print-song-txt: cv(dark-background),
-
 		print-chordSymbol-bg: cv(dark-foreground, dark5),
 		print-barSeparator-txt: cv(dark-foreground, dark30),
-
-
 		// exportPreview
 		export-song-txt: cv(dark-background),
-
-
 	),
 );
 
-
-
 .cmLine {
-  margin: 0;
-  font-family: $font-family-monospace;
-  white-space: pre-wrap;
+	margin: 0;
+	font-family: $font-family-monospace;
+	white-space: pre-wrap;
 
-
-  // editorPreview
-  .editorPreview & {
+	// editorPreview
+	.editorPreview & {
 		padding: 0 $spacer-small;
 		@include font-size(small);
-  }
-  .exportPreview & {
-    @include font-size(small);
-  }
-
+	}
+	.exportPreview & {
+		@include font-size(small);
+	}
 
 	// playRenderer
 	.playRenderer {
@@ -110,12 +84,10 @@ $themes: (
 		font-size: 17px;
 	}
 
-
 	// printPreview
 	.printPreview & {
 		color: black;
 	}
-
 
 	// exportRenderer
 	.playRenderer {
@@ -123,21 +95,17 @@ $themes: (
 	}
 }
 
-
-
 .cmLyricLine {
-
-  // editorPreview
-  .editorPreview & {
-    @include themify($themes) {
-      color: themed('editor-line-txt');
-    }
-  }
+	// editorPreview
+	.editorPreview & {
+		@include themify($themes) {
+			color: themed('editor-line-txt');
+		}
+	}
 	.editorPreview .cmLine--isFromSectionCopy &,
-  .editorPreview .cmLine--isFromSectionRepeat & {
+	.editorPreview .cmLine--isFromSectionRepeat & {
 		opacity: 0.5;
-  }
-
+	}
 
 	// playRenderer
 	.playRenderer & {
@@ -145,7 +113,6 @@ $themes: (
 			color: themed('play-line-txt');
 		}
 	}
-
 
 	// printPreview
 	.printPreview & {
@@ -155,32 +122,25 @@ $themes: (
 	}
 }
 
-
-
 .cmChordLine {
-
 }
 
-
-
 .cmChordSymbol {
-
-  // editorPreview
-  .editorPreview & {
-    font-weight: $weight-bold;
-    @include themify($themes) {
-      color: themed('editor-chordSymbol-txt');
-      background-color: themed('editor-chordSymbol-bg');
-    }
-  }
+	// editorPreview
+	.editorPreview & {
+		font-weight: $weight-bold;
+		@include themify($themes) {
+			color: themed('editor-chordSymbol-txt');
+			background-color: themed('editor-chordSymbol-bg');
+		}
+	}
 	.editorPreview .cmLine--isFromSectionRepeat &,
-  .editorPreview .cmLine--isFromAutoRepeatChords &,
+	.editorPreview .cmLine--isFromAutoRepeatChords &,
 	.editorPreview .cmLine--isFromSectionCopy &,
-  .editorPreview .cmLine--isFromChordLineRepeater & {
+	.editorPreview .cmLine--isFromChordLineRepeater & {
 		opacity: 0.3;
 		background-color: transparent;
 	}
-
 
 	// playRenderer
 	.playRenderer.cmChordSymbol--chordsColor-base & {
@@ -209,7 +169,6 @@ $themes: (
 		}
 	}
 
-
 	// printPreview
 	.printPreview & {
 		font-weight: $weight-bold;
@@ -221,70 +180,63 @@ $themes: (
 	}
 
 	// exportPreview
-  .exportPreview & {
-    font-weight: normal;
-  }
+	.exportPreview & {
+		font-weight: normal;
+	}
 }
 
-
-
 .cmBarSeparator {
-  //margin: 0 10px;
+	//margin: 0 10px;
 
-  &:first-of-type {
-    margin-left: 0;
-  }
+	&:first-of-type {
+		margin-left: 0;
+	}
 
-  &:last-of-type {
-    margin-right: 0;
-  }
+	&:last-of-type {
+		margin-right: 0;
+	}
 
-  // editorPreview
-  .editorPreview & {
-    @include themify($themes) {
-      color: themed('editor-barSeparator-txt');
-    }
-  }
-  .editorPreview .cmLine--isFromChordLineRepeater &,
-  .editorPreview .cmLine--isFromSectionCopy &,
+	// editorPreview
+	.editorPreview & {
+		@include themify($themes) {
+			color: themed('editor-barSeparator-txt');
+		}
+	}
+	.editorPreview .cmLine--isFromChordLineRepeater &,
+	.editorPreview .cmLine--isFromSectionCopy &,
 	.editorPreview .cmLine--isFromSectionRepeat & {
 		opacity: 0.3;
 	}
 
-
 	// playRenderer
-  .playRenderer.cmChordSymbol--chordsColor-base & {
-    @include themify($themes) {
-      color: themed('play-barSeparator-txt--base');
-    }
-  }
-  .playRenderer.cmChordSymbol--chordsColor-red & {
-    @include themify($themes) {
-      color: themed('play-barSeparator-txt--red');
-    }
-  }
-  .playRenderer.cmChordSymbol--chordsColor-yellow & {
-    @include themify($themes) {
-      color: themed('play-barSeparator-txt--yellow');
-    }
-  }
-  .playRenderer.cmChordSymbol--chordsColor-green & {
-    @include themify($themes) {
-      color: themed('play-barSeparator-txt--green');
-    }
-  }
-
+	.playRenderer.cmChordSymbol--chordsColor-base & {
+		@include themify($themes) {
+			color: themed('play-barSeparator-txt--base');
+		}
+	}
+	.playRenderer.cmChordSymbol--chordsColor-red & {
+		@include themify($themes) {
+			color: themed('play-barSeparator-txt--red');
+		}
+	}
+	.playRenderer.cmChordSymbol--chordsColor-yellow & {
+		@include themify($themes) {
+			color: themed('play-barSeparator-txt--yellow');
+		}
+	}
+	.playRenderer.cmChordSymbol--chordsColor-green & {
+		@include themify($themes) {
+			color: themed('play-barSeparator-txt--green');
+		}
+	}
 
 	// printPreview
-  .printPreview & {
-    @include themify($themes) {
-      color: themed('print-barSeparator-txt');
-    }
-  }
-
+	.printPreview & {
+		@include themify($themes) {
+			color: themed('print-barSeparator-txt');
+		}
+	}
 }
-
-
 
 .cmSectionLabel {
 	.editorPreview &,
@@ -303,21 +255,17 @@ $themes: (
 		border-bottom-width: 1px;
 	}
 
-
-
-  // editorPreview
-  .editorPreview & {
-
-    @include themify($themes) {
-      color: themed('editor-line-txt');
-      border-color: themed('editor-sectionTitle-border');
-    }
-  }
+	// editorPreview
+	.editorPreview & {
+		@include themify($themes) {
+			color: themed('editor-line-txt');
+			border-color: themed('editor-sectionTitle-border');
+		}
+	}
 	.editorPreview .cmLine--isFromSectionCopy &,
-  .editorPreview .cmLine--isFromSectionRepeat & {
+	.editorPreview .cmLine--isFromSectionRepeat & {
 		opacity: 0.3;
 	}
-
 
 	// playRenderer
 	.playRenderer & {
@@ -327,17 +275,13 @@ $themes: (
 		}
 	}
 
-
 	// exportPreview
 	.exportPreview & {
 		text-transform: uppercase;
 	}
 }
 
-
-
 .cmTimeSignature {
-
 	.editorPreview &,
 	.playRenderer &,
 	.printPreview & {
@@ -349,13 +293,12 @@ $themes: (
 		line-height: 2em;
 	}
 
-
-  // editorPreview
-  .editorPreview & {
-    @include themify($themes) {
-      color: themed('editor-line-txt');
-    }
-  }
+	// editorPreview
+	.editorPreview & {
+		@include themify($themes) {
+			color: themed('editor-line-txt');
+		}
+	}
 
 	// playRenderer
 	.playRenderer & {

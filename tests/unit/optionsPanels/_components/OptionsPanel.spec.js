@@ -5,7 +5,6 @@ import renderer from 'react-test-renderer';
 import OptionsPanel from '../../../../src/optionsPanels/_components/OptionsPanel';
 
 describe('OptionsPanel', () => {
-
 	const allWidgets = {
 		widgetsOrder: ['widget1', 'widget2', 'optionsGroup1'],
 		allWidgets: {
@@ -15,13 +14,13 @@ describe('OptionsPanel', () => {
 				typeOptions: {
 					should: 'be',
 					forwarded: 'to',
-					widget: 'component'
+					widget: 'component',
 				},
 				label: 'topLevelWidget1',
 				option: {
 					context: 'topLevelWidget1Context',
 					key: 'topLevelWidget1Key',
-				}
+				},
 			},
 
 			// another top-level widget, no type options
@@ -31,7 +30,7 @@ describe('OptionsPanel', () => {
 				option: {
 					context: 'topLevelWidget2Context',
 					key: 'topLevelWidget2Key',
-				}
+				},
 			},
 
 			// grouped widgets
@@ -47,13 +46,13 @@ describe('OptionsPanel', () => {
 						typeOptions: {
 							should: 'be',
 							forwarded: 'to',
-							widget: 'component'
+							widget: 'component',
 						},
 						label: 'group1Widget1',
 						option: {
 							context: 'group1Widget1Context',
 							key: 'group1Widget1Key',
-						}
+						},
 					},
 					group1Widget2: {
 						type: 'mockWidget',
@@ -61,19 +60,15 @@ describe('OptionsPanel', () => {
 						option: {
 							context: 'group1Widget2Context',
 							key: 'group1Widget2Key',
-						}
-					}
-				}
-			}
-		}
+						},
+					},
+				},
+			},
+		},
 	};
 
 	function MockWidget(props) {
-		return (
-			<div>
-				{props.label}
-			</div>
-		);
+		return <div>{props.label}</div>;
 	}
 
 	function MockOptionGroup(props) {
@@ -94,26 +89,23 @@ describe('OptionsPanel', () => {
 			nonInteractableWidgets: [],
 			hiddenWidgets: [],
 			setOption,
-			getEntryComponent: (widgetId) => (widgetId === 'optionsGroup') ? MockOptionGroup : MockWidget,
+			getEntryComponent: (widgetId) =>
+				widgetId === 'optionsGroup' ? MockOptionGroup : MockWidget,
 		};
 		setOption.mockClear();
 	});
 
-
 	describe('Option panel id', () => {
 		test('should set a class on the root component with the given id', () => {
-			const component = renderer.create(
-				<OptionsPanel
-					{...props}
-				/>,
-			);
+			const component = renderer.create(<OptionsPanel {...props} />);
 
 			const optionPanel = component.toJSON();
 
-			expect(optionPanel.props.className).toContain('optionsPanel-panelId');
+			expect(optionPanel.props.className).toContain(
+				'optionsPanel-panelId'
+			);
 		});
 	});
-
 
 	describe('Widgets API', () => {
 		test('Should forward correct props to widgets components', () => {
@@ -125,7 +117,7 @@ describe('OptionsPanel', () => {
 					topLevelWidget2Key={'topLevelWidget2Value'}
 					group1Widget1Key={'group1Widget1Value'}
 					group1Widget2Key={'group1Widget2Value'}
-				/>,
+				/>
 			);
 
 			const allRenderedWidgets = component.root.findAllByType(MockWidget);
@@ -133,9 +125,15 @@ describe('OptionsPanel', () => {
 			expect(allRenderedWidgets.length).toBe(4);
 
 			expect(allRenderedWidgets[0].props.isInteractable).toBe(true);
-			expect(allRenderedWidgets[0].props.optionContext).toBe('topLevelWidget1Context');
-			expect(allRenderedWidgets[0].props.optionKey).toBe('topLevelWidget1Key');
-			expect(allRenderedWidgets[0].props.optionValue).toBe('topLevelWidget1Value');
+			expect(allRenderedWidgets[0].props.optionContext).toBe(
+				'topLevelWidget1Context'
+			);
+			expect(allRenderedWidgets[0].props.optionKey).toBe(
+				'topLevelWidget1Key'
+			);
+			expect(allRenderedWidgets[0].props.optionValue).toBe(
+				'topLevelWidget1Value'
+			);
 			expect(allRenderedWidgets[0].props.setOption).toBe(setOption);
 			expect(allRenderedWidgets[0].props.label).toBe('topLevelWidget1');
 			expect(allRenderedWidgets[0].props.should).toBe('be');
@@ -143,16 +141,28 @@ describe('OptionsPanel', () => {
 			expect(allRenderedWidgets[0].props.widget).toBe('component');
 
 			expect(allRenderedWidgets[1].props.isInteractable).toBe(true);
-			expect(allRenderedWidgets[1].props.optionContext).toBe('topLevelWidget2Context');
-			expect(allRenderedWidgets[1].props.optionKey).toBe('topLevelWidget2Key');
-			expect(allRenderedWidgets[1].props.optionValue).toBe('topLevelWidget2Value');
+			expect(allRenderedWidgets[1].props.optionContext).toBe(
+				'topLevelWidget2Context'
+			);
+			expect(allRenderedWidgets[1].props.optionKey).toBe(
+				'topLevelWidget2Key'
+			);
+			expect(allRenderedWidgets[1].props.optionValue).toBe(
+				'topLevelWidget2Value'
+			);
 			expect(allRenderedWidgets[1].props.setOption).toBe(setOption);
 			expect(allRenderedWidgets[1].props.label).toBe('topLevelWidget2');
 
 			expect(allRenderedWidgets[2].props.isInteractable).toBe(true);
-			expect(allRenderedWidgets[2].props.optionContext).toBe('group1Widget1Context');
-			expect(allRenderedWidgets[2].props.optionKey).toBe('group1Widget1Key');
-			expect(allRenderedWidgets[2].props.optionValue).toBe('group1Widget1Value');
+			expect(allRenderedWidgets[2].props.optionContext).toBe(
+				'group1Widget1Context'
+			);
+			expect(allRenderedWidgets[2].props.optionKey).toBe(
+				'group1Widget1Key'
+			);
+			expect(allRenderedWidgets[2].props.optionValue).toBe(
+				'group1Widget1Value'
+			);
 			expect(allRenderedWidgets[2].props.setOption).toBe(setOption);
 			expect(allRenderedWidgets[2].props.label).toBe('group1Widget1');
 			expect(allRenderedWidgets[2].props.should).toBe('be');
@@ -160,19 +170,21 @@ describe('OptionsPanel', () => {
 			expect(allRenderedWidgets[2].props.widget).toBe('component');
 
 			expect(allRenderedWidgets[3].props.isInteractable).toBe(true);
-			expect(allRenderedWidgets[3].props.optionContext).toBe('group1Widget2Context');
-			expect(allRenderedWidgets[3].props.optionKey).toBe('group1Widget2Key');
-			expect(allRenderedWidgets[3].props.optionValue).toBe('group1Widget2Value');
+			expect(allRenderedWidgets[3].props.optionContext).toBe(
+				'group1Widget2Context'
+			);
+			expect(allRenderedWidgets[3].props.optionKey).toBe(
+				'group1Widget2Key'
+			);
+			expect(allRenderedWidgets[3].props.optionValue).toBe(
+				'group1Widget2Value'
+			);
 			expect(allRenderedWidgets[3].props.setOption).toBe(setOption);
 			expect(allRenderedWidgets[3].props.label).toBe('group1Widget2');
 		});
 
 		test('Should forward correct props to OptionGroup component', () => {
-			const component = renderer.create(
-				<OptionsPanel
-					{...props}
-				/>,
-			);
+			const component = renderer.create(<OptionsPanel {...props} />);
 
 			const optionGroup = component.root.findByType(MockOptionGroup);
 
@@ -182,14 +194,13 @@ describe('OptionsPanel', () => {
 		});
 	});
 
-
 	describe('Widgets visibility', () => {
 		test('Should not render hidden widgets', () => {
 			const component = renderer.create(
 				<OptionsPanel
 					{...props}
 					hiddenWidgets={['widget1', 'group1Widget2']}
-				/>,
+				/>
 			);
 
 			const allRenderedWidgets = component.root.findAllByType(MockWidget);
@@ -201,14 +212,13 @@ describe('OptionsPanel', () => {
 		});
 	});
 
-
 	describe('Widgets interactability', () => {
 		test('Should forward correct isInteractable state to widgets', () => {
 			const component = renderer.create(
 				<OptionsPanel
 					{...props}
 					nonInteractableWidgets={['widget1', 'group1Widget2']}
-				/>,
+				/>
 			);
 
 			const allRenderedWidgets = component.root.findAllByType(MockWidget);
@@ -228,7 +238,7 @@ describe('OptionsPanel', () => {
 				<OptionsPanel
 					{...props}
 					nonInteractableWidgets={['optionsGroup1']}
-				/>,
+				/>
 			);
 
 			const allRenderedWidgets = component.root.findAllByType(MockWidget);

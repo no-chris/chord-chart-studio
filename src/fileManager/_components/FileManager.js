@@ -19,7 +19,6 @@ function FileManager(props) {
 		deleteFile,
 		enableRename,
 		updateFile,
-
 	} = props;
 
 	return (
@@ -37,21 +36,19 @@ function FileManager(props) {
 					enableRename={() => enableRename(selected)}
 				/>
 				<ul className={'fileManager-entriesList'}>
-					{
-						allTitles.map(file =>
-							<FileEntry
-								title={file.title}
-								defaultTitle={defaultTitle}
-								fileId={file.id}
-								isSelected={selected === file.id}
-								isRenamed={renamed === file.id}
-								selectFile={selectFile}
-								updateFile={updateFile}
-								enableRename={enableRename}
-								key={file.id}
-							/>
-						)
-					}
+					{allTitles.map((file) => (
+						<FileEntry
+							title={file.title}
+							defaultTitle={defaultTitle}
+							fileId={file.id}
+							isSelected={selected === file.id}
+							isRenamed={renamed === file.id}
+							selectFile={selectFile}
+							updateFile={updateFile}
+							enableRename={enableRename}
+							key={file.id}
+						/>
+					))}
 				</ul>
 			</div>
 		</div>

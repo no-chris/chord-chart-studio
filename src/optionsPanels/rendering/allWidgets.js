@@ -23,7 +23,7 @@ export default {
 					{
 						id: 'styleChordMark',
 						label: 'ChordMark',
-						value: 'chordmark'
+						value: 'chordmark',
 					},
 					// {
 					// 	id: 'styleChordpro',
@@ -34,7 +34,7 @@ export default {
 			},
 			option: {
 				context: 'rendering',
-				key: 'style'
+				key: 'style',
 			},
 		},
 		chordsAndLyricsDisplay: {
@@ -45,28 +45,28 @@ export default {
 					{
 						id: 'cldisplayAll',
 						label: 'Display both',
-						value: 'all'
+						value: 'all',
 					},
 					{
 						id: 'cldisplayLyrics',
 						label: 'Lyrics only',
-						value: 'lyrics'
+						value: 'lyrics',
 					},
 					{
 						id: 'cldisplayChords',
 						label: 'Chords only',
-						value: 'chords'
+						value: 'chords',
 					},
 					{
 						id: 'cldisplayChordsFirstLyricLine',
 						label: 'Chords + First lyric line',
-						value: 'chordsFirstLyricLine'
+						value: 'chordsFirstLyricLine',
 					},
 				],
 			},
 			option: {
 				context: 'rendering',
-				key: 'chordsAndLyricsDisplay'
+				key: 'chordsAndLyricsDisplay',
 			},
 		},
 		alignChordsWithLyrics: {
@@ -74,7 +74,7 @@ export default {
 			type: 'toggle',
 			option: {
 				context: 'rendering',
-				key: 'alignChordsWithLyrics'
+				key: 'alignChordsWithLyrics',
 			},
 		},
 		alignBars: {
@@ -82,7 +82,7 @@ export default {
 			type: 'toggle',
 			option: {
 				context: 'rendering',
-				key: 'alignBars'
+				key: 'alignBars',
 			},
 		},
 		autoRepeatChords: {
@@ -90,7 +90,7 @@ export default {
 			type: 'toggle',
 			option: {
 				context: 'rendering',
-				key: 'autoRepeatChords'
+				key: 'autoRepeatChords',
 			},
 		},
 		expandSectionRepeats: {
@@ -98,11 +98,9 @@ export default {
 			type: 'toggle',
 			option: {
 				context: 'rendering',
-				key: 'expandSectionRepeats'
+				key: 'expandSectionRepeats',
 			},
 		},
-
-
 
 		layout: {
 			type: 'optionsGroup',
@@ -124,18 +122,18 @@ export default {
 							{
 								id: 'documentSizeA4',
 								label: 'A4',
-								value: 'a4'
+								value: 'a4',
 							},
 							{
 								id: 'documentSizeBooxMax2Pro',
 								label: 'Boox Max 2 Pro',
-								value: 'booxmax2pro'
+								value: 'booxmax2pro',
 							},
 						],
 					},
 					option: {
 						context: 'rendering',
-						key: 'documentSize'
+						key: 'documentSize',
 					},
 				},
 
@@ -144,11 +142,11 @@ export default {
 					type: 'slider',
 					typeOptions: {
 						min: 1,
-						max: 5
+						max: 5,
 					},
 					option: {
 						context: 'rendering',
-						key: 'documentMargins'
+						key: 'documentMargins',
 					},
 				},
 
@@ -157,11 +155,11 @@ export default {
 					type: 'slider',
 					typeOptions: {
 						min: 1,
-						max: 4
+						max: 4,
 					},
 					option: {
 						context: 'rendering',
-						key: 'columnsCount'
+						key: 'columnsCount',
 					},
 				},
 
@@ -170,12 +168,11 @@ export default {
 					type: 'toggle',
 					option: {
 						context: 'rendering',
-						key: 'columnBreakOnParagraph'
+						key: 'columnBreakOnParagraph',
 					},
 				},
-			}
+			},
 		},
-
 
 		helpers: {
 			type: 'optionsGroup',
@@ -194,7 +191,7 @@ export default {
 					type: 'toggle',
 					option: {
 						context: 'rendering',
-						key: 'showChords'
+						key: 'showChords',
 					},
 				},
 
@@ -206,28 +203,28 @@ export default {
 							{
 								id: 'instrumentGuitar',
 								label: 'Guitar',
-								value: 'guitar'
+								value: 'guitar',
 							},
 							{
 								id: 'instrumentUkulele',
 								label: 'Ukulele',
-								value: 'ukulele'
+								value: 'ukulele',
 							},
 							{
 								id: 'instrumentMandolin',
 								label: 'Mandolin',
-								value: 'mandolin'
+								value: 'mandolin',
 							},
 							{
 								id: 'instrumentPiano',
 								label: 'Piano',
-								value: 'piano'
+								value: 'piano',
 							},
 						],
 					},
 					option: {
 						context: 'rendering',
-						key: 'instrument'
+						key: 'instrument',
 					},
 				},
 
@@ -236,12 +233,11 @@ export default {
 					type: 'toggle',
 					option: {
 						context: 'rendering',
-						key: 'showStrummingPattern'
+						key: 'showStrummingPattern',
 					},
 				},
-			}
+			},
 		},
-
 
 		chords: {
 			type: 'optionsGroup',
@@ -268,7 +264,7 @@ export default {
 					},
 					option: {
 						context: 'rendering',
-						key: 'transposeValue'
+						key: 'transposeValue',
 					},
 				},
 
@@ -296,7 +292,7 @@ export default {
 					},
 					option: {
 						context: 'rendering',
-						key: 'simplifyChords'
+						key: 'simplifyChords',
 					},
 				},
 
@@ -310,7 +306,7 @@ export default {
 					},
 					option: {
 						context: 'rendering',
-						key: 'capoPosition'
+						key: 'capoPosition',
 					},
 				},
 
@@ -319,7 +315,7 @@ export default {
 					type: 'toggle',
 					option: {
 						context: 'rendering',
-						key: 'harmonizeAccidentals'
+						key: 'harmonizeAccidentals',
 					},
 				},
 
@@ -331,23 +327,23 @@ export default {
 							{
 								id: 'preferredAccidentalsAuto',
 								label: 'Auto',
-								value: 'auto'
+								value: 'auto',
 							},
 							{
 								id: 'preferredAccidentalsSharp',
 								label: 'Sharp (#)',
-								value: 'sharp'
+								value: 'sharp',
 							},
 							{
 								id: 'preferredAccidentalsFlat',
 								label: 'Flats (b)',
-								value: 'flat'
+								value: 'flat',
 							},
 						],
 					},
 					option: {
 						context: 'rendering',
-						key: 'preferredAccidentals'
+						key: 'preferredAccidentals',
 					},
 				},
 
@@ -356,12 +352,11 @@ export default {
 					type: 'toggle',
 					option: {
 						context: 'rendering',
-						key: 'useShortNamings'
+						key: 'useShortNamings',
 					},
 				},
-			}
+			},
 		},
-
 
 		format: {
 			type: 'optionsGroup',
@@ -387,7 +382,7 @@ export default {
 					},
 					option: {
 						context: 'rendering',
-						key: 'fontSize'
+						key: 'fontSize',
 					},
 				},
 
@@ -401,7 +396,7 @@ export default {
 					},
 					option: {
 						context: 'rendering',
-						key: 'printFontSize'
+						key: 'printFontSize',
 					},
 				},
 
@@ -413,13 +408,13 @@ export default {
 							{
 								id: 'fontStyleRoboto',
 								label: 'Roboto',
-								value: 'roboto'
+								value: 'roboto',
 							},
 						],
 					},
 					option: {
 						context: 'rendering',
-						key: 'fontStyle'
+						key: 'fontStyle',
 					},
 				},
 
@@ -431,28 +426,28 @@ export default {
 							{
 								id: 'chordsColor',
 								label: 'Base',
-								value: 'base'
+								value: 'base',
 							},
 							{
 								id: 'chordsColorRed',
 								label: 'Red',
-								value: 'red'
+								value: 'red',
 							},
 							{
 								id: 'chordsColorYellow',
 								label: 'Yellow',
-								value: 'yellow'
+								value: 'yellow',
 							},
 							{
 								id: 'chordsColorGreen',
 								label: 'Green',
-								value: 'green'
+								value: 'green',
 							},
 						],
 					},
 					option: {
 						context: 'rendering',
-						key: 'chordsColor'
+						key: 'chordsColor',
 					},
 				},
 
@@ -461,10 +456,10 @@ export default {
 					type: 'toggle',
 					option: {
 						context: 'rendering',
-						key: 'highlightChords'
+						key: 'highlightChords',
 					},
 				},
-			}
+			},
 		},
 	},
 };

@@ -8,8 +8,12 @@ describe('Main entry point', () => {
 
 		await act(async () => await run());
 
-		expect(document.body.querySelector('.songEditor')).toBeInstanceOf(Element);
+		expect(document.body.querySelector('.songEditor')).toBeInstanceOf(
+			Element
+		);
 		expect(document.body.querySelector('.leftBar')).toBeInstanceOf(Element);
-		expect(document.body.querySelector('.rightBar')).toBeInstanceOf(Element);
+		expect(document.body.querySelector('.rightBar')).toBeInstanceOf(
+			Element
+		);
 	});
 });

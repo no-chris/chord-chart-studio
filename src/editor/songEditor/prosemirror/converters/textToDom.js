@@ -7,7 +7,7 @@ import escapeHTML from './toSafeHtml';
 export default function textToDom(text) {
 	const html = escapeHTML(text)
 		.split('\n')
-		.map(line => `<p>${line}</p>`)
+		.map((line) => `<p>${line}</p>`)
 		.join('');
 
 	const div = document.createElement('div');

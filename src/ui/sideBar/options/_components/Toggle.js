@@ -12,12 +12,12 @@ function Toggle(props) {
 		optionContext,
 		optionKey,
 		optionValue,
-		setOption
+		setOption,
 	} = props;
 
 	const classNames = ['sb-optionToggle'];
 	classNames.push(
-		(optionValue === true) ? 'sb-optionToggle-isOn' : 'sb-optionToggle-isOff'
+		optionValue === true ? 'sb-optionToggle-isOn' : 'sb-optionToggle-isOff'
 	);
 	if (!isInteractable) {
 		classNames.push('sb-optionToggle-isNotInteractable');
@@ -30,12 +30,16 @@ function Toggle(props) {
 	return (
 		<div
 			className={classNames.join(' ')}
-			onClick={(isInteractable) ? handleClick : null}
+			onClick={isInteractable ? handleClick : null}
 		>
 			<div className={'sb-optionToggle-desc'}>{label}</div>
 			<div className={'sb-optionToggle-icon'}>
 				<span className={'sb-optionToggle-icon'}>
-					<Icon iconName={(optionValue === true) ? 'toggle_on' : 'toggle_off' } />
+					<Icon
+						iconName={
+							optionValue === true ? 'toggle_on' : 'toggle_off'
+						}
+					/>
 				</span>
 			</div>
 		</div>

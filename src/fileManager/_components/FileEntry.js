@@ -2,9 +2,17 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function FileEntry(props) {
-	const [ title, setTitle ] = useState(props.title);
+	const [title, setTitle] = useState(props.title);
 
-	const { fileId, isSelected, isRenamed, defaultTitle, selectFile, enableRename, updateFile } = props;
+	const {
+		fileId,
+		isSelected,
+		isRenamed,
+		defaultTitle,
+		selectFile,
+		enableRename,
+		updateFile,
+	} = props;
 
 	const classList = ['fileManagerEntry'];
 	if (isSelected) {
@@ -66,7 +74,7 @@ function FileEntry(props) {
 		newTitle = newTitle || defaultTitle;
 
 		updateFile(fileId, {
-			title: newTitle
+			title: newTitle,
 		});
 		setTitle(newTitle);
 
@@ -84,8 +92,8 @@ function FileEntry(props) {
 				ref={inputRef}
 				type={'text'}
 				value={title}
-				readOnly={(isRenamed) ? null : 'readOnly'}
-				autoFocus={(isRenamed) ? 'autoFocus' : null}
+				readOnly={isRenamed ? null : 'readOnly'}
+				autoFocus={isRenamed ? 'autoFocus' : null}
 				onChange={handleChange}
 				onBlur={handleBlur}
 				onFocus={handleFocus}

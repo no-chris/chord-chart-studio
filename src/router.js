@@ -14,11 +14,8 @@ const universalRouter = new UniversalRouter(routes);
 
 export default {
 	navigateTo(path) {
-		return universalRouter.resolve(path)
-			.then(controller => {
-				return renderController(controller);
-			});
-	}
+		return universalRouter.resolve(path).then((controller) => {
+			return renderController(controller);
+		});
+	},
 };
-
-

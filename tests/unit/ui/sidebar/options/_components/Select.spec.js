@@ -5,11 +5,9 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Select from '../../../../../../src/ui/sideBar/options/_components/Select';
 
-
 afterEach(cleanup);
 
 describe('Select', () => {
-
 	let props = {};
 	const setOption = jest.fn();
 
@@ -31,13 +29,11 @@ describe('Select', () => {
 		setOption.mockReset();
 	});
 
-
 	describe('Toggle choice list', () => {
 		test('should not respond to click if option is disabled', () => {
-			const { getByText, queryByText } = render(<Select
-				{...props}
-				isInteractable={false}
-			/>);
+			const { getByText, queryByText } = render(
+				<Select {...props} isInteractable={false} />
+			);
 
 			const selectTitle = getByText(props.label);
 
@@ -57,9 +53,7 @@ describe('Select', () => {
 		});
 
 		test('should toggle choices display on click', async () => {
-			const { getByText, queryByText } = render(<Select
-				{...props}
-			/>);
+			const { getByText, queryByText } = render(<Select {...props} />);
 
 			expect(queryByText(props.allChoices[0].label)).toBeNull();
 			expect(queryByText(props.allChoices[1].label)).toBeNull();
@@ -87,12 +81,9 @@ describe('Select', () => {
 		});
 	});
 
-
 	describe('Select choice', () => {
 		test('should setOption to clicked choice', () => {
-			const { getByText } = render(<Select
-				{...props}
-			/>);
+			const { getByText } = render(<Select {...props} />);
 
 			const selectTitle = getByText(props.label);
 			fireEvent.click(selectTitle);
@@ -124,7 +115,5 @@ describe('Select', () => {
 				props.allChoices[2].value
 			);
 		});
-
 	});
-
 });

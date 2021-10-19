@@ -2,14 +2,13 @@ import * as actions from '../../../../../../src/ui/layout/app/_state/actions';
 import * as actionsTypes from '../../../../../../src/ui/layout/app/_state/actionsTypes';
 
 describe('ui/layout/app: actions creators', () => {
-
 	describe('toggleLeftBar()', () => {
 		test('should return a valid action', () => {
 			const expected = {
 				type: actionsTypes.UI_LAYOUT_APP_TOGGLE_LEFT_BAR,
 			};
 
-			const actual = actions.toggleLeftBar() ;
+			const actual = actions.toggleLeftBar();
 
 			expect(actual).toEqual(expected);
 		});
@@ -21,7 +20,7 @@ describe('ui/layout/app: actions creators', () => {
 				type: actionsTypes.UI_LAYOUT_APP_TOGGLE_RIGHT_BAR,
 			};
 
-			const actual = actions.toggleRightBar() ;
+			const actual = actions.toggleRightBar();
 
 			expect(actual).toEqual(expected);
 		});
@@ -32,14 +31,13 @@ describe('ui/layout/app: actions creators', () => {
 			const expected = {
 				type: actionsTypes.UI_LAYOUT_APP_SET_EDITOR_MODE,
 				payload: {
-					mode: 'myMode'
-				}
+					mode: 'myMode',
+				},
 			};
 
-			const actual = actions.setEditorMode('myMode') ;
+			const actual = actions.setEditorMode('myMode');
 
 			expect(actual).toEqual(expected);
 		});
 	});
-
 });

@@ -11,7 +11,7 @@ function createFile(state, action) {
 	allFiles[id] = {
 		id,
 		title,
-		content
+		content,
 	};
 
 	return {
@@ -19,7 +19,6 @@ function createFile(state, action) {
 		allFiles,
 	};
 }
-
 
 function updateFile(state, action) {
 	const { id, title, content } = action.payload;
@@ -44,7 +43,6 @@ function updateFile(state, action) {
 	};
 }
 
-
 function deleteFile(state, action) {
 	const { id } = action.payload;
 
@@ -61,12 +59,14 @@ function deleteFile(state, action) {
 	};
 }
 
-
 export default (state = initialState, action = {}) => {
 	switch (action.type) {
-		case actionTypes.DB_FILES_CREATE: return createFile(state, action);
-		case actionTypes.DB_FILES_UPDATE: return updateFile(state, action);
-		case actionTypes.DB_FILES_DELETE: return deleteFile(state, action);
+		case actionTypes.DB_FILES_CREATE:
+			return createFile(state, action);
+		case actionTypes.DB_FILES_UPDATE:
+			return updateFile(state, action);
+		case actionTypes.DB_FILES_DELETE:
+			return deleteFile(state, action);
 	}
 	return state;
 };

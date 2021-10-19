@@ -6,13 +6,9 @@ import PropTypes from 'prop-types';
 import Icon from '../../../_components/Icon';
 
 function OptionsGroup(props) {
-	const [ isOpened, setIsOpened ] = useState(props.isOpened);
+	const [isOpened, setIsOpened] = useState(props.isOpened);
 
-	const {
-		isInteractable,
-		icon,
-		label
-	} = props;
+	const { isInteractable, icon, label } = props;
 
 	const classNames = ['sb-optionsGroup'];
 	if (!shouldBeInteractable()) {
@@ -39,14 +35,19 @@ function OptionsGroup(props) {
 		<div className={classNames.join(' ')}>
 			<div
 				className={'sb-optionsGroup-title'}
-				onClick={(shouldBeInteractable()) ? handleClick : null}
+				onClick={shouldBeInteractable() ? handleClick : null}
 			>
 				<div className={'sb-optionsGroup-label'}>
-					<span className={'sb-optionsGroup-iconTitle'}><Icon iconName={icon} /></span> {label}
+					<span className={'sb-optionsGroup-iconTitle'}>
+						<Icon iconName={icon} />
+					</span>{' '}
+					{label}
 				</div>
 				<div className={'sb-optionsGroup-toggle'}>
 					<span className={'sb-optionsGroup-iconToggle'}>
-						<Icon iconName={(isOpened) ? 'unfold_less' : 'unfold_more' } />
+						<Icon
+							iconName={isOpened ? 'unfold_less' : 'unfold_more'}
+						/>
 					</span>
 				</div>
 			</div>

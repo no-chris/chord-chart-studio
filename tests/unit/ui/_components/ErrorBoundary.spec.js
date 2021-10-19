@@ -8,7 +8,6 @@ import ErrorBoundary from '../../../../src/ui/_components/ErrorBoundary';
 afterEach(cleanup);
 
 describe('ErrorBoundary', () => {
-
 	test('Should render the error in case of an error in a child component', () => {
 		function Throw() {
 			throw new Error('This is bad');

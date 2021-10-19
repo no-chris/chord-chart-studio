@@ -5,7 +5,7 @@ export default function stateToText(state) {
 	const json = state.toJSON();
 
 	return json.doc.content
-		.map(paragraph => {
+		.map((paragraph) => {
 			if (!paragraph.content) {
 				return '';
 			}

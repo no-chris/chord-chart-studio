@@ -11,7 +11,6 @@ import renderSong from '../../../../src/core/renderSong';
 afterEach(cleanup);
 
 describe('SongRenderer', () => {
-
 	let props = {};
 
 	beforeEach(() => {
@@ -22,13 +21,18 @@ describe('SongRenderer', () => {
 
 	describe('Rendering', () => {
 		test('Should render raw HTML returned from renderSong()', () => {
-			renderSong.mockImplementation((songTxt) => 'some <strong>HTML</strong> wrapping <span>' + songTxt + ' </span>');
+			renderSong.mockImplementation(
+				(songTxt) =>
+					'some <strong>HTML</strong> wrapping <span>' +
+					songTxt +
+					' </span>'
+			);
 
-			const { container } = render(<SongRenderer
-				{...props}
-			/>);
+			const { container } = render(<SongRenderer {...props} />);
 
-			expect(container.firstChild.firstChild.innerHTML).toBe('some <strong>HTML</strong> wrapping <span>mySongContent </span>');
+			expect(container.firstChild.firstChild.innerHTML).toBe(
+				'some <strong>HTML</strong> wrapping <span>mySongContent </span>'
+			);
 		});
 	});
 });

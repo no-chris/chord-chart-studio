@@ -7,10 +7,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const buildDir = 'docs';
 
 const config = {
-	target:'web',
+	target: 'web',
 
 	entry: {
-		main: './src/main.js'
+		main: './src/main.js',
 	},
 
 	output: {
@@ -21,10 +21,10 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'Chords Charts Studio',
-			template:'assets/index.html',
+			template: 'assets/index.html',
 		}),
 		new MiniCssExtractPlugin({
-			filename:'css/[name].[fullhash].css',
+			filename: 'css/[name].[fullhash].css',
 		}),
 	],
 
@@ -33,38 +33,38 @@ const config = {
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader'
+				loader: 'babel-loader',
 			},
 			{
 				test: /\.hbs$/,
-				loader: 'handlebars-loader'
+				loader: 'handlebars-loader',
 			},
 			{
 				test: /\.scss|sass|css$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					'css-loader',
-					'sass-loader',
-				],
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 			},
 			{
 				test: /\.(png|jp(e*)g|svg)$/,
-				use: [{
-					loader: 'url-loader',
-					options: {
-						limit: 8000,
-						name: 'images/[fullhash]-[name].[ext]'
-					}
-				}]
-			}
-		]
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 8000,
+							name: 'images/[fullhash]-[name].[ext]',
+						},
+					},
+				],
+			},
+		],
 	},
 
 	resolve: {
 		extensions: ['.js', '.jsx'],
 		alias: {
 			react: path.resolve(path.join(__dirname, './node_modules/react')),
-			'react-dom': path.resolve(path.join(__dirname, './node_modules/react-dom'))
+			'react-dom': path.resolve(
+				path.join(__dirname, './node_modules/react-dom')
+			),
 		},
 		symlinks: false,
 	},

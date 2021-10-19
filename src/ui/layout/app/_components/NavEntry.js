@@ -4,13 +4,7 @@ import PropTypes from 'prop-types';
 import Icon from '../../../_components/Icon.js';
 
 function NavEntry(props) {
-	const {
-		label,
-		icon,
-		editorMode,
-		setEditorMode,
-		isActive,
-	} = props;
+	const { label, icon, editorMode, setEditorMode, isActive } = props;
 
 	const classNames = ['mainNavEntry'];
 
@@ -23,11 +17,11 @@ function NavEntry(props) {
 	}
 
 	return (
-		<li
-			className={classNames.join(' ')}
-			onClick={handleClick}
-		>
-			<span className={'mainNavEntry-icon'}><Icon iconName={icon} /></span>{label}
+		<li className={classNames.join(' ')} onClick={handleClick}>
+			<span className={'mainNavEntry-icon'}>
+				<Icon iconName={icon} />
+			</span>
+			{label}
 		</li>
 	);
 }
@@ -39,6 +33,5 @@ NavEntry.propTypes = {
 	setEditorMode: PropTypes.func.isRequired,
 	isActive: PropTypes.bool.isRequired,
 };
-
 
 export default React.memo(NavEntry);

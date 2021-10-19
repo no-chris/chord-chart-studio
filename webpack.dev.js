@@ -7,9 +7,7 @@ const path = require('path');
 module.exports = merge(common, {
 	mode: 'development',
 
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-	],
+	plugins: [new webpack.HotModuleReplacementPlugin()],
 
 	devtool: 'inline-source-map',
 
@@ -21,8 +19,7 @@ module.exports = merge(common, {
 		host: '127.0.0.1',
 		inline: true,
 		watchOptions: {
-			poll: true
+			poll: true,
 		},
 	},
-
 });

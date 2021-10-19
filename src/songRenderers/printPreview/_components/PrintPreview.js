@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import renderSong from '../../../core/renderSong';
 import AllPages from './AllPages';
 
-
 function PrintPreview(props) {
 	const { selectedFile, highlightChords } = props;
 
@@ -24,7 +23,10 @@ function PrintPreview(props) {
 		'simplifyChords',
 	]);
 
-	const allLines = renderSong(selectedFile.content || '', renderOptions).split('\n');
+	const allLines = renderSong(
+		selectedFile.content || '',
+		renderOptions
+	).split('\n');
 
 	const classNames = ['printPreview'];
 	if (highlightChords) {
@@ -34,7 +36,7 @@ function PrintPreview(props) {
 	return (
 		<div className={classNames.join(' ')} data-testid={'printPreview'}>
 			<AllPages
-				title={selectedFile.title}
+				title={selectedFile.title || ''}
 				allLines={allLines}
 				columnsCount={props.columnsCount}
 				columnBreakOnParagraph={props.columnBreakOnParagraph}
@@ -56,4 +58,3 @@ PrintPreview.propTypes = {
 };
 
 export default PrintPreview;
-

@@ -6,9 +6,7 @@ import getDimensionsFromDom from '../../../../../src/songRenderers/printPreview/
 
 describe('getDimensionsFromDom', () => {
 	function TestComponent() {
-		return (
-			<div className={'myTestComponent'}>testComponent</div>
-		);
+		return <div className={'myTestComponent'}>testComponent</div>;
 	}
 
 	test('should resolve with the return value of the measuring function', () => {
@@ -31,9 +29,11 @@ describe('getDimensionsFromDom', () => {
 		expect.assertions(2);
 
 		const getDimensions = jest.fn();
-		getDimensions.mockImplementation(container => {
+		getDimensions.mockImplementation((container) => {
 			expect(container).toBeInstanceOf(Element);
-			expect(container.firstChild.innerHTML).toBe('<div class="myTestComponent">testComponent</div>');
+			expect(container.firstChild.innerHTML).toBe(
+				'<div class="myTestComponent">testComponent</div>'
+			);
 		});
 
 		return getDimensionsFromDom(<TestComponent />, getDimensions);
@@ -43,7 +43,7 @@ describe('getDimensionsFromDom', () => {
 		expect.assertions(1);
 
 		const getDimensions = jest.fn();
-		getDimensions.mockImplementation(container => {
+		getDimensions.mockImplementation((container) => {
 			expect(container).toHaveClass('measuring-node');
 		});
 
@@ -59,11 +59,12 @@ describe('getDimensionsFromDom', () => {
 			expect(testComponent).toBeInstanceOf(Element);
 		});
 
-		return getDimensionsFromDom(<TestComponent />, getDimensions)
-			.then(() => {
-				const testComponent = document.querySelector('.myTestComponent');
+		return getDimensionsFromDom(<TestComponent />, getDimensions).then(
+			() => {
+				const testComponent =
+					document.querySelector('.myTestComponent');
 				expect(testComponent).toBeNull();
-			});
+			}
+		);
 	});
-
 });
