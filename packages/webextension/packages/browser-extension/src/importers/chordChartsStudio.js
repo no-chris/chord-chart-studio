@@ -1,7 +1,7 @@
-console.log('in CCS script!');
-
 const handleMessage = function handleMessage(message, sender, sendResponse) {
-	window.postMessage(message);
+	setTimeout(() => window.postMessage(message), 1000); // defer
+	sendResponse('ok');
+	return true;
 };
 
 chrome.runtime.onMessage.addListener(handleMessage);

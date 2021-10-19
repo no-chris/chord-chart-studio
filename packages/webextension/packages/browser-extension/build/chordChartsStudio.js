@@ -1,0 +1,1 @@
+chrome.runtime.onMessage.addListener((function(e,n,t){return setTimeout((function(){return window.postMessage(e)}),1e3),t("ok"),!0}));

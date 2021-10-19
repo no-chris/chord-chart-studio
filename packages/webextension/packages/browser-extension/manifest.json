@@ -3,13 +3,9 @@
 	"description": "Browser extension to import chords",
 	"version": "1.0",
 	"manifest_version": 2,
-	"permissions": ["tabs"],
+	"permissions": ["tabs", "http://*/*", "https://*/*"],
 	"browser_action": {
 		"default_popup": "build/popup.html"
-	},
-	"background": {
-		"scripts": ["background.js"],
-		"persistent": false
 	},
 	"content_scripts": [
 		{
