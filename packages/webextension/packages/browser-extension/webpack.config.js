@@ -7,12 +7,14 @@ module.exports = {
 	target: 'web',
 
 	entry: {
-		popup: path.join(__dirname, 'src', 'popup', 'popup.js'),
-		ultimateGuitar: path.join(
+		popup: path.resolve(__dirname, 'src/popup/popup.js'),
+		ultimateGuitar: path.resolve(
 			__dirname,
-			'src',
-			'importers',
-			'ultimateGuitar.js'
+			'src/importers/ultimateGuitar.js'
+		),
+		chordChartsStudio: path.resolve(
+			__dirname,
+			'src/importers/chordChartsStudio.js'
 		),
 	},
 	output: {

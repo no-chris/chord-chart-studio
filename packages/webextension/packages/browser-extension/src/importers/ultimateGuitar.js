@@ -1,4 +1,10 @@
-import sendMessage from '../core/sendMessage';
+import { GET_TAB_DATA } from '../core/messageTypes';
+
+import { sendMessage } from '../core/sendMessage';
+import createMessage from '../core/createMessage';
+import { SET_TAB_DATA } from '../core/messageTypes';
+
+let tabData;
 
 const currentUrl = window.location.href;
 
@@ -13,21 +19,23 @@ fetch(currentUrl)
 			const jsStore = JSON.parse(parsable);
 			console.log(jsStore);
 
-			const message = {
-				type: 'tabData',
-				payload: {
-					source: 'ultimateGuitar',
-					data: jsStore,
-				},
+			tabData = {
+				source: 'ultimateGuitar',
+				data: jsStore,
 			};
-			sendMessage(message)
-				.then((response) => {
-					console.log(response);
-				})
-				.catch((err) => {
-					console.error(err);
-				});
+			const setTabData = createMessage(SET_TAB_DATA, tabData);
+			sendMessage(setTabData).catch(console.log);
 		} else {
 			console.log('cannot find jsStore');
 		}
 	});
+
+function handleMessage(message, sender, sendResponse) {
+	switch (message.type) {
+		case GET_TAB_DATA:
+			sendResponse(tabData);
+			break;
+	}
+}
+
+chrome.runtime.onMessage.addListener(handleMessage);
