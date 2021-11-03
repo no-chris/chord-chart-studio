@@ -15,6 +15,22 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					title: 'myTitle',
+					content: 'myContent',
+				},
+			};
+			const actual = actions.createFile('myTitle', 'myContent');
+
+			expect(actual).toEqual(expected);
+		});
+
+		test('should have blank default content', () => {
+			uuidv4.mockReturnValue('myUUID');
+
+			const expected = {
+				type: actionTypes.DB_FILES_CREATE,
+				payload: {
+					id: 'myUUID',
+					title: 'myTitle',
 					content: '',
 				},
 			};

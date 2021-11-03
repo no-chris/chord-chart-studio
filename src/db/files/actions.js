@@ -3,14 +3,14 @@ import { v4 as uuidv4 } from 'uuid';
 import createAction from '../../core/createAction';
 import * as actionTypes from './actionsTypes';
 
-export const createFile = (title) => {
+export const createFile = (title, content = '') => {
 	if (!title) {
 		throw new TypeError('Cannot create a file without title');
 	}
 	const payload = {
 		id: uuidv4(),
 		title,
-		content: '',
+		content,
 	};
 	return createAction(actionTypes.DB_FILES_CREATE, payload);
 };
