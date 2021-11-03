@@ -65,6 +65,13 @@ const config = {
 			'react-dom': path.resolve(
 				path.join(__dirname, './node_modules/react-dom')
 			),
+			// Needed by ChordSheetJS (duh!)
+			handlebars: path.resolve(
+				path.join(
+					__dirname,
+					'./node_modules/handlebars/dist/handlebars.js'
+				)
+			),
 		},
 		symlinks: false,
 	},
