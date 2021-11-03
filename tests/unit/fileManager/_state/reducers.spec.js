@@ -80,6 +80,23 @@ describe('fileManager: reducers', () => {
 		});
 	});
 
+	describe(dbFilesActionsTypes.DB_FILES_IMPORT, function () {
+		test('should select imported file', () => {
+			const expected = {
+				...initialState,
+				selected: 'myId',
+				renamed: '',
+			};
+			uuidv4.mockReturnValue('myId');
+
+			const state = reducers(
+				initialState,
+				dbFilesActions.importFile('myTitle')
+			);
+			expect(state).toEqual(expected);
+		});
+	});
+
 	describe(dbFilesActionsTypes.DB_FILES_UPDATE, () => {
 		test('should stop renaming file on update', () => {
 			const originalState = deepFreeze({

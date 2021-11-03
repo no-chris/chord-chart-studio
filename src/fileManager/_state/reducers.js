@@ -5,8 +5,9 @@ import {
 
 import {
 	DB_FILES_CREATE,
-	DB_FILES_UPDATE,
 	DB_FILES_DELETE,
+	DB_FILES_IMPORT,
+	DB_FILES_UPDATE,
 } from '../../db/files/actionsTypes';
 
 const initialState = {
@@ -23,6 +24,15 @@ export default function reducers(state = initialState, action = {}) {
 				...state,
 				selected: id,
 				renamed: id,
+			};
+		}
+
+		case DB_FILES_IMPORT: {
+			const { id } = action.payload;
+			return {
+				...state,
+				selected: id,
+				renamed: '',
 			};
 		}
 

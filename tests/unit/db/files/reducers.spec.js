@@ -66,6 +66,54 @@ describe('db/files: reducers', () => {
 		});
 	});
 
+	describe(actionTypes.DB_FILES_IMPORT, () => {
+		test('should import a new file on a empty list', () => {
+			uuidv4.mockReturnValue('myUUID');
+
+			const expected = {
+				allFiles: {
+					myUUID: {
+						id: 'myUUID',
+						title: 'myTitle',
+						content: '',
+					},
+				},
+			};
+
+			const action = actions.importFile('myTitle');
+			const actual = reducers(initialState, action);
+
+			expect(actual).toEqual(expected);
+		});
+
+		test('should add to a list', () => {
+			const expected = {
+				allFiles: {
+					myUUID1: {
+						id: 'myUUID1',
+						title: 'myTitle1',
+						content: '',
+					},
+					myUUID2: {
+						id: 'myUUID2',
+						title: 'myTitle2',
+						content: '',
+					},
+				},
+			};
+
+			uuidv4.mockReturnValue('myUUID1');
+			const state1 = deepFreeze(
+				reducers(initialState, actions.importFile('myTitle1'))
+			);
+
+			uuidv4.mockReturnValue('myUUID2');
+			const state2 = reducers(state1, actions.importFile('myTitle2'));
+
+			expect(state2).toEqual(expected);
+		});
+	});
+
 	describe(actionTypes.DB_FILES_UPDATE, () => {
 		test('should update both title and content', () => {
 			const expected = {

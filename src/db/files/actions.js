@@ -15,6 +15,18 @@ export const createFile = (title, content = '') => {
 	return createAction(actionTypes.DB_FILES_CREATE, payload);
 };
 
+export const importFile = (title, content = '') => {
+	if (!title) {
+		throw new TypeError('Cannot import a file without title');
+	}
+	const payload = {
+		id: uuidv4(),
+		title,
+		content,
+	};
+	return createAction(actionTypes.DB_FILES_IMPORT, payload);
+};
+
 export const updateFile = (id, { title, content } = {}) => {
 	if (!id) {
 		throw new TypeError('Cannot update a file without an id');

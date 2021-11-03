@@ -47,6 +47,47 @@ describe('db/files: actions creators', () => {
 		});
 	});
 
+	describe('importFile()', () => {
+		test('should create valid action', () => {
+			uuidv4.mockReturnValue('myUUID');
+
+			const expected = {
+				type: actionTypes.DB_FILES_IMPORT,
+				payload: {
+					id: 'myUUID',
+					title: 'myTitle',
+					content: 'myContent',
+				},
+			};
+			const actual = actions.importFile('myTitle', 'myContent');
+
+			expect(actual).toEqual(expected);
+		});
+
+		test('should have blank default content', () => {
+			uuidv4.mockReturnValue('myUUID');
+
+			const expected = {
+				type: actionTypes.DB_FILES_IMPORT,
+				payload: {
+					id: 'myUUID',
+					title: 'myTitle',
+					content: '',
+				},
+			};
+			const actual = actions.importFile('myTitle');
+
+			expect(actual).toEqual(expected);
+		});
+
+		test('should throw if not given title', () => {
+			const throwingFn = () => actions.importFile();
+
+			expect(throwingFn).toThrow(TypeError);
+			expect(throwingFn).toThrow('Cannot import a file without title');
+		});
+	});
+
 	describe('updateFile()', () => {
 		test('should allow update of both title and content', () => {
 			const expected = {
