@@ -22,10 +22,15 @@ const songImporterHandlers = {
 
 		let chordChart;
 
-		switch (message.source) {
-			case 'ultimateGuitar':
-				chordChart = getFromUltimateGuitar(message.chordChart);
-				break;
+		try {
+			switch (message.source) {
+				case 'ultimateGuitar':
+					chordChart = getFromUltimateGuitar(message.chordChart);
+					break;
+			}
+		} catch (e) {
+			// todo
+			console.log('error in import');
 		}
 
 		if (chordChart) {
