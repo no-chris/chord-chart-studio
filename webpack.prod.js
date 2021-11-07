@@ -6,7 +6,7 @@ const common = require('./webpack.common');
 
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const BundleAnalyzerPlugin =
 	require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -27,12 +27,7 @@ module.exports = merge(common, {
 			},
 		},
 		minimize: true,
-		minimizer: [
-			new TerserPlugin(),
-			new OptimizeCssnanoPlugin({
-				sourceMap: true,
-			}),
-		],
+		minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
 	},
 
 	plugins: [
