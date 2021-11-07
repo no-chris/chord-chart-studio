@@ -62,6 +62,7 @@ function deleteFile(state, action) {
 export default (state = initialState, action = {}) => {
 	switch (action.type) {
 		case actionTypes.DB_FILES_CREATE:
+		case actionTypes.DB_FILES_IMPORT:
 			return createFile(state, action);
 		case actionTypes.DB_FILES_UPDATE:
 			return updateFile(state, action);
