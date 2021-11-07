@@ -9,7 +9,6 @@ export const getNonInteractableWidgets = (state) => {
 	switch (editorMode) {
 		case 'edit': {
 			nonInteractableWidgets.push('chordsAndLyricsDisplay');
-			nonInteractableWidgets.push('helpers');
 			nonInteractableWidgets.push('layout');
 			nonInteractableWidgets.push('style');
 			nonInteractableWidgets.push('format');
@@ -46,7 +45,6 @@ export const getHiddenWidgets = (state) => {
 
 	const editorMode = getEditorMode(state);
 
-	//const showChords = getOptionValue(state, 'rendering', 'showChords');
 	const harmonizeAccidentals = getOptionValue(
 		state,
 		'rendering',
@@ -59,9 +57,6 @@ export const getHiddenWidgets = (state) => {
 		'chordsAndLyricsDisplay'
 	);
 
-	//if (!showChords) {
-	//	hiddenWidgets.push('instrument');
-	//}
 	if (chordsAndLyricsDisplay !== 'all') {
 		hiddenWidgets.push('alignChordsWithLyrics');
 	}
@@ -77,7 +72,6 @@ export const getHiddenWidgets = (state) => {
 		hiddenWidgets.push('printFontSize');
 	}
 
-	hiddenWidgets.push('helpers');
 	//hiddenWidgets.push('simplifyChords');
 	hiddenWidgets.push('capoPosition');
 

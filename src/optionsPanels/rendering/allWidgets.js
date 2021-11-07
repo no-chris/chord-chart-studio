@@ -9,7 +9,6 @@ export default {
 		'expandSectionRepeats',
 
 		'layout',
-		'helpers',
 		'chords',
 		'format',
 	],
@@ -169,71 +168,6 @@ export default {
 					option: {
 						context: 'rendering',
 						key: 'columnBreakOnParagraph',
-					},
-				},
-			},
-		},
-
-		helpers: {
-			type: 'optionsGroup',
-			label: 'Helpers',
-			icon: 'remove_red_eye',
-
-			groupWidgetsOrder: [
-				'showChords',
-				'instrument',
-				'showStrummingPattern',
-			],
-
-			allGroupWidgets: {
-				showChords: {
-					label: 'Show chords diagrams',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'showChords',
-					},
-				},
-
-				instrument: {
-					label: 'Instrument',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'instrumentGuitar',
-								label: 'Guitar',
-								value: 'guitar',
-							},
-							{
-								id: 'instrumentUkulele',
-								label: 'Ukulele',
-								value: 'ukulele',
-							},
-							{
-								id: 'instrumentMandolin',
-								label: 'Mandolin',
-								value: 'mandolin',
-							},
-							{
-								id: 'instrumentPiano',
-								label: 'Piano',
-								value: 'piano',
-							},
-						],
-					},
-					option: {
-						context: 'rendering',
-						key: 'instrument',
-					},
-				},
-
-				showStrummingPattern: {
-					label: 'Show strumming pattern',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'showStrummingPattern',
 					},
 				},
 			},

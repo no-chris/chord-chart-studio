@@ -54,24 +54,6 @@ export default {
 			resetOnSongChange: false,
 		},
 
-		/** Display */
-
-		showChords: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-		instrument: {
-			value: 'guitar',
-			default: 'guitar',
-			resetOnSongChange: false,
-		},
-		showStrummingPattern: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-
 		/** Customize Chords */
 
 		transposeValue: {
