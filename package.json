@@ -65,6 +65,7 @@
     "@size-limit/webpack": "^6.0.4",
     "chord-mark": "^0.5.5",
     "chordsheetjs": "^4.10.0",
+    "combine-section-reducers": "^1.0.6",
     "core-js": "^3.15.2",
     "dompurify": "^2.2.9",
     "file-loader": "^6.2.0",
