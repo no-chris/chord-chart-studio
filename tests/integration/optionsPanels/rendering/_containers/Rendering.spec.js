@@ -35,9 +35,8 @@ describe('"Rendering" option panel', () => {
 				.value();
 
 			getByText(allLabels[0]);
-			// getByText(allLabels[1]); // helpers is disabled for now
+			getByText(allLabels[1]);
 			getByText(allLabels[2]);
-			getByText(allLabels[3]);
 		});
 
 		test('Layout group: a click on the group title should toggle widgets visibility', () => {
@@ -180,7 +179,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'rendering',
+					'songFormatting',
 					'style'
 				)
 			).toBe('chordmark');
@@ -191,7 +190,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'rendering',
+					'songFormatting',
 					'style'
 				)
 			).toBe('chordpro');
@@ -202,7 +201,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'rendering',
+					'songFormatting',
 					'style'
 				)
 			).toBe('chordmark');
@@ -210,86 +209,6 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Options dependencies', () => {
-		test.skip('alignBars should be interactable depending on style value', () => {
-			dispatch(appActions.setEditorMode('play'));
-
-			const { getByText } = render(withStore(<Rendering />));
-
-			const styleWidget = getByText(allWidgets.allWidgets.style.label);
-			const alignBarWidget = getByText(
-				allWidgets.allWidgets.alignBars.label
-			);
-
-			act(() => {
-				fireEvent.click(styleWidget);
-			});
-
-			const cmOption = getByText('ChordMark');
-			const chordProOption = getByText('ChordPro');
-
-			act(() => {
-				fireEvent.click(cmOption);
-			});
-			expect(
-				alignBarWidget.closest('.sb-optionToggle-isNotInteractable')
-			).toBeNull();
-
-			act(() => {
-				fireEvent.click(chordProOption);
-			});
-			expect(
-				alignBarWidget.closest('.sb-optionToggle-isNotInteractable')
-			).toBeInstanceOf(Element);
-
-			act(() => {
-				fireEvent.click(cmOption);
-			});
-			expect(
-				alignBarWidget.closest('.sb-optionToggle-isNotInteractable')
-			).toBeNull();
-		});
-
-		test.skip('Instrument should only be displayed if showChords === true', () => {
-			dispatch(appActions.setEditorMode('play'));
-			dispatch(
-				optionsActions.setOptionValue('rendering', 'showChords', true)
-			);
-
-			const { getByText, queryByText } = render(withStore(<Rendering />));
-
-			const helpers = getByText(allWidgets.allWidgets.helpers.label);
-
-			act(() => {
-				fireEvent.click(helpers);
-			});
-
-			const showChords = getByText(
-				allWidgets.allWidgets.helpers.allGroupWidgets.showChords.label
-			);
-			getByText(
-				allWidgets.allWidgets.helpers.allGroupWidgets.instrument.label
-			);
-
-			act(() => {
-				fireEvent.click(showChords);
-			});
-
-			expect(
-				queryByText(
-					allWidgets.allWidgets.helpers.allGroupWidgets.instrument
-						.label
-				)
-			).toBeNull();
-
-			act(() => {
-				fireEvent.click(showChords);
-			});
-
-			getByText(
-				allWidgets.allWidgets.helpers.allGroupWidgets.instrument.label
-			);
-		});
-
 		test('fontSize / printFontSize should be displayed depending on editor mode', () => {
 			dispatch(appActions.setEditorMode('edit'));
 
@@ -357,7 +276,7 @@ describe('"Rendering" option panel', () => {
 			dispatch(appActions.setEditorMode('play'));
 			dispatch(
 				optionsActions.setOptionValue(
-					'rendering',
+					'songPreferences',
 					'harmonizeAccidentals',
 					true
 				)

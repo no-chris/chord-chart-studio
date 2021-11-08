@@ -52,14 +52,4 @@ describe('localStorage persistence', () => {
 			JSON.stringify(modifiedState)
 		);
 	});
-
-	test('should enable devTools in browser', () => {
-		window.__REDUX_DEVTOOLS_EXTENSION__ = jest.fn();
-
-		createStore();
-
-		expect(window.__REDUX_DEVTOOLS_EXTENSION__).toHaveBeenCalledTimes(1);
-
-		delete window.__REDUX_DEVTOOLS_EXTENSION__;
-	});
 });

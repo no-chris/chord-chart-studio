@@ -47,7 +47,7 @@ export const getHiddenWidgets = (state) => {
 
 	const harmonizeAccidentals = getOptionValue(
 		state,
-		'rendering',
+		'songPreferences',
 		'harmonizeAccidentals'
 	);
 	/*
