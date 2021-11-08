@@ -1,8 +1,19 @@
+jest.mock('../../../../src/ui/layout/app/_state/selectors');
+jest.mock('../../../../src/fileManager/_state/selectors');
+jest.mock('../../../../src/db/options/selectors');
+
 import deepFreeze from 'deep-freeze';
 
 import reducers from '../../../../src/db/options/reducers';
 import * as actions from '../../../../src/db/options/actions';
 import * as actionTypes from '../../../../src/db/options/actionsTypes';
+
+import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
+import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../../../src/ui/layout/app/_state/actionsTypes';
+
+import { getEditorMode } from '../../../../src/ui/layout/app/_state/selectors';
+import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
+import { getOptionsDefaults } from '../../../../src/db/options/selectors';
 
 describe('db/options: reducers', () => {
 	const initialState = deepFreeze(reducers());
@@ -17,9 +28,11 @@ describe('db/options: reducers', () => {
 	describe(actionTypes.DB_OPTION_SET_OPTION_VALUE, () => {
 		const startState = deepFreeze({
 			rendering: {
-				transposeValue: {
-					value: 0,
-					default: 0,
+				values: {
+					transposeValue: 0,
+				},
+				default: {
+					transposeValue: 0,
 				},
 			},
 		});
@@ -27,9 +40,11 @@ describe('db/options: reducers', () => {
 		test('should allow to set an option value of an existing option', () => {
 			const expected = {
 				rendering: {
-					transposeValue: {
-						value: 3,
-						default: 0,
+					values: {
+						transposeValue: 3,
+					},
+					default: {
+						transposeValue: 0,
 					},
 				},
 			};
@@ -56,6 +71,142 @@ describe('db/options: reducers', () => {
 			const actual = reducers(startState, action);
 
 			expect(actual).toBe(startState);
+		});
+	});
+
+	describe(UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
+		const fileId = 'myUUID';
+		const defaultFormattingOptions = {
+			documentSize: 'a4',
+			documentMargins: '3',
+			columnsCount: '1',
+			columnBreakOnParagraph: true,
+		};
+
+		test('should apply options of previous mode if there are no saved options for next mode', () => {
+			const previousMode = 'edit';
+			const nextMode = 'print';
+			getEditorMode.mockReturnValue(previousMode);
+			getSelectedId.mockReturnValue(fileId);
+			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
+
+			const fullState = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									[previousMode]: {
+										updatedAt: '6969',
+										documentSize: 'a2',
+										columnsCount: 2,
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				songFormatting: {
+					values: {
+						...defaultFormattingOptions,
+						documentSize: 'a2',
+						columnsCount: 2,
+					},
+				},
+			};
+			const state = reducers(
+				initialState,
+				setEditorMode(nextMode),
+				fullState
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should apply options of next mode if they are defined', () => {
+			const previousMode = 'edit';
+			const nextMode = 'print';
+			getEditorMode.mockReturnValue(previousMode);
+			getSelectedId.mockReturnValue(fileId);
+			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
+
+			const fullState = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									[previousMode]: {
+										updatedAt: '6969',
+										documentSize: 'a2',
+										columnsCount: 2,
+									},
+									[nextMode]: {
+										updatedAt: '6969',
+										documentSize: 'a3',
+										columnsCount: 3,
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				songFormatting: {
+					values: {
+						...defaultFormattingOptions,
+						documentSize: 'a3',
+						columnsCount: 3,
+					},
+				},
+			};
+			const state = reducers(
+				initialState,
+				setEditorMode(nextMode),
+				fullState
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should apply only default option if no options are available for previous or next mode', () => {
+			const previousMode = 'edit';
+			const nextMode = 'print';
+			getEditorMode.mockReturnValue(previousMode);
+			getSelectedId.mockReturnValue(fileId);
+			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
+
+			const fullState = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									play: {
+										updatedAt: '6969',
+										columnsCount: 3,
+										columnBreakOnParagraph: false,
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				songFormatting: {
+					values: {
+						...defaultFormattingOptions,
+					},
+				},
+			};
+			const state = reducers(
+				initialState,
+				setEditorMode(nextMode),
+				fullState
+			);
+			expect(state).toEqual(expected);
 		});
 	});
 });

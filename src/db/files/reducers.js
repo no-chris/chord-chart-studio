@@ -1,4 +1,10 @@
+import clock from '../../core/clock';
+
 import * as actionTypes from './actionsTypes';
+
+import { DB_OPTION_SET_OPTION_VALUE } from '../options/actionsTypes';
+import { getEditorMode } from '../../ui/layout/app/_state/selectors';
+import { getSelectedId } from '../../fileManager/_state/selectors';
 
 const initialState = {
 	allFiles: {},
@@ -59,7 +65,43 @@ function deleteFile(state, action) {
 	};
 }
 
-export default (state = initialState, action = {}) => {
+function updateFileOptions(state, action, fullState) {
+	const { context, key, value } = action.payload;
+	const id = getSelectedId(fullState);
+	const editorMode = getEditorMode(fullState);
+	const allFiles = { ...state.allFiles };
+
+	if (
+		['songFormatting', 'songPreferences'].includes(context) &&
+		allFiles[id]
+	) {
+		const optionCategory =
+			context === 'songPreferences' ? 'preferences' : editorMode;
+
+		allFiles[id] = addOption(allFiles[id], optionCategory, key, value);
+		return {
+			...state,
+			allFiles,
+		};
+	}
+	return state;
+}
+
+function addOption(fileState, category, key, value) {
+	return {
+		...fileState,
+		options: {
+			...fileState.options,
+			[category]: {
+				...(fileState.options || {})[category],
+				updatedAt: clock(),
+				[key]: value,
+			},
+		},
+	};
+}
+
+export default (state = initialState, action = {}, fullState = {}) => {
 	switch (action.type) {
 		case actionTypes.DB_FILES_CREATE:
 		case actionTypes.DB_FILES_IMPORT:
@@ -68,6 +110,9 @@ export default (state = initialState, action = {}) => {
 			return updateFile(state, action);
 		case actionTypes.DB_FILES_DELETE:
 			return deleteFile(state, action);
+		case DB_OPTION_SET_OPTION_VALUE:
+			return updateFileOptions(state, action, fullState);
+		// todo: change editor mode
 	}
 	return state;
 };

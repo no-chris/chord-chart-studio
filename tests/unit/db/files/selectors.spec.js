@@ -154,4 +154,141 @@ describe('db/files: selectors', () => {
 			expect(result).toBeUndefined();
 		});
 	});
+
+	describe('getCategoryOptions()', () => {
+		test('should return saved options for a given file/category', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							id1: {
+								id: 'id1',
+								options: {
+									songFormatting: {
+										columnsCount: 3,
+										documentSize: 'a2',
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				columnsCount: 3,
+				documentSize: 'a2',
+			};
+
+			const result = selectors.getCategoryOptions(
+				state,
+				'id1',
+				'songFormatting'
+			);
+
+			expect(result).toEqual(expected);
+		});
+
+		test('should return a clone of the state', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							id1: {
+								id: 'id1',
+								options: {
+									songFormatting: {
+										columnsCount: 3,
+										documentSize: 'a3',
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+
+			const result = selectors.getCategoryOptions(
+				state,
+				'id1',
+				'songFormatting'
+			);
+
+			result.columnsCount = 4;
+			result.documentSize = 'a4';
+			expect(
+				state.db.files.allFiles.id1.options.songFormatting.columnsCount
+			).toBe(3);
+			expect(
+				state.db.files.allFiles.id1.options.songFormatting.documentSize
+			).toBe('a3');
+		});
+
+		test('should return undefined if category does not exists', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							id1: {
+								id: 'id1',
+								options: {
+									songFormatting: {
+										columnsCount: 3,
+										documentSize: 'a2',
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const result = selectors.getCategoryOptions(state, 'id1', 'none');
+			expect(result).toBeUndefined();
+		});
+
+		test('should return undefined if file does not exists', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							id1: {
+								id: 'id1',
+								options: {
+									songFormatting: {
+										columnsCount: 3,
+										documentSize: 'a2',
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const result = selectors.getCategoryOptions(
+				state,
+				'idXXX',
+				'songFormatting'
+			);
+			expect(result).toBeUndefined();
+		});
+
+		test('should return undefined if file does not have any saved options', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							id1: {
+								id: 'id1',
+							},
+						},
+					},
+				},
+			};
+			const result = selectors.getCategoryOptions(
+				state,
+				'id1',
+				'songFormatting'
+			);
+			expect(result).toBeUndefined();
+		});
+	});
 });

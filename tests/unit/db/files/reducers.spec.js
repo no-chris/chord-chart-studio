@@ -1,12 +1,20 @@
 import deepFreeze from 'deep-freeze';
 
 jest.mock('uuid');
+jest.mock('../../../../src/core/clock');
+jest.mock('../../../../src/ui/layout/app/_state/selectors');
+jest.mock('../../../../src/fileManager/_state/selectors');
 
 import reducers from '../../../../src/db/files/reducers';
 import * as actions from '../../../../src/db/files/actions';
 import * as actionTypes from '../../../../src/db/files/actionsTypes';
+import { setOptionValue } from '../../../../src/db/options/actions';
+import { DB_OPTION_SET_OPTION_VALUE } from '../../../../src/db/options/actionsTypes';
 
 import { v4 as uuidv4 } from 'uuid';
+import clock from '../../../../src/core/clock';
+import { getEditorMode } from '../../../../src/ui/layout/app/_state/selectors';
+import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
 
 describe('db/files: reducers', () => {
 	const initialState = deepFreeze(reducers());
@@ -244,6 +252,209 @@ describe('db/files: reducers', () => {
 			const state2 = reducers(state1, actions.deleteFile('idontexist'));
 
 			expect(state2).toBe(state1);
+		});
+	});
+
+	describe(DB_OPTION_SET_OPTION_VALUE, () => {
+		const fileId = 'myUUID';
+
+		beforeEach(() => {
+			uuidv4.mockReturnValue(fileId);
+			clock.mockReturnValue('now');
+		});
+
+		test('should return the same state if no fileId is found', () => {
+			getEditorMode.mockReturnValue('edit');
+			getSelectedId.mockReturnValue('idontexist');
+
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = reducers(
+				state1,
+				setOptionValue('songFormatting', 'useShortNamings', true)
+			);
+
+			expect(state2).toBe(state1);
+		});
+
+		test('should update a value in the file preferences', () => {
+			getEditorMode.mockReturnValue('edit');
+			getSelectedId.mockReturnValue(fileId);
+
+			const expected1 = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							preferences: {
+								updatedAt: 'now',
+								useShortNamings: true,
+							},
+						},
+					},
+				},
+			};
+
+			const expected2 = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							preferences: {
+								updatedAt: 'later',
+								useShortNamings: false,
+							},
+						},
+					},
+				},
+			};
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = reducers(
+				state1,
+				setOptionValue('songPreferences', 'useShortNamings', true)
+			);
+			expect(state2).toEqual(expected1);
+
+			clock.mockReturnValue('later');
+
+			const state3 = reducers(
+				state2,
+				setOptionValue('songPreferences', 'useShortNamings', false)
+			);
+
+			expect(state3).toEqual(expected2);
+		});
+
+		test('should set different options in the same category', () => {
+			getEditorMode.mockReturnValue('screen');
+			getSelectedId.mockReturnValue(fileId);
+
+			const expected1 = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							screen: {
+								updatedAt: 'even-later',
+								style: 'chordPro',
+								columnsCount: 4,
+								columnBreakOnParagraph: true,
+							},
+						},
+					},
+				},
+			};
+
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = deepFreeze(
+				reducers(
+					state1,
+					setOptionValue('songFormatting', 'style', 'chordPro')
+				)
+			);
+			clock.mockReturnValue('later');
+
+			const state3 = deepFreeze(
+				reducers(
+					state2,
+					setOptionValue('songFormatting', 'columnsCount', 4)
+				)
+			);
+			clock.mockReturnValue('even-later');
+			getEditorMode.mockReturnValue('screen');
+
+			const state4 = deepFreeze(
+				reducers(
+					state3,
+					setOptionValue(
+						'songFormatting',
+						'columnBreakOnParagraph',
+						true
+					)
+				)
+			);
+			expect(state4).toEqual(expected1);
+		});
+
+		test('should add formatting options for Editor mode value', () => {
+			getEditorMode.mockReturnValue('edit');
+			getSelectedId.mockReturnValue(fileId);
+
+			const expected1 = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							preferences: {
+								updatedAt: 'now',
+								useShortNamings: true,
+							},
+							edit: {
+								updatedAt: 'later',
+								style: 'chordmark',
+							},
+							screen: {
+								updatedAt: 'even-later',
+								style: 'chordPro',
+							},
+							print: {
+								updatedAt: 'even-even-later',
+								style: 'ultimateGuitar',
+							},
+						},
+					},
+				},
+			};
+
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = deepFreeze(
+				reducers(
+					state1,
+					setOptionValue('songPreferences', 'useShortNamings', true)
+				)
+			);
+			clock.mockReturnValue('later');
+
+			const state3 = deepFreeze(
+				reducers(
+					state2,
+					setOptionValue('songFormatting', 'style', 'chordmark')
+				)
+			);
+			clock.mockReturnValue('even-later');
+			getEditorMode.mockReturnValue('screen');
+
+			const state4 = deepFreeze(
+				reducers(
+					state3,
+					setOptionValue('songFormatting', 'style', 'chordPro')
+				)
+			);
+			clock.mockReturnValue('even-even-later');
+			getEditorMode.mockReturnValue('print');
+
+			const state5 = deepFreeze(
+				reducers(
+					state4,
+					setOptionValue('songFormatting', 'style', 'ultimateGuitar')
+				)
+			);
+			expect(state5).toEqual(expected1);
 		});
 	});
 });

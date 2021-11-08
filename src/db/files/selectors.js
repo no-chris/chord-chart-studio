@@ -1,4 +1,5 @@
 import _map from 'lodash/map';
+import _cloneDeep from 'lodash/cloneDeep';
 import _isEqual from 'lodash/isEqual';
 import _sortBy from 'lodash/sortBy';
 
@@ -16,4 +17,14 @@ export const getAllTitles = createDeepEqualSelector(
 
 export const getOne = (state, id) => {
 	return state.db.files.allFiles[id];
+};
+
+export const getCategoryOptions = (state, id, category) => {
+	const file = state.db.files.allFiles[id];
+
+	if (!file) return;
+
+	if ((file.options || {})[category]) {
+		return _cloneDeep(file.options[category]);
+	}
 };
