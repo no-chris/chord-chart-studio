@@ -32,7 +32,7 @@ export default {
 				],
 			},
 			option: {
-				context: 'rendering',
+				context: 'songFormatting',
 				key: 'style',
 			},
 		},
@@ -64,7 +64,7 @@ export default {
 				],
 			},
 			option: {
-				context: 'rendering',
+				context: 'songPreferences',
 				key: 'chordsAndLyricsDisplay',
 			},
 		},
@@ -72,7 +72,7 @@ export default {
 			label: 'Align chords with lyrics',
 			type: 'toggle',
 			option: {
-				context: 'rendering',
+				context: 'songPreferences',
 				key: 'alignChordsWithLyrics',
 			},
 		},
@@ -80,7 +80,7 @@ export default {
 			label: 'Align bars',
 			type: 'toggle',
 			option: {
-				context: 'rendering',
+				context: 'songFormatting',
 				key: 'alignBars',
 			},
 		},
@@ -88,7 +88,7 @@ export default {
 			label: 'Auto repeat chords',
 			type: 'toggle',
 			option: {
-				context: 'rendering',
+				context: 'songFormatting',
 				key: 'autoRepeatChords',
 			},
 		},
@@ -96,7 +96,7 @@ export default {
 			label: 'Expand section repeats',
 			type: 'toggle',
 			option: {
-				context: 'rendering',
+				context: 'songFormatting',
 				key: 'expandSectionRepeats',
 			},
 		},
@@ -131,7 +131,7 @@ export default {
 						],
 					},
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'documentSize',
 					},
 				},
@@ -144,7 +144,7 @@ export default {
 						max: 5,
 					},
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'documentMargins',
 					},
 				},
@@ -157,7 +157,7 @@ export default {
 						max: 4,
 					},
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'columnsCount',
 					},
 				},
@@ -166,7 +166,7 @@ export default {
 					label: 'Break on paragraph',
 					type: 'toggle',
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'columnBreakOnParagraph',
 					},
 				},
@@ -181,7 +181,6 @@ export default {
 			groupWidgetsOrder: [
 				'transposeValue',
 				'simplifyChords',
-				'capoPosition',
 				'harmonizeAccidentals',
 				'preferredAccidentals',
 				'useShortNamings',
@@ -197,7 +196,7 @@ export default {
 						showPlusSymbol: true,
 					},
 					option: {
-						context: 'rendering',
+						context: 'songPreferences',
 						key: 'transposeValue',
 					},
 				},
@@ -225,22 +224,8 @@ export default {
 						],
 					},
 					option: {
-						context: 'rendering',
+						context: 'songPreferences',
 						key: 'simplifyChords',
-					},
-				},
-
-				capoPosition: {
-					label: 'Add capo on fret',
-					type: 'slider',
-					typeOptions: {
-						min: 0,
-						max: 11,
-						showPlusSymbol: false,
-					},
-					option: {
-						context: 'rendering',
-						key: 'capoPosition',
 					},
 				},
 
@@ -248,7 +233,7 @@ export default {
 					label: 'Harmonize accidentals',
 					type: 'toggle',
 					option: {
-						context: 'rendering',
+						context: 'songPreferences',
 						key: 'harmonizeAccidentals',
 					},
 				},
@@ -276,7 +261,7 @@ export default {
 						],
 					},
 					option: {
-						context: 'rendering',
+						context: 'songPreferences',
 						key: 'preferredAccidentals',
 					},
 				},
@@ -285,7 +270,7 @@ export default {
 					label: 'Use short names',
 					type: 'toggle',
 					option: {
-						context: 'rendering',
+						context: 'songPreferences',
 						key: 'useShortNamings',
 					},
 				},
@@ -315,7 +300,7 @@ export default {
 						showPlusSymbol: true,
 					},
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'fontSize',
 					},
 				},
@@ -329,7 +314,7 @@ export default {
 						showPlusSymbol: true,
 					},
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'printFontSize',
 					},
 				},
@@ -347,7 +332,7 @@ export default {
 						],
 					},
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'fontStyle',
 					},
 				},
@@ -380,7 +365,7 @@ export default {
 						],
 					},
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'chordsColor',
 					},
 				},
@@ -389,7 +374,7 @@ export default {
 					label: 'Highlight Chords',
 					type: 'toggle',
 					option: {
-						context: 'rendering',
+						context: 'songFormatting',
 						key: 'highlightChords',
 					},
 				},

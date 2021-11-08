@@ -73,7 +73,6 @@ export const getHiddenWidgets = (state) => {
 	}
 
 	//hiddenWidgets.push('simplifyChords');
-	hiddenWidgets.push('capoPosition');
 
 	return hiddenWidgets;
 };

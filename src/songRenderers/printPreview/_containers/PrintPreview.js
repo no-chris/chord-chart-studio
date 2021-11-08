@@ -5,40 +5,55 @@ import { getOptionValue } from '../../../db/options/selectors';
 import PrintPreview from '../_components/PrintPreview';
 
 export default connect((state) => ({
+	// songPreferences
 	chordsAndLyricsDisplay: getOptionValue(
 		state,
-		'rendering',
+		'songPreferences',
 		'chordsAndLyricsDisplay'
 	),
 	alignChordsWithLyrics: getOptionValue(
 		state,
-		'rendering',
+		'songPreferences',
 		'alignChordsWithLyrics'
 	),
-	columnsCount: getOptionValue(state, 'rendering', 'columnsCount'),
-	columnBreakOnParagraph: getOptionValue(
-		state,
-		'rendering',
-		'columnBreakOnParagraph'
-	),
-	documentSize: getOptionValue(state, 'rendering', 'documentSize'),
-	documentMargins: getOptionValue(state, 'rendering', 'documentMargins'),
-	accidentalsType: getOptionValue(state, 'rendering', 'preferredAccidentals'),
-	alignBars: getOptionValue(state, 'rendering', 'alignBars'),
 	harmonizeAccidentals: getOptionValue(
 		state,
-		'rendering',
+		'songPreferences',
 		'harmonizeAccidentals'
 	),
-	transposeValue: getOptionValue(state, 'rendering', 'transposeValue'),
-	printFontSize: getOptionValue(state, 'rendering', 'printFontSize'),
-	highlightChords: getOptionValue(state, 'rendering', 'highlightChords'),
-	autoRepeatChords: getOptionValue(state, 'rendering', 'autoRepeatChords'),
+	accidentalsType: getOptionValue(
+		state,
+		'songPreferences',
+		'preferredAccidentals'
+	),
+	useShortNamings: getOptionValue(
+		state,
+		'songPreferences',
+		'useShortNamings'
+	),
+	simplifyChords: getOptionValue(state, 'songPreferences', 'simplifyChords'),
+	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
+
+	// songFormatting
+	columnsCount: getOptionValue(state, 'songFormatting', 'columnsCount'),
+	columnBreakOnParagraph: getOptionValue(
+		state,
+		'songFormatting',
+		'columnBreakOnParagraph'
+	),
+	documentSize: getOptionValue(state, 'songFormatting', 'documentSize'),
+	documentMargins: getOptionValue(state, 'songFormatting', 'documentMargins'),
+	alignBars: getOptionValue(state, 'songFormatting', 'alignBars'),
+	printFontSize: getOptionValue(state, 'songFormatting', 'printFontSize'),
+	highlightChords: getOptionValue(state, 'songFormatting', 'highlightChords'),
+	autoRepeatChords: getOptionValue(
+		state,
+		'songFormatting',
+		'autoRepeatChords'
+	),
 	expandSectionRepeats: getOptionValue(
 		state,
-		'rendering',
+		'songFormatting',
 		'expandSectionRepeats'
 	),
-	useShortNamings: getOptionValue(state, 'rendering', 'useShortNamings'),
-	simplifyChords: getOptionValue(state, 'rendering', 'simplifyChords'),
 }))(PrintPreview);
