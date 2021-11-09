@@ -11,7 +11,6 @@ import * as actionTypes from '../../../../src/db/options/actionsTypes';
 import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
 import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../../../src/ui/layout/app/_state/actionsTypes';
 
-import { getEditorMode } from '../../../../src/ui/layout/app/_state/selectors';
 import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
 import { getOptionsDefaults } from '../../../../src/db/options/selectors';
 
@@ -86,7 +85,6 @@ describe('db/options: reducers', () => {
 		test('should apply options of previous mode if there are no saved options for next mode', () => {
 			const previousMode = 'edit';
 			const nextMode = 'print';
-			getEditorMode.mockReturnValue(previousMode);
 			getSelectedId.mockReturnValue(fileId);
 			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
 
@@ -127,7 +125,6 @@ describe('db/options: reducers', () => {
 		test('should apply options of next mode if they are defined', () => {
 			const previousMode = 'edit';
 			const nextMode = 'print';
-			getEditorMode.mockReturnValue(previousMode);
 			getSelectedId.mockReturnValue(fileId);
 			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
 
@@ -170,10 +167,8 @@ describe('db/options: reducers', () => {
 			expect(state).toEqual(expected);
 		});
 
-		test('should apply only default option if no options are available for previous or next mode', () => {
-			const previousMode = 'edit';
-			const nextMode = 'print';
-			getEditorMode.mockReturnValue(previousMode);
+		test('should apply latest defined options if no options are available for previous or next mode', () => {
+			const nextMode = 'export';
 			getSelectedId.mockReturnValue(fileId);
 			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
 
@@ -183,10 +178,16 @@ describe('db/options: reducers', () => {
 						allFiles: {
 							[fileId]: {
 								options: {
+									edit: {}, // <== current mode
+									export: {}, // <== destination mode
+									print: {
+										updatedAt: 100,
+										alignBars: '1',
+										expandSectionRepeats: '1',
+									},
 									play: {
-										updatedAt: '6969',
-										columnsCount: 3,
-										columnBreakOnParagraph: false,
+										updatedAt: 200,
+										alignBars: '2',
 									},
 								},
 							},
@@ -198,6 +199,8 @@ describe('db/options: reducers', () => {
 				songFormatting: {
 					values: {
 						...defaultFormattingOptions,
+						alignBars: '2',
+						expandSectionRepeats: '1',
 					},
 				},
 			};

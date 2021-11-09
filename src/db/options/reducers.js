@@ -1,8 +1,7 @@
 import * as actionTypes from './actionsTypes';
-import { getCategoryOptions } from '../files/selectors';
+import { getCategoryOptions, getLatestModeOptions } from '../files/selectors';
 
 import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../ui/layout/app/_state/actionsTypes';
-import { getEditorMode } from '../../ui/layout/app/_state/selectors';
 import { getSelectedId } from '../../fileManager/_state/selectors';
 import { getOptionsDefaults } from './selectors';
 
@@ -33,14 +32,12 @@ function setOptionValue(state, action) {
 
 function setEditorMode(state, action, fullState) {
 	const fileId = getSelectedId(fullState);
-	const previousMode = getEditorMode(fullState);
 	const nextMode = action.payload.mode;
 
 	let editorModeOptions = getCategoryOptions(fullState, fileId, nextMode);
 
 	if (!editorModeOptions) {
-		editorModeOptions =
-			getCategoryOptions(fullState, fileId, previousMode) || {};
+		editorModeOptions = getLatestModeOptions(fullState, fileId) || {};
 	}
 	delete editorModeOptions.updatedAt;
 

@@ -25,6 +25,33 @@ export const getCategoryOptions = (state, id, category) => {
 	if (!file) return;
 
 	if ((file.options || {})[category]) {
+		// handle edge cases where we might have an empty object...
+		// of course this _should_ never happen!
+		if (Object.keys(file.options[category]).length === 0) return;
+
 		return _cloneDeep(file.options[category]);
 	}
+};
+
+export const getLatestModeOptions = (state, id) => {
+	const file = state.db.files.allFiles[id];
+
+	if (!file) return;
+
+	const fileOptions = file.options || {};
+
+	const allOptionsPerMode = [];
+	if (fileOptions.edit) allOptionsPerMode.push({ ...fileOptions.edit });
+	if (fileOptions.play) allOptionsPerMode.push({ ...fileOptions.play });
+	if (fileOptions.print) allOptionsPerMode.push({ ...fileOptions.print });
+	if (fileOptions.export) allOptionsPerMode.push({ ...fileOptions.export });
+
+	if (!allOptionsPerMode.length) return;
+
+	allOptionsPerMode.sort((a, b) => a.updatedAt - b.updatedAt);
+
+	return allOptionsPerMode.reduce(
+		(acc, modeOptions) => Object.assign(acc, modeOptions),
+		{}
+	);
 };

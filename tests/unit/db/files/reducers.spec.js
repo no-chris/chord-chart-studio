@@ -1,3 +1,4 @@
+/* eslint max-lines: off */
 import deepFreeze from 'deep-freeze';
 
 jest.mock('uuid');
@@ -15,6 +16,8 @@ import { v4 as uuidv4 } from 'uuid';
 import clock from '../../../../src/core/clock';
 import { getEditorMode } from '../../../../src/ui/layout/app/_state/selectors';
 import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
+import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../../../src/ui/layout/app/_state/actionsTypes';
+import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
 
 describe('db/files: reducers', () => {
 	const initialState = deepFreeze(reducers());
@@ -391,7 +394,7 @@ describe('db/files: reducers', () => {
 			getEditorMode.mockReturnValue('edit');
 			getSelectedId.mockReturnValue(fileId);
 
-			const expected1 = {
+			const expected = {
 				allFiles: {
 					[fileId]: {
 						id: fileId,
@@ -454,7 +457,173 @@ describe('db/files: reducers', () => {
 					setOptionValue('songFormatting', 'style', 'ultimateGuitar')
 				)
 			);
-			expect(state5).toEqual(expected1);
+			expect(state5).toEqual(expected);
+		});
+	});
+
+	describe(UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
+		const fileId = 'myUUID';
+
+		test('should copy only relevant options from source mode to destination mode', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									print: {
+										updatedAt: 100,
+										columnsCount: 3,
+										fontStyle: 'roboto',
+										documentMargins: 3, // <== should not be copied!
+										documentSize: 'a4', // <== should not be copied!
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+
+			clock.mockReturnValue('now');
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('print');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('play'),
+				state
+			);
+
+			expect(result.allFiles[fileId].options.play).toBeDefined();
+			expect(result.allFiles[fileId].options.play.updatedAt).toBe('now');
+			expect(result.allFiles[fileId].options.play.columnsCount).toBe(3);
+			expect(
+				result.allFiles[fileId].options.play.documentMargins
+			).not.toBeDefined();
+			expect(
+				result.allFiles[fileId].options.play.documentSize
+			).not.toBeDefined();
+			expect(result.allFiles[fileId].options.play.fontStyle).toBe(
+				'roboto'
+			);
+		});
+
+		test('should not copy anything if destination mode already have options', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									print: {
+										updatedAt: 100,
+										columnsCount: 3,
+										fontStyle: 'roboto',
+										documentSize: 'a4',
+										documentMargins: 3,
+									},
+									play: {
+										updatedAt: 200,
+										columnsCount: 4,
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+
+			clock.mockReturnValue('now');
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('print');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('play'),
+				state
+			);
+
+			expect(result.allFiles[fileId].options.play).toBeDefined();
+			expect(result.allFiles[fileId].options.play.updatedAt).toBe(200);
+			expect(result.allFiles[fileId].options.play.columnsCount).toBe(4);
+			expect(
+				result.allFiles[fileId].options.play.documentMargins
+			).not.toBeDefined();
+			expect(
+				result.allFiles[fileId].options.play.documentSize
+			).not.toBeDefined();
+			expect(
+				result.allFiles[fileId].options.play.fontStyle
+			).not.toBeDefined();
+		});
+
+		test('should get the latest defined options if previous mode does not have anything defined', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									edit: {}, // <== current mode
+									export: {}, // <== destination mode
+									print: {
+										updatedAt: 100,
+										alignBars: '1',
+										expandSectionRepeats: '1',
+									},
+									play: {
+										updatedAt: 200,
+										alignBars: '2',
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+
+			clock.mockReturnValue('now');
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('edit');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('export'),
+				state
+			);
+
+			const fileOptions = result.allFiles[fileId].options;
+			expect(fileOptions.export).toBeDefined();
+			expect(fileOptions.export.updatedAt).toBe('now');
+			expect(fileOptions.export.alignBars).toBe('2');
+			expect(fileOptions.export.expandSectionRepeats).toBe('1');
+		});
+
+		test('should not copy anything if no mode already have options', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {},
+							},
+						},
+					},
+				},
+			};
+
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('print');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('play'),
+				state
+			);
+
+			expect(result.allFiles[fileId].options.print).not.toBeDefined();
+			expect(result.allFiles[fileId].options.play).not.toBeDefined();
 		});
 	});
 });
