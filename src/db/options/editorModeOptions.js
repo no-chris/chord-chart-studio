@@ -1,6 +1,14 @@
 const editorModeOptions = {
 	edit: [],
 	play: [
+		'chordsAndLyricsDisplay',
+		'alignChordsWithLyrics',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+		'useShortNamings',
+		'simplifyChords',
+		'transposeValue',
+
 		'alignBars',
 		'autoRepeatChords',
 		'expandSectionRepeats',
@@ -11,6 +19,14 @@ const editorModeOptions = {
 		'highlightChords',
 	],
 	print: [
+		'chordsAndLyricsDisplay',
+		'alignChordsWithLyrics',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+		'useShortNamings',
+		'simplifyChords',
+		'transposeValue',
+
 		'alignBars',
 		'autoRepeatChords',
 		'expandSectionRepeats',
@@ -23,7 +39,20 @@ const editorModeOptions = {
 		'chordsColor',
 		'highlightChords',
 	],
-	export: ['style', 'alignBars', 'autoRepeatChords', 'expandSectionRepeats'],
+	export: [
+		'chordsAndLyricsDisplay',
+		'alignChordsWithLyrics',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+		'useShortNamings',
+		'simplifyChords',
+		'transposeValue',
+
+		'style',
+		'alignBars',
+		'autoRepeatChords',
+		'expandSectionRepeats',
+	],
 };
 
 export default editorModeOptions;
