@@ -10,9 +10,12 @@ import * as actionTypes from '../../../../src/db/options/actionsTypes';
 
 import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
 import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../../../src/ui/layout/app/_state/actionsTypes';
+import { FILE_MANAGER_SELECT_FILE } from '../../../../src/fileManager/_state/actionsTypes';
 
 import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
+import { getEditorMode } from '../../../../src/ui/layout/app/_state/selectors';
 import { getOptionsDefaults } from '../../../../src/db/options/selectors';
+import { selectFile } from '../../../../src/fileManager/_state/actions';
 
 describe('db/options: reducers', () => {
 	const initialState = deepFreeze(reducers());
@@ -207,6 +210,166 @@ describe('db/options: reducers', () => {
 			const state = reducers(
 				initialState,
 				setEditorMode(nextMode),
+				fullState
+			);
+			expect(state).toEqual(expected);
+		});
+	});
+
+	describe(FILE_MANAGER_SELECT_FILE, () => {
+		const nextFileId = 'next';
+		const defaultFormattingOptions = {
+			documentSize: 'a4',
+			documentMargins: 4,
+			columnsCount: 4,
+			columnBreakOnParagraph: true,
+		};
+		const defaultPreferences = {
+			transposeValue: 4,
+			harmonizeAccidentals: false,
+			preferredAccidentals: 'auto',
+			useShortNamings: true,
+		};
+
+		beforeEach(() => {
+			getOptionsDefaults.mockImplementation((_, category) => {
+				return category === 'songPreferences'
+					? { ...defaultPreferences }
+					: { ...defaultFormattingOptions };
+			});
+		});
+
+		test('should load saved preferences and formatting on file change', () => {
+			const previousMode = 'play';
+			getEditorMode.mockReturnValue(previousMode);
+
+			const fullState = {
+				db: {
+					files: {
+						allFiles: {
+							[nextFileId]: {
+								options: {
+									preferences: {
+										updatedAt: 300,
+										transposeValue: 3,
+									},
+									[previousMode]: {
+										updatedAt: 300,
+										documentSize: 'a3',
+										columnsCount: 3,
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				songFormatting: {
+					values: {
+						...defaultFormattingOptions,
+						documentSize: 'a3',
+						columnsCount: 3,
+					},
+				},
+				songPreferences: {
+					values: {
+						...defaultPreferences,
+						transposeValue: 3,
+					},
+				},
+			};
+			const state = reducers(
+				initialState,
+				selectFile(nextFileId),
+				fullState
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should load formatting options from other modes if not defined on destination mode', () => {
+			const previousMode = 'export';
+			getEditorMode.mockReturnValue(previousMode);
+
+			const fullState = {
+				db: {
+					files: {
+						allFiles: {
+							[nextFileId]: {
+								options: {
+									preferences: {
+										updatedAt: 300,
+										transposeValue: 3,
+									},
+									export: {}, // <== destination mode
+									print: {
+										updatedAt: 100,
+										alignBars: '1',
+										expandSectionRepeats: '1',
+									},
+									play: {
+										updatedAt: 200,
+										alignBars: '2',
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				songFormatting: {
+					values: {
+						...defaultFormattingOptions,
+						alignBars: '2',
+						expandSectionRepeats: '1',
+					},
+				},
+				songPreferences: {
+					values: {
+						...defaultPreferences,
+						transposeValue: 3,
+					},
+				},
+			};
+			const state = reducers(
+				initialState,
+				selectFile(nextFileId),
+				fullState
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should load default values if no options are defined for any mode', () => {
+			const previousMode = 'export';
+			getEditorMode.mockReturnValue(previousMode);
+
+			const fullState = {
+				db: {
+					files: {
+						allFiles: {
+							[nextFileId]: {
+								options: {},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				songFormatting: {
+					values: {
+						...defaultFormattingOptions,
+					},
+				},
+				songPreferences: {
+					values: {
+						...defaultPreferences,
+					},
+				},
+			};
+			const state = reducers(
+				initialState,
+				selectFile(nextFileId),
 				fullState
 			);
 			expect(state).toEqual(expected);
