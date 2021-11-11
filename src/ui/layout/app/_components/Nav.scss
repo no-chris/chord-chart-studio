@@ -19,7 +19,7 @@
 	padding: 0 $spacer-medium;
 	cursor: pointer;
 
-	&:hover {
+	&:hover:not(.mainNavEntry-isDisabled) {
 		@include themify($themes) {
 			color: themed('header-txtHover');
 			background-color: themed('header-bgHover');
@@ -30,6 +30,14 @@
 		@include themify($themes) {
 			color: themed('header-txtActive');
 			background-color: themed('header-bgActive');
+		}
+	}
+
+	&.mainNavEntry-isDisabled {
+		@include themify($themes) {
+			color: themed('header-txtDisabled');
+			background-color: themed('header-bgDisabled');
+			cursor: not-allowed;
 		}
 	}
 }

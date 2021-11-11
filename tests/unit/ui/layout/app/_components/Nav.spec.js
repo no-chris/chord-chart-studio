@@ -34,6 +34,7 @@ describe('Nav', () => {
 				},
 			],
 			currentMode: 'mode1',
+			selectedId: 'fileId',
 			setEditorMode,
 		};
 		setEditorMode.mockClear();
@@ -84,6 +85,25 @@ describe('Nav', () => {
 			expect(setEditorMode).toHaveBeenCalledWith(
 				props.allEntries[2].editorMode
 			);
+		});
+
+		test('should not do anything if nav entries are disabled because no file is selected', () => {
+			const { getByText } = render(<Nav {...props} selectedId={''} />);
+
+			const entry1 = getByText(props.allEntries[0].label);
+			fireEvent.click(entry1);
+
+			expect(setEditorMode).not.toHaveBeenCalled();
+
+			const entry2 = getByText(props.allEntries[1].label);
+			fireEvent.click(entry2);
+
+			expect(setEditorMode).not.toHaveBeenCalled();
+
+			const entry3 = getByText(props.allEntries[2].label);
+			fireEvent.click(entry3);
+
+			expect(setEditorMode).not.toHaveBeenCalled();
 		});
 	});
 });
