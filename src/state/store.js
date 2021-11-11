@@ -16,6 +16,14 @@ export function createStore() {
 	);
 
 	const persistedState = loadState();
+
+	/* Reset options in store * /
+	Object.keys(persistedState.db.files.allFiles).forEach((fileId) => {
+		delete persistedState.db.files.allFiles[fileId].options;
+	});
+	delete persistedState.db.options;
+	/**/
+
 	const initialState = _defaultsDeep(persistedState, seed);
 
 	store = createReduxStore(allReducers, initialState, storeEnhancers);
