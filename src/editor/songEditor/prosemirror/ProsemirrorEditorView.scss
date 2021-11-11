@@ -15,6 +15,7 @@ $themes: (
 
 .ProseMirror {
 	overflow-y: scroll;
+	height: 100%;
 
 	outline: none;
 	font-family: $font-family-monospace;
