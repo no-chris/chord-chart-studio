@@ -4,6 +4,12 @@ import {
 	UI_LAYOUT_APP_SET_EDITOR_MODE,
 } from './actionsTypes';
 
+import {
+	DB_FILES_CREATE,
+	DB_FILES_IMPORT,
+	DB_FILES_DELETE,
+} from '../../../../db/files/actionsTypes';
+
 const initialState = {
 	isLeftBarCollapsed: false,
 	isRightBarCollapsed: false,
@@ -29,6 +35,14 @@ export default function reducers(state = initialState, action = {}) {
 			return {
 				...state,
 				editorMode: mode,
+			};
+		}
+		case DB_FILES_DELETE:
+		case DB_FILES_CREATE:
+		case DB_FILES_IMPORT: {
+			return {
+				...state,
+				editorMode: 'edit',
 			};
 		}
 	}

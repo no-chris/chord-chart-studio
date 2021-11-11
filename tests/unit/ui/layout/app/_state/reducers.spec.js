@@ -3,6 +3,8 @@ import deepFreeze from 'deep-freeze';
 import reducers from '../../../../../../src/ui/layout/app/_state/reducers';
 import * as actions from '../../../../../../src/ui/layout/app/_state/actions';
 import * as actionsTypes from '../../../../../../src/ui/layout/app/_state/actionsTypes';
+import * as dbActions from '../../../../../../src/db/files/actions';
+import * as dbActionsTypes from '../../../../../../src/db/files/actionsTypes';
 
 const initialState = deepFreeze(reducers());
 
@@ -59,6 +61,45 @@ describe('ui/layout/app: reducers', () => {
 				actions.setEditorMode('myMode1')
 			);
 			expect(newState.editorMode).toBe('myMode1');
+		});
+	});
+
+	describe(dbActionsTypes.DB_FILES_CREATE, () => {
+		test('should switch to edit mode when creating file', () => {
+			const state = {
+				editorMode: 'play',
+			};
+
+			const newState = reducers(
+				state,
+				dbActions.createFile('myFile', '')
+			);
+			expect(newState.editorMode).toBe('edit');
+		});
+	});
+
+	describe(dbActionsTypes.DB_FILES_DELETE, () => {
+		test('should switch to edit mode when deleting file', () => {
+			const state = {
+				editorMode: 'play',
+			};
+
+			const newState = reducers(state, dbActions.deleteFile('myId'));
+			expect(newState.editorMode).toBe('edit');
+		});
+	});
+
+	describe(dbActionsTypes.DB_FILES_IMPORT, () => {
+		test('should switch to edit mode when deleting file', () => {
+			const state = {
+				editorMode: 'play',
+			};
+
+			const newState = reducers(
+				state,
+				dbActions.importFile('myFile', '')
+			);
+			expect(newState.editorMode).toBe('edit');
 		});
 	});
 });

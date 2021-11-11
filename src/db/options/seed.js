@@ -1,136 +1,56 @@
 export default {
-	rendering: {
-		style: {
-			value: 'chordmark',
-			default: 'chordmark',
-			resetOnSongChange: false,
+	songPreferences: {
+		values: {
+			chordsAndLyricsDisplay: 'all',
+			alignChordsWithLyrics: true,
+			harmonizeAccidentals: true,
+			preferredAccidentals: 'auto',
+			useShortNamings: true,
+			simplifyChords: 'none',
+			transposeValue: 0,
 		},
-		chordsAndLyricsDisplay: {
-			value: 'all',
-			default: 'all',
-			resetOnSongChange: false,
+		defaults: {
+			chordsAndLyricsDisplay: 'all',
+			alignChordsWithLyrics: true,
+			harmonizeAccidentals: true,
+			preferredAccidentals: 'auto',
+			useShortNamings: true,
+			simplifyChords: 'none',
+			transposeValue: 0,
 		},
-		alignChordsWithLyrics: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
+		//userDefaults: {},
+	},
+	songFormatting: {
+		values: {
+			style: 'chordmark',
+			alignBars: true,
+			autoRepeatChords: true,
+			expandSectionRepeats: true,
+			documentSize: 'a4',
+			documentMargins: 3,
+			columnsCount: 1,
+			columnBreakOnParagraph: true,
+			fontSize: 0,
+			printFontSize: 0,
+			fontStyle: 'roboto',
+			chordsColor: 'yellow',
+			highlightChords: true,
 		},
-		alignBars: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
+		defaults: {
+			style: 'chordmark',
+			alignBars: true,
+			autoRepeatChords: true,
+			expandSectionRepeats: true,
+			documentSize: 'a4',
+			documentMargins: 3,
+			columnsCount: 1,
+			columnBreakOnParagraph: true,
+			fontSize: 0,
+			printFontSize: 0,
+			fontStyle: 'roboto',
+			chordsColor: 'yellow',
+			highlightChords: true,
 		},
-		autoRepeatChords: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-		expandSectionRepeats: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-
-		/** Layout */
-
-		documentSize: {
-			value: 'a4',
-			default: 'a4',
-			resetOnSongChange: false,
-		},
-		documentMargins: {
-			value: 3,
-			default: 3,
-			resetOnSongChange: false,
-		},
-		columnsCount: {
-			value: 1,
-			default: 1,
-			resetOnSongChange: false,
-		},
-		columnBreakOnParagraph: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-
-		/** Display */
-
-		showChords: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-		instrument: {
-			value: 'guitar',
-			default: 'guitar',
-			resetOnSongChange: false,
-		},
-		showStrummingPattern: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-
-		/** Customize Chords */
-
-		transposeValue: {
-			value: 0,
-			default: 0,
-			resetOnSongChange: true,
-		},
-		simplifyChords: {
-			value: 'none',
-			default: 'none',
-			resetOnSongChange: true,
-		},
-		capoPosition: {
-			value: 0,
-			default: 0,
-			resetOnSongChange: true,
-		},
-		harmonizeAccidentals: {
-			value: true,
-			default: true,
-			resetOnSongChange: true,
-		},
-		preferredAccidentals: {
-			value: 'auto',
-			default: 'auto',
-			resetOnSongChange: true,
-		},
-		useShortNamings: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
-
-		/** Format */
-
-		fontSize: {
-			value: 0,
-			default: 0,
-			resetOnSongChange: false,
-		},
-		printFontSize: {
-			value: 0,
-			default: 0,
-			resetOnSongChange: false,
-		},
-		fontStyle: {
-			value: 'roboto',
-			default: 'roboto',
-			resetOnSongChange: false,
-		},
-		chordsColor: {
-			value: 'yellow',
-			default: 'yellow',
-			resetOnSongChange: false,
-		},
-		highlightChords: {
-			value: true,
-			default: true,
-			resetOnSongChange: false,
-		},
+		//userDefaults: {},
 	},
 };

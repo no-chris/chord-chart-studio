@@ -1,42 +1,34 @@
+import _difference from 'lodash/difference';
+
+import editorModeOptions from '../../../db/options/editorModeOptions'; // duh!
 import { getEditorMode } from '../../../ui/layout/app/_state/selectors';
-import { getOptionValue } from '../../../db/options/selectors';
+import { getSelectedId } from '../../../fileManager/_state/selectors';
+import {
+	getOptionsDefaults,
+	getOptionValue,
+} from '../../../db/options/selectors';
 
 export const getNonInteractableWidgets = (state) => {
 	const nonInteractableWidgets = [];
 
-	const editorMode = getEditorMode(state);
+	const allOptions = Object.keys({
+		...getOptionsDefaults(state, 'songFormatting'),
+		...getOptionsDefaults(state, 'songPreferences'),
+	});
 
-	switch (editorMode) {
-		case 'edit': {
-			nonInteractableWidgets.push('chordsAndLyricsDisplay');
-			nonInteractableWidgets.push('helpers');
-			nonInteractableWidgets.push('layout');
-			nonInteractableWidgets.push('style');
-			nonInteractableWidgets.push('format');
-
-			break;
-		}
-		case 'play': {
-			nonInteractableWidgets.push('documentSize');
-			nonInteractableWidgets.push('documentMargins');
-			nonInteractableWidgets.push('columnBreakOnParagraph');
-			break;
-		}
-		case 'print': {
-			nonInteractableWidgets.push('chordsColor');
-			break;
-		}
-		case 'export': {
-			nonInteractableWidgets.push('format');
-			nonInteractableWidgets.push('layout');
-			break;
-		}
+	const selectedId = getSelectedId(state);
+	if (!selectedId) {
+		return allOptions;
 	}
 
-	//const style = getOptionValue(state, 'rendering', 'style');
-	//if (style !== 'chordmark') {
-	//	nonInteractableWidgets.push('alignBars');
-	//}
+	const editorMode = getEditorMode(state);
+
+	const nonInteractableOptions = _difference(
+		allOptions,
+		editorModeOptions[editorMode]
+	);
+
+	nonInteractableWidgets.push(...nonInteractableOptions);
 
 	return nonInteractableWidgets;
 };
@@ -46,10 +38,9 @@ export const getHiddenWidgets = (state) => {
 
 	const editorMode = getEditorMode(state);
 
-	//const showChords = getOptionValue(state, 'rendering', 'showChords');
 	const harmonizeAccidentals = getOptionValue(
 		state,
-		'rendering',
+		'songPreferences',
 		'harmonizeAccidentals'
 	);
 	/*
@@ -59,9 +50,6 @@ export const getHiddenWidgets = (state) => {
 		'chordsAndLyricsDisplay'
 	);
 
-	//if (!showChords) {
-	//	hiddenWidgets.push('instrument');
-	//}
 	if (chordsAndLyricsDisplay !== 'all') {
 		hiddenWidgets.push('alignChordsWithLyrics');
 	}
@@ -77,9 +65,7 @@ export const getHiddenWidgets = (state) => {
 		hiddenWidgets.push('printFontSize');
 	}
 
-	hiddenWidgets.push('helpers');
 	//hiddenWidgets.push('simplifyChords');
-	hiddenWidgets.push('capoPosition');
 
 	return hiddenWidgets;
 };

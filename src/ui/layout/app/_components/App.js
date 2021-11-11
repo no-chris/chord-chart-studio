@@ -18,6 +18,7 @@ function App(props) {
 		toggleLeftBar,
 		toggleRightBar,
 		setEditorMode,
+		selectedId,
 
 		leftBar,
 		rightBar,
@@ -59,6 +60,7 @@ function App(props) {
 						allEntries={allNavEntries}
 						currentMode={editorMode}
 						setEditorMode={setEditorMode}
+						selectedId={selectedId}
 					/>
 				</section>
 				<section className={'appLayout-content'}>
@@ -94,6 +96,7 @@ App.propTypes = {
 
 	isLeftBarCollapsed: PropTypes.bool,
 	isRightBarCollapsed: PropTypes.bool,
+	selectedId: PropTypes.string,
 	toggleLeftBar: PropTypes.func.isRequired,
 	toggleRightBar: PropTypes.func.isRequired,
 

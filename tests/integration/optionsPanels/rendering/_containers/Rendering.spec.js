@@ -17,6 +17,7 @@ import allWidgets from '../../../../../src/optionsPanels/rendering/allWidgets';
 import * as optionsSelectors from '../../../../../src/db/options/selectors';
 import * as optionsActions from '../../../../../src/db/options/actions';
 import * as appActions from '../../../../../src/ui/layout/app/_state/actions';
+import * as fmActions from '../../../../../src/fileManager/_state/actions';
 
 afterEach(cleanup);
 
@@ -35,9 +36,8 @@ describe('"Rendering" option panel', () => {
 				.value();
 
 			getByText(allLabels[0]);
-			// getByText(allLabels[1]); // helpers is disabled for now
+			getByText(allLabels[1]);
 			getByText(allLabels[2]);
-			getByText(allLabels[3]);
 		});
 
 		test('Layout group: a click on the group title should toggle widgets visibility', () => {
@@ -100,27 +100,35 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Some widgets should be disabled depending on editor Mode', () => {
+		test('All widgets should be disabled if no file is selected', () => {});
+
 		test('Edit mode', () => {
+			const niClassName = '.sb-optionSelect-isNotInteractable';
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('edit'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
-			const style = getByText(allWidgets.allWidgets.style.label);
-			//const alignBars = getByText(allWidgets.allWidgets.alignBars.label);
-			//const helpers = getByText(allWidgets.allWidgets.helpers.label);
-			const layout = getByText(allWidgets.allWidgets.layout.label);
+			const chordsAndLyricsDisplay = getByText(
+				allWidgets.allWidgets.chordsAndLyricsDisplay.label
+			);
+			const documentSize = getByText(
+				allWidgets.allWidgets.layout.allGroupWidgets.documentSize.label
+			);
+			const simplifyChords = getByText(
+				allWidgets.allWidgets.chords.allGroupWidgets.simplifyChords
+					.label
+			);
 
-			expect(
-				style.closest('.sb-optionSelect-isNotInteractable')
-			).toBeInstanceOf(Element);
-			//expect(helpers.closest('.sb-optionsGroup-isNotInteractable')).toBeInstanceOf(Element);
-			expect(
-				layout.closest('.sb-optionsGroup-isNotInteractable')
-			).toBeInstanceOf(Element);
+			expect(documentSize.closest(niClassName)).toBeInstanceOf(Element);
+			expect(simplifyChords.closest(niClassName)).toBeInstanceOf(Element);
+			expect(chordsAndLyricsDisplay.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
 		});
 
 		test('Play mode', () => {
-			dispatch(appActions.setEditorMode('play'));
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('play'));
 
 			const { getByText } = render(withStore(<Rendering />));
@@ -135,6 +143,7 @@ describe('"Rendering" option panel', () => {
 		});
 
 		test('Print mode', () => {
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('print'));
 
 			render(withStore(<Rendering />));
@@ -142,19 +151,25 @@ describe('"Rendering" option panel', () => {
 			// Nothing is disabled for now
 		});
 
-		test('Export mode', () => {
+		test.skip('Export mode', () => {
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('export'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
-			const layout = getByText(allWidgets.allWidgets.layout.label);
-			const format = getByText(allWidgets.allWidgets.format.label);
+			const documentSize = getByText(
+				allWidgets.allWidgets.layout.allGroupWidgets.documentSize.label
+			);
+			const chordsColor = getByText(
+				allWidgets.allWidgets.format.allGroupWidgets.chordsColor.label
+			);
 
+			console.log(documentSize);
 			expect(
-				layout.closest('.sb-optionsGroup-isNotInteractable')
+				chordsColor.closest('.sb-optionsGroup-isNotInteractable')
 			).toBeInstanceOf(Element);
 			expect(
-				format.closest('.sb-optionsGroup-isNotInteractable')
+				documentSize.closest('.sb-optionsGroup-isNotInteractable')
 			).toBeInstanceOf(Element);
 		});
 	});
@@ -180,7 +195,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'rendering',
+					'songFormatting',
 					'style'
 				)
 			).toBe('chordmark');
@@ -191,7 +206,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'rendering',
+					'songFormatting',
 					'style'
 				)
 			).toBe('chordpro');
@@ -202,7 +217,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'rendering',
+					'songFormatting',
 					'style'
 				)
 			).toBe('chordmark');
@@ -210,96 +225,11 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Options dependencies', () => {
-		test.skip('alignBars should be interactable depending on style value', () => {
-			dispatch(appActions.setEditorMode('play'));
-
-			const { getByText } = render(withStore(<Rendering />));
-
-			const styleWidget = getByText(allWidgets.allWidgets.style.label);
-			const alignBarWidget = getByText(
-				allWidgets.allWidgets.alignBars.label
-			);
-
-			act(() => {
-				fireEvent.click(styleWidget);
-			});
-
-			const cmOption = getByText('ChordMark');
-			const chordProOption = getByText('ChordPro');
-
-			act(() => {
-				fireEvent.click(cmOption);
-			});
-			expect(
-				alignBarWidget.closest('.sb-optionToggle-isNotInteractable')
-			).toBeNull();
-
-			act(() => {
-				fireEvent.click(chordProOption);
-			});
-			expect(
-				alignBarWidget.closest('.sb-optionToggle-isNotInteractable')
-			).toBeInstanceOf(Element);
-
-			act(() => {
-				fireEvent.click(cmOption);
-			});
-			expect(
-				alignBarWidget.closest('.sb-optionToggle-isNotInteractable')
-			).toBeNull();
-		});
-
-		test.skip('Instrument should only be displayed if showChords === true', () => {
-			dispatch(appActions.setEditorMode('play'));
-			dispatch(
-				optionsActions.setOptionValue('rendering', 'showChords', true)
-			);
-
-			const { getByText, queryByText } = render(withStore(<Rendering />));
-
-			const helpers = getByText(allWidgets.allWidgets.helpers.label);
-
-			act(() => {
-				fireEvent.click(helpers);
-			});
-
-			const showChords = getByText(
-				allWidgets.allWidgets.helpers.allGroupWidgets.showChords.label
-			);
-			getByText(
-				allWidgets.allWidgets.helpers.allGroupWidgets.instrument.label
-			);
-
-			act(() => {
-				fireEvent.click(showChords);
-			});
-
-			expect(
-				queryByText(
-					allWidgets.allWidgets.helpers.allGroupWidgets.instrument
-						.label
-				)
-			).toBeNull();
-
-			act(() => {
-				fireEvent.click(showChords);
-			});
-
-			getByText(
-				allWidgets.allWidgets.helpers.allGroupWidgets.instrument.label
-			);
-		});
-
 		test('fontSize / printFontSize should be displayed depending on editor mode', () => {
-			dispatch(appActions.setEditorMode('edit'));
+			dispatch(fmActions.selectFile('myId'));
+			dispatch(appActions.setEditorMode('play'));
 
 			const { getByText, queryByText } = render(withStore(<Rendering />));
-
-			const layout = getByText(allWidgets.allWidgets.format.label);
-
-			act(() => {
-				fireEvent.click(layout);
-			});
 
 			getByText(
 				allWidgets.allWidgets.format.allGroupWidgets.fontSize.label
@@ -354,10 +284,11 @@ describe('"Rendering" option panel', () => {
 		});
 
 		test('PreferredAccidentals should only be displayed if harmonizeAccidentals === true', () => {
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('play'));
 			dispatch(
 				optionsActions.setOptionValue(
-					'rendering',
+					'songPreferences',
 					'harmonizeAccidentals',
 					true
 				)
@@ -369,10 +300,12 @@ describe('"Rendering" option panel', () => {
 				allWidgets.allWidgets.chords.allGroupWidgets
 					.harmonizeAccidentals.label
 			);
-			getByText(
-				allWidgets.allWidgets.chords.allGroupWidgets
-					.preferredAccidentals.label
-			);
+			expect(
+				getByText(
+					allWidgets.allWidgets.chords.allGroupWidgets
+						.preferredAccidentals.label
+				)
+			).toBeInTheDocument();
 
 			act(() => {
 				fireEvent.click(harmonizeAccidentals);
@@ -389,10 +322,12 @@ describe('"Rendering" option panel', () => {
 				fireEvent.click(harmonizeAccidentals);
 			});
 
-			getByText(
-				allWidgets.allWidgets.chords.allGroupWidgets
-					.preferredAccidentals.label
-			);
+			expect(
+				getByText(
+					allWidgets.allWidgets.chords.allGroupWidgets
+						.preferredAccidentals.label
+				)
+			).toBeInTheDocument();
 		});
 	});
 });

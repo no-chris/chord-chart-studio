@@ -5,8 +5,8 @@ import { getOptionValue } from '../../../db/options/selectors';
 import PlayRenderer from '../_components/PlayRenderer';
 
 export default connect((state) => ({
-	chordsColor: getOptionValue(state, 'rendering', 'chordsColor'),
-	highlightChords: getOptionValue(state, 'rendering', 'highlightChords'),
-	fontSize: getOptionValue(state, 'rendering', 'fontSize'),
-	columnsCount: getOptionValue(state, 'rendering', 'columnsCount'),
+	chordsColor: getOptionValue(state, 'songFormatting', 'chordsColor'),
+	highlightChords: getOptionValue(state, 'songFormatting', 'highlightChords'),
+	fontSize: getOptionValue(state, 'songFormatting', 'fontSize'),
+	columnsCount: getOptionValue(state, 'songFormatting', 'columnsCount'),
 }))(PlayRenderer);

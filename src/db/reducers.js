@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
+import combineSectionReducers from 'combine-section-reducers';
 import files from './files/reducers';
 import options from './options/reducers';
 
-export default combineReducers({
+export default combineSectionReducers({
 	files,
 	options,
 });

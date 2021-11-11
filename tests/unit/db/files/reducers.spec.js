@@ -1,12 +1,23 @@
+/* eslint max-lines: off */
 import deepFreeze from 'deep-freeze';
 
 jest.mock('uuid');
+jest.mock('../../../../src/core/clock');
+jest.mock('../../../../src/ui/layout/app/_state/selectors');
+jest.mock('../../../../src/fileManager/_state/selectors');
 
 import reducers from '../../../../src/db/files/reducers';
 import * as actions from '../../../../src/db/files/actions';
 import * as actionTypes from '../../../../src/db/files/actionsTypes';
+import { setOptionValue } from '../../../../src/db/options/actions';
+import { DB_OPTION_SET_OPTION_VALUE } from '../../../../src/db/options/actionsTypes';
 
 import { v4 as uuidv4 } from 'uuid';
+import clock from '../../../../src/core/clock';
+import { getEditorMode } from '../../../../src/ui/layout/app/_state/selectors';
+import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
+import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../../../src/ui/layout/app/_state/actionsTypes';
+import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
 
 describe('db/files: reducers', () => {
 	const initialState = deepFreeze(reducers());
@@ -244,6 +255,375 @@ describe('db/files: reducers', () => {
 			const state2 = reducers(state1, actions.deleteFile('idontexist'));
 
 			expect(state2).toBe(state1);
+		});
+	});
+
+	describe(DB_OPTION_SET_OPTION_VALUE, () => {
+		const fileId = 'myUUID';
+
+		beforeEach(() => {
+			uuidv4.mockReturnValue(fileId);
+			clock.mockReturnValue('now');
+		});
+
+		test('should return the same state if no fileId is found', () => {
+			getEditorMode.mockReturnValue('edit');
+			getSelectedId.mockReturnValue('idontexist');
+
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = reducers(
+				state1,
+				setOptionValue('songFormatting', 'useShortNamings', true)
+			);
+
+			expect(state2).toBe(state1);
+		});
+
+		test('should update a value in the file preferences', () => {
+			getEditorMode.mockReturnValue('edit');
+			getSelectedId.mockReturnValue(fileId);
+
+			const expected1 = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							preferences: {
+								updatedAt: 'now',
+								useShortNamings: true,
+							},
+						},
+					},
+				},
+			};
+
+			const expected2 = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							preferences: {
+								updatedAt: 'later',
+								useShortNamings: false,
+							},
+						},
+					},
+				},
+			};
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = reducers(
+				state1,
+				setOptionValue('songPreferences', 'useShortNamings', true)
+			);
+			expect(state2).toEqual(expected1);
+
+			clock.mockReturnValue('later');
+
+			const state3 = reducers(
+				state2,
+				setOptionValue('songPreferences', 'useShortNamings', false)
+			);
+
+			expect(state3).toEqual(expected2);
+		});
+
+		test('should set different options in the same category', () => {
+			getEditorMode.mockReturnValue('screen');
+			getSelectedId.mockReturnValue(fileId);
+
+			const expected1 = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							screen: {
+								updatedAt: 'even-later',
+								style: 'chordPro',
+								columnsCount: 4,
+								columnBreakOnParagraph: true,
+							},
+						},
+					},
+				},
+			};
+
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = deepFreeze(
+				reducers(
+					state1,
+					setOptionValue('songFormatting', 'style', 'chordPro')
+				)
+			);
+			clock.mockReturnValue('later');
+
+			const state3 = deepFreeze(
+				reducers(
+					state2,
+					setOptionValue('songFormatting', 'columnsCount', 4)
+				)
+			);
+			clock.mockReturnValue('even-later');
+			getEditorMode.mockReturnValue('screen');
+
+			const state4 = deepFreeze(
+				reducers(
+					state3,
+					setOptionValue(
+						'songFormatting',
+						'columnBreakOnParagraph',
+						true
+					)
+				)
+			);
+			expect(state4).toEqual(expected1);
+		});
+
+		test('should add formatting options for Editor mode value', () => {
+			getEditorMode.mockReturnValue('edit');
+			getSelectedId.mockReturnValue(fileId);
+
+			const expected = {
+				allFiles: {
+					[fileId]: {
+						id: fileId,
+						title: 'myTitle',
+						content: '',
+						options: {
+							preferences: {
+								updatedAt: 'now',
+								useShortNamings: true,
+							},
+							edit: {
+								updatedAt: 'later',
+								style: 'chordmark',
+							},
+							screen: {
+								updatedAt: 'even-later',
+								style: 'chordPro',
+							},
+							print: {
+								updatedAt: 'even-even-later',
+								style: 'ultimateGuitar',
+							},
+						},
+					},
+				},
+			};
+
+			const state1 = deepFreeze(
+				reducers(initialState, actions.createFile('myTitle'))
+			);
+			const state2 = deepFreeze(
+				reducers(
+					state1,
+					setOptionValue('songPreferences', 'useShortNamings', true)
+				)
+			);
+			clock.mockReturnValue('later');
+
+			const state3 = deepFreeze(
+				reducers(
+					state2,
+					setOptionValue('songFormatting', 'style', 'chordmark')
+				)
+			);
+			clock.mockReturnValue('even-later');
+			getEditorMode.mockReturnValue('screen');
+
+			const state4 = deepFreeze(
+				reducers(
+					state3,
+					setOptionValue('songFormatting', 'style', 'chordPro')
+				)
+			);
+			clock.mockReturnValue('even-even-later');
+			getEditorMode.mockReturnValue('print');
+
+			const state5 = deepFreeze(
+				reducers(
+					state4,
+					setOptionValue('songFormatting', 'style', 'ultimateGuitar')
+				)
+			);
+			expect(state5).toEqual(expected);
+		});
+	});
+
+	describe(UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
+		const fileId = 'myUUID';
+
+		test('should copy only relevant options from source mode to destination mode', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									print: {
+										updatedAt: 100,
+										columnsCount: 3,
+										fontStyle: 'roboto',
+										documentMargins: 3, // <== should not be copied!
+										documentSize: 'a4', // <== should not be copied!
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+
+			clock.mockReturnValue('now');
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('print');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('play'),
+				state
+			);
+
+			expect(result.allFiles[fileId].options.play).toBeDefined();
+			expect(result.allFiles[fileId].options.play.updatedAt).toBe('now');
+			expect(result.allFiles[fileId].options.play.columnsCount).toBe(3);
+			expect(
+				result.allFiles[fileId].options.play.documentMargins
+			).not.toBeDefined();
+			expect(
+				result.allFiles[fileId].options.play.documentSize
+			).not.toBeDefined();
+			expect(result.allFiles[fileId].options.play.fontStyle).toBe(
+				'roboto'
+			);
+		});
+
+		test('should not copy anything if destination mode already have options', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									print: {
+										updatedAt: 100,
+										columnsCount: 3,
+										fontStyle: 'roboto',
+										documentSize: 'a4',
+										documentMargins: 3,
+									},
+									play: {
+										updatedAt: 200,
+										columnsCount: 4,
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+
+			clock.mockReturnValue('now');
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('print');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('play'),
+				state
+			);
+
+			expect(result.allFiles[fileId].options.play).toBeDefined();
+			expect(result.allFiles[fileId].options.play.updatedAt).toBe(200);
+			expect(result.allFiles[fileId].options.play.columnsCount).toBe(4);
+			expect(
+				result.allFiles[fileId].options.play.documentMargins
+			).not.toBeDefined();
+			expect(
+				result.allFiles[fileId].options.play.documentSize
+			).not.toBeDefined();
+			expect(
+				result.allFiles[fileId].options.play.fontStyle
+			).not.toBeDefined();
+		});
+
+		test('should get the latest defined options if previous mode does not have anything defined', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									edit: {}, // <== current mode
+									export: {}, // <== destination mode
+									print: {
+										updatedAt: 100,
+										alignBars: '1',
+										expandSectionRepeats: '1',
+									},
+									play: {
+										updatedAt: 200,
+										alignBars: '2',
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+
+			clock.mockReturnValue('now');
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('edit');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('export'),
+				state
+			);
+
+			const fileOptions = result.allFiles[fileId].options;
+			expect(fileOptions.export).toBeDefined();
+			expect(fileOptions.export.updatedAt).toBe('now');
+			expect(fileOptions.export.alignBars).toBe('2');
+			expect(fileOptions.export.expandSectionRepeats).toBe('1');
+		});
+
+		test('should not copy anything if no mode already have options', () => {
+			const state = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {},
+							},
+						},
+					},
+				},
+			};
+
+			getSelectedId.mockReturnValue(fileId);
+			getEditorMode.mockReturnValue('print');
+
+			const result = reducers(
+				state.db.files,
+				setEditorMode('play'),
+				state
+			);
+
+			expect(result.allFiles[fileId].options.print).not.toBeDefined();
+			expect(result.allFiles[fileId].options.play).not.toBeDefined();
 		});
 	});
 });

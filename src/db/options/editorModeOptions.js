@@ -1,0 +1,58 @@
+const editorModeOptions = {
+	edit: [],
+	play: [
+		'chordsAndLyricsDisplay',
+		'alignChordsWithLyrics',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+		'useShortNamings',
+		'simplifyChords',
+		'transposeValue',
+
+		'alignBars',
+		'autoRepeatChords',
+		'expandSectionRepeats',
+		'columnsCount',
+		'fontSize',
+		'fontStyle',
+		'chordsColor',
+		'highlightChords',
+	],
+	print: [
+		'chordsAndLyricsDisplay',
+		'alignChordsWithLyrics',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+		'useShortNamings',
+		'simplifyChords',
+		'transposeValue',
+
+		'alignBars',
+		'autoRepeatChords',
+		'expandSectionRepeats',
+		'documentSize',
+		'documentMargins',
+		'columnsCount',
+		'columnBreakOnParagraph',
+		'printFontSize',
+		'fontStyle',
+		'chordsColor',
+		'highlightChords',
+	],
+	export: [
+		'chordsAndLyricsDisplay',
+		'alignChordsWithLyrics',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+		'useShortNamings',
+		'simplifyChords',
+		'transposeValue',
+
+		'style',
+		'alignBars',
+		'autoRepeatChords',
+		'expandSectionRepeats',
+	],
+};
+
+export default editorModeOptions;
