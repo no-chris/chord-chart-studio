@@ -2,6 +2,7 @@ import _difference from 'lodash/difference';
 
 import editorModeOptions from '../../../db/options/editorModeOptions'; // duh!
 import { getEditorMode } from '../../../ui/layout/app/_state/selectors';
+import { getSelectedId } from '../../../fileManager/_state/selectors';
 import {
 	getOptionsDefaults,
 	getOptionValue,
@@ -14,6 +15,12 @@ export const getNonInteractableWidgets = (state) => {
 		...getOptionsDefaults(state, 'songFormatting'),
 		...getOptionsDefaults(state, 'songPreferences'),
 	});
+
+	const selectedId = getSelectedId(state);
+	if (!selectedId) {
+		return allOptions;
+	}
+
 	const editorMode = getEditorMode(state);
 
 	const nonInteractableOptions = _difference(

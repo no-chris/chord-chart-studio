@@ -17,6 +17,7 @@ import allWidgets from '../../../../../src/optionsPanels/rendering/allWidgets';
 import * as optionsSelectors from '../../../../../src/db/options/selectors';
 import * as optionsActions from '../../../../../src/db/options/actions';
 import * as appActions from '../../../../../src/ui/layout/app/_state/actions';
+import * as fmActions from '../../../../../src/fileManager/_state/actions';
 
 afterEach(cleanup);
 
@@ -99,8 +100,11 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Some widgets should be disabled depending on editor Mode', () => {
+		test('All widgets should be disabled if no file is selected', () => {});
+
 		test('Edit mode', () => {
 			const niClassName = '.sb-optionSelect-isNotInteractable';
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('edit'));
 
 			const { getByText } = render(withStore(<Rendering />));
@@ -124,7 +128,7 @@ describe('"Rendering" option panel', () => {
 		});
 
 		test('Play mode', () => {
-			dispatch(appActions.setEditorMode('play'));
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('play'));
 
 			const { getByText } = render(withStore(<Rendering />));
@@ -139,6 +143,7 @@ describe('"Rendering" option panel', () => {
 		});
 
 		test('Print mode', () => {
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('print'));
 
 			render(withStore(<Rendering />));
@@ -147,6 +152,7 @@ describe('"Rendering" option panel', () => {
 		});
 
 		test.skip('Export mode', () => {
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('export'));
 
 			const { getByText } = render(withStore(<Rendering />));
@@ -219,16 +225,11 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Options dependencies', () => {
-		test.skip('fontSize / printFontSize should be displayed depending on editor mode', () => {
-			dispatch(appActions.setEditorMode('edit'));
+		test('fontSize / printFontSize should be displayed depending on editor mode', () => {
+			dispatch(fmActions.selectFile('myId'));
+			dispatch(appActions.setEditorMode('play'));
 
 			const { getByText, queryByText } = render(withStore(<Rendering />));
-
-			const layout = getByText(allWidgets.allWidgets.format.label);
-
-			act(() => {
-				fireEvent.click(layout);
-			});
 
 			getByText(
 				allWidgets.allWidgets.format.allGroupWidgets.fontSize.label
@@ -283,6 +284,7 @@ describe('"Rendering" option panel', () => {
 		});
 
 		test('PreferredAccidentals should only be displayed if harmonizeAccidentals === true', () => {
+			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('play'));
 			dispatch(
 				optionsActions.setOptionValue(
@@ -298,10 +300,12 @@ describe('"Rendering" option panel', () => {
 				allWidgets.allWidgets.chords.allGroupWidgets
 					.harmonizeAccidentals.label
 			);
-			getByText(
-				allWidgets.allWidgets.chords.allGroupWidgets
-					.preferredAccidentals.label
-			);
+			expect(
+				getByText(
+					allWidgets.allWidgets.chords.allGroupWidgets
+						.preferredAccidentals.label
+				)
+			).toBeInTheDocument();
 
 			act(() => {
 				fireEvent.click(harmonizeAccidentals);
@@ -318,10 +322,12 @@ describe('"Rendering" option panel', () => {
 				fireEvent.click(harmonizeAccidentals);
 			});
 
-			getByText(
-				allWidgets.allWidgets.chords.allGroupWidgets
-					.preferredAccidentals.label
-			);
+			expect(
+				getByText(
+					allWidgets.allWidgets.chords.allGroupWidgets
+						.preferredAccidentals.label
+				)
+			).toBeInTheDocument();
 		});
 	});
 });
