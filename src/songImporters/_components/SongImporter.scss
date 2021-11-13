@@ -1,0 +1,74 @@
+@import '../../../scss/abstract';
+@import '../themes';
+
+.sim-SongImporterModal_Container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 90%;
+	height: 90%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
+	flex-wrap: nowrap;
+
+	@include themify($themes) {
+		background-color: themed('popup-bg');
+		border: 1px solid themed('popup-border');
+		color: themed('popup-txt');
+	}
+}
+
+.sim-TabSwitcher_Container {
+	flex: 0 0 50px;
+	height: 50px;
+
+	@include themify($themes) {
+		background-color: themed('tabswitcher-bg');
+		border-bottom: 1px solid themed('tabswitcher-border');
+		color: themed('tabswitcher-txt');
+	}
+}
+
+.sim-TabSwitcher_Item {
+	padding: 20px;
+}
+
+.sim-TwoColumns_Container {
+	display: flex;
+	align-self: stretch;
+
+	flex: 0 1 100%;
+}
+
+.sim-Column_Container {
+	padding: 10px;
+	flex: 1 1 50%;
+	align-self: stretch;
+}
+
+.sim-Input_Textarea {
+	width: 100%;
+	height: 80%;
+	resize: none;
+}
+
+.sim-InputFormat_Item {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+.sim-ActionBar_Container {
+	flex: 0 0 60px;
+	padding: 10px;
+	text-align: right;
+
+	@include themify($themes) {
+		background-color: themed('footer-bg');
+		border-top: 1px solid themed('footer-border');
+		color: themed('footer-txt');
+	}
+}

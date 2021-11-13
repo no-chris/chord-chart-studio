@@ -1,0 +1,100 @@
+@import '../../../scss/abstract';
+
+$themes: (
+	light: (),
+	dark: (
+		// primary
+		button-primary-txt: cv(dark-primary, dark10),
+		button-primary-txtHover: cv(dark-secondary, dark20),
+		button-primary-txtActive: cv(dark-primary),
+		button-primary-txtDisabled: cv(dark-secondary, light10),
+		button-primary-bg: cv(dark-accent),
+		button-primary-bgHover: cv(dark-accent, light20),
+		button-primary-bgActive: cv(dark-accent, light30),
+		button-primary-bgDisabled: cv(dark-secondary, light20),
+		// primary
+		button-secondary-txt: cv(dark-secondary, dark10),
+		button-secondary-txtHover: cv(dark-secondary, dark20),
+		button-secondary-txtActive: cv(dark-primary),
+		button-secondary-txtDisabled: cv(dark-secondary, light10),
+		button-secondary-bg: cv(dark-foreground, dark30),
+		button-secondary-bgHover: cv(dark-foreground, dark20),
+		button-secondary-bgActive: cv(dark-foreground, dark10),
+		button-secondary-bgDisabled: cv(dark-secondary, light20),
+	),
+);
+
+button {
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+}
+
+.Button {
+	padding: 10px 20px;
+	margin: 10px;
+	font-weight: bold;
+	text-transform: capitalize;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.Button-primary:not(.Button-isDisabled) {
+	@include themify($themes) {
+		background-color: themed('button-primary-bg');
+		color: themed('button-primary-txt');
+	}
+
+	&:hover {
+		@include themify($themes) {
+			color: themed('button-primary-txtHover');
+			background-color: themed('button-primary-bgHover');
+		}
+	}
+
+	&:active {
+		@include themify($themes) {
+			color: themed('button-primary-txtActive');
+			background-color: themed('button-primary-bgActive');
+		}
+	}
+}
+
+.Button-primary.Button-isDisabled {
+	cursor: not-allowed;
+	@include themify($themes) {
+		background-color: themed('button-primary-bgDisabled');
+		color: themed('button-primary-txtDisabled');
+	}
+}
+
+.Button-secondary:not(.Button-isDisabled) {
+	@include themify($themes) {
+		background-color: themed('button-secondary-bg');
+		color: themed('button-secondary-txt');
+	}
+
+	&:hover {
+		@include themify($themes) {
+			color: themed('button-secondary-txtHover');
+			background-color: themed('button-secondary-bgHover');
+		}
+	}
+
+	&:active {
+		@include themify($themes) {
+			color: themed('button-secondary-txtActive');
+			background-color: themed('button-secondary-bgActive');
+		}
+	}
+}
+
+.Button-secondary.Button-isDisabled {
+	cursor: not-allowed;
+	@include themify($themes) {
+		background-color: themed('button-secondary-bgDisabled');
+		color: themed('button-secondary-txtDisabled');
+	}
+}

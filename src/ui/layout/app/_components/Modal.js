@@ -3,25 +3,25 @@ import './Modal.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SongImporter from '../../../../songImporter/_components/SongImporter'; // doh!
+import SongImporter from '../../../../songImporters/_components/SongImporter'; // fixme: doh!
 
 function Modal(props) {
 	const { activeModal, closeModal } = props;
-	
+
 	let modalContent;
-	
+
 	switch (activeModal) {
-		case 'none': return null;
-		case 'importFile': modalContent = <SongImporter closeModal={closeModal} />; 
+		case 'none':
+			return null;
+		case 'importFile':
+			modalContent = <SongImporter closeModal={closeModal} />;
 			break;
 	}
 
 	return (
 		<section className={'modal'} data-testid={'modal-overlay'}>
 			<div className={'modal-Overlay'}></div>
-			<div className={'modal-Container'}>
-				{modalContent}
-			</div>
+			<div className={'modal-Container'}>{modalContent}</div>
 		</section>
 	);
 }

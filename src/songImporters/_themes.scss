@@ -1,0 +1,25 @@
+$themes: (
+	light: (),
+	dark: (
+		// header
+		tabswitcher-txt: cv(dark-foreground, fade),
+		tabswitcher-txtHover: cv(dark-foreground),
+		tabswitcher-txtActive: cv(dark-foreground),
+		tabswitcher-bg: cv(dark-background),
+		tabswitcher-bgHover: cv(dark-background, light10),
+		tabswitcher-bgActive: cv(dark-background, dark10),
+		tabswitcher-border: cv(dark-foreground, dark20),
+		// main
+		popup-bg: cv(dark-secondary, dark5),
+		popup-border: cv(dark-foreground, dark20),
+		popup-txt: cv(dark-foreground),
+		// footer
+		footer-txt: cv(dark-foreground, fade),
+		footer-txtHover: cv(dark-foreground),
+		footer-txtActive: cv(dark-foreground),
+		footer-bg: cv(dark-background),
+		footer-bgHover: cv(dark-background, light10),
+		footer-bgActive: cv(dark-background, dark10),
+		footer-border: cv(dark-foreground, dark20),
+	),
+);
