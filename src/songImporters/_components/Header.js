@@ -2,23 +2,23 @@ import React from 'react';
 import Button from '../../ui/_components/Button';
 import PropTypes from 'prop-types';
 
-const Header = ({ closeModal, content }) => {
+const Header = ({ cancelImport, doImport, content, error }) => {
 	return (
 		<div className={'sim-Header_Container'}>
 			<div className={'sim-Header_Title'}>Import song</div>
 			<div className={'sim-Header_Actions'}>
 				<Button
-					onClick={closeModal}
+					onClick={cancelImport}
 					buttonName={'cancel'}
 					type={'secondary'}
 				>
 					CANCEL
 				</Button>
 				<Button
-					onClick={closeModal}
+					onClick={doImport}
 					buttonName={'import'}
 					type={'primary'}
-					isDisabled={content === ''}
+					isDisabled={content === '' || error !== ''}
 				>
 					IMPORT
 				</Button>
@@ -28,8 +28,10 @@ const Header = ({ closeModal, content }) => {
 };
 
 Header.propTypes = {
-	closeModal: PropTypes.func.isRequired,
+	cancelImport: PropTypes.func.isRequired,
 	content: PropTypes.string,
+	doImport: PropTypes.func.isRequired,
+	error: PropTypes.string,
 };
 
 export default Header;

@@ -16,23 +16,6 @@ describe('ui/layout/app: reducers', () => {
 		});
 	});
 
-
-	describe(actionsTypes.UI_LAYOUT_APP_CLOSE_MODAL, () => {
-		test('should set the active modal to "none', () => {
-			const state1 = deepFreeze(reducers(initialState, actions.closeModal()));
-			expect(state1.activeModal).toBe('none');
-		});
-	});
-
-
-	describe(actionsTypes.UI_LAYOUT_APP_OPEN_MODAL, () => {
-		test('should set the active modal', () => {
-			const state1 = deepFreeze(reducers(initialState, actions.openModal('myModal')));
-			expect(state1.activeModal).toBe('myModal');
-		});
-	});
-
-
 	describe(actionsTypes.UI_LAYOUT_APP_TOGGLE_LEFT_BAR, () => {
 		test('should toggle left bar state', () => {
 			const state1 = deepFreeze(

@@ -5,7 +5,7 @@ import InputFormatEntry from './InputFormatEntry';
 
 const allEntries = [
 	{
-		id: 'base',
+		id: 'basic',
 		label: 'Basic',
 	},
 	{

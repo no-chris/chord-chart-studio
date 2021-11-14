@@ -8,7 +8,7 @@ import {
 } from '../_state/selectors';
 
 import { createFile, updateFile, deleteFile } from '../../db/files/actions';
-import { openModal } from '../../ui/layout/app/_state/actions';
+import { startImport } from '../../songImporters/_state/actions';
 
 import { getAllTitles } from '../../db/files/selectors';
 
@@ -28,6 +28,6 @@ export default connect(
 		deleteFile,
 		updateFile,
 		enableRename,
-		openModal,
+		startImport,
 	}
 )(FileManager);

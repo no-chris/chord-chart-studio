@@ -62,6 +62,14 @@
 .sim-Column_Container {
 	flex: 1 1 50%;
 	align-self: stretch;
+	padding: 10px;
+
+	&:first-child {
+		padding-right: 5px;
+	}
+	&:last-child {
+		padding-left: 5px;
+	}
 }
 
 .sim-Input_Textarea {
@@ -100,6 +108,14 @@
 
 	@include themify($themes) {
 		background-color: themed('preview-bg');
+	}
+}
+
+.sim-Preview_Error {
+	padding: 10px;
+	@include themify($themes) {
+		color: themed('previewError-txt');
+		background-color: themed('previewError-bg');
 	}
 }
 

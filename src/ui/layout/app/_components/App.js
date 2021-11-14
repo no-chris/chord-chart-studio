@@ -7,14 +7,12 @@ import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
 import Footer from './Footer';
 import Icon from '../../../_components/Icon';
-import Modal from './Modal';
+import SongImporter from '../../../../songImporters/_containers/SongImporter';
 
 import allNavEntries from '../allNavEntries';
 
 function App(props) {
 	const {
-		activeModal,
-		closeModal,
 		editorMode,
 		isLeftBarCollapsed,
 		isRightBarCollapsed,
@@ -39,6 +37,7 @@ function App(props) {
 
 	return (
 		<div className={'appLayout-wrapper'}>
+			<SongImporter />
 			<section className={leftBarClassNames.join(' ')}>
 				<div
 					className={'leftBar-content'}
@@ -90,7 +89,6 @@ function App(props) {
 					{rightBar}
 				</div>
 			</section>
-			<Modal activeModal={activeModal} closeModal={closeModal} />
 		</div>
 	);
 }
@@ -109,9 +107,6 @@ App.propTypes = {
 
 	leftBar: PropTypes.element.isRequired,
 	rightBar: PropTypes.element.isRequired,
-
-	activeModal: PropTypes.string.isRequired,
-	closeModal: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {

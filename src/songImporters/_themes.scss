@@ -12,5 +12,7 @@ $themes: (
 		input-bg: cv(dark-secondary, dark10),
 		input-txt: cv(dark-foreground),
 		preview-bg: cv(dark-secondary),
+		previewError-bg: cv(dark-red, dark20),
+		previewError-txt: cv(dark-foreground),
 	),
 );

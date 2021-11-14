@@ -1,35 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ChordSheetJS from 'chordsheetjs';
-import chordSheetJs2ChordMark from '../../core/converters/chordSheetJs2ChordMark';
-
 function Preview(props) {
-	const { content, sourceType } = props;
+	const { sourceType, preview, error } = props;
 
-	const parser = getParser(sourceType);
-	try {
-		const parsed = parser.parse(content);
-		const preview = chordSheetJs2ChordMark(parsed);
+	if (!error) {
 		return <div className={'sim-Preview_Container'}>{preview}</div>;
-	} catch (e) {
-		return <div className={'sim-Preview_Container'}>{e.message}</div>;
-	}
-}
-
-function getParser(sourceType) {
-	switch (sourceType) {
-		case 'chordpro':
-			return new ChordSheetJS.ChordProParser();
-		case 'ultimateGuitar':
-			return new ChordSheetJS.UltimateGuitarParser();
-		default:
-			return new ChordSheetJS.ChordSheetParser();
+	} else {
+		return (
+			<div className={'sim-Preview_Container'}>
+				<div className={'sim-Preview_Error'}>
+					<p>
+						There was an error when trying to parse the song in the
+						specified input format ({sourceType}).
+						<br />
+						Please correct the input or try another format.
+						<br />
+						The error was:
+					</p>
+					<p>&quot;{error}&quot;</p>
+				</div>
+			</div>
+		);
 	}
 }
 
 Preview.propTypes = {
-	content: PropTypes.string.isRequired,
+	error: PropTypes.string,
+	preview: PropTypes.string,
 	sourceType: PropTypes.string.isRequired,
 };
 

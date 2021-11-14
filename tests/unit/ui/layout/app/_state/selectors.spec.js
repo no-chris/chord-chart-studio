@@ -1,21 +1,6 @@
 import * as selectors from '../../../../../../src/ui/layout/app/_state/selectors';
 
 describe('ui/layout/app: selectors', () => {
-	describe('getActiveModal()', () => {
-		test('should return activeModal', () => {
-			const state = {
-				ui: {
-					layout: {
-						app: {
-							activeModal: 'myModal'
-						}
-					}
-				}
-			};
-			expect(selectors.getActiveModal(state)).toBe('myModal');
-		});
-	});
-
 	describe('isLeftBarCollapsed()', () => {
 		test('should return isLeftBarCollapsed', () => {
 			const state = {

@@ -1,18 +1,26 @@
 import { connect } from 'react-redux';
 
-import { setSourceType, setContent } from '../_state/actions';
-import { getSourceType, getContent } from '../_state/selectors';
+import {
+	setContent,
+	setSourceType,
+	cancelImport,
+	doImport,
+} from '../_state/actions';
+import { getSourceType, getContent, isImporting } from '../_state/selectors';
 
 import SongImporter from '../_components/SongImporter';
 
 export default connect(
 	(state) => ({
-		sourceType: getSourceType(state),
 		content: getContent(state),
+		isImporting: isImporting(state),
+		sourceType: getSourceType(state),
 	}),
 
 	{
-		setSourceType,
 		setContent,
+		setSourceType,
+		cancelImport,
+		doImport,
 	}
 )(SongImporter);
