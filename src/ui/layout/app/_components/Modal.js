@@ -3,7 +3,7 @@ import './Modal.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SongImporter from '../../../../songImporters/_components/SongImporter'; // fixme: doh!
+import SongImporter from '../../../../songImporters/_containers/SongImporter'; // fixme: doh!
 
 function Modal(props) {
 	const { activeModal, closeModal } = props;

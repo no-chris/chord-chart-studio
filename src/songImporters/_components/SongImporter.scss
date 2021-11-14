@@ -22,53 +22,98 @@
 	}
 }
 
-.sim-TabSwitcher_Container {
-	flex: 0 0 50px;
-	height: 50px;
+.sim-Header_Container {
+	flex: 0 0 auto;
+	display: flex;
 
 	@include themify($themes) {
-		background-color: themed('tabswitcher-bg');
-		border-bottom: 1px solid themed('tabswitcher-border');
-		color: themed('tabswitcher-txt');
+		background-color: themed('header-bg');
+		border-bottom: 1px solid themed('header-border');
+		color: themed('header-txt');
 	}
 }
 
-.sim-TabSwitcher_Item {
+.sim-Header_Title {
+	flex: 1 1 auto;
 	padding: 20px;
+	@include font-size(base);
+	font-weight: bolder;
+}
+
+.sim-Header_Actions {
+	flex: 0 0 auto;
+	padding: 10px;
+
+	.Button {
+		margin-left: 20px;
+	}
 }
 
 .sim-TwoColumns_Container {
 	display: flex;
 	align-self: stretch;
+}
 
+.sim-TwoColumns_Container-autoHeight {
 	flex: 0 1 100%;
+	min-height: 0; // necessary, otherwise content doesn't scroll!
 }
 
 .sim-Column_Container {
-	padding: 10px;
 	flex: 1 1 50%;
 	align-self: stretch;
 }
 
 .sim-Input_Textarea {
-	width: 100%;
-	height: 80%;
-	resize: none;
-}
-
-.sim-InputFormat_Item {
-	display: inline-block;
-	margin: 0 10px;
-}
-
-.sim-ActionBar_Container {
-	flex: 0 0 60px;
+	box-sizing: border-box;
 	padding: 10px;
-	text-align: right;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	overflow-y: scroll;
+	resize: none;
+	margin: 0;
+	background-color: transparent;
+	border: 0;
+	outline: none;
+
+	font-family: $font-family-monospace;
+	@include font-size(small);
+	line-height: 1.5rem;
 
 	@include themify($themes) {
-		background-color: themed('footer-bg');
-		border-top: 1px solid themed('footer-border');
-		color: themed('footer-txt');
+		background-color: themed('input-bg');
+		color: themed('input-txt');
+	}
+}
+
+.sim-Preview_Container {
+	box-sizing: border-box;
+
+	font-family: $font-family-monospace;
+	@include font-size(small);
+	white-space: pre-wrap;
+	height: 100%;
+	max-height: 100%;
+	overflow-y: scroll;
+	padding: 10px;
+
+	@include themify($themes) {
+		background-color: themed('preview-bg');
+	}
+}
+
+.sim-InputFormat_Entry {
+	display: inline-block;
+	margin: 0 10px;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.sim-InputFormat_Label {
+	&:hover {
+		cursor: pointer;
 	}
 }

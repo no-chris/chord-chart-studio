@@ -3,71 +3,41 @@ import './SongImporter.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../ui/_components/Button';
+import Header from './Header';
+import FilePicker from './FilePicker';
+import Input from './Input';
+import Preview from './Preview';
+import InputFormatSelector from './InputFormatSelector';
 
 function SongImporter(props) {
-	const { closeModal } = props;
+	const { closeModal, setContent, content, setSourceType, sourceType } =
+		props;
 
 	return (
 		<div className={'sim-SongImporterModal_Container'}>
-			<div className={'sim-TabSwitcher_Container'}>
-				<div className={'sim-TabSwitcher_Item'}>From text</div>
-			</div>
+			<Header closeModal={closeModal} />
 			<div className={'sim-TwoColumns_Container'}>
 				<div className={'sim-Column_Container'}>
-					<input type={'file'} />
-					<br />
-					Or copy/paste:
-					<br />
-					<textarea className={'sim-Input_Textarea'}></textarea>
+					<FilePicker />
 				</div>
 				<div className={'sim-Column_Container'}>
-					<div className={'sim-InputFormat'}>
-						Input format:
-						<input
-							className={'sim-InputFormat_Item'}
-							type={'radio'}
-							name={'inputFormat'}
-							id={'input-cp'}
-							value={'chordpro'}
-						/>
-						<label htmlFor={'input-cp'}>ChordPro</label>
-						<input
-							className={'sim-InputFormat_Item'}
-							type={'radio'}
-							name={'inputFormat'}
-							id={'input-ug'}
-							value={'ultimateGuitar'}
-						/>
-						<label htmlFor={'input-ug'}>Ultimate Guitar</label>
-						<input
-							className={'sim-InputFormat_Item'}
-							type={'radio'}
-							name={'inputFormat'}
-							id={'input-other'}
-							value={'other'}
-						/>
-						<label htmlFor={'input-other'}>Other</label>
-						<div className={'sim-Preview_Container'}>Preview</div>
-					</div>
+					<InputFormatSelector
+						sourceType={sourceType}
+						setSourceType={setSourceType}
+					/>
 				</div>
 			</div>
-			<div className={'sim-ActionBar_Container'}>
-				<Button
-					onClick={closeModal}
-					buttonName={'cancel'}
-					type={'secondary'}
-				>
-					CANCEL
-				</Button>
-				<Button
-					onClick={closeModal}
-					buttonName={'import'}
-					type={'primary'}
-					isDisabled={true}
-				>
-					IMPORT
-				</Button>
+			<div
+				className={
+					'sim-TwoColumns_Container sim-TwoColumns_Container-autoHeight'
+				}
+			>
+				<div className={'sim-Column_Container'}>
+					<Input content={content} setContent={setContent} />
+				</div>
+				<div className={'sim-Column_Container'}>
+					<Preview content={content} sourceType={sourceType} />
+				</div>
 			</div>
 		</div>
 	);
@@ -75,6 +45,10 @@ function SongImporter(props) {
 
 SongImporter.propTypes = {
 	closeModal: PropTypes.func.isRequired,
+	setContent: PropTypes.func.isRequired,
+	setSourceType: PropTypes.func.isRequired,
+	content: PropTypes.string.isRequired,
+	sourceType: PropTypes.string.isRequired,
 };
 
 SongImporter.defaultProps = {};
