@@ -7,7 +7,7 @@ import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
 import Footer from './Footer';
 import Icon from '../../../_components/Icon';
-import SongImporter from '../../../../songImporters/_containers/SongImporter';
+import SongImporter from '../../../../songImporter/_containers/SongImporter';
 
 import allNavEntries from '../allNavEntries';
 

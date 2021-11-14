@@ -2,16 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function InputFormatEntry(props) {
-	const { setSourceType, sourceType, id, label } = props;
+	const { setSourceType, sourceType, id, label, isDisabled } = props;
 
 	const onChange = (e) => {
-		setSourceType(e.target.value);
+		if (!isDisabled) {
+			setSourceType(e.target.value);
+		}
 	};
+
+	const allInputClasses = ['sim-InputFormat_Entry'];
+	const allLabelClasses = ['sim-InputFormat_Label'];
+
+	if (isDisabled) {
+		allInputClasses.push('sim-InputFormat_Entry-Disabled');
+		allLabelClasses.push('sim-InputFormat_Label-Disabled');
+	}
 
 	return (
 		<>
 			<input
-				className={'sim-InputFormat_Entry'}
+				className={allInputClasses.join(' ')}
 				type={'radio'}
 				name={'inputFormat'}
 				id={id}
@@ -19,7 +29,7 @@ function InputFormatEntry(props) {
 				onChange={onChange}
 				checked={sourceType === id}
 			/>
-			<label className={'sim-InputFormat_Label'} htmlFor={id}>
+			<label className={allLabelClasses.join(' ')} htmlFor={id}>
 				{label}
 			</label>
 		</>
@@ -31,6 +41,7 @@ InputFormatEntry.propTypes = {
 	sourceType: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
+	isDisabled: PropTypes.bool.isRequired,
 };
 
 InputFormatEntry.defaultProps = {};

@@ -19,7 +19,7 @@ const allEntries = [
 ];
 
 function InputFormatSelector(props) {
-	const { setSourceType, sourceType } = props;
+	const { setSourceType, sourceType, disableAll } = props;
 
 	const rendered = allEntries.map((entry) => (
 		<InputFormatEntry
@@ -28,6 +28,7 @@ function InputFormatSelector(props) {
 			key={entry.id}
 			label={entry.label}
 			sourceType={sourceType}
+			isDisabled={disableAll}
 		/>
 	));
 
@@ -42,6 +43,7 @@ function InputFormatSelector(props) {
 }
 
 InputFormatSelector.propTypes = {
+	disableAll: PropTypes.bool.isRequired,
 	setSourceType: PropTypes.func.isRequired,
 	sourceType: PropTypes.string.isRequired,
 };

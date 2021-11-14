@@ -1,6 +1,6 @@
-jest.mock('../../src/songImporters/getMessageHandlers');
+jest.mock('../../src/songImporter/getMessageHandlers');
 
-import getSongImporterHandlers from '../../src/songImporters/getMessageHandlers';
+import getSongImporterHandlers from '../../src/songImporter/getMessageHandlers';
 import registerHandlers, { _handleMessage } from '../../src/registerHandlers';
 
 const testHandler = jest.fn();
@@ -37,6 +37,18 @@ describe('_handleMessage', () => {
 		expect(result).toBe(true);
 		expect(testHandler).toHaveBeenCalledTimes(1);
 		expect(testHandler).toHaveBeenCalledWith('myPayload');
+	});
+
+	test('should not call the handler if it is not a function', () => {
+		const result = _handleMessage({
+			...testEvent,
+			data: {
+				...testEvent.data,
+				type: 'UNKNOWN',
+			},
+		});
+
+		expect(result).toBe(true);
 	});
 
 	test('should not call the handler if e.source !== window', () => {

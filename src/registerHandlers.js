@@ -1,4 +1,4 @@
-import getSongImporterHandlers from './songImporters/getMessageHandlers';
+import getSongImporterHandlers from './songImporter/getMessageHandlers';
 
 export default function registerHandlers() {
 	window.addEventListener('message', _handleMessage);

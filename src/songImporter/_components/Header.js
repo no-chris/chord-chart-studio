@@ -2,10 +2,19 @@ import React from 'react';
 import Button from '../../ui/_components/Button';
 import PropTypes from 'prop-types';
 
-const Header = ({ cancelImport, doImport, content, error }) => {
+const Header = ({
+	cancelImport,
+	chordMarkContent,
+	importFile,
+	title,
+	content,
+	error,
+}) => {
+	const headerTitle = title ? 'Import "' + title + '"' : 'Import song';
+
 	return (
 		<div className={'sim-Header_Container'}>
-			<div className={'sim-Header_Title'}>Import song</div>
+			<div className={'sim-Header_Title'}>{headerTitle}</div>
 			<div className={'sim-Header_Actions'}>
 				<Button
 					onClick={cancelImport}
@@ -15,7 +24,11 @@ const Header = ({ cancelImport, doImport, content, error }) => {
 					CANCEL
 				</Button>
 				<Button
-					onClick={doImport}
+					onClick={importFile.bind(
+						null,
+						title || '[untitled]',
+						chordMarkContent
+					)}
 					buttonName={'import'}
 					type={'primary'}
 					isDisabled={content === '' || error !== ''}
@@ -29,9 +42,11 @@ const Header = ({ cancelImport, doImport, content, error }) => {
 
 Header.propTypes = {
 	cancelImport: PropTypes.func.isRequired,
+	chordMarkContent: PropTypes.string,
 	content: PropTypes.string,
-	doImport: PropTypes.func.isRequired,
 	error: PropTypes.string,
+	importFile: PropTypes.func.isRequired,
+	title: PropTypes.string,
 };
 
 export default Header;

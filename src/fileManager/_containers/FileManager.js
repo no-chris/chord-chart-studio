@@ -8,7 +8,7 @@ import {
 } from '../_state/selectors';
 
 import { createFile, updateFile, deleteFile } from '../../db/files/actions';
-import { startImport } from '../../songImporters/_state/actions';
+import { startImport } from '../../songImporter/_state/actions';
 
 import { getAllTitles } from '../../db/files/selectors';
 

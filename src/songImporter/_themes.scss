@@ -6,9 +6,10 @@ $themes: (
 		header-bg: cv(dark-background),
 		header-border: cv(dark-foreground, dark20),
 		// main
-		popup-bg: cv(dark-secondary, dark5),
-		popup-border: cv(dark-foreground, dark20),
-		popup-txt: cv(dark-foreground),
+		modal-bg: cv(dark-secondary, dark5),
+		modal-border: cv(dark-foreground, dark20),
+		modal-txt: cv(dark-foreground),
+		//modal-txtDisabled: cv(dark-foreground, dark20),
 		input-bg: cv(dark-secondary, dark10),
 		input-txt: cv(dark-foreground),
 		preview-bg: cv(dark-secondary),

@@ -9,29 +9,28 @@ import FilePicker from './FilePicker';
 import Input from './Input';
 import Preview from './Preview';
 import InputFormatSelector from './InputFormatSelector';
-import chordSheetJs2ChordMark from '../../core/converters/chordSheetJs2ChordMark';
-import ChordSheetJS from 'chordsheetjs';
+import input2ChordMark from '../input2ChordMark';
 
 function SongImporter(props) {
 	const {
 		cancelImport,
 		content,
-		doImport,
+		importFile,
+		isFromWeb,
 		isImporting,
 		setContent,
 		setSourceType,
 		sourceType,
+		title,
 	} = props;
 
 	if (!isImporting) return null;
 
-	let preview = '';
+	let chordMarkContent = '';
 	let error = '';
 
 	try {
-		const parser = getParser(sourceType);
-		const parsed = parser.parse(content);
-		preview = chordSheetJs2ChordMark(parsed);
+		chordMarkContent = input2ChordMark(content, sourceType);
 	} catch (e) {
 		error = e.message;
 	}
@@ -41,9 +40,11 @@ function SongImporter(props) {
 			<div className={'sim-SongImporterModal_Container'}>
 				<Header
 					cancelImport={cancelImport}
-					doImport={doImport}
+					chordMarkContent={chordMarkContent}
 					content={content}
 					error={error}
+					importFile={importFile}
+					title={title}
 				/>
 				<div className={'sim-TwoColumns_Container'}>
 					<div className={'sim-Column_Container'}>
@@ -53,6 +54,7 @@ function SongImporter(props) {
 						<InputFormatSelector
 							sourceType={sourceType}
 							setSourceType={setSourceType}
+							disableAll={isFromWeb === true}
 						/>
 					</div>
 				</div>
@@ -62,12 +64,16 @@ function SongImporter(props) {
 					}
 				>
 					<div className={'sim-Column_Container'}>
-						<Input content={content} setContent={setContent} />
+						<Input
+							content={content}
+							setContent={setContent}
+							isDisabled={isFromWeb}
+						/>
 					</div>
 					<div className={'sim-Column_Container'}>
 						<Preview
 							sourceType={sourceType}
-							preview={preview}
+							chordMarkContent={chordMarkContent}
 							error={error}
 						/>
 					</div>
@@ -77,25 +83,16 @@ function SongImporter(props) {
 	);
 }
 
-function getParser(sourceType) {
-	switch (sourceType) {
-		case 'chordpro':
-			return new ChordSheetJS.ChordProParser();
-		case 'ultimateGuitar':
-			return new ChordSheetJS.UltimateGuitarParser();
-		default:
-			return new ChordSheetJS.ChordSheetParser();
-	}
-}
-
 SongImporter.propTypes = {
 	cancelImport: PropTypes.func.isRequired,
 	content: PropTypes.string.isRequired,
-	doImport: PropTypes.func.isRequired,
+	importFile: PropTypes.func.isRequired,
+	isFromWeb: PropTypes.bool.isRequired,
 	isImporting: PropTypes.bool.isRequired,
 	setContent: PropTypes.func.isRequired,
 	setSourceType: PropTypes.func.isRequired,
 	sourceType: PropTypes.string.isRequired,
+	title: PropTypes.string,
 };
 
 SongImporter.defaultProps = {};

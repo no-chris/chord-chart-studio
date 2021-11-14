@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+	withStore,
+	resetStore,
+} from '../../../../../integration/helpers/withStore';
 
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
@@ -12,9 +16,10 @@ describe('App', () => {
 	const toggleLeftBar = jest.fn();
 	const toggleRightBar = jest.fn();
 	const setEditorMode = jest.fn();
-	const closeModal = jest.fn();
 
 	beforeEach(() => {
+		resetStore();
+
 		props = {
 			isLeftBarCollapsed: false,
 			isRightBarCollapsed: false,
@@ -22,12 +27,10 @@ describe('App', () => {
 			toggleLeftBar,
 			toggleRightBar,
 			setEditorMode,
-			closeModal,
 
 			leftBar: <div>leftBarDiv</div>,
 			rightBar: <div>rightBarDiv</div>,
 			activeRoute: 'play',
-			activeModal: 'none',
 		};
 
 		toggleLeftBar.mockClear();
@@ -35,7 +38,7 @@ describe('App', () => {
 	});
 
 	test('should render components passed as props', () => {
-		const { getByText } = render(<App {...props} />);
+		const { getByText } = render(withStore(<App {...props} />));
 
 		getByText('leftBarDiv');
 		getByText('rightBarDiv');
@@ -43,7 +46,7 @@ describe('App', () => {
 
 	test('should open left bar if closed by clicking on left bar', () => {
 		const { getByText } = render(
-			<App {...props} isLeftBarCollapsed={true} />
+			withStore(<App {...props} isLeftBarCollapsed={true} />)
 		);
 
 		const leftBar = getByText('leftBarDiv');
@@ -55,7 +58,7 @@ describe('App', () => {
 
 	test('should close left bar if open by clicking on left bar collapser', () => {
 		const { getByTestId } = render(
-			<App {...props} isLeftBarCollapsed={false} />
+			withStore(<App {...props} isLeftBarCollapsed={false} />)
 		);
 
 		const leftBarCollapser = getByTestId('leftBar-collapser');
@@ -67,7 +70,7 @@ describe('App', () => {
 
 	test('should open right bar if closed by clicking on right bar', () => {
 		const { getByText } = render(
-			<App {...props} isRightBarCollapsed={true} />
+			withStore(<App {...props} isRightBarCollapsed={true} />)
 		);
 
 		const rightBar = getByText('rightBarDiv');
@@ -79,7 +82,7 @@ describe('App', () => {
 
 	test('should close right bar if open by clicking on right bar collapser', () => {
 		const { getByTestId } = render(
-			<App {...props} isRightBarCollapsed={false} />
+			withStore(<App {...props} isRightBarCollapsed={false} />)
 		);
 
 		const rightBarCollapser = getByTestId('rightBar-collapser');
@@ -88,17 +91,4 @@ describe('App', () => {
 
 		expect(toggleRightBar).toHaveBeenCalledTimes(1);
 	});
-
-	test('should openModal if active modal is different than "none"', () => {
-		const { getByTestId } = render(<App
-			{...props}
-			activeModal={'myModal'}
-		/>);
-
-		const modal = getByTestId('modal-overlay');
-		
-		expect(modal).toBeInstanceOf(Element);
-		expect(modal).toBeInTheDocument();
-	});
-
 });

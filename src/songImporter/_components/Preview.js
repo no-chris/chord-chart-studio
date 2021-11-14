@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Preview(props) {
-	const { sourceType, preview, error } = props;
+	const { sourceType, chordMarkContent, error } = props;
 
 	if (!error) {
-		return <div className={'sim-Preview_Container'}>{preview}</div>;
+		return (
+			<div className={'sim-Preview_Container'}>{chordMarkContent}</div>
+		);
 	} else {
 		return (
 			<div className={'sim-Preview_Container'}>
@@ -19,6 +21,10 @@ function Preview(props) {
 						The error was:
 					</p>
 					<p>&quot;{error}&quot;</p>
+					<p>
+						Hint: most of the time, this is related to an unclosed
+						&quot;[&quot; or &quot;&#123;&quot;
+					</p>
 				</div>
 			</div>
 		);
@@ -26,8 +32,8 @@ function Preview(props) {
 }
 
 Preview.propTypes = {
+	chordMarkContent: PropTypes.string,
 	error: PropTypes.string,
-	preview: PropTypes.string,
 	sourceType: PropTypes.string.isRequired,
 };
 

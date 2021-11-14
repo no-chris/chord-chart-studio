@@ -1,7 +1,7 @@
 import ChordSheetJS from 'chordsheetjs';
-import chordSheetJs2ChordMark from '../../core/converters/chordSheetJs2ChordMark';
+import chordSheetJs2ChordMark from './chordSheetJs2ChordMark';
 
-export default function getFromUltimateGuitar(ugChordChartRaw) {
+export default function ultimateGuitar2ChordMark(ugChordChartRaw) {
 	const ugChordChart = ugChordChartRaw
 		.replace(/\r\n/g, '\n')
 		.replace(/\t/g, ' ')

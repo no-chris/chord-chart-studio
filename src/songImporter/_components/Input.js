@@ -2,23 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Input(props) {
-	const { content, setContent } = props;
+	const { content, setContent, isDisabled } = props;
 
 	const onChange = (e) => {
 		setContent(e.target.value);
 	};
 
+	const allClasses = ['sim-Input_Textarea'];
+
+	if (isDisabled) {
+		allClasses.push('sim-Input_Textarea-Disabled');
+	}
+
 	return (
 		<textarea
-			className={'sim-Input_Textarea'}
+			className={allClasses.join(' ')}
 			onChange={onChange}
 			value={content}
+			disabled={isDisabled}
 		/>
 	);
 }
 
 Input.propTypes = {
 	content: PropTypes.string.isRequired,
+	isDisabled: PropTypes.bool.isRequired,
 	setContent: PropTypes.func.isRequired,
 };
 

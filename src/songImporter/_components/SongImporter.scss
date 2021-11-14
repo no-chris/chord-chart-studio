@@ -16,9 +16,9 @@
 	flex-wrap: nowrap;
 
 	@include themify($themes) {
-		background-color: themed('popup-bg');
-		border: 1px solid themed('popup-border');
-		color: themed('popup-txt');
+		background-color: themed('modal-bg');
+		border: 1px solid themed('modal-border');
+		color: themed('modal-txt');
 	}
 }
 
@@ -95,6 +95,10 @@
 	}
 }
 
+.sim-Input_Textarea-Disabled {
+	opacity: 0.5;
+}
+
 .sim-Preview_Container {
 	box-sizing: border-box;
 
@@ -132,4 +136,12 @@
 	&:hover {
 		cursor: pointer;
 	}
+}
+
+.sim-InputFormat_Entry-Disabled,
+.sim-InputFormat_Label-Disabled {
+	&:hover {
+		cursor: not-allowed;
+	}
+	opacity: 0.5;
 }
