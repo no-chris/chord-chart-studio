@@ -1,6 +1,8 @@
 import * as actions from './actionsTypes';
 import { DB_FILES_IMPORT } from '../../db/files/actionsTypes';
 
+import stripTags from '../../core/stripTags';
+
 const initialState = {
 	content: '',
 	isFromWeb: false,
@@ -12,10 +14,11 @@ const initialState = {
 export default function reducers(state = initialState, action = {}) {
 	switch (action.type) {
 		case actions.SONG_IMPORTER_SET_CONTENT: {
-			const { content } = action.payload;
+			const { content, title = '' } = action.payload;
 			return {
 				...state,
-				content,
+				content: stripTags(content),
+				title: title ? stripTags(title) : state.title,
 			};
 		}
 
@@ -44,8 +47,8 @@ export default function reducers(state = initialState, action = {}) {
 			return {
 				...state,
 				isImporting: true,
-				content: content || '',
-				title: title || '',
+				content: content ? stripTags(content) : '',
+				title: title ? stripTags(title) : '',
 				sourceType: sourceType || state.sourceType,
 				isFromWeb,
 			};

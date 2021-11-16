@@ -48,7 +48,7 @@ function SongImporter(props) {
 				/>
 				<div className={'sim-TwoColumns_Container'}>
 					<div className={'sim-Column_Container'}>
-						<FilePicker />
+						<FilePicker setContent={setContent} />
 					</div>
 					<div className={'sim-Column_Container'}>
 						<InputFormatSelector

@@ -69,6 +69,7 @@
     "core-js": "^3.15.2",
     "dompurify": "^2.2.9",
     "file-loader": "^6.2.0",
+    "filesize": "^8.0.6",
     "handlebars": "^4.7.7",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
