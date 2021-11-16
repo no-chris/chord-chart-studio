@@ -10,19 +10,13 @@ const Button = ({ children, isDisabled, buttonName, onClick, type }) => {
 	if (type === 'secondary') allClassNames.push('Button-secondary');
 	if (isDisabled) allClassNames.push('Button-isDisabled');
 
-	function handleClick() {
-		if (!isDisabled) {
-			onClick();
-		}
-	}
-
 	return (
 		<button
 			className={allClassNames.join(' ')}
 			disabled={isDisabled}
 			type={'button'}
 			name={buttonName}
-			onClick={handleClick}
+			onClick={onClick}
 		>
 			{children}
 		</button>
