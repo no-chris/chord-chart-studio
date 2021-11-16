@@ -36,7 +36,7 @@ function SongImporter(props) {
 	}
 
 	return (
-		<Modal>
+		<Modal closeModal={cancelImport}>
 			<div className={'sim-SongImporterModal_Container'}>
 				<Header
 					cancelImport={cancelImport}
