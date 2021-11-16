@@ -34,8 +34,9 @@ const getSongTitle = (file) => file.name.substr(0, file.name.lastIndexOf('.'));
 const isOversized = (file) => file.size > maxFileSizeBytes;
 
 // files with extension such as .cho or .chopro are detected with an empty mimetype
+// so we consider them as text
 const isTextFile = (file) =>
-	file.type.indexOf('text') !== 0 || file.type.length === 0;
+	file.type.indexOf('text') === 0 || file.type.length === 0;
 
 const getFileTooBigMsg = (actualSize) =>
 	'The selected file is too big: ' +
