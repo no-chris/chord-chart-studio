@@ -17,14 +17,44 @@ describe('songImporter: reducers', () => {
 	});
 
 	describe(actionTypes.SONG_IMPORTER_SET_CONTENT, () => {
-		test('should set the input content', () => {
+		test('should set the input content and title', () => {
 			const expected = {
 				...initialState,
 				content: 'myContent',
+				title: 'myTitle',
+			};
+			const state = reducers(
+				initialState,
+				actions.setContent('myContent', 'myTitle')
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should revert to empty title if not given', () => {
+			const expected = {
+				...initialState,
+				content: 'myContent',
+				title: '',
 			};
 			const state = reducers(
 				initialState,
 				actions.setContent('myContent')
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should strip tags from content and title', () => {
+			const expected = {
+				...initialState,
+				content: 'myContent',
+				title: 'myTitle',
+			};
+			const state = reducers(
+				initialState,
+				actions.setContent(
+					'<b>myContent</b>',
+					'<strong>myTitle</strong>'
+				)
 			);
 			expect(state).toEqual(expected);
 		});
@@ -101,6 +131,27 @@ describe('songImporter: reducers', () => {
 					'ultimateGuitar',
 					'someContent',
 					'aTitle'
+				)
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should strip tags from content and title', () => {
+			const expected = {
+				...initialState,
+				content: 'myContent',
+				title: 'myTitle',
+				sourceType: 'ultimateGuitar',
+				isImporting: true,
+				isFromWeb: true,
+			};
+
+			const state = reducers(
+				initialState,
+				actions.startImportFromWeb(
+					'ultimateGuitar',
+					'<b>myContent</b>',
+					'<strong>myTitle</strong>'
 				)
 			);
 			expect(state).toEqual(expected);
