@@ -7,7 +7,7 @@ import Modal from '../../ui/_components/Modal';
 import Header from './Header';
 import FilePicker from './FilePicker';
 import Input from './Input';
-import Preview from './Preview';
+import PreviewError from './PreviewError';
 import InputFormatSelector from './InputFormatSelector';
 import input2ChordMark from '../input2ChordMark';
 
@@ -19,8 +19,8 @@ function SongImporter(props) {
 		isFromWeb,
 		isImporting,
 		setContent,
-		setSourceType,
-		sourceType,
+		setInputFormat,
+		inputFormat,
 		title,
 	} = props;
 
@@ -30,14 +30,17 @@ function SongImporter(props) {
 	let error = '';
 
 	try {
-		chordMarkContent = input2ChordMark(content, sourceType);
+		chordMarkContent = input2ChordMark(content, inputFormat);
 	} catch (e) {
 		error = e.message;
 	}
 
 	return (
 		<Modal closeModal={cancelImport}>
-			<div className={'sim-SongImporterModal_Container'}>
+			<div
+				className={'sim-SongImporterModal_Container'}
+				data-testid={'song-importer'}
+			>
 				<Header
 					cancelImport={cancelImport}
 					chordMarkContent={chordMarkContent}
@@ -52,8 +55,8 @@ function SongImporter(props) {
 					</div>
 					<div className={'sim-Column_Container'}>
 						<InputFormatSelector
-							sourceType={sourceType}
-							setSourceType={setSourceType}
+							inputFormat={inputFormat}
+							setInputFormat={setInputFormat}
 							disableAll={isFromWeb === true}
 						/>
 					</div>
@@ -71,11 +74,16 @@ function SongImporter(props) {
 						/>
 					</div>
 					<div className={'sim-Column_Container'}>
-						<Preview
-							sourceType={sourceType}
-							chordMarkContent={chordMarkContent}
-							error={error}
-						/>
+						<div className={'sim-Preview_Container'}>
+							{!error ? (
+								chordMarkContent
+							) : (
+								<PreviewError
+									inputFormat={inputFormat}
+									error={error}
+								/>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -90,8 +98,8 @@ SongImporter.propTypes = {
 	isFromWeb: PropTypes.bool.isRequired,
 	isImporting: PropTypes.bool.isRequired,
 	setContent: PropTypes.func.isRequired,
-	setSourceType: PropTypes.func.isRequired,
-	sourceType: PropTypes.string.isRequired,
+	setInputFormat: PropTypes.func.isRequired,
+	inputFormat: PropTypes.string.isRequired,
 	title: PropTypes.string,
 };
 

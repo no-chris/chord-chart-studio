@@ -60,35 +60,35 @@ describe('songImporter: reducers', () => {
 		});
 	});
 
-	describe(actionTypes.SONG_IMPORTER_SET_SOURCE_TYPE, () => {
-		test('should set the input source type', () => {
+	describe(actionTypes.SONG_IMPORTER_SET_INPUT_FORMAT, () => {
+		test('should set the input format', () => {
 			const expected = {
 				...initialState,
-				sourceType: 'ultimateGuitar',
+				inputFormat: 'ultimateGuitar',
 			};
 			const state = reducers(
 				initialState,
-				actions.setSourceType('ultimateGuitar')
+				actions.setInputFormat('ultimateGuitar')
 			);
 			expect(state).toEqual(expected);
 		});
 	});
 
 	describe(actionTypes.SONG_IMPORTER_IMPORT_CANCEL, () => {
-		test('should reset import state on cancel, except source type', () => {
+		test('should reset import state on cancel, except input format', () => {
 			const startState = {
 				...initialState,
 				content: 'someContent',
 				title: 'aTitle',
 				isImporting: true,
-				sourceType: 'ultimateGuitar',
+				inputFormat: 'ultimateGuitar',
 			};
 			const expected = {
 				...initialState,
 				content: '',
 				title: '',
 				isImporting: false,
-				sourceType: 'ultimateGuitar',
+				inputFormat: 'ultimateGuitar',
 			};
 			const state = reducers(startState, actions.cancelImport());
 			expect(state).toEqual(expected);
@@ -100,14 +100,14 @@ describe('songImporter: reducers', () => {
 				content: 'someContent',
 				title: 'aTitle',
 				isImporting: true,
-				sourceType: 'chordpro',
+				inputFormat: 'chordpro',
 			};
 			const expected = {
 				...initialState,
 				content: '',
 				title: '',
 				isImporting: false,
-				sourceType: 'chordpro',
+				inputFormat: 'chordpro',
 			};
 			const state = reducers(
 				startState,
@@ -121,7 +121,7 @@ describe('songImporter: reducers', () => {
 				...initialState,
 				content: 'someContent',
 				title: 'aTitle',
-				sourceType: 'ultimateGuitar',
+				inputFormat: 'ultimateGuitar',
 				isImporting: true,
 				isFromWeb: true,
 			};
@@ -141,7 +141,7 @@ describe('songImporter: reducers', () => {
 				...initialState,
 				content: 'myContent',
 				title: 'myTitle',
-				sourceType: 'ultimateGuitar',
+				inputFormat: 'ultimateGuitar',
 				isImporting: true,
 				isFromWeb: true,
 			};
@@ -162,7 +162,7 @@ describe('songImporter: reducers', () => {
 				...initialState,
 				content: '',
 				title: '',
-				sourceType: 'basic',
+				inputFormat: 'basic',
 				isImporting: true,
 				isFromWeb: false,
 			};

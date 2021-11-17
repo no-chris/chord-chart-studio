@@ -6,7 +6,7 @@ describe('songImporter: selectors', () => {
 			content: 'myContent',
 			isImporting: true,
 			isFromWeb: true,
-			sourceType: 'ultimateGuitar',
+			inputFormat: 'ultimateGuitar',
 			title: 'myTitle',
 		},
 	};
@@ -17,9 +17,9 @@ describe('songImporter: selectors', () => {
 		});
 	});
 
-	describe('getSourceType()', () => {
-		test('should return sourceType', () => {
-			expect(selectors.getSourceType(state)).toBe('ultimateGuitar');
+	describe('getInputFormat()', () => {
+		test('should return inputFormat', () => {
+			expect(selectors.getInputFormat(state)).toBe('ultimateGuitar');
 		});
 	});
 

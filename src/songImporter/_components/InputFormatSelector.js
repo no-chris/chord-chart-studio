@@ -19,15 +19,15 @@ const allEntries = [
 ];
 
 function InputFormatSelector(props) {
-	const { setSourceType, sourceType, disableAll } = props;
+	const { setInputFormat, inputFormat, disableAll } = props;
 
 	const rendered = allEntries.map((entry) => (
 		<InputFormatEntry
-			setSourceType={setSourceType}
+			setInputFormat={setInputFormat}
 			id={entry.id}
 			key={entry.id}
 			label={entry.label}
-			sourceType={sourceType}
+			inputFormat={inputFormat}
 			isDisabled={disableAll}
 		/>
 	));
@@ -44,8 +44,8 @@ function InputFormatSelector(props) {
 
 InputFormatSelector.propTypes = {
 	disableAll: PropTypes.bool.isRequired,
-	setSourceType: PropTypes.func.isRequired,
-	sourceType: PropTypes.string.isRequired,
+	setInputFormat: PropTypes.func.isRequired,
+	inputFormat: PropTypes.string.isRequired,
 };
 
 InputFormatSelector.defaultProps = {};

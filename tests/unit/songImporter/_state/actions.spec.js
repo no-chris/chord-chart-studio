@@ -17,16 +17,16 @@ describe('songImporter: actions creators', () => {
 		});
 	});
 
-	describe('setSourceType()', () => {
+	describe('setInputFormat()', () => {
 		test('should return a valid action', () => {
 			const expected = {
-				type: actionsTypes.SONG_IMPORTER_SET_SOURCE_TYPE,
+				type: actionsTypes.SONG_IMPORTER_SET_INPUT_FORMAT,
 				payload: {
-					sourceType: 'ultimateGuitar',
+					inputFormat: 'ultimateGuitar',
 				},
 			};
 
-			const actual = actions.setSourceType('ultimateGuitar');
+			const actual = actions.setInputFormat('ultimateGuitar');
 
 			expect(actual).toEqual(expected);
 		});
@@ -53,7 +53,7 @@ describe('songImporter: actions creators', () => {
 				type: actionsTypes.SONG_IMPORTER_IMPORT_START,
 				payload: {
 					content: 'myContent',
-					sourceType: 'ultimateGuitar',
+					inputFormat: 'ultimateGuitar',
 					title: 'myTitle',
 					isFromWeb: true,
 				},

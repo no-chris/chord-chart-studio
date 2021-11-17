@@ -2,18 +2,18 @@ import ultimateGuitar2ChordMark from '../core/converters/ultimateGuitar2ChordMar
 import ChordSheetJS from 'chordsheetjs';
 import chordSheetJs2ChordMark from '../core/converters/chordSheetJs2ChordMark';
 
-const input2ChordMark = (input, sourceType) => {
-	const converter = getConverter(sourceType);
+const input2ChordMark = (input, inputFormat) => {
+	const converter = getConverter(inputFormat);
 	return converter(input);
 };
 
-const getConverter = (sourceType) => {
-	if (sourceType === 'ultimateGuitar') {
+const getConverter = (inputFormat) => {
+	if (inputFormat === 'ultimateGuitar') {
 		return ultimateGuitar2ChordMark;
 	}
 
 	const parser =
-		sourceType === 'chordpro'
+		inputFormat === 'chordpro'
 			? new ChordSheetJS.ChordProParser()
 			: new ChordSheetJS.ChordSheetParser();
 

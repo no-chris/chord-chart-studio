@@ -7,7 +7,7 @@ const initialState = {
 	content: '',
 	isFromWeb: false,
 	isImporting: false,
-	sourceType: 'basic',
+	inputFormat: 'basic',
 	title: '',
 };
 
@@ -22,12 +22,12 @@ export default function reducers(state = initialState, action = {}) {
 			};
 		}
 
-		case actions.SONG_IMPORTER_SET_SOURCE_TYPE: {
-			const { sourceType } = action.payload;
+		case actions.SONG_IMPORTER_SET_INPUT_FORMAT: {
+			const { inputFormat } = action.payload;
 
 			return {
 				...state,
-				sourceType,
+				inputFormat,
 			};
 		}
 
@@ -42,14 +42,14 @@ export default function reducers(state = initialState, action = {}) {
 		}
 
 		case actions.SONG_IMPORTER_IMPORT_START: {
-			const { content, sourceType, title, isFromWeb } = action.payload;
+			const { content, inputFormat, title, isFromWeb } = action.payload;
 
 			return {
 				...state,
 				isImporting: true,
 				content: content ? stripTags(content) : '',
 				title: title ? stripTags(title) : '',
-				sourceType: sourceType || state.sourceType,
+				inputFormat: inputFormat || state.inputFormat,
 				isFromWeb,
 			};
 		}

@@ -12,6 +12,10 @@ const Header = ({
 }) => {
 	const headerTitle = title ? 'Import "' + title + '"' : 'Import song';
 
+	const doImport = () => {
+		importFile(title || '[untitled]', chordMarkContent);
+	};
+
 	return (
 		<div className={'sim-Header_Container'}>
 			<div className={'sim-Header_Title'}>{headerTitle}</div>
@@ -24,11 +28,7 @@ const Header = ({
 					CANCEL
 				</Button>
 				<Button
-					onClick={importFile.bind(
-						null,
-						title || '[untitled]',
-						chordMarkContent
-					)}
+					onClick={doImport}
 					buttonName={'import'}
 					type={'primary'}
 					isDisabled={content === '' || error !== ''}

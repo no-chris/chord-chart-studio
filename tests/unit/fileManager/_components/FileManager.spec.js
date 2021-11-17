@@ -330,9 +330,9 @@ describe('FileManager', () => {
 	describe('import', () => {
 		test('should call startImport() on import action', () => {
 			const { getByText } = render(<FileManager {...props} />);
-			const input = getByText('Import');
+			const importButton = getByText('Import');
 
-			fireEvent.click(input);
+			fireEvent.click(importButton);
 
 			expect(startImport).toHaveBeenCalledTimes(1);
 		});

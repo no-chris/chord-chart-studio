@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function InputFormatEntry(props) {
-	const { setSourceType, sourceType, id, label, isDisabled } = props;
+	const { setInputFormat, inputFormat, id, label, isDisabled } = props;
 
 	const onChange = (e) => {
 		if (!isDisabled) {
-			setSourceType(e.target.value);
+			setInputFormat(e.target.value);
 		}
 	};
 
@@ -27,7 +27,7 @@ function InputFormatEntry(props) {
 				id={id}
 				value={id}
 				onChange={onChange}
-				checked={sourceType === id}
+				checked={inputFormat === id}
 			/>
 			<label className={allLabelClasses.join(' ')} htmlFor={id}>
 				{label}
@@ -37,8 +37,8 @@ function InputFormatEntry(props) {
 }
 
 InputFormatEntry.propTypes = {
-	setSourceType: PropTypes.func.isRequired,
-	sourceType: PropTypes.string.isRequired,
+	setInputFormat: PropTypes.func.isRequired,
+	inputFormat: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	isDisabled: PropTypes.bool.isRequired,

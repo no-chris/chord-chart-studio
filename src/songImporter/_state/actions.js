@@ -5,18 +5,18 @@ import createAction from '../../core/createAction';
 export const setContent = (content, title) =>
 	createAction(actionsTypes.SONG_IMPORTER_SET_CONTENT, { content, title });
 
-export const setSourceType = (sourceType) =>
-	createAction(actionsTypes.SONG_IMPORTER_SET_SOURCE_TYPE, { sourceType });
+export const setInputFormat = (inputFormat) =>
+	createAction(actionsTypes.SONG_IMPORTER_SET_INPUT_FORMAT, { inputFormat });
 
 export const startImport = () =>
 	createAction(actionsTypes.SONG_IMPORTER_IMPORT_START, {
 		isFromWeb: false,
 	});
 
-export const startImportFromWeb = (sourceType, content, title) =>
+export const startImportFromWeb = (inputFormat, content, title) =>
 	createAction(actionsTypes.SONG_IMPORTER_IMPORT_START, {
 		content,
-		sourceType,
+		inputFormat,
 		title,
 		isFromWeb: true,
 	});

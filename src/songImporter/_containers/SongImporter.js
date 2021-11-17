@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
 import { importFile } from '../../db/files/actions';
-import { setContent, setSourceType, cancelImport } from '../_state/actions';
+import { setContent, setInputFormat, cancelImport } from '../_state/actions';
 import {
-	getSourceType,
+	getInputFormat,
 	getContent,
 	getTitle,
 	isImporting,
@@ -17,13 +17,13 @@ export default connect(
 		content: getContent(state),
 		isFromWeb: isFromWeb(state),
 		isImporting: isImporting(state),
-		sourceType: getSourceType(state),
+		inputFormat: getInputFormat(state),
 		title: getTitle(state),
 	}),
 
 	{
 		setContent,
-		setSourceType,
+		setInputFormat,
 		cancelImport,
 		importFile,
 	}

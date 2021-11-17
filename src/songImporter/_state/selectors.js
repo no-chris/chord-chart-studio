@@ -1,6 +1,6 @@
 export const getContent = (state) => state.songImporter.content;
 
-export const getSourceType = (state) => state.songImporter.sourceType;
+export const getInputFormat = (state) => state.songImporter.inputFormat;
 
 export const getTitle = (state) => state.songImporter.title;
 
