@@ -7,14 +7,15 @@ import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
 import Footer from './Footer';
 import Icon from '../../../_components/Icon';
+import SongImporter from '../../../../songImporter/_containers/SongImporter';
 
 import allNavEntries from '../allNavEntries';
 
 function App(props) {
 	const {
+		editorMode,
 		isLeftBarCollapsed,
 		isRightBarCollapsed,
-		editorMode,
 		toggleLeftBar,
 		toggleRightBar,
 		setEditorMode,
@@ -36,6 +37,7 @@ function App(props) {
 
 	return (
 		<div className={'appLayout-wrapper'}>
+			<SongImporter />
 			<section className={leftBarClassNames.join(' ')}>
 				<div
 					className={'leftBar-content'}

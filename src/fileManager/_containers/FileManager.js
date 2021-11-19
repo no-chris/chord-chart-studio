@@ -8,6 +8,8 @@ import {
 } from '../_state/selectors';
 
 import { createFile, updateFile, deleteFile } from '../../db/files/actions';
+import { startImport } from '../../songImporter/_state/actions';
+
 import { getAllTitles } from '../../db/files/selectors';
 
 import FileManager from '../_components/FileManager';
@@ -26,5 +28,6 @@ export default connect(
 		deleteFile,
 		updateFile,
 		enableRename,
+		startImport,
 	}
 )(FileManager);

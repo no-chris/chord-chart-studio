@@ -15,6 +15,7 @@ describe('FileManager', () => {
 	const deleteFile = jest.fn();
 	const enableRename = jest.fn();
 	const updateFile = jest.fn();
+	const startImport = jest.fn();
 
 	window.getSelection = () => ({
 		removeAllRanges: jest.fn(),
@@ -38,6 +39,7 @@ describe('FileManager', () => {
 			deleteFile,
 			enableRename,
 			updateFile,
+			startImport,
 		};
 
 		selectFile.mockReset();
@@ -45,6 +47,7 @@ describe('FileManager', () => {
 		deleteFile.mockReset();
 		enableRename.mockReset();
 		updateFile.mockReset();
+		startImport.mockReset();
 	});
 
 	describe('Action list', () => {
@@ -321,6 +324,17 @@ describe('FileManager', () => {
 			fireEvent.click(input);
 
 			expect(deleteFile).toHaveBeenCalledWith(props.allTitles[2].id);
+		});
+	});
+
+	describe('import', () => {
+		test('should call startImport() on import action', () => {
+			const { getByText } = render(<FileManager {...props} />);
+			const importButton = getByText('Import');
+
+			fireEvent.click(importButton);
+
+			expect(startImport).toHaveBeenCalledTimes(1);
 		});
 	});
 });

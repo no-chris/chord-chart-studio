@@ -14,6 +14,7 @@ const initialState = {
 	isLeftBarCollapsed: false,
 	isRightBarCollapsed: false,
 	editorMode: 'edit',
+	activeModal: 'none',
 };
 
 export default function reducers(state = initialState, action = {}) {

@@ -1,8 +1,8 @@
-import getFromUltimateGuitar from '../../../../src/songImporters/importers/ultimateGuitar';
+import ultimateGuitar2ChordMark from '../../../src/core/converters/ultimateGuitar2ChordMark';
 
 describe('getFromUltimateGuitar()', () => {
 	test('Module', () => {
-		expect(getFromUltimateGuitar).toBeInstanceOf(Function);
+		expect(ultimateGuitar2ChordMark).toBeInstanceOf(Function);
 	});
 
 	const input =
@@ -18,7 +18,7 @@ describe('getFromUltimateGuitar()', () => {
 		'All the mountains and the _sea\n\n';
 
 	test('should properly convert ultimate guitar input', () => {
-		const actual = getFromUltimateGuitar(input);
+		const actual = ultimateGuitar2ChordMark(input);
 		expect(actual).toBe(output);
 	});
 });

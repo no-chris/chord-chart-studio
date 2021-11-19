@@ -1,0 +1,19 @@
+@import '../../../scss/abstract';
+@import '../layout/app/themes';
+
+.mod-ModalContainer {
+	z-index: $zindex-modal;
+}
+
+.mod-Overlay {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.7;
+	background-color: black;
+}
+
+.mod-ContentContainer {
+}

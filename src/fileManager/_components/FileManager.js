@@ -14,10 +14,11 @@ function FileManager(props) {
 		renamed,
 		defaultTitle,
 
-		selectFile,
 		createFile,
 		deleteFile,
 		enableRename,
+		startImport,
+		selectFile,
 		updateFile,
 	} = props;
 
@@ -34,6 +35,7 @@ function FileManager(props) {
 					createFile={() => createFile(defaultTitle)}
 					deleteFile={() => deleteFile(selected)}
 					enableRename={() => enableRename(selected)}
+					startImport={() => startImport()}
 				/>
 				<ul className={'fileManager-entriesList'}>
 					{allTitles.map((file) => (
@@ -70,6 +72,7 @@ FileManager.propTypes = {
 	createFile: PropTypes.func.isRequired,
 	deleteFile: PropTypes.func.isRequired,
 	enableRename: PropTypes.func.isRequired,
+	startImport: PropTypes.func.isRequired,
 	updateFile: PropTypes.func.isRequired,
 };
 

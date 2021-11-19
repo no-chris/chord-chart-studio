@@ -23,6 +23,9 @@ export function createStore() {
 	});
 	delete persistedState.db.options;
 	/**/
+	/* Reset import input * /
+	delete persistedState.songImporter;
+	/**/
 
 	const initialState = _defaultsDeep(persistedState, seed);
 

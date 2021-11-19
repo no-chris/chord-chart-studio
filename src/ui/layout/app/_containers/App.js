@@ -16,9 +16,9 @@ import App from '../_components/App';
 
 export default connect(
 	(state) => ({
+		editorMode: getEditorMode(state),
 		isLeftBarCollapsed: isLeftBarCollapsed(state),
 		isRightBarCollapsed: isRightBarCollapsed(state),
-		editorMode: getEditorMode(state),
 		selectedId: getSelectedId(state),
 	}),
 

@@ -1,7 +1,5 @@
-import { importFile } from '../db/files/actions';
 import { getStore } from '../state/store';
-
-import getFromUltimateGuitar from './importers/ultimateGuitar';
+import { startImportFromWeb } from './_state/actions';
 
 /**
  * @typedef {Object} WebsiteImportMessage
@@ -20,23 +18,10 @@ const songImporterHandlers = {
 	'@CCS/IMPORT_TAB': (message) => {
 		const store = getStore();
 
-		let chordChart;
-
-		try {
-			switch (message.source) {
-				case 'ultimateGuitar':
-					chordChart = getFromUltimateGuitar(message.chordChart);
-					break;
-			}
-		} catch (e) {
-			// todo
-			console.log('error in import');
-		}
-
-		if (chordChart) {
-			const title = buildTitle(message.title, message.artist);
-			store.dispatch(importFile(title, chordChart));
-		}
+		const title = buildTitle(message.title, message.artist);
+		store.dispatch(
+			startImportFromWeb(message.source, message.chordChart, title)
+		);
 	},
 };
 
