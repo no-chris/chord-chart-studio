@@ -20,6 +20,7 @@ function Input(props) {
 			onChange={onChange}
 			value={content}
 			disabled={isDisabled}
+			data-testid={'sim-input'}
 		/>
 	);
 }

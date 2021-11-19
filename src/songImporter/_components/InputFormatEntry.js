@@ -28,6 +28,8 @@ function InputFormatEntry(props) {
 				value={id}
 				onChange={onChange}
 				checked={inputFormat === id}
+				// Disabled radio buttons do not show the currently selected option
+				// disabled={isDisabled}
 			/>
 			<label className={allLabelClasses.join(' ')} htmlFor={id}>
 				{label}

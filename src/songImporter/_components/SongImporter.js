@@ -74,7 +74,10 @@ function SongImporter(props) {
 						/>
 					</div>
 					<div className={'sim-Column_Container'}>
-						<div className={'sim-Preview_Container'}>
+						<div
+							className={'sim-Preview_Container'}
+							data-testid={'sim-preview'}
+						>
 							{!error ? (
 								chordMarkContent
 							) : (
