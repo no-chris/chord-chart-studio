@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Icon from '../../ui/_components/Icon';
+
 function Input(props) {
 	const { content, setContent, isDisabled } = props;
 
@@ -15,13 +17,20 @@ function Input(props) {
 	}
 
 	return (
-		<textarea
-			className={allClasses.join(' ')}
-			onChange={onChange}
-			value={content}
-			disabled={isDisabled}
-			data-testid={'sim-input'}
-		/>
+		<>
+			<div className={'sim-Input_Header'}>
+				<Icon iconName={'arrow_drop_down'} />
+				Edit directly below
+				<Icon iconName={'arrow_drop_down'} />
+			</div>
+			<textarea
+				className={allClasses.join(' ')}
+				onChange={onChange}
+				value={content}
+				disabled={isDisabled}
+				data-testid={'sim-input'}
+			/>
+		</>
 	);
 }
 

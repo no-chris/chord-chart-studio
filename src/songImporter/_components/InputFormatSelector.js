@@ -36,8 +36,6 @@ function InputFormatSelector(props) {
 		<div className={'sim-InputFormat'}>
 			Input format:
 			{rendered}
-			<br />
-			ChordMark preview:
 		</div>
 	);
 }

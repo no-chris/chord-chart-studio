@@ -31,12 +31,18 @@ button {
 }
 
 .Button {
+	display: inline-block;
 	padding: 10px 20px;
 	font-weight: bold;
 	text-transform: capitalize;
+	margin: 10px 20px 10px 0;
 
 	&:hover {
 		cursor: pointer;
+	}
+
+	&:last-of-type {
+		margin-right: 0;
 	}
 }
 

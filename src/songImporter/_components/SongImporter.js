@@ -10,6 +10,7 @@ import Input from './Input';
 import PreviewError from './PreviewError';
 import InputFormatSelector from './InputFormatSelector';
 import input2ChordMark from '../input2ChordMark';
+import Icon from '../../ui/_components/Icon';
 
 function SongImporter(props) {
 	const {
@@ -74,6 +75,11 @@ function SongImporter(props) {
 						/>
 					</div>
 					<div className={'sim-Column_Container'}>
+						<div className={'sim-Input_Header'}>
+							<Icon iconName={'arrow_drop_down'} />
+							ChordMark preview
+							<Icon iconName={'arrow_drop_down'} />
+						</div>
 						<div
 							className={'sim-Preview_Container'}
 							data-testid={'sim-preview'}

@@ -31,8 +31,6 @@ const FilePicker = ({ setContent }) => {
 				onChange={handleChange}
 				accept={allowedFiles}
 			/>
-			<br />
-			Or copy/paste:
 		</div>
 	);
 };
