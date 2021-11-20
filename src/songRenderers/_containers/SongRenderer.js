@@ -41,9 +41,9 @@ export default connect((state) => ({
 		'songFormatting',
 		'autoRepeatChords'
 	),
-	expandSectionRepeats: getOptionValue(
+	expandSectionMultiply: getOptionValue(
 		state,
 		'songFormatting',
-		'expandSectionRepeats'
+		'expandSectionMultiply'
 	),
 }))(SongRenderer);

@@ -6,7 +6,7 @@ export default {
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
-		'expandSectionRepeats',
+		'expandSectionMultiply',
 
 		'layout',
 		'chords',
@@ -92,12 +92,12 @@ export default {
 				key: 'autoRepeatChords',
 			},
 		},
-		expandSectionRepeats: {
-			label: 'Expand section repeats',
+		expandSectionMultiply: {
+			label: 'Expand section multiply',
 			type: 'toggle',
 			option: {
 				context: 'songFormatting',
-				key: 'expandSectionRepeats',
+				key: 'expandSectionMultiply',
 			},
 		},
 

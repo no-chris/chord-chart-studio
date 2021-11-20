@@ -186,7 +186,7 @@ describe('db/options: reducers', () => {
 									print: {
 										updatedAt: 100,
 										alignBars: '1',
-										expandSectionRepeats: '1',
+										expandSectionMultiply: '1',
 									},
 									play: {
 										updatedAt: 200,
@@ -203,7 +203,7 @@ describe('db/options: reducers', () => {
 					values: {
 						...defaultFormattingOptions,
 						alignBars: '2',
-						expandSectionRepeats: '1',
+						expandSectionMultiply: '1',
 					},
 				},
 			};
@@ -305,7 +305,7 @@ describe('db/options: reducers', () => {
 									print: {
 										updatedAt: 100,
 										alignBars: '1',
-										expandSectionRepeats: '1',
+										expandSectionMultiply: '1',
 									},
 									play: {
 										updatedAt: 200,
@@ -322,7 +322,7 @@ describe('db/options: reducers', () => {
 					values: {
 						...defaultFormattingOptions,
 						alignBars: '2',
-						expandSectionRepeats: '1',
+						expandSectionMultiply: '1',
 					},
 				},
 				songPreferences: {

@@ -570,7 +570,7 @@ describe('db/files: reducers', () => {
 									print: {
 										updatedAt: 100,
 										alignBars: '1',
-										expandSectionRepeats: '1',
+										expandSectionMultiply: '1',
 									},
 									play: {
 										updatedAt: 200,
@@ -597,7 +597,7 @@ describe('db/files: reducers', () => {
 			expect(fileOptions.export).toBeDefined();
 			expect(fileOptions.export.updatedAt).toBe('now');
 			expect(fileOptions.export.alignBars).toBe('2');
-			expect(fileOptions.export.expandSectionRepeats).toBe('1');
+			expect(fileOptions.export.expandSectionMultiply).toBe('1');
 		});
 
 		test('should not copy anything if no mode already have options', () => {

@@ -19,7 +19,7 @@ function SongRenderer(props) {
 		'accidentalsType',
 		'transposeValue',
 		'autoRepeatChords',
-		'expandSectionRepeats',
+		'expandSectionMultiply',
 		'useShortNamings',
 		'simplifyChords',
 	]);

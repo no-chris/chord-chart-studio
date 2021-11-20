@@ -11,7 +11,7 @@ const editorModeOptions = {
 
 		'alignBars',
 		'autoRepeatChords',
-		'expandSectionRepeats',
+		'expandSectionMultiply',
 		'columnsCount',
 		'fontSize',
 		'fontStyle',
@@ -29,7 +29,7 @@ const editorModeOptions = {
 
 		'alignBars',
 		'autoRepeatChords',
-		'expandSectionRepeats',
+		'expandSectionMultiply',
 		'documentSize',
 		'documentMargins',
 		'columnsCount',
@@ -51,7 +51,7 @@ const editorModeOptions = {
 		'style',
 		'alignBars',
 		'autoRepeatChords',
-		'expandSectionRepeats',
+		'expandSectionMultiply',
 	],
 };
 

@@ -22,9 +22,10 @@ export function createStore() {
 		delete persistedState.db.files.allFiles[fileId].options;
 	});
 	delete persistedState.db.options;
-	/**/
-	/* Reset import input * /
 	delete persistedState.songImporter;
+	/**/
+	/** /
+	delete persistedState.fileManager.selected;
 	/**/
 
 	const initialState = _defaultsDeep(persistedState, seed);
