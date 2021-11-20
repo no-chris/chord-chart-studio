@@ -27,7 +27,7 @@ export function createStore() {
 	/** /
 	/**/
 	// migrations
-	delete persistedState.db.options.rendering;
+	//delete persistedState.db.options.rendering;
 
 	const initialState = _defaultsDeep(persistedState, seed);
 
