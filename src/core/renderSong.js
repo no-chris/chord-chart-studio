@@ -1,12 +1,13 @@
-import {
-	renderSong as renderSongCm,
-	parseSong,
-} from '../../../chord-mark/src/chordMark';
+import { renderSong as renderSongCm, parseSong } from 'chord-mark';
 
 export default function renderSong(songTxt, renderOptions) {
 	const parsed = parseSong(songTxt);
-	return renderSongCm(parsed, {
-		...renderOptions,
-		printChordsDuration: 'uneven',
-	});
+	try {
+		return renderSongCm(parsed, {
+			...renderOptions,
+			printChordsDuration: 'uneven',
+		});
+	} catch (e) {
+		return e.message;
+	}
 }

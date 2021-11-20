@@ -1,18 +1,36 @@
-import renderSong from '../../../src/core/renderSong';
+jest.mock('chord-mark', () => ({
+	parseSong: jest.fn(),
+	renderSong: jest.fn(),
+}));
 
-describe('renderSong', () => {
+import { parseSong, renderSong } from 'chord-mark';
+import renderCmSong from '../../../src/core/renderSong';
+
+describe('renderCmSong', () => {
 	test('Module', () => {
-		expect(renderSong).toBeInstanceOf(Function);
+		expect(renderCmSong).toBeInstanceOf(Function);
 	});
 });
 
-describe('renderSong()', () => {
-	test('Test details', () => {
-		const input = 'mySong';
-		const rendered = renderSong(input);
+describe('renderCmSong()', () => {
+	test('Should render song', () => {
+		parseSong.mockImplementation((song) => song);
+		renderSong.mockImplementation((parsed) => parsed);
 
-		expect(rendered).toEqual(
-			'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>'
-		);
+		const input = 'mySong';
+		const rendered = renderCmSong(input);
+
+		expect(rendered).toEqual('mySong');
+	});
+
+	test('Should return error message in case exception is thrown', () => {
+		renderSong.mockImplementation(() => {
+			throw new Error('ChordMark Error');
+		});
+
+		const input = 'mySong';
+		const rendered = renderCmSong(input);
+
+		expect(rendered).toEqual('ChordMark Error');
 	});
 });
