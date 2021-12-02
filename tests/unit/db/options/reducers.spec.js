@@ -79,7 +79,6 @@ describe('db/options: reducers', () => {
 	describe(UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
 		const fileId = 'myUUID';
 		const defaultFormattingOptions = {
-			documentSize: 'a4',
 			documentMargins: '3',
 			columnsCount: '1',
 			columnBreakOnParagraph: true,
@@ -99,7 +98,6 @@ describe('db/options: reducers', () => {
 								options: {
 									[previousMode]: {
 										updatedAt: '6969',
-										documentSize: 'a2',
 										columnsCount: 2,
 									},
 								},
@@ -112,7 +110,6 @@ describe('db/options: reducers', () => {
 				songFormatting: {
 					values: {
 						...defaultFormattingOptions,
-						documentSize: 'a2',
 						columnsCount: 2,
 					},
 				},
@@ -139,12 +136,10 @@ describe('db/options: reducers', () => {
 								options: {
 									[previousMode]: {
 										updatedAt: '6969',
-										documentSize: 'a2',
 										columnsCount: 2,
 									},
 									[nextMode]: {
 										updatedAt: '6969',
-										documentSize: 'a3',
 										columnsCount: 3,
 									},
 								},
@@ -157,7 +152,6 @@ describe('db/options: reducers', () => {
 				songFormatting: {
 					values: {
 						...defaultFormattingOptions,
-						documentSize: 'a3',
 						columnsCount: 3,
 					},
 				},
@@ -186,7 +180,7 @@ describe('db/options: reducers', () => {
 									print: {
 										updatedAt: 100,
 										alignBars: '1',
-										expandSectionMultiply: '1',
+										autoRepeatChords: '1',
 									},
 									play: {
 										updatedAt: 200,
@@ -203,7 +197,7 @@ describe('db/options: reducers', () => {
 					values: {
 						...defaultFormattingOptions,
 						alignBars: '2',
-						expandSectionMultiply: '1',
+						autoRepeatChords: '1',
 					},
 				},
 			};
@@ -219,7 +213,7 @@ describe('db/options: reducers', () => {
 	describe(FILE_MANAGER_SELECT_FILE, () => {
 		const nextFileId = 'next';
 		const defaultFormattingOptions = {
-			documentSize: 'a4',
+			chordsColor: 'yellow',
 			documentMargins: 4,
 			columnsCount: 4,
 			columnBreakOnParagraph: true,
@@ -228,7 +222,6 @@ describe('db/options: reducers', () => {
 			transposeValue: 4,
 			harmonizeAccidentals: false,
 			preferredAccidentals: 'auto',
-			useShortNamings: true,
 		};
 
 		beforeEach(() => {
@@ -255,7 +248,7 @@ describe('db/options: reducers', () => {
 									},
 									[previousMode]: {
 										updatedAt: 300,
-										documentSize: 'a3',
+										chordsColor: 'red',
 										columnsCount: 3,
 									},
 								},
@@ -268,7 +261,7 @@ describe('db/options: reducers', () => {
 				songFormatting: {
 					values: {
 						...defaultFormattingOptions,
-						documentSize: 'a3',
+						chordsColor: 'red',
 						columnsCount: 3,
 					},
 				},
@@ -305,7 +298,7 @@ describe('db/options: reducers', () => {
 									print: {
 										updatedAt: 100,
 										alignBars: '1',
-										expandSectionMultiply: '1',
+										autoRepeatChords: '1',
 									},
 									play: {
 										updatedAt: 200,
@@ -322,7 +315,7 @@ describe('db/options: reducers', () => {
 					values: {
 						...defaultFormattingOptions,
 						alignBars: '2',
-						expandSectionMultiply: '1',
+						autoRepeatChords: '1',
 					},
 				},
 				songPreferences: {

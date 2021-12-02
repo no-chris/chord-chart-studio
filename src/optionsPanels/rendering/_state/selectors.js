@@ -36,21 +36,19 @@ export const getNonInteractableWidgets = (state) => {
 export const getHiddenWidgets = (state) => {
 	const hiddenWidgets = [];
 
-	const editorMode = getEditorMode(state);
-
 	const harmonizeAccidentals = getOptionValue(
 		state,
 		'songPreferences',
 		'harmonizeAccidentals'
 	);
 	/*
-	const chordsAndLyricsDisplay = getOptionValue(
+	const chartType = getOptionValue(
 		state,
 		'rendering',
-		'chordsAndLyricsDisplay'
+		'chartType'
 	);
 
-	if (chordsAndLyricsDisplay !== 'all') {
+	if (chartType !== 'all') {
 		hiddenWidgets.push('alignChordsWithLyrics');
 	}
 	
@@ -58,14 +56,6 @@ export const getHiddenWidgets = (state) => {
 	if (!harmonizeAccidentals) {
 		hiddenWidgets.push('preferredAccidentals');
 	}
-
-	if (editorMode === 'print') {
-		hiddenWidgets.push('fontSize');
-	} else {
-		hiddenWidgets.push('printFontSize');
-	}
-
-	//hiddenWidgets.push('simplifyChords');
 
 	return hiddenWidgets;
 };

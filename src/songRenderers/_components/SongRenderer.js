@@ -9,26 +9,29 @@ import escapeHTML from '../../core/escapeHTML';
 import renderSong from '../../core/renderSong';
 
 function SongRenderer(props) {
-	const { content } = props;
+	const { content, chartType } = props;
 
 	const renderOptions = _pick(props, [
-		'alignBars',
-		'chordsAndLyricsDisplay',
-		'alignChordsWithLyrics',
+		'transposeValue',
 		'harmonizeAccidentals',
 		'accidentalsType',
-		'transposeValue',
+
+		'chartType',
+		'alignChordsWithLyrics',
+		'alignBars',
 		'autoRepeatChords',
-		'expandSectionMultiply',
-		'useShortNamings',
-		'simplifyChords',
 	]);
 
 	return (
 		<div className={'songRenderer'}>
 			<div
 				dangerouslySetInnerHTML={{
-					__html: escapeHTML(renderSong(content, renderOptions)),
+					__html: escapeHTML(
+						renderSong(content, {
+							...renderOptions,
+							chordsAndLyricsDisplay: chartType, //fixme
+						})
+					),
 				}}
 			/>
 		</div>
@@ -36,6 +39,7 @@ function SongRenderer(props) {
 }
 
 SongRenderer.propTypes = {
+	chartType: PropTypes.string.isRequired,
 	content: PropTypes.string,
 };
 

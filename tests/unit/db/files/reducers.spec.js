@@ -275,7 +275,7 @@ describe('db/files: reducers', () => {
 			);
 			const state2 = reducers(
 				state1,
-				setOptionValue('songFormatting', 'useShortNamings', true)
+				setOptionValue('songFormatting', 'harmonizeAccidentals', true)
 			);
 
 			expect(state2).toBe(state1);
@@ -294,7 +294,7 @@ describe('db/files: reducers', () => {
 						options: {
 							preferences: {
 								updatedAt: 'now',
-								useShortNamings: true,
+								harmonizeAccidentals: true,
 							},
 						},
 					},
@@ -310,7 +310,7 @@ describe('db/files: reducers', () => {
 						options: {
 							preferences: {
 								updatedAt: 'later',
-								useShortNamings: false,
+								harmonizeAccidentals: false,
 							},
 						},
 					},
@@ -321,7 +321,7 @@ describe('db/files: reducers', () => {
 			);
 			const state2 = reducers(
 				state1,
-				setOptionValue('songPreferences', 'useShortNamings', true)
+				setOptionValue('songPreferences', 'harmonizeAccidentals', true)
 			);
 			expect(state2).toEqual(expected1);
 
@@ -329,7 +329,7 @@ describe('db/files: reducers', () => {
 
 			const state3 = reducers(
 				state2,
-				setOptionValue('songPreferences', 'useShortNamings', false)
+				setOptionValue('songPreferences', 'harmonizeAccidentals', false)
 			);
 
 			expect(state3).toEqual(expected2);
@@ -348,7 +348,7 @@ describe('db/files: reducers', () => {
 						options: {
 							screen: {
 								updatedAt: 'even-later',
-								style: 'chordPro',
+								chartFormat: 'chordPro',
 								columnsCount: 4,
 								columnBreakOnParagraph: true,
 							},
@@ -363,7 +363,7 @@ describe('db/files: reducers', () => {
 			const state2 = deepFreeze(
 				reducers(
 					state1,
-					setOptionValue('songFormatting', 'style', 'chordPro')
+					setOptionValue('songFormatting', 'chartFormat', 'chordPro')
 				)
 			);
 			clock.mockReturnValue('later');
@@ -403,19 +403,19 @@ describe('db/files: reducers', () => {
 						options: {
 							preferences: {
 								updatedAt: 'now',
-								useShortNamings: true,
+								harmonizeAccidentals: true,
 							},
 							edit: {
 								updatedAt: 'later',
-								style: 'chordmark',
+								chartFormat: 'chordmark',
 							},
 							screen: {
 								updatedAt: 'even-later',
-								style: 'chordPro',
+								chartFormat: 'chordPro',
 							},
 							print: {
 								updatedAt: 'even-even-later',
-								style: 'ultimateGuitar',
+								chartFormat: 'ultimateGuitar',
 							},
 						},
 					},
@@ -428,7 +428,11 @@ describe('db/files: reducers', () => {
 			const state2 = deepFreeze(
 				reducers(
 					state1,
-					setOptionValue('songPreferences', 'useShortNamings', true)
+					setOptionValue(
+						'songPreferences',
+						'harmonizeAccidentals',
+						true
+					)
 				)
 			);
 			clock.mockReturnValue('later');
@@ -436,7 +440,7 @@ describe('db/files: reducers', () => {
 			const state3 = deepFreeze(
 				reducers(
 					state2,
-					setOptionValue('songFormatting', 'style', 'chordmark')
+					setOptionValue('songFormatting', 'chartFormat', 'chordmark')
 				)
 			);
 			clock.mockReturnValue('even-later');
@@ -445,7 +449,7 @@ describe('db/files: reducers', () => {
 			const state4 = deepFreeze(
 				reducers(
 					state3,
-					setOptionValue('songFormatting', 'style', 'chordPro')
+					setOptionValue('songFormatting', 'chartFormat', 'chordPro')
 				)
 			);
 			clock.mockReturnValue('even-even-later');
@@ -454,7 +458,11 @@ describe('db/files: reducers', () => {
 			const state5 = deepFreeze(
 				reducers(
 					state4,
-					setOptionValue('songFormatting', 'style', 'ultimateGuitar')
+					setOptionValue(
+						'songFormatting',
+						'chartFormat',
+						'ultimateGuitar'
+					)
 				)
 			);
 			expect(state5).toEqual(expected);
@@ -474,9 +482,8 @@ describe('db/files: reducers', () => {
 									print: {
 										updatedAt: 100,
 										columnsCount: 3,
-										fontStyle: 'roboto',
+										chordsColor: 'yellow',
 										documentMargins: 3, // <== should not be copied!
-										documentSize: 'a4', // <== should not be copied!
 									},
 								},
 							},
@@ -501,11 +508,8 @@ describe('db/files: reducers', () => {
 			expect(
 				result.allFiles[fileId].options.play.documentMargins
 			).not.toBeDefined();
-			expect(
-				result.allFiles[fileId].options.play.documentSize
-			).not.toBeDefined();
-			expect(result.allFiles[fileId].options.play.fontStyle).toBe(
-				'roboto'
+			expect(result.allFiles[fileId].options.play.chordsColor).toBe(
+				'yellow'
 			);
 		});
 
@@ -519,8 +523,7 @@ describe('db/files: reducers', () => {
 									print: {
 										updatedAt: 100,
 										columnsCount: 3,
-										fontStyle: 'roboto',
-										documentSize: 'a4',
+										chordsColor: 'yellow',
 										documentMargins: 3,
 									},
 									play: {
@@ -551,10 +554,7 @@ describe('db/files: reducers', () => {
 				result.allFiles[fileId].options.play.documentMargins
 			).not.toBeDefined();
 			expect(
-				result.allFiles[fileId].options.play.documentSize
-			).not.toBeDefined();
-			expect(
-				result.allFiles[fileId].options.play.fontStyle
+				result.allFiles[fileId].options.play.chordsColor
 			).not.toBeDefined();
 		});
 
@@ -570,7 +570,7 @@ describe('db/files: reducers', () => {
 									print: {
 										updatedAt: 100,
 										alignBars: '1',
-										expandSectionMultiply: '1',
+										autoRepeatChords: '1',
 									},
 									play: {
 										updatedAt: 200,
@@ -597,7 +597,7 @@ describe('db/files: reducers', () => {
 			expect(fileOptions.export).toBeDefined();
 			expect(fileOptions.export.updatedAt).toBe('now');
 			expect(fileOptions.export.alignBars).toBe('2');
-			expect(fileOptions.export.expandSectionMultiply).toBe('1');
+			expect(fileOptions.export.autoRepeatChords).toBe('1');
 		});
 
 		test('should not copy anything if no mode already have options', () => {

@@ -17,14 +17,15 @@ export function createStore() {
 
 	const persistedState = loadState();
 
-	/* Reset options in store * /
+	/* Reset all options * /
 	Object.keys(persistedState.db.files.allFiles).forEach((fileId) => {
 		delete persistedState.db.files.allFiles[fileId].options;
 	});
+	delete persistedState.db.options;
+	/**/
+	/* reset song Importer state * /
 	delete persistedState.songImporter;
 	delete persistedState.fileManager.selected;
-	/**/
-	/** /
 	/**/
 	// migrations
 	//delete persistedState.db.options.rendering;

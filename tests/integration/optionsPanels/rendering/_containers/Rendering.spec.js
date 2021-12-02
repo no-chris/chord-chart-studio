@@ -49,9 +49,6 @@ describe('"Rendering" option panel', () => {
 			const group = getByText(groupLabel);
 
 			queryByText(
-				allWidgets.allWidgets.layout.allGroupWidgets.documentSize.label
-			);
-			queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets.columnsCount.label
 			);
 			queryByText(
@@ -63,12 +60,6 @@ describe('"Rendering" option panel', () => {
 				fireEvent.click(group);
 			});
 
-			expect(
-				queryByText(
-					allWidgets.allWidgets.layout.allGroupWidgets.documentSize
-						.label
-				)
-			).toBeNull();
 			expect(
 				queryByText(
 					allWidgets.allWidgets.layout.allGroupWidgets.columnsCount
@@ -87,9 +78,6 @@ describe('"Rendering" option panel', () => {
 			});
 
 			queryByText(
-				allWidgets.allWidgets.layout.allGroupWidgets.documentSize.label
-			);
-			queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets.columnsCount.label
 			);
 			queryByText(
@@ -100,7 +88,7 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Some widgets should be disabled depending on editor Mode', () => {
-		test('All widgets should be disabled if no file is selected', () => {});
+		test.skip('All widgets should be disabled if no file is selected', () => {});
 
 		test('Edit mode', () => {
 			const niClassName = '.sb-optionSelect-isNotInteractable';
@@ -109,22 +97,16 @@ describe('"Rendering" option panel', () => {
 
 			const { getByText } = render(withStore(<Rendering />));
 
-			const chordsAndLyricsDisplay = getByText(
-				allWidgets.allWidgets.chordsAndLyricsDisplay.label
-			);
-			const documentSize = getByText(
-				allWidgets.allWidgets.layout.allGroupWidgets.documentSize.label
-			);
-			const simplifyChords = getByText(
-				allWidgets.allWidgets.chords.allGroupWidgets.simplifyChords
+			const chartType = getByText(
+				allWidgets.allWidgets.preferences.allGroupWidgets.chartType
 					.label
 			);
-
-			expect(documentSize.closest(niClassName)).toBeInstanceOf(Element);
-			expect(simplifyChords.closest(niClassName)).toBeInstanceOf(Element);
-			expect(chordsAndLyricsDisplay.closest(niClassName)).toBeInstanceOf(
-				Element
+			const transposeValue = getByText(
+				allWidgets.allWidgets.key.allGroupWidgets.transposeValue.label
 			);
+
+			expect(transposeValue.closest(niClassName)).toBeInstanceOf(Element);
+			expect(chartType.closest(niClassName)).toBeInstanceOf(Element);
 		});
 
 		test('Play mode', () => {
@@ -133,12 +115,15 @@ describe('"Rendering" option panel', () => {
 
 			const { getByText } = render(withStore(<Rendering />));
 
-			const documentSize = getByText(
-				allWidgets.allWidgets.layout.allGroupWidgets.documentSize.label
+			const columnBreakOnParagraph = getByText(
+				allWidgets.allWidgets.layout.allGroupWidgets
+					.columnBreakOnParagraph.label
 			);
 
 			expect(
-				documentSize.closest('.sb-optionSelect-isNotInteractable')
+				columnBreakOnParagraph.closest(
+					'.sb-optionSelect-isNotInteractable'
+				)
 			).toBeInstanceOf(Element);
 		});
 
@@ -225,64 +210,6 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Options dependencies', () => {
-		test('fontSize / printFontSize should be displayed depending on editor mode', () => {
-			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('play'));
-
-			const { getByText, queryByText } = render(withStore(<Rendering />));
-
-			getByText(
-				allWidgets.allWidgets.format.allGroupWidgets.fontSize.label
-			);
-			expect(
-				queryByText(
-					allWidgets.allWidgets.format.allGroupWidgets.printFontSize
-						.label
-				)
-			).toBeNull();
-
-			act(() => {
-				dispatch(appActions.setEditorMode('play'));
-			});
-
-			getByText(
-				allWidgets.allWidgets.format.allGroupWidgets.fontSize.label
-			);
-			expect(
-				queryByText(
-					allWidgets.allWidgets.format.allGroupWidgets.printFontSize
-						.label
-				)
-			).toBeNull();
-
-			act(() => {
-				dispatch(appActions.setEditorMode('print'));
-			});
-
-			expect(
-				queryByText(
-					allWidgets.allWidgets.format.allGroupWidgets.fontSize.label
-				)
-			).toBeNull();
-			getByText(
-				allWidgets.allWidgets.format.allGroupWidgets.printFontSize.label
-			);
-
-			act(() => {
-				dispatch(appActions.setEditorMode('export'));
-			});
-
-			getByText(
-				allWidgets.allWidgets.format.allGroupWidgets.fontSize.label
-			);
-			expect(
-				queryByText(
-					allWidgets.allWidgets.format.allGroupWidgets.printFontSize
-						.label
-				)
-			).toBeNull();
-		});
-
 		test('PreferredAccidentals should only be displayed if harmonizeAccidentals === true', () => {
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('play'));
@@ -297,12 +224,12 @@ describe('"Rendering" option panel', () => {
 			const { getByText, queryByText } = render(withStore(<Rendering />));
 
 			const harmonizeAccidentals = getByText(
-				allWidgets.allWidgets.chords.allGroupWidgets
-					.harmonizeAccidentals.label
+				allWidgets.allWidgets.key.allGroupWidgets.harmonizeAccidentals
+					.label
 			);
 			expect(
 				getByText(
-					allWidgets.allWidgets.chords.allGroupWidgets
+					allWidgets.allWidgets.key.allGroupWidgets
 						.preferredAccidentals.label
 				)
 			).toBeInTheDocument();
@@ -313,7 +240,7 @@ describe('"Rendering" option panel', () => {
 
 			expect(
 				queryByText(
-					allWidgets.allWidgets.chords.allGroupWidgets
+					allWidgets.allWidgets.key.allGroupWidgets
 						.preferredAccidentals.label
 				)
 			).toBeNull();
@@ -324,7 +251,7 @@ describe('"Rendering" option panel', () => {
 
 			expect(
 				getByText(
-					allWidgets.allWidgets.chords.allGroupWidgets
+					allWidgets.allWidgets.key.allGroupWidgets
 						.preferredAccidentals.label
 				)
 			).toBeInTheDocument();

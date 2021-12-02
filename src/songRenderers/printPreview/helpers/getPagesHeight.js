@@ -9,7 +9,7 @@ import PageHeader from '../_components/PageHeader';
 
 export default async function getAllLinesHeight(
 	title,
-	{ columnsCount, documentSize, documentMargins, printFontSize }
+	{ columnsCount, documentSize, documentMargins, fontSize }
 ) {
 	const component = (
 		<Page
@@ -17,7 +17,7 @@ export default async function getAllLinesHeight(
 			allColumnsLines={padColumns(columnsCount)}
 			documentSize={documentSize}
 			documentMargins={documentMargins}
-			printFontSize={printFontSize}
+			fontSize={fontSize}
 		/>
 	);
 

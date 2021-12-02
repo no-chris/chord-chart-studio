@@ -11,21 +11,19 @@ function PrintPreview(props) {
 	const { selectedFile, highlightChords } = props;
 
 	const renderOptions = _pick(props, [
-		'chordsAndLyricsDisplay',
-		'alignChordsWithLyrics',
-		'alignBars',
+		'transposeValue',
 		'harmonizeAccidentals',
 		'accidentalsType',
-		'transposeValue',
+
+		'chartType',
+		'alignChordsWithLyrics',
+		'alignBars',
 		'autoRepeatChords',
-		'expandSectionMultiply',
-		'useShortNamings',
-		'simplifyChords',
 	]);
 
 	const allLines = renderSong(
 		selectedFile.content || '',
-		renderOptions
+		{ ...renderOptions, chordsAndLyricsDisplay: props.chartType } //fixme
 	).split('\n');
 
 	const classNames = ['printPreview'];
@@ -40,20 +38,21 @@ function PrintPreview(props) {
 				allLines={allLines}
 				columnsCount={props.columnsCount}
 				columnBreakOnParagraph={props.columnBreakOnParagraph}
-				documentSize={props.documentSize}
+				documentSize={props.documentSize || 'a4'}
 				documentMargins={props.documentMargins}
-				printFontSize={props.printFontSize}
+				fontSize={props.fontSize}
 			/>
 		</div>
 	);
 }
 PrintPreview.propTypes = {
+	chartType: PropTypes.string.isRequired,
 	selectedFile: PropTypes.object.isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
 	documentSize: PropTypes.string.isRequired,
 	documentMargins: PropTypes.number.isRequired,
-	printFontSize: PropTypes.number.isRequired,
+	fontSize: PropTypes.number.isRequired,
 	highlightChords: PropTypes.bool.isRequired,
 };
 

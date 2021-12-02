@@ -1,57 +1,49 @@
 const editorModeOptions = {
 	edit: [],
 	play: [
-		'chordsAndLyricsDisplay',
-		'alignChordsWithLyrics',
+		'transposeValue',
 		'harmonizeAccidentals',
 		'preferredAccidentals',
-		'useShortNamings',
-		'simplifyChords',
-		'transposeValue',
 
+		'chartType',
+		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
-		'expandSectionMultiply',
+
 		'columnsCount',
+
 		'fontSize',
-		'fontStyle',
 		'chordsColor',
 		'highlightChords',
 	],
 	print: [
-		'chordsAndLyricsDisplay',
-		'alignChordsWithLyrics',
+		'transposeValue',
 		'harmonizeAccidentals',
 		'preferredAccidentals',
-		'useShortNamings',
-		'simplifyChords',
-		'transposeValue',
 
+		'chartType',
+		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
-		'expandSectionMultiply',
-		'documentSize',
-		'documentMargins',
+
 		'columnsCount',
 		'columnBreakOnParagraph',
-		'printFontSize',
-		'fontStyle',
+		'documentMargins',
+
+		'fontSize',
 		'chordsColor',
 		'highlightChords',
 	],
 	export: [
-		'chordsAndLyricsDisplay',
-		'alignChordsWithLyrics',
+		'transposeValue',
 		'harmonizeAccidentals',
 		'preferredAccidentals',
-		'useShortNamings',
-		'simplifyChords',
-		'transposeValue',
 
-		'style',
+		'chartFormat',
+		'chartType',
+		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
-		'expandSectionMultiply',
 	],
 };
 

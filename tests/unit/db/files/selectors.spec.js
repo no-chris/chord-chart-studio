@@ -165,7 +165,7 @@ describe('db/files: selectors', () => {
 							options: {
 								songFormatting: {
 									columnsCount: 3,
-									documentSize: 'a2',
+									documentMargins: 2,
 								},
 							},
 						},
@@ -177,7 +177,7 @@ describe('db/files: selectors', () => {
 		test('should return saved options for a given file/category', () => {
 			const expected = {
 				columnsCount: 3,
-				documentSize: 'a2',
+				documentMargins: 2,
 			};
 
 			const result = selectors.getCategoryOptions(
@@ -197,13 +197,14 @@ describe('db/files: selectors', () => {
 			);
 
 			result.columnsCount = 4;
-			result.documentSize = 'a4';
+			result.documentMargins = 4;
 			expect(
 				state.db.files.allFiles.id1.options.songFormatting.columnsCount
 			).toBe(3);
 			expect(
-				state.db.files.allFiles.id1.options.songFormatting.documentSize
-			).toBe('a2');
+				state.db.files.allFiles.id1.options.songFormatting
+					.documentMargins
+			).toBe(2);
 		});
 
 		test('should return undefined if category does not exists', () => {

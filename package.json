@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "@size-limit/webpack": "^7.0.3",
-    "chord-mark": "^0.6.1",
+    "chord-mark": "^0.7.0",
     "chordsheetjs": "^4.10.0",
     "combine-section-reducers": "^1.0.6",
     "core-js": "^3.15.2",

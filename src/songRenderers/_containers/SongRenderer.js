@@ -6,11 +6,7 @@ import SongRenderer from '../_components/SongRenderer';
 
 export default connect((state) => ({
 	// songPreferences
-	chordsAndLyricsDisplay: getOptionValue(
-		state,
-		'songPreferences',
-		'chordsAndLyricsDisplay'
-	),
+	chartType: getOptionValue(state, 'songFormatting', 'chartType'),
 	alignChordsWithLyrics: getOptionValue(
 		state,
 		'songPreferences',
@@ -27,12 +23,6 @@ export default connect((state) => ({
 		'preferredAccidentals'
 	),
 	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
-	useShortNamings: getOptionValue(
-		state,
-		'songPreferences',
-		'useShortNamings'
-	),
-	simplifyChords: getOptionValue(state, 'songPreferences', 'simplifyChords'),
 
 	// songFormatting
 	alignBars: getOptionValue(state, 'songFormatting', 'alignBars'),
@@ -40,10 +30,5 @@ export default connect((state) => ({
 		state,
 		'songFormatting',
 		'autoRepeatChords'
-	),
-	expandSectionMultiply: getOptionValue(
-		state,
-		'songFormatting',
-		'expandSectionMultiply'
 	),
 }))(SongRenderer);

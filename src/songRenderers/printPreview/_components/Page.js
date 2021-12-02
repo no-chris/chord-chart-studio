@@ -9,7 +9,7 @@ function Page(props) {
 		allColumnsLines,
 		documentSize,
 		documentMargins,
-		printFontSize,
+		fontSize,
 	} = props;
 
 	const allSectionsRendered = allColumnsLines.map((columnLines, index) => {
@@ -27,7 +27,7 @@ function Page(props) {
 
 	const pageClasses = ['printPreview-page'];
 	pageClasses.push('printPreview-page--' + documentSize);
-	pageClasses.push('printPreview-page--font' + printFontSize);
+	pageClasses.push('printPreview-page--font' + fontSize);
 
 	const pageContentWrapperClasses = ['printPreview-pageContentWrapper'];
 	pageContentWrapperClasses.push(
@@ -61,7 +61,7 @@ Page.propTypes = {
 	allColumnsLines: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
 	documentSize: PropTypes.string.isRequired,
 	documentMargins: PropTypes.number.isRequired,
-	printFontSize: PropTypes.number.isRequired,
+	fontSize: PropTypes.number.isRequired,
 };
 
 export default React.memo(Page);

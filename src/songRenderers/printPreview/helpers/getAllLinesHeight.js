@@ -12,7 +12,7 @@ const cssSelectors = {
 
 export default async function getAllLinesHeight(
 	allLines,
-	{ columnsCount, documentSize, documentMargins, printFontSize }
+	{ columnsCount, documentSize, documentMargins, fontSize }
 ) {
 	const component = (
 		<div className={'printPreview'}>
@@ -21,7 +21,7 @@ export default async function getAllLinesHeight(
 				columnsCount={columnsCount}
 				documentSize={documentSize}
 				documentMargins={documentMargins}
-				printFontSize={printFontSize}
+				fontSize={fontSize}
 			/>
 		</div>
 	);

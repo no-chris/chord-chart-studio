@@ -22,7 +22,7 @@ describe('getAllLinesHeight', () => {
 			columnsCount: 2,
 			documentSize: 'a4',
 			documentMargins: 3,
-			printFontSize: 0,
+			fontSize: 0,
 		}).then((allLinesHeight) => {
 			expect(allLinesHeight).toEqual(new Array(20).fill(30));
 		});

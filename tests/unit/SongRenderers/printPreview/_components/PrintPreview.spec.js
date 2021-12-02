@@ -43,9 +43,8 @@ describe('PrintPreview', () => {
 			selectedFile: _.cloneDeep(selectedFile),
 			columnsCount: 3,
 			columnBreakOnParagraph: true,
-			documentSize: 'a4',
 			documentMargins: 3,
-			printFontSize: 1,
+			fontSize: 1,
 			highlightChords: false,
 		};
 	});
@@ -145,7 +144,7 @@ describe('PrintPreview', () => {
 						{...props}
 						documentSize={'ipad'}
 						documentMargins={-2}
-						printFontSize={-4}
+						fontSize={-4}
 					/>
 				);
 			});
