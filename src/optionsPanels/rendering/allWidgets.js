@@ -81,7 +81,7 @@ export default {
 			],
 			allGroupWidgets: {
 				chartFormat: {
-					label: 'Format',
+					label: 'Export format',
 					type: 'select',
 					typeOptions: {
 						allChoices: [
@@ -108,13 +108,13 @@ export default {
 					},
 				},
 				chartType: {
-					label: 'Type',
+					label: 'Chart type',
 					type: 'select',
 					typeOptions: {
 						allChoices: [
 							{
 								id: 'typedisplayAll',
-								label: 'Display everything',
+								label: 'Complete',
 								value: 'all',
 							},
 							{
