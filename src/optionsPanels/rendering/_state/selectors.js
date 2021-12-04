@@ -30,6 +30,29 @@ export const getNonInteractableWidgets = (state) => {
 
 	nonInteractableWidgets.push(...nonInteractableOptions);
 
+	// specific rules
+	const chartType = getOptionValue(state, 'songFormatting', 'chartType');
+	if (chartType === 'lyrics') {
+		nonInteractableWidgets.push('alignChordsWithLyrics');
+		nonInteractableWidgets.push('alignBars');
+		nonInteractableWidgets.push('autoRepeatChords');
+	} else if (chartType === 'chords') {
+		nonInteractableWidgets.push('alignChordsWithLyrics');
+	}
+
+	const chartFormat = getOptionValue(state, 'songFormatting', 'chartFormat');
+	if (chartFormat === 'chordmarkSrc') {
+		nonInteractableWidgets.push('chartType');
+		nonInteractableWidgets.push('alignChordsWithLyrics');
+		nonInteractableWidgets.push('alignBars');
+		nonInteractableWidgets.push('autoRepeatChords');
+	} else if (chartType === 'chordpro') {
+		nonInteractableWidgets.push('chartType');
+		nonInteractableWidgets.push('alignChordsWithLyrics');
+		nonInteractableWidgets.push('alignBars');
+		nonInteractableWidgets.push('autoRepeatChords');
+	}
+
 	return nonInteractableWidgets;
 };
 
@@ -41,18 +64,7 @@ export const getHiddenWidgets = (state) => {
 		'songPreferences',
 		'harmonizeAccidentals'
 	);
-	/*
-	const chartType = getOptionValue(
-		state,
-		'rendering',
-		'chartType'
-	);
 
-	if (chartType !== 'all') {
-		hiddenWidgets.push('alignChordsWithLyrics');
-	}
-	
-	 */
 	if (!harmonizeAccidentals) {
 		hiddenWidgets.push('preferredAccidentals');
 	}
