@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 
 import escapeHTML from '../../core/escapeHTML';
 
-import renderSong from '../../core/renderSong';
+import renderSong, { renderSongAsChordPro } from '../../core/renderSong';
 
 function SongRenderer(props) {
-	const { content, chartType } = props;
+	const { content, useChartFormat } = props;
 
 	const renderOptions = _pick(props, [
 		'transposeValue',
@@ -22,29 +22,43 @@ function SongRenderer(props) {
 		'autoRepeatChords',
 	]);
 
-	return (
-		<div className={'songRenderer'}>
+	let rendered;
+
+	if (useChartFormat && props.chartFormat === 'chordpro') {
+		const songRendered = renderSongAsChordPro(content, renderOptions);
+		rendered = <TxtRenderer txt={songRendered} />;
+	} else if (useChartFormat && props.chartFormat === 'chordmarkSrc') {
+		rendered = <TxtRenderer txt={content} />;
+	} else {
+		const songRendered = renderSong(content, renderOptions);
+		rendered = (
 			<div
 				dangerouslySetInnerHTML={{
-					__html: escapeHTML(
-						renderSong(content, {
-							...renderOptions,
-							chordsAndLyricsDisplay: chartType, //fixme
-						})
-					),
+					__html: escapeHTML(songRendered),
 				}}
 			/>
-		</div>
-	);
+		);
+	}
+
+	return <div className={'songRenderer'}>{rendered}</div>;
 }
 
 SongRenderer.propTypes = {
-	chartType: PropTypes.string.isRequired,
+	useChartFormat: PropTypes.bool.isRequired,
+	chartFormat: PropTypes.string.isRequired,
 	content: PropTypes.string,
 };
 
 SongRenderer.defaultProps = {
 	content: '',
+	useChartFormat: false,
 };
 
 export default SongRenderer;
+
+const TxtRenderer = ({ txt }) => {
+	return txt
+		.split('\n')
+		.map((line) => (line === '' ? '\u00A0' : line)) // '\u00A0' => &nbsp;
+		.map((line, i) => <p key={i}>{line}</p>);
+};

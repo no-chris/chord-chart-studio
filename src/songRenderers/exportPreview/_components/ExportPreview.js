@@ -10,7 +10,10 @@ function ExportPreview(props) {
 
 	return (
 		<div className={'exportPreview exp-SongRenderer'}>
-			<SongRenderer content={selectedFile.content} />
+			<SongRenderer
+				content={selectedFile.content}
+				useChartFormat={true}
+			/>
 		</div>
 	);
 }

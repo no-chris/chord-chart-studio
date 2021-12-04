@@ -6,12 +6,7 @@ import SongRenderer from '../_components/SongRenderer';
 
 export default connect((state) => ({
 	// songPreferences
-	chartType: getOptionValue(state, 'songFormatting', 'chartType'),
-	alignChordsWithLyrics: getOptionValue(
-		state,
-		'songPreferences',
-		'alignChordsWithLyrics'
-	),
+	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
 	harmonizeAccidentals: getOptionValue(
 		state,
 		'songPreferences',
@@ -22,9 +17,15 @@ export default connect((state) => ({
 		'songPreferences',
 		'preferredAccidentals'
 	),
-	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
 
 	// songFormatting
+	chartFormat: getOptionValue(state, 'songFormatting', 'chartFormat'),
+	chartType: getOptionValue(state, 'songFormatting', 'chartType'),
+	alignChordsWithLyrics: getOptionValue(
+		state,
+		'songFormatting',
+		'alignChordsWithLyrics'
+	),
 	alignBars: getOptionValue(state, 'songFormatting', 'alignBars'),
 	autoRepeatChords: getOptionValue(
 		state,

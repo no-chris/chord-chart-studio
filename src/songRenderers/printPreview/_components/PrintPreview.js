@@ -21,10 +21,9 @@ function PrintPreview(props) {
 		'autoRepeatChords',
 	]);
 
-	const allLines = renderSong(
-		selectedFile.content || '',
-		{ ...renderOptions, chordsAndLyricsDisplay: props.chartType } //fixme
-	).split('\n');
+	const allLines = renderSong(selectedFile.content || '', {
+		...renderOptions,
+	}).split('\n');
 
 	const classNames = ['printPreview'];
 	if (highlightChords) {
@@ -50,7 +49,7 @@ PrintPreview.propTypes = {
 	selectedFile: PropTypes.object.isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
-	documentSize: PropTypes.string.isRequired,
+	documentSize: PropTypes.string,
 	documentMargins: PropTypes.number.isRequired,
 	fontSize: PropTypes.number.isRequired,
 	highlightChords: PropTypes.bool.isRequired,
