@@ -24,6 +24,10 @@
 		}
 	}
 
+	&:hover {
+		cursor: not-allowed;
+	}
+
 	&:hover:not(.sb-optionToggle-isNotInteractable) {
 		cursor: pointer;
 		@include themify($themes) {

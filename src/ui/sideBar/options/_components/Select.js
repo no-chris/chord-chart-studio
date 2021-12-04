@@ -36,9 +36,10 @@ function Select(props) {
 					key={choice.value}
 					label={choice.label}
 					isSelected={optionValue === choice.value}
-					onClick={() =>
-						setOption(optionContext, optionKey, choice.value)
-					}
+					isInteractable={isInteractable}
+					onClick={() => {
+						setOption(optionContext, optionKey, choice.value);
+					}}
 				/>
 			))}
 		</div>

@@ -14,6 +14,7 @@ describe('SelectChoice', () => {
 	beforeEach(() => {
 		props = {
 			isSelected: true,
+			isInteractable: true,
 			label: 'myLabel',
 			onClick,
 		};
@@ -37,6 +38,48 @@ describe('SelectChoice', () => {
 
 			expect(container.firstChild).not.toHaveClass(
 				'sb-optionSelectChoice-isSelected'
+			);
+		});
+	});
+
+	describe('Interactable', () => {
+		test('Should call the onClick handler if clicked when interactable', () => {
+			const { getByText } = render(<SelectChoice {...props} />);
+
+			const choice = getByText('myLabel');
+
+			choice.click();
+
+			expect(onClick).toHaveBeenCalledTimes(1);
+		});
+
+		test('Should NOT call the onClick handler if clicked when not interactable', () => {
+			const { getByText } = render(
+				<SelectChoice {...props} isInteractable={false} />
+			);
+
+			const choice = getByText('myLabel');
+
+			choice.click();
+
+			expect(onClick).toHaveBeenCalledTimes(0);
+		});
+
+		test('Should NOT add "isNotInteractable" class if isInteractable === true', () => {
+			const { container } = render(<SelectChoice {...props} />);
+
+			expect(container.firstChild).not.toHaveClass(
+				'sb-optionSelectChoice-isNotInteractable'
+			);
+		});
+
+		test('Should add "isNotInteractable" class if isInteractable === false', () => {
+			const { container } = render(
+				<SelectChoice {...props} isInteractable={false} />
+			);
+
+			expect(container.firstChild).toHaveClass(
+				'sb-optionSelectChoice-isNotInteractable'
 			);
 		});
 	});
