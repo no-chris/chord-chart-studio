@@ -1,3 +1,5 @@
+import _pick from 'lodash/pick';
+
 import * as actionTypes from './actionsTypes';
 import { getCategoryOptions, getLatestModeOptions } from '../files/selectors';
 
@@ -6,6 +8,7 @@ import { FILE_MANAGER_SELECT_FILE } from '../../fileManager/_state/actionsTypes'
 import { getSelectedId } from '../../fileManager/_state/selectors';
 import { getEditorMode } from '../../ui/layout/app/_state/selectors';
 import { getOptionsDefaults } from './selectors';
+import allEditorModeOptions from './editorModeOptions';
 
 const initialState = {};
 
@@ -49,6 +52,8 @@ function setEditorMode(state, action, fullState) {
 	};
 }
 
+// Get defined options for a mode, either because they exist for the given mode,
+// or building them from options stored in the other modes
 function getModeOptions(fullState, fileId, mode) {
 	const defaultOptions = getOptionsDefaults(fullState, 'songFormatting');
 	let editorModeOptions = getCategoryOptions(fullState, fileId, mode);
@@ -57,6 +62,9 @@ function getModeOptions(fullState, fileId, mode) {
 		editorModeOptions = getLatestModeOptions(fullState, fileId) || {};
 	}
 	delete editorModeOptions.updatedAt;
+
+	// take only relevant options for the mode
+	editorModeOptions = _pick(editorModeOptions, allEditorModeOptions[mode]);
 
 	return Object.assign(defaultOptions, editorModeOptions);
 }

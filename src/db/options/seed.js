@@ -1,4 +1,6 @@
 export default {
+	// songPreferences are identical for all song rendering modes
+	// therefore, they are only saved once for each song
 	songPreferences: {
 		values: {
 			transposeValue: 0,
@@ -12,6 +14,8 @@ export default {
 		},
 		//userDefaults: {},
 	},
+	// songFormatting options are specific to a given mode (print, export...)
+	// they are saved separately for each song
 	songFormatting: {
 		values: {
 			chartFormat: 'chordmark',

@@ -31,7 +31,6 @@ const editorModeOptions = {
 		'documentMargins',
 
 		'fontSize',
-		'chordsColor',
 		'highlightChords',
 	],
 	export: [

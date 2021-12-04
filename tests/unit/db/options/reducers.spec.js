@@ -79,13 +79,18 @@ describe('db/options: reducers', () => {
 	describe(UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
 		const fileId = 'myUUID';
 		const defaultFormattingOptions = {
-			documentMargins: '3',
-			columnsCount: '1',
+			columnsCount: 1,
+			chartType: 'all',
+			alignChordsWithLyrics: true,
+			alignBars: true,
+			fontSize: 0,
+			chordsColor: 'yellow',
 			columnBreakOnParagraph: true,
+			documentMargins: 3,
 		};
 
-		test('should apply options of previous mode if there are no saved options for next mode', () => {
-			const previousMode = 'edit';
+		test('should apply songFormatting options of previous mode if there are no saved options for next mode', () => {
+			const previousMode = 'play';
 			const nextMode = 'print';
 			getSelectedId.mockReturnValue(fileId);
 			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
@@ -99,6 +104,8 @@ describe('db/options: reducers', () => {
 									[previousMode]: {
 										updatedAt: '6969',
 										columnsCount: 2,
+										chartType: 'lyrics',
+										documentMargins: 1,
 									},
 								},
 							},
@@ -111,6 +118,8 @@ describe('db/options: reducers', () => {
 					values: {
 						...defaultFormattingOptions,
 						columnsCount: 2,
+						chartType: 'lyrics',
+						documentMargins: 1,
 					},
 				},
 			};
@@ -122,7 +131,7 @@ describe('db/options: reducers', () => {
 			expect(state).toEqual(expected);
 		});
 
-		test('should apply options of next mode if they are defined', () => {
+		test('should apply songFormatting options of next mode if they are defined', () => {
 			const previousMode = 'edit';
 			const nextMode = 'print';
 			getSelectedId.mockReturnValue(fileId);
@@ -137,10 +146,15 @@ describe('db/options: reducers', () => {
 									[previousMode]: {
 										updatedAt: '6969',
 										columnsCount: 2,
+										chartType: 'lyrics',
+										documentMargins: 2,
 									},
 									[nextMode]: {
 										updatedAt: '6969',
 										columnsCount: 3,
+										chartType: 'chords',
+										documentMargins: 3,
+										alignBars: false,
 									},
 								},
 							},
@@ -153,6 +167,9 @@ describe('db/options: reducers', () => {
 					values: {
 						...defaultFormattingOptions,
 						columnsCount: 3,
+						chartType: 'chords',
+						documentMargins: 3,
+						alignBars: false,
 					},
 				},
 			};
@@ -164,7 +181,7 @@ describe('db/options: reducers', () => {
 			expect(state).toEqual(expected);
 		});
 
-		test('should apply latest defined options if no options are available for previous or next mode', () => {
+		test('should apply latest defined songFormatting options if no options are available for previous or next mode', () => {
 			const nextMode = 'export';
 			getSelectedId.mockReturnValue(fileId);
 			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
@@ -179,12 +196,17 @@ describe('db/options: reducers', () => {
 									export: {}, // <== destination mode
 									print: {
 										updatedAt: 100,
-										alignBars: '1',
-										autoRepeatChords: '1',
+										columnsCount: 2,
+										chartType: 'lyrics',
+										documentMargins: 2,
+										alignBars: false,
 									},
 									play: {
 										updatedAt: 200,
-										alignBars: '2',
+										columnsCount: 3,
+										chartType: 'chords',
+										documentMargins: 3,
+										alignChordsWithLyrics: false,
 									},
 								},
 							},
@@ -196,8 +218,51 @@ describe('db/options: reducers', () => {
 				songFormatting: {
 					values: {
 						...defaultFormattingOptions,
-						alignBars: '2',
-						autoRepeatChords: '1',
+						columnsCount: 3,
+						chartType: 'chords',
+						documentMargins: 3,
+						alignChordsWithLyrics: false,
+						alignBars: false,
+					},
+				},
+			};
+			const state = reducers(
+				initialState,
+				setEditorMode(nextMode),
+				fullState
+			);
+			expect(state).toEqual(expected);
+		});
+
+		test('should not apply options disabled in the destination mode (aka always use defaults for disabled options)', () => {
+			const previousMode = 'print';
+			const nextMode = 'export';
+			getSelectedId.mockReturnValue(fileId);
+			getOptionsDefaults.mockReturnValue(defaultFormattingOptions);
+
+			const fullState = {
+				db: {
+					files: {
+						allFiles: {
+							[fileId]: {
+								options: {
+									[nextMode]: {},
+									[previousMode]: {
+										updatedAt: 6969,
+										columnBreakOnParagraph: false,
+										documentMargins: 1,
+									},
+									play: {},
+								},
+							},
+						},
+					},
+				},
+			};
+			const expected = {
+				songFormatting: {
+					values: {
+						...defaultFormattingOptions,
 					},
 				},
 			};
