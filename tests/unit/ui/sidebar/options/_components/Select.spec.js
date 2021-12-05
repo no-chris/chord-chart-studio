@@ -31,37 +31,37 @@ describe('Select', () => {
 
 	describe('Toggle choice list', () => {
 		test('should not respond to click if option is disabled', () => {
-			const { getByText, queryByText } = render(
+			const { queryByText, getByTestId } = render(
 				<Select {...props} isInteractable={false} />
 			);
 
-			const selectTitle = getByText(props.label);
+			const selectTitle = getByTestId('selectLabel');
 
 			fireEvent.click(selectTitle);
 
-			expect(queryByText(props.allChoices[0].label)).toBeNull();
 			expect(queryByText(props.allChoices[1].label)).toBeNull();
 			expect(queryByText(props.allChoices[2].label)).toBeNull();
 			expect(queryByText('keyboard_arrow_down')).toBeNull();
 
 			fireEvent.click(selectTitle);
 
-			expect(queryByText(props.allChoices[0].label)).toBeNull();
 			expect(queryByText(props.allChoices[1].label)).toBeNull();
 			expect(queryByText(props.allChoices[2].label)).toBeNull();
 			expect(queryByText('keyboard_arrow_down')).toBeNull();
 		});
 
 		test('should toggle choices display on click', async () => {
-			const { getByText, queryByText } = render(<Select {...props} />);
+			const { getByText, getByTestId, queryByText } = render(
+				<Select {...props} />
+			);
 
-			expect(queryByText(props.allChoices[0].label)).toBeNull();
+			//expect(queryByText(props.allChoices[0].label)).toBeNull();
 			expect(queryByText(props.allChoices[1].label)).toBeNull();
 			expect(queryByText(props.allChoices[2].label)).toBeNull();
 			expect(queryByText('keyboard_arrow_down')).toBeNull();
 			getByText('keyboard_arrow_right');
 
-			const selectTitle = getByText(props.label);
+			const selectTitle = getByTestId('selectLabel');
 
 			fireEvent.click(selectTitle);
 
@@ -73,19 +73,41 @@ describe('Select', () => {
 
 			fireEvent.click(selectTitle);
 
-			expect(queryByText(props.allChoices[0].label)).toBeNull();
+			//expect(queryByText(props.allChoices[0].label)).toBeNull();
 			expect(queryByText(props.allChoices[1].label)).toBeNull();
 			expect(queryByText(props.allChoices[2].label)).toBeNull();
 			expect(queryByText('keyboard_arrow_down')).toBeNull();
 			getByText('keyboard_arrow_right');
 		});
+
+		test('should display active choice label only when closed', () => {
+			const { getByText, getByTestId, getAllByText, queryByText } =
+				render(<Select {...props} optionValue={'choice2'} />);
+
+			// check closed
+			expect(queryByText(props.allChoices[0].label)).toBeNull();
+			expect(queryByText(props.allChoices[2].label)).toBeNull();
+
+			getByText(props.allChoices[1].label);
+
+			// open
+			const selectTitle = getByTestId('selectLabel');
+
+			fireEvent.click(selectTitle);
+
+			getByText(props.allChoices[0].label);
+			getByText(props.allChoices[1].label);
+			getByText(props.allChoices[2].label);
+
+			expect(getAllByText(props.allChoices[1].label).length).toBe(1);
+		});
 	});
 
 	describe('Select choice', () => {
 		test('should setOption to clicked choice', () => {
-			const { getByText } = render(<Select {...props} />);
+			const { getByText, getByTestId } = render(<Select {...props} />);
 
-			const selectTitle = getByText(props.label);
+			const selectTitle = getByTestId('selectLabel');
 			fireEvent.click(selectTitle);
 
 			const choice1 = getByText(props.allChoices[0].label);

@@ -41,9 +41,12 @@ describe('PrintPreview', () => {
 	beforeEach(() => {
 		props = {
 			selectedFile: _.cloneDeep(selectedFile),
+			chartType: 'all',
+
 			columnsCount: 3,
 			columnBreakOnParagraph: true,
 			documentMargins: 3,
+
 			fontSize: 1,
 			highlightChords: false,
 		};

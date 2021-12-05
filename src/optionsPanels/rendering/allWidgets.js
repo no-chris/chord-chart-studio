@@ -49,12 +49,12 @@ export default {
 							},
 							{
 								id: 'preferredAccidentalsSharp',
-								label: 'Sharp (#)',
+								label: '♯',
 								value: 'sharp',
 							},
 							{
 								id: 'preferredAccidentalsFlat',
-								label: 'Flats (b)',
+								label: '♭',
 								value: 'flat',
 							},
 						],
@@ -87,7 +87,7 @@ export default {
 						allChoices: [
 							{
 								id: 'formatChordMark',
-								label: 'ChordMark (Rendered)',
+								label: 'ChordMark',
 								value: 'chordmark',
 							},
 							{

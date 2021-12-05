@@ -45,13 +45,33 @@ function Select(props) {
 		</div>
 	);
 
+	const activeLabel = allChoices.find(
+		(choice) => optionValue === choice.value
+	).label;
+
+	const selectLabel = isOpen ? (
+		label
+	) : (
+		<span>
+			{label}:{' '}
+			<span className={'sb-optionSelectChoice-activeLabel'}>
+				{activeLabel}
+			</span>
+		</span>
+	);
+
 	return (
 		<div className={classNames.join(' ')}>
 			<div
 				className={'sb-optionSelect-title'}
 				onClick={isInteractable ? toggleChoices : null}
 			>
-				<div className={'sb-optionSelect-desc'}>{label}</div>
+				<div
+					className={'sb-optionSelect-desc'}
+					data-testid={'selectLabel'}
+				>
+					{selectLabel}
+				</div>
 				<div className={'sb-optionSelect-toggle'}>
 					<span className={'sb-optionSelect-icon'}>
 						<Icon iconName={iconName} />

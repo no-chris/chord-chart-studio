@@ -52,6 +52,10 @@
 	}
 }
 
+.sb-optionSelectChoice-activeLabel {
+	opacity: 0.5;
+}
+
 .sb-optionSelectChoice {
 	padding-top: $spacer-tiny;
 	display: flex;
