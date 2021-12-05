@@ -44,7 +44,8 @@ function FileManager(props) {
 						exportSelectedFileAsText();
 					}}
 					printFile={() => {
-						setEditorMode('print').then(() => window.print());
+						setEditorMode('print');
+						setTimeout(() => window.print(), 0);
 					}}
 				/>
 				<ul className={'fileManager-entriesList'}>
