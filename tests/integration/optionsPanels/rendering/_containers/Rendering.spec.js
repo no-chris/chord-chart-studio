@@ -88,7 +88,9 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Some widgets should be disabled depending on editor Mode', () => {
-		test.skip('All widgets should be disabled if no file is selected', () => {});
+		test.skip('All widgets should be disabled if no file is selected', () => {
+			//todo
+		});
 
 		test('Edit mode', () => {
 			const niClassName = '.sb-optionToggle-isNotInteractable';
@@ -149,47 +151,60 @@ describe('"Rendering" option panel', () => {
 		});
 
 		test('Print mode', () => {
+			const niClassName = '.sb-optionSelect-isNotInteractable';
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('print'));
 
-			render(withStore(<Rendering />));
+			const { getByText } = render(withStore(<Rendering />));
 
-			// Nothing is disabled for now
+			const chartFormat = getByText(
+				allWidgets.allWidgets.preferences.allGroupWidgets.chartFormat
+					.label + ':'
+			);
+
+			expect(chartFormat.closest(niClassName)).toBeInstanceOf(Element);
 		});
 
-		test.skip('Export mode', () => {
+		test('Export mode', () => {
+			const niClassName = '.sb-optionToggle-isNotInteractable';
+
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('export'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
-			const documentSize = getByText(
-				allWidgets.allWidgets.layout.allGroupWidgets.documentSize.label
+			const columnBreakOnParagraph = getByText(
+				allWidgets.allWidgets.layout.allGroupWidgets
+					.columnBreakOnParagraph.label
 			);
-			const chordsColor = getByText(
-				allWidgets.allWidgets.format.allGroupWidgets.chordsColor.label
+			const highlightChords = getByText(
+				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
+					.label
 			);
 
-			console.log(documentSize);
-			expect(
-				chordsColor.closest('.sb-optionsGroup-isNotInteractable')
-			).toBeInstanceOf(Element);
-			expect(
-				documentSize.closest('.sb-optionsGroup-isNotInteractable')
-			).toBeInstanceOf(Element);
+			expect(columnBreakOnParagraph.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
+			expect(highlightChords.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
 		});
 	});
 
 	describe('options widgets should be connected to store', () => {
-		test.skip('style', async () => {
-			dispatch(appActions.setEditorMode('play'));
+		test('chartFormat', async () => {
+			dispatch(fmActions.selectFile('myId'));
+			dispatch(appActions.setEditorMode('export'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
-			const styleWidget = getByText(allWidgets.allWidgets.style.label);
+			const chartFormat = getByText(
+				allWidgets.allWidgets.preferences.allGroupWidgets.chartFormat
+					.label + ':'
+			);
 
 			act(() => {
-				fireEvent.click(styleWidget);
+				fireEvent.click(chartFormat);
 			});
 
 			const cmOption = getByText('ChordMark');
@@ -202,7 +217,7 @@ describe('"Rendering" option panel', () => {
 				optionsSelectors.getOptionValue(
 					getState(),
 					'songFormatting',
-					'style'
+					'chartFormat'
 				)
 			).toBe('chordmark');
 
@@ -213,7 +228,7 @@ describe('"Rendering" option panel', () => {
 				optionsSelectors.getOptionValue(
 					getState(),
 					'songFormatting',
-					'style'
+					'chartFormat'
 				)
 			).toBe('chordpro');
 
@@ -224,7 +239,7 @@ describe('"Rendering" option panel', () => {
 				optionsSelectors.getOptionValue(
 					getState(),
 					'songFormatting',
-					'style'
+					'chartFormat'
 				)
 			).toBe('chordmark');
 		});
@@ -276,6 +291,122 @@ describe('"Rendering" option panel', () => {
 						.preferredAccidentals.label + ':'
 				)
 			).toBeInTheDocument();
+		});
+
+		test('Formatting options should be enabled or not depending on chartType value', () => {
+			const niClassName = '.sb-optionToggle-isNotInteractable';
+			const isDisabled = (element) => {
+				return element.closest(niClassName) instanceof Element;
+			};
+
+			dispatch(fmActions.selectFile('myId'));
+			dispatch(appActions.setEditorMode('play'));
+
+			const { getByText } = render(withStore(<Rendering />));
+
+			const preferencesWidgets =
+				allWidgets.allWidgets.preferences.allGroupWidgets;
+
+			const chartType = getByText(
+				preferencesWidgets.chartType.label + ':'
+			);
+
+			act(() => {
+				fireEvent.click(chartType);
+			});
+
+			const lyricsOnly = getByText('Lyrics only');
+			const chordsOnly = getByText('Chords only');
+
+			const alignChordsWithLyrics = getByText(
+				preferencesWidgets.alignChordsWithLyrics.label
+			);
+			const alignBars = getByText(preferencesWidgets.alignBars.label);
+			const autoRepeatChords = getByText(
+				preferencesWidgets.autoRepeatChords.label
+			);
+
+			expect(isDisabled(alignChordsWithLyrics)).toBe(false);
+			expect(isDisabled(alignBars)).toBe(false);
+			expect(isDisabled(autoRepeatChords)).toBe(false);
+
+			act(() => {
+				fireEvent.click(lyricsOnly);
+			});
+
+			expect(isDisabled(alignChordsWithLyrics)).toBe(true);
+			expect(isDisabled(alignBars)).toBe(true);
+			expect(isDisabled(autoRepeatChords)).toBe(true);
+
+			act(() => {
+				fireEvent.click(chordsOnly);
+			});
+
+			expect(isDisabled(alignChordsWithLyrics)).toBe(true);
+			expect(isDisabled(alignBars)).toBe(false);
+			expect(isDisabled(autoRepeatChords)).toBe(false);
+		});
+
+		test('Formatting options should be enabled or not depending on chartFormat value', () => {
+			const isDisabled = (element, select = false) => {
+				const niClassName = select
+					? '.sb-optionSelect-isNotInteractable'
+					: '.sb-optionToggle-isNotInteractable';
+				return element.closest(niClassName) instanceof Element;
+			};
+
+			dispatch(fmActions.selectFile('myId'));
+			dispatch(appActions.setEditorMode('export'));
+
+			const { getByText } = render(withStore(<Rendering />));
+
+			const preferencesWidgets =
+				allWidgets.allWidgets.preferences.allGroupWidgets;
+
+			const chartFormat = getByText(
+				preferencesWidgets.chartFormat.label + ':'
+			);
+
+			act(() => {
+				fireEvent.click(chartFormat);
+			});
+
+			const chordmarkSrc = getByText('ChordMark (Source)');
+			const chordpro = getByText('ChordPro');
+
+			const chartType = getByText(
+				preferencesWidgets.chartType.label + ':'
+			);
+			const alignChordsWithLyrics = getByText(
+				preferencesWidgets.alignChordsWithLyrics.label
+			);
+			const alignBars = getByText(preferencesWidgets.alignBars.label);
+			const autoRepeatChords = getByText(
+				preferencesWidgets.autoRepeatChords.label
+			);
+
+			expect(isDisabled(chartType, true)).toBe(false);
+			expect(isDisabled(alignChordsWithLyrics)).toBe(false);
+			expect(isDisabled(alignBars)).toBe(false);
+			expect(isDisabled(autoRepeatChords)).toBe(false);
+
+			act(() => {
+				fireEvent.click(chordmarkSrc);
+			});
+
+			expect(isDisabled(chartType, true)).toBe(true);
+			expect(isDisabled(alignChordsWithLyrics)).toBe(true);
+			expect(isDisabled(alignBars)).toBe(true);
+			expect(isDisabled(autoRepeatChords)).toBe(true);
+
+			act(() => {
+				fireEvent.click(chordpro);
+			});
+
+			expect(isDisabled(chartType, true)).toBe(true);
+			expect(isDisabled(alignChordsWithLyrics)).toBe(true);
+			expect(isDisabled(alignBars)).toBe(true);
+			expect(isDisabled(autoRepeatChords)).toBe(true);
 		});
 	});
 });

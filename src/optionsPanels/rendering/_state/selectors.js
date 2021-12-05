@@ -41,12 +41,7 @@ export const getNonInteractableWidgets = (state) => {
 	}
 
 	const chartFormat = getOptionValue(state, 'songFormatting', 'chartFormat');
-	if (chartFormat === 'chordmarkSrc') {
-		nonInteractableWidgets.push('chartType');
-		nonInteractableWidgets.push('alignChordsWithLyrics');
-		nonInteractableWidgets.push('alignBars');
-		nonInteractableWidgets.push('autoRepeatChords');
-	} else if (chartType === 'chordpro') {
+	if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
 		nonInteractableWidgets.push('chartType');
 		nonInteractableWidgets.push('alignChordsWithLyrics');
 		nonInteractableWidgets.push('alignBars');
