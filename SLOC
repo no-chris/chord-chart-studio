@@ -2,17 +2,17 @@ Source code:
 
 ---------- Result ------------
 
-            Physical :  5939
-              Source :  4928
-             Comment :  130
- Single-line comment :  52
-       Block comment :  78
-               Mixed :  3
- Empty block comment :  2
-               Empty :  886
+            Physical :  6000
+              Source :  4963
+             Comment :  122
+ Single-line comment :  55
+       Block comment :  67
+               Mixed :  4
+ Empty block comment :  0
+               Empty :  919
                To Do :  0
 
-Number of files read :  139
+Number of files read :  140
 
 ----------------------------
 
@@ -20,17 +20,17 @@ Tests:
 
 ---------- Result ------------
 
-            Physical :  6836
-              Source :  5661
-             Comment :  61
- Single-line comment :  55
+            Physical :  7281
+              Source :  6007
+             Comment :  64
+ Single-line comment :  58
        Block comment :  6
-               Mixed :  9
+               Mixed :  8
  Empty block comment :  0
-               Empty :  1123
+               Empty :  1218
                To Do :  0
 
-Number of files read :  68
+Number of files read :  69
 
 ----------------------------
 
@@ -38,17 +38,17 @@ Total:
 
 ---------- Result ------------
 
-            Physical :  12775
-              Source :  10589
-             Comment :  191
- Single-line comment :  107
-       Block comment :  84
+            Physical :  13281
+              Source :  10970
+             Comment :  186
+ Single-line comment :  113
+       Block comment :  73
                Mixed :  12
- Empty block comment :  2
-               Empty :  2009
+ Empty block comment :  0
+               Empty :  2137
                To Do :  0
 
-Number of files read :  207
+Number of files read :  209
 
 ----------------------------
 
