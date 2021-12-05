@@ -41,7 +41,7 @@ function FileManager(props) {
 					startImport={() => startImport()}
 					exportAsText={() => {
 						setEditorMode('export');
-						exportSelectedFileAsText();
+						setTimeout(() => exportSelectedFileAsText(), 0);
 					}}
 					printFile={() => {
 						setEditorMode('print');
