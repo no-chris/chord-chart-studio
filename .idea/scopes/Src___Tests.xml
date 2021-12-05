@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Src &amp; Tests" pattern="(file[chords-charts-studio]:src/*||file[chords-charts-studio]:tests/*||file[chords-charts-studio]:src//*||file[chords-charts-studio]:tests//*)&amp;&amp;!file[chords-charts-studio]:.github//*&amp;&amp;!file[chords-charts-studio]:.idea//*&amp;&amp;!file[chords-charts-studio]:assets//*&amp;&amp;!file[chords-charts-studio]:docs//*&amp;&amp;!file[chords-charts-studio]:samples//*&amp;&amp;!file[chords-charts-studio]:scss//*" />
+</component>

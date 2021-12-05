@@ -4,6 +4,11 @@ object-assign
 @license MIT
 */
 
+/*!
+ 2021 Jason Mulligan <jason.mulligan@avoidwork.com>
+ @version 8.0.6
+*/
+
 /*! @license DOMPurify 2.3.3 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.3.3/LICENSE */
 
 /*! Universal Router | MIT License | https://www.kriasoft.com/universal-router/ */

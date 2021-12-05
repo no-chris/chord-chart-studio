@@ -30,42 +30,39 @@ export const getNonInteractableWidgets = (state) => {
 
 	nonInteractableWidgets.push(...nonInteractableOptions);
 
+	// specific rules
+	const chartType = getOptionValue(state, 'songFormatting', 'chartType');
+	if (chartType === 'lyrics') {
+		nonInteractableWidgets.push('alignChordsWithLyrics');
+		nonInteractableWidgets.push('alignBars');
+		nonInteractableWidgets.push('autoRepeatChords');
+	} else if (chartType === 'chords') {
+		nonInteractableWidgets.push('alignChordsWithLyrics');
+	}
+
+	const chartFormat = getOptionValue(state, 'songFormatting', 'chartFormat');
+	if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
+		nonInteractableWidgets.push('chartType');
+		nonInteractableWidgets.push('alignChordsWithLyrics');
+		nonInteractableWidgets.push('alignBars');
+		nonInteractableWidgets.push('autoRepeatChords');
+	}
+
 	return nonInteractableWidgets;
 };
 
 export const getHiddenWidgets = (state) => {
 	const hiddenWidgets = [];
 
-	const editorMode = getEditorMode(state);
-
 	const harmonizeAccidentals = getOptionValue(
 		state,
 		'songPreferences',
 		'harmonizeAccidentals'
 	);
-	/*
-	const chordsAndLyricsDisplay = getOptionValue(
-		state,
-		'rendering',
-		'chordsAndLyricsDisplay'
-	);
 
-	if (chordsAndLyricsDisplay !== 'all') {
-		hiddenWidgets.push('alignChordsWithLyrics');
-	}
-	
-	 */
 	if (!harmonizeAccidentals) {
 		hiddenWidgets.push('preferredAccidentals');
 	}
-
-	if (editorMode === 'print') {
-		hiddenWidgets.push('fontSize');
-	} else {
-		hiddenWidgets.push('printFontSize');
-	}
-
-	//hiddenWidgets.push('simplifyChords');
 
 	return hiddenWidgets;
 };

@@ -1,55 +1,51 @@
 export default {
+	// songPreferences are identical for all song rendering modes
+	// therefore, they are only saved once for each song
 	songPreferences: {
 		values: {
-			chordsAndLyricsDisplay: 'all',
-			alignChordsWithLyrics: true,
+			transposeValue: 0,
 			harmonizeAccidentals: true,
 			preferredAccidentals: 'auto',
-			useShortNamings: true,
-			simplifyChords: 'none',
-			transposeValue: 0,
 		},
 		defaults: {
-			chordsAndLyricsDisplay: 'all',
-			alignChordsWithLyrics: true,
+			transposeValue: 0,
 			harmonizeAccidentals: true,
 			preferredAccidentals: 'auto',
-			useShortNamings: true,
-			simplifyChords: 'none',
-			transposeValue: 0,
 		},
 		//userDefaults: {},
 	},
+	// songFormatting options are specific to a given mode (print, export...)
+	// they are saved separately for each song
 	songFormatting: {
 		values: {
-			style: 'chordmark',
+			chartFormat: 'chordmark',
+			chartType: 'all',
+			alignChordsWithLyrics: true,
 			alignBars: true,
 			autoRepeatChords: true,
-			expandSectionRepeats: true,
-			documentSize: 'a4',
-			documentMargins: 3,
+
 			columnsCount: 1,
 			columnBreakOnParagraph: true,
+			documentMargins: 3,
+
 			fontSize: 0,
-			printFontSize: 0,
-			fontStyle: 'roboto',
 			chordsColor: 'yellow',
-			highlightChords: true,
+			highlightChords: false,
 		},
 		defaults: {
-			style: 'chordmark',
+			chartFormat: 'chordmark',
+			chartType: 'all',
+			alignChordsWithLyrics: true,
 			alignBars: true,
 			autoRepeatChords: true,
-			expandSectionRepeats: true,
-			documentSize: 'a4',
-			documentMargins: 3,
+
 			columnsCount: 1,
 			columnBreakOnParagraph: true,
+			documentMargins: 3,
+
 			fontSize: 0,
-			printFontSize: 0,
-			fontStyle: 'roboto',
 			chordsColor: 'yellow',
-			highlightChords: true,
+			highlightChords: false,
 		},
 		//userDefaults: {},
 	},

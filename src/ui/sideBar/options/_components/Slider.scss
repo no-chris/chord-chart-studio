@@ -25,6 +25,10 @@
 		}
 	}
 
+	&:hover {
+		cursor: not-allowed;
+	}
+
 	&:hover:not(.sb-optionSlider-isNotInteractable) {
 		cursor: pointer;
 		@include themify($themes) {
@@ -57,7 +61,7 @@
 
 		&:disabled {
 			opacity: 0.35;
-			cursor: default;
+			cursor: not-allowed !important;
 		}
 	}
 }

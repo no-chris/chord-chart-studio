@@ -36,12 +36,28 @@ function Select(props) {
 					key={choice.value}
 					label={choice.label}
 					isSelected={optionValue === choice.value}
-					onClick={() =>
-						setOption(optionContext, optionKey, choice.value)
-					}
+					isInteractable={isInteractable}
+					onClick={() => {
+						setOption(optionContext, optionKey, choice.value);
+					}}
 				/>
 			))}
 		</div>
+	);
+
+	const activeLabel = allChoices.find(
+		(choice) => optionValue === choice.value
+	).label;
+
+	const selectLabel = isOpen ? (
+		label
+	) : (
+		<span>
+			<span>{label + ': '}</span>
+			<span className={'sb-optionSelectChoice-activeLabel'}>
+				{activeLabel}
+			</span>
+		</span>
 	);
 
 	return (
@@ -50,7 +66,12 @@ function Select(props) {
 				className={'sb-optionSelect-title'}
 				onClick={isInteractable ? toggleChoices : null}
 			>
-				<div className={'sb-optionSelect-desc'}>{label}</div>
+				<div
+					className={'sb-optionSelect-desc'}
+					data-testid={'selectLabel'}
+				>
+					{selectLabel}
+				</div>
 				<div className={'sb-optionSelect-toggle'}>
 					<span className={'sb-optionSelect-icon'}>
 						<Icon iconName={iconName} />

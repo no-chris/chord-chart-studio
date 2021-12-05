@@ -22,6 +22,10 @@
 		}
 	}
 
+	&:hover {
+		cursor: not-allowed;
+	}
+
 	&:hover:not(.sb-optionSelect-isNotInteractable) {
 		cursor: pointer;
 		@include themify($themes) {
@@ -48,11 +52,15 @@
 	}
 }
 
+.sb-optionSelectChoice-activeLabel {
+	opacity: 0.5;
+}
+
 .sb-optionSelectChoice {
 	padding-top: $spacer-tiny;
 	display: flex;
 
-	&:hover {
+	&:hover:not(.sb-optionSelectChoice-isNotInteractable) {
 		text-decoration: underline;
 		cursor: pointer;
 	}

@@ -41,11 +41,13 @@ describe('PrintPreview', () => {
 	beforeEach(() => {
 		props = {
 			selectedFile: _.cloneDeep(selectedFile),
+			chartType: 'all',
+
 			columnsCount: 3,
 			columnBreakOnParagraph: true,
-			documentSize: 'a4',
 			documentMargins: 3,
-			printFontSize: 1,
+
+			fontSize: 1,
 			highlightChords: false,
 		};
 	});
@@ -126,7 +128,7 @@ describe('PrintPreview', () => {
 				result = render(<PrintPreview {...props} />);
 			});
 
-			const { getAllByTestId, rerender } = result;
+			const { getByTestId, getAllByTestId, rerender } = result;
 
 			let allPages = getAllByTestId('printPreview-page');
 			expect(allPages[0]).toHaveClass('printPreview-page--a4');
@@ -145,7 +147,8 @@ describe('PrintPreview', () => {
 						{...props}
 						documentSize={'ipad'}
 						documentMargins={-2}
-						printFontSize={-4}
+						fontSize={-4}
+						highlightChords={true}
 					/>
 				);
 			});
@@ -160,6 +163,9 @@ describe('PrintPreview', () => {
 			expect(allPageContentWrappers[0]).toHaveClass(
 				'printPreview-pageContentWrapper--padding-2'
 			);
+
+			const printPreview = getByTestId('printPreview');
+			expect(printPreview).toHaveClass('cmChordLine--highlightChords');
 		});
 	});
 });

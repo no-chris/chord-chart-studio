@@ -19,7 +19,7 @@ function AllPages(props) {
 		columnBreakOnParagraph,
 		documentSize,
 		documentMargins,
-		printFontSize,
+		fontSize,
 	} = props;
 
 	useLayoutEffect(() => {
@@ -28,7 +28,7 @@ function AllPages(props) {
 				columnsCount,
 				documentSize,
 				documentMargins,
-				printFontSize,
+				fontSize,
 			};
 
 			const allLinesHeight = await getAllLinesHeight(
@@ -63,7 +63,7 @@ function AllPages(props) {
 		columnBreakOnParagraph,
 		documentSize,
 		documentMargins,
-		printFontSize,
+		fontSize,
 	]);
 
 	const allPagesRendered = allPagesColumns.map((pageColumns, index) => {
@@ -74,7 +74,7 @@ function AllPages(props) {
 				allColumnsLines={padColumns(columnsCount, pageColumns)}
 				documentSize={documentSize}
 				documentMargins={documentMargins}
-				printFontSize={printFontSize}
+				fontSize={fontSize}
 			/>
 		);
 	});
@@ -89,7 +89,7 @@ AllPages.propTypes = {
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
 	documentSize: PropTypes.string.isRequired,
 	documentMargins: PropTypes.number.isRequired,
-	printFontSize: PropTypes.number.isRequired,
+	fontSize: PropTypes.number.isRequired,
 };
 
 export default AllPages;

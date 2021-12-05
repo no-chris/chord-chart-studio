@@ -23,23 +23,15 @@ export default function OptionsPanelFactory(
 			allWidgets.widgetsOrder.forEach((widgetId) => {
 				widget = allWidgets.allWidgets[widgetId];
 
-				if (widget.type === 'optionsGroup') {
-					widget.groupWidgetsOrder.forEach((groupWidgetId) => {
-						groupWidget = widget.allGroupWidgets[groupWidgetId];
+				widget.groupWidgetsOrder.forEach((groupWidgetId) => {
+					groupWidget = widget.allGroupWidgets[groupWidgetId];
 
-						stateToProps[groupWidget.option.key] = getOptionValue(
-							state,
-							groupWidget.option.context,
-							groupWidget.option.key
-						);
-					});
-				} else {
-					stateToProps[widget.option.key] = getOptionValue(
+					stateToProps[groupWidget.option.key] = getOptionValue(
 						state,
-						widget.option.context,
-						widget.option.key
+						groupWidget.option.context,
+						groupWidget.option.key
 					);
-				}
+				});
 			});
 
 			return stateToProps;

@@ -3,6 +3,10 @@
 
 .sb-optionsGroup {
 	padding-top: $spacer-medium;
+
+	&:first-of-type {
+		padding-top: 0;
+	}
 }
 
 .sb-optionsGroup-title {
