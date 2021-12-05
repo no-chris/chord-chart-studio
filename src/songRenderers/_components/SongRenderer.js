@@ -43,6 +43,13 @@ function SongRenderer(props) {
 	return <div className={'songRenderer'}>{rendered}</div>;
 }
 
+const TxtRenderer = ({ txt }) => {
+	return txt
+		.split('\n')
+		.map((line) => (line === '' ? '\u00A0' : line)) // '\u00A0' === &nbsp;
+		.map((line, i) => <p key={i}>{line}</p>);
+};
+
 SongRenderer.propTypes = {
 	useChartFormat: PropTypes.bool.isRequired,
 	chartFormat: PropTypes.string.isRequired,
@@ -55,10 +62,3 @@ SongRenderer.defaultProps = {
 };
 
 export default SongRenderer;
-
-const TxtRenderer = ({ txt }) => {
-	return txt
-		.split('\n')
-		.map((line) => (line === '' ? '\u00A0' : line)) // '\u00A0' => &nbsp;
-		.map((line, i) => <p key={i}>{line}</p>);
-};
