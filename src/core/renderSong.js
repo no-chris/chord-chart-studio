@@ -1,13 +1,9 @@
-import {
-	renderSong as renderSongCm,
-	parseSong,
-} from '../../../chord-mark/packages/chord-mark/src/chordMark';
+import { renderSong as renderSongCm, parseSong } from 'chord-mark';
+import chordMark2ChordPro from 'chord-mark-2-chordpro';
 
-import chordMark2ChordPro from '../../../chord-mark/packages/chord-mark-2-chordpro/src/chordMark2ChordPro';
-
-export default function renderSong(songTxt, renderOptions) {
-	const parsed = parseSong(songTxt);
+export default function renderSong(songTxt, renderOptions = {}) {
 	try {
+		const parsed = parseSong(songTxt);
 		return renderSongCm(parsed, {
 			...renderOptions,
 			printChordsDuration: 'uneven',
@@ -18,7 +14,7 @@ export default function renderSong(songTxt, renderOptions) {
 	}
 }
 
-export function renderSongAsChordPro(songTxt, renderOptions) {
+export function renderSongAsChordPro(songTxt, renderOptions = {}) {
 	renderOptions.customRenderer = chordMark2ChordPro;
 	return renderSong(songTxt, renderOptions);
 }
