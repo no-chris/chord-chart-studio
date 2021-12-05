@@ -125,7 +125,7 @@ describe('PrintPreview', () => {
 				result = render(<PrintPreview {...props} />);
 			});
 
-			const { getAllByTestId, rerender } = result;
+			const { getByTestId, getAllByTestId, rerender } = result;
 
 			let allPages = getAllByTestId('printPreview-page');
 			expect(allPages[0]).toHaveClass('printPreview-page--a4');
@@ -145,6 +145,7 @@ describe('PrintPreview', () => {
 						documentSize={'ipad'}
 						documentMargins={-2}
 						fontSize={-4}
+						highlightChords={true}
 					/>
 				);
 			});
@@ -159,6 +160,9 @@ describe('PrintPreview', () => {
 			expect(allPageContentWrappers[0]).toHaveClass(
 				'printPreview-pageContentWrapper--padding-2'
 			);
+
+			const printPreview = getByTestId('printPreview');
+			expect(printPreview).toHaveClass('cmChordLine--highlightChords');
 		});
 	});
 });
