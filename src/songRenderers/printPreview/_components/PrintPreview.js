@@ -4,7 +4,7 @@ import _pick from 'lodash/pick';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import renderSong from '../../../core/renderSong';
+import { renderAsHtml } from '../../../core/renderSong';
 import AllPages from './AllPages';
 
 function PrintPreview(props) {
@@ -21,7 +21,7 @@ function PrintPreview(props) {
 		'autoRepeatChords',
 	]);
 
-	const allLines = renderSong(selectedFile.content || '', {
+	const allLines = renderAsHtml(selectedFile.content || '', {
 		...renderOptions,
 	}).split('\n');
 

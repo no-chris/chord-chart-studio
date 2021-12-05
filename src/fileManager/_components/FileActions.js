@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import FileActionEntry from './FileActionEntry';
 
 function FileActions(props) {
-	const { createFile, deleteFile, enableRename, startImport } = props;
+	const {
+		createFile,
+		deleteFile,
+		enableRename,
+		startImport,
+		exportAsText,
+		printFile,
+	} = props;
 
 	const allActions = [
 		{
@@ -27,6 +34,16 @@ function FileActions(props) {
 			text: 'Delete',
 			action: deleteFile,
 		},
+		{
+			icon: 'download',
+			text: 'Export',
+			action: exportAsText,
+		},
+		{
+			icon: 'print',
+			text: 'Print',
+			action: printFile,
+		},
 	];
 
 	return (
@@ -42,6 +59,8 @@ FileActions.propTypes = {
 	createFile: PropTypes.func.isRequired,
 	deleteFile: PropTypes.func.isRequired,
 	enableRename: PropTypes.func.isRequired,
+	exportAsText: PropTypes.func.isRequired,
+	printFile: PropTypes.func.isRequired,
 	startImport: PropTypes.func.isRequired,
 };
 

@@ -3,6 +3,8 @@ import './FileManager.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import exportSelectedFileAsText from '../exportSelectedFileAsText';
+
 import Icon from '../../ui/_components/Icon';
 import FileActions from './FileActions';
 import FileEntry from './FileEntry';
@@ -20,6 +22,7 @@ function FileManager(props) {
 		startImport,
 		selectFile,
 		updateFile,
+		setEditorMode,
 	} = props;
 
 	return (
@@ -36,6 +39,14 @@ function FileManager(props) {
 					deleteFile={() => deleteFile(selected)}
 					enableRename={() => enableRename(selected)}
 					startImport={() => startImport()}
+					exportAsText={() => {
+						setEditorMode('export');
+						setTimeout(() => exportSelectedFileAsText(), 0);
+					}}
+					printFile={() => {
+						setEditorMode('print');
+						setTimeout(() => window.print(), 0);
+					}}
 				/>
 				<ul className={'fileManager-entriesList'}>
 					{allTitles.map((file) => (
@@ -74,6 +85,7 @@ FileManager.propTypes = {
 	enableRename: PropTypes.func.isRequired,
 	startImport: PropTypes.func.isRequired,
 	updateFile: PropTypes.func.isRequired,
+	setEditorMode: PropTypes.func.isRequired,
 };
 
 export default FileManager;
