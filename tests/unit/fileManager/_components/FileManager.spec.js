@@ -1,9 +1,12 @@
+jest.mock('../../../../src/fileManager/exportSelectedFileAsText');
+
 import React from 'react';
 
 import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import FileManager from '../../../../src/fileManager/_components/FileManager';
+import exportSelectedFileAsText from '../../../../src/fileManager/exportSelectedFileAsText';
 
 afterEach(cleanup);
 
@@ -16,10 +19,13 @@ describe('FileManager', () => {
 	const enableRename = jest.fn();
 	const updateFile = jest.fn();
 	const startImport = jest.fn();
+	const setEditorMode = jest.fn();
 
 	window.getSelection = () => ({
 		removeAllRanges: jest.fn(),
 	});
+
+	window.print = jest.fn();
 
 	beforeEach(() => {
 		props = {
@@ -40,6 +46,7 @@ describe('FileManager', () => {
 			enableRename,
 			updateFile,
 			startImport,
+			setEditorMode,
 		};
 
 		selectFile.mockReset();
@@ -335,6 +342,32 @@ describe('FileManager', () => {
 			fireEvent.click(importButton);
 
 			expect(startImport).toHaveBeenCalledTimes(1);
+		});
+	});
+
+	describe('export', () => {
+		test('should call setEditorMode() and exportSelectedFileAsText() on export action', () => {
+			const { getByText } = render(<FileManager {...props} />);
+			const exportButton = getByText('Export');
+
+			fireEvent.click(exportButton);
+
+			expect(setEditorMode).toHaveBeenCalledTimes(1);
+			expect(setEditorMode).toHaveBeenCalledWith('export');
+			expect(exportSelectedFileAsText).toHaveBeenCalledTimes(1);
+		});
+	});
+
+	describe('print', () => {
+		test('should call setEditorMode() and window.print() on print action', () => {
+			const { getByText } = render(<FileManager {...props} />);
+			const printButton = getByText('Print');
+
+			fireEvent.click(printButton);
+
+			expect(setEditorMode).toHaveBeenCalledTimes(1);
+			expect(setEditorMode).toHaveBeenCalledWith('print');
+			expect(window.print).toHaveBeenCalledTimes(1);
 		});
 	});
 });

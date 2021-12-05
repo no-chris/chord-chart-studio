@@ -41,8 +41,8 @@ describe('SongRenderer', () => {
 				/>
 			);
 
-			expect(container.firstChild.innerHTML).toBe(
-				'<p>&nbsp;</p><p>A</p><p>_mySong</p>'
+			expect(container.firstChild.firstChild.innerHTML).toBe(
+				'<p>&nbsp;</p>\n<p>A</p>\n<p>_mySong</p>'
 			);
 		});
 
@@ -55,8 +55,8 @@ describe('SongRenderer', () => {
 				/>
 			);
 
-			expect(container.firstChild.innerHTML).toBe(
-				'<p>&nbsp;</p><p>[A]mySong</p>'
+			expect(container.firstChild.firstChild.innerHTML).toBe(
+				'<p>&nbsp;</p>\n<p>[A]mySong</p>'
 			);
 		});
 	});

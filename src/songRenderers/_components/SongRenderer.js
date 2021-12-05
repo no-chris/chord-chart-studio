@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import escapeHTML from '../../core/escapeHTML';
 
-import renderSong, { renderSongAsChordPro } from '../../core/renderSong';
+import { renderAsHtml } from '../../core/renderSong';
 
 function SongRenderer(props) {
 	const { content, useChartFormat } = props;
@@ -17,38 +17,24 @@ function SongRenderer(props) {
 		'accidentalsType',
 
 		'chartType',
+		'chartFormat',
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
 	]);
 
-	let rendered;
+	const rendered = renderAsHtml(content, renderOptions, useChartFormat);
 
-	if (useChartFormat && props.chartFormat === 'chordpro') {
-		const songRendered = renderSongAsChordPro(content, renderOptions);
-		rendered = <TxtRenderer txt={songRendered} />;
-	} else if (useChartFormat && props.chartFormat === 'chordmarkSrc') {
-		rendered = <TxtRenderer txt={content} />;
-	} else {
-		const songRendered = renderSong(content, renderOptions);
-		rendered = (
+	return (
+		<div className={'songRenderer'}>
 			<div
 				dangerouslySetInnerHTML={{
-					__html: escapeHTML(songRendered),
+					__html: escapeHTML(rendered),
 				}}
 			/>
-		);
-	}
-
-	return <div className={'songRenderer'}>{rendered}</div>;
+		</div>
+	);
 }
-
-const TxtRenderer = ({ txt }) => {
-	return txt
-		.split('\n')
-		.map((line) => (line === '' ? '\u00A0' : line)) // '\u00A0' === &nbsp;
-		.map((line, i) => <p key={i}>{line}</p>);
-};
 
 SongRenderer.propTypes = {
 	useChartFormat: PropTypes.bool.isRequired,
