@@ -91,25 +91,48 @@ describe('"Rendering" option panel', () => {
 		test.skip('All widgets should be disabled if no file is selected', () => {});
 
 		test('Edit mode', () => {
-			const niClassName = '.sb-optionSelect-isNotInteractable';
+			const niClassName = '.sb-optionToggle-isNotInteractable';
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('edit'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
-			const chartType = getByText(
-				allWidgets.allWidgets.preferences.allGroupWidgets.chartType
+			const harmonizeAccidentals = getByText(
+				allWidgets.allWidgets.key.allGroupWidgets.harmonizeAccidentals
 					.label
 			);
-			const transposeValue = getByText(
-				allWidgets.allWidgets.key.allGroupWidgets.transposeValue.label
+
+			const alignChordsWithLyrics = getByText(
+				allWidgets.allWidgets.preferences.allGroupWidgets
+					.alignChordsWithLyrics.label
 			);
 
-			expect(transposeValue.closest(niClassName)).toBeInstanceOf(Element);
-			expect(chartType.closest(niClassName)).toBeInstanceOf(Element);
+			const columnBreakOnParagraph = getByText(
+				allWidgets.allWidgets.layout.allGroupWidgets
+					.columnBreakOnParagraph.label
+			);
+
+			const highlightChords = getByText(
+				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
+					.label
+			);
+
+			expect(harmonizeAccidentals.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
+			expect(alignChordsWithLyrics.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
+			expect(columnBreakOnParagraph.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
+			expect(highlightChords.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
 		});
 
 		test('Play mode', () => {
+			const niClassName = '.sb-optionToggle-isNotInteractable';
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('play'));
 
@@ -120,11 +143,9 @@ describe('"Rendering" option panel', () => {
 					.columnBreakOnParagraph.label
 			);
 
-			expect(
-				columnBreakOnParagraph.closest(
-					'.sb-optionSelect-isNotInteractable'
-				)
-			).toBeInstanceOf(Element);
+			expect(columnBreakOnParagraph.closest(niClassName)).toBeInstanceOf(
+				Element
+			);
 		});
 
 		test('Print mode', () => {
@@ -230,7 +251,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				getByText(
 					allWidgets.allWidgets.key.allGroupWidgets
-						.preferredAccidentals.label
+						.preferredAccidentals.label + ':'
 				)
 			).toBeInTheDocument();
 
@@ -252,7 +273,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				getByText(
 					allWidgets.allWidgets.key.allGroupWidgets
-						.preferredAccidentals.label
+						.preferredAccidentals.label + ':'
 				)
 			).toBeInTheDocument();
 		});

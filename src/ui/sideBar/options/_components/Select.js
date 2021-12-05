@@ -53,7 +53,7 @@ function Select(props) {
 		label
 	) : (
 		<span>
-			{label}:{' '}
+			<span>{label + ': '}</span>
 			<span className={'sb-optionSelectChoice-activeLabel'}>
 				{activeLabel}
 			</span>
