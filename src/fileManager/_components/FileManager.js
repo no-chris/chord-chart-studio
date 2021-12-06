@@ -35,6 +35,7 @@ function FileManager(props) {
 
 			<div className={'fileManager-isExpanded'}>
 				<FileActions
+					selected={selected}
 					createFile={() => createFile(defaultTitle)}
 					deleteFile={() => deleteFile(selected)}
 					enableRename={() => enableRename(selected)}
