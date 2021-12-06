@@ -383,4 +383,34 @@ describe('FileManager', () => {
 			await waitFor(() => expect(window.print).toHaveBeenCalledTimes(1));
 		});
 	});
+
+	describe('disabled actions', () => {
+		test('should disable some actions when no file is selected', () => {
+			const { getByText } = render(
+				<FileManager {...props} selected={''} />
+			);
+			const importBtn = getByText('Import');
+			const newBtn = getByText('New');
+			const renameBtn = getByText('Rename');
+			const deleteBtn = getByText('Delete');
+			const exportBtn = getByText('Export');
+			const printBtn = getByText('Print');
+
+			act(() => {
+				fireEvent.click(importBtn);
+				fireEvent.click(newBtn);
+				fireEvent.click(renameBtn);
+				fireEvent.click(deleteBtn);
+				fireEvent.click(exportBtn);
+				fireEvent.click(printBtn);
+			});
+
+			expect(startImport).toHaveBeenCalledTimes(1);
+			expect(createFile).toHaveBeenCalledTimes(1);
+			expect(enableRename).toHaveBeenCalledTimes(0);
+			expect(deleteFile).toHaveBeenCalledTimes(0);
+			expect(setEditorMode).toHaveBeenCalledTimes(0);
+			expect(setEditorMode).toHaveBeenCalledTimes(0);
+		});
+	});
 });

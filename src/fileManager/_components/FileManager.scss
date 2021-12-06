@@ -30,11 +30,19 @@
 	white-space: nowrap;
 
 	&:hover {
+		cursor: not-allowed;
+	}
+
+	&:hover:not(.fileManagerAction-isDisabled) {
 		@include themify($themes) {
 			background-color: themed('action-bgHover');
 		}
 		cursor: pointer;
 	}
+}
+
+.fileManagerAction-isDisabled {
+	opacity: 0.5;
 }
 
 .fileManagerAction-icon {
