@@ -93,6 +93,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
     "reselect": "^4.0.0",
+    "scroll-sync-react": "^1.2.0",
     "universal-router": "^9.1.0",
     "uuid": "^8.3.2"
   },

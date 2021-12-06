@@ -9,12 +9,10 @@ $themes: (
 
 .prosemirrorWrapper {
 	flex: 1 1 auto;
-	overflow-y: scroll;
 	padding: $spacer-small 0;
 }
 
 .ProseMirror {
-	overflow-y: scroll;
 	height: 100%;
 
 	outline: none;
