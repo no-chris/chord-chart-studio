@@ -53,3 +53,24 @@ describe('localStorage persistence', () => {
 		);
 	});
 });
+
+describe.each([
+	/* */
+	['non existant store', undefined],
+	['empty object', {}],
+	['empty db', { db: {} }],
+	['empty option', { db: { options: {} } }],
+	['with rendering options', { db: { options: { rendering: {} } } }],
+	/**/
+])('migration: %s', (title, state) => {
+	test('should remove rendering options', () => {
+		localStorage.__STORE__.state = JSON.stringify(state);
+
+		reducers.mockImplementation((initialState) => initialState);
+
+		createStore();
+		const actualState = getStore().getState();
+
+		expect(actualState.db.options.rendering).toBeUndefined();
+	});
+});

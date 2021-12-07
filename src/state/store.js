@@ -18,17 +18,17 @@ export function createStore() {
 	const persistedState = loadState();
 
 	// store migrations
-	if (persistedState) {
-		delete (((persistedState || {}).db || {}).options || {}).rendering; // remove old options before the options refactor in v0.9.0
+	if (persistedState && persistedState.db && persistedState.db.options) {
+		delete persistedState.db.options.rendering; // remove old options before the options refactor in v0.9.0
 	}
-	
+
 	/* Reset all options * /
 	Object.keys(persistedState.db.files.allFiles).forEach((fileId) => {
 		delete persistedState.db.files.allFiles[fileId].options;
 	});
 	delete persistedState.db.options;
 	/**/
-	/* reset song Importer state * /
+	/* misc * /
 	delete persistedState.songImporter;
 	delete persistedState.fileManager.selected;
 	/**/
