@@ -40,15 +40,15 @@ function FileActions(props) {
 			isDisabled: !selected,
 		},
 		{
-			icon: 'download',
-			text: 'Export',
-			action: exportAsText,
-			isDisabled: !selected,
-		},
-		{
 			icon: 'print',
 			text: 'Print',
 			action: printFile,
+			isDisabled: !selected,
+		},
+		{
+			icon: 'download',
+			text: 'Export',
+			action: exportAsText,
 			isDisabled: !selected,
 		},
 	];

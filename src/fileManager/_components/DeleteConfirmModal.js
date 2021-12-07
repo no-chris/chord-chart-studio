@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Modal from '../../ui/_components/Modal';
 import ModalConfirm from '../../ui/_components/ModalConfirm';
 
 function DeleteConfirmModal(props) {
@@ -18,17 +17,15 @@ function DeleteConfirmModal(props) {
 	};
 
 	return (
-		<Modal closeModal={cancelDelete}>
-			<ModalConfirm
-				confirmAction={confirmDelete}
-				confirmTitle={'DELETE'}
-				cancelAction={cancelDelete}
-			>
-				Are you sure you want to delete this file?
-				<br />
-				This action cannot be undone.
-			</ModalConfirm>
-		</Modal>
+		<ModalConfirm
+			confirmAction={confirmDelete}
+			confirmTitle={'DELETE'}
+			cancelAction={cancelDelete}
+		>
+			Are you sure you want to delete this file?
+			<br />
+			This action cannot be undone.
+		</ModalConfirm>
 	);
 }
 

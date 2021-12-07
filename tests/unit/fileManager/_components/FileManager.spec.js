@@ -329,7 +329,7 @@ describe('FileManager', () => {
 	});
 
 	describe('deleteFile', () => {
-		test('should call deleteFile() on Delete Action click with selected id', () => {
+		test('should ask for confirmation before deleting a file', () => {
 			const { getByText } = render(
 				<FileManager {...props} selected={props.allTitles[2].id} />
 			);
@@ -337,7 +337,31 @@ describe('FileManager', () => {
 
 			fireEvent.click(input);
 
+			expect(deleteFile).toHaveBeenCalledTimes(0);
+
+			const deleteConfirmBtn = getByText('DELETE');
+
+			fireEvent.click(deleteConfirmBtn);
+
+			expect(deleteFile).toHaveBeenCalledTimes(1);
 			expect(deleteFile).toHaveBeenCalledWith(props.allTitles[2].id);
+		});
+
+		test('should allow to cancel file deletion', () => {
+			const { getByText } = render(
+				<FileManager {...props} selected={props.allTitles[2].id} />
+			);
+			const input = getByText('Delete');
+
+			fireEvent.click(input);
+
+			expect(deleteFile).toHaveBeenCalledTimes(0);
+
+			const deleteConfirmBtn = getByText('CANCEL');
+
+			fireEvent.click(deleteConfirmBtn);
+
+			expect(deleteFile).toHaveBeenCalledTimes(0);
 		});
 	});
 

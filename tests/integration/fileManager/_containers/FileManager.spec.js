@@ -67,6 +67,12 @@ describe('FileManager', () => {
 				fireEvent.click(deleteFileBtn);
 			});
 
+			const confirmBtn = getByText('DELETE');
+
+			act(() => {
+				fireEvent.click(confirmBtn);
+			});
+
 			// Check file has been removed
 			allFiles = fileSelectors.getAllTitles(getState());
 			expect(allFiles.length).toBe(0);
