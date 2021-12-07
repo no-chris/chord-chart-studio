@@ -18,7 +18,9 @@ export function createStore() {
 	const persistedState = loadState();
 
 	// store migrations
-	delete persistedState.db.options.rendering; // remove old options before the options refactor in v0.9.0
+	if (persistedState) {
+		delete (((persistedState || {}).db || {}).options || {}).rendering; // remove old options before the options refactor in v0.9.0
+	}
 	
 	/* Reset all options * /
 	Object.keys(persistedState.db.files.allFiles).forEach((fileId) => {
