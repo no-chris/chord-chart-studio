@@ -1,8 +1,22 @@
 @import '../../../scss/abstract';
-@import '../layout/app/themes';
+
+$themes: (
+	light: (),
+	dark: (
+		modal-bg: cv(dark-secondary, dark5),
+		modal-border: cv(dark-foreground, dark20),
+		modal-txt: cv(dark-foreground),
+	),
+);
+
 
 .mod-ModalContainer {
 	z-index: $zindex-modal;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .mod-Overlay {
@@ -16,4 +30,23 @@
 }
 
 .mod-ContentContainer {
+}
+
+.mod-ModalConfirmContainer {
+	z-index: $zindex-modal;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: auto;
+	height: auto;
+	
+	padding: 10px;
+
+	@include themify($themes) {
+		background-color: themed('modal-bg');
+		border: 1px solid themed('modal-border');
+		color: themed('modal-txt');
+	}
 }

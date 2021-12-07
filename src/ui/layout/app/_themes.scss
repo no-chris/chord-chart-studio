@@ -1,6 +1,7 @@
 $themes: (
 	light: (),
 	dark: (
+		// leftbar
 		leftBar-txt: cv(dark-foreground),
 		leftBar-bg: cv(dark-background),
 		leftBar-bgHover: cv(dark-background, light10),
@@ -9,6 +10,7 @@ $themes: (
 		leftBar-collapser-bg: cv(dark-primary, light10),
 		leftBar-collapser-bgHover: cv(dark-primary, light20),
 		leftBar-collapser-border: cv(dark-foreground, dark30),
+		// header
 		header-txt: cv(dark-foreground, fade),
 		header-txtHover: cv(dark-foreground),
 		header-txtActive: cv(dark-foreground),
@@ -18,9 +20,11 @@ $themes: (
 		header-bgActive: cv(dark-background, dark10),
 		header-bgDisabled: cv(dark-background),
 		header-border: cv(dark-background, dark10),
+		// footer
 		footer-txt: cv(dark-foreground, fade),
 		footer-bg: cv(dark-background),
 		footer-border: cv(dark-secondary, dark20),
+		// rightbar
 		rightBar-txt: cv(dark-foreground),
 		rightBar-bg: cv(dark-background),
 		rightBar-bgHover: cv(dark-background, light10),
@@ -29,5 +33,6 @@ $themes: (
 		rightBar-collapser-bg: cv(dark-primary, light10),
 		rightBar-collapser-bgHover: cv(dark-primary, light20),
 		rightBar-collapser-border: cv(dark-foreground, dark30),
+		//
 	),
 );

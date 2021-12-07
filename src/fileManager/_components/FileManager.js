@@ -1,15 +1,20 @@
 import './FileManager.scss';
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import exportSelectedFileAsText from '../exportSelectedFileAsText';
 
+
+import Modal from "../../ui/_components/Modal";
+import ModalConfirm from "../../ui/_components/ModalConfirm";
 import Icon from '../../ui/_components/Icon';
 import FileActions from './FileActions';
 import FileEntry from './FileEntry';
 
 function FileManager(props) {
+	const [isDeleting, setIsDeleting ] = useState(false);
+	
 	const {
 		allTitles,
 		selected,
@@ -25,8 +30,22 @@ function FileManager(props) {
 		setEditorMode,
 	} = props;
 
+	const cancelDelete = () => setIsDeleting(false);
+	const confirmDelete = () => {
+		setIsDeleting(false);
+		deleteFile(selected);
+	};
+	const confirmDeleteModal = !(isDeleting) 
+		? null 
+		: <Modal closeModal={cancelDelete}>
+			<ModalConfirm confirmAction={confirmDelete} cancelAction={cancelDelete} >
+				Are you sure you want to delete?
+			</ModalConfirm>
+		</Modal>;
+	
 	return (
 		<div className={'fileManager'}>
+			{confirmDeleteModal}
 			<div className={'fileManager-isCollapsed'}>
 				<span className={'fileManager-icon'}>
 					<Icon iconName={'file_copy'} />
@@ -37,7 +56,8 @@ function FileManager(props) {
 				<FileActions
 					selected={selected}
 					createFile={() => createFile(defaultTitle)}
-					deleteFile={() => deleteFile(selected)}
+					//deleteFile={() => deleteFile(selected)}
+					deleteFile={() => setIsDeleting(true)}
 					enableRename={() => enableRename(selected)}
 					startImport={() => startImport()}
 					exportAsText={() => {
