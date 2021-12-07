@@ -9,7 +9,6 @@ $themes: (
 	),
 );
 
-
 .mod-ModalContainer {
 	z-index: $zindex-modal;
 	height: 100%;
@@ -41,12 +40,16 @@ $themes: (
 	transform: translate(-50%, -50%);
 	width: auto;
 	height: auto;
-	
-	padding: 10px;
+
+	padding: 10px 20px;
 
 	@include themify($themes) {
 		background-color: themed('modal-bg');
 		border: 1px solid themed('modal-border');
 		color: themed('modal-txt');
 	}
+}
+
+.mod-ModalConfirmButtons {
+	text-align: center;
 }
