@@ -201,12 +201,8 @@ body,
 }
 
 .appLayout-footer {
-	flex-shrink: 0;
-
 	@include themify($themes) {
 		color: themed('footer-txt');
-		background-color: themed('footer-bg');
-		border-top: 1px solid themed('footer-border');
 	}
 
 	@media print {

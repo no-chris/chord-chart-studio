@@ -7,8 +7,10 @@ function Footer() {
 	const versions = getVersions();
 	return (
 		<div className={'appFooter'}>
-			Chords Charts Studio {versions['chord-charts-studio']}- ChordMark{' '}
-			{versions['chord-mark']}- ChordSymbol {versions['chord-symbol']}
+			Chords Charts Studio {versions['chord-charts-studio']}
+			<br />
+			ChordMark {versions['chord-mark']} <br />
+			ChordSymbol {versions['chord-symbol']}
 		</div>
 	);
 }
