@@ -37,8 +37,6 @@ function renderSong(songTxt, renderOptions) {
 		const parsed = parseSong(songTxt);
 		return renderSongCm(parsed, {
 			...renderOptions,
-			printChordsDuration: 'uneven',
-			chordsAndLyricsDisplay: renderOptions.chartType, // fixme
 		});
 	} catch (e) {
 		return e.message;
