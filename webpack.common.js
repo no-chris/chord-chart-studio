@@ -20,7 +20,7 @@ const config = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Chords Charts Studio',
+			title: 'Chord Charts Studio',
 			template: 'assets/index.html',
 		}),
 		new MiniCssExtractPlugin({

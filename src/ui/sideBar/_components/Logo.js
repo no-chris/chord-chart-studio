@@ -15,7 +15,7 @@ function Logo() {
 				<span className={'logo-icon'}>
 					<Icon iconName={'queue_music'} />
 				</span>
-				Chords Charts Studio
+				Chord Charts Studio
 			</div>
 		</div>
 	);
