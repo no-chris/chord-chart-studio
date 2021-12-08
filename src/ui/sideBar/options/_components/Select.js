@@ -61,11 +61,11 @@ function Select(props) {
 	);
 
 	return (
-		<div
-			className={classNames.join(' ')}
-			onClick={isInteractable ? toggleChoices : null}
-		>
-			<div className={'sb-optionSelect-title'}>
+		<div className={classNames.join(' ')}>
+			<div
+				className={'sb-optionSelect-title'}
+				onClick={isInteractable ? toggleChoices : null}
+			>
 				<div
 					className={'sb-optionSelect-desc'}
 					data-testid={'selectLabel'}
