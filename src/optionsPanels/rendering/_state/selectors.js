@@ -47,7 +47,7 @@ export const getNonInteractableWidgets = (state) => {
 		nonInteractableWidgets.push('alignBars');
 		nonInteractableWidgets.push('autoRepeatChords');
 	}
-	if (chartFormat === 'chordMarkSrc') {
+	if (chartFormat === 'chordmarkSrc') {
 		nonInteractableWidgets.push('expandSectionCopy');
 	}
 

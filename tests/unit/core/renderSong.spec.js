@@ -21,7 +21,7 @@ describe('renderAsHtml()', () => {
 
 		expect(rendered).toEqual(
 			'<p class="cmLine"><span class="cmChordLine">' +
-				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>  </span><span class="cmBarSeparator">|</span>' +
+				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
 				'</span></p>\n' +
 				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>\n' +
 				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>'
@@ -38,7 +38,7 @@ describe('renderAsHtml()', () => {
 
 		expect(rendered).toEqual(
 			'<p class="cmLine"><span class="cmChordLine">' +
-				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>  </span><span class="cmBarSeparator">|</span>' +
+				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
 				'</span></p>\n' +
 				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>\n' +
 				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>'
@@ -76,7 +76,7 @@ describe('renderAsText()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsText(input);
 
-		expect(rendered).toEqual('|A  |\nmySong\n');
+		expect(rendered).toEqual('|A    |\nmySong\n');
 	});
 
 	test('Should return ChordMark text with useChartFormat === true & chartFormat === chordmark', () => {
@@ -87,7 +87,7 @@ describe('renderAsText()', () => {
 			true
 		);
 
-		expect(rendered).toEqual('|A  |\nmySong\n');
+		expect(rendered).toEqual('|A    |\nmySong\n');
 	});
 
 	test('Should return ChordPro text with useChartFormat === true & chartFormat === chordpro', () => {
