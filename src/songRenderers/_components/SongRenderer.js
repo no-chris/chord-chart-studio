@@ -21,6 +21,7 @@ function SongRenderer(props) {
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
+		'expandSectionCopy',
 	]);
 
 	const rendered = renderAsHtml(content, renderOptions, useChartFormat);

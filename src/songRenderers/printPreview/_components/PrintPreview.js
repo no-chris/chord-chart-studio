@@ -19,6 +19,7 @@ function PrintPreview(props) {
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
+		'expandSectionCopy',
 	]);
 
 	const allLines = renderAsHtml(selectedFile.content || '', {

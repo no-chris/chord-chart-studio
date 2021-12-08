@@ -9,6 +9,7 @@ const editorModeOptions = {
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
+		'expandSectionCopy',
 
 		'columnsCount',
 
@@ -25,6 +26,7 @@ const editorModeOptions = {
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
+		'expandSectionCopy',
 
 		'columnsCount',
 		'columnBreakOnParagraph',
@@ -43,6 +45,7 @@ const editorModeOptions = {
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',
+		'expandSectionCopy',
 	],
 };
 

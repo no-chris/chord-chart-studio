@@ -47,6 +47,9 @@ export const getNonInteractableWidgets = (state) => {
 		nonInteractableWidgets.push('alignBars');
 		nonInteractableWidgets.push('autoRepeatChords');
 	}
+	if (chartFormat === 'chordMarkSrc') {
+		nonInteractableWidgets.push('expandSectionCopy');
+	}
 
 	return nonInteractableWidgets;
 };

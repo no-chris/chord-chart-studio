@@ -78,6 +78,7 @@ export default {
 				'alignChordsWithLyrics',
 				'alignBars',
 				'autoRepeatChords',
+				'expandSectionCopy',
 			],
 			allGroupWidgets: {
 				chartFormat: {
@@ -161,6 +162,14 @@ export default {
 					option: {
 						context: 'songFormatting',
 						key: 'autoRepeatChords',
+					},
+				},
+				expandSectionCopy: {
+					label: 'Expand copied sections',
+					type: 'toggle',
+					option: {
+						context: 'songFormatting',
+						key: 'expandSectionCopy',
 					},
 				},
 			},

@@ -23,6 +23,7 @@ export default {
 			alignChordsWithLyrics: true,
 			alignBars: true,
 			autoRepeatChords: true,
+			expandSectionCopy: true,
 
 			columnsCount: 1,
 			columnBreakOnParagraph: true,
@@ -38,6 +39,7 @@ export default {
 			alignChordsWithLyrics: true,
 			alignBars: true,
 			autoRepeatChords: true,
+			expandSectionCopy: true,
 
 			columnsCount: 1,
 			columnBreakOnParagraph: true,

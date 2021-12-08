@@ -31,6 +31,11 @@ export default connect((state) => ({
 		'songFormatting',
 		'autoRepeatChords'
 	),
+	expandSectionCopy: getOptionValue(
+		state,
+		'songFormatting',
+		'expandSectionCopy'
+	),
 
 	columnsCount: getOptionValue(state, 'songFormatting', 'columnsCount'),
 	columnBreakOnParagraph: getOptionValue(

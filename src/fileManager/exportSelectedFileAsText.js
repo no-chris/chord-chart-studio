@@ -44,6 +44,11 @@ export default function exportSelectedFileAsText() {
 			'songFormatting',
 			'autoRepeatChords'
 		),
+		expandSectionCopy: getOptionValue(
+			state,
+			'songFormatting',
+			'expandSectionCopy'
+		),
 	};
 
 	const fileContent = renderAsText(selectedFile.content, renderOptions, true);
