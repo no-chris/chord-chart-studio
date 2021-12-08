@@ -22,6 +22,7 @@ module.exports = {
 	transform: {
 		'\\.js$': 'babel-jest',
 		'\\.hbs$': 'jest-handlebars',
+		'\\.txt': 'jest-raw-loader',
 	},
 
 	setupFiles: ['jest-localstorage-mock'],
