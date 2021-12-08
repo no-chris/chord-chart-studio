@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
+import UserGuide from './UserGuide';
 import Footer from './Footer';
 import Icon from '../../../_components/Icon';
 import SongImporter from '../../../../songImporter/_containers/SongImporter';
@@ -68,9 +69,6 @@ function App(props) {
 				<section className={'appLayout-content'}>
 					{props.children}
 				</section>
-				<section className={'appLayout-footer'}>
-					<Footer />
-				</section>
 			</section>
 			<section className={rightBarClassNames.join(' ')}>
 				<div
@@ -86,7 +84,11 @@ function App(props) {
 					className={'rightBar-content'}
 					onClick={isRightBarCollapsed ? toggleRightBar : null}
 				>
+					<UserGuide />
 					{rightBar}
+					<div className={'rightBar-footer'}>
+						<Footer />
+					</div>
 				</div>
 			</section>
 		</div>

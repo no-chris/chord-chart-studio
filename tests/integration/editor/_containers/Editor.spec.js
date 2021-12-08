@@ -20,18 +20,26 @@ afterEach(cleanup);
 describe('Editor', () => {
 	beforeEach(() => {
 		resetStore();
+	});
 
-		dispatch(createFile('mySongTitle'));
-		dispatch(
-			updateFile('myId', {
-				content: 'mySongContent',
-				title: 'mySongTitle',
-			})
-		);
-		dispatch(selectFile('myId'));
+	test('should survive empty file list', () => {
+		const { queryByText } = render(withStore(<Editor />));
+
+		queryByText('New');
 	});
 
 	describe('Editor modes', () => {
+		beforeEach(() => {
+			dispatch(createFile('mySongTitle'));
+			dispatch(
+				updateFile('myId', {
+					content: 'mySongContent',
+					title: 'mySongTitle',
+				})
+			);
+			dispatch(selectFile('myId'));
+		});
+
 		test('Edit', () => {
 			dispatch(setEditorMode('edit'));
 
