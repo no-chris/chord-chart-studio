@@ -4,9 +4,12 @@ import React from 'react';
 
 import Button from '../../../_components/Button';
 
+const userGuideUrl =
+	'https://chordmark.netlify.app/docs/chord-charts-studio/overview';
+
 const UserGuide = () => {
 	const openUserGuide = () => {
-		window.open('https://chordmark.netlify.app', '_blank').focus();
+		window.open(userGuideUrl, '_blank').focus();
 	};
 
 	return (
