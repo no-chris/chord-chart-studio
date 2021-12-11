@@ -13,7 +13,7 @@ export default [
 	},
 	{
 		id: 'print',
-		label: 'Print Preview',
+		label: 'Print/PDF Preview',
 		icon: 'print',
 		editorMode: 'print',
 	},

@@ -20,7 +20,7 @@ function Input(props) {
 		<>
 			<div className={'sim-Input_Header'}>
 				<Icon iconName={'arrow_drop_down'} />
-				Edit directly below
+				Copy/paste below
 				<Icon iconName={'arrow_drop_down'} />
 			</div>
 			<textarea
