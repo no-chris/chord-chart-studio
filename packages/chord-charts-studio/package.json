@@ -4,7 +4,7 @@
 	"description": "Chords Charts Studio",
 	"private": true,
 	"author": "Christophe Noël",
-	"license": "",
+	"license": "LicenseRef-LICENSE",
 	"engines": {
 		"node": ">=16"
 	},

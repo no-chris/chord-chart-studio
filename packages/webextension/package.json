@@ -1,16 +1,18 @@
 {
-  "name": "chord-charts-studio",
-  "version": "0.9.0",
-  "author": "Christophe Noël",
-  "license": "LicenseRef-LICENSE",
-  "description": "The ultimate chord charts editor",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com//no-chris/chord-charts-studio.git"
-  }
+	"name": "browser-extension",
+	"private": true,
+	"version": "0.1.0",
+	"description": "Browser extension for Chord Charts Studio",
+	"author": "Christophe Noël",
+	"license": "LicenseRef-LICENSE",
+	"main": "src/popup/popup.js",
+	"scripts": {
+		"build": "webpack",
+		"dev": "npx webpack --config webpack.dev.js"
+	},
+	"devDependencies": {},
+	"dependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	}
 }
