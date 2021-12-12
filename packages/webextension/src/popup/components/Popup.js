@@ -75,7 +75,8 @@ const Popup = () => {
 	});
 	/* */
 	const onClick = () => {
-		sendToChordChartsStudio(state.tabData);
+		const message = createMessage('@CCS/IMPORT_TAB', state.tabData);
+		sendToChordChartsStudio(message);
 	};
 
 	return (
