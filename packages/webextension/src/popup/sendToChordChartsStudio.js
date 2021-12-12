@@ -1,5 +1,5 @@
-const CCSUrl = 'http://127.0.0.1:8084/';
-//const CCSUrl = 'https://chords-charts-studio.netlify.app/';
+//const CCSUrl = 'http://127.0.0.1:8084/';
+const CCSUrl = 'https://chord-charts-studio.netlify.app/';
 
 export default function sendToChordChartsStudio(message) {
 	console.log('sendToChordChartsStudio');
