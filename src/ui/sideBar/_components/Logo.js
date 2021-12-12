@@ -2,20 +2,16 @@ import './Logo.scss';
 
 import React from 'react';
 
-import Icon from '../../_components/Icon.js';
+import logoImg from './logo.png';
 
 function Logo() {
 	return (
 		<div className={'logo'}>
-			<div className={'logo-isCollapsed'}>
-				<Icon iconName={'queue_music'} />
-			</div>
-
 			<div className={'logo-isExpanded'}>
-				<span className={'logo-icon'}>
-					<Icon iconName={'queue_music'} />
-				</span>
-				Chord Charts Studio
+				<div className={'logo-img'}>
+					<img src={logoImg} alt={'Chord Charts Studio'} />
+				</div>
+				<div className={'logo-txt'}>Chord Charts Studio</div>
 			</div>
 		</div>
 	);

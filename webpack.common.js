@@ -44,7 +44,7 @@ const config = {
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 			},
 			{
-				test: /\.(png|jp(e*)g|svg)$/,
+				test: /\.(jp(e*)g|svg)$/,
 				use: [
 					{
 						loader: 'url-loader',
@@ -54,6 +54,10 @@ const config = {
 						},
 					},
 				],
+			},
+			{
+				test: /\.png/,
+				type: 'asset/resource',
 			},
 			{
 				test: /\.txt/,

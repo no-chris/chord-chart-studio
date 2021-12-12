@@ -21,6 +21,9 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	@include themify($themes) {
+		background-color: themed('actions-bg');
+	}
 }
 
 .fileManagerAction {
@@ -73,6 +76,7 @@
 }
 
 .fileManagerEntry-input {
+	box-sizing: border-box;
 	width: 100%;
 	padding: $spacer-extra-tiny $spacer-small;
 

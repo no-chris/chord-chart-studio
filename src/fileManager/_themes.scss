@@ -1,6 +1,7 @@
 $themes: (
 	light: (),
 	dark: (
+		actions-bg: cv(dark-background, light10),
 		action-bgHover: cv(dark-background, light20),
 		fileEntry-txt: cv(dark-foreground),
 		fileEntry-txtActive: cv(dark-background),
