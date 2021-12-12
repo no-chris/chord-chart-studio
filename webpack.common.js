@@ -22,6 +22,7 @@ const config = {
 		new HtmlWebpackPlugin({
 			title: 'Chord Charts Studio',
 			template: 'assets/index.html',
+			favicon: 'assets/favicon.ico',
 		}),
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[fullhash].css',
