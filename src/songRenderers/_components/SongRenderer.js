@@ -6,37 +6,46 @@ import PropTypes from 'prop-types';
 
 import escapeHTML from '../../core/escapeHTML';
 
-import renderSong from '../../core/renderSong';
+import { renderAsHtml } from '../../core/renderSong';
 
 function SongRenderer(props) {
-	const {
-		content
-	} = props;
+	const { content, useChartFormat } = props;
 
 	const renderOptions = _pick(props, [
-		'alignBars',
+		'transposeValue',
 		'harmonizeAccidentals',
 		'accidentalsType',
-		'transposeValue',
+
+		'chartType',
+		'chartFormat',
+		'alignChordsWithLyrics',
+		'alignBars',
 		'autoRepeatChords',
-		'expandSectionRepeats',
-		'useShortNamings',
-		'simplifyChords',
+		'expandSectionCopy',
 	]);
+
+	const rendered = renderAsHtml(content, renderOptions, useChartFormat);
 
 	return (
 		<div className={'songRenderer'}>
-			<div dangerouslySetInnerHTML={{ __html: escapeHTML(renderSong(content, renderOptions)) }} />
+			<div
+				dangerouslySetInnerHTML={{
+					__html: escapeHTML(rendered),
+				}}
+			/>
 		</div>
 	);
 }
 
 SongRenderer.propTypes = {
-	content: PropTypes.string
+	useChartFormat: PropTypes.bool.isRequired,
+	chartFormat: PropTypes.string.isRequired,
+	content: PropTypes.string,
 };
 
 SongRenderer.defaultProps = {
-	content: ''
+	content: '',
+	useChartFormat: false,
 };
 
 export default SongRenderer;

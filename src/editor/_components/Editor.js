@@ -10,10 +10,14 @@ function Editor(props) {
 	const { editorMode } = props;
 
 	switch (editorMode) {
-		case 'edit': return <EditorLayout {...props} />;
-		case 'play': return <PlayRenderer {...props} />;
-		case 'print': return <PrintPreview {...props} />;
-		case 'export': return <ExportPreview {...props} />;
+		case 'edit':
+			return <EditorLayout {...props} />;
+		case 'play':
+			return <PlayRenderer {...props} />;
+		case 'print':
+			return <PrintPreview {...props} />;
+		case 'export':
+			return <ExportPreview {...props} />;
 	}
 }
 

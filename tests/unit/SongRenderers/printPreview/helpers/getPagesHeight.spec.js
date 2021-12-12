@@ -18,11 +18,10 @@ describe('getPagesHeight', () => {
 			columnsCount: 2,
 			documentSize: 'a4',
 			documentMargins: 3,
-			printFontSize: 0,
-		})
-			.then(({ normalPageHeight, firstPageHeight }) => {
-				expect(normalPageHeight).toBe(200);
-				expect(firstPageHeight).toBe(200);
-			});
+			fontSize: 0,
+		}).then(({ normalPageHeight, firstPageHeight }) => {
+			expect(normalPageHeight).toBe(200);
+			expect(firstPageHeight).toBe(200);
+		});
 	});
 });

@@ -6,7 +6,6 @@ import * as actionTypes from '../../../../src/db/files/actionsTypes';
 import { v4 as uuidv4 } from 'uuid';
 
 describe('db/files: actions creators', () => {
-
 	describe('createFile()', () => {
 		test('should create valid action', () => {
 			uuidv4.mockReturnValue('myUUID');
@@ -16,8 +15,24 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					title: 'myTitle',
-					content: ''
-				}
+					content: 'myContent',
+				},
+			};
+			const actual = actions.createFile('myTitle', 'myContent');
+
+			expect(actual).toEqual(expected);
+		});
+
+		test('should have blank default content', () => {
+			uuidv4.mockReturnValue('myUUID');
+
+			const expected = {
+				type: actionTypes.DB_FILES_CREATE,
+				payload: {
+					id: 'myUUID',
+					title: 'myTitle',
+					content: '',
+				},
 			};
 			const actual = actions.createFile('myTitle');
 
@@ -32,6 +47,46 @@ describe('db/files: actions creators', () => {
 		});
 	});
 
+	describe('importFile()', () => {
+		test('should create valid action', () => {
+			uuidv4.mockReturnValue('myUUID');
+
+			const expected = {
+				type: actionTypes.DB_FILES_IMPORT,
+				payload: {
+					id: 'myUUID',
+					title: 'myTitle',
+					content: 'myContent',
+				},
+			};
+			const actual = actions.importFile('myTitle', 'myContent');
+
+			expect(actual).toEqual(expected);
+		});
+
+		test('should have blank default content', () => {
+			uuidv4.mockReturnValue('myUUID');
+
+			const expected = {
+				type: actionTypes.DB_FILES_IMPORT,
+				payload: {
+					id: 'myUUID',
+					title: 'myTitle',
+					content: '',
+				},
+			};
+			const actual = actions.importFile('myTitle');
+
+			expect(actual).toEqual(expected);
+		});
+
+		test('should throw if not given title', () => {
+			const throwingFn = () => actions.importFile();
+
+			expect(throwingFn).toThrow(TypeError);
+			expect(throwingFn).toThrow('Cannot import a file without title');
+		});
+	});
 
 	describe('updateFile()', () => {
 		test('should allow update of both title and content', () => {
@@ -40,8 +95,8 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					title: 'myNewTitle',
-					content: 'myNewContent'
-				}
+					content: 'myNewContent',
+				},
 			};
 			const actual = actions.updateFile('myUUID', {
 				title: 'myNewTitle',
@@ -57,7 +112,7 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					title: 'myNewTitle',
-				}
+				},
 			};
 			const actual = actions.updateFile('myUUID', {
 				title: 'myNewTitle',
@@ -72,7 +127,7 @@ describe('db/files: actions creators', () => {
 				payload: {
 					id: 'myUUID',
 					content: 'myNewContent',
-				}
+				},
 			};
 			const actual = actions.updateFile('myUUID', {
 				content: 'myNewContent',
@@ -82,29 +137,28 @@ describe('db/files: actions creators', () => {
 		});
 
 		test('should throw if given no id', () => {
-			const throwingFn = () => actions.updateFile(undefined, {
-				title: 'myNewTitle',
-				content: 'myNewContent',
-			});
+			const throwingFn = () =>
+				actions.updateFile(undefined, {
+					title: 'myNewTitle',
+					content: 'myNewContent',
+				});
 
 			expect(throwingFn).toThrow(TypeError);
 			expect(throwingFn).toThrow('Cannot update a file without an id');
 		});
 	});
 
-
 	describe('deleteFile()', () => {
 		test('should create valid action', () => {
 			const expected = {
 				type: actionTypes.DB_FILES_DELETE,
 				payload: {
-					id: 'myUUID'
-				}
+					id: 'myUUID',
+				},
 			};
 			const actual = actions.deleteFile('myUUID');
 
 			expect(actual).toEqual(expected);
 		});
 	});
-
 });

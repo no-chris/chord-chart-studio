@@ -1,39 +1,41 @@
 import _defaultsDeep from 'lodash/defaultsDeep';
 
-import { createStore as createReduxStore, compose } from 'redux';
+import { createStore as createReduxStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
 
 import { loadState, saveState } from './localStorage';
 import allReducers from './reducers';
 import seed from './seed';
 
-const storeEnhancers = [];
-
-/* * /
-import { applyMiddleware } from 'redux';
-const logger = () => next => action => {
-	console.log('!!! DISPATCHING ACTION: ', action);
-	let result = next(action);
-	return result;
-};
-storeEnhancers.push(applyMiddleware(logger));
-/* */
-
-
 let store;
 
 export function createStore() {
-	if (window.__REDUX_DEVTOOLS_EXTENSION__) {
-		storeEnhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true }));
-	}
+	const storeEnhancers = composeWithDevTools(
+		applyMiddleware(thunkMiddleware)
+	);
 
 	const persistedState = loadState();
+
+	// store migrations
+	if (persistedState && persistedState.db && persistedState.db.options) {
+		delete persistedState.db.options.rendering; // remove old options before the options refactor in v0.9.0
+	}
+
+	/* Reset all options * /
+	Object.keys(persistedState.db.files.allFiles).forEach((fileId) => {
+		delete persistedState.db.files.allFiles[fileId].options;
+	});
+	delete persistedState.db.options;
+	/**/
+	/* misc * /
+	delete persistedState.songImporter;
+	delete persistedState.fileManager.selected;
+	/**/
+
 	const initialState = _defaultsDeep(persistedState, seed);
 
-	store = createReduxStore(
-		allReducers,
-		initialState,
-		compose(...storeEnhancers)
-	);
+	store = createReduxStore(allReducers, initialState, storeEnhancers);
 
 	store.subscribe(() => {
 		saveState(store.getState());

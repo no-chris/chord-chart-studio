@@ -20,22 +20,30 @@ afterEach(cleanup);
 describe('Editor', () => {
 	beforeEach(() => {
 		resetStore();
+	});
 
-		dispatch(createFile('mySongTitle'));
-		dispatch(updateFile('myId', {
-			content: 'mySongContent',
-			title: 'mySongTitle'
-		}));
-		dispatch(selectFile('myId'));
+	test('should survive empty file list', () => {
+		const { queryByText } = render(withStore(<Editor />));
+
+		queryByText('New');
 	});
 
 	describe('Editor modes', () => {
+		beforeEach(() => {
+			dispatch(createFile('mySongTitle'));
+			dispatch(
+				updateFile('myId', {
+					content: 'mySongContent',
+					title: 'mySongTitle',
+				})
+			);
+			dispatch(selectFile('myId'));
+		});
+
 		test('Edit', () => {
 			dispatch(setEditorMode('edit'));
 
-			const { getAllByText } = render(withStore(
-				<Editor />
-			));
+			const { getAllByText } = render(withStore(<Editor />));
 
 			// song is rendered 2 times: once in editor, once in editor preview
 			expect(getAllByText('mySongContent').length).toBe(2);
@@ -44,9 +52,7 @@ describe('Editor', () => {
 		test('Play', () => {
 			dispatch(setEditorMode('play'));
 
-			const { getAllByText } = render(withStore(
-				<Editor />
-			));
+			const { getAllByText } = render(withStore(<Editor />));
 
 			expect(getAllByText('mySongContent').length).toBe(1);
 		});
@@ -56,10 +62,8 @@ describe('Editor', () => {
 
 			dispatch(setEditorMode('print'));
 
-			await act(async() => {
-				result = render(withStore(
-					<Editor />
-				));
+			await act(async () => {
+				result = render(withStore(<Editor />));
 			});
 
 			const { getAllByTestId } = result;
@@ -70,9 +74,7 @@ describe('Editor', () => {
 		test('Export', () => {
 			dispatch(setEditorMode('export'));
 
-			const { getAllByText } = render(withStore(
-				<Editor />
-			));
+			const { getAllByText } = render(withStore(<Editor />));
 
 			expect(getAllByText('mySongContent').length).toBe(1);
 		});

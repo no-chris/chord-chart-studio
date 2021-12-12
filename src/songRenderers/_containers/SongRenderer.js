@@ -4,15 +4,37 @@ import { getOptionValue } from '../../db/options/selectors';
 
 import SongRenderer from '../_components/SongRenderer';
 
-export default connect(
-	state => ({
-		accidentalsType: getOptionValue(state, 'rendering', 'preferredAccidentals'),
-		alignBars: getOptionValue(state, 'rendering', 'alignBars'),
-		harmonizeAccidentals: getOptionValue(state, 'rendering', 'harmonizeAccidentals'),
-		transposeValue: getOptionValue(state, 'rendering', 'transposeValue'),
-		autoRepeatChords: getOptionValue(state, 'rendering', 'autoRepeatChords'),
-		expandSectionRepeats: getOptionValue(state, 'rendering', 'expandSectionRepeats'),
-		useShortNamings: getOptionValue(state, 'rendering', 'useShortNamings'),
-		simplifyChords: getOptionValue(state, 'rendering', 'simplifyChords'),
-	})
-)(SongRenderer);
+export default connect((state) => ({
+	// songPreferences
+	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
+	harmonizeAccidentals: getOptionValue(
+		state,
+		'songPreferences',
+		'harmonizeAccidentals'
+	),
+	accidentalsType: getOptionValue(
+		state,
+		'songPreferences',
+		'preferredAccidentals'
+	),
+
+	// songFormatting
+	chartFormat: getOptionValue(state, 'songFormatting', 'chartFormat'),
+	chartType: getOptionValue(state, 'songFormatting', 'chartType'),
+	alignChordsWithLyrics: getOptionValue(
+		state,
+		'songFormatting',
+		'alignChordsWithLyrics'
+	),
+	alignBars: getOptionValue(state, 'songFormatting', 'alignBars'),
+	autoRepeatChords: getOptionValue(
+		state,
+		'songFormatting',
+		'autoRepeatChords'
+	),
+	expandSectionCopy: getOptionValue(
+		state,
+		'songFormatting',
+		'expandSectionCopy'
+	),
+}))(SongRenderer);

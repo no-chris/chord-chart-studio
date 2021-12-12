@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 function PageHeader(props) {
 	const { title } = props;
 
-	return (
-		<div className={'printPreview-pageHeader'}>
-			{title}
-		</div>
-	);
+	return <div className={'printPreview-pageHeader'}>{title}</div>;
 }
 PageHeader.defaultProps = {
 	allColumnsLines: [],

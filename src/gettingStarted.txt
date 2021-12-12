@@ -1,0 +1,15 @@
+Welcome to Chord Charts Studio!
+
+Chord Charts Studio is the official editor of the ChordMark format. 
+You can use it to quickly write accurate transcription of songs made up of chords and lyrics. 
+
+A % D7.. E7..
+_Just write _some chords, some _lyrics
+%
+_And see how it _looks: _terrific!
+
+Where to start? You can either:
+- check the sample song on the left
+- read the user guide, by clicking the big yellow button in the top right corner
+
+Have fun!

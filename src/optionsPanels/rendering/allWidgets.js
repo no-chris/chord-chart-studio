@@ -1,220 +1,18 @@
 /* eslint-disable max-lines */
 export default {
-	widgetsOrder: [
-		'style',
-		'alignBars',
-		'autoRepeatChords',
-		'expandSectionRepeats',
-
-		'layout',
-		'helpers',
-		'chords',
-		'format',
-	],
+	widgetsOrder: ['key', 'preferences', 'layout', 'style'],
 
 	allWidgets: {
-		style: {
-			label: 'Rendering style',
-			type: 'select',
-			typeOptions: {
-				allChoices: [
-					{
-						id: 'styleChordMark',
-						label: 'ChordMark',
-						value: 'chordmark'
-					},
-					// {
-					// 	id: 'styleChordpro',
-					// 	label: 'ChordPro',
-					// 	value: 'chordpro'
-					// },
-				],
-			},
-			option: {
-				context: 'rendering',
-				key: 'style'
-			},
-		},
-		alignBars: {
-			label: 'Align bars',
-			type: 'toggle',
-			option: {
-				context: 'rendering',
-				key: 'alignBars'
-			},
-		},
-		autoRepeatChords: {
-			label: 'Auto repeat chords',
-			type: 'toggle',
-			option: {
-				context: 'rendering',
-				key: 'autoRepeatChords'
-			},
-		},
-		expandSectionRepeats: {
-			label: 'Expand section repeats',
-			type: 'toggle',
-			option: {
-				context: 'rendering',
-				key: 'expandSectionRepeats'
-			},
-		},
-
-
-
-		layout: {
+		key: {
+			label: 'Key',
 			type: 'optionsGroup',
-			label: 'Layout',
-			icon: 'view_compact',
-
-			groupWidgetsOrder: [
-				'documentSize',
-				'documentMargins',
-				'columnsCount',
-				'columnBreakOnParagraph',
-			],
-			allGroupWidgets: {
-				documentSize: {
-					label: 'Document size',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'documentSizeA4',
-								label: 'A4',
-								value: 'a4'
-							},
-							{
-								id: 'documentSizeBooxMax2Pro',
-								label: 'Boox Max 2 Pro',
-								value: 'booxmax2pro'
-							},
-						],
-					},
-					option: {
-						context: 'rendering',
-						key: 'documentSize'
-					},
-				},
-
-				documentMargins: {
-					label: 'Margins',
-					type: 'slider',
-					typeOptions: {
-						min: 1,
-						max: 5
-					},
-					option: {
-						context: 'rendering',
-						key: 'documentMargins'
-					},
-				},
-
-				columnsCount: {
-					label: 'Columns',
-					type: 'slider',
-					typeOptions: {
-						min: 1,
-						max: 4
-					},
-					option: {
-						context: 'rendering',
-						key: 'columnsCount'
-					},
-				},
-
-				columnBreakOnParagraph: {
-					label: 'Break on paragraph',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'columnBreakOnParagraph'
-					},
-				},
-			}
-		},
-
-
-		helpers: {
-			type: 'optionsGroup',
-			label: 'Helpers',
-			icon: 'remove_red_eye',
-
-			groupWidgetsOrder: [
-				'showChords',
-				'instrument',
-				'showStrummingPattern',
-			],
-
-			allGroupWidgets: {
-				showChords: {
-					label: 'Show chords diagrams',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'showChords'
-					},
-				},
-
-				instrument: {
-					label: 'Instrument',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'instrumentGuitar',
-								label: 'Guitar',
-								value: 'guitar'
-							},
-							{
-								id: 'instrumentUkulele',
-								label: 'Ukulele',
-								value: 'ukulele'
-							},
-							{
-								id: 'instrumentMandolin',
-								label: 'Mandolin',
-								value: 'mandolin'
-							},
-							{
-								id: 'instrumentPiano',
-								label: 'Piano',
-								value: 'piano'
-							},
-						],
-					},
-					option: {
-						context: 'rendering',
-						key: 'instrument'
-					},
-				},
-
-				showStrummingPattern: {
-					label: 'Show strumming pattern',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'showStrummingPattern'
-					},
-				},
-			}
-		},
-
-
-		chords: {
-			type: 'optionsGroup',
-			label: 'Chords',
 			icon: 'music_note',
 
 			groupWidgetsOrder: [
 				'transposeValue',
-				'simplifyChords',
-				'capoPosition',
 				'harmonizeAccidentals',
 				'preferredAccidentals',
-				'useShortNamings',
 			],
-
 			allGroupWidgets: {
 				transposeValue: {
 					label: 'Transpose',
@@ -225,50 +23,8 @@ export default {
 						showPlusSymbol: true,
 					},
 					option: {
-						context: 'rendering',
-						key: 'transposeValue'
-					},
-				},
-
-				simplifyChords: {
-					label: 'Simplify chords',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'simplifyChordsNone',
-								label: 'None',
-								value: 'none',
-							},
-							{
-								id: 'simplifyChordsMax',
-								label: 'Max',
-								value: 'max',
-							},
-							{
-								id: 'simplifyChordsCore',
-								label: 'Core',
-								value: 'core',
-							},
-						],
-					},
-					option: {
-						context: 'rendering',
-						key: 'simplifyChords'
-					},
-				},
-
-				capoPosition: {
-					label: 'Add capo on fret',
-					type: 'slider',
-					typeOptions: {
-						min: 0,
-						max: 11,
-						showPlusSymbol: false,
-					},
-					option: {
-						context: 'rendering',
-						key: 'capoPosition'
+						context: 'songPreferences',
+						key: 'transposeValue',
 					},
 				},
 
@@ -276,8 +32,8 @@ export default {
 					label: 'Harmonize accidentals',
 					type: 'toggle',
 					option: {
-						context: 'rendering',
-						key: 'harmonizeAccidentals'
+						context: 'songPreferences',
+						key: 'harmonizeAccidentals',
 					},
 				},
 
@@ -289,50 +45,190 @@ export default {
 							{
 								id: 'preferredAccidentalsAuto',
 								label: 'Auto',
-								value: 'auto'
+								value: 'auto',
 							},
 							{
 								id: 'preferredAccidentalsSharp',
-								label: 'Sharp (#)',
-								value: 'sharp'
+								label: '♯',
+								value: 'sharp',
 							},
 							{
 								id: 'preferredAccidentalsFlat',
-								label: 'Flats (b)',
-								value: 'flat'
+								label: '♭',
+								value: 'flat',
 							},
 						],
 					},
 					option: {
-						context: 'rendering',
-						key: 'preferredAccidentals'
+						context: 'songPreferences',
+						key: 'preferredAccidentals',
 					},
 				},
-
-				useShortNamings: {
-					label: 'Use short names',
-					type: 'toggle',
-					option: {
-						context: 'rendering',
-						key: 'useShortNamings'
-					},
-				},
-			}
+			},
 		},
 
-
-		format: {
+		preferences: {
+			label: 'Preferences',
 			type: 'optionsGroup',
-			label: 'Format',
-			icon: 'format_size',
+			icon: 'tune',
 
 			groupWidgetsOrder: [
-				'fontSize',
-				'printFontSize',
-				'fontStyle',
-				'chordsColor',
-				'highlightChords',
+				'chartFormat',
+				'chartType',
+				'alignChordsWithLyrics',
+				'alignBars',
+				'autoRepeatChords',
+				'expandSectionCopy',
 			],
+			allGroupWidgets: {
+				chartFormat: {
+					label: 'Export format',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'formatChordMark',
+								label: 'ChordMark',
+								value: 'chordmark',
+							},
+							{
+								id: 'formatChordMarkSrc',
+								label: 'ChordMark (Source)',
+								value: 'chordmarkSrc',
+							},
+							{
+								id: 'formatChordpro',
+								label: 'ChordPro',
+								value: 'chordpro',
+							},
+						],
+					},
+					option: {
+						context: 'songFormatting',
+						key: 'chartFormat',
+					},
+				},
+				chartType: {
+					label: 'Chart type',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'typedisplayAll',
+								label: 'Complete',
+								value: 'all',
+							},
+							{
+								id: 'typedisplayLyrics',
+								label: 'Lyrics only',
+								value: 'lyrics',
+							},
+							{
+								id: 'typedisplayChords',
+								label: 'Chords only',
+								value: 'chords',
+							},
+							{
+								id: 'typedisplayChordsFirstLyricLine',
+								label: 'Chords + First lyric line',
+								value: 'chordsFirstLyricLine',
+							},
+						],
+					},
+					option: {
+						context: 'songFormatting',
+						key: 'chartType',
+					},
+				},
+				alignChordsWithLyrics: {
+					label: 'Align chords with lyrics',
+					type: 'toggle',
+					option: {
+						context: 'songFormatting',
+						key: 'alignChordsWithLyrics',
+					},
+				},
+				alignBars: {
+					label: 'Align bars',
+					type: 'toggle',
+					option: {
+						context: 'songFormatting',
+						key: 'alignBars',
+					},
+				},
+				autoRepeatChords: {
+					label: 'Auto repeat chords',
+					type: 'toggle',
+					option: {
+						context: 'songFormatting',
+						key: 'autoRepeatChords',
+					},
+				},
+				expandSectionCopy: {
+					label: 'Expand copied sections',
+					type: 'toggle',
+					option: {
+						context: 'songFormatting',
+						key: 'expandSectionCopy',
+					},
+				},
+			},
+		},
+
+		layout: {
+			type: 'optionsGroup',
+			label: 'Layout',
+			icon: 'view_compact',
+
+			groupWidgetsOrder: [
+				'columnsCount',
+				'columnBreakOnParagraph',
+				'documentMargins',
+			],
+			allGroupWidgets: {
+				columnsCount: {
+					label: 'Columns',
+					type: 'slider',
+					typeOptions: {
+						min: 1,
+						max: 4,
+					},
+					option: {
+						context: 'songFormatting',
+						key: 'columnsCount',
+					},
+				},
+
+				columnBreakOnParagraph: {
+					label: 'Break on paragraph',
+					type: 'toggle',
+					option: {
+						context: 'songFormatting',
+						key: 'columnBreakOnParagraph',
+					},
+				},
+
+				documentMargins: {
+					label: 'Margins',
+					type: 'slider',
+					typeOptions: {
+						min: 1,
+						max: 5,
+					},
+					option: {
+						context: 'songFormatting',
+						key: 'documentMargins',
+					},
+				},
+			},
+		},
+
+		style: {
+			type: 'optionsGroup',
+			label: 'Style',
+			icon: 'format_size',
+
+			groupWidgetsOrder: ['fontSize', 'chordsColor', 'highlightChords'],
 
 			allGroupWidgets: {
 				fontSize: {
@@ -344,40 +240,8 @@ export default {
 						showPlusSymbol: true,
 					},
 					option: {
-						context: 'rendering',
-						key: 'fontSize'
-					},
-				},
-
-				printFontSize: {
-					label: 'Font size (print)',
-					type: 'slider',
-					typeOptions: {
-						min: -5,
-						max: +5,
-						showPlusSymbol: true,
-					},
-					option: {
-						context: 'rendering',
-						key: 'printFontSize'
-					},
-				},
-
-				fontStyle: {
-					label: 'Font style',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'fontStyleRoboto',
-								label: 'Roboto',
-								value: 'roboto'
-							},
-						],
-					},
-					option: {
-						context: 'rendering',
-						key: 'fontStyle'
+						context: 'songFormatting',
+						key: 'fontSize',
 					},
 				},
 
@@ -389,28 +253,28 @@ export default {
 							{
 								id: 'chordsColor',
 								label: 'Base',
-								value: 'base'
+								value: 'base',
 							},
 							{
 								id: 'chordsColorRed',
 								label: 'Red',
-								value: 'red'
+								value: 'red',
 							},
 							{
 								id: 'chordsColorYellow',
 								label: 'Yellow',
-								value: 'yellow'
+								value: 'yellow',
 							},
 							{
 								id: 'chordsColorGreen',
 								label: 'Green',
-								value: 'green'
+								value: 'green',
 							},
 						],
 					},
 					option: {
-						context: 'rendering',
-						key: 'chordsColor'
+						context: 'songFormatting',
+						key: 'chordsColor',
 					},
 				},
 
@@ -418,11 +282,11 @@ export default {
 					label: 'Highlight Chords',
 					type: 'toggle',
 					option: {
-						context: 'rendering',
-						key: 'highlightChords'
+						context: 'songFormatting',
+						key: 'highlightChords',
 					},
 				},
-			}
+			},
 		},
 	},
 };

@@ -5,11 +5,9 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Toggle from '../../../../../../src/ui/sideBar/options/_components/Toggle';
 
-
 afterEach(cleanup);
 
 describe('Toggle', () => {
-
 	let props;
 	const setOption = jest.fn();
 
@@ -26,12 +24,9 @@ describe('Toggle', () => {
 		setOption.mockReset();
 	});
 
-
 	describe('Toggle state', () => {
 		test('Should render "on" state if value === true', () => {
-			const { container, getByText } = render(<Toggle
-				{...props}
-			/>);
+			const { container, getByText } = render(<Toggle {...props} />);
 			getByText(props.label);
 			getByText('toggle_on');
 
@@ -39,10 +34,9 @@ describe('Toggle', () => {
 		});
 
 		test('Should render "off" state if value === false', () => {
-			const { container, getByText } = render(<Toggle
-				{...props}
-				optionValue={false}
-			/>);
+			const { container, getByText } = render(
+				<Toggle {...props} optionValue={false} />
+			);
 			getByText(props.label);
 			getByText('toggle_off');
 
@@ -52,10 +46,9 @@ describe('Toggle', () => {
 
 	describe('onClick()', () => {
 		test('should not respond to click if option is disabled', () => {
-			const { container } = render(<Toggle
-				{...props}
-				isInteractable={false}
-			/>);
+			const { container } = render(
+				<Toggle {...props} isInteractable={false} />
+			);
 
 			fireEvent.click(container.firstChild);
 
@@ -63,9 +56,7 @@ describe('Toggle', () => {
 		});
 
 		test('should setOption to false on click if value === true', () => {
-			const { container } = render(<Toggle
-				{...props}
-			/>);
+			const { container } = render(<Toggle {...props} />);
 
 			fireEvent.click(container.firstChild);
 
@@ -74,10 +65,9 @@ describe('Toggle', () => {
 		});
 
 		test('should setOption to true on click if value === false', () => {
-			const { container } = render(<Toggle
-				{...props}
-				optionValue={false}
-			/>);
+			const { container } = render(
+				<Toggle {...props} optionValue={false} />
+			);
 
 			fireEvent.click(container.firstChild);
 
@@ -85,5 +75,4 @@ describe('Toggle', () => {
 			expect(setOption).toHaveBeenCalledWith('myContext', 'myKey', true);
 		});
 	});
-
 });

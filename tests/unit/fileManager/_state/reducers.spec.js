@@ -19,13 +19,12 @@ describe('fileManager: reducers', () => {
 		});
 	});
 
-
 	describe(fmActionsTypes.FILE_MANAGER_SELECT_FILE, () => {
 		test('should select given file and stop renaming', () => {
 			const expected = {
 				...initialState,
 				selected: 'myId',
-				renamed: ''
+				renamed: '',
 			};
 			const state = reducers(initialState, fmActions.selectFile('myId'));
 			expect(state).toEqual(expected);
@@ -35,85 +34,109 @@ describe('fileManager: reducers', () => {
 			const expected = {
 				...initialState,
 				selected: 'myId',
-				renamed: 'myId'
+				renamed: 'myId',
 			};
 			const state1 = deepFreeze({
 				...initialState,
-				renamed: 'myId'
+				renamed: 'myId',
 			});
 			const state = reducers(state1, fmActions.selectFile('myId'));
 			expect(state).toEqual(expected);
 		});
 	});
 
-
 	describe(fmActionsTypes.FILE_MANAGER_ENABLE_RENAME, () => {
 		test('should select given file and start renaming', () => {
 			const originalState = deepFreeze({
 				...initialState,
-				renamed: ''
+				renamed: '',
 			});
 			const expected = {
 				...initialState,
-				renamed: 'myId'
+				renamed: 'myId',
 			};
-			const state = reducers(originalState, fmActions.enableRename('myId'));
+			const state = reducers(
+				originalState,
+				fmActions.enableRename('myId')
+			);
 			expect(state).toEqual(expected);
 		});
 	});
-
 
 	describe(dbFilesActionsTypes.DB_FILES_CREATE, function () {
 		test('should select and rename created file', () => {
 			const expected = {
 				...initialState,
 				selected: 'myId',
-				renamed: 'myId'
+				renamed: 'myId',
 			};
 			uuidv4.mockReturnValue('myId');
 
-			const state = reducers(initialState, dbFilesActions.createFile('myTitle'));
+			const state = reducers(
+				initialState,
+				dbFilesActions.createFile('myTitle')
+			);
 			expect(state).toEqual(expected);
 		});
 	});
 
+	describe(dbFilesActionsTypes.DB_FILES_IMPORT, function () {
+		test('should select imported file', () => {
+			const expected = {
+				...initialState,
+				selected: 'myId',
+				renamed: '',
+			};
+			uuidv4.mockReturnValue('myId');
+
+			const state = reducers(
+				initialState,
+				dbFilesActions.importFile('myTitle')
+			);
+			expect(state).toEqual(expected);
+		});
+	});
 
 	describe(dbFilesActionsTypes.DB_FILES_UPDATE, () => {
 		test('should stop renaming file on update', () => {
 			const originalState = deepFreeze({
 				...initialState,
 				selected: 'myId',
-				renamed: 'myId'
+				renamed: 'myId',
 			});
 			const expected = {
 				...originalState,
-				renamed: ''
+				renamed: '',
 			};
 			uuidv4.mockReturnValue('myId');
 
-			const state = reducers(originalState, dbFilesActions.updateFile('myId', { title: 'myNewTitle' }));
+			const state = reducers(
+				originalState,
+				dbFilesActions.updateFile('myId', { title: 'myNewTitle' })
+			);
 			expect(state).toEqual(expected);
 		});
 	});
-
 
 	describe(dbFilesActionsTypes.DB_FILES_DELETE, () => {
 		test('should de-select file and stop renaming it on delete', () => {
 			const originalState = deepFreeze({
 				...initialState,
 				selected: 'myId',
-				renamed: 'myId'
+				renamed: 'myId',
 			});
 			const expected = {
 				...originalState,
 				selected: '',
-				renamed: ''
+				renamed: '',
 			};
 			uuidv4.mockReturnValue('myId');
 
-			const state = reducers(originalState, dbFilesActions.deleteFile('myId'));
+			const state = reducers(
+				originalState,
+				dbFilesActions.deleteFile('myId')
+			);
 			expect(state).toEqual(expected);
 		});
 	});
-
 });

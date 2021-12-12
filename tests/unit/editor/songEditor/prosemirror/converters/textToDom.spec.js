@@ -8,7 +8,7 @@ describe('textToDom', () => {
 
 describe('Behaviour', () => {
 	test('Should wrap each line in <p>', () => {
-		const input =`
+		const input = `
 This is a text
 that spans multiple lines
   sometimes starts with spaces

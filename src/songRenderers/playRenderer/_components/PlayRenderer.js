@@ -6,7 +6,13 @@ import PropTypes from 'prop-types';
 import SongRenderer from '../../_containers/SongRenderer';
 
 function PlayRenderer(props) {
-	const { selectedFile, fontSize, chordsColor, highlightChords, columnsCount } = props;
+	const {
+		selectedFile,
+		fontSize,
+		chordsColor,
+		highlightChords,
+		columnsCount,
+	} = props;
 
 	const classNames = ['playRenderer'];
 	classNames.push('playRenderer--columns-' + columnsCount);
@@ -16,11 +22,13 @@ function PlayRenderer(props) {
 		classNames.push('cmChordLine--highlightChords');
 	}
 
-
 	return (
 		<div className={'playRendererWrapper1'}>
 			<div className={'playRendererWrapper2'}>
-				<div className={classNames.join(' ')} data-testid={'playRenderer'}>
+				<div
+					className={classNames.join(' ')}
+					data-testid={'playRenderer'}
+				>
 					<SongRenderer content={selectedFile.content} />
 				</div>
 			</div>

@@ -1,26 +1,30 @@
 @import '../../../../scss/abstract';
 
-
 $themes: (
-	light: (
-
-	),
+	light: (),
 	dark: (
 		song-txt: cv(dark-background),
 		song-bg: cv(dark-foreground),
 	),
 );
 
-
 .exportPreview {
-  padding: $spacer-small;
-  @include themify($themes) {
-    background-color: themed('song-bg');
-  }
+	padding: $spacer-small;
+	@include themify($themes) {
+		background-color: themed('song-bg');
+	}
 }
 
 .exp-SongRenderer {
-  @include themify($themes) {
-    color: themed('song-txt');
-  }
+	p {
+		margin: 0;
+		font-family: $font-family-monospace;
+		white-space: pre-wrap;
+
+		@include font-size(small);
+	}
+
+	@include themify($themes) {
+		color: themed('song-txt');
+	}
 }

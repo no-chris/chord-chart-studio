@@ -1,4 +1,4 @@
-import { loadState, saveState }  from '../../../src/state/localStorage';
+import { loadState, saveState } from '../../../src/state/localStorage';
 
 describe('localStorage', () => {
 	test('Module', () => {
@@ -18,15 +18,18 @@ describe('saveState()', () => {
 		const state = {
 			foo: {
 				bar: {
-					baz: 'foobarbaz'
-				}
-			}
+					baz: 'foobarbaz',
+				},
+			},
 		};
 		const serializedState = JSON.stringify(state);
 		saveState(state);
 
 		expect(localStorage.setItem).toHaveBeenCalledTimes(1);
-		expect(localStorage.setItem).toHaveBeenCalledWith('state', serializedState);
+		expect(localStorage.setItem).toHaveBeenCalledWith(
+			'state',
+			serializedState
+		);
 		expect(localStorage.__STORE__.state).toEqual(serializedState);
 	});
 
@@ -44,9 +47,9 @@ describe('loadState()', () => {
 		const state = {
 			foo: {
 				bar: {
-					baz: 'foobarbaz'
-				}
-			}
+					baz: 'foobarbaz',
+				},
+			},
 		};
 		localStorage.__STORE__.state = JSON.stringify(state);
 
@@ -57,7 +60,6 @@ describe('loadState()', () => {
 
 	test('should return undefined if state is not present in store', () => {
 		expect(loadState()).toBeUndefined();
-
 	});
 
 	test('should return undefined in case of localStorage error', () => {

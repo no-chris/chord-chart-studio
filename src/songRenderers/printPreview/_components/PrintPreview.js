@@ -4,25 +4,27 @@ import _pick from 'lodash/pick';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import renderSong from '../../../core/renderSong';
+import { renderAsHtml } from '../../../core/renderSong';
 import AllPages from './AllPages';
-
 
 function PrintPreview(props) {
 	const { selectedFile, highlightChords } = props;
 
 	const renderOptions = _pick(props, [
-		'alignBars',
+		'transposeValue',
 		'harmonizeAccidentals',
 		'accidentalsType',
-		'transposeValue',
+
+		'chartType',
+		'alignChordsWithLyrics',
+		'alignBars',
 		'autoRepeatChords',
-		'expandSectionRepeats',
-		'useShortNamings',
-		'simplifyChords',
+		'expandSectionCopy',
 	]);
 
-	const allLines = renderSong(selectedFile.content || '', renderOptions).split('\n');
+	const allLines = renderAsHtml(selectedFile.content || '', {
+		...renderOptions,
+	}).split('\n');
 
 	const classNames = ['printPreview'];
 	if (highlightChords) {
@@ -32,26 +34,26 @@ function PrintPreview(props) {
 	return (
 		<div className={classNames.join(' ')} data-testid={'printPreview'}>
 			<AllPages
-				title={selectedFile.title}
+				title={selectedFile.title || ''}
 				allLines={allLines}
 				columnsCount={props.columnsCount}
 				columnBreakOnParagraph={props.columnBreakOnParagraph}
-				documentSize={props.documentSize}
+				documentSize={props.documentSize || 'a4'}
 				documentMargins={props.documentMargins}
-				printFontSize={props.printFontSize}
+				fontSize={props.fontSize}
 			/>
 		</div>
 	);
 }
 PrintPreview.propTypes = {
+	chartType: PropTypes.string.isRequired,
 	selectedFile: PropTypes.object.isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
-	documentSize: PropTypes.string.isRequired,
+	documentSize: PropTypes.string,
 	documentMargins: PropTypes.number.isRequired,
-	printFontSize: PropTypes.number.isRequired,
+	fontSize: PropTypes.number.isRequired,
 	highlightChords: PropTypes.bool.isRequired,
 };
 
 export default PrintPreview;
-

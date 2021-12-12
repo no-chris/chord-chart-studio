@@ -18,7 +18,7 @@ describe('AppLayout', () => {
 			rightBar: <div>rightBar</div>,
 			isRightBarCollapsed: false,
 			isLeftBarCollapsed: false,
-			editorMode: 'edit'
+			editorMode: 'edit',
 		};
 
 		resetStore();
@@ -26,11 +26,13 @@ describe('AppLayout', () => {
 
 	describe('Sidebars', () => {
 		test('Toggle leftBar', () => {
-			const { getByTestId, getByText } = render(withStore(
-				<App {...props} />
-			));
+			const { getByTestId, getByText } = render(
+				withStore(<App {...props} />)
+			);
 
-			let isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(getState());
+			let isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(
+				getState()
+			);
 			expect(isLeftBarCollapsed).toBe(false);
 
 			// Collapse leftBar
@@ -39,7 +41,9 @@ describe('AppLayout', () => {
 				fireEvent.click(leftBarCollapser);
 			});
 
-			isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(getState());
+			isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(
+				getState()
+			);
 			expect(isLeftBarCollapsed).toBe(true);
 
 			// Now open it
@@ -48,16 +52,20 @@ describe('AppLayout', () => {
 				fireEvent.click(leftBar);
 			});
 
-			isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(getState());
+			isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(
+				getState()
+			);
 			expect(isLeftBarCollapsed).toBe(false);
 		});
 
 		test('Toggle rightBar', () => {
-			const { getByTestId, getByText } = render(withStore(
-				<App {...props} />
-			));
+			const { getByTestId, getByText } = render(
+				withStore(<App {...props} />)
+			);
 
-			let isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(getState());
+			let isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(
+				getState()
+			);
 			expect(isRightBarCollapsed).toBe(false);
 
 			// Collapse leftBar
@@ -66,7 +74,9 @@ describe('AppLayout', () => {
 				fireEvent.click(rightBarCollapser);
 			});
 
-			isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(getState());
+			isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(
+				getState()
+			);
 			expect(isRightBarCollapsed).toBe(true);
 
 			// Now open it
@@ -75,7 +85,9 @@ describe('AppLayout', () => {
 				fireEvent.click(leftBar);
 			});
 
-			isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(getState());
+			isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(
+				getState()
+			);
 			expect(isRightBarCollapsed).toBe(false);
 		});
 	});

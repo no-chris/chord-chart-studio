@@ -1,63 +1,60 @@
 @import '../../../../../scss/abstract';
 @import '../_themes.scss';
 
-
 .sb-optionsGroup {
-  padding-top: $spacer-medium;
-}
+	padding-top: $spacer-medium;
 
+	&:first-of-type {
+		padding-top: 0;
+	}
+}
 
 .sb-optionsGroup-title {
-  padding: $spacer-tiny $spacer-small $spacer-tiny $spacer-tiny;
+	padding: $spacer-tiny $spacer-small $spacer-tiny $spacer-tiny;
 
-  display: flex;
+	display: flex;
 
-  @include font-size(normal);
-  font-weight: $weight-bold;
+	@include font-size(normal);
+	font-weight: $weight-bold;
 
-  @include themify($themes) {
-    border-bottom: 2px solid themed('optionsGroup-border');
-  }
+	@include themify($themes) {
+		border-bottom: 2px solid themed('optionsGroup-border');
+	}
 
-  .sb-optionsGroup-isNotInteractable & {
-    @include themify($themes) {
-      color: themed('option-isDisabled');
-    }
-  }
+	.sb-optionsGroup-isNotInteractable & {
+		@include themify($themes) {
+			color: themed('option-isDisabled');
+		}
+	}
 
-  .sb-optionsGroup:not(.sb-optionsGroup-isNotInteractable) &:hover {
-    cursor: pointer;
+	.sb-optionsGroup:not(.sb-optionsGroup-isNotInteractable) &:hover {
+		cursor: pointer;
 
-    @include themify($themes) {
-      background-color: themed('optionsGroup-bgHover');
-    }
-  }
+		@include themify($themes) {
+			background-color: themed('optionsGroup-bgHover');
+		}
+	}
 }
-
 
 .sb-optionsGroup-label {
-  flex: 1 1 auto;
+	flex: 1 1 auto;
 }
-
 
 .sb-optionsGroup-toggle {
-  flex: 0 0 auto;
+	flex: 0 0 auto;
 }
-
 
 .sb-optionsGroup-content {
 }
 
-
 .sb-optionsGroup-iconTitle {
-  .icon {
-    @include font-size(base);
-  }
+	.icon {
+		@include font-size(base);
+	}
 }
 
-
 .sb-optionsGroup-iconToggle {
-  .icon {
-    @include font-size(big);
-  }
+	.icon {
+		@include font-size(big);
+	}
 }

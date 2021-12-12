@@ -15,11 +15,12 @@ import textToDom from './converters/textToDom';
 
 import 'prosemirror-view/style/prosemirror.css';
 
-
 function createEditorState(editorContent) {
 	return EditorState.create({
-		doc: pmDOMParser.fromSchema(editorSchema).parse(textToDom(editorContent), { preserveWhitespace: 'full' }),
-		plugins: getPlugins()
+		doc: pmDOMParser
+			.fromSchema(editorSchema)
+			.parse(textToDom(editorContent), { preserveWhitespace: 'full' }),
+		plugins: getPlugins(),
 	});
 }
 
@@ -27,11 +28,12 @@ function createEditorView(editorState, updateFile, fileId) {
 	return new EditorView(null, {
 		state: editorState,
 		dispatchTransaction: function dispatchTransaction(transaction) {
-			const { state, transactions } = this.state.applyTransaction(transaction);
+			const { state, transactions } =
+				this.state.applyTransaction(transaction);
 
 			this.updateState(state);
 
-			if (transactions.some(tr => tr.docChanged)) {
+			if (transactions.some((tr) => tr.docChanged)) {
 				updateFile(fileId, { content: stateToText(state) });
 			}
 		},
@@ -50,7 +52,10 @@ function ProseMirrorEditorView(props) {
 	 * The later is needed as we need to to re-bind the change handler with the new file id.
 	 */
 	function shouldCreateEditor() {
-		return selectedFileId && (!editorView.current || (previousFileId !== selectedFileId));
+		return (
+			selectedFileId &&
+			(!editorView.current || previousFileId !== selectedFileId)
+		);
 	}
 
 	// Editor has been previously created, but now no file is selected anymore
@@ -73,20 +78,21 @@ function ProseMirrorEditorView(props) {
 			}
 
 			const editorState = createEditorState(editorContent);
-			editorView.current = createEditorView(editorState, updateFile, selectedFileId);
+			editorView.current = createEditorView(
+				editorState,
+				updateFile,
+				selectedFileId
+			);
 			editorDom.current.appendChild(editorView.current.dom);
 
 			// expose editor instance as a component property for unit tests
 			ProseMirrorEditorView.editorView = editorView.current;
-
 		} else if (isEditorOrphan()) {
 			destroyEditor();
 		}
 	});
 
-	return (
-		<div className={'prosemirrorWrapper'} ref={editorDom} />
-	);
+	return <div className={'prosemirrorWrapper'} ref={editorDom} />;
 }
 
 ProseMirrorEditorView.defaultProps = {
@@ -101,7 +107,6 @@ ProseMirrorEditorView.propTypes = {
 };
 
 export default ProseMirrorEditorView;
-
 
 // @see https://reactjs.org/docs/hooks-faq.html#how-to-get-the-previous-props-or-state
 function usePrevious(value) {

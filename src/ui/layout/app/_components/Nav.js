@@ -6,25 +6,22 @@ import PropTypes from 'prop-types';
 import NavEntry from './NavEntry.js';
 
 function Nav(props) {
-	const {
-		currentMode,
-		allEntries,
-		setEditorMode,
-	} = props;
+	const { currentMode, allEntries, setEditorMode, selectedId } = props;
 
 	return (
 		<nav className={'mainNav'}>
 			<ul className={'mainNav-entries'}>
-				{
-					allEntries.map((entry, key) =>
-						<NavEntry
-							key={key}
-							isActive={(entry.editorMode === currentMode)}
-							setEditorMode={setEditorMode}
-							{...entry}
-						/>
-					)
-				}
+				{allEntries.map((entry, key) => (
+					<NavEntry
+						key={key}
+						isActive={
+							!!selectedId && entry.editorMode === currentMode
+						}
+						isDisabled={!selectedId}
+						setEditorMode={setEditorMode}
+						{...entry}
+					/>
+				))}
 			</ul>
 		</nav>
 	);
@@ -33,6 +30,7 @@ function Nav(props) {
 Nav.propTypes = {
 	currentMode: PropTypes.string.isRequired,
 	setEditorMode: PropTypes.func.isRequired,
+	selectedId: PropTypes.string,
 	allEntries: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,

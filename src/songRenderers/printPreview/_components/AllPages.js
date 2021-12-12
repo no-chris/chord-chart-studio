@@ -9,9 +9,8 @@ import getAllLinesHeight from '../helpers/getAllLinesHeight';
 import getPagesHeight from '../helpers/getPagesHeight';
 import padColumns from '../helpers/padColumns';
 
-
 function AllPages(props) {
-	const [ allPagesColumns, setAllPagesColumns ] = useState([]);
+	const [allPagesColumns, setAllPagesColumns] = useState([]);
 
 	const {
 		title,
@@ -20,7 +19,7 @@ function AllPages(props) {
 		columnBreakOnParagraph,
 		documentSize,
 		documentMargins,
-		printFontSize,
+		fontSize,
 	} = props;
 
 	useLayoutEffect(() => {
@@ -29,16 +28,22 @@ function AllPages(props) {
 				columnsCount,
 				documentSize,
 				documentMargins,
-				printFontSize
+				fontSize,
 			};
 
-			const allLinesHeight = await getAllLinesHeight(allLines, pageOptions);
+			const allLinesHeight = await getAllLinesHeight(
+				allLines,
+				pageOptions
+			);
 
-			const { normalPageHeight, firstPageHeight } = await getPagesHeight(title, pageOptions);
+			const { normalPageHeight, firstPageHeight } = await getPagesHeight(
+				title,
+				pageOptions
+			);
 
 			const allLinesWithHeight = allLines.map((line, index) => ({
 				content: line,
-				height: allLinesHeight[index]
+				height: allLinesHeight[index],
 			}));
 
 			const mapped = mapLinesToColumns(allLinesWithHeight, {
@@ -58,25 +63,23 @@ function AllPages(props) {
 		columnBreakOnParagraph,
 		documentSize,
 		documentMargins,
-		printFontSize,
+		fontSize,
 	]);
 
 	const allPagesRendered = allPagesColumns.map((pageColumns, index) => {
-		return <Page
-			key={index}
-			pageHeader={(index === 0) ? <PageHeader title={title} /> : null}
-			allColumnsLines={padColumns(columnsCount, pageColumns)}
-			documentSize={documentSize}
-			documentMargins={documentMargins}
-			printFontSize={printFontSize}
-		/>;
+		return (
+			<Page
+				key={index}
+				pageHeader={index === 0 ? <PageHeader title={title} /> : null}
+				allColumnsLines={padColumns(columnsCount, pageColumns)}
+				documentSize={documentSize}
+				documentMargins={documentMargins}
+				fontSize={fontSize}
+			/>
+		);
 	});
 
-	return (
-		<React.Fragment>
-			{allPagesRendered}
-		</React.Fragment>
-	);
+	return <React.Fragment>{allPagesRendered}</React.Fragment>;
 }
 
 AllPages.propTypes = {
@@ -86,7 +89,7 @@ AllPages.propTypes = {
 	columnBreakOnParagraph: PropTypes.bool.isRequired,
 	documentSize: PropTypes.string.isRequired,
 	documentMargins: PropTypes.number.isRequired,
-	printFontSize: PropTypes.number.isRequired,
+	fontSize: PropTypes.number.isRequired,
 };
 
 export default AllPages;

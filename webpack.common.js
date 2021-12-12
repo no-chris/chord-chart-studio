@@ -7,10 +7,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const buildDir = 'docs';
 
 const config = {
-	target:'web',
+	target: 'web',
 
 	entry: {
-		main: './src/main.js'
+		main: './src/main.js',
 	},
 
 	output: {
@@ -20,11 +20,12 @@ const config = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Chords Charts Studio',
-			template:'assets/index.html',
+			title: 'Chord Charts Studio',
+			template: 'assets/index.html',
+			favicon: 'assets/favicon.ico',
 		}),
 		new MiniCssExtractPlugin({
-			filename:'css/[name].[fullhash].css',
+			filename: 'css/[name].[fullhash].css',
 		}),
 	],
 
@@ -33,38 +34,53 @@ const config = {
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader'
+				loader: 'babel-loader',
 			},
 			{
 				test: /\.hbs$/,
-				loader: 'handlebars-loader'
+				loader: 'handlebars-loader',
 			},
 			{
 				test: /\.scss|sass|css$/,
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+			},
+			{
+				test: /\.(jp(e*)g|svg)$/,
 				use: [
-					MiniCssExtractPlugin.loader,
-					'css-loader',
-					'sass-loader',
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 8000,
+							name: 'images/[fullhash]-[name].[ext]',
+						},
+					},
 				],
 			},
 			{
-				test: /\.(png|jp(e*)g|svg)$/,
-				use: [{
-					loader: 'url-loader',
-					options: {
-						limit: 8000,
-						name: 'images/[fullhash]-[name].[ext]'
-					}
-				}]
-			}
-		]
+				test: /\.png/,
+				type: 'asset/resource',
+			},
+			{
+				test: /\.txt/,
+				type: 'asset/source',
+			},
+		],
 	},
 
 	resolve: {
 		extensions: ['.js', '.jsx'],
 		alias: {
 			react: path.resolve(path.join(__dirname, './node_modules/react')),
-			'react-dom': path.resolve(path.join(__dirname, './node_modules/react-dom'))
+			'react-dom': path.resolve(
+				path.join(__dirname, './node_modules/react-dom')
+			),
+			// Needed by ChordSheetJS (duh!)
+			handlebars: path.resolve(
+				path.join(
+					__dirname,
+					'./node_modules/handlebars/dist/handlebars.js'
+				)
+			),
 		},
 		symlinks: false,
 	},

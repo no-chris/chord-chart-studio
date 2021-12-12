@@ -9,13 +9,12 @@ import { updateFile } from '../../db/files/actions';
 import Editor from '../_components/Editor';
 
 export default connect(
-	state => ({
+	(state) => ({
 		selectedFile: getOne(state, getSelectedId(state)) || {},
 		editorMode: getEditorMode(state),
 	}),
 
 	{
-		updateFile
+		updateFile,
 	}
-
 )(Editor);

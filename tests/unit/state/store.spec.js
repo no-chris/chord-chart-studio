@@ -1,7 +1,7 @@
 jest.mock('../../../src/state/reducers');
 
-import { createStore, getStore }  from '../../../src/state/store';
-import reducers  from '../../../src/state/reducers';
+import { createStore, getStore } from '../../../src/state/store';
+import reducers from '../../../src/state/reducers';
 
 describe('store', () => {
 	test('Module', () => {
@@ -22,9 +22,9 @@ describe('localStorage persistence', () => {
 		const state = {
 			foo: {
 				bar: {
-					baz: 'foobarbaz'
-				}
-			}
+					baz: 'foobarbaz',
+				},
+			},
 		};
 		localStorage.__STORE__.state = JSON.stringify(state);
 
@@ -48,18 +48,29 @@ describe('localStorage persistence', () => {
 
 		reduxStore.dispatch({ type: 'dummyAction' });
 
-		expect(localStorage.__STORE__.state).toEqual(JSON.stringify(modifiedState));
+		expect(localStorage.__STORE__.state).toEqual(
+			JSON.stringify(modifiedState)
+		);
 	});
+});
 
+describe.each([
+	/* */
+	['non existant store', undefined],
+	['empty object', {}],
+	['empty db', { db: {} }],
+	['empty option', { db: { options: {} } }],
+	['with rendering options', { db: { options: { rendering: {} } } }],
+	/**/
+])('migration: %s', (title, state) => {
+	test('should remove rendering options', () => {
+		localStorage.__STORE__.state = JSON.stringify(state);
 
-	test('should enable devTools in browser', () => {
-		window.__REDUX_DEVTOOLS_EXTENSION__ = jest.fn();
+		reducers.mockImplementation((initialState) => initialState);
 
 		createStore();
+		const actualState = getStore().getState();
 
-		expect(window.__REDUX_DEVTOOLS_EXTENSION__).toHaveBeenCalledTimes(1);
-
-		delete window.__REDUX_DEVTOOLS_EXTENSION__;
+		expect(actualState.db.options.rendering).toBeUndefined();
 	});
-
 });

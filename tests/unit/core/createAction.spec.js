@@ -24,6 +24,8 @@ describe('createAction()', () => {
 		const throwingFn = () => createAction(null, payload);
 
 		expect(throwingFn).toThrow(TypeError);
-		expect(throwingFn).toThrow('Cannot create an action without an action type');
+		expect(throwingFn).toThrow(
+			'Cannot create an action without an action type'
+		);
 	});
 });

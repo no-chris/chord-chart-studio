@@ -3,7 +3,7 @@ import { nodes, marks } from 'prosemirror-schema-basic';
 
 const editorSchema = new Schema({
 	nodes: nodes,
-	marks: marks
+	marks: marks,
 });
 
 export default editorSchema;

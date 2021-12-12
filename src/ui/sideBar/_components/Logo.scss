@@ -1,46 +1,37 @@
 @import '../../../../scss/abstract';
 
-
 $themes: (
-        light: (
-
-        ),
-        dark: (
-                logo-txt: cv(dark-foreground),
-                logo-border: cv(dark-foreground, fade),
-        ),
+	light: (),
+	dark: (
+		logo-txt: cv(dark-foreground),
+	),
 );
 
-
 .logo-isExpanded {
-  margin: $spacer-tiny $spacer-small;
-  padding-bottom: $spacer-tiny;
+	display: flex;
+	margin: $spacer-tiny $spacer-small;
 
-  @include font-size(base);
-  font-family: $font-family-headings;
-  font-weight: 700;
-
-  @include themify($themes) {
-    color: themed('logo-txt');
-    border-bottom: 1px dotted themed('logo-border');
-  }
-
-  .leftBar-isCollapsed & {
-    display:none;
-  }
+	.leftBar-isCollapsed & {
+		display: none;
+	}
 }
 
-
-.logo-icon {
-  @include font-size(normal);
-  margin-right: $spacer-tiny;
+.logo-img {
+	flex: 0 0 50px;
+	img {
+		max-width: 100%;
+	}
 }
 
+.logo-txt {
+	flex: 1 1 auto;
+	margin-left: $spacer-tiny;
 
-.logo-isCollapsed {
-  padding: $spacer-small 0;
+	@include font-size(base);
+	font-family: $font-family-headings;
+	font-weight: 700;
 
-  .leftBar:not(.leftBar-isCollapsed) & {
-    display:none;
-  }
+	@include themify($themes) {
+		color: themed('logo-txt');
+	}
 }
