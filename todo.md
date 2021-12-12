@@ -11,8 +11,6 @@
 -   CSS: decide what to do with the font size mixin
 -   CSS: better abstract color variables names (foreground/background, remove systematic theme prefix)
 
--   disable some optinos for authoring: alignBars (true), autoRepeatChords (true), expandSectionRepeats (true)
-
 ## Component checklist
 
 -   memo ?
