@@ -1,6 +1,6 @@
 {
   "name": "@touffi/chords-charts-studio",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "Chords Charts Studio",
   "private": true,
   "author": "Christophe Noël",
@@ -118,7 +118,7 @@
     {
       "path": "./docs/main.*.js",
       "webpack": false,
-      "limit": "22 KB"
+      "limit": "20 KB"
     },
     {
       "path": "./docs/vendors*.js",
