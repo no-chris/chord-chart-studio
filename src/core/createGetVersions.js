@@ -1,6 +1,6 @@
 /* eslint-env node */
-const packageJson = require('../../../../package.json');
-const cmPackageJson = require('../../../../node_modules/chord-mark/package.json');
+const packageJson = require('../../package.json');
+const cmPackageJson = require('../../node_modules/chord-mark/package.json');
 const fs = require('fs');
 
 const chordChartsStudioVersion = 'v' + packageJson.version;

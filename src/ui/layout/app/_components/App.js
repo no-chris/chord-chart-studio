@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import Logo from '../../../sideBar/_components/Logo';
 import Nav from './Nav';
-import UserGuide from './UserGuide';
-import Footer from './Footer';
+import UserGuide from '../../../sideBar/_components/UserGuide';
+import Versions from '../../../sideBar/_components/Versions';
 import Icon from '../../../_components/Icon';
 import SongImporter from '../../../../songImporter/_containers/SongImporter';
 
@@ -86,9 +86,7 @@ function App(props) {
 				>
 					<UserGuide />
 					{rightBar}
-					<div className={'rightBar-footer'}>
-						<Footer />
-					</div>
+					<Versions />
 				</div>
 			</section>
 		</div>

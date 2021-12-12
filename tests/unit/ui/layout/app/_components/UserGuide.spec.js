@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
-import UserGuide from '../../../../../../src/ui/layout/app/_components/UserGuide';
+import UserGuide from '../../../../../../src/ui/sideBar/_components/UserGuide';
 
 afterEach(cleanup);
 

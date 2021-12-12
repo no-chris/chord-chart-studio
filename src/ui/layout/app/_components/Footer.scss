@@ -1,9 +1,0 @@
-@import '../../../../../scss/abstract';
-
-.appFooter {
-	margin-top: $spacer-large;
-	padding: 0 $spacer-small;
-	opacity: 0.5;
-
-	@include font-size(tiny);
-}
