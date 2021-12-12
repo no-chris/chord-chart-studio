@@ -21,4 +21,4 @@ jobs:
       # Install & build & test:
       - run: yarn install
       - run: yarn exec lerna bootstrap
-      - run: yarn exec lerna build
+      - run: yarn exec lerna run build
