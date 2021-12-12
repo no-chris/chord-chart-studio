@@ -1,0 +1,67 @@
+@import '../../../../../scss/abstract';
+@import '../_themes.scss';
+
+.sb-optionSlider {
+	display: flex;
+	flex-wrap: wrap;
+
+	@include font-size(small);
+
+	padding: $spacer-tiny $spacer-small-plus $spacer-tiny $spacer-small;
+
+	@include themify($themes) {
+		border-bottom: 1px dotted themed('option-border');
+	}
+
+	.sb-optionsGroup & {
+		@include themify($themes) {
+			background-color: themed('optionsGroup-option-bg');
+		}
+	}
+
+	&.sb-optionSlider-isNotInteractable {
+		@include themify($themes) {
+			color: themed('option-isDisabled');
+		}
+	}
+
+	&:hover {
+		cursor: not-allowed;
+	}
+
+	&:hover:not(.sb-optionSlider-isNotInteractable) {
+		cursor: pointer;
+		@include themify($themes) {
+			background-color: themed('option-bgHover');
+		}
+	}
+}
+
+.sb-optionSlider-desc {
+	flex: 1 1 auto;
+}
+
+.sb-optionSlider-value {
+	flex: 0 0 auto;
+	vertical-align: middle;
+
+	@include font-size(small);
+}
+
+.sb-optionSlider-range {
+	flex: 1 1 100%;
+
+	input[type='range'] {
+		@include themify($themes) {
+			@include input-type-range(
+				$thumb-color: themed('range-thumb'),
+				$track-color: themed('range-track')
+			);
+		}
+
+		&:disabled {
+			opacity: 0.35;
+			cursor: not-allowed !important;
+		}
+	}
+}

@@ -1,0 +1,15 @@
+@import '../../../../scss/abstract';
+
+.renderingOptionsPanel-isExpanded {
+	.rightBar-isCollapsed & {
+		display: none;
+	}
+}
+
+.renderingOptionsPanel-isCollapsed {
+	padding: $spacer-small 0;
+
+	.rightBar:not(.rightBar-isCollapsed) & {
+		display: none;
+	}
+}

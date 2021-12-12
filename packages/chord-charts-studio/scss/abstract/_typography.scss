@@ -1,0 +1,76 @@
+@use 'sass:math';
+
+// Source: Knacss
+
+// Font families
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+	Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !default; // system font stack
+$font-family-headings: 'Open Sans', sans-serif !default; // font for h1, h2.. h6
+$font-family-monospace: 'PT Mono', consolas, courier, monospace !default; // font for code and samples
+
+// Font sizes (1.6rem value is "16px" equivalent)
+$font-size-base: 1.6rem !default;
+
+$font-sizes: (
+	h1: (
+		mobile: 2.8rem,
+		desktop: 3.2rem,
+	),
+	h2: (
+		mobile: 2.4rem,
+		desktop: 2.8rem,
+	),
+	h3: (
+		mobile: 2rem,
+		desktop: 2.4rem,
+	),
+	h4: (
+		mobile: 1.8rem,
+		desktop: 2rem,
+	),
+	h5: (
+		mobile: 1.6rem,
+		desktop: 1.8rem,
+	),
+	h6: (
+		mobile: 1.4rem,
+		desktop: 1.6rem,
+	),
+	big: (
+		mobile: 1.6rem,
+		desktop: 1.8rem,
+	),
+	base: (
+		mobile: 1.4rem,
+		desktop: $font-size-base,
+	),
+	normal: (
+		mobile: 1.2rem,
+		desktop: 1.4rem,
+	),
+	small: (
+		mobile: 1rem,
+		desktop: 1.2rem,
+	),
+	tiny: (
+		mobile: 0.8rem,
+		desktop: 1rem,
+	),
+) !default;
+
+// Line heights
+$line-height-s: 1.3 !default;
+$line-height-base: 1.5 !default;
+$line-height-l: 1.7 !default;
+
+// Default margin-bottom
+$margin-bottom-base: 1rem !default;
+$headings-margin-bottom: math.div($margin-bottom-base, 2) !default;
+$paragraph-margin-bottom: $margin-bottom-base !default;
+
+// Font weights
+$weight-light: 200 !default;
+$weight-book: 300 !default;
+$weight-regular: 400 !default;
+$weight-medium: 500 !default;
+$weight-bold: 700 !default;
