@@ -7,7 +7,7 @@ module.exports = {
 	coverageDirectory: '<rootDir>/coverage',
 	coveragePathIgnorePatterns: [
 		'node_modules',
-		'src/ui/layout/app/createGetVersions.js',
+		'src/core/createGetVersions.js',
 	],
 	coverageReporters: ['json', 'lcov', 'text', 'clover'],
 	coverageThreshold: {
@@ -29,5 +29,6 @@ module.exports = {
 
 	moduleNameMapper: {
 		'\\.(css|scss)$': '<rootDir>/scss/__mocks__/styleMock.js',
+		'\\.(png)$': '<rootDir>/assets/__mocks__/assetMock.js',
 	},
 };
