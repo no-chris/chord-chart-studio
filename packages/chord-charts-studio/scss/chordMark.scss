@@ -34,16 +34,19 @@ $themes: (
 
 .cmLine {
 	margin: 0;
-	font-family: $font-family-monospace;
+	font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+		'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+		'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
+		monospace;
 	white-space: pre-wrap;
 
 	// editorPreview
 	.editorPreview & {
 		padding: 0 $spacer-small;
-		@include font-size(small);
+		@include font-size(normal);
 	}
 	.exportPreview & {
-		@include font-size(small);
+		@include font-size(normal);
 	}
 
 	// playRenderer
@@ -51,37 +54,37 @@ $themes: (
 		padding: 0 $spacer-small;
 	}
 	.playRenderer.cmLine--fontSize-5 & {
-		font-size: 7px;
-	}
-	.playRenderer.cmLine--fontSize-4 & {
-		font-size: 8px;
-	}
-	.playRenderer.cmLine--fontSize-3 & {
 		font-size: 9px;
 	}
-	.playRenderer.cmLine--fontSize-2 & {
+	.playRenderer.cmLine--fontSize-4 & {
 		font-size: 10px;
 	}
-	.playRenderer.cmLine--fontSize-1 & {
+	.playRenderer.cmLine--fontSize-3 & {
 		font-size: 11px;
 	}
-	.playRenderer.cmLine--fontSize0 & {
+	.playRenderer.cmLine--fontSize-2 & {
 		font-size: 12px;
 	}
-	.playRenderer.cmLine--fontSize1 & {
+	.playRenderer.cmLine--fontSize-1 & {
 		font-size: 13px;
 	}
-	.playRenderer.cmLine--fontSize2 & {
+	.playRenderer.cmLine--fontSize0 & {
 		font-size: 14px;
 	}
-	.playRenderer.cmLine--fontSize3 & {
+	.playRenderer.cmLine--fontSize1 & {
 		font-size: 15px;
 	}
-	.playRenderer.cmLine--fontSize4 & {
+	.playRenderer.cmLine--fontSize2 & {
 		font-size: 16px;
 	}
-	.playRenderer.cmLine--fontSize5 & {
+	.playRenderer.cmLine--fontSize3 & {
 		font-size: 17px;
+	}
+	.playRenderer.cmLine--fontSize4 & {
+		font-size: 18px;
+	}
+	.playRenderer.cmLine--fontSize5 & {
+		font-size: 19px;
 	}
 
 	// printPreview

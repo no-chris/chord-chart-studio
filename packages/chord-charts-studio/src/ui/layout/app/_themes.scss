@@ -12,12 +12,12 @@ $themes: (
 		leftBar-collapser-border: cv(dark-foreground, dark30),
 		// header
 		header-txt: cv(dark-foreground, fade),
-		header-txtHover: cv(dark-foreground),
-		header-txtActive: cv(dark-foreground),
+		header-txtHover: cv(dark-primary, dark10),
+		header-txtActive: cv(dark-primary, dark10),
 		header-txtDisabled: cv(dark-foreground, dark30),
 		header-bg: cv(dark-background),
-		header-bgHover: cv(dark-background, light10),
-		header-bgActive: cv(dark-background, dark10),
+		header-bgHover: cv(dark-accent, light20),
+		header-bgActive: cv(dark-accent),
 		header-bgDisabled: cv(dark-background),
 		header-border: cv(dark-background, dark10),
 		// footer

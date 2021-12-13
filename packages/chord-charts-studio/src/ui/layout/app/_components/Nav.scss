@@ -17,9 +17,14 @@
 .mainNavEntry {
 	display: inline-block;
 	padding: $spacer-small $spacer-medium;
-	cursor: pointer;
+	cursor: default;
+	font-weight: bold;
 
-	&:hover:not(.mainNavEntry-isDisabled) {
+	&:hover:not(.mainNavEntry-isActive) {
+		cursor: pointer;
+	}
+
+	&:hover:not(.mainNavEntry-isDisabled):not(.mainNavEntry-isActive) {
 		@include themify($themes) {
 			color: themed('header-txtHover');
 			background-color: themed('header-bgHover');
