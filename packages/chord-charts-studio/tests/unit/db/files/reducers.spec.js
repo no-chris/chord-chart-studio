@@ -199,6 +199,44 @@ describe('db/files: reducers', () => {
 			expect(state2).toEqual(expected);
 		});
 
+		test('should allow to clear the content', () => {
+			const expected1 = {
+				allFiles: {
+					myUUID: {
+						id: 'myUUID',
+						title: 'myTitle',
+						content: 'myContent',
+					},
+				},
+			};
+			const expected2 = {
+				allFiles: {
+					myUUID: {
+						id: 'myUUID',
+						title: 'myTitle',
+						content: '',
+					},
+				},
+			};
+			uuidv4.mockReturnValue('myUUID');
+			const state1 = deepFreeze(
+				reducers(
+					initialState,
+					actions.createFile('myTitle', 'myContent')
+				)
+			);
+			expect(state1).toEqual(expected1);
+
+			const state2 = reducers(
+				state1,
+				actions.updateFile('myUUID', {
+					content: '',
+				})
+			);
+
+			expect(state2).toEqual(expected2);
+		});
+
 		test('should return same state if given invalid id', () => {
 			uuidv4.mockReturnValue('myUUID');
 			const state1 = deepFreeze(
