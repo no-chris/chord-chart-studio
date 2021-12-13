@@ -10,7 +10,7 @@ export default function stateToText(state) {
 				return '';
 			}
 			return paragraph.content.reduce((acc, current) => {
-				acc += current.text;
+				acc += current.text || '\n';
 				return acc;
 			}, '');
 		})
