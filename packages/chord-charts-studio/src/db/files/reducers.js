@@ -33,7 +33,7 @@ function createFile(state, action) {
 function updateFile(state, action) {
 	const { id, title, content } = action.payload;
 
-	if ((!title && !content) || !state.allFiles[id]) {
+	if ((!title && typeof content === 'undefined') || !state.allFiles[id]) {
 		return state;
 	}
 
@@ -44,7 +44,7 @@ function updateFile(state, action) {
 	if (title) {
 		allFiles[id].title = title;
 	}
-	if (content) {
+	if (typeof content !== 'undefined') {
 		allFiles[id].content = content;
 	}
 	return {

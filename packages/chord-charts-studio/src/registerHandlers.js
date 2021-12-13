@@ -10,7 +10,6 @@ export const _handleMessage = (e) => {
 		...getSongImporterHandlers(),
 	};
 
-	console.log(e);
 	if (e.source !== window || e.origin !== window.location.origin) {
 		return false;
 	}
