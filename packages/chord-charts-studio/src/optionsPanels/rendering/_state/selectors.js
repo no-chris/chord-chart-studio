@@ -11,26 +11,6 @@ import {
 export const getNonInteractableWidgets = (state) => {
 	const nonInteractableWidgets = [];
 
-	const allOptions = Object.keys({
-		...getOptionsDefaults(state, 'songFormatting'),
-		...getOptionsDefaults(state, 'songPreferences'),
-	});
-
-	const selectedId = getSelectedId(state);
-	if (!selectedId) {
-		return allOptions;
-	}
-
-	const editorMode = getEditorMode(state);
-
-	const nonInteractableOptions = _difference(
-		allOptions,
-		editorModeOptions[editorMode]
-	);
-
-	nonInteractableWidgets.push(...nonInteractableOptions);
-
-	// specific rules
 	const chartType = getOptionValue(state, 'songFormatting', 'chartType');
 	if (chartType === 'lyrics') {
 		nonInteractableWidgets.push('alignChordsWithLyrics');
@@ -51,12 +31,6 @@ export const getNonInteractableWidgets = (state) => {
 		nonInteractableWidgets.push('expandSectionCopy');
 	}
 
-	return nonInteractableWidgets;
-};
-
-export const getHiddenWidgets = (state) => {
-	const hiddenWidgets = [];
-
 	const harmonizeAccidentals = getOptionValue(
 		state,
 		'songPreferences',
@@ -64,8 +38,33 @@ export const getHiddenWidgets = (state) => {
 	);
 
 	if (!harmonizeAccidentals) {
-		hiddenWidgets.push('preferredAccidentals');
+		nonInteractableWidgets.push('preferredAccidentals');
 	}
+
+	return nonInteractableWidgets;
+};
+
+export const getHiddenWidgets = (state) => {
+	const hiddenWidgets = [];
+
+	const allOptions = Object.keys({
+		...getOptionsDefaults(state, 'songFormatting'),
+		...getOptionsDefaults(state, 'songPreferences'),
+	});
+
+	const selectedId = getSelectedId(state);
+	if (!selectedId) {
+		return allOptions;
+	}
+
+	const editorMode = getEditorMode(state);
+
+	const nonInteractableOptions = _difference(
+		allOptions,
+		editorModeOptions[editorMode]
+	);
+
+	hiddenWidgets.push(...nonInteractableOptions);
 
 	return hiddenWidgets;
 };
