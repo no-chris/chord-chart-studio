@@ -45,6 +45,8 @@
 }
 
 .fileManagerAction-isDisabled {
+	user-select: none;
+
 	opacity: 0.5;
 }
 

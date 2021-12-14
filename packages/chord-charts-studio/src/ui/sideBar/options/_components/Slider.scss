@@ -20,6 +20,8 @@
 	}
 
 	&.sb-optionSlider-isNotInteractable {
+		user-select: none;
+
 		@include themify($themes) {
 			color: themed('option-isDisabled');
 		}

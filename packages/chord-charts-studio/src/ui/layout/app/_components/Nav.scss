@@ -39,6 +39,7 @@
 	}
 
 	&.mainNavEntry-isDisabled {
+		user-select: none;
 		@include themify($themes) {
 			color: themed('header-txtDisabled');
 			background-color: themed('header-bgDisabled');
