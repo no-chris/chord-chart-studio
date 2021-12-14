@@ -46,6 +46,10 @@ function OptionsPanel(props) {
 						);
 					});
 
+				if (renderedGroupWidgets.length === 0) {
+					return null;
+				}
+
 				GroupComponent = getEntryComponent(widget.type);
 				isGroupInteractable =
 					!nonInteractableWidgets.includes(widgetId);

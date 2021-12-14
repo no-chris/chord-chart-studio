@@ -27,167 +27,103 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Option Groups', () => {
-		test('Render all optionGroups', () => {
-			const { getByText } = render(withStore(<Rendering />));
+		test('Render no optionGroups if no file is selected', () => {
+			const { queryByText } = render(withStore(<Rendering />));
 
 			const allLabels = _.chain(allWidgets.allWidgets)
 				.pickBy((widget) => widget.type === 'optionsGroup')
 				.map((widget) => widget.label)
 				.value();
 
-			getByText(allLabels[0]);
-			getByText(allLabels[1]);
-			getByText(allLabels[2]);
-		});
-
-		test('Layout group: a click on the group title should toggle widgets visibility', () => {
-			dispatch(appActions.setEditorMode('play'));
-
-			const { getByText, queryByText } = render(withStore(<Rendering />));
-
-			const groupLabel = allWidgets.allWidgets.layout.label;
-			const group = getByText(groupLabel);
-
-			queryByText(
-				allWidgets.allWidgets.layout.allGroupWidgets.columnsCount.label
-			);
-			queryByText(
-				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
-			);
-
-			act(() => {
-				fireEvent.click(group);
-			});
-
-			expect(
-				queryByText(
-					allWidgets.allWidgets.layout.allGroupWidgets.columnsCount
-						.label
-				)
-			).toBeNull();
-			expect(
-				queryByText(
-					allWidgets.allWidgets.layout.allGroupWidgets
-						.columnBreakOnParagraph.label
-				)
-			).toBeNull();
-
-			act(() => {
-				fireEvent.click(group);
-			});
-
-			queryByText(
-				allWidgets.allWidgets.layout.allGroupWidgets.columnsCount.label
-			);
-			queryByText(
-				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
-			);
+			expect(queryByText(allLabels[0])).toBeNull();
+			expect(queryByText(allLabels[1])).toBeNull();
+			expect(queryByText(allLabels[2])).toBeNull();
+			expect(queryByText(allLabels[2])).toBeNull();
 		});
 	});
 
-	describe('Some widgets should be disabled depending on editor Mode', () => {
+	describe('Some widgets should be hidden depending on editor Mode', () => {
 		test.skip('All widgets should be disabled if no file is selected', () => {
 			//todo
 		});
 
 		test('Edit mode', () => {
-			const niClassName = '.sb-optionToggle-isNotInteractable';
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('edit'));
 
-			const { getByText } = render(withStore(<Rendering />));
+			const { queryByText } = render(withStore(<Rendering />));
 
-			const harmonizeAccidentals = getByText(
+			const harmonizeAccidentals = queryByText(
 				allWidgets.allWidgets.key.allGroupWidgets.harmonizeAccidentals
 					.label
 			);
 
-			const alignChordsWithLyrics = getByText(
+			const alignChordsWithLyrics = queryByText(
 				allWidgets.allWidgets.preferences.allGroupWidgets
 					.alignChordsWithLyrics.label
 			);
 
-			const columnBreakOnParagraph = getByText(
+			const columnBreakOnParagraph = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
 					.columnBreakOnParagraph.label
 			);
 
-			const highlightChords = getByText(
+			const highlightChords = queryByText(
 				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
 					.label
 			);
 
-			expect(harmonizeAccidentals.closest(niClassName)).toBeInstanceOf(
-				Element
-			);
-			expect(alignChordsWithLyrics.closest(niClassName)).toBeInstanceOf(
-				Element
-			);
-			expect(columnBreakOnParagraph.closest(niClassName)).toBeInstanceOf(
-				Element
-			);
-			expect(highlightChords.closest(niClassName)).toBeInstanceOf(
-				Element
-			);
+			expect(harmonizeAccidentals).toBeInTheDocument();
+			expect(alignChordsWithLyrics).toBeNull();
+			expect(columnBreakOnParagraph).toBeNull();
+			expect(highlightChords).toBeNull();
 		});
 
 		test('Play mode', () => {
-			const niClassName = '.sb-optionToggle-isNotInteractable';
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('play'));
 
-			const { getByText } = render(withStore(<Rendering />));
+			const { queryByText } = render(withStore(<Rendering />));
 
-			const columnBreakOnParagraph = getByText(
+			const columnBreakOnParagraph = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
 					.columnBreakOnParagraph.label
 			);
 
-			expect(columnBreakOnParagraph.closest(niClassName)).toBeInstanceOf(
-				Element
-			);
+			expect(columnBreakOnParagraph).toBeNull();
 		});
 
 		test('Print mode', () => {
-			const niClassName = '.sb-optionSelect-isNotInteractable';
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('print'));
 
-			const { getByText } = render(withStore(<Rendering />));
+			const { queryByText } = render(withStore(<Rendering />));
 
-			const chartFormat = getByText(
-				allWidgets.allWidgets.preferences.allGroupWidgets.chartFormat
-					.label + ':'
+			const chordsColor = queryByText(
+				allWidgets.allWidgets.style.allGroupWidgets.chordsColor.label +
+					':'
 			);
 
-			expect(chartFormat.closest(niClassName)).toBeInstanceOf(Element);
+			expect(chordsColor).toBeNull();
 		});
 
 		test('Export mode', () => {
-			const niClassName = '.sb-optionToggle-isNotInteractable';
-
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('export'));
 
-			const { getByText } = render(withStore(<Rendering />));
+			const { queryByText } = render(withStore(<Rendering />));
 
-			const columnBreakOnParagraph = getByText(
+			const columnBreakOnParagraph = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
 					.columnBreakOnParagraph.label
 			);
-			const highlightChords = getByText(
+			const highlightChords = queryByText(
 				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
 					.label
 			);
 
-			expect(columnBreakOnParagraph.closest(niClassName)).toBeInstanceOf(
-				Element
-			);
-			expect(highlightChords.closest(niClassName)).toBeInstanceOf(
-				Element
-			);
+			expect(columnBreakOnParagraph).toBeNull();
+			expect(highlightChords).toBeNull();
 		});
 	});
 
