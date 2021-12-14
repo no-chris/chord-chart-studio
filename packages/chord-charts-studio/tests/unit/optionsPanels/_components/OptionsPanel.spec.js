@@ -210,6 +210,22 @@ describe('OptionsPanel', () => {
 			expect(allRenderedWidgets[0].props.label).toBe('topLevelWidget2');
 			expect(allRenderedWidgets[1].props.label).toBe('group1Widget1');
 		});
+
+		test('Should not render group whose widgets are hidden', () => {
+			const component = renderer.create(
+				<OptionsPanel
+					{...props}
+					hiddenWidgets={['group1Widget1', 'group1Widget2']}
+				/>
+			);
+
+			const allRenderedWidgets = component.root.findAllByType(MockWidget);
+
+			expect(allRenderedWidgets.length).toBe(2);
+
+			expect(allRenderedWidgets[0].props.label).toBe('topLevelWidget1');
+			expect(allRenderedWidgets[1].props.label).toBe('topLevelWidget2');
+		});
 	});
 
 	describe('Widgets interactability', () => {
