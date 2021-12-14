@@ -183,7 +183,7 @@ body,
 	@include themify($themes) {
 		color: themed('header-txt');
 		background-color: themed('header-bg');
-		border-bottom: 2px solid themed('header-border');
+		border-bottom: 3px solid themed('header-border');
 	}
 
 	@media print {
