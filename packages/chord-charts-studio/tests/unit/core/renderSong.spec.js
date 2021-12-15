@@ -20,11 +20,13 @@ describe('renderAsHtml()', () => {
 		const rendered = renderAsHtml(input);
 
 		expect(rendered).toEqual(
-			'<p class="cmLine"><span class="cmChordLine">' +
+			'<div class="cmSong">' +
+				'<p class="cmLine"><span class="cmChordLine">' +
 				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
 				'</span></p>\n' +
 				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>\n' +
-				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>'
+				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
+				'</div>'
 		);
 	});
 
@@ -37,11 +39,13 @@ describe('renderAsHtml()', () => {
 		);
 
 		expect(rendered).toEqual(
-			'<p class="cmLine"><span class="cmChordLine">' +
+			'<div class="cmSong">' +
+				'<p class="cmLine"><span class="cmChordLine">' +
 				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
 				'</span></p>\n' +
 				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>\n' +
-				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>'
+				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
+				'</div>'
 		);
 	});
 

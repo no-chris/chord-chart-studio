@@ -23,12 +23,14 @@ describe('SongRenderer', () => {
 			const { container } = render(<SongRenderer {...props} />);
 
 			expect(container.firstChild.firstChild.innerHTML).toBe(
-				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>\n' +
+				'<div class="cmSong">' +
+					'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>\n' +
 					'<p class="cmLine"><span class="cmChordLine">' +
 					'<span class="cmBarSeparator">|</span>' +
 					'<span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
 					'</span></p>\n' +
-					'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>'
+					'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>' +
+					'</div>'
 			);
 		});
 
