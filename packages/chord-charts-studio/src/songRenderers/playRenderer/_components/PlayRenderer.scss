@@ -3,7 +3,7 @@
 $themes: (
 	light: (),
 	dark: (
-		playRenderer-bg: cv(dark-secondary, dark10),
+		playRenderer-bg: cv(dark-secondary),
 	),
 );
 
@@ -13,14 +13,9 @@ $themes: (
 	position: relative; // needs to be relative so the "absolute" trick works to fill the height
 	height: 100%;
 	overflow-y: scroll;
-
-	@include themify($themes) {
-		background-color: themed('playRenderer-bg');
-	}
 }
-.playRendererWrapper2 {
-	margin: $spacer-small;
 
+.playRendererWrapper2 {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -28,21 +23,29 @@ $themes: (
 	left: 0;
 }
 
+.playRenderer .cmSong {
+	padding: 0 !important;
+}
+
 .playRenderer--columns-1 {
 	column-count: 1;
+	padding: $spacer-small;
 }
 .playRenderer--columns-2 {
 	column-count: 2;
 	column-fill: auto;
 	height: 100%;
+	padding: $spacer-small;
 }
 .playRenderer--columns-3 {
 	column-count: 3;
 	column-fill: auto;
 	height: 100%;
+	padding: $spacer-small;
 }
 .playRenderer--columns-4 {
 	column-count: 4;
 	column-fill: auto;
 	height: 100%;
+	padding: $spacer-small;
 }

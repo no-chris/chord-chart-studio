@@ -49,11 +49,11 @@ describe('PlayRenderer', () => {
 
 			const element = getByTestId('playRenderer');
 
-			expect(element).toHaveClass('cmLine--fontSize-3');
+			expect(element).toHaveClass('cmSong--fontSize-3');
 
 			rerender(<PlayRenderer {...props} fontSize={4} />);
 
-			expect(element).toHaveClass('cmLine--fontSize4');
+			expect(element).toHaveClass('cmSong--fontSize4');
 		});
 
 		test('Should add correct class for chordsColor', () => {

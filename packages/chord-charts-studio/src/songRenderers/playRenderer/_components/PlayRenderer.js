@@ -7,6 +7,7 @@ import SongRenderer from '../../_containers/SongRenderer';
 
 function PlayRenderer(props) {
 	const {
+		theme,
 		selectedFile,
 		fontSize,
 		chordsColor,
@@ -15,8 +16,9 @@ function PlayRenderer(props) {
 	} = props;
 
 	const classNames = ['playRenderer'];
+	classNames.push('cmTheme-' + theme);
 	classNames.push('playRenderer--columns-' + columnsCount);
-	classNames.push('cmLine--fontSize' + fontSize);
+	classNames.push('cmSong--fontSize' + fontSize);
 	classNames.push('cmChordSymbol--chordsColor-' + chordsColor);
 	if (highlightChords) {
 		classNames.push('cmChordLine--highlightChords');
@@ -37,6 +39,7 @@ function PlayRenderer(props) {
 }
 
 PlayRenderer.propTypes = {
+	theme: PropTypes.string.isRequired,
 	selectedFile: PropTypes.object.isRequired,
 	columnsCount: PropTypes.number.isRequired,
 	fontSize: PropTypes.number.isRequired,
