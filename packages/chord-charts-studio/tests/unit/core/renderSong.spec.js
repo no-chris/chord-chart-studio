@@ -23,8 +23,8 @@ describe('renderAsHtml()', () => {
 			'<div class="cmSong">' +
 				'<p class="cmLine"><span class="cmChordLine">' +
 				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
-				'</span></p>\n' +
-				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>\n' +
+				'</span></p>' +
+				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>' +
 				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
 				'</div>'
 		);
@@ -42,8 +42,8 @@ describe('renderAsHtml()', () => {
 			'<div class="cmSong">' +
 				'<p class="cmLine"><span class="cmChordLine">' +
 				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
-				'</span></p>\n' +
-				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>\n' +
+				'</span></p>' +
+				'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>' +
 				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
 				'</div>'
 		);
@@ -53,7 +53,7 @@ describe('renderAsHtml()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsHtml(input, { chartFormat: 'chordpro' }, true);
 
-		expect(rendered).toEqual('<p>[A]mySong</p>\n<p>&nbsp;</p>');
+		expect(rendered).toEqual('<p>[A]mySong</p><p>&nbsp;</p>');
 	});
 
 	test('Should return ChordMark source html with useChartFormat === true & chartFormat === chordmarkSrc', () => {
@@ -64,7 +64,7 @@ describe('renderAsHtml()', () => {
 			true
 		);
 
-		expect(rendered).toEqual('<p>A</p>\n<p>_mySong</p>\n<p>&nbsp;</p>');
+		expect(rendered).toEqual('<p>A</p><p>_mySong</p><p>&nbsp;</p>');
 	});
 });
 

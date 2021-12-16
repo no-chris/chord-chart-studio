@@ -1,4 +1,7 @@
-import { renderSong as renderSongCm, parseSong } from 'chord-mark';
+import {
+	renderSong as renderSongCm,
+	parseSong,
+} from '../../../../../chord-mark/packages/chord-mark/src/chordMark'; //fixme
 import chordMark2ChordPro from 'chord-mark-2-chordpro';
 
 import stripTags from './stripTags';
@@ -48,13 +51,14 @@ function toHtml(text) {
 		.split('\n')
 		.map((line) => (line === '' ? '&nbsp;' : line))
 		.map((line) => `<p>${line}</p>`)
-		.join('\n');
+		.join('');
 }
 
 function toText(html) {
 	return html
-		.split('\n')
+		.split('</p>')
 		.map((line) => stripTags(line))
 		.map((line) => (line === '&nbsp;' ? '' : line))
+		.slice(0, -1) // the <p> to line conversion adds an extra "\n" that we remove here
 		.join('\n');
 }
