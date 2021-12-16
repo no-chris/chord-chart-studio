@@ -23,8 +23,13 @@ $themes: (
 	left: 0;
 }
 
-.playRenderer .cmSong {
-	padding: 0 !important;
+.playRenderer {
+	box-sizing: border-box;
+	min-height: 100%;
+
+	.cmSong {
+		padding: 0 !important;
+	}
 }
 
 .playRenderer--columns-1 {
