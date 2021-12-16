@@ -1,6 +1,14 @@
 const editorModeOptions = {
-	edit: ['transposeValue', 'harmonizeAccidentals', 'preferredAccidentals'],
+	edit: [
+		'theme',
+
+		'transposeValue',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+	],
 	play: [
+		'theme',
+
 		'transposeValue',
 		'harmonizeAccidentals',
 		'preferredAccidentals',

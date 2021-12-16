@@ -3,8 +3,7 @@
 $themes: (
 	light: (),
 	dark: (
-		editorSrc-bg: cv(dark-secondary, dark10),
-		editorPreview-bg: cv(dark-secondary),
+		editorSrc-bg: cv(dark-secondary, dark5),
 	),
 );
 
@@ -15,8 +14,6 @@ $themes: (
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-
-	@include font-size(small);
 }
 
 .songEditor-source {
@@ -31,11 +28,5 @@ $themes: (
 
 .songEditor-preview {
 	flex: 0 1 50%;
-	padding: $spacer-small 0;
-
 	overflow-y: scroll;
-
-	@include themify($themes) {
-		background-color: themed('editorPreview-bg');
-	}
 }

@@ -1,5 +1,12 @@
 @use 'sass:math';
 
+// ChordMark
+
+$cmFontStack: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+	'Courier New', monospace;
+$cmFontSize: 13px;
+$cmLineHeight: 1.65em;
+
 // Source: Knacss
 
 // Font families
