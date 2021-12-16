@@ -1,10 +1,53 @@
 /* eslint-disable max-lines */
 export default {
-	widgetsOrder: ['key', 'preferences', 'layout', 'style'],
+	widgetsOrder: [
+		'editorPreferences',
+		'key',
+		'preferences',
+		'layout',
+		'style',
+	],
 
 	allWidgets: {
+		editorPreferences: {
+			label: 'Editor preferences',
+			type: 'optionsGroup',
+			icon: 'music_note',
+
+			groupWidgetsOrder: ['theme'],
+			allGroupWidgets: {
+				theme: {
+					label: 'Theme',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'themeDark1',
+								label: 'Dark 1 (default)',
+								value: 'dark1',
+							},
+							{
+								id: 'themeDark2',
+								label: 'Dark 2',
+								value: 'dark2',
+							},
+							{
+								id: 'themeDark3',
+								label: 'Dark 3',
+								value: 'dark3',
+							},
+						],
+					},
+					option: {
+						context: 'editorPreferences',
+						key: 'theme',
+					},
+				},
+			},
+		},
+
 		key: {
-			label: 'Key',
+			label: 'Chart Key',
 			type: 'optionsGroup',
 			icon: 'music_note',
 
@@ -68,7 +111,7 @@ export default {
 		},
 
 		preferences: {
-			label: 'Preferences',
+			label: 'Chart settings',
 			type: 'optionsGroup',
 			icon: 'tune',
 

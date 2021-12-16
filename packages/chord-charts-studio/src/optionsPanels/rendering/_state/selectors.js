@@ -48,6 +48,7 @@ export const getHiddenWidgets = (state) => {
 	const hiddenWidgets = [];
 
 	const allOptions = Object.keys({
+		...getOptionsDefaults(state, 'editorPreferences'),
 		...getOptionsDefaults(state, 'songFormatting'),
 		...getOptionsDefaults(state, 'songPreferences'),
 	});

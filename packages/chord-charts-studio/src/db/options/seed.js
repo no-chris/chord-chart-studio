@@ -1,4 +1,14 @@
 export default {
+	// editorPreferences are identical for all songs
+	editorPreferences: {
+		values: {
+			theme: 'dark1',
+		},
+		defaults: {
+			theme: 'dark1',
+		},
+		//userDefaults: {},
+	},
 	// songPreferences are identical for all song rendering modes
 	// therefore, they are only saved once for each song
 	songPreferences: {
