@@ -9,7 +9,7 @@ $themes: (
 
 .logo-isExpanded {
 	box-sizing: border-box;
-	padding: $spacer-small 0;
+	padding: $spacer-small-plus 0 $spacer-small;
 	width: 100%;
 
 	.leftBar-isCollapsed & {
