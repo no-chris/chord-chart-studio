@@ -63,6 +63,7 @@
 
 .fileManagerEntry {
 	cursor: pointer;
+	padding: 0.1rem 0;
 
 	&:hover {
 		@include themify($themes) {
@@ -80,7 +81,7 @@
 .fileManagerEntry-input {
 	box-sizing: border-box;
 	width: 100%;
-	padding: $spacer-extra-tiny $spacer-small;
+	padding: 0 $spacer-small;
 
 	background-color: transparent;
 	border: none;
