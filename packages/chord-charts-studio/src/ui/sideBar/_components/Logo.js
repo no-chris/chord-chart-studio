@@ -11,7 +11,6 @@ function Logo() {
 				<div className={'logo-img'}>
 					<img src={logoImg} alt={'Chord Charts Studio'} />
 				</div>
-				<div className={'logo-txt'}>Chord Charts Studio</div>
 			</div>
 		</div>
 	);

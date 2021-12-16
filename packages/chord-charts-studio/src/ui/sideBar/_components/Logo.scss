@@ -8,8 +8,9 @@ $themes: (
 );
 
 .logo-isExpanded {
-	display: flex;
-	margin: $spacer-tiny $spacer-small;
+	box-sizing: border-box;
+	padding: $spacer-small 0;
+	width: 100%;
 
 	.leftBar-isCollapsed & {
 		display: none;
@@ -17,21 +18,9 @@ $themes: (
 }
 
 .logo-img {
-	flex: 0 0 50px;
+	margin: 0 auto;
+	width: 80%;
 	img {
 		max-width: 100%;
-	}
-}
-
-.logo-txt {
-	flex: 1 1 auto;
-	margin-left: $spacer-tiny;
-
-	@include font-size(base);
-	font-family: $font-family-headings;
-	font-weight: 700;
-
-	@include themify($themes) {
-		color: themed('logo-txt');
 	}
 }
