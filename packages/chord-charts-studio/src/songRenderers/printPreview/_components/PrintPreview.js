@@ -26,7 +26,7 @@ function PrintPreview(props) {
 		...renderOptions,
 	}).split('\n');
 
-	const classNames = ['printPreview'];
+	const classNames = ['printPreview', 'cmTheme-print'];
 	if (highlightChords) {
 		classNames.push('cmChordLine--highlightChords');
 	}

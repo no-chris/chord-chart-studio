@@ -132,7 +132,7 @@ describe('PrintPreview', () => {
 
 			let allPages = getAllByTestId('printPreview-page');
 			expect(allPages[0]).toHaveClass('printPreview-page--a4');
-			expect(allPages[0]).toHaveClass('printPreview-page--font1');
+			expect(allPages[0]).toHaveClass('cmSong--fontSize1');
 
 			let allPageContentWrappers = getAllByTestId(
 				'printPreview-pageContentWrapper'

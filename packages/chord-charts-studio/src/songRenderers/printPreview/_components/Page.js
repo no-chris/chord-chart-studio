@@ -27,7 +27,7 @@ function Page(props) {
 
 	const pageClasses = ['printPreview-page'];
 	pageClasses.push('printPreview-page--' + documentSize);
-	pageClasses.push('printPreview-page--font' + fontSize);
+	pageClasses.push('cmSong--fontSize' + fontSize);
 
 	const pageContentWrapperClasses = ['printPreview-pageContentWrapper'];
 	pageContentWrapperClasses.push(
