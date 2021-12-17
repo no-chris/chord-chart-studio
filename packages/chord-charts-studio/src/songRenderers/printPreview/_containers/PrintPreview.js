@@ -46,5 +46,4 @@ export default connect((state) => ({
 	documentMargins: getOptionValue(state, 'songFormatting', 'documentMargins'),
 
 	fontSize: getOptionValue(state, 'songFormatting', 'fontSize'),
-	highlightChords: getOptionValue(state, 'songFormatting', 'highlightChords'),
 }))(PrintPreview);

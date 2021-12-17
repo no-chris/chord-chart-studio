@@ -84,7 +84,6 @@ describe('db/options: reducers', () => {
 			alignChordsWithLyrics: true,
 			alignBars: true,
 			fontSize: 0,
-			chordsColor: 'yellow',
 			columnBreakOnParagraph: true,
 			documentMargins: 3,
 		};
@@ -278,7 +277,6 @@ describe('db/options: reducers', () => {
 	describe(FILE_MANAGER_SELECT_FILE, () => {
 		const nextFileId = 'next';
 		const defaultFormattingOptions = {
-			chordsColor: 'yellow',
 			documentMargins: 4,
 			columnsCount: 4,
 			columnBreakOnParagraph: true,
@@ -313,7 +311,7 @@ describe('db/options: reducers', () => {
 									},
 									[previousMode]: {
 										updatedAt: 300,
-										chordsColor: 'red',
+										fontSize: 3,
 										columnsCount: 3,
 									},
 								},
@@ -326,7 +324,7 @@ describe('db/options: reducers', () => {
 				songFormatting: {
 					values: {
 						...defaultFormattingOptions,
-						chordsColor: 'red',
+						fontSize: 3,
 						columnsCount: 3,
 					},
 				},

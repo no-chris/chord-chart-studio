@@ -22,8 +22,6 @@ describe('PlayRenderer', () => {
 			selectedFile: { content: 'myContent', title: 'myTitle' },
 			columnsCount: 1,
 			fontSize: 0,
-			chordsColor: 'yellow',
-			highlightChords: true,
 		};
 	});
 
@@ -54,34 +52,6 @@ describe('PlayRenderer', () => {
 			rerender(<PlayRenderer {...props} fontSize={4} />);
 
 			expect(element).toHaveClass('cmSong--fontSize4');
-		});
-
-		test('Should add correct class for chordsColor', () => {
-			let { getByTestId, rerender } = render(
-				<PlayRenderer {...props} chordsColor={'red'} />
-			);
-
-			const element = getByTestId('playRenderer');
-
-			expect(element).toHaveClass('cmChordSymbol--chordsColor-red');
-
-			rerender(<PlayRenderer {...props} chordsColor={'green'} />);
-
-			expect(element).toHaveClass('cmChordSymbol--chordsColor-green');
-		});
-
-		test('Should add correct class for highlightChords', () => {
-			let { getByTestId, rerender } = render(
-				<PlayRenderer {...props} highlightChords={true} />
-			);
-
-			const element = getByTestId('playRenderer');
-
-			expect(element).toHaveClass('cmChordLine--highlightChords');
-
-			rerender(<PlayRenderer {...props} highlightChords={false} />);
-
-			expect(element).not.toHaveClass('cmChordLine--highlightChords');
 		});
 	});
 });

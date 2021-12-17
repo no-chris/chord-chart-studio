@@ -8,7 +8,7 @@ import { renderAsHtml } from '../../../core/renderSong';
 import AllPages from './AllPages';
 
 function PrintPreview(props) {
-	const { selectedFile, highlightChords } = props;
+	const { selectedFile } = props;
 
 	const renderOptions = _pick(props, [
 		'transposeValue',
@@ -28,9 +28,6 @@ function PrintPreview(props) {
 	const allLines = rendered.match(/(<p.*?>.*?<\/p>)/gm);
 
 	const classNames = ['printPreview', 'cmTheme-print'];
-	if (highlightChords) {
-		classNames.push('cmChordLine--highlightChords');
-	}
 
 	return (
 		<div className={classNames.join(' ')} data-testid={'printPreview'}>
@@ -54,7 +51,6 @@ PrintPreview.propTypes = {
 	documentSize: PropTypes.string,
 	documentMargins: PropTypes.number.isRequired,
 	fontSize: PropTypes.number.isRequired,
-	highlightChords: PropTypes.bool.isRequired,
 };
 
 export default PrintPreview;

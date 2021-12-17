@@ -22,8 +22,6 @@ const editorModeOptions = {
 		'columnsCount',
 
 		'fontSize',
-		'chordsColor',
-		'highlightChords',
 	],
 	print: [
 		'transposeValue',
@@ -41,7 +39,6 @@ const editorModeOptions = {
 		'documentMargins',
 
 		'fontSize',
-		'highlightChords',
 	],
 	export: [
 		'transposeValue',

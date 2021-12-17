@@ -35,13 +35,10 @@ export default {
 			autoRepeatChords: true,
 			expandSectionCopy: true,
 
+			fontSize: 0,
 			columnsCount: 1,
 			columnBreakOnParagraph: true,
 			documentMargins: 3,
-
-			fontSize: 0,
-			chordsColor: 'yellow',
-			highlightChords: false,
 		},
 		defaults: {
 			chartFormat: 'chordmark',
@@ -51,13 +48,10 @@ export default {
 			autoRepeatChords: true,
 			expandSectionCopy: true,
 
+			fontSize: 0,
 			columnsCount: 1,
 			columnBreakOnParagraph: true,
 			documentMargins: 3,
-
-			fontSize: 0,
-			chordsColor: 'yellow',
-			highlightChords: false,
 		},
 		//userDefaults: {},
 	},

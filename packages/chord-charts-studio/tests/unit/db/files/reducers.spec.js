@@ -520,7 +520,6 @@ describe('db/files: reducers', () => {
 									print: {
 										updatedAt: 100,
 										columnsCount: 3,
-										chordsColor: 'yellow',
 										documentMargins: 3, // <== should not be copied!
 									},
 								},
@@ -546,9 +545,6 @@ describe('db/files: reducers', () => {
 			expect(
 				result.allFiles[fileId].options.play.documentMargins
 			).not.toBeDefined();
-			expect(result.allFiles[fileId].options.play.chordsColor).toBe(
-				'yellow'
-			);
 		});
 
 		test('should not copy anything if destination mode already have options', () => {
@@ -561,7 +557,6 @@ describe('db/files: reducers', () => {
 									print: {
 										updatedAt: 100,
 										columnsCount: 3,
-										chordsColor: 'yellow',
 										documentMargins: 3,
 									},
 									play: {
@@ -590,9 +585,6 @@ describe('db/files: reducers', () => {
 			expect(result.allFiles[fileId].options.play.columnsCount).toBe(4);
 			expect(
 				result.allFiles[fileId].options.play.documentMargins
-			).not.toBeDefined();
-			expect(
-				result.allFiles[fileId].options.play.chordsColor
 			).not.toBeDefined();
 		});
 

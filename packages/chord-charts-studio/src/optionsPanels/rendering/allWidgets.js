@@ -271,7 +271,7 @@ export default {
 			label: 'Style',
 			icon: 'format_size',
 
-			groupWidgetsOrder: ['fontSize', 'chordsColor', 'highlightChords'],
+			groupWidgetsOrder: ['fontSize'],
 
 			allGroupWidgets: {
 				fontSize: {
@@ -285,48 +285,6 @@ export default {
 					option: {
 						context: 'songFormatting',
 						key: 'fontSize',
-					},
-				},
-
-				chordsColor: {
-					label: 'Chords color',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'chordsColor',
-								label: 'Base',
-								value: 'base',
-							},
-							{
-								id: 'chordsColorRed',
-								label: 'Red',
-								value: 'red',
-							},
-							{
-								id: 'chordsColorYellow',
-								label: 'Yellow',
-								value: 'yellow',
-							},
-							{
-								id: 'chordsColorGreen',
-								label: 'Green',
-								value: 'green',
-							},
-						],
-					},
-					option: {
-						context: 'songFormatting',
-						key: 'chordsColor',
-					},
-				},
-
-				highlightChords: {
-					label: 'Highlight Chords',
-					type: 'toggle',
-					option: {
-						context: 'songFormatting',
-						key: 'highlightChords',
 					},
 				},
 			},

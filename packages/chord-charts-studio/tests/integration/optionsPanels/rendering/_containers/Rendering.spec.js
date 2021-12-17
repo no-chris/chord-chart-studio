@@ -68,15 +68,14 @@ describe('"Rendering" option panel', () => {
 					.columnBreakOnParagraph.label
 			);
 
-			const highlightChords = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
-					.label
+			const fontSize = queryByText(
+				allWidgets.allWidgets.style.allGroupWidgets.fontSize.label
 			);
 
 			expect(harmonizeAccidentals).toBeInTheDocument();
 			expect(alignChordsWithLyrics).toBeNull();
 			expect(columnBreakOnParagraph).toBeNull();
-			expect(highlightChords).toBeNull();
+			expect(fontSize).toBeNull();
 		});
 
 		test('Play mode', () => {
@@ -99,12 +98,12 @@ describe('"Rendering" option panel', () => {
 
 			const { queryByText } = render(withStore(<Rendering />));
 
-			const chordsColor = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.chordsColor.label +
-					':'
+			const theme = queryByText(
+				allWidgets.allWidgets.editorPreferences.allGroupWidgets.theme
+					.label + ':'
 			);
 
-			expect(chordsColor).toBeNull();
+			expect(theme).toBeNull();
 		});
 
 		test('Export mode', () => {
@@ -117,13 +116,12 @@ describe('"Rendering" option panel', () => {
 				allWidgets.allWidgets.layout.allGroupWidgets
 					.columnBreakOnParagraph.label
 			);
-			const highlightChords = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
-					.label
+			const fontSize = queryByText(
+				allWidgets.allWidgets.style.allGroupWidgets.fontSize.label
 			);
 
 			expect(columnBreakOnParagraph).toBeNull();
-			expect(highlightChords).toBeNull();
+			expect(fontSize).toBeNull();
 		});
 	});
 
