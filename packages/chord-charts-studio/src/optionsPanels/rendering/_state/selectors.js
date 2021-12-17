@@ -20,7 +20,11 @@ export const getNonInteractableWidgets = (state) => {
 		nonInteractableWidgets.push('alignChordsWithLyrics');
 	}
 
-	const chartFormat = getOptionValue(state, 'songFormatting', 'chartFormat');
+	const chartFormat = getOptionValue(
+		state,
+		'editorPreferences',
+		'chartFormat'
+	);
 	if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
 		nonInteractableWidgets.push('chartType');
 		nonInteractableWidgets.push('alignChordsWithLyrics');

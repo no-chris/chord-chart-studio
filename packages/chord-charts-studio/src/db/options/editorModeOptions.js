@@ -41,11 +41,12 @@ const editorModeOptions = {
 		'fontSize',
 	],
 	export: [
+		'chartFormat',
+
 		'transposeValue',
 		'harmonizeAccidentals',
 		'preferredAccidentals',
 
-		'chartFormat',
 		'chartType',
 		'alignChordsWithLyrics',
 		'alignBars',

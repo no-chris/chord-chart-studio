@@ -19,7 +19,7 @@ export default connect((state) => ({
 	),
 
 	// songFormatting
-	chartFormat: getOptionValue(state, 'songFormatting', 'chartFormat'),
+	chartFormat: getOptionValue(state, 'editorPreferences', 'chartFormat'),
 	chartType: getOptionValue(state, 'songFormatting', 'chartType'),
 	alignChordsWithLyrics: getOptionValue(
 		state,

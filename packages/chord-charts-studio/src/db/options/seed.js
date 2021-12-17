@@ -3,9 +3,11 @@ export default {
 	editorPreferences: {
 		values: {
 			theme: 'dark1',
+			chartFormat: 'chordmark',
 		},
 		defaults: {
 			theme: 'dark1',
+			chartFormat: 'chordmark',
 		},
 		//userDefaults: {},
 	},
@@ -28,7 +30,6 @@ export default {
 	// they are saved separately for each song
 	songFormatting: {
 		values: {
-			chartFormat: 'chordmark',
 			chartType: 'all',
 			alignChordsWithLyrics: true,
 			alignBars: true,
@@ -41,7 +42,6 @@ export default {
 			documentMargins: 3,
 		},
 		defaults: {
-			chartFormat: 'chordmark',
 			chartType: 'all',
 			alignChordsWithLyrics: true,
 			alignBars: true,

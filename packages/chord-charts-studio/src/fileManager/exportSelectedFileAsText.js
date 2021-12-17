@@ -15,6 +15,8 @@ export default function exportSelectedFileAsText() {
 	const selectedFile = getOne(state, selectedId);
 
 	const renderOptions = {
+		chartFormat: getOptionValue(state, 'editorPreferences', 'chartFormat'),
+
 		transposeValue: getOptionValue(
 			state,
 			'songPreferences',
@@ -32,7 +34,6 @@ export default function exportSelectedFileAsText() {
 		),
 
 		chartType: getOptionValue(state, 'songFormatting', 'chartType'),
-		chartFormat: getOptionValue(state, 'songFormatting', 'chartFormat'),
 		alignChordsWithLyrics: getOptionValue(
 			state,
 			'songFormatting',

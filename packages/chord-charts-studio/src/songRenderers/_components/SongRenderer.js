@@ -12,12 +12,13 @@ function SongRenderer(props) {
 	const { content, useChartFormat } = props;
 
 	const renderOptions = _pick(props, [
+		'chartFormat',
+
 		'transposeValue',
 		'harmonizeAccidentals',
 		'accidentalsType',
 
 		'chartType',
-		'chartFormat',
 		'alignChordsWithLyrics',
 		'alignBars',
 		'autoRepeatChords',

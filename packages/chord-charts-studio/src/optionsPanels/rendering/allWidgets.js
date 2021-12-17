@@ -8,7 +8,7 @@ export default {
 			type: 'optionsGroup',
 			icon: 'music_note',
 
-			groupWidgetsOrder: ['theme'],
+			groupWidgetsOrder: ['theme', 'chartFormat'],
 			allGroupWidgets: {
 				theme: {
 					label: 'Theme',
@@ -35,6 +35,33 @@ export default {
 					option: {
 						context: 'editorPreferences',
 						key: 'theme',
+					},
+				},
+				chartFormat: {
+					label: 'Export format',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'formatChordMark',
+								label: 'ChordMark',
+								value: 'chordmark',
+							},
+							{
+								id: 'formatChordMarkSrc',
+								label: 'ChordMark (Source)',
+								value: 'chordmarkSrc',
+							},
+							{
+								id: 'formatChordpro',
+								label: 'ChordPro',
+								value: 'chordpro',
+							},
+						],
+					},
+					option: {
+						context: 'editorPreferences',
+						key: 'chartFormat',
 					},
 				},
 			},
@@ -110,7 +137,6 @@ export default {
 			icon: 'tune',
 
 			groupWidgetsOrder: [
-				'chartFormat',
 				'chartType',
 				'alignChordsWithLyrics',
 				'alignBars',
@@ -118,33 +144,6 @@ export default {
 				'expandSectionCopy',
 			],
 			allGroupWidgets: {
-				chartFormat: {
-					label: 'Export format',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'formatChordMark',
-								label: 'ChordMark',
-								value: 'chordmark',
-							},
-							{
-								id: 'formatChordMarkSrc',
-								label: 'ChordMark (Source)',
-								value: 'chordmarkSrc',
-							},
-							{
-								id: 'formatChordpro',
-								label: 'ChordPro',
-								value: 'chordpro',
-							},
-						],
-					},
-					option: {
-						context: 'songFormatting',
-						key: 'chartFormat',
-					},
-				},
 				chartType: {
 					label: 'Chart type',
 					type: 'select',
