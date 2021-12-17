@@ -1,12 +1,6 @@
 /* eslint-disable max-lines */
 export default {
-	widgetsOrder: [
-		'editorPreferences',
-		'key',
-		'preferences',
-		'layout',
-		'style',
-	],
+	widgetsOrder: ['editorPreferences', 'key', 'preferences', 'layout'],
 
 	allWidgets: {
 		editorPreferences: {
@@ -224,54 +218,11 @@ export default {
 			icon: 'view_compact',
 
 			groupWidgetsOrder: [
+				'fontSize',
 				'columnsCount',
-				'columnBreakOnParagraph',
+				'columnBreakOnSection',
 				'documentMargins',
 			],
-			allGroupWidgets: {
-				columnsCount: {
-					label: 'Columns',
-					type: 'slider',
-					typeOptions: {
-						min: 1,
-						max: 4,
-					},
-					option: {
-						context: 'songFormatting',
-						key: 'columnsCount',
-					},
-				},
-
-				columnBreakOnParagraph: {
-					label: 'Break on paragraph',
-					type: 'toggle',
-					option: {
-						context: 'songFormatting',
-						key: 'columnBreakOnParagraph',
-					},
-				},
-
-				documentMargins: {
-					label: 'Margins',
-					type: 'slider',
-					typeOptions: {
-						min: 1,
-						max: 5,
-					},
-					option: {
-						context: 'songFormatting',
-						key: 'documentMargins',
-					},
-				},
-			},
-		},
-
-		style: {
-			type: 'optionsGroup',
-			label: 'Style',
-			icon: 'format_size',
-
-			groupWidgetsOrder: ['fontSize'],
 
 			allGroupWidgets: {
 				fontSize: {
@@ -285,6 +236,41 @@ export default {
 					option: {
 						context: 'songFormatting',
 						key: 'fontSize',
+					},
+				},
+
+				columnsCount: {
+					label: 'Columns',
+					type: 'slider',
+					typeOptions: {
+						min: 1,
+						max: 4,
+					},
+					option: {
+						context: 'songFormatting',
+						key: 'columnsCount',
+					},
+				},
+
+				columnBreakOnSection: {
+					label: 'Column Break on section',
+					type: 'toggle',
+					option: {
+						context: 'songFormatting',
+						key: 'columnBreakOnSection',
+					},
+				},
+
+				documentMargins: {
+					label: 'Margins',
+					type: 'slider',
+					typeOptions: {
+						min: 1,
+						max: 5,
+					},
+					option: {
+						context: 'songFormatting',
+						key: 'documentMargins',
 					},
 				},
 			},

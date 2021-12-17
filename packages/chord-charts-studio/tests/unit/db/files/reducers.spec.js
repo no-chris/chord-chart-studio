@@ -388,7 +388,7 @@ describe('db/files: reducers', () => {
 								updatedAt: 'even-later',
 								chartFormat: 'chordPro',
 								columnsCount: 4,
-								columnBreakOnParagraph: true,
+								columnBreakOnSection: true,
 							},
 						},
 					},
@@ -420,7 +420,7 @@ describe('db/files: reducers', () => {
 					state3,
 					setOptionValue(
 						'songFormatting',
-						'columnBreakOnParagraph',
+						'columnBreakOnSection',
 						true
 					)
 				)

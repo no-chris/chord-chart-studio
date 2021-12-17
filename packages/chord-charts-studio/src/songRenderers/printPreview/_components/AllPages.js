@@ -16,7 +16,7 @@ function AllPages(props) {
 		title,
 		allLines,
 		columnsCount,
-		columnBreakOnParagraph,
+		columnBreakOnSection,
 		documentSize,
 		documentMargins,
 		fontSize,
@@ -48,7 +48,7 @@ function AllPages(props) {
 
 			const mapped = mapLinesToColumns(allLinesWithHeight, {
 				columnsCount,
-				columnBreakOnParagraph,
+				columnBreakOnSection,
 				normalPageHeight,
 				firstPageHeight,
 			});
@@ -60,7 +60,7 @@ function AllPages(props) {
 		allLines,
 		title,
 		columnsCount,
-		columnBreakOnParagraph,
+		columnBreakOnSection,
 		documentSize,
 		documentMargins,
 		fontSize,
@@ -86,7 +86,7 @@ AllPages.propTypes = {
 	title: PropTypes.string.isRequired,
 	allLines: PropTypes.arrayOf(PropTypes.string).isRequired,
 	columnsCount: PropTypes.number.isRequired,
-	columnBreakOnParagraph: PropTypes.bool.isRequired,
+	columnBreakOnSection: PropTypes.bool.isRequired,
 	documentSize: PropTypes.string.isRequired,
 	documentMargins: PropTypes.number.isRequired,
 	fontSize: PropTypes.number.isRequired,

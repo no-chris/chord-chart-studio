@@ -38,10 +38,10 @@ export default connect((state) => ({
 	),
 
 	columnsCount: getOptionValue(state, 'songFormatting', 'columnsCount'),
-	columnBreakOnParagraph: getOptionValue(
+	columnBreakOnSection: getOptionValue(
 		state,
 		'songFormatting',
-		'columnBreakOnParagraph'
+		'columnBreakOnSection'
 	),
 	documentMargins: getOptionValue(state, 'songFormatting', 'documentMargins'),
 

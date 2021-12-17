@@ -37,7 +37,7 @@ export default {
 
 			fontSize: 0,
 			columnsCount: 1,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			documentMargins: 3,
 		},
 		defaults: {
@@ -50,7 +50,7 @@ export default {
 
 			fontSize: 0,
 			columnsCount: 1,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			documentMargins: 3,
 		},
 		//userDefaults: {},

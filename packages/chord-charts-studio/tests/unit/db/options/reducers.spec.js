@@ -84,7 +84,7 @@ describe('db/options: reducers', () => {
 			alignChordsWithLyrics: true,
 			alignBars: true,
 			fontSize: 0,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			documentMargins: 3,
 		};
 
@@ -248,7 +248,7 @@ describe('db/options: reducers', () => {
 									[nextMode]: {},
 									[previousMode]: {
 										updatedAt: 6969,
-										columnBreakOnParagraph: false,
+										columnBreakOnSection: false,
 										documentMargins: 1,
 									},
 									play: {},
@@ -279,7 +279,7 @@ describe('db/options: reducers', () => {
 		const defaultFormattingOptions = {
 			documentMargins: 4,
 			columnsCount: 4,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 		};
 		const defaultPreferences = {
 			transposeValue: 4,

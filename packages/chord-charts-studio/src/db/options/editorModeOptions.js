@@ -35,7 +35,7 @@ const editorModeOptions = {
 		'expandSectionCopy',
 
 		'columnsCount',
-		'columnBreakOnParagraph',
+		'columnBreakOnSection',
 		'documentMargins',
 
 		'fontSize',

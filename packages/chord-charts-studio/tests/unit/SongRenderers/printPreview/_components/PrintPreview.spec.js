@@ -44,7 +44,7 @@ describe('PrintPreview', () => {
 			chartType: 'all',
 
 			columnsCount: 3,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			documentMargins: 3,
 
 			fontSize: 1,

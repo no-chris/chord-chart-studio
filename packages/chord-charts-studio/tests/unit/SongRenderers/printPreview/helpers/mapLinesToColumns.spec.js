@@ -293,7 +293,7 @@ describe('noOrphanTextLine', () => {
 	});
 });
 
-describe('columnBreakOnParagraph', () => {
+describe('columnBreakOnSection', () => {
 	test('should not split a paragraph in the middle', () => {
 		const allLinesWithHeight = [
 			getTextLine(1),
@@ -312,7 +312,7 @@ describe('columnBreakOnParagraph', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
 			columnsCount: 2,
 			noOrphanTextLine: true,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			normalPageHeight: 100,
 		});
 
@@ -356,7 +356,7 @@ describe('columnBreakOnParagraph', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
 			columnsCount: 3,
 			noOrphanTextLine: true,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			normalPageHeight: 100,
 		});
 
@@ -396,7 +396,7 @@ describe('firstPageHeight', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
 			columnsCount: 3,
 			noOrphanTextLine: true,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			firstPageHeight: 50,
 			normalPageHeight: 100,
 		});

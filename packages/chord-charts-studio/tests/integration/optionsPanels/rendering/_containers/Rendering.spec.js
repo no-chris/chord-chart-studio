@@ -63,18 +63,18 @@ describe('"Rendering" option panel', () => {
 					.alignChordsWithLyrics.label
 			);
 
-			const columnBreakOnParagraph = queryByText(
+			const columnBreakOnSection = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
+					.columnBreakOnSection.label
 			);
 
 			const fontSize = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.fontSize.label
+				allWidgets.allWidgets.layout.allGroupWidgets.fontSize.label
 			);
 
 			expect(harmonizeAccidentals).toBeInTheDocument();
 			expect(alignChordsWithLyrics).toBeNull();
-			expect(columnBreakOnParagraph).toBeNull();
+			expect(columnBreakOnSection).toBeNull();
 			expect(fontSize).toBeNull();
 		});
 
@@ -84,12 +84,12 @@ describe('"Rendering" option panel', () => {
 
 			const { queryByText } = render(withStore(<Rendering />));
 
-			const columnBreakOnParagraph = queryByText(
+			const columnBreakOnSection = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
+					.columnBreakOnSection.label
 			);
 
-			expect(columnBreakOnParagraph).toBeNull();
+			expect(columnBreakOnSection).toBeNull();
 		});
 
 		test('Print mode', () => {
@@ -112,15 +112,15 @@ describe('"Rendering" option panel', () => {
 
 			const { queryByText } = render(withStore(<Rendering />));
 
-			const columnBreakOnParagraph = queryByText(
+			const columnBreakOnSection = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
+					.columnBreakOnSection.label
 			);
 			const fontSize = queryByText(
 				allWidgets.allWidgets.style.allGroupWidgets.fontSize.label
 			);
 
-			expect(columnBreakOnParagraph).toBeNull();
+			expect(columnBreakOnSection).toBeNull();
 			expect(fontSize).toBeNull();
 		});
 	});

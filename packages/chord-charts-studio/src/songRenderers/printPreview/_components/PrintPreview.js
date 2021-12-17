@@ -35,7 +35,7 @@ function PrintPreview(props) {
 				title={selectedFile.title || ''}
 				allLines={allLines}
 				columnsCount={props.columnsCount}
-				columnBreakOnParagraph={props.columnBreakOnParagraph}
+				columnBreakOnSection={props.columnBreakOnSection}
 				documentSize={props.documentSize || 'a4'}
 				documentMargins={props.documentMargins}
 				fontSize={props.fontSize}
@@ -47,7 +47,7 @@ PrintPreview.propTypes = {
 	chartType: PropTypes.string.isRequired,
 	selectedFile: PropTypes.object.isRequired,
 	columnsCount: PropTypes.number.isRequired,
-	columnBreakOnParagraph: PropTypes.bool.isRequired,
+	columnBreakOnSection: PropTypes.bool.isRequired,
 	documentSize: PropTypes.string,
 	documentMargins: PropTypes.number.isRequired,
 	fontSize: PropTypes.number.isRequired,
