@@ -115,6 +115,8 @@ $themes: (
 	padding: 15mm;
 }
 
-.cmTheme-print .cmSong {
-	padding: 0 !important;
+.cmTheme-print {
+	.cmSong {
+		padding: 0 !important;
+	}
 }

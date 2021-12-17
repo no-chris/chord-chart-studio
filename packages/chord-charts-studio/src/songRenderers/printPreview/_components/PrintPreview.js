@@ -22,9 +22,10 @@ function PrintPreview(props) {
 		'expandSectionCopy',
 	]);
 
-	const allLines = renderAsHtml(selectedFile.content || '', {
+	const rendered = renderAsHtml(selectedFile.content || '', {
 		...renderOptions,
-	}).split('\n');
+	});
+	const allLines = rendered.match(/(<p.*?>.*?<\/p>)/gm);
 
 	const classNames = ['printPreview', 'cmTheme-print'];
 	if (highlightChords) {

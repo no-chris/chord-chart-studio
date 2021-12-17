@@ -15,7 +15,7 @@ export default async function getAllLinesHeight(
 	{ columnsCount, documentSize, documentMargins, fontSize }
 ) {
 	const component = (
-		<div className={'printPreview'}>
+		<div className={'printPreview cmTheme-print'}>
 			<Page
 				allColumnsLines={padColumns(columnsCount, [allLines])}
 				columnsCount={columnsCount}
