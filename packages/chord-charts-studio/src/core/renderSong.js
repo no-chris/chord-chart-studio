@@ -1,7 +1,4 @@
-import {
-	renderSong as renderSongCm,
-	parseSong,
-} from '../../../../../chord-mark/packages/chord-mark/src/chordMark'; //fixme
+import { renderSong as renderSongCm, parseSong } from 'chord-mark';
 import chordMark2ChordPro from 'chord-mark-2-chordpro';
 
 import stripTags from './stripTags';

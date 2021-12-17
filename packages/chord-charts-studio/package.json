@@ -23,11 +23,12 @@
 		"@testing-library/user-event": "^13.5.0"
 	},
 	"dependencies": {
-		"chord-mark": "^0.8.0",
-		"chord-mark-2-chordpro": "^0.8.0",
+		"chord-mark": "^0.9.0",
+		"chord-mark-2-chordpro": "^0.9.0",
+		"chord-mark-themes": "^0.9.1",
 		"chordsheetjs": "^5.1.2",
 		"combine-section-reducers": "^1.0.6",
-		"core-js": "^3.15.2",
+		"core-js": "^3.20.0",
 		"dompurify": "^2.2.9",
 		"file-saver": "^2.0.5",
 		"filesize": "^8.0.6",
