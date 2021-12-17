@@ -55,10 +55,10 @@ function toHtml(text) {
 }
 
 function toText(html) {
-	return html
-		.split('</p>')
+	const allLines = html.match(/(<p.*?>.*?<\/p>)/gm);
+
+	return allLines
 		.map((line) => stripTags(line))
 		.map((line) => (line === '&nbsp;' ? '' : line))
-		.slice(0, -1) // the <p> to line conversion adds an extra "\n" that we remove here
 		.join('\n');
 }
