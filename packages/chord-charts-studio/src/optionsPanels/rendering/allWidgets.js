@@ -68,7 +68,7 @@ export default {
 		},
 
 		key: {
-			label: 'Chart Key',
+			label: 'Key',
 			type: 'optionsGroup',
 			icon: 'music_note',
 
@@ -145,13 +145,13 @@ export default {
 			],
 			allGroupWidgets: {
 				chartType: {
-					label: 'Chart type',
+					label: 'Type',
 					type: 'select',
 					typeOptions: {
 						allChoices: [
 							{
 								id: 'typedisplayAll',
-								label: 'Complete',
+								label: 'Show everything',
 								value: 'all',
 							},
 							{
