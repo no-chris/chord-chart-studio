@@ -25,14 +25,18 @@ export const getNonInteractableWidgets = (state) => {
 		'editorPreferences',
 		'chartFormat'
 	);
-	if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
-		nonInteractableWidgets.push('chartType');
-		nonInteractableWidgets.push('alignChordsWithLyrics');
-		nonInteractableWidgets.push('alignBars');
-		nonInteractableWidgets.push('autoRepeatChords');
-	}
-	if (chartFormat === 'chordmarkSrc') {
-		nonInteractableWidgets.push('expandSectionCopy');
+	const editorMode = getEditorMode(state);
+
+	if (editorMode === 'export') {
+		if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
+			nonInteractableWidgets.push('chartType');
+			nonInteractableWidgets.push('alignChordsWithLyrics');
+			nonInteractableWidgets.push('alignBars');
+			nonInteractableWidgets.push('autoRepeatChords');
+		}
+		if (chartFormat === 'chordmarkSrc') {
+			nonInteractableWidgets.push('expandSectionCopy');
+		}
 	}
 
 	const harmonizeAccidentals = getOptionValue(
