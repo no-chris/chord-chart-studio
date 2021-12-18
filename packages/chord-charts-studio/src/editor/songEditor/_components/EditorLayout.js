@@ -7,29 +7,55 @@ import { ScrollSync, ScrollSyncNode } from 'scroll-sync-react';
 
 import EditorPreview from '../../../songRenderers/editorPreview/_containers/EditorPreview';
 import ProseMirrorEditorView from '../prosemirror/ProsemirrorEditorView';
+import Icon from '../../../ui/_components/Icon';
 
 function EditorLayout(props) {
 	const { selectedFile, updateFile } = props;
 
 	return (
-		<ScrollSync>
-			<div className={'songEditor'}>
-				<ScrollSyncNode group={'a'}>
-					<div className={'songEditor-source'}>
-						<ProseMirrorEditorView
-							editorContent={selectedFile.content}
-							updateFile={updateFile}
-							selectedFileId={selectedFile.id}
-						/>
-					</div>
-				</ScrollSyncNode>
-				<ScrollSyncNode group={'a'}>
-					<div className={'songEditor-preview'}>
-						<EditorPreview selectedFile={selectedFile} />
-					</div>
-				</ScrollSyncNode>
+		<>
+			<div className={'songEditor-headers'}>
+				<div className={'songEditor-sourceHeader'}>
+					<Icon iconName={'arrow_drop_down'} />
+					ChordMark source (
+					<a
+						href={
+							'https://chordmark.netlify.app/docs/getting-started'
+						}
+						target={'_blank'}
+						rel={'noreferrer'}
+						className={'link1'}
+					>
+						tutorial
+					</a>
+					)
+					<Icon iconName={'arrow_drop_down'} />
+				</div>
+				<div className={'songEditor-previewHeader'}>
+					<Icon iconName={'arrow_drop_down'} />
+					Result preview
+					<Icon iconName={'arrow_drop_down'} />
+				</div>
 			</div>
-		</ScrollSync>
+			<ScrollSync>
+				<div className={'songEditor'}>
+					<ScrollSyncNode group={'a'}>
+						<div className={'songEditor-source'}>
+							<ProseMirrorEditorView
+								editorContent={selectedFile.content}
+								updateFile={updateFile}
+								selectedFileId={selectedFile.id}
+							/>
+						</div>
+					</ScrollSyncNode>
+					<ScrollSyncNode group={'a'}>
+						<div className={'songEditor-preview'}>
+							<EditorPreview selectedFile={selectedFile} />
+						</div>
+					</ScrollSyncNode>
+				</div>
+			</ScrollSync>
+		</>
 	);
 }
 
