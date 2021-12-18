@@ -117,7 +117,7 @@ describe('"Rendering" option panel', () => {
 					.columnBreakOnSection.label
 			);
 			const fontSize = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.fontSize.label
+				allWidgets.allWidgets.layout.allGroupWidgets.fontSize.label
 			);
 
 			expect(columnBreakOnSection).toBeNull();
@@ -133,8 +133,8 @@ describe('"Rendering" option panel', () => {
 			const { getByText } = render(withStore(<Rendering />));
 
 			const chartFormat = getByText(
-				allWidgets.allWidgets.preferences.allGroupWidgets.chartFormat
-					.label + ':'
+				allWidgets.allWidgets.editorPreferences.allGroupWidgets
+					.chartFormat.label + ':'
 			);
 
 			act(() => {
@@ -150,7 +150,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'songFormatting',
+					'editorPreferences',
 					'chartFormat'
 				)
 			).toBe('chordmark');
@@ -161,7 +161,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'songFormatting',
+					'editorPreferences',
 					'chartFormat'
 				)
 			).toBe('chordpro');
@@ -172,7 +172,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'songFormatting',
+					'editorPreferences',
 					'chartFormat'
 				)
 			).toBe('chordmark');
@@ -298,7 +298,8 @@ describe('"Rendering" option panel', () => {
 				allWidgets.allWidgets.preferences.allGroupWidgets;
 
 			const chartFormat = getByText(
-				preferencesWidgets.chartFormat.label + ':'
+				allWidgets.allWidgets.editorPreferences.allGroupWidgets
+					.chartFormat.label + ':'
 			);
 
 			act(() => {

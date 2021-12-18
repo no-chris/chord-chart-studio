@@ -22,6 +22,7 @@ describe('PlayRenderer', () => {
 			selectedFile: { content: 'myContent', title: 'myTitle' },
 			columnsCount: 1,
 			fontSize: 0,
+			theme: 'dark1',
 		};
 	});
 

@@ -71,7 +71,7 @@ describe('renderAsHtml()', () => {
 describe('renderAsText()', () => {
 	test('Should return error message in case exception is thrown', () => {
 		const input = () => 'should throw';
-		const rendered = renderAsText(input);
+		const rendered = renderAsHtml(input);
 
 		expect(rendered).toEqual('songSrc.split is not a function');
 	});
