@@ -1,3 +1,14 @@
+@import 'abstract';
+
+$themes: (
+	light: (),
+	dark: (
+		link1: cv(dark-accent),
+		link1-hover: cv(dark-accent, light10),
+		link1-active: cv(dark-accent, light20),
+	),
+);
+
 html {
 	/* switching to border-box model for all elements */
 	box-sizing: border-box;
@@ -13,4 +24,22 @@ body {
 	@include font-size(base);
 	font-family: $font-family-base;
 	line-height: $line-height-base;
+}
+
+.link1 {
+	@include themify($themes) {
+		color: themed('link1');
+	}
+
+	&:hover {
+		@include themify($themes) {
+			color: themed('link1-hover');
+		}
+	}
+
+	&:active {
+		@include themify($themes) {
+			color: themed('link1-active');
+		}
+	}
 }

@@ -48,12 +48,13 @@ function toHtml(text) {
 		.split('\n')
 		.map((line) => (line === '' ? '&nbsp;' : line))
 		.map((line) => `<p>${line}</p>`)
-		.join('\n');
+		.join('');
 }
 
 function toText(html) {
-	return html
-		.split('\n')
+	const allLines = html.match(/(<p.*?>.*?<\/p>)/gm);
+
+	return allLines
 		.map((line) => stripTags(line))
 		.map((line) => (line === '&nbsp;' ? '' : line))
 		.join('\n');

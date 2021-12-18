@@ -9,18 +9,16 @@ $themes: (
 
 .prosemirrorWrapper {
 	flex: 1 1 auto;
-	padding: $spacer-small 0;
+	padding: 15px 0;
 }
 
 .ProseMirror {
 	height: 100%;
-
 	outline: none;
-	font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
-		'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
-		'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
-		monospace;
-	@include font-size(normal);
+
+	font-family: $cmFontStack;
+	font-size: $cmFontSize;
+	line-height: $cmLineHeight;
 
 	@include themify($themes) {
 		color: themed('editor-txt');

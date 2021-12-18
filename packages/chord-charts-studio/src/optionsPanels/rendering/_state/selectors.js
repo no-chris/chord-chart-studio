@@ -20,15 +20,23 @@ export const getNonInteractableWidgets = (state) => {
 		nonInteractableWidgets.push('alignChordsWithLyrics');
 	}
 
-	const chartFormat = getOptionValue(state, 'songFormatting', 'chartFormat');
-	if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
-		nonInteractableWidgets.push('chartType');
-		nonInteractableWidgets.push('alignChordsWithLyrics');
-		nonInteractableWidgets.push('alignBars');
-		nonInteractableWidgets.push('autoRepeatChords');
-	}
-	if (chartFormat === 'chordmarkSrc') {
-		nonInteractableWidgets.push('expandSectionCopy');
+	const chartFormat = getOptionValue(
+		state,
+		'editorPreferences',
+		'chartFormat'
+	);
+	const editorMode = getEditorMode(state);
+
+	if (editorMode === 'export') {
+		if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
+			nonInteractableWidgets.push('chartType');
+			nonInteractableWidgets.push('alignChordsWithLyrics');
+			nonInteractableWidgets.push('alignBars');
+			nonInteractableWidgets.push('autoRepeatChords');
+		}
+		if (chartFormat === 'chordmarkSrc') {
+			nonInteractableWidgets.push('expandSectionCopy');
+		}
 	}
 
 	const harmonizeAccidentals = getOptionValue(
@@ -48,6 +56,7 @@ export const getHiddenWidgets = (state) => {
 	const hiddenWidgets = [];
 
 	const allOptions = Object.keys({
+		...getOptionsDefaults(state, 'editorPreferences'),
 		...getOptionsDefaults(state, 'songFormatting'),
 		...getOptionsDefaults(state, 'songPreferences'),
 	});

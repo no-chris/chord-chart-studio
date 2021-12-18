@@ -3,31 +3,34 @@
 $themes: (
 	light: (),
 	dark: (
-		song-txt: cv(dark-background),
 		song-bg: cv(dark-foreground),
 	),
 );
 
 .exportPreview {
+	box-sizing: border-box;
+	min-height: 100%;
 	padding: $spacer-small;
+
 	@include themify($themes) {
 		background-color: themed('song-bg');
 	}
 }
 
 .exp-SongRenderer {
+	font-family: $cmFontStack;
+	font-size: $cmFontSize;
+	line-height: $cmLineHeight;
+
+	padding: 15px;
+	white-space: pre-wrap;
+	color: #333;
+
 	p {
 		margin: 0;
-		font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
-			'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-			'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
-			Monaco, 'Courier New', Courier, monospace;
-		white-space: pre-wrap;
-
-		@include font-size(normal);
 	}
 
-	@include themify($themes) {
-		color: themed('song-txt');
+	.cmSong {
+		padding: 0 !important;
 	}
 }

@@ -8,7 +8,7 @@ import { renderAsHtml } from '../../../core/renderSong';
 import AllPages from './AllPages';
 
 function PrintPreview(props) {
-	const { selectedFile, highlightChords } = props;
+	const { selectedFile } = props;
 
 	const renderOptions = _pick(props, [
 		'transposeValue',
@@ -22,14 +22,12 @@ function PrintPreview(props) {
 		'expandSectionCopy',
 	]);
 
-	const allLines = renderAsHtml(selectedFile.content || '', {
+	const rendered = renderAsHtml(selectedFile.content || '', {
 		...renderOptions,
-	}).split('\n');
+	});
+	const allLines = rendered.match(/(<p.*?>.*?<\/p>)/gm);
 
-	const classNames = ['printPreview'];
-	if (highlightChords) {
-		classNames.push('cmChordLine--highlightChords');
-	}
+	const classNames = ['printPreview', 'cmTheme-print'];
 
 	return (
 		<div className={classNames.join(' ')} data-testid={'printPreview'}>
@@ -37,7 +35,7 @@ function PrintPreview(props) {
 				title={selectedFile.title || ''}
 				allLines={allLines}
 				columnsCount={props.columnsCount}
-				columnBreakOnParagraph={props.columnBreakOnParagraph}
+				columnBreakOnSection={props.columnBreakOnSection}
 				documentSize={props.documentSize || 'a4'}
 				documentMargins={props.documentMargins}
 				fontSize={props.fontSize}
@@ -49,11 +47,10 @@ PrintPreview.propTypes = {
 	chartType: PropTypes.string.isRequired,
 	selectedFile: PropTypes.object.isRequired,
 	columnsCount: PropTypes.number.isRequired,
-	columnBreakOnParagraph: PropTypes.bool.isRequired,
+	columnBreakOnSection: PropTypes.bool.isRequired,
 	documentSize: PropTypes.string,
 	documentMargins: PropTypes.number.isRequired,
 	fontSize: PropTypes.number.isRequired,
-	highlightChords: PropTypes.bool.isRequired,
 };
 
 export default PrintPreview;

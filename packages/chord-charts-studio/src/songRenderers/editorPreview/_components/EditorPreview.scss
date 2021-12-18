@@ -8,8 +8,16 @@ $themes: (
 );
 
 .editorPreview {
-	@include themify($themes) {
-		color: themed('editorPreview-txt');
-		background-color: themed('editorPreview-bg');
+	box-sizing: border-box;
+	padding: $spacer-tiny;
+	min-height: 100%;
+}
+
+.cmTheme-fadeRepeats {
+	.cmLine--isFromAutoRepeatChords,
+	.cmLine--isFromChordLineRepeater,
+	.cmLine--isFromSectionCopy,
+	.cmLine--isFromSectionMultiply {
+		opacity: 0.5;
 	}
 }

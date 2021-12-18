@@ -1,8 +1,72 @@
 /* eslint-disable max-lines */
 export default {
-	widgetsOrder: ['key', 'preferences', 'layout', 'style'],
+	widgetsOrder: ['editorPreferences', 'key', 'preferences', 'layout'],
 
 	allWidgets: {
+		editorPreferences: {
+			label: 'Editor preferences',
+			type: 'optionsGroup',
+			icon: 'tune',
+
+			groupWidgetsOrder: ['theme', 'chartFormat'],
+			allGroupWidgets: {
+				theme: {
+					label: 'Theme',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'themeDark1',
+								label: 'Dark 1 (default)',
+								value: 'dark1',
+							},
+							{
+								id: 'themeDark2',
+								label: 'Dark 2',
+								value: 'dark2',
+							},
+							{
+								id: 'themeDark3',
+								label: 'Dark 3',
+								value: 'dark3',
+							},
+						],
+					},
+					option: {
+						context: 'editorPreferences',
+						key: 'theme',
+					},
+				},
+				chartFormat: {
+					label: 'Export format',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'formatChordMark',
+								label: 'ChordMark',
+								value: 'chordmark',
+							},
+							{
+								id: 'formatChordMarkSrc',
+								label: 'ChordMark (Source)',
+								value: 'chordmarkSrc',
+							},
+							{
+								id: 'formatChordpro',
+								label: 'ChordPro',
+								value: 'chordpro',
+							},
+						],
+					},
+					option: {
+						context: 'editorPreferences',
+						key: 'chartFormat',
+					},
+				},
+			},
+		},
+
 		key: {
 			label: 'Key',
 			type: 'optionsGroup',
@@ -68,12 +132,11 @@ export default {
 		},
 
 		preferences: {
-			label: 'Preferences',
+			label: 'Chart settings',
 			type: 'optionsGroup',
 			icon: 'tune',
 
 			groupWidgetsOrder: [
-				'chartFormat',
 				'chartType',
 				'alignChordsWithLyrics',
 				'alignBars',
@@ -81,41 +144,14 @@ export default {
 				'expandSectionCopy',
 			],
 			allGroupWidgets: {
-				chartFormat: {
-					label: 'Export format',
-					type: 'select',
-					typeOptions: {
-						allChoices: [
-							{
-								id: 'formatChordMark',
-								label: 'ChordMark',
-								value: 'chordmark',
-							},
-							{
-								id: 'formatChordMarkSrc',
-								label: 'ChordMark (Source)',
-								value: 'chordmarkSrc',
-							},
-							{
-								id: 'formatChordpro',
-								label: 'ChordPro',
-								value: 'chordpro',
-							},
-						],
-					},
-					option: {
-						context: 'songFormatting',
-						key: 'chartFormat',
-					},
-				},
 				chartType: {
-					label: 'Chart type',
+					label: 'Type',
 					type: 'select',
 					typeOptions: {
 						allChoices: [
 							{
 								id: 'typedisplayAll',
-								label: 'Complete',
+								label: 'Show everything',
 								value: 'all',
 							},
 							{
@@ -181,54 +217,11 @@ export default {
 			icon: 'view_compact',
 
 			groupWidgetsOrder: [
+				'fontSize',
 				'columnsCount',
-				'columnBreakOnParagraph',
+				'columnBreakOnSection',
 				'documentMargins',
 			],
-			allGroupWidgets: {
-				columnsCount: {
-					label: 'Columns',
-					type: 'slider',
-					typeOptions: {
-						min: 1,
-						max: 4,
-					},
-					option: {
-						context: 'songFormatting',
-						key: 'columnsCount',
-					},
-				},
-
-				columnBreakOnParagraph: {
-					label: 'Break on paragraph',
-					type: 'toggle',
-					option: {
-						context: 'songFormatting',
-						key: 'columnBreakOnParagraph',
-					},
-				},
-
-				documentMargins: {
-					label: 'Margins',
-					type: 'slider',
-					typeOptions: {
-						min: 1,
-						max: 5,
-					},
-					option: {
-						context: 'songFormatting',
-						key: 'documentMargins',
-					},
-				},
-			},
-		},
-
-		style: {
-			type: 'optionsGroup',
-			label: 'Style',
-			icon: 'format_size',
-
-			groupWidgetsOrder: ['fontSize', 'chordsColor', 'highlightChords'],
 
 			allGroupWidgets: {
 				fontSize: {
@@ -245,45 +238,38 @@ export default {
 					},
 				},
 
-				chordsColor: {
-					label: 'Chords color',
-					type: 'select',
+				columnsCount: {
+					label: 'Columns',
+					type: 'slider',
 					typeOptions: {
-						allChoices: [
-							{
-								id: 'chordsColor',
-								label: 'Base',
-								value: 'base',
-							},
-							{
-								id: 'chordsColorRed',
-								label: 'Red',
-								value: 'red',
-							},
-							{
-								id: 'chordsColorYellow',
-								label: 'Yellow',
-								value: 'yellow',
-							},
-							{
-								id: 'chordsColorGreen',
-								label: 'Green',
-								value: 'green',
-							},
-						],
+						min: 1,
+						max: 4,
 					},
 					option: {
 						context: 'songFormatting',
-						key: 'chordsColor',
+						key: 'columnsCount',
 					},
 				},
 
-				highlightChords: {
-					label: 'Highlight Chords',
+				columnBreakOnSection: {
+					label: 'Column Break on section',
 					type: 'toggle',
 					option: {
 						context: 'songFormatting',
-						key: 'highlightChords',
+						key: 'columnBreakOnSection',
+					},
+				},
+
+				documentMargins: {
+					label: 'Margins',
+					type: 'slider',
+					typeOptions: {
+						min: 1,
+						max: 5,
+					},
+					option: {
+						context: 'songFormatting',
+						key: 'documentMargins',
 					},
 				},
 			},

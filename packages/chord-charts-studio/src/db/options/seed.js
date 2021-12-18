@@ -1,4 +1,16 @@
 export default {
+	// editorPreferences are identical for all songs
+	editorPreferences: {
+		values: {
+			theme: 'dark1',
+			chartFormat: 'chordmark',
+		},
+		defaults: {
+			theme: 'dark1',
+			chartFormat: 'chordmark',
+		},
+		//userDefaults: {},
+	},
 	// songPreferences are identical for all song rendering modes
 	// therefore, they are only saved once for each song
 	songPreferences: {
@@ -18,36 +30,28 @@ export default {
 	// they are saved separately for each song
 	songFormatting: {
 		values: {
-			chartFormat: 'chordmark',
 			chartType: 'all',
 			alignChordsWithLyrics: true,
 			alignBars: true,
 			autoRepeatChords: true,
 			expandSectionCopy: true,
 
-			columnsCount: 1,
-			columnBreakOnParagraph: true,
-			documentMargins: 3,
-
 			fontSize: 0,
-			chordsColor: 'yellow',
-			highlightChords: false,
+			columnsCount: 1,
+			columnBreakOnSection: true,
+			documentMargins: 3,
 		},
 		defaults: {
-			chartFormat: 'chordmark',
 			chartType: 'all',
 			alignChordsWithLyrics: true,
 			alignBars: true,
 			autoRepeatChords: true,
 			expandSectionCopy: true,
 
-			columnsCount: 1,
-			columnBreakOnParagraph: true,
-			documentMargins: 3,
-
 			fontSize: 0,
-			chordsColor: 'yellow',
-			highlightChords: false,
+			columnsCount: 1,
+			columnBreakOnSection: true,
+			documentMargins: 3,
 		},
 		//userDefaults: {},
 	},

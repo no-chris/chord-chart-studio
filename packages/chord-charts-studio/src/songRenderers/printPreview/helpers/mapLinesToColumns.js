@@ -1,7 +1,7 @@
 const cssClasses = {
 	emptyLine: 'cmEmptyLine',
 	chordLine: 'cmChordLine',
-	textLine: 'cmTextLine',
+	textLine: 'cmLyricLine',
 };
 
 /**
@@ -11,7 +11,7 @@ const cssClasses = {
  * @param {Number} columnsCount
  * @param {Number} firstPageHeight
  * @param {Number} normalPageHeight
- * @param {Boolean} columnBreakOnParagraph
+ * @param {Boolean} columnBreakOnSection
  * @param {Boolean} noEmptyLinesOnColumnStart
  * @param {Boolean} noOrphanTextLine
  * @returns {Array} array of pages, as array of columns
@@ -22,7 +22,7 @@ export default function mapLinesToColumns(
 		columnsCount,
 		firstPageHeight,
 		normalPageHeight,
-		columnBreakOnParagraph,
+		columnBreakOnSection,
 		noEmptyLinesOnColumnStart = true,
 		noOrphanTextLine = true,
 	}
@@ -57,7 +57,7 @@ export default function mapLinesToColumns(
 				buffer.length > 0 &&
 				isBreakable(line, allLinesWithHeight[lineIndex + 1], {
 					noOrphanTextLine,
-					columnBreakOnParagraph,
+					columnBreakOnSection,
 				})
 			) {
 				if (layout.fitsOnCurrentColumn(bufferHeight)) {
@@ -91,7 +91,7 @@ function shouldRenderLine(layout, line, buffer, noEmptyLinesOnColumnStart) {
 function isBreakable(
 	currentLine,
 	nextLine,
-	{ noOrphanTextLine, columnBreakOnParagraph }
+	{ noOrphanTextLine, columnBreakOnSection }
 ) {
 	if (isEmptyLine(currentLine) || !nextLine) {
 		return true;
@@ -104,7 +104,7 @@ function isBreakable(
 	}
 
 	const isEndOfParagraph = isEmptyLine(nextLine);
-	if (columnBreakOnParagraph === true && !isEndOfParagraph) {
+	if (columnBreakOnSection === true && !isEndOfParagraph) {
 		return false;
 	}
 	return true;

@@ -44,11 +44,10 @@ describe('PrintPreview', () => {
 			chartType: 'all',
 
 			columnsCount: 3,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			documentMargins: 3,
 
 			fontSize: 1,
-			highlightChords: false,
 		};
 	});
 
@@ -128,11 +127,11 @@ describe('PrintPreview', () => {
 				result = render(<PrintPreview {...props} />);
 			});
 
-			const { getByTestId, getAllByTestId, rerender } = result;
+			const { getAllByTestId, rerender } = result;
 
 			let allPages = getAllByTestId('printPreview-page');
 			expect(allPages[0]).toHaveClass('printPreview-page--a4');
-			expect(allPages[0]).toHaveClass('printPreview-page--font1');
+			expect(allPages[0]).toHaveClass('cmSong--fontSize1');
 
 			let allPageContentWrappers = getAllByTestId(
 				'printPreview-pageContentWrapper'
@@ -148,14 +147,13 @@ describe('PrintPreview', () => {
 						documentSize={'ipad'}
 						documentMargins={-2}
 						fontSize={-4}
-						highlightChords={true}
 					/>
 				);
 			});
 
 			allPages = getAllByTestId('printPreview-page');
 			expect(allPages[0]).toHaveClass('printPreview-page--ipad');
-			expect(allPages[0]).toHaveClass('printPreview-page--font-4');
+			expect(allPages[0]).toHaveClass('cmSong--fontSize-4');
 
 			allPageContentWrappers = getAllByTestId(
 				'printPreview-pageContentWrapper'
@@ -163,9 +161,6 @@ describe('PrintPreview', () => {
 			expect(allPageContentWrappers[0]).toHaveClass(
 				'printPreview-pageContentWrapper--padding-2'
 			);
-
-			const printPreview = getByTestId('printPreview');
-			expect(printPreview).toHaveClass('cmChordLine--highlightChords');
 		});
 	});
 });

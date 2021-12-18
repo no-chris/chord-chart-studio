@@ -7,7 +7,7 @@ describe('mapLinesToColumns', () => {
 });
 
 const chordLine = '<div class="cmChordLine">C F G</div>';
-const textLine = '<div class="cmTextLine">{CONTENT}</div>';
+const textLine = '<div class="cmLyricLine">{CONTENT}</div>';
 const emptyLine = '<div class="cmEmptyLine"> </div>';
 
 function getTextLine(index) {
@@ -17,7 +17,7 @@ function getTextLine(index) {
 function getLines({ from, to }) {
 	const count = to - from + 1;
 	const lines = new Array(count).fill(
-		'<div class="cmTextLine">{CONTENT}</div>'
+		'<div class="cmLyricLine">{CONTENT}</div>'
 	);
 	return lines.map((line, index) =>
 		line.replace('{CONTENT}', 'myVerse' + (from + index))
@@ -293,7 +293,7 @@ describe('noOrphanTextLine', () => {
 	});
 });
 
-describe('columnBreakOnParagraph', () => {
+describe('columnBreakOnSection', () => {
 	test('should not split a paragraph in the middle', () => {
 		const allLinesWithHeight = [
 			getTextLine(1),
@@ -312,7 +312,7 @@ describe('columnBreakOnParagraph', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
 			columnsCount: 2,
 			noOrphanTextLine: true,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			normalPageHeight: 100,
 		});
 
@@ -356,7 +356,7 @@ describe('columnBreakOnParagraph', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
 			columnsCount: 3,
 			noOrphanTextLine: true,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			normalPageHeight: 100,
 		});
 
@@ -396,7 +396,7 @@ describe('firstPageHeight', () => {
 		const allPagesColumns = mapLinesToColumns(allLinesWithHeight, {
 			columnsCount: 3,
 			noOrphanTextLine: true,
-			columnBreakOnParagraph: true,
+			columnBreakOnSection: true,
 			firstPageHeight: 50,
 			normalPageHeight: 100,
 		});

@@ -26,7 +26,9 @@ describe('exportSelectedFileAsText', () => {
 	test('should call saveAs() with a chordMarkFile and a .txt extension', async () => {
 		dispatch(createFile('aSong - anArtist', 'A\n_mySong\n'));
 		dispatch(selectFile('myUUID'));
-		dispatch(setOptionValue('songFormatting', 'chartFormat', 'chordmark'));
+		dispatch(
+			setOptionValue('editorPreferences', 'chartFormat', 'chordmark')
+		);
 
 		exportSelectedFileAsText();
 
@@ -45,7 +47,7 @@ describe('exportSelectedFileAsText', () => {
 		dispatch(createFile('aSong - anArtist', 'A\n_mySong\n'));
 		dispatch(selectFile('myUUID'));
 		dispatch(
-			setOptionValue('songFormatting', 'chartFormat', 'chordmarkSrc')
+			setOptionValue('editorPreferences', 'chartFormat', 'chordmarkSrc')
 		);
 
 		exportSelectedFileAsText();
@@ -64,7 +66,9 @@ describe('exportSelectedFileAsText', () => {
 	test('should call saveAs() with a chordPro file and a .cho extension', async () => {
 		dispatch(createFile('aSong - anArtist', 'A\n_mySong\n'));
 		dispatch(selectFile('myUUID'));
-		dispatch(setOptionValue('songFormatting', 'chartFormat', 'chordpro'));
+		dispatch(
+			setOptionValue('editorPreferences', 'chartFormat', 'chordpro')
+		);
 
 		exportSelectedFileAsText();
 

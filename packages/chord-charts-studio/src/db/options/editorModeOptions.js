@@ -1,6 +1,14 @@
 const editorModeOptions = {
-	edit: ['transposeValue', 'harmonizeAccidentals', 'preferredAccidentals'],
+	edit: [
+		'theme',
+
+		'transposeValue',
+		'harmonizeAccidentals',
+		'preferredAccidentals',
+	],
 	play: [
+		'theme',
+
 		'transposeValue',
 		'harmonizeAccidentals',
 		'preferredAccidentals',
@@ -14,8 +22,6 @@ const editorModeOptions = {
 		'columnsCount',
 
 		'fontSize',
-		'chordsColor',
-		'highlightChords',
 	],
 	print: [
 		'transposeValue',
@@ -29,18 +35,18 @@ const editorModeOptions = {
 		'expandSectionCopy',
 
 		'columnsCount',
-		'columnBreakOnParagraph',
+		'columnBreakOnSection',
 		'documentMargins',
 
 		'fontSize',
-		'highlightChords',
 	],
 	export: [
+		'chartFormat',
+
 		'transposeValue',
 		'harmonizeAccidentals',
 		'preferredAccidentals',
 
-		'chartFormat',
 		'chartType',
 		'alignChordsWithLyrics',
 		'alignBars',

@@ -9,7 +9,7 @@ function ExportPreview(props) {
 	const { selectedFile } = props;
 
 	return (
-		<div className={'exportPreview exp-SongRenderer'}>
+		<div className={'exportPreview exp-SongRenderer cmTheme-text'}>
 			<SongRenderer
 				content={selectedFile.content}
 				useChartFormat={true}

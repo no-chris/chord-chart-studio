@@ -1,4 +1,4 @@
-@import '../../../../scss/abstract';
+@import '././././scss/abstract';
 
 $themes: (
 	light: (),
@@ -56,6 +56,9 @@ $themes: (
 }
 
 .printPreview-pageHeader {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol';
 	@include font-size(big);
 	font-weight: $weight-bold;
 
@@ -112,37 +115,8 @@ $themes: (
 	padding: 15mm;
 }
 
-// Font size definitions
-.printPreview-page--font-5 {
-	font-size: 7px;
-}
-.printPreview-page--font-4 {
-	font-size: 8px;
-}
-.printPreview-page--font-3 {
-	font-size: 9px;
-}
-.printPreview-page--font-2 {
-	font-size: 10px;
-}
-.printPreview-page--font-1 {
-	font-size: 11px;
-}
-.printPreview-page--font0 {
-	font-size: 12px;
-}
-.printPreview-page--font1 {
-	font-size: 13px;
-}
-.printPreview-page--font2 {
-	font-size: 14px;
-}
-.printPreview-page--font3 {
-	font-size: 15px;
-}
-.printPreview-page--font4 {
-	font-size: 16px;
-}
-.printPreview-page--font5 {
-	font-size: 17px;
+.cmTheme-print {
+	.cmSong {
+		padding: 0 !important;
+	}
 }

@@ -63,20 +63,19 @@ describe('"Rendering" option panel', () => {
 					.alignChordsWithLyrics.label
 			);
 
-			const columnBreakOnParagraph = queryByText(
+			const columnBreakOnSection = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
+					.columnBreakOnSection.label
 			);
 
-			const highlightChords = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
-					.label
+			const fontSize = queryByText(
+				allWidgets.allWidgets.layout.allGroupWidgets.fontSize.label
 			);
 
 			expect(harmonizeAccidentals).toBeInTheDocument();
 			expect(alignChordsWithLyrics).toBeNull();
-			expect(columnBreakOnParagraph).toBeNull();
-			expect(highlightChords).toBeNull();
+			expect(columnBreakOnSection).toBeNull();
+			expect(fontSize).toBeNull();
 		});
 
 		test('Play mode', () => {
@@ -85,12 +84,12 @@ describe('"Rendering" option panel', () => {
 
 			const { queryByText } = render(withStore(<Rendering />));
 
-			const columnBreakOnParagraph = queryByText(
+			const columnBreakOnSection = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
+					.columnBreakOnSection.label
 			);
 
-			expect(columnBreakOnParagraph).toBeNull();
+			expect(columnBreakOnSection).toBeNull();
 		});
 
 		test('Print mode', () => {
@@ -99,12 +98,12 @@ describe('"Rendering" option panel', () => {
 
 			const { queryByText } = render(withStore(<Rendering />));
 
-			const chordsColor = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.chordsColor.label +
-					':'
+			const theme = queryByText(
+				allWidgets.allWidgets.editorPreferences.allGroupWidgets.theme
+					.label + ':'
 			);
 
-			expect(chordsColor).toBeNull();
+			expect(theme).toBeNull();
 		});
 
 		test('Export mode', () => {
@@ -113,17 +112,16 @@ describe('"Rendering" option panel', () => {
 
 			const { queryByText } = render(withStore(<Rendering />));
 
-			const columnBreakOnParagraph = queryByText(
+			const columnBreakOnSection = queryByText(
 				allWidgets.allWidgets.layout.allGroupWidgets
-					.columnBreakOnParagraph.label
+					.columnBreakOnSection.label
 			);
-			const highlightChords = queryByText(
-				allWidgets.allWidgets.style.allGroupWidgets.highlightChords
-					.label
+			const fontSize = queryByText(
+				allWidgets.allWidgets.layout.allGroupWidgets.fontSize.label
 			);
 
-			expect(columnBreakOnParagraph).toBeNull();
-			expect(highlightChords).toBeNull();
+			expect(columnBreakOnSection).toBeNull();
+			expect(fontSize).toBeNull();
 		});
 	});
 
@@ -135,8 +133,8 @@ describe('"Rendering" option panel', () => {
 			const { getByText } = render(withStore(<Rendering />));
 
 			const chartFormat = getByText(
-				allWidgets.allWidgets.preferences.allGroupWidgets.chartFormat
-					.label + ':'
+				allWidgets.allWidgets.editorPreferences.allGroupWidgets
+					.chartFormat.label + ':'
 			);
 
 			act(() => {
@@ -152,7 +150,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'songFormatting',
+					'editorPreferences',
 					'chartFormat'
 				)
 			).toBe('chordmark');
@@ -163,7 +161,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'songFormatting',
+					'editorPreferences',
 					'chartFormat'
 				)
 			).toBe('chordpro');
@@ -174,7 +172,7 @@ describe('"Rendering" option panel', () => {
 			expect(
 				optionsSelectors.getOptionValue(
 					getState(),
-					'songFormatting',
+					'editorPreferences',
 					'chartFormat'
 				)
 			).toBe('chordmark');
@@ -300,7 +298,8 @@ describe('"Rendering" option panel', () => {
 				allWidgets.allWidgets.preferences.allGroupWidgets;
 
 			const chartFormat = getByText(
-				preferencesWidgets.chartFormat.label + ':'
+				allWidgets.allWidgets.editorPreferences.allGroupWidgets
+					.chartFormat.label + ':'
 			);
 
 			act(() => {

@@ -23,12 +23,14 @@ describe('SongRenderer', () => {
 			const { container } = render(<SongRenderer {...props} />);
 
 			expect(container.firstChild.firstChild.innerHTML).toBe(
-				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>\n' +
+				'<div class="cmSong">' +
+					'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
 					'<p class="cmLine"><span class="cmChordLine">' +
 					'<span class="cmBarSeparator">|</span>' +
 					'<span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
-					'</span></p>\n' +
-					'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>'
+					'</span></p>' +
+					'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>' +
+					'</div>'
 			);
 		});
 
@@ -42,7 +44,7 @@ describe('SongRenderer', () => {
 			);
 
 			expect(container.firstChild.firstChild.innerHTML).toBe(
-				'<p>&nbsp;</p>\n<p>A</p>\n<p>_mySong</p>'
+				'<p>&nbsp;</p><p>A</p><p>_mySong</p>'
 			);
 		});
 
@@ -56,7 +58,7 @@ describe('SongRenderer', () => {
 			);
 
 			expect(container.firstChild.firstChild.innerHTML).toBe(
-				'<p>&nbsp;</p>\n<p>[A]mySong</p>'
+				'<p>&nbsp;</p><p>[A]mySong</p>'
 			);
 		});
 	});

@@ -13,7 +13,7 @@ function Page(props) {
 	} = props;
 
 	const allSectionsRendered = allColumnsLines.map((columnLines, index) => {
-		const columnLinesTxt = columnLines.join('\n');
+		const columnLinesTxt = columnLines.join('');
 
 		return (
 			<div
@@ -27,7 +27,8 @@ function Page(props) {
 
 	const pageClasses = ['printPreview-page'];
 	pageClasses.push('printPreview-page--' + documentSize);
-	pageClasses.push('printPreview-page--font' + fontSize);
+	pageClasses.push('cmSong--fontSize' + fontSize);
+	pageClasses.push('cmSong');
 
 	const pageContentWrapperClasses = ['printPreview-pageContentWrapper'];
 	pageContentWrapperClasses.push(
