@@ -6,7 +6,7 @@ export default {
 		editorPreferences: {
 			label: 'Editor preferences',
 			type: 'optionsGroup',
-			icon: 'music_note',
+			icon: 'tune',
 
 			groupWidgetsOrder: ['theme', 'chartFormat'],
 			allGroupWidgets: {
