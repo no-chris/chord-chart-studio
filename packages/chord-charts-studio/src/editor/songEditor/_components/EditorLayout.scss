@@ -10,6 +10,7 @@ $themes: (
 	),
 );
 
+$headerVPadding: 3px;
 $headerHeight: 20px;
 
 .songEditor-headers {
@@ -17,7 +18,7 @@ $headerHeight: 20px;
 
 	height: $headerHeight;
 	text-transform: uppercase;
-	padding: 3px 0;
+	padding: $headerVPadding 0;
 	text-align: center;
 	@include font-size(small);
 
@@ -37,7 +38,7 @@ $headerHeight: 20px;
 
 .songEditor {
 	width: 100%;
-	height: calc(100% - #{$headerHeight});
+	height: calc(100% - #{$headerHeight + $headerVPadding * 2});
 
 	display: flex;
 	flex-direction: row;
