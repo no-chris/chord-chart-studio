@@ -8,13 +8,18 @@ import SongRenderer from '../../_containers/SongRenderer';
 function PlayRenderer(props) {
 	const { theme, selectedFile, fontSize, columnsCount } = props;
 
+	const wrapperClassNames = ['playRendererWrapper1'];
+	wrapperClassNames.push('cmTheme-' + theme);
+	wrapperClassNames.push('cmSong--fontSize' + fontSize);
+
 	const classNames = ['playRenderer'];
-	classNames.push('cmTheme-' + theme);
 	classNames.push('playRenderer--columns-' + columnsCount);
-	classNames.push('cmSong--fontSize' + fontSize);
 
 	return (
-		<div className={'playRendererWrapper1'}>
+		<div
+			className={wrapperClassNames.join(' ')}
+			data-testid={'playRendererWrapper1'}
+		>
 			<div className={'playRendererWrapper2'}>
 				<div
 					className={classNames.join(' ')}
