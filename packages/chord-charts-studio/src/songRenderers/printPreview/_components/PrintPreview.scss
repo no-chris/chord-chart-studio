@@ -10,7 +10,7 @@ $themes: (
 );
 
 .printPreview {
-	overflow-y: scroll;
+	overflow: hidden;
 
 	@include themify($themes) {
 		background-color: themed('desktop-bg');
