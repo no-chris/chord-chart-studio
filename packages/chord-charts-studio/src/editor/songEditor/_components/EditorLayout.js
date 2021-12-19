@@ -5,12 +5,18 @@ import PropTypes from 'prop-types';
 
 import { ScrollSync, ScrollSyncNode } from 'scroll-sync-react';
 
-import EditorPreview from '../../../songRenderers/editorPreview/_containers/EditorPreview';
+import EditorPreview from '../../../songRenderers/editorPreview/_components/EditorPreview';
 import ProseMirrorEditorView from '../prosemirror/ProsemirrorEditorView';
 import Icon from '../../../ui/_components/Icon';
 
 function EditorLayout(props) {
-	const { selectedFile, updateFile } = props;
+	const { selectedFile, updateFile, theme } = props;
+
+	const previewClassNames = [
+		'songEditor-preview',
+		'cmTheme-' + theme,
+		'cmTheme-fadeRepeats',
+	];
 
 	return (
 		<>
@@ -49,7 +55,7 @@ function EditorLayout(props) {
 						</div>
 					</ScrollSyncNode>
 					<ScrollSyncNode group={'a'}>
-						<div className={'songEditor-preview'}>
+						<div className={previewClassNames.join(' ')}>
 							<EditorPreview selectedFile={selectedFile} />
 						</div>
 					</ScrollSyncNode>
@@ -61,6 +67,7 @@ function EditorLayout(props) {
 
 EditorLayout.propTypes = {
 	selectedFile: PropTypes.object,
+	theme: PropTypes.string.isRequired,
 	updateFile: PropTypes.func.isRequired,
 };
 

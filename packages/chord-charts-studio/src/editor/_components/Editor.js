@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import EditorLayout from '../songEditor/_components/EditorLayout';
+import EditorLayout from '../songEditor/_containers/EditorLayout';
 import ExportPreview from '../../songRenderers/exportPreview/_components/ExportPreview';
 import PlayRenderer from '../../songRenderers/playRenderer/_containers/PlayRenderer';
 import PrintPreview from '../../songRenderers/printPreview/_containers/PrintPreview';

@@ -46,7 +46,7 @@ describe('PlayRenderer', () => {
 				<PlayRenderer {...props} fontSize={-3} />
 			);
 
-			const element = getByTestId('playRenderer');
+			const element = getByTestId('playRendererWrapper1');
 
 			expect(element).toHaveClass('cmSong--fontSize-3');
 

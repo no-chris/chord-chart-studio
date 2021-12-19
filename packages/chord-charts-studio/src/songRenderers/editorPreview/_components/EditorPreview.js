@@ -6,13 +6,9 @@ import PropTypes from 'prop-types';
 import SongRenderer from '../../_containers/SongRenderer';
 
 function EditorPreview(props) {
-	const { selectedFile, theme } = props;
+	const { selectedFile } = props;
 
-	const classNames = [
-		'editorPreview',
-		'cmTheme-' + theme,
-		'cmTheme-fadeRepeats',
-	];
+	const classNames = ['editorPreview'];
 
 	return (
 		<div className={classNames.join(' ')}>
@@ -22,7 +18,6 @@ function EditorPreview(props) {
 }
 
 EditorPreview.propTypes = {
-	theme: PropTypes.string.isRequired,
 	selectedFile: PropTypes.object.isRequired,
 };
 

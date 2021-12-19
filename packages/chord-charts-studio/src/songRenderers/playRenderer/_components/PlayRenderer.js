@@ -16,7 +16,10 @@ function PlayRenderer(props) {
 	classNames.push('playRenderer--columns-' + columnsCount);
 
 	return (
-		<div className={wrapperClassNames.join(' ')}>
+		<div
+			className={wrapperClassNames.join(' ')}
+			data-testid={'playRendererWrapper1'}
+		>
 			<div className={'playRendererWrapper2'}>
 				<div
 					className={classNames.join(' ')}
