@@ -3,9 +3,14 @@
 $themes: (
 	light: (),
 	dark: (
+		// links
 		link1: cv(dark-accent),
 		link1-hover: cv(dark-accent, light10),
 		link1-active: cv(dark-accent, light20),
+		// scrollbars
+		scrollbar-bg: cv(dark-secondary),
+		scrollbar-thumb: cv(dark-foreground, dark30),
+		scrollbar-hover: cv(dark-foreground, dark20),
 	),
 );
 
@@ -41,5 +46,44 @@ body {
 		@include themify($themes) {
 			color: themed('link1-active');
 		}
+	}
+}
+
+// scrollbars
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+	@include themify($themes) {
+		background-color: red;
+	}
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+	@include themify($themes) {
+		background-color: themed('scrollbar-bg');
+	}
+}
+
+::-webkit-scrollbar-thumb {
+	@include themify($themes) {
+		background-color: themed('scrollbar-thumb');
+		border: 3px solid themed('scrollbar-bg');
+	}
+	border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@include themify($themes) {
+		background-color: themed('scrollbar-hover');
+	}
+}
+
+@supports (scrollbar-color: white black) {
+	* {
+		@include themify($themes) {
+			scrollbar-color: themed('scrollbar-thumb') themed('scrollbar-bg');
+		}
+		scrollbar-width: thin;
 	}
 }
