@@ -11,6 +11,7 @@ $themes: (
 
 .printPreview {
 	overflow: hidden;
+	min-height: 100%;
 
 	@include themify($themes) {
 		background-color: themed('desktop-bg');
