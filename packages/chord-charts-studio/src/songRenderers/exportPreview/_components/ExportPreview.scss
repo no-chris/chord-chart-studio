@@ -3,7 +3,8 @@
 $themes: (
 	light: (),
 	dark: (
-		song-bg: cv(dark-foreground),
+		song-txt: cv(dark-foreground),
+		song-bg: cv(dark-secondary),
 	),
 );
 
@@ -14,6 +15,7 @@ $themes: (
 
 	@include themify($themes) {
 		background-color: themed('song-bg');
+		color: themed('song-txt');
 	}
 }
 
@@ -30,7 +32,7 @@ $themes: (
 		margin: 0;
 	}
 
-	.cmSong {
-		padding: 0 !important;
+	@include themify($themes) {
+		color: themed('song-txt') !important;
 	}
 }
