@@ -2659,6 +2659,13 @@ cheerio@^0.22.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
+chord-mark-themes@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.9.1.tgz#346b6386a7f84003649bed5752f0a2e3811addac"
+  integrity sha512-NcP12GhPKte8nlSE8RDRsYIubnCwLxHCUuxqUtBm1ZzIMDoOSXoI8jvROdDOnyYqTaP4az0cZc1gRTmCDkhXIQ==
+  dependencies:
+    chord-mark "^0.9.0"
+
 chord-mark@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.9.0.tgz#c310943b4b9c7e309e34e32fbc0cd890f40e0d46"

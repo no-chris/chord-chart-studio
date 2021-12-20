@@ -1,5 +1,7 @@
 @import './dracula';
 
+@import '../../node_modules/chord-mark-themes/scss/chordMarkThemes';
+
 .chordMarkBlockContainer {
 	margin-bottom: var(--ifm-leading);
 	border-radius: var(--ifm-global-radius);

@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Chord Charts Studio',
-	tagline: 'Create Chords Charts that looks like you',
+	tagline: 'Chord Charts made easy.',
 	url: 'https://chord-charts-studio.netlify.app',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
@@ -50,7 +50,7 @@ const config = {
 				items: [
 					{
 						type: 'doc',
-						docId: 'overview/what-is-chordmark',
+						docId: 'overview',
 						position: 'left',
 						label: 'User guide',
 					},
@@ -63,8 +63,8 @@ const config = {
 						title: 'Docs',
 						items: [
 							{
-								label: '5 minutes tutorial',
-								to: '/docs/getting-started',
+								label: 'Overview',
+								to: '/docs/overview',
 							},
 							{
 								label: 'Licenses',

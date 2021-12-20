@@ -2,41 +2,42 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
 
-import { CM } from './shortcuts';
+import { CM, CCS } from './shortcuts';
 
-import svgChart from '../../static/img/chart.svg';
-import svgMetronome from '../../static/img/metronome.svg';
-import svgBand from '../../static/img/band.svg';
+import svgChart from '../../static/img/lyrics.svg';
+import svgLightning from '../../static/img/lightning.svg';
+import svgSwap from '../../static/img/swap.svg';
 
 const FeatureList = [
 	{
-		title: 'Easy to Write',
+		title: 'Complete',
 		Svg: svgChart,
 		description: (
 			<>
-				<CM /> syntax is short, straight to the point, and yet powerful.
-				Write complex songs transcriptions in a matter of minutes!
+				Create or import chord charts, format them on your computer
+				screen, print them, save them as PDF, or export them in your
+				favorite songbook application. For free.
 			</>
 		),
 	},
 	{
-		title: 'Complete and accurate',
-		Svg: svgMetronome,
+		title: 'Powerful',
+		Svg: svgLightning,
 		description: (
 			<>
-				<CM /> is the only chord chart format that has native support
-				for rhythmic information. Play simple or complex songs, whether
-				you have heard them before or not!
+				<CCS /> is the official editor of <CM />, the only chord charts
+				format that allows encoding lyrics, chords AND rhythm
+				information. Create chord grids in a snap!
 			</>
 		),
 	},
 	{
-		title: 'For everyone',
-		Svg: svgBand,
+		title: 'ChordPro compatible',
+		Svg: svgSwap,
 		description: (
 			<>
-				<CM /> is useful to all musicians, including the ones that do
-				not sing. Render nicely formatted chord grids in a single click!
+				<CCS /> can import and export songs in the ChordPro format for
+				maximum compatibility with other software.
 			</>
 		),
 	},
