@@ -10,7 +10,7 @@ import svgSwap from '../../static/img/swap.svg';
 
 const FeatureList = [
 	{
-		title: 'Complete',
+		title: 'Completely free',
 		Svg: svgChart,
 		description: (
 			<>

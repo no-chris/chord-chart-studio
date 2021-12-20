@@ -1,5 +1,3 @@
-@import './dracula';
-
 @import '../../node_modules/chord-mark-themes/scss/chordMarkThemes';
 
 .chordMarkBlockContainer {
@@ -43,8 +41,6 @@
 }
 
 .chordMarkBlockLines {
-	color: $dt-foreground;
-	background-color: $dt-background !important;
 	overflow-x: scroll;
 
 	p {

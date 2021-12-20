@@ -6,6 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import ImageGallery from 'react-image-gallery';
 
 function HomepageHeader() {
 	const { siteConfig } = useDocusaurusContext();
@@ -16,19 +17,26 @@ function HomepageHeader() {
 					<img src={'/img/logo_blackbg.png'} alt={siteConfig.title} />
 				</div>
 				<p className="hero__subtitle">{siteConfig.tagline}</p>
-				<div className={styles.buttons}>
-					<Link
-						className="button button--secondary button--lg"
-						to="/docs/overview"
-					>
-						Getting started
-					</Link>
+				<div className={styles.buttonsContainer}>
+					<span className={styles.buttons}>
+						<Link
+							className="button button--secondary button--lg"
+							to="/docs/overview"
+						>
+							Read the docs
+						</Link>
+					</span>
+					<span className={styles.buttons}>
+						<Link
+							className="button button--secondary button--lg"
+							to="https://chord-charts-studio.netlify.app"
+						>
+							Launch the app
+						</Link>
+					</span>
 				</div>
+
 				<br />
-				<img
-					src={useBaseUrl('/img/home.png')}
-					alt={'ChordMark samples'}
-				/>
 			</div>
 		</header>
 	);
@@ -36,6 +44,26 @@ function HomepageHeader() {
 
 export default function Home() {
 	const { siteConfig } = useDocusaurusContext();
+
+	const images = [
+		{
+			original: useBaseUrl('/img/screenshot1.png'),
+			thumbnail: useBaseUrl('/img/screenshot1_thumb.png'),
+		},
+		{
+			original: useBaseUrl('/img/screenshot2.png'),
+			thumbnail: useBaseUrl('/img/screenshot2_thumb.png'),
+		},
+		{
+			original: useBaseUrl('/img/screenshot3.png'),
+			thumbnail: useBaseUrl('/img/screenshot3_thumb.png'),
+		},
+		{
+			original: useBaseUrl('/img/screenshot4.png'),
+			thumbnail: useBaseUrl('/img/screenshot4_thumb.png'),
+		},
+	];
+
 	return (
 		<Layout
 			title={`${siteConfig.title}`}
@@ -44,6 +72,9 @@ export default function Home() {
 			<HomepageHeader />
 			<main>
 				<HomepageFeatures />
+				<div className={styles.ccsImageGallery}>
+					<ImageGallery items={images} showPlayButton={false} />
+				</div>
 			</main>
 		</Layout>
 	);

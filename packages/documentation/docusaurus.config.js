@@ -54,6 +54,11 @@ const config = {
 						position: 'left',
 						label: 'User guide',
 					},
+					{
+						position: 'left',
+						label: 'Launch the app',
+						to: 'https://chord-charts-studio.netlify.app',
+					},
 				],
 			},
 			footer: {

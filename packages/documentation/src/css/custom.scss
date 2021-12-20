@@ -1,3 +1,6 @@
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
+@import './ChordMarkBlock';
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -34,8 +37,6 @@ html[data-theme='light'] .featureSvg_src-components-HomepageFeatures-module {
 html[data-theme='dark'] .featureSvg_src-components-HomepageFeatures-module {
 	fill: var(--ifm-color-primary-lighter);
 }
-
-@import './ChordMarkBlock';
 
 .logo_homepage {
 	width: 300px !important;
