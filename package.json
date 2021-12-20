@@ -55,7 +55,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/no-chris/chords-charts-studio.git"
+    "url": "git+https://github.com/no-chris/.chord-charts-studio.git"
   },
   "bugs": {
     "url": "https://github.com/no-chris/chords-charts-studio/issues"

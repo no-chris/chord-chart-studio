@@ -1,7 +1,6 @@
 /* eslint-env node */
 const path = require('path');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const buildDir = 'build';
@@ -19,11 +18,6 @@ const config = {
 	},
 
 	plugins: [
-		new HtmlWebpackPlugin({
-			title: 'Chord Charts Studio',
-			template: 'assets/index.html',
-			favicon: 'assets/favicon.ico',
-		}),
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[fullhash].css',
 		}),

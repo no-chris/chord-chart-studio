@@ -7,6 +7,7 @@ const common = require('./webpack.common');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin =
 	require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -39,6 +40,12 @@ module.exports = merge(common, {
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static',
 			openAnalyzer: false,
+		}),
+		new HtmlWebpackPlugin({
+			title: 'Chord Charts Studio',
+			template: 'assets/index.html',
+			favicon: 'assets/favicon.ico',
+			publicPath: 'app', // subfolder of the documentation website
 		}),
 	],
 });

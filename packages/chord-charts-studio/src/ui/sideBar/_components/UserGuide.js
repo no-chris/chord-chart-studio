@@ -5,8 +5,7 @@ import React from 'react';
 import Button from '../../_components/Button';
 import Icon from '../../_components/Icon.js';
 
-const userGuideUrl =
-	'https://chordmark.netlify.app/docs/chord-charts-studio/overview';
+const userGuideUrl = 'https://chord-charts-studio.netlify.app';
 
 const UserGuide = () => {
 	const openUserGuide = () => {
