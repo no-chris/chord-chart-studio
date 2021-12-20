@@ -21,7 +21,7 @@
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"start": "docusaurus start --poll",
-		"build": "docusaurus build",
+		"build": "docusaurus build && cp -rf ../chord-charts-studio/build/* build/app",
 		"swizzle": "docusaurus swizzle",
 		"deploy": "docusaurus deploy",
 		"clear": "docusaurus clear",

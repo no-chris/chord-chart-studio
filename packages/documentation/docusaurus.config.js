@@ -57,7 +57,7 @@ const config = {
 					{
 						position: 'left',
 						label: 'Launch the app',
-						to: 'https://chord-charts-studio.netlify.app',
+						to: 'https://chord-charts-studio.netlify.app/app',
 					},
 				],
 			},
