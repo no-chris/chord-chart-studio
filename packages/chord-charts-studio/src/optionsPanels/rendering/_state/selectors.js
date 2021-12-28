@@ -28,13 +28,11 @@ export const getNonInteractableWidgets = (state) => {
 	const editorMode = getEditorMode(state);
 
 	if (editorMode === 'export') {
-		if (['chordmarkSrc', 'chordpro'].includes(chartFormat)) {
+		if (chartFormat === 'chordmarkSrc') {
 			nonInteractableWidgets.push('chartType');
 			nonInteractableWidgets.push('alignChordsWithLyrics');
 			nonInteractableWidgets.push('alignBars');
 			nonInteractableWidgets.push('autoRepeatChords');
-		}
-		if (chartFormat === 'chordmarkSrc') {
 			nonInteractableWidgets.push('expandSectionCopy');
 		}
 	}
