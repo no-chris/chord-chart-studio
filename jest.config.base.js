@@ -4,9 +4,7 @@ module.exports = {
 	rootDir: __dirname,
 
 	collectCoverage: true,
-	collectCoverageFrom: [
-		'<rootDir>/packages/chords-charts-studio/src/**/*.js',
-	],
+	collectCoverageFrom: ['<rootDir>/packages/chord-charts-studio/src/**/*.js'],
 	coverageDirectory: '<rootDir>/coverage',
 	coverageReporters: ['json', 'lcov', 'text', 'clover'],
 	coverageThreshold: {

@@ -9,6 +9,7 @@ module.exports = {
 
 	rootDir: '../..',
 	coveragePathIgnorePatterns: [
+		'packages/chord-charts-studio/src/main.js',
 		'packages/chord-charts-studio/src/core/createGetVersions.js',
 	],
 
