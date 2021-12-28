@@ -1,5 +1,5 @@
 import { renderSong as renderSongCm, parseSong } from 'chord-mark';
-import chordMark2ChordPro from 'chord-mark-2-chordpro';
+import { chordMark2ChordPro } from 'chord-mark-converters';
 
 import stripTags from './stripTags';
 
@@ -23,7 +23,7 @@ function render(songTxt, renderOptions, useChartFormat, outputFormat) {
 	if (useChartFormat && renderOptions.chartFormat === 'chordmarkSrc') {
 		return outputFormat === 'html' ? toHtml(songTxt) : songTxt;
 	} else if (useChartFormat && renderOptions.chartFormat === 'chordpro') {
-		renderOptions.customRenderer = chordMark2ChordPro;
+		renderOptions.customRenderer = chordMark2ChordPro();
 		const chordProTxt = renderSong(songTxt, renderOptions);
 		return outputFormat === 'html' ? toHtml(chordProTxt) : chordProTxt;
 	} else {
