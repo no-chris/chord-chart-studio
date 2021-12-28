@@ -58,7 +58,7 @@ describe('SongRenderer', () => {
 			);
 
 			expect(container.firstChild.firstChild.innerHTML).toBe(
-				'<p>&nbsp;</p><p>[A]mySong</p>'
+				'<p>[|] [A]mySong [|]</p>'
 			);
 		});
 	});

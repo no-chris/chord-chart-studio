@@ -80,7 +80,7 @@ describe('exportSelectedFileAsText', () => {
 		expect(filename).toBe('aSong - anArtist.cho');
 
 		const fileContent = await blobToTxt(blob);
-		expect(fileContent).toBe('[A]mySong\n');
+		expect(fileContent).toBe('[|] [A]mySong [|]');
 	});
 });
 

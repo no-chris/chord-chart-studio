@@ -53,7 +53,7 @@ describe('renderAsHtml()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsHtml(input, { chartFormat: 'chordpro' }, true);
 
-		expect(rendered).toEqual('<p>[A]mySong</p><p>&nbsp;</p>');
+		expect(rendered).toEqual('<p>[|] [A]mySong [|]</p>');
 	});
 
 	test('Should return ChordMark source html with useChartFormat === true & chartFormat === chordmarkSrc', () => {
@@ -98,7 +98,7 @@ describe('renderAsText()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsText(input, { chartFormat: 'chordpro' }, true);
 
-		expect(rendered).toEqual('[A]mySong\n');
+		expect(rendered).toEqual('[|] [A]mySong [|]');
 	});
 
 	test('Should return ChordMark source text with useChartFormat === true & chartFormat === chordmarkSrc', () => {

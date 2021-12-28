@@ -307,7 +307,6 @@ describe('"Rendering" option panel', () => {
 			});
 
 			const chordmarkSrc = getByText('ChordMark (Source)');
-			const chordpro = getByText('ChordPro');
 
 			const chartType = getByText(
 				preferencesWidgets.chartType.label + ':'
@@ -327,15 +326,6 @@ describe('"Rendering" option panel', () => {
 
 			act(() => {
 				fireEvent.click(chordmarkSrc);
-			});
-
-			expect(isDisabled(chartType, true)).toBe(true);
-			expect(isDisabled(alignChordsWithLyrics)).toBe(true);
-			expect(isDisabled(alignBars)).toBe(true);
-			expect(isDisabled(autoRepeatChords)).toBe(true);
-
-			act(() => {
-				fireEvent.click(chordpro);
 			});
 
 			expect(isDisabled(chartType, true)).toBe(true);

@@ -3,13 +3,14 @@ import './SongImporter.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { convert2ChordMark } from 'chord-mark-converters';
+
 import Modal from '../../ui/_components/Modal';
 import Header from './Header';
 import FilePicker from './FilePicker';
 import Input from './Input';
 import PreviewError from './PreviewError';
 import InputFormatSelector from './InputFormatSelector';
-import input2ChordMark from '../input2ChordMark';
 import Icon from '../../ui/_components/Icon';
 
 function SongImporter(props) {
@@ -31,7 +32,7 @@ function SongImporter(props) {
 	let error = '';
 
 	try {
-		chordMarkContent = input2ChordMark(content, inputFormat);
+		chordMarkContent = convert2ChordMark(content, { inputFormat });
 	} catch (e) {
 		error = e.message;
 	}

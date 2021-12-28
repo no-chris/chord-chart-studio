@@ -5,16 +5,16 @@ import InputFormatEntry from './InputFormatEntry';
 
 const allEntries = [
 	{
-		id: 'basic',
-		label: 'Basic',
+		id: 'auto',
+		label: 'Detect',
 	},
 	{
-		id: 'chordpro',
-		label: 'ChordPro',
+		id: 'chordPro',
+		label: 'Bracketed chords (ChordPro)',
 	},
 	{
-		id: 'ultimateGuitar',
-		label: 'Ultimate Guitar',
+		id: 'chordsOverLyrics',
+		label: 'Chords over lyrics (Ultimate Guitar...)',
 	},
 ];
 

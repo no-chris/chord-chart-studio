@@ -1,4 +1,4 @@
-jest.mock('../../../../src/songImporter/input2ChordMark');
+jest.mock('chord-mark-converters');
 import React from 'react';
 
 import { render, cleanup, waitFor } from '@testing-library/react';
@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 
 import SongImporter from '../../../../src/songImporter/_components/SongImporter';
-import input2ChordMark from '../../../../src/songImporter/input2ChordMark';
+import { convert2ChordMark } from 'chord-mark-converters';
 
 afterEach(cleanup);
 
@@ -36,7 +36,7 @@ describe('SongImporter', () => {
 		importFile.mockReset();
 		setContent.mockReset();
 		setInputFormat.mockReset();
-		input2ChordMark.mockImplementation((input) => input);
+		convert2ChordMark.mockImplementation((input) => input);
 	});
 
 	test('should not render import modal if isImporting = false', () => {
@@ -95,7 +95,7 @@ describe('SongImporter', () => {
 		});
 
 		test('should be disabled in case of parsing error', () => {
-			input2ChordMark.mockImplementation(() => {
+			convert2ChordMark.mockImplementation(() => {
 				throw new Error('Parsing Error');
 			});
 			const { getByText } = render(<SongImporter {...props} />);
@@ -156,7 +156,7 @@ describe('SongImporter', () => {
 
 	describe('Preview box', () => {
 		test('Should display converted input', () => {
-			input2ChordMark.mockImplementation(
+			convert2ChordMark.mockImplementation(
 				(input) => 'converted input ' + input
 			);
 			const { getByText } = render(<SongImporter {...props} />);
@@ -164,7 +164,7 @@ describe('SongImporter', () => {
 		});
 
 		test('Should display error if input2chordmark fails', () => {
-			input2ChordMark.mockImplementation(() => {
+			convert2ChordMark.mockImplementation(() => {
 				throw new Error('This is a parsing Error!');
 			});
 			const { getByText } = render(<SongImporter {...props} />);
@@ -177,50 +177,57 @@ describe('SongImporter', () => {
 	describe('Input format selector', () => {
 		test('Should set proper value on click', () => {
 			const { getByLabelText, rerender } = render(
-				<SongImporter {...props} inputFormat={'basic'} />
+				<SongImporter {...props} inputFormat={'auto'} />
 			);
-			const basic = getByLabelText('Basic');
-			const chordpro = getByLabelText('ChordPro');
-			const ultimateGuitar = getByLabelText('Ultimate Guitar');
+			const auto = getByLabelText('Detect');
+			const chordpro = getByLabelText('Bracketed chords (ChordPro)');
+			const chordsOverLyrics = getByLabelText(
+				'Chords over lyrics (Ultimate Guitar...)'
+			);
 
-			expect(basic).toBeChecked();
-			basic.click();
+			expect(auto).toBeChecked();
+			auto.click();
 			expect(setInputFormat).not.toHaveBeenCalled();
 
 			chordpro.click();
-			ultimateGuitar.click();
+			chordsOverLyrics.click();
 
 			rerender(<SongImporter {...props} inputFormat={'chordpro'} />);
 
-			basic.click();
+			auto.click();
 
 			expect(setInputFormat).toHaveBeenCalledTimes(3);
-			expect(setInputFormat).toHaveBeenNthCalledWith(1, 'chordpro');
-			expect(setInputFormat).toHaveBeenNthCalledWith(2, 'ultimateGuitar');
-			expect(setInputFormat).toHaveBeenNthCalledWith(3, 'basic');
+			expect(setInputFormat).toHaveBeenNthCalledWith(1, 'chordPro');
+			expect(setInputFormat).toHaveBeenNthCalledWith(
+				2,
+				'chordsOverLyrics'
+			);
+			expect(setInputFormat).toHaveBeenNthCalledWith(3, 'auto');
 		});
 
 		test('should be disabled when importing from the web', () => {
 			const { getByLabelText } = render(
 				<SongImporter {...props} isFromWeb={true} />
 			);
-			const basic = getByLabelText('Basic');
-			const chordpro = getByLabelText('ChordPro');
-			const ultimateGuitar = getByLabelText('Ultimate Guitar');
+			const auto = getByLabelText('Detect');
+			const chordpro = getByLabelText('Bracketed chords (ChordPro)');
+			const chordsOverLyrics = getByLabelText(
+				'Chords over lyrics (Ultimate Guitar...)'
+			);
 
-			expect(basic).not.toBeDisabled();
+			expect(auto).not.toBeDisabled();
 			expect(chordpro).not.toBeDisabled();
-			expect(ultimateGuitar).not.toBeDisabled();
+			expect(chordsOverLyrics).not.toBeDisabled();
 
-			expect(basic).toHaveClass('sim-InputFormat_Entry-Disabled');
+			expect(auto).toHaveClass('sim-InputFormat_Entry-Disabled');
 			expect(chordpro).toHaveClass('sim-InputFormat_Entry-Disabled');
-			expect(ultimateGuitar).toHaveClass(
+			expect(chordsOverLyrics).toHaveClass(
 				'sim-InputFormat_Entry-Disabled'
 			);
 
-			basic.click();
+			auto.click();
 			chordpro.click();
-			ultimateGuitar.click();
+			chordsOverLyrics.click();
 
 			expect(setInputFormat).not.toHaveBeenCalled();
 		});

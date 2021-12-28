@@ -91,7 +91,7 @@ describe('SongImporter', () => {
 	test('should import a song from a website', () => {
 		dispatch(
 			startImportFromWeb(
-				'chordpro',
+				'chordPro',
 				'[A]Amazing [D7]grace',
 				'Amazing Grace'
 			)
