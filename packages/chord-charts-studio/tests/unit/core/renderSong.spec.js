@@ -56,6 +56,19 @@ describe('renderAsHtml()', () => {
 		expect(rendered).toEqual('<p>[|] [A]mySong [|]</p>');
 	});
 
+	test('Should return Ultimate Guitar html with useChartFormat === true & chartFormat === ultimateGuitar', () => {
+		const input = 'A\n_mySong\n';
+		const rendered = renderAsHtml(
+			input,
+			{ chartFormat: 'ultimateGuitar' },
+			true
+		);
+
+		expect(rendered).toEqual(
+			'<p>|[ch]A[/ch]    |</p><p>mySong</p><p>&nbsp;</p>'
+		);
+	});
+
 	test('Should return ChordMark source html with useChartFormat === true & chartFormat === chordmarkSrc', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsHtml(
@@ -99,6 +112,17 @@ describe('renderAsText()', () => {
 		const rendered = renderAsText(input, { chartFormat: 'chordpro' }, true);
 
 		expect(rendered).toEqual('[|] [A]mySong [|]');
+	});
+
+	test('Should return Ultimate Guitar text with useChartFormat === true & chartFormat === ultimateGuitar', () => {
+		const input = 'A\n_mySong\n';
+		const rendered = renderAsText(
+			input,
+			{ chartFormat: 'ultimateGuitar' },
+			true
+		);
+
+		expect(rendered).toEqual('|[ch]A[/ch]    |\nmySong\n');
 	});
 
 	test('Should return ChordMark source text with useChartFormat === true & chartFormat === chordmarkSrc', () => {

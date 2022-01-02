@@ -245,12 +245,14 @@ chord-mark-2-chordpro@^0.9.0:
     chord-mark "^0.9.0"
     core-js "^3.19.1"
 
-chord-mark-converters@^0.10.0-beta.5:
-  version "0.10.0-beta.5"
-  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.10.0-beta.5.tgz#62155eb76afdb72455c30e3d8ea161bf59904804"
-  integrity sha512-CLQk/hiy7Szs3XfTHc3bLFLXx29Q+ZS5cR51cWPmIjzK7ZEGT4wzfaIkSbHGtaAHQKLtGAP52lF/G8nX0uRtPQ==
+chord-mark-converters@^0.10.0-beta.7:
+  version "0.10.0-beta.7"
+  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.10.0-beta.7.tgz#79e36c6c6b21a5ed60b69cbcf913d2582872e90f"
+  integrity sha512-4We/kqpPj72VjZsTDX71nOYUN8HeCe+uglpgUn7cHfTAj2LmX9DFhpPq3jRcy+IQdAADllaO/lW345WayHj9LQ==
   dependencies:
+    chord-mark "^0.10.0-beta.6"
     chord-symbol "^2.1.0"
+    dompurify "^2.3.4"
 
 chord-mark-themes@^0.9.1:
   version "0.9.1"
@@ -259,10 +261,10 @@ chord-mark-themes@^0.9.1:
   dependencies:
     chord-mark "^0.9.0"
 
-chord-mark@^0.10.0-beta.3:
-  version "0.10.0-beta.5"
-  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.10.0-beta.5.tgz#195d2ccfb318bdf333a9ecac53465864eedd6f0f"
-  integrity sha512-bfYxFCjyufkL9kUQyhWNsDPfIOU7fvD0nnweB1qvV1tSy0yhd6j34pZ6WPCriTI+DcF5APeYMhNYuFVxM6M/dA==
+chord-mark@^0.10.0-beta.6:
+  version "0.10.0-beta.6"
+  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.10.0-beta.6.tgz#11f30077cc90107ae6353b01280527452384eedc"
+  integrity sha512-45dBRE0Y3LklSea6X0MkL7yfz1txxlJQd1/tqpFS5p/tMLTcwMMRzzNP+HZyRV+9b0Gq4GLd3EuePQF2PDyRQg==
   dependencies:
     chord-symbol "^2.1.0"
     core-js "^3.18.3"
@@ -319,9 +321,9 @@ combine-section-reducers@^1.0.6:
     is-valid-redux-reducer "^1.0.3"
 
 core-js@^3.18.3, core-js@^3.8.2:
-  version "3.20.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.1.tgz#eb1598047b7813572f1dc24b7c6a95528c99eef3"
-  integrity sha512-btdpStYFQScnNVQ5slVcr858KP0YWYjV16eGJQw8Gg7CWtu/2qNvIM3qVRIR3n1pK2R9NNOrTevbvAYxajwEjg==
+  version "3.20.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.2.tgz#46468d8601eafc8b266bd2dd6bf9dee622779581"
+  integrity sha512-nuqhq11DcOAbFBV4zCbKeGbKQsUDRqTX0oqx7AttUBuqe3h20ixsE039QHelbL6P4h+9kytVqyEtyZ6gsiwEYw==
 
 core-js@^3.19.1:
   version "3.19.3"
@@ -367,7 +369,7 @@ dom-accessibility-api@^0.5.6, dom-accessibility-api@^0.5.9:
   resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.10.tgz#caa6d08f60388d0bb4539dd75fe458a9a1d0014c"
   integrity sha512-Xu9mD0UjrJisTmv7lmVSDMagQcU9R5hwAbxsaAE/35XPnPLJobbuREfV/rraiSaEj/UOvgrzQs66zyTWTlyd+g==
 
-dompurify@^2.2.9, dompurify@^2.3.3:
+dompurify@^2.2.9, dompurify@^2.3.3, dompurify@^2.3.4:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.3.4.tgz#1cf5cf0105ccb4debdf6db162525bd41e6ddacc6"
   integrity sha512-6BVcgOAVFXjI0JTjEvZy901Rghm+7fDQOrNIcxB4+gdhj6Kwp6T9VBhBY/AbagKHJocRkDYGd6wvI+p4/10xtQ==
