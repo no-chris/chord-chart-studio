@@ -53,7 +53,9 @@ describe('renderAsHtml()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsHtml(input, { chartFormat: 'chordpro' }, true);
 
-		expect(rendered).toEqual('<p>[|] [A]mySong [|]</p>');
+		expect(rendered).toEqual(
+			'<span class="txtLine">[|] [A]mySong [|]</span>'
+		);
 	});
 
 	test('Should return Ultimate Guitar html with useChartFormat === true & chartFormat === ultimateGuitar', () => {
@@ -65,7 +67,7 @@ describe('renderAsHtml()', () => {
 		);
 
 		expect(rendered).toEqual(
-			'<p>|[ch]A[/ch]    |</p><p>mySong</p><p>&nbsp;</p>'
+			'<span class="txtLine">|[ch]A[/ch]    |</span><span class="txtLine">mySong</span><span class="txtLine">&nbsp;</span>'
 		);
 	});
 
@@ -77,7 +79,9 @@ describe('renderAsHtml()', () => {
 			true
 		);
 
-		expect(rendered).toEqual('<p>A</p><p>_mySong</p><p>&nbsp;</p>');
+		expect(rendered).toEqual(
+			'<span class="txtLine">A</span><span class="txtLine">_mySong</span><span class="txtLine">&nbsp;</span>'
+		);
 	});
 });
 

@@ -59,7 +59,7 @@ function toHtml(text) {
 	return text
 		.split('\n')
 		.map((line) => (line === '' ? '&nbsp;' : line))
-		.map((line) => `<p>${line}</p>`)
+		.map((line) => `<span class="txtLine">${line}</span>`)
 		.join('');
 }
 
