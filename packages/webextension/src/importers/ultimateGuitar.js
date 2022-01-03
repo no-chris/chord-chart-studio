@@ -55,6 +55,7 @@ function getStructuredTabData(jsStore) {
 	}
 	return {
 		source: 'ultimateGuitar',
+		inputFormat: 'chordsOverLyrics',
 		artist: pageData.tab.artist_name,
 		title: pageData.tab.song_name,
 		chordChart: pageData.tab_view.wiki_tab.content,

@@ -27,6 +27,7 @@ describe('@CCS/IMPORT_TAB', () => {
 	describe('Song title', () => {
 		const message = {
 			source: 'ultimateGuitar',
+			inputFormat: 'chordsOverLyrics',
 			chordChart: 'myUGChordChart',
 			title: 'myTitle',
 			artist: 'myArtist',
@@ -41,7 +42,7 @@ describe('@CCS/IMPORT_TAB', () => {
 			expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
 			expect(mockStore.dispatch).toHaveBeenCalledWith(
 				startImportFromWeb(
-					'ultimateGuitar',
+					'chordsOverLyrics',
 					'myUGChordChart',
 					'myTitle - myArtist'
 				)
@@ -58,7 +59,7 @@ describe('@CCS/IMPORT_TAB', () => {
 			expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
 			expect(mockStore.dispatch).toHaveBeenCalledWith(
 				startImportFromWeb(
-					'ultimateGuitar',
+					'chordsOverLyrics',
 					'myUGChordChart',
 					'myTitle'
 				)
