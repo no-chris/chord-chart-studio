@@ -6,6 +6,7 @@ import { withStore, resetStore, dispatch } from '../../helpers/withStore';
 
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 
 import Editor from '../../../../src/editor/_containers/Editor';
 import { createFile, updateFile } from '../../../../src/db/files/actions';
@@ -77,6 +78,23 @@ describe('Editor', () => {
 			const { getAllByText } = render(withStore(<Editor />));
 
 			expect(getAllByText('mySongContent').length).toBe(1);
+		});
+
+		test('In export mode, "Select all" only select export content', () => {
+			dispatch(setEditorMode('export'));
+
+			const selection = window.getSelection();
+
+			render(withStore(<Editor />));
+
+			userEvent.keyboard('{meta}{a}');
+			expect(selection.toString()).toBe('mySongContent');
+
+			selection.removeAllRanges();
+			expect(selection.toString()).toBe('');
+
+			userEvent.keyboard('{ctrl}{a}');
+			expect(selection.toString()).toBe('mySongContent');
 		});
 	});
 });

@@ -53,7 +53,23 @@ describe('renderAsHtml()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsHtml(input, { chartFormat: 'chordpro' }, true);
 
-		expect(rendered).toEqual('<p>[A]mySong</p><p>&nbsp;</p>');
+		expect(rendered).toEqual(
+			'<span class="txtLine">[|] [A]mySong [|]</span>'
+		);
+	});
+
+	test('Should return Ultimate Guitar html with useChartFormat === true & chartFormat === ultimateGuitar', () => {
+		const input = 'A\n_mySong\n';
+		const rendered = renderAsHtml(
+			input,
+			{ chartFormat: 'ultimateGuitar' },
+			true
+		);
+
+		expect(rendered).toEqual(
+			'<span class="txtLine">|[ch]A[/ch]    |</span><span class="txtLine">mySong</span><span class="txtLine">&nbsp;</span>' +
+				'<span class="txtLine">&nbsp;</span><span class="txtLine">Created with Chord Charts Studio (https://chord-charts-studio.netlify.app)</span>'
+		);
 	});
 
 	test('Should return ChordMark source html with useChartFormat === true & chartFormat === chordmarkSrc', () => {
@@ -64,7 +80,9 @@ describe('renderAsHtml()', () => {
 			true
 		);
 
-		expect(rendered).toEqual('<p>A</p><p>_mySong</p><p>&nbsp;</p>');
+		expect(rendered).toEqual(
+			'<span class="txtLine">A</span><span class="txtLine">_mySong</span><span class="txtLine">&nbsp;</span>'
+		);
 	});
 });
 
@@ -98,7 +116,21 @@ describe('renderAsText()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsText(input, { chartFormat: 'chordpro' }, true);
 
-		expect(rendered).toEqual('[A]mySong\n');
+		expect(rendered).toEqual('[|] [A]mySong [|]');
+	});
+
+	test('Should return Ultimate Guitar text with useChartFormat === true & chartFormat === ultimateGuitar', () => {
+		const input = 'A\n_mySong\n';
+		const rendered = renderAsText(
+			input,
+			{ chartFormat: 'ultimateGuitar' },
+			true
+		);
+
+		expect(rendered).toEqual(
+			'|[ch]A[/ch]    |\nmySong\n' +
+				'\n\nCreated with Chord Charts Studio (https://chord-charts-studio.netlify.app)'
+		);
 	});
 
 	test('Should return ChordMark source text with useChartFormat === true & chartFormat === chordmarkSrc', () => {

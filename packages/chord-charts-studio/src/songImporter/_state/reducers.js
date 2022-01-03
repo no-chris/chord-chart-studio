@@ -7,7 +7,7 @@ const initialState = {
 	content: '',
 	isFromWeb: false,
 	isImporting: false,
-	inputFormat: 'basic',
+	inputFormat: 'auto',
 	title: '',
 };
 

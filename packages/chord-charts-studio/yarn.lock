@@ -237,13 +237,14 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chord-mark-2-chordpro@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-2-chordpro/-/chord-mark-2-chordpro-0.9.0.tgz#441f4f00295edf000ec8cce27b72948894a6cd9a"
-  integrity sha512-tic+2davhtcV2Gsca6m+GW/I5F04L9KryG6S6zlS8NfM8/765sYK+YKbhYnOwJsZKLjmnb6uMMB0nZQ9st6dfw==
+chord-mark-converters@^0.10.0-beta.8:
+  version "0.10.0-beta.8"
+  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.10.0-beta.8.tgz#6e7e308937f749589a33c88d2cba40ec23cfe715"
+  integrity sha512-3XuKXe6PWMerMAB9Ek7tOBdH3KDlgJs/7lezp9CklcDIL3C6yxp8QOBk9l+vz1j9C5Ai8rne0GHiuiCrK8LkpQ==
   dependencies:
-    chord-mark "^0.9.0"
-    core-js "^3.19.1"
+    chord-mark "^0.10.0-beta.6"
+    chord-symbol "^2.1.0"
+    dompurify "^2.3.4"
 
 chord-mark-themes@^0.9.1:
   version "0.9.1"
@@ -251,6 +252,16 @@ chord-mark-themes@^0.9.1:
   integrity sha512-NcP12GhPKte8nlSE8RDRsYIubnCwLxHCUuxqUtBm1ZzIMDoOSXoI8jvROdDOnyYqTaP4az0cZc1gRTmCDkhXIQ==
   dependencies:
     chord-mark "^0.9.0"
+
+chord-mark@^0.10.0-beta.6:
+  version "0.10.0-beta.6"
+  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.10.0-beta.6.tgz#11f30077cc90107ae6353b01280527452384eedc"
+  integrity sha512-45dBRE0Y3LklSea6X0MkL7yfz1txxlJQd1/tqpFS5p/tMLTcwMMRzzNP+HZyRV+9b0Gq4GLd3EuePQF2PDyRQg==
+  dependencies:
+    chord-symbol "^2.1.0"
+    core-js "^3.18.3"
+    dompurify "^2.3.3"
+    lodash "^4.17.21"
 
 chord-mark@^0.9.0:
   version "0.9.0"
@@ -269,13 +280,6 @@ chord-symbol@^2.1.0:
   dependencies:
     core-js "^3.8.2"
     lodash "^4.17.20"
-
-chordsheetjs@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/chordsheetjs/-/chordsheetjs-5.1.2.tgz#86a62faedce4ad2d703733aa8b6e0fabac725953"
-  integrity sha512-S6easBjDLdI2VM7R4OO9FgH6b5xiXJ9JNMoZ5SjInvOU8h8vLnQzZO4w+MsKuLx1VKvSkSB8TAt1cbBZzLJbeA==
-  dependencies:
-    handlebars "^4.7.6"
 
 color-convert@^1.9.0:
   version "1.9.3"
@@ -308,15 +312,15 @@ combine-section-reducers@^1.0.6:
   dependencies:
     is-valid-redux-reducer "^1.0.3"
 
-core-js@^3.18.3, core-js@^3.20.0, core-js@^3.8.2:
+core-js@^3.18.3, core-js@^3.8.2:
+  version "3.20.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.2.tgz#46468d8601eafc8b266bd2dd6bf9dee622779581"
+  integrity sha512-nuqhq11DcOAbFBV4zCbKeGbKQsUDRqTX0oqx7AttUBuqe3h20ixsE039QHelbL6P4h+9kytVqyEtyZ6gsiwEYw==
+
+core-js@^3.20.0:
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.0.tgz#1c5ac07986b8d15473ab192e45a2e115a4a95b79"
   integrity sha512-KjbKU7UEfg4YPpskMtMXPhUKn7m/1OdTHTVjy09ScR2LVaoUXe8Jh0UdvN2EKUR6iKTJph52SJP95mAB0MnVLQ==
-
-core-js@^3.19.1:
-  version "3.19.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.3.tgz#6df8142a996337503019ff3235a7022d7cdf4559"
-  integrity sha512-LeLBMgEGSsG7giquSzvgBrTS7V5UL6ks3eQlUSbN8dJStlLFiRzUm5iqsRyzUB8carhfKjkJ2vzKqE6z1Vga9g==
 
 css.escape@^1.5.1:
   version "1.5.1"
@@ -352,7 +356,7 @@ dom-accessibility-api@^0.5.6, dom-accessibility-api@^0.5.9:
   resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.10.tgz#caa6d08f60388d0bb4539dd75fe458a9a1d0014c"
   integrity sha512-Xu9mD0UjrJisTmv7lmVSDMagQcU9R5hwAbxsaAE/35XPnPLJobbuREfV/rraiSaEj/UOvgrzQs66zyTWTlyd+g==
 
-dompurify@^2.2.9, dompurify@^2.3.3:
+dompurify@^2.2.9, dompurify@^2.3.3, dompurify@^2.3.4:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.3.4.tgz#1cf5cf0105ccb4debdf6db162525bd41e6ddacc6"
   integrity sha512-6BVcgOAVFXjI0JTjEvZy901Rghm+7fDQOrNIcxB4+gdhj6Kwp6T9VBhBY/AbagKHJocRkDYGd6wvI+p4/10xtQ==
@@ -372,7 +376,7 @@ filesize@^8.0.6:
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-8.0.6.tgz#5f0c27aa1b507fa7d9f72c912a774ca6a44111b1"
   integrity sha512-sHvRqTiwdmcuzqet7iVwsbwF6UrV3wIgDf2SHNdY1Hgl8PC45HZg/0xtdw6U2izIV4lccnrY9ftl6wZFNdjYMg==
 
-handlebars@^4.7.6, handlebars@^4.7.7:
+handlebars@^4.7.7:
   version "4.7.7"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
   integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==

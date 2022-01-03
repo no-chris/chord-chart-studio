@@ -162,7 +162,7 @@ describe('songImporter: reducers', () => {
 				...initialState,
 				content: '',
 				title: '',
-				inputFormat: 'basic',
+				inputFormat: 'auto',
 				isImporting: true,
 				isFromWeb: false,
 			};

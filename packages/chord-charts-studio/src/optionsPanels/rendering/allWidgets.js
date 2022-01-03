@@ -57,6 +57,11 @@ export default {
 								label: 'ChordPro',
 								value: 'chordpro',
 							},
+							{
+								id: 'formatUG',
+								label: 'UltimateGuitar',
+								value: 'ultimateGuitar',
+							},
 						],
 					},
 					option: {

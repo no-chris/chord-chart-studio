@@ -32,6 +32,10 @@ $themes: (
 		margin: 0;
 	}
 
+	.txtLine {
+		display: block;
+	}
+
 	@include themify($themes) {
 		color: themed('song-txt') !important;
 	}
