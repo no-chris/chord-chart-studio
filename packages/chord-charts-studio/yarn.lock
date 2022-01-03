@@ -237,18 +237,10 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chord-mark-2-chordpro@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-2-chordpro/-/chord-mark-2-chordpro-0.9.0.tgz#441f4f00295edf000ec8cce27b72948894a6cd9a"
-  integrity sha512-tic+2davhtcV2Gsca6m+GW/I5F04L9KryG6S6zlS8NfM8/765sYK+YKbhYnOwJsZKLjmnb6uMMB0nZQ9st6dfw==
-  dependencies:
-    chord-mark "^0.9.0"
-    core-js "^3.19.1"
-
-chord-mark-converters@^0.10.0-beta.7:
-  version "0.10.0-beta.7"
-  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.10.0-beta.7.tgz#79e36c6c6b21a5ed60b69cbcf913d2582872e90f"
-  integrity sha512-4We/kqpPj72VjZsTDX71nOYUN8HeCe+uglpgUn7cHfTAj2LmX9DFhpPq3jRcy+IQdAADllaO/lW345WayHj9LQ==
+chord-mark-converters@^0.10.0-beta.8:
+  version "0.10.0-beta.8"
+  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.10.0-beta.8.tgz#6e7e308937f749589a33c88d2cba40ec23cfe715"
+  integrity sha512-3XuKXe6PWMerMAB9Ek7tOBdH3KDlgJs/7lezp9CklcDIL3C6yxp8QOBk9l+vz1j9C5Ai8rne0GHiuiCrK8LkpQ==
   dependencies:
     chord-mark "^0.10.0-beta.6"
     chord-symbol "^2.1.0"
@@ -324,11 +316,6 @@ core-js@^3.18.3, core-js@^3.8.2:
   version "3.20.2"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.2.tgz#46468d8601eafc8b266bd2dd6bf9dee622779581"
   integrity sha512-nuqhq11DcOAbFBV4zCbKeGbKQsUDRqTX0oqx7AttUBuqe3h20ixsE039QHelbL6P4h+9kytVqyEtyZ6gsiwEYw==
-
-core-js@^3.19.1:
-  version "3.19.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.3.tgz#6df8142a996337503019ff3235a7022d7cdf4559"
-  integrity sha512-LeLBMgEGSsG7giquSzvgBrTS7V5UL6ks3eQlUSbN8dJStlLFiRzUm5iqsRyzUB8carhfKjkJ2vzKqE6z1Vga9g==
 
 core-js@^3.20.0:
   version "3.20.0"

@@ -24,8 +24,7 @@
 	},
 	"dependencies": {
 		"chord-mark": "^0.10.0-beta.6",
-		"chord-mark-2-chordpro": "^0.9.0",
-		"chord-mark-converters": "^0.10.0-beta.7",
+		"chord-mark-converters": "^0.10.0-beta.8",
 		"chord-mark-themes": "^0.9.1",
 		"combine-section-reducers": "^1.0.6",
 		"core-js": "^3.20.0",
