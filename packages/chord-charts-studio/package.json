@@ -27,7 +27,7 @@
 		"chord-mark-converters": "^0.10.0-beta.8",
 		"chord-mark-themes": "^0.9.1",
 		"combine-section-reducers": "^1.0.6",
-		"core-js": "^3.20.0",
+		"core-js": "^3.20.2",
 		"dompurify": "^2.2.9",
 		"file-saver": "^2.0.5",
 		"filesize": "^8.0.6",
