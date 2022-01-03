@@ -67,7 +67,8 @@ describe('renderAsHtml()', () => {
 		);
 
 		expect(rendered).toEqual(
-			'<span class="txtLine">|[ch]A[/ch]    |</span><span class="txtLine">mySong</span><span class="txtLine">&nbsp;</span>'
+			'<span class="txtLine">|[ch]A[/ch]    |</span><span class="txtLine">mySong</span><span class="txtLine">&nbsp;</span>' +
+				'<span class="txtLine">&nbsp;</span><span class="txtLine">Created with Chord Charts Studio (https://chord-charts-studio.netlify.app)</span>'
 		);
 	});
 
@@ -126,7 +127,10 @@ describe('renderAsText()', () => {
 			true
 		);
 
-		expect(rendered).toEqual('|[ch]A[/ch]    |\nmySong\n');
+		expect(rendered).toEqual(
+			'|[ch]A[/ch]    |\nmySong\n' +
+				'\n\nCreated with Chord Charts Studio (https://chord-charts-studio.netlify.app)'
+		);
 	});
 
 	test('Should return ChordMark source text with useChartFormat === true & chartFormat === chordmarkSrc', () => {

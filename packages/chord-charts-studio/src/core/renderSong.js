@@ -34,7 +34,9 @@ function render(songTxt, renderOptions, useChartFormat, outputFormat) {
 			}
 			case 'ultimateGuitar': {
 				renderOptions.customRenderer = chordMark2UltimateGuitar();
-				const ugTxt = renderSong(songTxt, renderOptions);
+				const ugTxt =
+					renderSong(songTxt, renderOptions) +
+					'\n\nCreated with Chord Charts Studio (https://chord-charts-studio.netlify.app)';
 				return outputFormat === 'html' ? toHtml(ugTxt) : ugTxt;
 			}
 		}
