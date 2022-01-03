@@ -33,15 +33,15 @@
 		"url": "https://github.com/no-chris/chord-charts-studio/issues"
 	},
 	"dependencies": {
-		"@docusaurus/core": "^2.0.0-beta.13",
-		"@docusaurus/plugin-google-gtag": "^2.0.0-beta.13",
-		"@docusaurus/preset-classic": "^2.0.0-beta.13",
+		"@docusaurus/core": "^2.0.0-beta.14",
+		"@docusaurus/plugin-google-gtag": "^2.0.0-beta.14",
+		"@docusaurus/preset-classic": "^2.0.0-beta.14",
 		"@mdx-js/react": "^1.6.21",
-		"@svgr/webpack": "^5.5.0",
-		"chord-mark": "^0.9.0",
-		"chord-mark-themes": "^0.9.1",
+		"@svgr/webpack": "^6.1.2",
+		"chord-mark": "^0.10.0",
+		"chord-mark-themes": "^0.10.0",
 		"clsx": "^1.1.1",
-		"dompurify": "^2.3.3",
+		"dompurify": "^2.3.4",
 		"file-loader": "^6.2.0",
 		"prism-react-renderer": "^1.2.1",
 		"react": "^17.0.1",
@@ -63,6 +63,6 @@
 	},
 	"devDependencies": {
 		"docusaurus-plugin-sass": "^0.2.1",
-		"sass": "^1.44.0"
+		"sass": "^1.45.2"
 	}
 }
