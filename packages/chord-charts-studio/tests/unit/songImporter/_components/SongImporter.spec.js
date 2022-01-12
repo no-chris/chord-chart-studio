@@ -1,4 +1,4 @@
-jest.mock('chord-mark-converters');
+jest.mock('chord-mark-converters', () => ({ convert2ChordMark: jest.fn() }));
 import React from 'react';
 
 import { render, cleanup, waitFor } from '@testing-library/react';
