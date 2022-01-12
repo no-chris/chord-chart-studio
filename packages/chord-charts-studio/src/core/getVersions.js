@@ -1,1 +1,1 @@
-export default () => ({'chord-charts-studio':'v0.12.0','chord-symbol':'3.0.0','chord-mark':'v0.11.0'});
+export default () => ({'chord-charts-studio':'v0.13.0','chord-symbol':'3.0.0','chord-mark':'v0.11.0'});
