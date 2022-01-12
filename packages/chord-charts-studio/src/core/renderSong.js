@@ -3,6 +3,8 @@ import {
 	chordMark2ChordPro,
 	chordMark2UltimateGuitar,
 } from 'chord-mark-converters';
+import { chordRendererFactory } from 'chord-symbol';
+import chordSymbolUltimateGuitar from 'chord-symbol-ultimateguitar';
 
 import stripTags from './stripTags';
 
@@ -35,7 +37,18 @@ function render(songTxt, renderOptions, useChartFormat, outputFormat) {
 			case 'ultimateGuitar': {
 				renderOptions.customRenderer = chordMark2UltimateGuitar();
 				const ugTxt =
-					renderSong(songTxt, renderOptions) +
+					renderSong(songTxt, {
+						...renderOptions,
+						customRenderer: chordMark2UltimateGuitar(),
+						printBarSeparators: 'grids',
+						printChordsDuration: 'never',
+						chordSymbolRenderer: chordRendererFactory({
+							customFilters: [chordSymbolUltimateGuitar()],
+							useShortNamings: true,
+							useFlats: renderOptions.accidentalsType === 'flat',
+							...renderOptions, // duh!
+						}),
+					}) +
 					'\n\nCreated with Chord Charts Studio (https://chord-charts-studio.netlify.app)';
 				return outputFormat === 'html' ? toHtml(ugTxt) : ugTxt;
 			}
