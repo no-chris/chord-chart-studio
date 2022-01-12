@@ -2,12 +2,12 @@ Source code:
 
 ---------- Result ------------
 
-            Physical :  6209
-              Source :  5138
-             Comment :  130
- Single-line comment :  61
+            Physical :  6222
+              Source :  5151
+             Comment :  131
+ Single-line comment :  62
        Block comment :  69
-               Mixed :  7
+               Mixed :  8
  Empty block comment :  0
                Empty :  948
                To Do :  0
@@ -38,12 +38,12 @@ Total:
 
 ---------- Result ------------
 
-            Physical :  13401
-              Source :  11047
-             Comment :  197
- Single-line comment :  121
+            Physical :  13414
+              Source :  11060
+             Comment :  198
+ Single-line comment :  122
        Block comment :  76
-               Mixed :  17
+               Mixed :  18
  Empty block comment :  0
                Empty :  2174
                To Do :  0
