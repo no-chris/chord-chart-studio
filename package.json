@@ -60,5 +60,11 @@
   "bugs": {
     "url": "https://github.com/no-chris/chords-charts-studio/issues"
   },
-  "dependencies": {}
+  "scripts": {
+    "build": "npm run lint && npm run format && npm run test && lerna run build",
+    "lint": "eslint packages",
+    "format": "prettier --write \"**/*.{js,jsx,json,ts,md,scss,css}\"",
+    "test": "jest",
+    "up": "yarn upgrade && lerna exec yarn upgrade"
+  }
 }
