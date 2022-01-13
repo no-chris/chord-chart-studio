@@ -1,37 +1,36 @@
-html, body {
-    margin: 0;
-    padding: 0;
+html,
+body {
+	margin: 0;
+	padding: 0;
 }
 
 #popup-container {
-    width: 300px;
+	width: 300px;
 }
 
 .pp-statusTitle_Container {
-    font-size: 12px;
-    font-weight: bold;
-    padding: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 10px;
 }
 .pp-statusTitle_Container--green {
-    background-color: darkseagreen;
+	background-color: darkseagreen;
 }
 .pp-statusTitle_Container--grey {
-    background-color: darkgrey;
+	background-color: darkgrey;
 }
 .pp-statusTitle_Container--yellow {
-    background-color: lightyellow;
+	background-color: lightyellow;
 }
-
 
 .pp-userMessage_Container {
-    padding: 10px;
+	padding: 10px;
 }
 
-
 .pp-button_Container {
-    padding: 10px;
+	padding: 10px;
 }
 
 .pp-button_Button:hover {
-    background-color: black;
+	background-color: black;
 }
