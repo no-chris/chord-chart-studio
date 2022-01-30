@@ -1,0 +1,42 @@
+@import '../../../../scss/abstract';
+
+$themes: (
+	light: (),
+	dark: (
+		song-txt: cv(dark-foreground),
+		song-bg: cv(dark-secondary),
+	),
+);
+
+.exportPreview {
+	box-sizing: border-box;
+	min-height: 100%;
+	padding: $spacer-small;
+
+	@include themify($themes) {
+		background-color: themed('song-bg');
+		color: themed('song-txt');
+	}
+}
+
+.exp-SongRenderer {
+	font-family: $cmFontStack;
+	font-size: $cmFontSize;
+	line-height: $cmLineHeight;
+
+	padding: 15px;
+	white-space: pre-wrap;
+	color: #333;
+
+	p {
+		margin: 0;
+	}
+
+	.txtLine {
+		display: block;
+	}
+
+	@include themify($themes) {
+		color: themed('song-txt') !important;
+	}
+}

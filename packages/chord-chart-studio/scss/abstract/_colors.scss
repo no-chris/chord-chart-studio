@@ -1,0 +1,22 @@
+// Dark theme
+// Source: https://coolors.co/f4f4f4-2e4052-303846-293132-fabf2b
+$whiteSmoke: rgba(244, 244, 244, 1);
+$onyx: rgba(48, 56, 70, 1);
+$charcoal: rgba(46, 64, 82, 1);
+$gunMetal: rgba(41, 49, 50, 1);
+$saffron: rgba(250, 191, 43, 1);
+$bitterSweet: rgba(255, 112, 96, 1);
+$screamingGreen: rgba(116, 241, 78, 1);
+
+$colors: (
+	// Light theme
+	// Dark theme
+	dark-foreground: $whiteSmoke,
+	dark-background: $onyx,
+	dark-accent: $saffron,
+	dark-primary: $charcoal,
+	dark-secondary: $gunMetal,
+	dark-red: $bitterSweet,
+	dark-yellow: $saffron,
+	dark-green: $screamingGreen
+);

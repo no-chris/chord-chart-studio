@@ -1,0 +1,61 @@
+@import '../../../../scss/abstract';
+
+$themes: (
+	light: (),
+	dark: (
+		editorSrc-bg: cv(dark-secondary, dark5),
+		inputHeader-txt: cv(dark-foreground, fade),
+		inputHeader-bg: cv(dark-secondary, light10),
+		inputHeader-gutter: cv(dark-secondary, dark5),
+	),
+);
+
+$headerVPadding: 3px;
+$headerHeight: 20px;
+
+.songEditor-headers {
+	display: flex;
+
+	height: $headerHeight;
+	text-transform: uppercase;
+	padding: $headerVPadding 0;
+	text-align: center;
+	@include font-size(small);
+
+	@include themify($themes) {
+		background-color: themed('inputHeader-bg');
+		color: themed('inputHeader-txt');
+	}
+}
+
+.songEditor-sourceHeader {
+	flex: 0 1 50%;
+}
+
+.songEditor-previewHeader {
+	flex: 0 1 50%;
+}
+
+.songEditor {
+	width: 100%;
+	height: calc(100% - #{$headerHeight + $headerVPadding * 2});
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.songEditor-source {
+	flex: 0 1 50%;
+	display: flex;
+	overflow-y: scroll;
+
+	@include themify($themes) {
+		background-color: themed('editorSrc-bg');
+	}
+}
+
+.songEditor-preview {
+	flex: 0 1 50%;
+	overflow-y: scroll;
+}

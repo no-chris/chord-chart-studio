@@ -1,0 +1,17 @@
+@import '../../../../scss/abstract';
+
+.userGuide-isExpanded {
+	margin-left: $spacer-small;
+
+	.rightBar-isCollapsed & {
+		display: none;
+	}
+}
+
+.userGuide-isCollapsed {
+	padding: $spacer-small 0;
+
+	.rightBar:not(.rightBar-isCollapsed) & {
+		display: none;
+	}
+}

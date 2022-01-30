@@ -1,0 +1,20 @@
+$themes: (
+	light: (),
+	dark: (
+		// header
+		header-txt: cv(dark-foreground, fade),
+		header-bg: cv(dark-background),
+		header-border: cv(dark-foreground, dark20),
+		// main
+		modal-bg: cv(dark-secondary, dark5),
+		modal-border: cv(dark-foreground, dark20),
+		modal-txt: cv(dark-foreground),
+		input-bg: cv(dark-secondary, dark10),
+		input-txt: cv(dark-foreground),
+		inputHeader-txt: cv(dark-foreground, fade),
+		inputHeader-bg: cv(dark-secondary, light10),
+		preview-bg: cv(dark-secondary),
+		previewError-bg: cv(dark-red, dark20),
+		previewError-txt: cv(dark-foreground),
+	),
+);

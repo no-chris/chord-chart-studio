@@ -2,7 +2,7 @@
 	"name": "browser-extension",
 	"private": true,
 	"version": "0.13.0",
-	"description": "Browser extension for Chord Charts Studio",
+	"description": "Browser extension for Chord Chart Studio",
 	"author": "Christophe Noël",
 	"license": "LicenseRef-LICENSE",
 	"main": "src/popup/popup.js",

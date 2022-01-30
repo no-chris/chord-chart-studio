@@ -4,15 +4,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: 'Chord Charts Studio',
+	title: 'Chord Chart Studio',
 	tagline: 'Chord Charts made easy.',
-	url: 'https://chord-charts-studio.netlify.app',
+	url: 'https://chord-chart-studio.netlify.app',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
 	organizationName: 'no-chris', // Usually your GitHub org/user name.
-	projectName: 'chord-charts-studio', // Usually your repo name.
+	projectName: 'chord-chart-studio', // Usually your repo name.
 
 	plugins: ['docusaurus-plugin-sass'],
 
@@ -25,7 +25,7 @@ const config = {
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					editUrl:
-						'https://github.com/no-chris/chord-charts-studio/tree/master/packages/documentation',
+						'https://github.com/no-chris/chord-chart-studio/tree/master/packages/documentation',
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.scss'),
@@ -42,9 +42,9 @@ const config = {
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			navbar: {
-				title: 'Chord Charts Studio',
+				title: 'Chord Chart Studio',
 				logo: {
-					alt: 'Chord Charts Studio',
+					alt: 'Chord Chart Studio',
 					src: 'img/icon_whitebg.png',
 				},
 				items: [
@@ -57,7 +57,7 @@ const config = {
 					{
 						position: 'left',
 						label: 'Launch the app',
-						to: 'https://chord-charts-studio.netlify.app/app',
+						to: 'https://chord-chart-studio.netlify.app/app',
 					},
 				],
 			},

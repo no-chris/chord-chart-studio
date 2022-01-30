@@ -2,9 +2,9 @@
 	"name": "documentation",
 	"version": "0.13.0",
 	"private": true,
-	"description": "Chord Charts Studio documentation",
+	"description": "Chord Chart Studio documentation",
 	"author": "Christophe Noël <touffi51@gmail.com>",
-	"homepage": "https://github.com/no-chris/chord-charts-studio/tree/main/packages/documentation#readme",
+	"homepage": "https://github.com/no-chris/chord-chart-studio/tree/main/packages/documentation#readme",
 	"license": "MIT",
 	"main": "lib/documentation.js",
 	"directories": {
@@ -16,12 +16,12 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/no-chris/chord-charts-studio.git"
+		"url": "git+https://github.com/no-chris/chord-chart-studio.git"
 	},
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"start": "docusaurus start --poll",
-		"build": "docusaurus build && cp -rf ../chord-charts-studio/build/* build/app",
+		"build": "docusaurus build && cp -rf ../chord-chart-studio/build/* build/app",
 		"swizzle": "docusaurus swizzle",
 		"deploy": "docusaurus deploy",
 		"clear": "docusaurus clear",
@@ -30,7 +30,7 @@
 		"write-heading-ids": "docusaurus write-heading-ids"
 	},
 	"bugs": {
-		"url": "https://github.com/no-chris/chord-charts-studio/issues"
+		"url": "https://github.com/no-chris/chord-chart-studio/issues"
 	},
 	"dependencies": {
 		"@docusaurus/core": "^2.0.0-beta.14",

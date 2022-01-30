@@ -4,4 +4,4 @@ build
 SLOC
 package.json
 .docusaurus
-packages/chord-charts-studio/src/core/getVersions.js
+packages/chord-chart-studio/src/core/getVersions.js

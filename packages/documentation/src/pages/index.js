@@ -29,7 +29,7 @@ function HomepageHeader() {
 					<span className={styles.buttons}>
 						<Link
 							className="button button--secondary button--lg"
-							to="https://chord-charts-studio.netlify.app/app"
+							to="https://chord-chart-studio.netlify.app/app"
 						>
 							Launch the app
 						</Link>

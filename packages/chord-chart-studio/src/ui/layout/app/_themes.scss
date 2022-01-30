@@ -1,0 +1,36 @@
+$themes: (
+	light: (),
+	dark: (
+		// leftbar
+		leftBar-txt: cv(dark-foreground),
+		leftBar-bg: cv(dark-background),
+		leftBar-bgHover: cv(dark-background, light10),
+		leftBar-border: cv(dark-foreground, dark10),
+		leftBar-collapser-txt: cv(dark-foreground),
+		leftBar-collapser-bg: cv(dark-primary, light10),
+		leftBar-collapser-bgHover: cv(dark-primary, light20),
+		leftBar-collapser-border: cv(dark-foreground, dark30),
+		// header
+		header-txt: cv(dark-foreground, fade),
+		header-txtHover: cv(dark-primary, dark10),
+		header-txtActive: cv(dark-primary, dark10),
+		header-txtDisabled: cv(dark-foreground, dark30),
+		header-bg: cv(dark-background),
+		header-bgHover: cv(dark-accent, light20),
+		header-bgActive: cv(dark-accent),
+		header-bgDisabled: cv(dark-background),
+		header-border: cv(dark-accent),
+		// footer
+		footer-txt: cv(dark-foreground, dark30),
+		// rightbar
+		rightBar-txt: cv(dark-foreground),
+		rightBar-bg: cv(dark-background),
+		rightBar-bgHover: cv(dark-background, light10),
+		rightBar-border: cv(dark-foreground, dark10),
+		rightBar-collapser-txt: cv(dark-foreground),
+		rightBar-collapser-bg: cv(dark-primary, light10),
+		rightBar-collapser-bgHover: cv(dark-primary, light20),
+		rightBar-collapser-border: cv(dark-foreground, dark30),
+		//
+	),
+);

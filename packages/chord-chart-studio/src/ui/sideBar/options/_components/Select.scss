@@ -1,0 +1,87 @@
+@import '../../../../../scss/abstract';
+@import '../_themes.scss';
+
+.sb-optionSelect {
+	@include font-size(small);
+
+	padding: $spacer-tiny $spacer-small-plus $spacer-tiny $spacer-small;
+
+	@include themify($themes) {
+		border-bottom: 1px dotted themed('option-border');
+	}
+
+	.sb-optionsGroup & {
+		@include themify($themes) {
+			background-color: themed('optionsGroup-option-bg');
+		}
+	}
+
+	&.sb-optionSelect-isNotInteractable {
+		user-select: none;
+
+		@include themify($themes) {
+			color: themed('option-isDisabled');
+		}
+	}
+
+	&:hover {
+		cursor: not-allowed;
+	}
+
+	&:hover:not(.sb-optionSelect-isNotInteractable) {
+		cursor: pointer;
+		@include themify($themes) {
+			background-color: themed('option-bgHover');
+		}
+	}
+}
+
+.sb-optionSelect-title {
+	display: flex;
+}
+
+.sb-optionSelect-desc {
+	flex: 1 1 auto;
+}
+
+.sb-optionSelect-toggle {
+	flex: 0 0 auto;
+}
+
+.sb-optionSelect-icon {
+	.icon {
+		@include font-size(big);
+	}
+}
+
+.sb-optionSelectChoice-activeLabel {
+	opacity: 0.5;
+}
+
+.sb-optionSelectChoice {
+	padding-top: $spacer-tiny;
+	display: flex;
+
+	&:hover:not(.sb-optionSelectChoice-isNotInteractable) {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+
+.sb-optionSelectChoice-isSelected {
+	font-weight: $weight-bold;
+}
+
+.sb-optionSelectChoice-check {
+	flex: 0 0 20px;
+}
+
+.sb-optionSelectChoice-checkIcon {
+	.icon {
+		@include font-size(small);
+	}
+}
+
+.sb-optionSelectChoice-label {
+	flex: 1 1 auto;
+}

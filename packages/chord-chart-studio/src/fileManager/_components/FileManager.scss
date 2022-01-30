@@ -1,0 +1,107 @@
+@import '../../../scss/abstract';
+@import '../themes';
+
+.fileManager-isExpanded {
+	@include font-size(small);
+
+	.leftBar-isCollapsed & {
+		display: none;
+	}
+}
+
+.fileManager-isCollapsed {
+	padding: $spacer-small 0;
+	.leftBar:not(.leftBar-isCollapsed) & {
+		display: none;
+	}
+}
+
+.fileManager-actionsList {
+	padding: $spacer-small;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	@include themify($themes) {
+		background-color: themed('actions-bg');
+	}
+}
+
+.fileManagerAction {
+	flex: 0 1 auto;
+	padding: $spacer-tiny;
+	margin-right: $spacer-tiny;
+	white-space: nowrap;
+
+	&:hover {
+		cursor: not-allowed;
+	}
+
+	&:hover:not(.fileManagerAction-isDisabled) {
+		@include themify($themes) {
+			background-color: themed('action-bgHover');
+		}
+		cursor: pointer;
+	}
+}
+
+.fileManagerAction-isDisabled {
+	user-select: none;
+
+	opacity: 0.5;
+}
+
+.fileManagerAction-icon {
+	.icon {
+		@include font-size(normal);
+	}
+}
+
+.fileManager-entriesList {
+	padding-left: 0;
+	list-style: none;
+}
+
+.fileManagerEntry {
+	cursor: pointer;
+	padding: 0.1rem 0;
+
+	&:hover {
+		@include themify($themes) {
+			background-color: themed('fileEntry-bgHover');
+		}
+	}
+
+	&.fileManagerEntry-isSelected {
+		@include themify($themes) {
+			background-color: themed('fileEntry-bgActive');
+		}
+	}
+}
+
+.fileManagerEntry-input {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 $spacer-small;
+
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	@include themify($themes) {
+		color: themed('fileEntry-txt');
+	}
+
+	.fileManagerEntry-isSelected & {
+		@include themify($themes) {
+			color: themed('fileEntry-txtActive');
+		}
+	}
+
+	.fileManagerEntry-isRenamed & {
+		@include themify($themes) {
+			background-color: themed('fileEntry-bgRenamed');
+			color: themed('fileEntry-txtRenamed');
+		}
+		cursor: text;
+	}
+}
