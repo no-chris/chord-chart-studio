@@ -20,6 +20,7 @@ module.exports = {
 		'\\.js$': 'babel-jest',
 		'\\.hbs$': 'jest-handlebars',
 		'\\.txt': 'jest-raw-loader',
+		'\\.svg': 'jest-raw-loader',
 	},
 	// whitelisting local modules in the node_modules folder
 	transformIgnorePatterns: ['<rootDir>.*(node_modules)(?!.*chord-mark.*).*$'],
