@@ -14,7 +14,10 @@ function HomepageHeader() {
 		<header className={clsx('hero hero--primary', styles.heroBanner)}>
 			<div className="container">
 				<div className={'logo_homepage'}>
-					<img src={'/img/logo_blackbg.png'} alt={siteConfig.title} />
+					<svg>
+						<title>Chord Chart Studio</title>
+						<use href={'/img/logo.svg#stacked'}></use>
+					</svg>
 				</div>
 				<p className="hero__subtitle">{siteConfig.tagline}</p>
 				<div className={styles.buttonsContainer}>
