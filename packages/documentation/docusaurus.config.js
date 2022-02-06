@@ -42,10 +42,10 @@ const config = {
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			navbar: {
-				title: 'Chord Chart Studio',
 				logo: {
 					alt: 'Chord Chart Studio',
-					src: 'img/icon_whitebg.png',
+					src: 'img/logo-black.png',
+					srcDark: 'img/logo-white.png',
 				},
 				items: [
 					{
@@ -104,7 +104,8 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} Christophe Noël. Built with Docusaurus.`,
+				copyright: `Copyright © ${new Date().getFullYear()} Christophe Noël. 
+Logo by <a href="https://spelling-bee-assistant.app/" target="_blank" rel="noreferrer">Dieter raber</a>.`,
 			},
 			prism: {
 				theme: lightCodeTheme,

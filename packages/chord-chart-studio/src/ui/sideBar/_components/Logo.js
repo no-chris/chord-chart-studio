@@ -2,14 +2,17 @@ import './Logo.scss';
 
 import React from 'react';
 
-import logoImg from './logo.png';
+import logoSvg from '../../../../../../logo/media/logo.svg';
 
 function Logo() {
 	return (
 		<div className={'logo'}>
 			<div className={'logo-isExpanded'}>
 				<div className={'logo-img'}>
-					<img src={logoImg} alt={'Chord Chart Studio'} />
+					<svg className="stacked">
+						<title>Chord Chart Studio</title>
+						<use href={logoSvg + '#stacked'}></use>
+					</svg>
 				</div>
 			</div>
 		</div>

@@ -41,6 +41,11 @@ html[data-theme='dark'] .featureSvg_src-components-HomepageFeatures-module {
 .logo_homepage {
 	width: 300px !important;
 	margin: 0 auto 10px;
+	svg {
+		fill: #fff;
+		width: 200px;
+		aspect-ratio: 1.25 / 1;
+	}
 }
 
 .logo_homepage img {

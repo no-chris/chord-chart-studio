@@ -1,0 +1,91 @@
+<html class="no-js" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Chord Chart Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/prism.css" />
+    <link rel="icon" href="media/favicon.svg" />
+  </head>
+
+  <body>
+    <main>
+      <article>
+        <section id="s1">
+          <svg class="picto">
+            <title>Picto only</title>
+            <use href="media/logo.svg#picto"></use>
+          </svg>
+
+          <svg class="long">
+            <title>Long Version</title>
+            <use href="media/logo.svg#long"></use>
+          </svg>
+
+          <svg class="stacked">
+            <title>Stacked Version</title>
+            <use href="media/logo.svg#stacked"></use>
+          </svg>
+
+        </section>
+        <section id="s2">
+          <svg class="picto">
+            <title>Picto only</title>
+            <use href="media/logo.svg#picto"></use>
+          </svg>
+
+          <svg class="long">
+            <title>Long Version</title>
+            <use href="media/logo.svg#long"></use>
+          </svg>
+
+          <svg class="stacked">
+            <title>Stacked Version</title>
+            <use href="media/logo.svg#stacked"></use>
+          </svg>
+
+        </section>
+        <pre><code class="language-html">
+&lt;svg class=&quot;picto&quot;&gt;
+  &lt;title&gt;Picto only&lt;/title&gt;
+  &lt;use href=&quot;media/logo.svg#picto&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;
+
+&lt;svg class=&quot;long&quot;&gt;
+  &lt;title&gt;Long Version&lt;/title&gt;
+  &lt;use href=&quot;media/logo.svg#long&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;
+
+&lt;svg class=&quot;stacked&quot;&gt;
+  &lt;title&gt;Stacked Version&lt;/title&gt;
+  &lt;use href=&quot;media/logo.svg#stacked&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;
+          </code></pre>
+        <pre><code class="language-css">
+svg {
+  fill: #fff; /* or #000 on light backgrounds */
+}
+
+svg.picto {
+    width: 144px;
+    aspect-ratio: 1.75 / 1
+}
+
+svg.long {
+  width: 100%;
+  aspect-ratio: 9 / 1
+}
+
+svg.stacked {
+  width: 200px;
+  aspect-ratio: 1.25 / 1
+}
+          </code></pre>
+      </article>
+
+    </main>
+    <script src="js/prism.js"></script>
+  </body>
+
+</html>
