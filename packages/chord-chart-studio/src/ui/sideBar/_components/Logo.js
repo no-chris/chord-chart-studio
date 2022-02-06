@@ -10,7 +10,7 @@ function Logo() {
 			<div className={'logo-isExpanded'}>
 				<div className={'logo-img'}>
 					<svg className="stacked">
-						<title>Stacked Version</title>
+						<title>Chord Chart Studio</title>
 						<use href={logoSvg + '#stacked'}></use>
 					</svg>
 				</div>
