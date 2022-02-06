@@ -19,8 +19,10 @@ $themes: (
 
 .logo-img {
 	margin: 0 auto;
-	width: 80%;
-	img {
-		max-width: 100%;
+	width: 70%;
+	svg {
+		fill: #fff;
+		width: 100%;
+		aspect-ratio: 1.25 / 1;
 	}
 }
