@@ -39,19 +39,7 @@ const config = {
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 			},
 			{
-				test: /\.(jp(e*)g|svg)$/,
-				use: [
-					{
-						loader: 'url-loader',
-						options: {
-							limit: 8000,
-							name: 'images/[fullhash]-[name].[ext]',
-						},
-					},
-				],
-			},
-			{
-				test: /\.png/,
+				test: /\.svg/,
 				type: 'asset/resource',
 			},
 			{
