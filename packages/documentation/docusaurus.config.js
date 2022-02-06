@@ -45,7 +45,8 @@ const config = {
 				title: 'Chord Chart Studio',
 				logo: {
 					alt: 'Chord Chart Studio',
-					src: 'img/icon_whitebg.png',
+					src: 'img/logo.svg#long',
+					srcDark: 'img/logo.svg#long',
 				},
 				items: [
 					{
@@ -104,7 +105,8 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} Christophe Noël. Built with Docusaurus.`,
+				copyright: `Copyright © ${new Date().getFullYear()} Christophe Noël. 
+Logo by <a href="https://spelling-bee-assistant.app/" target="_blank" rel="noreferrer">Dieter raber</a>.`,
 			},
 			prism: {
 				theme: lightCodeTheme,
