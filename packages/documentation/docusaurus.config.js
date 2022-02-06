@@ -42,11 +42,10 @@ const config = {
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			navbar: {
-				title: 'Chord Chart Studio',
 				logo: {
 					alt: 'Chord Chart Studio',
-					src: 'img/logo.svg#long',
-					srcDark: 'img/logo.svg#long',
+					src: 'img/logo-black.png',
+					srcDark: 'img/logo-white.png',
 				},
 				items: [
 					{
