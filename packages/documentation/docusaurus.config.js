@@ -10,7 +10,7 @@ const config = {
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
-	favicon: 'img/favicon.ico',
+	favicon: 'img/favicon.png',
 	organizationName: 'no-chris', // Usually your GitHub org/user name.
 	projectName: 'chord-chart-studio', // Usually your repo name.
 

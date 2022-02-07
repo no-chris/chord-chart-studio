@@ -13,7 +13,7 @@ module.exports = merge(common, {
 		new HtmlWebpackPlugin({
 			title: 'Chord Chart Studio',
 			template: 'assets/index.html',
-			favicon: 'assets/favicon.ico',
+			favicon: 'assets/favicon.png',
 		}),
 	],
 

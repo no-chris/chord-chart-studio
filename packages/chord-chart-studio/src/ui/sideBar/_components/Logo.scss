@@ -22,7 +22,9 @@ $themes: (
 	width: 70%;
 	svg {
 		fill: #fff;
-		width: 100%;
 		aspect-ratio: 1.25 / 1;
+		width: 80%;
+		margin: 5px auto 10px auto;
+		display: block;
 	}
 }
