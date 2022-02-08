@@ -65,6 +65,10 @@ export default function Home() {
 			original: useBaseUrl('/img/screenshot4.png'),
 			thumbnail: useBaseUrl('/img/screenshot4_thumb.png'),
 		},
+		{
+			original: useBaseUrl('/img/screenshot5.png'),
+			thumbnail: useBaseUrl('/img/screenshot5_thumb.png'),
+		},
 	];
 
 	return (
