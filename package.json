@@ -30,7 +30,7 @@
     "html-webpack-plugin": "^5.4.0",
     "jest": "^27.0.6",
     "jest-handlebars": "^1.0.1",
-    "jest-localstorage-mock": "^2.4.14",
+    "jest-localstorage-mock": "^2.4.22",
     "jest-raw-loader": "^1.0.1",
     "lerna": "^4.0.0",
     "long": "^5.1.0",
