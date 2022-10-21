@@ -3,6 +3,7 @@ jest.mock('../../src/state/store');
 import React from 'react';
 
 import '@testing-library/jest-dom/extend-expect';
+import { act } from '@testing-library/react';
 
 import renderController from '../../src/renderController';
 import { getStore } from '../../src/state/store';
@@ -27,9 +28,13 @@ describe('renderController', () => {
 		mockStore.getState.mockReturnValue({ foo: 'bar' });
 		getStore.mockReturnValue(mockStore);
 
-		document.body.innerHTML = '<div id="app"></div>';
+		const container = document.createElement('div');
+		container.id = 'app';
+		document.body.appendChild(container);
 
-		renderController(controller);
+		act(() => {
+			renderController(controller);
+		});
 
 		const rendered = document.querySelector('.rendererController');
 		expect(rendered).toBeInstanceOf(Element);

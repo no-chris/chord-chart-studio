@@ -1,6 +1,6 @@
 import run from '../../src/app';
 
-const { act } = require('react-dom/test-utils');
+const { act } = require('@testing-library/react');
 
 describe('Main entry point', () => {
 	test('should render... something ;-)', async () => {

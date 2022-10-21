@@ -1,21 +1,29 @@
 import './getDimensionsFromDom.scss';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useLayoutEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 
 export default function getDimensionsFromDom(component, measuringFn) {
 	const container = document.createElement('div');
 	container.classList.add('measuring-node');
 	document.body.appendChild(container);
+	const root = createRoot(container);
 
 	return new Promise((resolve) => {
-		ReactDOM.render(<div>{component}</div>, container, () => {
-			const measure = measuringFn(container);
+		const MeasuringComponent = () => {
+			useLayoutEffect(() => {
+				const measure = measuringFn(container);
+				resolve(measure);
+			});
 
-			ReactDOM.unmountComponentAtNode(container);
-			container.parentNode.removeChild(container);
+			return <div>{component}</div>;
+		};
 
-			resolve(measure);
-		});
+		root.render(<MeasuringComponent />);
+	}).then((measure) => {
+		root.unmount();
+		container.parentNode.removeChild(container);
+
+		return measure;
 	});
 }

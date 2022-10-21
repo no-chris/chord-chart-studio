@@ -87,13 +87,13 @@ describe('Editor', () => {
 
 			render(withStore(<Editor />));
 
-			userEvent.keyboard('{meta}{a}');
+			userEvent.keyboard('{Meta>}{a}');
 			expect(selection.toString()).toBe('mySongContent');
 
 			selection.removeAllRanges();
 			expect(selection.toString()).toBe('');
 
-			userEvent.keyboard('{ctrl}{a}');
+			userEvent.keyboard('{Control}{a}');
 			expect(selection.toString()).toBe('mySongContent');
 		});
 	});

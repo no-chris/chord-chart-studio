@@ -1,4 +1,4 @@
-import filesize from 'filesize';
+import { filesize } from 'filesize';
 
 const maxFileSizeBytes = 50 * 1024;
 

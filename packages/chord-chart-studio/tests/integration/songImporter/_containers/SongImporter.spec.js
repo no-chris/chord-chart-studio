@@ -6,7 +6,7 @@ import {
 	dispatch,
 } from '../../helpers/withStore';
 
-import { render, cleanup, waitFor } from '@testing-library/react';
+import { render, cleanup, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -25,7 +25,11 @@ describe('SongImporter', () => {
 	test('Should import a song directly typed in the input field', () => {
 		dispatch(startImport());
 
-		const { getByTestId, getByText } = render(withStore(<SongImporter />));
+		let rendered;
+		act(() => {
+			rendered = render(withStore(<SongImporter />));
+		});
+		const { getByTestId, getByText } = rendered;
 
 		// check no file exists
 		let allFilesTitles = fileSelectors.getAllTitles(getState());
@@ -53,9 +57,11 @@ describe('SongImporter', () => {
 	test('Should import a song from a file', async () => {
 		dispatch(startImport());
 
-		const { getByLabelText, getByText } = render(
-			withStore(<SongImporter />)
-		);
+		let rendered;
+		act(() => {
+			rendered = render(withStore(<SongImporter />));
+		});
+		const { getByLabelText, getByText } = rendered;
 
 		// check no file exists
 		let allFilesTitles = fileSelectors.getAllTitles(getState());
@@ -97,7 +103,11 @@ describe('SongImporter', () => {
 			)
 		);
 
-		const { getByTestId, getByText } = render(withStore(<SongImporter />));
+		let rendered;
+		act(() => {
+			rendered = render(withStore(<SongImporter />));
+		});
+		const { getByTestId, getByText } = rendered;
 
 		// check no file exists
 		let allFilesTitles = fileSelectors.getAllTitles(getState());
@@ -114,7 +124,9 @@ describe('SongImporter', () => {
 		const importBtn = getByText('IMPORT');
 		expect(importBtn).toBeEnabled();
 
-		importBtn.click();
+		act(() => {
+			importBtn.click();
+		});
 
 		// check file exists
 		allFilesTitles = fileSelectors.getAllTitles(getState());
