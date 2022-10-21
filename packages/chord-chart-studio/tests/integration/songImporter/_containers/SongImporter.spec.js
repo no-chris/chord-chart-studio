@@ -22,7 +22,7 @@ afterEach(cleanup);
 describe('SongImporter', () => {
 	beforeEach(resetStore);
 
-	test('Should import a song directly typed in the input field', () => {
+	test('Should import a song directly typed in the input field', async () => {
 		dispatch(startImport());
 
 		let rendered;
@@ -42,8 +42,8 @@ describe('SongImporter', () => {
 		// type content and import
 		const inputField = getByTestId('sim-input');
 
-		userEvent.type(inputField, 'A new song');
-		userEvent.click(importBtn);
+		await userEvent.type(inputField, 'A new song');
+		await userEvent.click(importBtn);
 
 		// check file exists
 		allFilesTitles = fileSelectors.getAllTitles(getState());
@@ -80,10 +80,10 @@ describe('SongImporter', () => {
 			.mockImplementation(() => Promise.resolve('Content from file'));
 		const fileInput = getByLabelText('Select File');
 
-		userEvent.upload(fileInput, file);
+		await userEvent.upload(fileInput, file);
 
 		await waitFor(() => expect(importBtn).not.toBeDisabled());
-		userEvent.click(importBtn);
+		await userEvent.click(importBtn);
 
 		// check file exists
 		allFilesTitles = fileSelectors.getAllTitles(getState());

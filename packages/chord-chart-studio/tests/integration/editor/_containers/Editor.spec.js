@@ -80,20 +80,20 @@ describe('Editor', () => {
 			expect(getAllByText('mySongContent').length).toBe(1);
 		});
 
-		test('In export mode, "Select all" only select export content', () => {
+		test('In export mode, "Select all" only select export content', async () => {
 			dispatch(setEditorMode('export'));
 
 			const selection = window.getSelection();
 
 			render(withStore(<Editor />));
 
-			userEvent.keyboard('{Meta>}{a}');
+			await userEvent.keyboard('{Meta>}{a}');
 			expect(selection.toString()).toBe('mySongContent');
 
 			selection.removeAllRanges();
 			expect(selection.toString()).toBe('');
 
-			userEvent.keyboard('{Control}{a}');
+			await userEvent.keyboard('{Control>}{a}');
 			expect(selection.toString()).toBe('mySongContent');
 		});
 	});

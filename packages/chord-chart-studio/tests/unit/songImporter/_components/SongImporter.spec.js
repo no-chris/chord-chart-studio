@@ -132,22 +132,22 @@ describe('SongImporter', () => {
 	});
 
 	describe('Input field', () => {
-		test('Should set proper value', () => {
+		test('Should set proper value', async () => {
 			const { getByTestId } = render(<SongImporter {...props} />);
 			const textarea = getByTestId('sim-input');
 
-			userEvent.type(textarea, 'A');
+			await userEvent.type(textarea, 'A');
 
 			expect(setContent).toHaveBeenCalledWith('myContentA');
 		});
 
-		test('Should be disabled in case of web import', () => {
+		test('Should be disabled in case of web import', async () => {
 			const { getByTestId } = render(
 				<SongImporter {...props} isFromWeb={true} />
 			);
 			const textarea = getByTestId('sim-input');
 
-			userEvent.type(textarea, 'A');
+			await userEvent.type(textarea, 'A');
 
 			expect(setContent).not.toHaveBeenCalled();
 			expect(textarea).toHaveClass('sim-Input_Textarea-Disabled');
@@ -234,16 +234,16 @@ describe('SongImporter', () => {
 	});
 
 	describe('File input', () => {
-		test('should call setContent() if proper file is given', () => {
+		test('should call setContent() if proper file is given', async () => {
 			const file = new File(['myFileContent'], 'mySongTitle.png', {
-				type: 'text/plain',
+				type: 'text/*',
 			});
 			file.text = () => Promise.resolve('myFileContent');
 
 			const { getByLabelText } = render(<SongImporter {...props} />);
 			const fileInput = getByLabelText('Select File');
 
-			userEvent.upload(fileInput, file);
+			await userEvent.upload(fileInput, file);
 
 			return waitFor(() => {
 				expect(setContent).toHaveBeenCalledWith(
@@ -253,16 +253,16 @@ describe('SongImporter', () => {
 			});
 		});
 
-		test('should call setContent() with the error message in case file cannot be parsed', () => {
+		test('should call setContent() with the error message in case file cannot be parsed', async () => {
 			const file = new File(['myFileContent'], 'mySongTitle.png', {
-				type: 'text/plain',
+				type: 'text/*',
 			});
 			file.text = () => Promise.reject('Parsing Error!');
 
 			const { getByLabelText } = render(<SongImporter {...props} />);
 			const fileInput = getByLabelText('Select File');
 
-			userEvent.upload(fileInput, file);
+			await userEvent.upload(fileInput, file);
 
 			return waitFor(() => {
 				expect(setContent).toHaveBeenCalledWith('Parsing Error!');

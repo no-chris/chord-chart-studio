@@ -20,7 +20,7 @@
 		"@testing-library/dom": "^8.11.1",
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^13.4.0",
-		"@testing-library/user-event": "13.5.0"
+		"@testing-library/user-event": "^14.4.3"
 	},
 	"dependencies": {
 		"chord-mark": "^0.11.0",

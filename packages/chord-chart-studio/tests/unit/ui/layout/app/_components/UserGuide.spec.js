@@ -9,7 +9,7 @@ import UserGuide from '../../../../../../src/ui/sideBar/_components/UserGuide';
 afterEach(cleanup);
 
 describe('Footer', () => {
-	test('should open the user guide in a new window', () => {
+	test('should open the user guide in a new window', async () => {
 		const { getByText } = render(<UserGuide />);
 		const windowFocus = jest.fn();
 
@@ -19,7 +19,7 @@ describe('Footer', () => {
 
 		const btn = getByText('User Guide');
 
-		userEvent.click(btn);
+		await userEvent.click(btn);
 
 		expect(windowFocus).toHaveBeenCalledTimes(1);
 	});

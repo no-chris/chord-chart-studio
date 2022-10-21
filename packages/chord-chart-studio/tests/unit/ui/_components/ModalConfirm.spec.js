@@ -66,7 +66,7 @@ describe('ModalConfirm', () => {
 		expect(cancelBtn).toBeInTheDocument();
 	});
 
-	test('OK should call confirmAction()', () => {
+	test('OK should call confirmAction()', async () => {
 		const modal = render(
 			<ModalConfirm {...props}>
 				<div>{modalContent}</div>
@@ -74,12 +74,12 @@ describe('ModalConfirm', () => {
 		);
 		const okBtn = modal.getByText('OK');
 
-		userEvent.click(okBtn);
+		await userEvent.click(okBtn);
 
 		expect(confirmAction).toHaveBeenCalledTimes(1);
 	});
 
-	test('CANCEL should call cancelAction()', () => {
+	test('CANCEL should call cancelAction()', async () => {
 		const modal = render(
 			<ModalConfirm {...props}>
 				<div>{modalContent}</div>
@@ -87,7 +87,7 @@ describe('ModalConfirm', () => {
 		);
 		const okBtn = modal.getByText('CANCEL');
 
-		userEvent.click(okBtn);
+		await userEvent.click(okBtn);
 
 		expect(cancelAction).toHaveBeenCalledTimes(1);
 	});

@@ -36,7 +36,7 @@ describe('Modal', () => {
 		expect(closeModal).toHaveBeenCalledTimes(1);
 	});
 
-	test('Should close the modal on "Escape" key', () => {
+	test('Should close the modal on "Escape" key', async () => {
 		const closeModal = jest.fn();
 		const modalContent = 'I am the modal content';
 		const modal = render(
@@ -47,11 +47,11 @@ describe('Modal', () => {
 		const modalOverlay = modal.getByTestId('modal-overlay');
 		expect(modalOverlay).toBeInTheDocument();
 
-		userEvent.keyboard('{Enter}');
+		await userEvent.keyboard('{Enter}');
 
 		expect(closeModal).toHaveBeenCalledTimes(0);
 
-		userEvent.keyboard('{Escape}');
+		await userEvent.keyboard('{Escape}');
 
 		expect(closeModal).toHaveBeenCalledTimes(1);
 	});
