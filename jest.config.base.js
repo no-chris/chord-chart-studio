@@ -19,8 +19,8 @@ module.exports = {
 	transform: {
 		'\\.js$': 'babel-jest',
 		'\\.hbs$': 'jest-handlebars',
-		'\\.txt': 'jest-raw-loader',
-		'\\.svg': 'jest-raw-loader',
+		'\\.txt': 'jest-text-transformer',
+		'\\.svg': 'jest-text-transformer',
 	},
 	// whitelisting local modules in the node_modules folder
 	transformIgnorePatterns: ['<rootDir>.*(node_modules)(?!.*chord-mark.*).*$'],

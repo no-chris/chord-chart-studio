@@ -12,6 +12,13 @@ module.exports = {
 		'max-params': ['error', { max: 10 }],
 
 		'no-restricted-imports': ['off'],
+		'no-shadow': [
+			'error',
+			{
+				allow: ['screen'],
+			},
+		],
+
 		'no-unsanitized/property': ['off'],
 
 		'react/prop-types': ['off'],
