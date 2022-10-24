@@ -285,27 +285,27 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chord-mark-converters@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.11.0.tgz#fc8d7b67c282044db08242cadffc7b80645c2ee4"
-  integrity sha512-KhLcz+dDJyHRTfcQGtY/KnOuV6E4o+Z/l0YC+orOZaf8N/VrEi5OxMxMOmQURIwQYCn6LFEuMnbL2IQoUlaZIw==
+chord-mark-converters@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.12.0.tgz#ec23f24a34766e261039ec07b277fe9779975a21"
+  integrity sha512-d25pwL+huSlfXtaDkFSMvzW7qFzq2ob5dcGKg75CuImbeiqYbmoYf8XQFhkJfbNmCEQRCTTxx2ti9eKlrnJgRg==
   dependencies:
-    chord-mark "^0.11.0"
+    chord-mark "^0.12.0"
     chord-symbol "3.0.0"
     chord-symbol-ultimateguitar "3.0.0"
     dompurify "^2.3.4"
 
-chord-mark-themes@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.11.0.tgz#192c90068b0225b20d7cbdba44aa0a2cf36dd206"
-  integrity sha512-Oe0BBUXT7PcZ5WGIC7U0WUJH0mWXZW6C0AvN9dfeTiiEt49QKntTInx/lnus/hdoyImgnzt5jC9XxwPDzV4EGg==
+chord-mark-themes@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.12.0.tgz#b67951a3f0a62727e78df7fda08cc6dc09f3c821"
+  integrity sha512-3kmzSt9Bxq5S+NRTptjVhUK1JJ1C04isKD4TCQAWfXXP/71vmhk/5anZx6/pi1z+fupd9IXpgcXMgnwWMytUkA==
   dependencies:
-    chord-mark "^0.11.0"
+    chord-mark "^0.12.0"
 
-chord-mark@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.11.0.tgz#f21cb9824a638ec2712ced076d99e971329994a4"
-  integrity sha512-eoewZZdG5yJpiNK+JAQiBbVLAmg9VuqLUye1FmhD9DU//Pbpj+Hel4wLgOE2aF7/fhYT0YhfPQ+Jhc0cZ1M8mA==
+chord-mark@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.12.0.tgz#499ac3965aee93b4128a97b7b31c5a86b0924457"
+  integrity sha512-LsZ/elw1yLsiPaF32rIayFvKXuMbsfzRXBCMNfwKLsXK8mM3mupdCUFxFUTzYho23U35VKDXFp7sNvhzI/IuCw==
   dependencies:
     chord-symbol "3.0.0"
     dompurify "^2.3.4"
@@ -559,18 +559,6 @@ graceful-fs@^4.2.9:
   version "4.2.10"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
-
-handlebars@^4.7.7:
-  version "4.7.7"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
-  integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
-  dependencies:
-    minimist "^1.2.5"
-    neo-async "^2.6.0"
-    source-map "^0.6.1"
-    wordwrap "^1.0.0"
-  optionalDependencies:
-    uglify-js "^3.1.4"
 
 has-bigints@^1.0.1, has-bigints@^1.0.2:
   version "1.0.2"
@@ -852,16 +840,6 @@ min-indent@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
-
-minimist@^1.2.5:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.7.tgz#daa1c4d91f507390437c6a8bc01078e7000c4d18"
-  integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
-
-neo-async@^2.6.0:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
-  integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
 normalize.css@^8.0.1:
   version "8.0.1"
@@ -1151,11 +1129,6 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-source-map@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
-  integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
-
 stack-utils@^2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/stack-utils/-/stack-utils-2.0.5.tgz#d25265fca995154659dbbfba3b49254778d2fdd5"
@@ -1208,11 +1181,6 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
-
-uglify-js@^3.1.4:
-  version "3.17.4"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.4.tgz#61678cf5fa3f5b7eb789bb345df29afb8257c22c"
-  integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
@@ -1278,8 +1246,3 @@ which-typed-array@^1.1.2:
     for-each "^0.3.3"
     has-tostringtag "^1.0.0"
     is-typed-array "^1.1.9"
-
-wordwrap@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
-  integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==

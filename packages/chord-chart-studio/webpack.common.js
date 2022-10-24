@@ -31,10 +31,6 @@ const config = {
 				loader: 'babel-loader',
 			},
 			{
-				test: /\.hbs$/,
-				loader: 'handlebars-loader',
-			},
-			{
 				test: /\.scss|sass|css$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 			},

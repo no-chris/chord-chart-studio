@@ -18,7 +18,6 @@ module.exports = {
 
 	transform: {
 		'\\.js$': 'babel-jest',
-		'\\.hbs$': 'jest-handlebars',
 		'\\.txt': 'jest-text-transformer',
 		'\\.svg': 'jest-text-transformer',
 	},

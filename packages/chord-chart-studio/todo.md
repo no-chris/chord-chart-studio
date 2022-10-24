@@ -2,7 +2,6 @@
 
 ## Build & tooling
 
--   remove handlebars (but depends on CM...)
 -   host React on CDN
 
 -   have a clear entry point for each feature module
