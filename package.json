@@ -11,7 +11,7 @@
     "@size-limit/preset-app": "^8.1.0",
     "@size-limit/webpack": "^8.1.0",
     "babel-jest": "^29.2.1",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^9.0.1",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.5.1",
