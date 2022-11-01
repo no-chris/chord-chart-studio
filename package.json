@@ -63,7 +63,7 @@
     "up": "yarn install && lerna exec yarn install && yarn upgrade && lerna exec yarn upgrade"
   },
   "dependencies": {
-    "jest-environment-jsdom": "^29.2.1",
+    "jest-environment-jsdom": "^29.2.2",
     "jest-text-transformer": "^1.0.4"
   }
 }
