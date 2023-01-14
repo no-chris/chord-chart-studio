@@ -285,27 +285,27 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chord-mark-converters@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.12.0.tgz#ec23f24a34766e261039ec07b277fe9779975a21"
-  integrity sha512-d25pwL+huSlfXtaDkFSMvzW7qFzq2ob5dcGKg75CuImbeiqYbmoYf8XQFhkJfbNmCEQRCTTxx2ti9eKlrnJgRg==
+chord-mark-converters@0.13.0-beta.0:
+  version "0.13.0-beta.0"
+  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.13.0-beta.0.tgz#5d77482dacfed535c371640d35ac3e6e2899534e"
+  integrity sha512-c3LfrI/FsXhTV2Ky5M6mWJ14/9KszD4WyUybNw2ySuAQb199ELrQ5FUu81VjzBWBU3hKNyhcH8Ek6bbmmgX8dw==
   dependencies:
-    chord-mark "^0.12.0"
+    chord-mark "^0.13.0-beta.0"
     chord-symbol "3.0.0"
     chord-symbol-ultimateguitar "3.0.0"
     dompurify "^2.3.4"
 
-chord-mark-themes@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.12.0.tgz#b67951a3f0a62727e78df7fda08cc6dc09f3c821"
-  integrity sha512-3kmzSt9Bxq5S+NRTptjVhUK1JJ1C04isKD4TCQAWfXXP/71vmhk/5anZx6/pi1z+fupd9IXpgcXMgnwWMytUkA==
+chord-mark-themes@0.13.0-beta.0:
+  version "0.13.0-beta.0"
+  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.13.0-beta.0.tgz#7849c241ecffddae659c0b03085494ca223e5be6"
+  integrity sha512-slmhVsiaRqoKOLfKdBMqhu+XdO7LsOPTyjpdCVfyLKz9exwwNdJNv/1KmQio0bQ0wul/XX/FotNAIapaOllJbA==
   dependencies:
-    chord-mark "^0.12.0"
+    chord-mark "^0.13.0-beta.0"
 
-chord-mark@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.12.0.tgz#499ac3965aee93b4128a97b7b31c5a86b0924457"
-  integrity sha512-LsZ/elw1yLsiPaF32rIayFvKXuMbsfzRXBCMNfwKLsXK8mM3mupdCUFxFUTzYho23U35VKDXFp7sNvhzI/IuCw==
+chord-mark@0.13.0-beta.0, chord-mark@^0.13.0-beta.0:
+  version "0.13.0-beta.0"
+  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.13.0-beta.0.tgz#8930e0679bdb7795674a0f2f1a25c9d940c63544"
+  integrity sha512-Ffg1SRM22uFx6PQmDIdJPT5EfOWubs2w6w3+lJxsCmD7OmRWaRu6bdziyrvK03vNUQ4nPq8xNqqTJ+rQWbQ3LA==
   dependencies:
     chord-symbol "3.0.0"
     dompurify "^2.3.4"
