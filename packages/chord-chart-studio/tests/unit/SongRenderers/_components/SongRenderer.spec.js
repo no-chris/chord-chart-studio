@@ -27,9 +27,9 @@ describe('SongRenderer', () => {
 					'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
 					'<p class="cmLine"><span class="cmChordLine">' +
 					'<span class="cmBarSeparator">|</span>' +
-					'<span class="cmBarContent"><span class="cmChordSymbol">A</span>    </span><span class="cmBarSeparator">|</span>' +
+					'<span class="cmBarContent"><span class="cmChordSymbol">A</span>     </span><span class="cmBarSeparator">|</span>' +
 					'</span></p>' +
-					'<p class="cmLine"><span class="cmLyricLine">mySong</span></p>' +
+					'<p class="cmLine"><span class="cmLyricLine"> mySong</span></p>' +
 					'</div>'
 			);
 		});

@@ -40,7 +40,7 @@ describe('exportSelectedFileAsText', () => {
 		expect(filename).toBe('aSong - anArtist.txt');
 
 		const fileContent = await blobToTxt(blob);
-		expect(fileContent).toBe('|A    |\nmySong\n');
+		expect(fileContent).toBe('|A     |\n mySong\n');
 	});
 
 	test('should call saveAs() with a chordMark (source) file and a .txt extension', async () => {
