@@ -302,7 +302,16 @@ chord-mark-themes@0.13.0-beta.0:
   dependencies:
     chord-mark "^0.13.0-beta.0"
 
-chord-mark@0.13.0-beta.0, chord-mark@^0.13.0-beta.0:
+chord-mark@0.13.0-beta.1:
+  version "0.13.0-beta.1"
+  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.13.0-beta.1.tgz#ca95441f3ffe9827a88fff6b5f87240a603e3109"
+  integrity sha512-4JvUrZaT+A+rHwAMeHvYEIkHPq4pxZMocGxFB8Y0B2+mz+oNHsngKtGlYVfhmS+pwWzEYHyq+d7J/SEBdsgUXQ==
+  dependencies:
+    chord-symbol "3.0.0"
+    dompurify "^2.3.4"
+    lodash "^4.17.21"
+
+chord-mark@^0.13.0-beta.0:
   version "0.13.0-beta.0"
   resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.13.0-beta.0.tgz#8930e0679bdb7795674a0f2f1a25c9d940c63544"
   integrity sha512-Ffg1SRM22uFx6PQmDIdJPT5EfOWubs2w6w3+lJxsCmD7OmRWaRu6bdziyrvK03vNUQ4nPq8xNqqTJ+rQWbQ3LA==

@@ -24,7 +24,7 @@
 		"react-test-renderer": "^18.2.0"
 	},
 	"dependencies": {
-		"chord-mark": "0.13.0-beta.0",
+		"chord-mark": "0.13.0-beta.1",
 		"chord-mark-converters": "0.13.0-beta.0",
 		"chord-mark-themes": "0.13.0-beta.0",
 		"chord-symbol": "^3.0.0",
