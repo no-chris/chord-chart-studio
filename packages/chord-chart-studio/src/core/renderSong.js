@@ -66,7 +66,6 @@ function renderSong(songTxt, renderOptions) {
 		const parsed = parseSong(songTxt);
 		return renderSongCm(parsed, {
 			...renderOptions,
-			printSubBeatDelimiters: false,
 		});
 	} catch (e) {
 		return e.message;
