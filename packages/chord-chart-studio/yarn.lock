@@ -285,36 +285,27 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chord-mark-converters@0.13.0-beta.0:
-  version "0.13.0-beta.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.13.0-beta.0.tgz#5d77482dacfed535c371640d35ac3e6e2899534e"
-  integrity sha512-c3LfrI/FsXhTV2Ky5M6mWJ14/9KszD4WyUybNw2ySuAQb199ELrQ5FUu81VjzBWBU3hKNyhcH8Ek6bbmmgX8dw==
+chord-mark-converters@0.13.0-beta.2:
+  version "0.13.0-beta.2"
+  resolved "https://registry.yarnpkg.com/chord-mark-converters/-/chord-mark-converters-0.13.0-beta.2.tgz#09e8774228e41b9c4c48381bb01a86a14d4ec74c"
+  integrity sha512-RjOH1tb9+1dyvu32i7Y1Bh68sNixesjE3ubCmyyKlKjPpsRZxAergnLAT8fN075hh6eYPUjuwQe+lnCdnaF/Ow==
   dependencies:
-    chord-mark "^0.13.0-beta.0"
+    chord-mark "^0.13.0-beta.2"
     chord-symbol "3.0.0"
     chord-symbol-ultimateguitar "3.0.0"
     dompurify "^2.3.4"
 
-chord-mark-themes@0.13.0-beta.0:
-  version "0.13.0-beta.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.13.0-beta.0.tgz#7849c241ecffddae659c0b03085494ca223e5be6"
-  integrity sha512-slmhVsiaRqoKOLfKdBMqhu+XdO7LsOPTyjpdCVfyLKz9exwwNdJNv/1KmQio0bQ0wul/XX/FotNAIapaOllJbA==
+chord-mark-themes@0.13.0-beta.2:
+  version "0.13.0-beta.2"
+  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.13.0-beta.2.tgz#656a0b94f44cb09848ada79acd481ffcc4fd2356"
+  integrity sha512-I8Lx7mPq5IWi3AaWdTkM3NJnBtX+s5lX44zlKprpViRjzlCEYwHEItBWgwddY1ntBPqH6PIAB8iUep/oJc94uA==
   dependencies:
-    chord-mark "^0.13.0-beta.0"
+    chord-mark "^0.13.0-beta.2"
 
-chord-mark@0.13.0-beta.1:
-  version "0.13.0-beta.1"
-  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.13.0-beta.1.tgz#ca95441f3ffe9827a88fff6b5f87240a603e3109"
-  integrity sha512-4JvUrZaT+A+rHwAMeHvYEIkHPq4pxZMocGxFB8Y0B2+mz+oNHsngKtGlYVfhmS+pwWzEYHyq+d7J/SEBdsgUXQ==
-  dependencies:
-    chord-symbol "3.0.0"
-    dompurify "^2.3.4"
-    lodash "^4.17.21"
-
-chord-mark@^0.13.0-beta.0:
-  version "0.13.0-beta.0"
-  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.13.0-beta.0.tgz#8930e0679bdb7795674a0f2f1a25c9d940c63544"
-  integrity sha512-Ffg1SRM22uFx6PQmDIdJPT5EfOWubs2w6w3+lJxsCmD7OmRWaRu6bdziyrvK03vNUQ4nPq8xNqqTJ+rQWbQ3LA==
+chord-mark@0.13.0-beta.2, chord-mark@^0.13.0-beta.2:
+  version "0.13.0-beta.2"
+  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.13.0-beta.2.tgz#3c8aee8b19ee0191aeaff2e8e3437a4e74b41d2d"
+  integrity sha512-OSGtOdOZ+Va5FNrxFJELxZ+YH5BF2iEbu/BQbuKwkqZsLwgKP/+5Olbb+n7i2aviIZQSEIJkuvYEohYQEhJ5rw==
   dependencies:
     chord-symbol "3.0.0"
     dompurify "^2.3.4"
