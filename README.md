@@ -1,8 +1,8 @@
 # Chord Chart Studio
 
-Chord Chart Studio is a tool to create, manage and format chord charts for printing and viewing on screen. It can import and export from popular formats and websites, such as ChordPro and Ultimate Guitar.
+Chord Chart Studio is a tool to create, manage and format chord charts - e.g. song transcriptions made of chords and lyrics - for printing and viewing on screen. It can import and export songs from popular formats and websites, such as ChordPro and Ultimate Guitar.
 
-Chord Chart Studio leverages the ChordMark format, which is the most powerful syntax to write chord charts , e.g. song transcriptions made of chords and lyrics.
+Chord Chart Studio leverages the ChordMark format, which is the most powerful syntax to write chord charts.
 
 See it in action here: https://chord-chart-studio.netlify.app
 
