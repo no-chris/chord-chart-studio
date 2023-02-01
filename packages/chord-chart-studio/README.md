@@ -1,20 +1,40 @@
 [![build](https://github.com/no-chris/chord-chart-studio/actions/workflows/build.yml/badge.svg)](https://github.com/no-chris/chord-chart-studio/actions/workflows/build.yml)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/798258e3-e398-445f-aab0-3ebed107a749/deploy-status)](https://app.netlify.com/sites/chord-chart-studio/deploys)
 
-# Chords Charts Studio
+# Chord Chart Studio
 
-Better chord charts: write less, do more.
 
-## Demo
 
-https://xxx
+https://chord-chart-studio.netlify.app/
 
-## Dev
+### Installation
 
-install: `npm install`
+From the repository root:
+```
+$ lerna bootstrap
+```
 
-test: `npm run test`
+### Build
 
-build: `npm run build`
+From the repository root:
+```
+$ lerna build
+```
 
-run development server on http://127.0.0.1:8084 : `npm run dev`
+### Tests
+
+In this package folder:
+```
+$ yarn test
+```
+
+### Local Development
+
+In this package folder:
+
+```
+$ yarn run dev
+```
+
+This command starts a local development server on http://127.0.0.1:8084
+

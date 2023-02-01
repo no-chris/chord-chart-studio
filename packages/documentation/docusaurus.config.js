@@ -82,11 +82,11 @@ const config = {
 						items: [
 							{
 								label: 'Report issues',
-								href: 'https://github.com/no-chris/chord-mark/issues',
+								href: 'https://github.com/no-chris/chord-chart-studio/issues',
 							},
 							{
 								label: 'User forum',
-								href: 'https://github.com/no-chris/chord-mark/discussions',
+								href: 'https://github.com/no-chris/chord-chart-studio/discussions',
 							},
 						],
 					},
