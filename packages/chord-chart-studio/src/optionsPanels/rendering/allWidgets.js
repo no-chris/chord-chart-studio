@@ -77,11 +77,7 @@ export default {
 			type: 'optionsGroup',
 			icon: 'music_note',
 
-			groupWidgetsOrder: [
-				'transposeValue',
-				'harmonizeAccidentals',
-				'preferredAccidentals',
-			],
+			groupWidgetsOrder: ['transposeValue', 'preferredAccidentals'],
 			allGroupWidgets: {
 				transposeValue: {
 					label: 'Transpose',
@@ -94,15 +90,6 @@ export default {
 					option: {
 						context: 'songPreferences',
 						key: 'transposeValue',
-					},
-				},
-
-				harmonizeAccidentals: {
-					label: 'Harmonize accidentals',
-					type: 'toggle',
-					option: {
-						context: 'songPreferences',
-						key: 'harmonizeAccidentals',
 					},
 				},
 

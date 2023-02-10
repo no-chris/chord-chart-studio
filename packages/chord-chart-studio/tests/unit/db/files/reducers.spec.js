@@ -313,7 +313,7 @@ describe('db/files: reducers', () => {
 			);
 			const state2 = reducers(
 				state1,
-				setOptionValue('songFormatting', 'harmonizeAccidentals', true)
+				setOptionValue('songFormatting', 'transposeValue', 5)
 			);
 
 			expect(state2).toBe(state1);
@@ -332,7 +332,7 @@ describe('db/files: reducers', () => {
 						options: {
 							preferences: {
 								updatedAt: 'now',
-								harmonizeAccidentals: true,
+								transposeValue: 2,
 							},
 						},
 					},
@@ -348,7 +348,7 @@ describe('db/files: reducers', () => {
 						options: {
 							preferences: {
 								updatedAt: 'later',
-								harmonizeAccidentals: false,
+								transposeValue: 5,
 							},
 						},
 					},
@@ -359,7 +359,7 @@ describe('db/files: reducers', () => {
 			);
 			const state2 = reducers(
 				state1,
-				setOptionValue('songPreferences', 'harmonizeAccidentals', true)
+				setOptionValue('songPreferences', 'transposeValue', 2)
 			);
 			expect(state2).toEqual(expected1);
 
@@ -367,7 +367,7 @@ describe('db/files: reducers', () => {
 
 			const state3 = reducers(
 				state2,
-				setOptionValue('songPreferences', 'harmonizeAccidentals', false)
+				setOptionValue('songPreferences', 'transposeValue', 5)
 			);
 
 			expect(state3).toEqual(expected2);
@@ -441,7 +441,7 @@ describe('db/files: reducers', () => {
 						options: {
 							preferences: {
 								updatedAt: 'now',
-								harmonizeAccidentals: true,
+								transposeValue: 5,
 							},
 							edit: {
 								updatedAt: 'later',
@@ -466,11 +466,7 @@ describe('db/files: reducers', () => {
 			const state2 = deepFreeze(
 				reducers(
 					state1,
-					setOptionValue(
-						'songPreferences',
-						'harmonizeAccidentals',
-						true
-					)
+					setOptionValue('songPreferences', 'transposeValue', 5)
 				)
 			);
 			clock.mockReturnValue('later');

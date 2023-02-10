@@ -22,11 +22,6 @@ export default function exportSelectedFileAsText() {
 			'songPreferences',
 			'transposeValue'
 		),
-		harmonizeAccidentals: getOptionValue(
-			state,
-			'songPreferences',
-			'harmonizeAccidentals'
-		),
 		accidentalsType: getOptionValue(
 			state,
 			'songPreferences',

@@ -6,11 +6,6 @@ import PrintPreview from '../_components/PrintPreview';
 
 export default connect((state) => ({
 	// songPreferences
-	harmonizeAccidentals: getOptionValue(
-		state,
-		'songPreferences',
-		'harmonizeAccidentals'
-	),
 	accidentalsType: getOptionValue(
 		state,
 		'songPreferences',

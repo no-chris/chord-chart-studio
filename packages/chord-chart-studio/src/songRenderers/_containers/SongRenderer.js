@@ -7,11 +7,6 @@ import SongRenderer from '../_components/SongRenderer';
 export default connect((state) => ({
 	// songPreferences
 	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
-	harmonizeAccidentals: getOptionValue(
-		state,
-		'songPreferences',
-		'harmonizeAccidentals'
-	),
 	accidentalsType: getOptionValue(
 		state,
 		'songPreferences',

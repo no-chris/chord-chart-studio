@@ -1,16 +1,9 @@
 const editorModeOptions = {
-	edit: [
-		'theme',
-
-		'transposeValue',
-		'harmonizeAccidentals',
-		'preferredAccidentals',
-	],
+	edit: ['theme', 'transposeValue', 'preferredAccidentals'],
 	play: [
 		'theme',
 
 		'transposeValue',
-		'harmonizeAccidentals',
 		'preferredAccidentals',
 
 		'chartType',
@@ -25,7 +18,6 @@ const editorModeOptions = {
 	],
 	print: [
 		'transposeValue',
-		'harmonizeAccidentals',
 		'preferredAccidentals',
 
 		'chartType',
@@ -44,7 +36,6 @@ const editorModeOptions = {
 		'chartFormat',
 
 		'transposeValue',
-		'harmonizeAccidentals',
 		'preferredAccidentals',
 
 		'chartType',

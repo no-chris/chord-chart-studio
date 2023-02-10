@@ -47,7 +47,10 @@ function render(songTxt, renderOptions, useChartFormat, outputFormat) {
 						chordSymbolRenderer: chordRendererFactory({
 							customFilters: [chordSymbolUltimateGuitar()],
 							useShortNamings: true,
-							useFlats: renderOptions.accidentalsType === 'flat',
+							accidentalsType:
+								renderOptions.accidentalsType === 'auto'
+									? 'original'
+									: renderOptions.accidentalsType,
 							...renderOptions, // duh!
 						}),
 					}) +

@@ -16,12 +16,10 @@ export default {
 	songPreferences: {
 		values: {
 			transposeValue: 0,
-			harmonizeAccidentals: true,
 			preferredAccidentals: 'auto',
 		},
 		defaults: {
 			transposeValue: 0,
-			harmonizeAccidentals: true,
 			preferredAccidentals: 'auto',
 		},
 		//userDefaults: {},

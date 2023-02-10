@@ -12,7 +12,6 @@ function PrintPreview(props) {
 
 	const renderOptions = _pick(props, [
 		'transposeValue',
-		'harmonizeAccidentals',
 		'accidentalsType',
 
 		'chartType',
