@@ -12,6 +12,7 @@ export default connect((state) => ({
 		'songPreferences',
 		'preferredAccidentals'
 	),
+	symbolType: getOptionValue(state, 'songPreferences', 'symbolType'),
 
 	// songFormatting
 	chartFormat: getOptionValue(state, 'editorPreferences', 'chartFormat'),

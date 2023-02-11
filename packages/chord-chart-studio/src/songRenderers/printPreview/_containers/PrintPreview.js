@@ -12,6 +12,7 @@ export default connect((state) => ({
 		'preferredAccidentals'
 	),
 	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
+	symbolType: getOptionValue(state, 'songPreferences', 'symbolType'),
 
 	// songFormatting
 	chartType: getOptionValue(state, 'songFormatting', 'chartType'),

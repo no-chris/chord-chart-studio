@@ -17,10 +17,12 @@ export default {
 		values: {
 			transposeValue: 0,
 			preferredAccidentals: 'auto',
+			symbolType: 'chord',
 		},
 		defaults: {
 			transposeValue: 0,
 			preferredAccidentals: 'auto',
+			symbolType: 'chord',
 		},
 		//userDefaults: {},
 	},

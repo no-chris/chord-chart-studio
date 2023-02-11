@@ -1,10 +1,11 @@
 const editorModeOptions = {
-	edit: ['theme', 'transposeValue', 'preferredAccidentals'],
+	edit: ['theme', 'transposeValue', 'preferredAccidentals', 'symbolType'],
 	play: [
 		'theme',
 
 		'transposeValue',
 		'preferredAccidentals',
+		'symbolType',
 
 		'chartType',
 		'alignChordsWithLyrics',
@@ -19,6 +20,7 @@ const editorModeOptions = {
 	print: [
 		'transposeValue',
 		'preferredAccidentals',
+		'symbolType',
 
 		'chartType',
 		'alignChordsWithLyrics',
@@ -37,6 +39,7 @@ const editorModeOptions = {
 
 		'transposeValue',
 		'preferredAccidentals',
+		'symbolType',
 
 		'chartType',
 		'alignChordsWithLyrics',

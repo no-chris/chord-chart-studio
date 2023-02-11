@@ -13,6 +13,7 @@ function PrintPreview(props) {
 	const renderOptions = _pick(props, [
 		'transposeValue',
 		'accidentalsType',
+		'symbolType',
 
 		'chartType',
 		'alignChordsWithLyrics',

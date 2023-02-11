@@ -27,6 +27,7 @@ export default function exportSelectedFileAsText() {
 			'songPreferences',
 			'accidentalsType'
 		),
+		symbolType: getOptionValue(state, 'songPreferences', 'symbolType'),
 
 		chartType: getOptionValue(state, 'songFormatting', 'chartType'),
 		alignChordsWithLyrics: getOptionValue(

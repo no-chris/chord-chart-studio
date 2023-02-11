@@ -16,6 +16,7 @@ function SongRenderer(props) {
 
 		'transposeValue',
 		'accidentalsType',
+		'symbolType',
 
 		'chartType',
 		'alignChordsWithLyrics',

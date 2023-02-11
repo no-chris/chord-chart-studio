@@ -77,7 +77,11 @@ export default {
 			type: 'optionsGroup',
 			icon: 'music_note',
 
-			groupWidgetsOrder: ['transposeValue', 'preferredAccidentals'],
+			groupWidgetsOrder: [
+				'transposeValue',
+				'preferredAccidentals',
+				'symbolType',
+			],
 			allGroupWidgets: {
 				transposeValue: {
 					label: 'Transpose',
@@ -118,6 +122,29 @@ export default {
 					option: {
 						context: 'songPreferences',
 						key: 'preferredAccidentals',
+					},
+				},
+
+				symbolType: {
+					label: 'Symbols type',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'symbolTypeChord',
+								label: 'Chord symbols',
+								value: 'chord',
+							},
+							{
+								id: 'symbolTypeRoman',
+								label: 'Roman numerals',
+								value: 'roman',
+							},
+						],
+					},
+					option: {
+						context: 'songPreferences',
+						key: 'symbolType',
 					},
 				},
 			},
