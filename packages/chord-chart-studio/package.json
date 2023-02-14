@@ -31,7 +31,7 @@
 		"chord-symbol-ultimateguitar": "^4.0.0",
 		"combine-section-reducers": "^1.0.6",
 		"core-js": "^3.20.2",
-		"dompurify": "^2.2.9",
+		"dompurify": "^3.0.0",
 		"file-saver": "^2.0.5",
 		"filesize": "^10.0.5",
 		"lodash": "^4.17.21",
