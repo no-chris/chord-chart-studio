@@ -3,13 +3,12 @@
 
 # Chord Chart Studio
 
-
-
 https://chord-chart-studio.netlify.app/
 
 ### Installation
 
 From the repository root:
+
 ```
 $ lerna bootstrap
 ```
@@ -17,6 +16,7 @@ $ lerna bootstrap
 ### Build
 
 From the repository root:
+
 ```
 $ lerna build
 ```
@@ -24,6 +24,7 @@ $ lerna build
 ### Tests
 
 In this package folder:
+
 ```
 $ yarn test
 ```
@@ -37,4 +38,3 @@ $ yarn run dev
 ```
 
 This command starts a local development server on http://127.0.0.1:8084
-
