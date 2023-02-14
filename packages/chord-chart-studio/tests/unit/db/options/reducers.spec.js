@@ -283,7 +283,6 @@ describe('db/options: reducers', () => {
 		};
 		const defaultPreferences = {
 			transposeValue: 4,
-			harmonizeAccidentals: false,
 			preferredAccidentals: 'auto',
 		};
 

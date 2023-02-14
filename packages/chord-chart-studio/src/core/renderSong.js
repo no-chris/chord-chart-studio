@@ -42,10 +42,15 @@ function render(songTxt, renderOptions, useChartFormat, outputFormat) {
 						customRenderer: chordMark2UltimateGuitar(),
 						printBarSeparators: 'grids',
 						printChordsDuration: 'never',
+						printSubBeatDelimiters: false,
+						printInlineTimeSignatures: false,
 						chordSymbolRenderer: chordRendererFactory({
 							customFilters: [chordSymbolUltimateGuitar()],
 							useShortNamings: true,
-							useFlats: renderOptions.accidentalsType === 'flat',
+							accidentalsType:
+								renderOptions.accidentalsType === 'auto'
+									? 'original'
+									: renderOptions.accidentalsType,
 							...renderOptions, // duh!
 						}),
 					}) +

@@ -6,17 +6,13 @@ import PrintPreview from '../_components/PrintPreview';
 
 export default connect((state) => ({
 	// songPreferences
-	harmonizeAccidentals: getOptionValue(
-		state,
-		'songPreferences',
-		'harmonizeAccidentals'
-	),
 	accidentalsType: getOptionValue(
 		state,
 		'songPreferences',
 		'preferredAccidentals'
 	),
 	transposeValue: getOptionValue(state, 'songPreferences', 'transposeValue'),
+	symbolType: getOptionValue(state, 'songPreferences', 'symbolType'),
 
 	// songFormatting
 	chartType: getOptionValue(state, 'songFormatting', 'chartType'),

@@ -15,8 +15,8 @@ function SongRenderer(props) {
 		'chartFormat',
 
 		'transposeValue',
-		'harmonizeAccidentals',
 		'accidentalsType',
+		'symbolType',
 
 		'chartType',
 		'alignChordsWithLyrics',

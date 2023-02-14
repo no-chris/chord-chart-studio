@@ -37,16 +37,6 @@ export const getNonInteractableWidgets = (state) => {
 		}
 	}
 
-	const harmonizeAccidentals = getOptionValue(
-		state,
-		'songPreferences',
-		'harmonizeAccidentals'
-	);
-
-	if (!harmonizeAccidentals) {
-		nonInteractableWidgets.push('preferredAccidentals');
-	}
-
 	return nonInteractableWidgets;
 };
 

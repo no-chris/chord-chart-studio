@@ -16,13 +16,13 @@ export default {
 	songPreferences: {
 		values: {
 			transposeValue: 0,
-			harmonizeAccidentals: true,
 			preferredAccidentals: 'auto',
+			symbolType: 'chord',
 		},
 		defaults: {
 			transposeValue: 0,
-			harmonizeAccidentals: true,
 			preferredAccidentals: 'auto',
+			symbolType: 'chord',
 		},
 		//userDefaults: {},
 	},

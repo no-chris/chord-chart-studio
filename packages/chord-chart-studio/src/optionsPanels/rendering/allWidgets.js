@@ -79,8 +79,8 @@ export default {
 
 			groupWidgetsOrder: [
 				'transposeValue',
-				'harmonizeAccidentals',
 				'preferredAccidentals',
+				'symbolType',
 			],
 			allGroupWidgets: {
 				transposeValue: {
@@ -94,15 +94,6 @@ export default {
 					option: {
 						context: 'songPreferences',
 						key: 'transposeValue',
-					},
-				},
-
-				harmonizeAccidentals: {
-					label: 'Harmonize accidentals',
-					type: 'toggle',
-					option: {
-						context: 'songPreferences',
-						key: 'harmonizeAccidentals',
 					},
 				},
 
@@ -131,6 +122,29 @@ export default {
 					option: {
 						context: 'songPreferences',
 						key: 'preferredAccidentals',
+					},
+				},
+
+				symbolType: {
+					label: 'Symbols type',
+					type: 'select',
+					typeOptions: {
+						allChoices: [
+							{
+								id: 'symbolTypeChord',
+								label: 'Chord symbols',
+								value: 'chord',
+							},
+							{
+								id: 'symbolTypeRoman',
+								label: 'Roman numerals',
+								value: 'roman',
+							},
+						],
+					},
+					option: {
+						context: 'songPreferences',
+						key: 'symbolType',
 					},
 				},
 			},

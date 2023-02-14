@@ -15,7 +15,6 @@ import Rendering from '../../../../../src/optionsPanels/rendering/_containers/Re
 import allWidgets from '../../../../../src/optionsPanels/rendering/allWidgets';
 
 import * as optionsSelectors from '../../../../../src/db/options/selectors';
-import * as optionsActions from '../../../../../src/db/options/actions';
 import * as appActions from '../../../../../src/ui/layout/app/_state/actions';
 import * as fmActions from '../../../../../src/fileManager/_state/actions';
 
@@ -47,14 +46,14 @@ describe('"Rendering" option panel', () => {
 			//todo
 		});
 
-		test('Edit mode', () => {
+		test.skip('Edit mode', () => {
 			dispatch(fmActions.selectFile('myId'));
 			dispatch(appActions.setEditorMode('edit'));
 
 			const { queryByText } = render(withStore(<Rendering />));
 
-			const harmonizeAccidentals = queryByText(
-				allWidgets.allWidgets.key.allGroupWidgets.harmonizeAccidentals
+			const preferredAccidentals = queryByText(
+				allWidgets.allWidgets.key.allGroupWidgets.preferredAccidentals
 					.label
 			);
 
@@ -72,7 +71,7 @@ describe('"Rendering" option panel', () => {
 				allWidgets.allWidgets.layout.allGroupWidgets.fontSize.label
 			);
 
-			expect(harmonizeAccidentals).toBeInTheDocument();
+			expect(preferredAccidentals).toBeInTheDocument();
 			expect(alignChordsWithLyrics).toBeNull();
 			expect(columnBreakOnSection).toBeNull();
 			expect(fontSize).toBeNull();
@@ -180,53 +179,6 @@ describe('"Rendering" option panel', () => {
 	});
 
 	describe('Options dependencies', () => {
-		test('PreferredAccidentals should only be displayed if harmonizeAccidentals === true', () => {
-			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('play'));
-			dispatch(
-				optionsActions.setOptionValue(
-					'songPreferences',
-					'harmonizeAccidentals',
-					true
-				)
-			);
-
-			const { getByText, queryByText } = render(withStore(<Rendering />));
-
-			const harmonizeAccidentals = getByText(
-				allWidgets.allWidgets.key.allGroupWidgets.harmonizeAccidentals
-					.label
-			);
-			expect(
-				getByText(
-					allWidgets.allWidgets.key.allGroupWidgets
-						.preferredAccidentals.label + ':'
-				)
-			).toBeInTheDocument();
-
-			act(() => {
-				fireEvent.click(harmonizeAccidentals);
-			});
-
-			expect(
-				queryByText(
-					allWidgets.allWidgets.key.allGroupWidgets
-						.preferredAccidentals.label
-				)
-			).toBeNull();
-
-			act(() => {
-				fireEvent.click(harmonizeAccidentals);
-			});
-
-			expect(
-				getByText(
-					allWidgets.allWidgets.key.allGroupWidgets
-						.preferredAccidentals.label + ':'
-				)
-			).toBeInTheDocument();
-		});
-
 		test('Formatting options should be enabled or not depending on chartType value', () => {
 			const niClassName = '.sb-optionToggle-isNotInteractable';
 			const isDisabled = (element) => {

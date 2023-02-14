@@ -3,20 +3,20 @@ const packageJson = require('../../package.json');
 const cmPackageJson = require('../../node_modules/chord-mark/package.json');
 const fs = require('fs');
 
-const chordChartStudioVersion = 'v' + packageJson.version;
+const chordChartStudioVersion = packageJson.version;
 const chordMarkVersion = packageJson.dependencies['chord-mark'].replace(
 	'^',
-	'v'
+	''
 );
 const chordSymbolVersion = cmPackageJson.dependencies['chord-symbol'].replace(
 	'^',
-	'v'
+	''
 );
 
 const version = {
-	'chord-chart-studio': chordChartStudioVersion,
-	'chord-symbol': chordSymbolVersion,
-	'chord-mark': chordMarkVersion,
+	'chord-chart-studio': 'v' + chordChartStudioVersion,
+	'chord-symbol': 'v' + chordSymbolVersion,
+	'chord-mark': 'v' + chordMarkVersion,
 };
 
 const serialized = JSON.stringify(version).replace(/"/g, "'");

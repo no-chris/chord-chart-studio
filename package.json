@@ -11,7 +11,7 @@
     "@size-limit/preset-app": "^8.1.0",
     "@size-limit/webpack": "^8.1.0",
     "babel-jest": "^29.2.1",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.5.1",
@@ -41,7 +41,7 @@
     "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.36.2",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.2",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.7.2",
     "webpack-merge": "^5.8.0"
   },

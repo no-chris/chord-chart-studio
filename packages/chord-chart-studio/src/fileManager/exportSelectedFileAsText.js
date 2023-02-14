@@ -22,16 +22,12 @@ export default function exportSelectedFileAsText() {
 			'songPreferences',
 			'transposeValue'
 		),
-		harmonizeAccidentals: getOptionValue(
-			state,
-			'songPreferences',
-			'harmonizeAccidentals'
-		),
 		accidentalsType: getOptionValue(
 			state,
 			'songPreferences',
 			'accidentalsType'
 		),
+		symbolType: getOptionValue(state, 'songPreferences', 'symbolType'),
 
 		chartType: getOptionValue(state, 'songFormatting', 'chartType'),
 		alignChordsWithLyrics: getOptionValue(

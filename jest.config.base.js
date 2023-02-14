@@ -22,7 +22,9 @@ module.exports = {
 		'\\.svg': 'jest-text-transformer',
 	},
 	// whitelisting local modules in the node_modules folder
-	transformIgnorePatterns: ['<rootDir>.*(node_modules)(?!.*chord-mark.*).*$'],
+	transformIgnorePatterns: [
+		'<rootDir>.*(node_modules)(?!.*chord-(symbol|mark).*).*$',
+	],
 
 	moduleNameMapper: {
 		'\\.(css|scss)$': '<rootDir>/tests/styleMock.js',
