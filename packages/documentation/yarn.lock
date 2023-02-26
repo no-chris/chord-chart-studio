@@ -2852,17 +2852,17 @@ cheerio@^1.0.0-rc.12:
   optionalDependencies:
     fsevents "~2.3.2"
 
-chord-mark-themes@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.13.0.tgz#1579dae39ab466a8d3823db1742d43d76b43be60"
-  integrity sha512-Q9M4lr1fX2ZI40gFkYmmhec2KcgiB00ZSEtBex2oZBO64ruTomGzLR/WQBlVc9YnH+DkJ/f70WSu2BEsZ5/ZUQ==
+chord-mark-themes@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/chord-mark-themes/-/chord-mark-themes-0.14.0.tgz#0dafbc3ed2344bdff24cff48ddbd4c3ebe155063"
+  integrity sha512-KcFLEhcx7TEeETFZ9Qmi2B87OuValbYzBeisDRwqFyfubF/j+DW7e0M8gIXcUFyByyz12RFHcNfgD6t0QoGvkg==
   dependencies:
-    chord-mark "^0.13.0"
+    chord-mark "^0.14.0"
 
-chord-mark@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.13.0.tgz#e80e81d1d45212f2a0663645f25432d418103ee1"
-  integrity sha512-8yeJonYNcA2bg9IuC7nQbaz1NoMrpNdHdRTwi/VthUUI7tWqTS6nGBrEUz+CvW55w7+AV75sVnSnXQnsrjRVTQ==
+chord-mark@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/chord-mark/-/chord-mark-0.14.0.tgz#28dbd02aed4de28388a7200a1ed9a0c868ba0662"
+  integrity sha512-I5P7HQhabNT7c59BuqSgmLDcIbePUfoLgg9X7DZED27MF+kURq1YBVx/lbTN0ujxBlZoloK7ErvHhfKginRiiA==
   dependencies:
     chord-symbol "4.0.0"
     dompurify "^2.3.4"
