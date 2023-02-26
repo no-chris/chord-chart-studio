@@ -27,11 +27,7 @@ const songImporterHandlers = {
 };
 
 const buildTitle = (songTitle, artist) => {
-	let title = songTitle;
-	if (artist) {
-		title += ' - ' + artist;
-	}
-	return title;
+	return '_' + (artist ? artist + ' - ' : '') + songTitle;
 };
 
 export default function getSongImporterHandlers() {

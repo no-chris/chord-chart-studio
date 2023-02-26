@@ -44,7 +44,7 @@ describe('@CCS/IMPORT_TAB', () => {
 				startImportFromWeb(
 					'chordsOverLyrics',
 					'myUGChordChart',
-					'myTitle - myArtist'
+					'_myArtist - myTitle'
 				)
 			);
 		});
@@ -61,7 +61,7 @@ describe('@CCS/IMPORT_TAB', () => {
 				startImportFromWeb(
 					'chordsOverLyrics',
 					'myUGChordChart',
-					'myTitle'
+					'_myTitle'
 				)
 			);
 		});
