@@ -30,7 +30,7 @@
 		"chord-symbol": "^4.0.0",
 		"chord-symbol-ultimateguitar": "^4.0.0",
 		"combine-section-reducers": "^1.0.6",
-		"core-js": "^3.20.2",
+		"core-js": "^3.29.0",
 		"dompurify": "^3.0.0",
 		"file-saver": "^2.0.5",
 		"filesize": "^10.0.5",
