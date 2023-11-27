@@ -4,9 +4,9 @@ var _self =
 		'undefined' != typeof window
 			? window
 			: 'undefined' != typeof WorkerGlobalScope &&
-			  self instanceof WorkerGlobalScope
-			? self
-			: {},
+			    self instanceof WorkerGlobalScope
+			  ? self
+			  : {},
 	Prism = (function (u) {
 		var t = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i,
 			n = 0,
@@ -20,11 +20,11 @@ var _self =
 						return n instanceof W
 							? new W(n.type, e(n.content), n.alias)
 							: Array.isArray(n)
-							? n.map(e)
-							: n
-									.replace(/&/g, '&amp;')
-									.replace(/</g, '&lt;')
-									.replace(/\u00a0/g, ' ');
+							  ? n.map(e)
+							  : n
+										.replace(/&/g, '&amp;')
+										.replace(/</g, '&lt;')
+										.replace(/\u00a0/g, ' ');
 					},
 					type: function (e) {
 						return Object.prototype.toString.call(e).slice(8, -1);
@@ -488,8 +488,8 @@ var _self =
 			'loading' === l || ('interactive' === l && r && r.defer)
 				? document.addEventListener('DOMContentLoaded', a)
 				: window.requestAnimationFrame
-				? window.requestAnimationFrame(a)
-				: window.setTimeout(a, 16);
+				  ? window.requestAnimationFrame(a)
+				  : window.setTimeout(a, 16);
 		}
 		return M;
 	})(_self);

@@ -47,13 +47,16 @@ const config = {
 
 	resolve: {
 		extensions: ['.js', '.jsx'],
+		/*
 		alias: {
 			react: path.resolve(path.join(__dirname, './node_modules/react')),
 			'react-dom': path.resolve(
 				path.join(__dirname, './node_modules/react-dom')
 			),
 		},
+		*/
 		symlinks: false,
+		//modules: [path.resolve(__dirname, '../../node_modules')],
 	},
 };
 

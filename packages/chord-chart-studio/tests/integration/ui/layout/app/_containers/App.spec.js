@@ -30,9 +30,8 @@ describe('AppLayout', () => {
 				withStore(<App {...props} />)
 			);
 
-			let isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(
-				getState()
-			);
+			let isLeftBarCollapsed =
+				appLayoutSelectors.isLeftBarCollapsed(getState());
 			expect(isLeftBarCollapsed).toBe(false);
 
 			// Collapse leftBar
@@ -41,9 +40,8 @@ describe('AppLayout', () => {
 				fireEvent.click(leftBarCollapser);
 			});
 
-			isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(
-				getState()
-			);
+			isLeftBarCollapsed =
+				appLayoutSelectors.isLeftBarCollapsed(getState());
 			expect(isLeftBarCollapsed).toBe(true);
 
 			// Now open it
@@ -52,9 +50,8 @@ describe('AppLayout', () => {
 				fireEvent.click(leftBar);
 			});
 
-			isLeftBarCollapsed = appLayoutSelectors.isLeftBarCollapsed(
-				getState()
-			);
+			isLeftBarCollapsed =
+				appLayoutSelectors.isLeftBarCollapsed(getState());
 			expect(isLeftBarCollapsed).toBe(false);
 		});
 
@@ -63,9 +60,8 @@ describe('AppLayout', () => {
 				withStore(<App {...props} />)
 			);
 
-			let isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(
-				getState()
-			);
+			let isRightBarCollapsed =
+				appLayoutSelectors.isRightBarCollapsed(getState());
 			expect(isRightBarCollapsed).toBe(false);
 
 			// Collapse leftBar
@@ -74,9 +70,8 @@ describe('AppLayout', () => {
 				fireEvent.click(rightBarCollapser);
 			});
 
-			isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(
-				getState()
-			);
+			isRightBarCollapsed =
+				appLayoutSelectors.isRightBarCollapsed(getState());
 			expect(isRightBarCollapsed).toBe(true);
 
 			// Now open it
@@ -85,9 +80,8 @@ describe('AppLayout', () => {
 				fireEvent.click(leftBar);
 			});
 
-			isRightBarCollapsed = appLayoutSelectors.isRightBarCollapsed(
-				getState()
-			);
+			isRightBarCollapsed =
+				appLayoutSelectors.isRightBarCollapsed(getState());
 			expect(isRightBarCollapsed).toBe(false);
 		});
 	});

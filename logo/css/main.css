@@ -200,8 +200,13 @@ html {
 }
 
 body {
-	font: 1.4rem 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode',
-		'Lucida Sans', Tahoma, sans-serif;
+	font:
+		1.4rem 'Trebuchet MS',
+		'Lucida Grande',
+		'Lucida Sans Unicode',
+		'Lucida Sans',
+		Tahoma,
+		sans-serif;
 	color: hsl(0, 0%, 100%, 0.8);
 	background: linear-gradient(
 		20deg,
