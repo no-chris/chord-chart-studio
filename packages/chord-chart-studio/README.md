@@ -10,7 +10,7 @@ https://chord-chart-studio.netlify.app/
 From the repository root:
 
 ```
-$ lerna bootstrap
+$ yarn install
 ```
 
 ### Build
@@ -18,7 +18,7 @@ $ lerna bootstrap
 From the repository root:
 
 ```
-$ lerna build
+$ yarn run build
 ```
 
 ### Tests

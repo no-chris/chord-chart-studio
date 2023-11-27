@@ -60,13 +60,13 @@
 		"audit": "npm audit",
 		"build": "npm run format && npm run lint && npm run test && npm run version && npm run bundle && npm run size && npm run sloc",
 		"bundle": "webpack --config webpack.prod.js",
-		"dev": "webpack serve --config webpack.dev.js",
+		"dev": "npx webpack serve --config webpack.dev.js",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,md,scss,css}\"",
 		"lint": "eslint src tests",
 		"size": "size-limit",
 		"sloc": "echo \"Source code:\" > SLOC && npx sloc src >> SLOC && echo \"Tests:\" >> SLOC && npx sloc tests >> SLOC && echo \"Total:\" >> SLOC && npx sloc src tests >> SLOC",
-		"test": "jest",
-		"unit": "jest tests/unit",
+		"test": "npx jest",
+		"unit": "npx jest tests/unit",
 		"version": "node src/core/createGetVersions.js"
 	},
 	"size-limit": [
