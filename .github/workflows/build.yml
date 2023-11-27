@@ -11,14 +11,15 @@ jobs:
     name: Build & test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # Install Node 16
-      - uses: actions/setup-node@v1
+      # Install Node
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
 
       # Install & build & test:
+      - run: corepack enable
       - run: yarn install
-      - run: yarn exec lerna bootstrap
+      - run: yarn npm audit --environment production
       - run: yarn exec lerna run build
