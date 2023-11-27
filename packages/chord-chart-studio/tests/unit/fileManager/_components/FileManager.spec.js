@@ -9,7 +9,7 @@ import {
 	act,
 	waitFor,
 } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import FileManager from '../../../../src/fileManager/_components/FileManager';
 import exportSelectedFileAsText from '../../../../src/fileManager/exportSelectedFileAsText';

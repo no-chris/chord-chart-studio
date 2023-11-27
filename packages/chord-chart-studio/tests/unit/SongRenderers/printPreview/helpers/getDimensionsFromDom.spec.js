@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import getDimensionsFromDom from '../../../../../src/songRenderers/printPreview/helpers/getDimensionsFromDom';
 

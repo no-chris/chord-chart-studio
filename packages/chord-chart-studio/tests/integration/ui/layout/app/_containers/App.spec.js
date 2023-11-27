@@ -2,7 +2,7 @@ import React from 'react';
 import { withStore, getState, resetStore } from '../../../../helpers/withStore';
 
 import { render, cleanup, fireEvent, act } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import App from '../../../../../../src/ui/layout/app/_containers/App';
 import * as appLayoutSelectors from '../../../../../../src/ui/layout/app/_state/selectors';

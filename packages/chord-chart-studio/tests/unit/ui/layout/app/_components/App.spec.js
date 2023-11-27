@@ -5,7 +5,7 @@ import {
 } from '../../../../../integration/helpers/withStore';
 
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import App from '../../../../../../src/ui/layout/app/_components/App';
 

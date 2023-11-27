@@ -5,7 +5,7 @@ import { act } from 'react-dom/test-utils';
 import { withStore, resetStore, dispatch } from '../../helpers/withStore';
 
 import { render, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 import Editor from '../../../../src/editor/_containers/Editor';

@@ -8,7 +8,7 @@ import {
 
 import { render, cleanup, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import SongImporter from '../../../../src/songImporter/_containers/SongImporter';
 import * as fileSelectors from '../../../../src/db/files/selectors';

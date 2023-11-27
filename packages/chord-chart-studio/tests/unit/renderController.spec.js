@@ -2,7 +2,7 @@ jest.mock('../../src/state/store');
 
 import React from 'react';
 
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { act } from '@testing-library/react';
 
 import renderController from '../../src/renderController';

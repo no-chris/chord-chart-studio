@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import OptionGroup from '../../../../../../src/ui/sideBar/options/_components/OptionsGroup';
 

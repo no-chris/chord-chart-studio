@@ -2,7 +2,7 @@ jest.mock('chord-mark-converters', () => ({ convert2ChordMark: jest.fn() }));
 import React from 'react';
 
 import { render, cleanup, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 import SongImporter from '../../../../src/songImporter/_components/SongImporter';
