@@ -24,9 +24,14 @@ export function renderAsHtml(
 	return render(songTxt, renderOptions, useChartFormat, 'html');
 }
 
+// eslint-disable-next-line complexity
 function render(songTxt, renderOptions, useChartFormat, outputFormat) {
 	if (useChartFormat) {
 		switch (renderOptions.chartFormat) {
+			case 'chordmark': {
+				const cmHtml = renderSong(songTxt, renderOptions);
+				return outputFormat === 'html' ? cmHtml : toText(cmHtml);
+			}
 			case 'chordmarkSrc':
 				return outputFormat === 'html' ? toHtml(songTxt) : songTxt;
 			case 'chordpro': {
@@ -60,7 +65,10 @@ function render(songTxt, renderOptions, useChartFormat, outputFormat) {
 		}
 	}
 
-	const chordMarkHtml = renderSong(songTxt, renderOptions);
+	const chordMarkHtml = renderSong(songTxt, {
+		...renderOptions,
+		wrapChordLyricLines: true,
+	});
 	return outputFormat === 'html' ? chordMarkHtml : toText(chordMarkHtml);
 }
 

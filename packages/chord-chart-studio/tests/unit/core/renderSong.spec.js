@@ -15,22 +15,31 @@ describe('renderAsHtml()', () => {
 		expect(rendered).toEqual('songSrc.split is not a function');
 	});
 
-	test('Should return ChordMark html by default', () => {
+	test('Should return ChordMark html by default, with wrappable chord/lyric lines', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsHtml(input);
 
 		expect(rendered).toEqual(
 			'<div class="cmSong">' +
-				'<p class="cmLine"><span class="cmChordLine">' +
-				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>     </span><span class="cmBarSeparator">|</span>' +
-				'</span></p>' +
-				'<p class="cmLine"><span class="cmLyricLine"> mySong</span></p>' +
+				'<p class="cmLine">' +
+				'<span class="cmChordLyricLine">' +
+				'<span class="cmChordLyricPair">' +
+				'<span class="cmChordLine"><span class="cmBarSeparator">|</span></span>' +
+				'<span class="cmLyricLine"> </span>' +
+				'</span>' +
+				'<span class="cmChordLyricPair">' +
+				'<span class="cmChordLine"><span class="cmChordSymbol">A</span>     </span>' +
+				'<span class="cmLyricLine">mySong</span>' +
+				'</span>' +
+				'<span class="cmChordLyricPair">' +
+				'<span class="cmChordLine"><span class="cmBarSeparator">|</span></span>' +
+				'<span class="cmLyricLine"></span></span></span></p>' +
 				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
 				'</div>'
 		);
 	});
 
-	test('Should also return ChordMark html with useChartFormat === true & chartFormat === chordmark', () => {
+	test('Should also return ChordMark html with useChartFormat === true & chartFormat === chordmark, lines NO wrappable', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsHtml(
 			input,
@@ -41,7 +50,7 @@ describe('renderAsHtml()', () => {
 		expect(rendered).toEqual(
 			'<div class="cmSong">' +
 				'<p class="cmLine"><span class="cmChordLine">' +
-				'<span class="cmBarSeparator">|</span><span class="cmBarContent"><span class="cmChordSymbol">A</span>     </span><span class="cmBarSeparator">|</span>' +
+				'<span class="cmBarSeparator">|</span><span class="cmChordSymbol">A</span>     <span class="cmBarSeparator">|</span>' +
 				'</span></p>' +
 				'<p class="cmLine"><span class="cmLyricLine"> mySong</span></p>' +
 				'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
@@ -98,7 +107,7 @@ describe('renderAsText()', () => {
 		const input = 'A\n_mySong\n';
 		const rendered = renderAsText(input);
 
-		expect(rendered).toEqual('|A     |\n mySong\n');
+		expect(rendered).toEqual('| A     mySong|\n');
 	});
 
 	test('Should return ChordMark text with useChartFormat === true & chartFormat === chordmark', () => {
