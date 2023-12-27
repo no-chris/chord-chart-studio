@@ -7,7 +7,7 @@
 	"license": "LicenseRef-LICENSE",
 	"main": "src/popup/popup.js",
 	"scripts": {
-		"build": "webpack",
+		"build": "npx webpack",
 		"dev": "npx webpack --config webpack.dev.js"
 	},
 	"dependencies": {
