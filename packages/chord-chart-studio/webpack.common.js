@@ -2,24 +2,34 @@
 const path = require('path');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
-const buildDir = 'build';
+const buildDir = path.resolve(process.cwd(), 'build');
 
 const config = {
 	target: 'web',
 
 	entry: {
 		main: './src/main.js',
+		sw: './src/workers/sw.js',
 	},
 
 	output: {
-		filename: '[name].[fullhash].js',
-		path: path.resolve(process.cwd(), buildDir),
+		filename: '[name].js',
+		path: buildDir,
 	},
 
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: 'css/[name].[fullhash].css',
+			filename: 'css/[name].css',
+		}),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: 'assets/manifest.json',
+					to: buildDir + '/manifest.json',
+				},
+			],
 		}),
 	],
 
@@ -47,16 +57,7 @@ const config = {
 
 	resolve: {
 		extensions: ['.js', '.jsx'],
-		/*
-		alias: {
-			react: path.resolve(path.join(__dirname, './node_modules/react')),
-			'react-dom': path.resolve(
-				path.join(__dirname, './node_modules/react-dom')
-			),
-		},
-		*/
 		symlinks: false,
-		//modules: [path.resolve(__dirname, '../../node_modules')],
 	},
 };
 
