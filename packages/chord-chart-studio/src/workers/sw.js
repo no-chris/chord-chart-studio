@@ -1,15 +1,13 @@
-const VERSION = 'v1';
+const VERSION = 'v3';
 const CACHE_NAME = `chord-chart-studio-${VERSION}`;
 
 const APP_STATIC_RESOURCES = [
 	'/',
 	'/css/main.css',
-	'/css/main.css.map',
 	'/favicon.png',
 	'/index.html',
 	'/main.js',
-	'/style.css',
-	'/vendors.js',
+	//'/vendors.js',
 ];
 
 console.log('in service worker');
@@ -19,14 +17,19 @@ self.addEventListener('install', (e) => {
 	e.waitUntil(
 		(async () => {
 			const cache = await caches.open(CACHE_NAME);
-			cache.addAll(APP_STATIC_RESOURCES);
+			APP_STATIC_RESOURCES.map(function (url) {
+				return cache.add(url).catch(function (reason) {
+					console.log(url + 'failed: ' + String(reason));
+				});
+			});
 		})()
 	);
 });
 
 self.addEventListener('activate', (e) => {
 	console.log('[Service Worker] activate');
-	e.waitUntil(
+
+	/*e.waitUntil(
 		(async () => {
 			const allCacheKeys = await caches.keys();
 			await Promise.all(
@@ -39,6 +42,7 @@ self.addEventListener('activate', (e) => {
 			await clients.claim();
 		})()
 	);
+	*/
 });
 
 self.addEventListener('fetch', (e) => {
