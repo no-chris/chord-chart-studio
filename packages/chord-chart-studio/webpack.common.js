@@ -14,13 +14,13 @@ const config = {
 	},
 
 	output: {
-		filename: '[name].js',
+		filename: '[name].[fullhash].js',
 		path: buildDir,
 	},
 
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: 'css/[name].css',
+			filename: 'css/[name].[fullhash].css',
 		}),
 		new CopyPlugin({
 			patterns: [

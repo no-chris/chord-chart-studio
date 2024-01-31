@@ -55,6 +55,15 @@ module.exports = merge(common, {
 		new WorkboxPlugin.GenerateSW({
 			clientsClaim: true,
 			skipWaiting: true,
+			runtimeCaching: [
+				{
+					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+					handler: 'StaleWhileRevalidate',
+					options: {
+						cacheName: 'google-fonts-webfonts',
+					},
+				},
+			],
 		}),
 	],
 });
