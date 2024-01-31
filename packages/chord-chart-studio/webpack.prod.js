@@ -1,5 +1,6 @@
 /* eslint-env node */
 const webpack = require('webpack');
+const path = require('path');
 
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
@@ -8,8 +9,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin =
-	require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WorkboxPlugin = require('workbox-webpack-plugin');
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
 	mode: 'production',
@@ -28,7 +29,10 @@ module.exports = merge(common, {
 			},
 		},
 		minimize: true,
-		minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+		minimizer: [
+			new TerserPlugin({ extractComments: false }),
+			new CssMinimizerPlugin(),
+		],
 	},
 
 	plugins: [
@@ -37,15 +41,33 @@ module.exports = merge(common, {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('production'),
 		}),
+		/*
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static',
 			openAnalyzer: false,
 		}),
+		*/
+
 		new HtmlWebpackPlugin({
 			title: 'Chord Chart Studio',
 			template: 'assets/index.html',
 			favicon: 'assets/favicon.png',
 			publicPath: 'app', // subfolder of the documentation website
 		}),
+		new WorkboxPlugin.GenerateSW({
+			clientsClaim: true,
+			skipWaiting: true,
+		}),
 	],
+
+	devServer: {
+		static: {
+			directory: path.join(__dirname, 'build'),
+			publicPath: 'app',
+		},
+		port: 9000,
+		client: {
+			overlay: { errors: false, warnings: false, runtimeErrors: true },
+		},
+	},
 });

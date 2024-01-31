@@ -3,6 +3,9 @@ const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
+const buildDir = path.resolve(process.cwd(), 'build');
 
 module.exports = merge(common, {
 	mode: 'development',
@@ -14,6 +17,14 @@ module.exports = merge(common, {
 			title: 'Chord Chart Studio',
 			template: 'assets/index.html',
 			favicon: 'assets/favicon.png',
+		}),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: './assets/service-worker.js',
+					to: buildDir + '/service-worker.js',
+				},
+			],
 		}),
 	],
 

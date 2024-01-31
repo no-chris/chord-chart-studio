@@ -11,7 +11,6 @@ const config = {
 
 	entry: {
 		main: './src/main.js',
-		sw: './src/workers/sw.js',
 	},
 
 	output: {
@@ -26,7 +25,7 @@ const config = {
 		new CopyPlugin({
 			patterns: [
 				{
-					from: 'assets/manifest.json',
+					from: './assets/manifest.json',
 					to: buildDir + '/manifest.json',
 				},
 			],
