@@ -25,11 +25,19 @@ describe('SongRenderer', () => {
 			expect(container.firstChild.firstChild.innerHTML).toBe(
 				'<div class="cmSong">' +
 					'<p class="cmLine"><span class="cmEmptyLine">&nbsp;</span></p>' +
-					'<p class="cmLine"><span class="cmChordLine">' +
-					'<span class="cmBarSeparator">|</span>' +
-					'<span class="cmBarContent"><span class="cmChordSymbol">A</span>     </span><span class="cmBarSeparator">|</span>' +
-					'</span></p>' +
-					'<p class="cmLine"><span class="cmLyricLine"> mySong</span></p>' +
+					'<p class="cmLine">' +
+					'<span class="cmChordLyricLine">' +
+					'<span class="cmChordLyricPair">' +
+					'<span class="cmChordLine"><span class="cmBarSeparator">|</span></span>' +
+					'<span class="cmLyricLine"> </span>' +
+					'</span>' +
+					'<span class="cmChordLyricPair">' +
+					'<span class="cmChordLine"><span class="cmChordSymbol">A</span>     </span>' +
+					'<span class="cmLyricLine">mySong</span>' +
+					'</span>' +
+					'<span class="cmChordLyricPair">' +
+					'<span class="cmChordLine"><span class="cmBarSeparator">|</span></span>' +
+					'<span class="cmLyricLine"></span></span></span></p>' +
 					'</div>'
 			);
 		});
