@@ -2,10 +2,12 @@ import '../scss/styles.scss';
 
 import { createStore } from './state/store';
 import registerHandlers from './registerHandlers';
+import registerSW from './registerSW';
 import router from './router';
 import addSampleContent from './addSampleContent';
 
 registerHandlers();
+registerSW();
 
 export default function run() {
 	createStore();
@@ -13,11 +15,4 @@ export default function run() {
 	addSampleContent();
 
 	return router.navigateTo('/editor');
-}
-
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker
-		.register('./service-worker.js')
-		.then((reg) => console.log('SW registered!', reg))
-		.catch((err) => console.log('Boo!', err));
 }
