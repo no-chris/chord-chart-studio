@@ -1,6 +1,5 @@
 /* eslint-env node */
 const webpack = require('webpack');
-const path = require('path');
 
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
@@ -58,15 +57,4 @@ module.exports = merge(common, {
 			skipWaiting: true,
 		}),
 	],
-
-	devServer: {
-		static: {
-			directory: path.join(__dirname, 'build'),
-			publicPath: '/app',
-		},
-		port: 9000,
-		client: {
-			overlay: { errors: false, warnings: false, runtimeErrors: true },
-		},
-	},
 });
