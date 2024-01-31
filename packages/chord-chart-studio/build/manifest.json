@@ -1,0 +1,15 @@
+{
+	"name": "Chord Chart Studio",
+	"short_name": "ChordChartStudio",
+	"start_url": ".",
+	"display": "standalone",
+	"background_color": "#1e2324",
+	"description": "Create and manage chord charts",
+	"icons": [
+		{
+			"src": "favicon.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}

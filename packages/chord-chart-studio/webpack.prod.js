@@ -63,7 +63,7 @@ module.exports = merge(common, {
 	devServer: {
 		static: {
 			directory: path.join(__dirname, 'build'),
-			publicPath: 'app',
+			publicPath: '/app',
 		},
 		port: 9000,
 		client: {

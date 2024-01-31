@@ -6797,6 +6797,7 @@ __metadata:
     eslint-plugin-no-unsanitized: "npm:^4.0.2"
     eslint-plugin-react: "npm:^7.33.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
+    expressjs: "npm:^1.0.1"
     file-loader: "npm:^6.2.0"
     generate-changelog: "npm:^1.8.0"
     html-webpack-inline-source-plugin: "npm:0.0.10"
@@ -9604,6 +9605,13 @@ __metadata:
     utils-merge: "npm:1.0.1"
     vary: "npm:~1.1.2"
   checksum: 75af556306b9241bc1d7bdd40c9744b516c38ce50ae3210658efcbf96e3aed4ab83b3432f06215eae5610c123bc4136957dc06e50dfc50b7d4d775af56c4c59c
+  languageName: node
+  linkType: hard
+
+"expressjs@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "expressjs@npm:1.0.1"
+  checksum: 078cd670b840f0b7607f627a20f1004bcbf55f29473add75dbd340c36faf0cd29a46c17fe65e5ab2d7e29005ded7f34b92fd0b7d96ad0f1b4916001b08ca929f
   languageName: node
   linkType: hard
 
