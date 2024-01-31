@@ -45,7 +45,6 @@ module.exports = merge(common, {
 			title: 'Chord Chart Studio',
 			template: 'assets/index.html',
 			favicon: 'assets/favicon.png',
-			publicPath: 'app', // subfolder of the documentation website
 		}),
 	],
 });
