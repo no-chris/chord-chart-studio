@@ -8,8 +8,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin =
-	require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WorkboxPlugin = require('workbox-webpack-plugin');
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
 	mode: 'production',
@@ -28,7 +28,10 @@ module.exports = merge(common, {
 			},
 		},
 		minimize: true,
-		minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+		minimizer: [
+			new TerserPlugin({ extractComments: false }),
+			new CssMinimizerPlugin(),
+		],
 	},
 
 	plugins: [
@@ -37,14 +40,46 @@ module.exports = merge(common, {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('production'),
 		}),
+		/*
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static',
 			openAnalyzer: false,
 		}),
+		*/
+
 		new HtmlWebpackPlugin({
 			title: 'Chord Chart Studio',
 			template: 'assets/index.html',
 			favicon: 'assets/favicon.png',
+		}),
+		new WorkboxPlugin.GenerateSW({
+			clientsClaim: true,
+			skipWaiting: true,
+			runtimeCaching: [
+				// based on https://developer.chrome.com/docs/workbox/modules/workbox-recipes
+				// and https://stackoverflow.com/questions/52451678/caching-google-fonts-using-workbox
+				{
+					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+					handler: 'StaleWhileRevalidate',
+					options: {
+						cacheName: 'google-fonts-stylesheets',
+					},
+				},
+				{
+					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+					handler: 'StaleWhileRevalidate',
+					options: {
+						cacheName: 'google-fonts-webfonts',
+						cacheableResponse: {
+							statuses: [0, 200],
+						},
+						expiration: {
+							maxAgeSeconds: 60 * 60 * 24 * 365,
+							maxEntries: 30,
+						},
+					},
+				},
+			],
 		}),
 	],
 });
