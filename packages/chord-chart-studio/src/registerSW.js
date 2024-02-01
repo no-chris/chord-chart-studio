@@ -1,4 +1,4 @@
-const serviceWorkerPath = './service-worker.js';
+const serviceWorkerPath = '/service-worker.js';
 
 export default function registerSW() {
 	if ('serviceWorker' in navigator) {
