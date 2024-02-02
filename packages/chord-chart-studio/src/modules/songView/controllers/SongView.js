@@ -1,12 +1,26 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const SongView = ({ songId, printMode = false }) => {
+import { navigateTo } from '../../../core/router';
+import { getOne } from '../../../db/files/selectors';
+//import router from '../router';
+
+export default function SongView({ songId }) {
+	const song = useSelector((state) => getOne(state, songId));
+
+	const handleClick = (e) => {
+		e.preventDefault();
+		navigateTo('/library');
+	};
+
 	return (
-		<>
-			<h1>my gift is my song with id {songId}</h1>
-			<p>printMode is {printMode}</p>
-		</>
+		<div>
+			<a href="" onClick={handleClick}>
+				Go back to list
+			</a>
+			<br />
+			<b>{song.title}</b>
+			<p>{song.content}</p>
+		</div>
 	);
-};
-
-export default SongView;
+}
