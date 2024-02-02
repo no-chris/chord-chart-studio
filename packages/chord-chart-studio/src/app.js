@@ -15,7 +15,9 @@ export default function run() {
 
 	addSampleContent();
 
-	const currentPathname = window ? window.location.pathname : '/';
+	const currentPathname = window
+		? window.location.pathname + window.location.search
+		: '/';
 
 	router.initRouter(allRoutes);
 

@@ -13,7 +13,7 @@ export default function Library() {
 
 	return (
 		<div>
-			New library
+			Full Library
 			<ul>{allrenderedTitles}</ul>
 		</div>
 	);

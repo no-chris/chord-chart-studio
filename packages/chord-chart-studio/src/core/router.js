@@ -29,14 +29,31 @@ export default {
 	},
 };
 
-export function navigateTo(pathname) {
-	return universalRouter.resolve(pathname).then(({ Controller, params }) => {
-		const queryParams = qs.parse(window.location.search, {
-			ignoreQueryPrefix: true,
+export function navigateTo(url, shouldPushState = true) {
+	const parsedUrl = new URL(url, window.location.origin);
+
+	return universalRouter
+		.resolve(parsedUrl.pathname)
+		.then(({ Controller, params }) => {
+			if (shouldPushState) {
+				pushState(url);
+			}
+			const queryParams = qs.parse(parsedUrl.search, {
+				ignoreQueryPrefix: true,
+			});
+			renderController(Controller, {
+				...params,
+				...queryParams,
+			});
 		});
-		renderController(Controller, {
-			...params,
-			...queryParams,
-		});
-	});
 }
+
+function pushState(stateUrl) {
+	window.history.pushState({}, null, stateUrl);
+}
+
+window.addEventListener('popstate', () => {
+	console.log('popstate');
+	const path = window.location.pathname + window.location.search;
+	navigateTo(path, false);
+});
