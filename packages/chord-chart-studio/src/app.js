@@ -19,7 +19,7 @@ export default function run() {
 		? window.location.pathname + window.location.search
 		: '/';
 
-	router.initRouter(allRoutes);
+	router.init(allRoutes);
 
 	return navigateTo(currentPathname);
 }

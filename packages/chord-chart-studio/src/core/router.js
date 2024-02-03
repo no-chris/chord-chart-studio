@@ -4,11 +4,11 @@ import qs from 'qs';
 
 import renderController from '../renderController';
 
-let universalRouter;
+let router;
 let getUrl;
 
 export default {
-	initRouter(allRoutes) {
+	init(allRoutes) {
 		const allRoutesWithWrappedActions = allRoutes.map((route) => {
 			return {
 				...route,
@@ -18,42 +18,54 @@ export default {
 				}),
 			};
 		});
-		universalRouter = new UniversalRouter(allRoutesWithWrappedActions, {
+		router = new UniversalRouter(allRoutesWithWrappedActions, {
 			errorHandler(error, context) {
-				console.error('======== Error');
-				console.error(error);
-				console.info(context);
+				console.error(
+					`Error: Cannot find route for path: ${context.pathname}`
+				);
 			},
 		});
-		getUrl = generateUrls(universalRouter);
+		getUrl = generateUrls(router, {
+			stringifyQueryParams: qs.stringify,
+		});
 	},
 };
 
 export function navigateTo(url, shouldPushState = true) {
 	const parsedUrl = new URL(url, window.location.origin);
 
-	return universalRouter
+	return router
 		.resolve(parsedUrl.pathname)
-		.then(({ Controller, params }) => {
-			if (shouldPushState) {
-				pushState(url);
+		.then(({ Controller, params } = {}) => {
+			if (Controller) {
+				if (shouldPushState) {
+					pushState(url);
+				}
+				const queryParams = qs.parse(parsedUrl.search, {
+					ignoreQueryPrefix: true,
+				});
+				renderController(Controller, {
+					...params,
+					...queryParams,
+				});
 			}
-			const queryParams = qs.parse(parsedUrl.search, {
-				ignoreQueryPrefix: true,
-			});
-			renderController(Controller, {
-				...params,
-				...queryParams,
-			});
 		});
 }
 
-function pushState(stateUrl) {
-	window.history.pushState({}, null, stateUrl);
+export function getLink(routeName, params) {
+	try {
+		return getUrl(routeName, params);
+	} catch (e) {
+		console.error(e.toString());
+	}
 }
 
+function pushState(url) {
+	window.history.pushState({ url }, null, url);
+}
+
+/* istanbul ignore next */
 window.addEventListener('popstate', () => {
-	console.log('popstate');
 	const path = window.location.pathname + window.location.search;
 	navigateTo(path, false);
 });

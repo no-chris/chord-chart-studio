@@ -6,10 +6,14 @@ import { getStore } from './state/store';
 
 import ErrorBoundary from './ui/_components/ErrorBoundary';
 
-const container = document.getElementById('app');
-const root = createRoot(container);
+let root;
 
 export default function renderController(Controller, params) {
+	const container = document.getElementById('app');
+	if (!root) {
+		root = createRoot(container);
+	}
+
 	root.render(
 		<Provider store={getStore()}>
 			<React.StrictMode>

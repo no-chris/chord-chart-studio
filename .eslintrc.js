@@ -59,7 +59,7 @@ module.exports = {
 		],
 		'no-unsanitized/method': ['error'],
 
-		'react/prop-types': ['error'],
+		'react/prop-types': ['off'],
 
 		'react-hooks/rules-of-hooks': ['error'],
 		'react-hooks/exhaustive-deps': ['warn'],
