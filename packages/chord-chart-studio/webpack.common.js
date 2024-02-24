@@ -16,6 +16,7 @@ const config = {
 	output: {
 		filename: '[name].[fullhash].js',
 		path: buildDir,
+		publicPath: '/',
 	},
 
 	plugins: [
