@@ -65,7 +65,7 @@
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,md,scss,css}\"",
 		"lint": "eslint src tests",
 		"preview": "npx vite preview",
-		"size": "size-limit",
+		"size": "npx size-limit",
 		"sloc": "echo \"Source code:\" > SLOC && npx sloc src >> SLOC && echo \"Tests:\" >> SLOC && npx sloc tests >> SLOC && echo \"Total:\" >> SLOC && npx sloc src tests >> SLOC",
 		"test": "npx jest",
 		"unit": "npx jest tests/unit",
@@ -74,12 +74,10 @@
 	"size-limit": [
 		{
 			"path": "./build/assets/index-*.js",
-			"webpack": false,
 			"limit": "25 KB"
 		},
 		{
 			"path": "./build/assets/vendor-*.js",
-			"webpack": false,
 			"limit": "300 KB"
 		}
 	]
