@@ -1,10 +1,11 @@
 {
-	"name": "Chord Chart Studios",
-	"description": "Browser extension to import chords",
-	"version": "1.0",
-	"manifest_version": 2,
-	"permissions": ["tabs", "http://*/*", "https://*/*"],
-	"browser_action": {
+	"name": "Chord Chart Studio",
+	"description": "Browser extension to import chords charts",
+	"version": "0.1",
+	"manifest_version": 3,
+	"permissions": ["scripting", "tabs"],
+	"host_permissions": ["http://*/*", "https://*/*"],
+	"action": {
 		"default_popup": "build/popup.html"
 	},
 	"content_scripts": [
@@ -13,7 +14,7 @@
 			"js": ["build/ultimateGuitar.js"]
 		},
 		{
-			"matches": ["http://127.0.0.1:8084/"],
+			"matches": ["http://localhost:5173/"],
 			"js": ["build/chordChartsStudio.js"]
 		}
 	]
