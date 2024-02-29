@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from '../../../_components/Icon.js';
+import Icon from '../../../_components/Icon.jsx';
 
 function NavEntry(props) {
 	const { label, icon, editorMode, setEditorMode, isActive, isDisabled } =
