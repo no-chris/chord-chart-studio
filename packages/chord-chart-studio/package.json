@@ -73,12 +73,12 @@
 	},
 	"size-limit": [
 		{
-			"path": "./build/main.*.js",
+			"path": "./build/assets/index-*.js",
 			"webpack": false,
 			"limit": "25 KB"
 		},
 		{
-			"path": "./build/vendors*.js",
+			"path": "./build/assets/vendor-*.js",
 			"webpack": false,
 			"limit": "300 KB"
 		}
