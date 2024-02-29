@@ -1,4 +1,4 @@
-import { GET_TAB_DATA } from '../core/messageTypes';
+const GET_TAB_DATA = 'getTabData';
 
 let tabData;
 
