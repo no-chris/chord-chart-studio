@@ -5,6 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig({
 	root: 'src',
 	publicDir: '../public',
+	base: './',
 	build: {
 		outDir: '../build',
 		emptyOutDir: true,
