@@ -3,7 +3,7 @@ import './Nav.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NavEntry from './NavEntry.js';
+import NavEntry from './NavEntry';
 
 function Nav(props) {
 	const { currentMode, allEntries, setEditorMode, selectedId } = props;

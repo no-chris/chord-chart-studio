@@ -2,8 +2,8 @@ import './UserGuide.scss';
 
 import React from 'react';
 
-import Button from '../../_components/Button';
-import Icon from '../../_components/Icon.js';
+import Button from '../../_components/Button.jsx';
+import Icon from '../../_components/Icon.jsx';
 
 const userGuideUrl = 'https://chord-chart-studio.netlify.app';
 

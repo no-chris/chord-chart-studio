@@ -18,6 +18,7 @@ module.exports = {
 
 	transform: {
 		'\\.js$': 'babel-jest',
+		'\\.jsx$': 'babel-jest',
 		'\\.txt': 'jest-text-transformer',
 		'\\.svg': 'jest-text-transformer',
 	},
@@ -29,5 +30,6 @@ module.exports = {
 	moduleNameMapper: {
 		'\\.(css|scss)$': '<rootDir>/tests/styleMock.js',
 		'\\.(png)$': '<rootDir>/tests/assetMock.js',
+		'.*\\.txt\\?raw': 'jest-text-transformer',
 	},
 };

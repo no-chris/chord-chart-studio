@@ -60,12 +60,12 @@
 	"scripts": {
 		"audit": "npm audit",
 		"build": "npm run format && npm run lint && npm run test && npm run version && npm run bundle && npm run size && npm run sloc",
-		"bundle": "npx webpack --config webpack.prod.js",
-		"dev": "npx webpack serve --config webpack.dev.js",
+		"bundle": "npx vite build",
+		"dev": "npx vite",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,md,scss,css}\"",
 		"lint": "eslint src tests",
-		"serve": "node tests/serve.js",
-		"size": "size-limit",
+		"preview": "npx vite preview",
+		"size": "npx size-limit",
 		"sloc": "echo \"Source code:\" > SLOC && npx sloc src >> SLOC && echo \"Tests:\" >> SLOC && npx sloc tests >> SLOC && echo \"Total:\" >> SLOC && npx sloc src tests >> SLOC",
 		"test": "npx jest",
 		"unit": "npx jest tests/unit",
@@ -73,13 +73,11 @@
 	},
 	"size-limit": [
 		{
-			"path": "./build/main.*.js",
-			"webpack": false,
+			"path": "./build/assets/index-*.js",
 			"limit": "25 KB"
 		},
 		{
-			"path": "./build/vendors*.js",
-			"webpack": false,
+			"path": "./build/assets/vendor-*.js",
 			"limit": "300 KB"
 		}
 	]

@@ -3,8 +3,8 @@ import { getStore } from './state/store';
 import { getAllTitles } from './db/files/selectors';
 import { importFile } from './db/files/actions';
 
-import gettingStarted from './gettingStarted.txt';
-import sampleSong from './sampleSong.txt';
+import gettingStarted from './gettingStarted.txt?raw';
+import sampleSong from './sampleSong.txt?raw';
 
 export default function addSampleContent() {
 	const store = getStore();

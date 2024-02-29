@@ -1,4 +1,4 @@
-//const CCSUrl = 'http://127.0.0.1:8084/';
+//const CCSUrl = 'http://localhost:5173/';
 const CCSUrl = 'https://chord-chart-studio.netlify.app/app';
 
 export default function sendToChordChartsStudio(message) {
@@ -58,18 +58,9 @@ function createCCSTab() {
 function enableCCSContentScript(tabId) {
 	console.log('enabling content script in ', tabId);
 
-	return new Promise((resolve, reject) => {
-		chrome.tabs.executeScript(
-			tabId,
-			{ file: 'build/chordChartsStudio.js' },
-			function () {
-				if (chrome.runtime.lastError) {
-					reject(chrome.runtime.lastError.message);
-				} else {
-					resolve();
-				}
-			}
-		);
+	return chrome.scripting.executeScript({
+		target: { tabId },
+		files: ['build/chordChartsStudio.js'],
 	});
 }
 
