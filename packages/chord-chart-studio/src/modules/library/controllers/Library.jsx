@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { getAllTitles } from '../../../db/files/selectors';
 import { navigateTo, getLink } from '../../../core/router';
+import Button from '../../../components/button/Button';
 
 export default function Library() {
 	const allTitles = useSelector(getAllTitles);
@@ -15,6 +16,7 @@ export default function Library() {
 		<div>
 			Full Library
 			<ul>{allrenderedTitles}</ul>
+			<Button>My Nice Button</Button>
 		</div>
 	);
 }
