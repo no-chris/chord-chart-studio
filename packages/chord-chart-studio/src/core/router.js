@@ -4,7 +4,7 @@ import qs from 'qs';
 
 import renderController from '../renderController';
 
-const base = '/app'; // duh!
+import config from './config';
 
 let router;
 let getUrl;
@@ -14,7 +14,7 @@ export default {
 		const allRoutesWithWrappedActions = allRoutes.map((route) => {
 			return {
 				...route,
-				path: base + route.path,
+				path: config.base + route.path,
 				action: (context) => ({
 					Controller: route.action,
 					params: context.params,
