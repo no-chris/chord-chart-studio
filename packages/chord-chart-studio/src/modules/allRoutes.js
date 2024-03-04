@@ -5,7 +5,7 @@ import Editor from '../controllers/Editor';
 export default [
 	{
 		name: 'home',
-		path: '/',
+		path: '',
 		action: Editor,
 	},
 	...libraryRoutes,
