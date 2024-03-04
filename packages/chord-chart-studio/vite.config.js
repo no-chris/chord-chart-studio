@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '');
-	console.log(env.VITE_BASE);
+
 	return {
 		root: 'src',
 		publicDir: '../public',
