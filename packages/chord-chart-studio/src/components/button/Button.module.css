@@ -1,4 +1,9 @@
 .button {
 	font-weight: bold;
 	background-color: red;
+
+	.buttonContent {
+		background-color: blueviolet;
+		padding: var(--space-xxl);
+	}
 }
