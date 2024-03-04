@@ -1,3 +1,4 @@
+jest.mock('../../../src/core/config');
 jest.mock('../../../src/renderController');
 import renderController from '../../../src/renderController';
 

@@ -1,3 +1,5 @@
+jest.mock('../../src/core/config');
+
 import run from '../../src/app';
 
 const { act } = require('@testing-library/react');
