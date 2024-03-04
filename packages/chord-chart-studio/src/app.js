@@ -1,3 +1,4 @@
+import '../css/global.css';
 import '../scss/styles.scss';
 
 import { createStore } from './state/store';
