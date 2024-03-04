@@ -10,8 +10,8 @@ function Versions() {
 			<div className={'versions-isExpanded'}>
 				Chord Chart Studio {versions['chord-chart-studio']}
 				<br />
-				ChordMark {versions['chord-mark']} <br />
 				ChordSymbol {versions['chord-symbol']} <br />
+				ChordMark {versions['chord-mark']} <br />
 				Logo by{' '}
 				<a
 					href={'https://spelling-bee-assistant.app/'}
