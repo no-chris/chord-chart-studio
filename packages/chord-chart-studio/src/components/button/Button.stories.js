@@ -14,7 +14,7 @@ export default {
 			options: ['Primary', 'Secondary'],
 		},
 	},
-	args: { children: 'myButton', onClick: fn() },
+	args: { children: 'myButton', onPress: fn() },
 };
 
 export const Main = {};
