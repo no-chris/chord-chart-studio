@@ -2,10 +2,6 @@
 /* https://mattbrictson.com/blog/css-normalize-and-reset */
 @import '../../../node_modules/modern-normalize/modern-normalize.css';
 
-:root {
-	line-height: 1.5;
-}
-
 h1,
 h2,
 h3,
@@ -48,4 +44,51 @@ img {
 	--space-l: 24px;
 	--space-xl: 32px;
 	--space-xxl: 48px;
+
+	--rounded-s: 4px;
+	--rounded-m: 8px;
+	--rounded-l: 16px;
+
+	--font-family: 'Cabin', sans-serif;
+
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	/* neutral color */
+	--slate50: hsl(210, 40%, 98%);
+	--slate100: hsl(210, 40%, 96%);
+	--slate200: hsl(214, 32%, 91%);
+	--slate300: hsl(213, 27%, 84%);
+	--slate400: hsl(215, 20%, 65%);
+	--slate500: hsl(215, 16%, 47%);
+	--slate600: hsl(215, 19%, 35%);
+	--slate700: hsl(215, 25%, 27%);
+	--slate800: hsl(217, 33%, 17%);
+	--slate900: hsl(222, 47%, 11%);
+	--slate950: hsl(229, 84%, 5%);
+
+	/* primary color */
+	--sky50: hsl(205, 86%, 97%);
+	--sky100: hsl(209, 86%, 94%);
+	--sky200: hsl(203, 84%, 87%);
+	--sky300: hsl(203, 88%, 78%);
+	--sky400: hsl(204, 84%, 68%);
+	--sky500: hsl(206, 72%, 60%);
+	--sky600: hsl(208, 51%, 50%);
+	--sky700: hsl(209, 52%, 40%);
+	--sky800: hsl(208, 52%, 33%);
+	--sky900: hsl(208, 51%, 28%);
+	--sky950: hsl(209, 53%, 18%);
+
+	/* danger */
+	/* warning */
+	/* success */
+}
+
+:root {
+	font-family: var(--font-family);
+	line-height: 1.5;
+	color: var(--slate950);
 }

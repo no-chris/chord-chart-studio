@@ -1,9 +1,75 @@
 .button {
-	font-weight: bold;
-	background-color: red;
+	border: 0;
+	border-radius: var(--rounded-m);
+	padding: var(--space-s) var(--space-m);
 
-	.buttonContent {
-		background-color: blueviolet;
-		padding: var(--space-xxl);
+	font-weight: var(--font-weight-bold);
+
+	outline-offset: var(--space-xxs);
+	outline-style: solid;
+	outline-width: 0;
+
+	&[data-hovered] {
+		cursor: pointer;
+	}
+
+	&[data-focused] {
+		ooutline-width: 0;
+	}
+
+	&[data-focus-visible] {
+		outline-width: 2px;
+	}
+
+	&.primary {
+		background-color: var(--sky600);
+		color: var(--sky50);
+
+		&[data-hovered] {
+			background-color: var(--sky500);
+		}
+
+		&[data-pressed] {
+			background-color: var(--sky400);
+		}
+
+		&[data-focus-visible] {
+			outline-color: var(--sky500);
+		}
+	}
+
+	&.secondary {
+		background-color: var(--sky100);
+		color: var(--sky700);
+
+		&[data-hovered] {
+			background-color: var(--sky50);
+			color: var(--sky500);
+		}
+
+		&[data-pressed] {
+			color: var(--sky400);
+		}
+
+		&[data-focus-visible] {
+			outline-color: var(--sky500);
+		}
+	}
+
+	&.tertiary {
+		background-color: transparent;
+		color: var(--slate700);
+
+		&[data-hovered] {
+			background-color: var(--slate50);
+		}
+
+		&[data-pressed] {
+			color: var(--slate500);
+		}
+
+		&[data-focus-visible] {
+			outline-color: var(--slate600);
+		}
 	}
 }
