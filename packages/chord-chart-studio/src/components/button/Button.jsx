@@ -3,10 +3,12 @@ import { Button as ReactAriaButton } from 'react-aria-components';
 
 import React from 'react';
 
-export default function Button({ children, type = 'primary', onPress }) {
+const defaultType = 'primary';
+
+export default function Button({ children, type = defaultType, onPress }) {
 	const className = [
 		styles.button,
-		styles[type] ? styles[type] : styles.primary,
+		styles[type] ? styles[type] : styles[defaultType],
 	];
 
 	return (
