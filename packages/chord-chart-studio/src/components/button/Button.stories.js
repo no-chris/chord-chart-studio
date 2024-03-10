@@ -10,17 +10,36 @@ export default {
 	tags: ['autodocs'],
 	argTypes: {
 		children: {
+			control: 'text',
+		},
+		type: {
 			control: 'select',
-			options: ['Primary', 'Secondary'],
+			options: ['primary', 'secondary', 'tertiary'],
+		},
+		icon: {
+			control: 'select',
+			options: ['plus', 'import'],
 		},
 	},
-	args: { children: 'myButton', onClick: fn() },
+	args: { children: 'myButton', onPress: fn() },
 };
 
-export const Main = {};
-
-export const SecondState = {
+export const Primary = {
 	args: {
-		children: 'mySecondButton',
+		children: 'Primary',
+	},
+};
+
+export const Secondary = {
+	args: {
+		children: 'Secondary',
+		type: 'secondary',
+	},
+};
+
+export const Tertiary = {
+	args: {
+		children: 'Tertiary',
+		type: 'tertiary',
 	},
 };

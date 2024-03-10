@@ -49,8 +49,6 @@
     "format": "prettier --write \"**/*.{js,jsx,json,ts,md,scss,css}\"",
     "test": "jest"
   },
-  "dependencies": {
-  },
   "workspaces": [
     "packages/*"
   ],
