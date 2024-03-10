@@ -16,6 +16,10 @@ export default {
 			control: 'select',
 			options: ['primary', 'secondary', 'tertiary'],
 		},
+		icon: {
+			control: 'select',
+			options: ['plus', 'import'],
+		},
 	},
 	args: { children: 'myButton', onPress: fn() },
 };

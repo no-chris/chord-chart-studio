@@ -37,7 +37,8 @@ img {
 /* ===== Variables ===== */
 
 :root {
-	--space-xxs: 4px;
+	--space-xxxs: 4px;
+	--space-xxs: 6px;
 	--space-xs: 8px;
 	--space-s: 12px;
 	--space-m: 16px;

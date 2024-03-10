@@ -44,6 +44,7 @@
     "file-saver": "^2.0.5",
     "filesize": "^10.1.0",
     "lodash": "^4.17.21",
+    "lucide-react": "^0.349.0",
     "modern-normalize": "^2.0.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.8.1",

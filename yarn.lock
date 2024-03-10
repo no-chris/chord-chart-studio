@@ -10261,6 +10261,7 @@ __metadata:
     file-saver: "npm:^2.0.5"
     filesize: "npm:^10.1.0"
     lodash: "npm:^4.17.21"
+    lucide-react: "npm:^0.349.0"
     modern-normalize: "npm:^2.0.0"
     normalize.css: "npm:^8.0.1"
     prop-types: "npm:^15.8.1"
@@ -17482,6 +17483,15 @@ __metadata:
   version: 7.18.3
   resolution: "lru-cache@npm:7.18.3"
   checksum: b3a452b491433db885beed95041eb104c157ef7794b9c9b4d647be503be91769d11206bb573849a16b4cc0d03cbd15ffd22df7960997788b74c1d399ac7a4fed
+  languageName: node
+  linkType: hard
+
+"lucide-react@npm:^0.349.0":
+  version: 0.349.0
+  resolution: "lucide-react@npm:0.349.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0
+  checksum: 52af64feb7dcf3ea44bbc05ffae695ebb9f7d922af27110e1e820bbf3e894e5362b7d732f74a59ba88ed4f42ea0951a5c3ee96e9281edcc9b4e3751ccb5029c5
   languageName: node
   linkType: hard
 

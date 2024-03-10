@@ -1,9 +1,24 @@
 .button {
-	border: 0;
-	border-radius: var(--rounded-m);
+	/*** layout ***/
 	padding: var(--space-s) var(--space-m);
 
+	display: flex;
+	align-items: center;
+
+	:is(.icon, .label) {
+		height: 20px;
+	}
+
+	.icon {
+		margin-right: var(--space-xxs);
+	}
+
+	/*** Styles ***/
+
 	font-weight: var(--font-weight-bold);
+
+	border: 0;
+	border-radius: var(--rounded-m);
 
 	outline-offset: var(--space-xxs);
 	outline-style: solid;
@@ -14,12 +29,14 @@
 	}
 
 	&[data-focused] {
-		ooutline-width: 0;
+		outline-width: 0;
 	}
 
 	&[data-focus-visible] {
 		outline-width: 2px;
 	}
+
+	/*** Colors ***/
 
 	&.primary {
 		background-color: var(--sky600);
