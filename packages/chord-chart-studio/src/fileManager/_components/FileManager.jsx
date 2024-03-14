@@ -25,7 +25,7 @@ function FileManager(props) {
 		startImport,
 		selectFile,
 		updateFile,
-		setEditorMode,
+		editorModeChanged,
 	} = props;
 
 	return (
@@ -50,11 +50,11 @@ function FileManager(props) {
 					enableRename={() => enableRename(selected)}
 					startImport={() => startImport()}
 					exportAsText={() => {
-						setEditorMode('export');
+						editorModeChanged('export');
 						setTimeout(() => exportSelectedFileAsText(), 0);
 					}}
 					printFile={() => {
-						setEditorMode('print');
+						editorModeChanged('print');
 						setTimeout(() => window.print(), 0);
 					}}
 				/>

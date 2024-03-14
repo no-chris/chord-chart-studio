@@ -3,10 +3,9 @@ import _pick from 'lodash/pick';
 import * as actionTypes from './actionsTypes';
 import { getCategoryOptions, getLatestModeOptions } from '../files/selectors';
 
-import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../ui/layout/app/_state/actionsTypes';
 import { FILE_MANAGER_SELECT_FILE } from '../../fileManager/_state/actionsTypes';
 import { getSelectedId } from '../../fileManager/_state/selectors';
-import { getEditorMode } from '../../ui/layout/app/_state/selectors';
+import { editorModeChanged, getEditorMode } from '../../ui/layout/app/reducers';
 import { getOptionsDefaults } from './selectors';
 import allEditorModeOptions from './editorModeOptions';
 
@@ -37,7 +36,7 @@ function setOptionValue(state, action) {
 
 function setEditorMode(state, action, fullState) {
 	const fileId = getSelectedId(fullState);
-	const nextMode = action.payload.mode;
+	const nextMode = action.payload;
 
 	const newOptions = getModeOptions(fullState, fileId, nextMode);
 
@@ -105,7 +104,7 @@ export default (state = initialState, action = {}, fullState = {}) => {
 		case actionTypes.DB_OPTION_SET_OPTION_VALUE: {
 			return setOptionValue(state, action);
 		}
-		case UI_LAYOUT_APP_SET_EDITOR_MODE: {
+		case 'ui/editorModeChanged': {
 			return setEditorMode(state, action, fullState);
 		}
 		case FILE_MANAGER_SELECT_FILE: {

@@ -9,7 +9,7 @@ afterEach(cleanup);
 
 describe('Nav', () => {
 	let props = {};
-	const setEditorMode = jest.fn();
+	const editorModeChanged = jest.fn();
 
 	beforeEach(() => {
 		props = {
@@ -35,9 +35,9 @@ describe('Nav', () => {
 			],
 			currentMode: 'mode1',
 			selectedId: 'fileId',
-			setEditorMode,
+			editorModeChanged,
 		};
-		setEditorMode.mockClear();
+		editorModeChanged.mockClear();
 	});
 
 	describe('render()', () => {
@@ -68,21 +68,21 @@ describe('Nav', () => {
 			const entry1 = getByText(props.allEntries[0].label);
 			fireEvent.click(entry1);
 
-			expect(setEditorMode).toHaveBeenCalledWith(
+			expect(editorModeChanged).toHaveBeenCalledWith(
 				props.allEntries[0].editorMode
 			);
 
 			const entry2 = getByText(props.allEntries[1].label);
 			fireEvent.click(entry2);
 
-			expect(setEditorMode).toHaveBeenCalledWith(
+			expect(editorModeChanged).toHaveBeenCalledWith(
 				props.allEntries[1].editorMode
 			);
 
 			const entry3 = getByText(props.allEntries[2].label);
 			fireEvent.click(entry3);
 
-			expect(setEditorMode).toHaveBeenCalledWith(
+			expect(editorModeChanged).toHaveBeenCalledWith(
 				props.allEntries[2].editorMode
 			);
 		});
@@ -93,17 +93,17 @@ describe('Nav', () => {
 			const entry1 = getByText(props.allEntries[0].label);
 			fireEvent.click(entry1);
 
-			expect(setEditorMode).not.toHaveBeenCalled();
+			expect(editorModeChanged).not.toHaveBeenCalled();
 
 			const entry2 = getByText(props.allEntries[1].label);
 			fireEvent.click(entry2);
 
-			expect(setEditorMode).not.toHaveBeenCalled();
+			expect(editorModeChanged).not.toHaveBeenCalled();
 
 			const entry3 = getByText(props.allEntries[2].label);
 			fireEvent.click(entry3);
 
-			expect(setEditorMode).not.toHaveBeenCalled();
+			expect(editorModeChanged).not.toHaveBeenCalled();
 		});
 	});
 });

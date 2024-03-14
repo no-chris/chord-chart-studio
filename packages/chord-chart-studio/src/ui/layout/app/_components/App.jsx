@@ -17,9 +17,9 @@ function App(props) {
 		editorMode,
 		isLeftBarCollapsed,
 		isRightBarCollapsed,
-		toggleLeftBar,
-		toggleRightBar,
-		setEditorMode,
+		leftBarToggled,
+		rightBarToggled,
+		editorModeChanged,
 		selectedId,
 
 		leftBar,
@@ -42,14 +42,14 @@ function App(props) {
 			<section className={leftBarClassNames.join(' ')}>
 				<div
 					className={'leftBar-content'}
-					onClick={isLeftBarCollapsed ? toggleLeftBar : null}
+					onClick={isLeftBarCollapsed ? leftBarToggled : null}
 				>
 					<Logo />
 					{leftBar}
 				</div>
 				<div
 					className={'leftBar-collapser'}
-					onClick={toggleLeftBar}
+					onClick={leftBarToggled}
 					data-testid={'leftBar-collapser'}
 				>
 					<span className={'leftBar-collapserIcon'}>
@@ -62,7 +62,7 @@ function App(props) {
 					<Nav
 						allEntries={allNavEntries}
 						currentMode={editorMode}
-						setEditorMode={setEditorMode}
+						editorModeChanged={editorModeChanged}
 						selectedId={selectedId}
 					/>
 				</section>
@@ -73,7 +73,7 @@ function App(props) {
 			<section className={rightBarClassNames.join(' ')}>
 				<div
 					className={'rightBar-collapser'}
-					onClick={toggleRightBar}
+					onClick={rightBarToggled}
 					data-testid={'rightBar-collapser'}
 				>
 					<span className={'rightBar-collapserIcon'}>
@@ -82,7 +82,7 @@ function App(props) {
 				</div>
 				<div
 					className={'rightBar-content'}
-					onClick={isRightBarCollapsed ? toggleRightBar : null}
+					onClick={isRightBarCollapsed ? rightBarToggled : null}
 				>
 					<UserGuide />
 					{rightBar}
@@ -99,11 +99,11 @@ App.propTypes = {
 	isLeftBarCollapsed: PropTypes.bool,
 	isRightBarCollapsed: PropTypes.bool,
 	selectedId: PropTypes.string,
-	toggleLeftBar: PropTypes.func.isRequired,
-	toggleRightBar: PropTypes.func.isRequired,
+	leftBarToggled: PropTypes.func.isRequired,
+	rightBarToggled: PropTypes.func.isRequired,
 
 	editorMode: PropTypes.string.isRequired,
-	setEditorMode: PropTypes.func.isRequired,
+	editorModeChanged: PropTypes.func.isRequired,
 
 	leftBar: PropTypes.element.isRequired,
 	rightBar: PropTypes.element.isRequired,

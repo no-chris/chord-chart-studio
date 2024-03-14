@@ -15,7 +15,7 @@ import Rendering from '../../../../../src/optionsPanels/rendering/_containers/Re
 import allWidgets from '../../../../../src/optionsPanels/rendering/allWidgets';
 
 import * as optionsSelectors from '../../../../../src/db/options/selectors';
-import * as appActions from '../../../../../src/ui/layout/app/_state/actions';
+import { editorModeChanged } from '../../../../../src/ui/layout/app/reducers';
 import * as fmActions from '../../../../../src/fileManager/_state/actions';
 
 afterEach(cleanup);
@@ -48,7 +48,7 @@ describe('"Rendering" option panel', () => {
 
 		test.skip('Edit mode', () => {
 			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('edit'));
+			dispatch(editorModeChanged('edit'));
 
 			const { queryByText } = render(withStore(<Rendering />));
 
@@ -79,7 +79,7 @@ describe('"Rendering" option panel', () => {
 
 		test('Play mode', () => {
 			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('play'));
+			dispatch(editorModeChanged('play'));
 
 			const { queryByText } = render(withStore(<Rendering />));
 
@@ -93,7 +93,7 @@ describe('"Rendering" option panel', () => {
 
 		test('Print mode', () => {
 			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('print'));
+			dispatch(editorModeChanged('print'));
 
 			const { queryByText } = render(withStore(<Rendering />));
 
@@ -107,7 +107,7 @@ describe('"Rendering" option panel', () => {
 
 		test('Export mode', () => {
 			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('export'));
+			dispatch(editorModeChanged('export'));
 
 			const { queryByText } = render(withStore(<Rendering />));
 
@@ -127,7 +127,7 @@ describe('"Rendering" option panel', () => {
 	describe('options widgets should be connected to store', () => {
 		test('chartFormat', async () => {
 			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('export'));
+			dispatch(editorModeChanged('export'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
@@ -186,7 +186,7 @@ describe('"Rendering" option panel', () => {
 			};
 
 			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('play'));
+			dispatch(editorModeChanged('play'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
@@ -242,7 +242,7 @@ describe('"Rendering" option panel', () => {
 			};
 
 			dispatch(fmActions.selectFile('myId'));
-			dispatch(appActions.setEditorMode('export'));
+			dispatch(editorModeChanged('export'));
 
 			const { getByText } = render(withStore(<Rendering />));
 
