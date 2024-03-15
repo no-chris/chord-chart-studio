@@ -4,7 +4,7 @@ import clock from '../../core/clock';
 import * as actionTypes from './actionsTypes';
 
 import { DB_OPTION_SET_OPTION_VALUE } from '../options/actionsTypes';
-import { editorModeChanged, getEditorMode } from '../../ui/layout/app/reducers';
+import { getEditorMode } from '../../ui/layout/app/reducers';
 import { getSelectedId } from '../../fileManager/_state/selectors';
 import { getLatestModeOptions, getCategoryOptions } from './selectors';
 import editorModeOptions from '../options/editorModeOptions';
