@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import createAppSlice from '../../../core/createAppSlice';
 import {
 	DB_FILES_CREATE,
 	DB_FILES_IMPORT,
@@ -14,22 +14,32 @@ const initialState = {
 
 const sliceName = 'ui';
 
-const uiSlice = createSlice({
+export const editorModeChangedAction = (mode, thunkAPI) => {
+	const payload = {
+		mode,
+		fileId: getSelectedId(thunkAPI.getState()),
+	};
+	return Promise.resolve(payload);
+};
+
+const uiSlice = createAppSlice({
 	name: sliceName,
 	initialState,
-	reducers: {
-		leftBarToggled(state) {
+	reducers: (create) => ({
+		leftBarToggled: create.reducer((state) => {
 			state.isLeftBarCollapsed = !state.isLeftBarCollapsed;
-		},
-		rightBarToggled(state) {
+		}),
+		rightBarToggled: create.reducer((state) => {
 			state.isRightBarCollapsed = !state.isRightBarCollapsed;
-		},
-	},
+		}),
+		editorModeChanged: create.asyncThunk(editorModeChangedAction, {
+			fulfilled: (state, action) => {
+				state.editorMode = action.payload.mode;
+			},
+		}),
+	}),
 	extraReducers: (builder) => {
 		builder
-			.addCase(editorModeChanged.fulfilled, (state, action) => {
-				state.editorMode = action.payload.mode;
-			})
 			.addCase(DB_FILES_CREATE, (state) => {
 				state.editorMode = 'edit';
 			})
@@ -47,18 +57,8 @@ const uiSlice = createSlice({
 	},
 });
 
-export const editorModeChanged = createAsyncThunk(
-	sliceName + '/editorModeChanged',
-	(mode, thunkAPI) => {
-		const payload = {
-			mode,
-			fileId: getSelectedId(thunkAPI.getState()),
-		};
-		return Promise.resolve(payload);
-	}
-);
-
-export const { leftBarToggled, rightBarToggled } = uiSlice.actions;
+export const { leftBarToggled, rightBarToggled, editorModeChanged } =
+	uiSlice.actions;
 
 export const { isLeftBarCollapsed, isRightBarCollapsed, getEditorMode } =
 	uiSlice.selectors;
