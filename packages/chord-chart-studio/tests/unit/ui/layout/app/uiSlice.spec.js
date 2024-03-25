@@ -8,7 +8,7 @@ import reducers, {
 	isLeftBarCollapsed,
 	isRightBarCollapsed,
 	getEditorMode,
-} from '../../../../../src/ui/layout/app/reducers';
+} from '../../../../../src/ui/layout/app/uiSlice';
 
 import * as dbActions from '../../../../../src/db/files/actions';
 

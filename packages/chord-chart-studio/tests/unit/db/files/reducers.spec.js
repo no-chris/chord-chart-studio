@@ -14,7 +14,7 @@ import { DB_OPTION_SET_OPTION_VALUE } from '../../../../src/db/options/actionsTy
 import { v4 as uuidv4 } from 'uuid';
 import clock from '../../../../src/core/clock';
 import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
-import { editorModeChanged } from '../../../../src/ui/layout/app/reducers';
+import { editorModeChanged } from '../../../../src/ui/layout/app/uiSlice';
 
 describe('db/files: reducers', () => {
 	const initialState = deepFreeze(reducers());
@@ -536,10 +536,10 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'print' },
+				fileManager: { selectedId: fileId },
 			};
 
 			clock.mockReturnValue('now');
-			getSelectedId.mockReturnValue(fileId);
 
 			const result = reducers(state.db.files, editorModeChanged('play'), {
 				...state,
@@ -576,10 +576,10 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'print' },
+				fileManager: { selectedId: fileId },
 			};
 
 			clock.mockReturnValue('now');
-			getSelectedId.mockReturnValue(fileId);
 
 			const result = reducers(
 				state.db.files,
@@ -619,10 +619,10 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'edit' },
+				fileManager: { selectedId: fileId },
 			};
 
 			clock.mockReturnValue('now');
-			getSelectedId.mockReturnValue(fileId);
 
 			const result = reducers(
 				state.db.files,
@@ -649,9 +649,8 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'print' },
+				fileManager: { selectedId: fileId },
 			};
-
-			getSelectedId.mockReturnValue(fileId);
 
 			const result = reducers(
 				state.db.files,
