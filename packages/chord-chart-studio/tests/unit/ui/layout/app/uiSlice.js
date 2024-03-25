@@ -1,4 +1,5 @@
 import deepFreeze from 'deep-freeze';
+import dispatchThunk from '../../../helpers/dispatchThunk';
 
 import reducers, {
 	leftBarToggled,
@@ -48,14 +49,23 @@ describe('ui: reducers', () => {
 	});
 
 	describe('editorModeChanged / getEditorMode', () => {
-		test('should set editorMode', () => {
+		test('should set editorMode', async () => {
 			expect(getEditorMode({ ui: initialState })).toBe('edit');
 
-			const newState = reducers(
-				initialState,
-				editorModeChanged('myMode1')
+			const action = await dispatchThunk(
+				{ fileManager: { selected: 'myId' } },
+				() => editorModeChanged('myMode1')
 			);
+			const newState = reducers(initialState, action);
 			expect(getEditorMode({ ui: newState })).toBe('myMode1');
+		});
+
+		test('should return selected file id', async () => {
+			const action = await dispatchThunk(
+				{ fileManager: { selected: 'myId' } },
+				() => editorModeChanged('myMode1')
+			);
+			expect(action.payload.fileId).toBe('myId');
 		});
 	});
 
