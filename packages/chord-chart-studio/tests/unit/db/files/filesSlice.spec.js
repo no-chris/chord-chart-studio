@@ -1,28 +1,23 @@
 /* eslint max-lines: off */
 import deepFreeze from 'deep-freeze';
-import _ from 'lodash';
+import dispatchThunk from '../../helpers/dispatchThunk';
 
 jest.mock('uuid');
 jest.mock('../../../../src/core/clock');
-jest.mock('../../../../src/fileManager/_state/selectors');
 
 import reducers, {
 	fileCreated,
 	fileImported,
 	fileUpdated,
 	fileDeleted,
-	getOne,
-	getAllTitles,
-	getCategoryOptions,
-	getLatestModeOptions,
-} from '../../../../src/db/files/slice';
+} from '../../../../src/db/files/filesSlice';
 import { setOptionValue } from '../../../../src/db/options/actions';
 import { DB_OPTION_SET_OPTION_VALUE } from '../../../../src/db/options/actionsTypes';
 
 import { v4 as uuidv4 } from 'uuid';
 import clock from '../../../../src/core/clock';
-import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
-import { editorModeChanged } from '../../../../src/ui/layout/app/reducers';
+//import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
+import { editorModeChanged } from '../../../../src/ui/layout/app/uiSlice';
 
 describe('db/files: reducers', () => {
 	const initialState = deepFreeze(reducers(undefined, {}));
@@ -301,7 +296,6 @@ describe('db/files: reducers', () => {
 		});
 	});
 
-	/*
 	describe(DB_OPTION_SET_OPTION_VALUE, () => {
 		const fileId = 'myUUID';
 
@@ -311,10 +305,8 @@ describe('db/files: reducers', () => {
 		});
 
 		test('should return the same state if no fileId is found', () => {
-			getSelectedId.mockReturnValue('idontexist');
-
 			const state1 = deepFreeze(
-				reducers(initialState, actions.createFile('myTitle'))
+				reducers(initialState, fileCreated('myTitle'))
 			);
 			const state2 = reducers(
 				state1,
@@ -325,8 +317,6 @@ describe('db/files: reducers', () => {
 		});
 
 		test('should update a value in the file preferences', () => {
-			getSelectedId.mockReturnValue(fileId);
-
 			const expected1 = {
 				allFiles: {
 					[fileId]: {
@@ -342,6 +332,7 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'edit' },
+				fileManager: { selected: fileId },
 			};
 
 			const expected2 = {
@@ -359,17 +350,21 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'edit' },
+				fileManager: { selected: fileId },
 			};
 			const state1 = deepFreeze(
 				reducers(
 					{ ...initialState, ui: { editorMode: 'edit' } },
-					actions.createFile('myTitle')
+					fileCreated('myTitle')
 				)
 			);
 			const state2 = reducers(
 				state1,
 				setOptionValue('songPreferences', 'transposeValue', 2),
-				{ ui: { editorMode: 'edit' } }
+				{
+					ui: { editorMode: 'edit' },
+					fileManager: { selected: fileId },
+				}
 			);
 			expect(state2).toEqual(expected1);
 
@@ -378,15 +373,16 @@ describe('db/files: reducers', () => {
 			const state3 = reducers(
 				state2,
 				setOptionValue('songPreferences', 'transposeValue', 5),
-				{ ui: { editorMode: 'edit' } }
+				{
+					ui: { editorMode: 'edit' },
+					fileManager: { selected: fileId },
+				}
 			);
 
 			expect(state3).toEqual(expected2);
 		});
 
 		test('should set different options in the same category', () => {
-			getSelectedId.mockReturnValue(fileId);
-
 			const expected1 = {
 				allFiles: {
 					[fileId]: {
@@ -406,13 +402,16 @@ describe('db/files: reducers', () => {
 			};
 
 			const state1 = deepFreeze(
-				reducers(initialState, actions.createFile('myTitle'))
+				reducers(initialState, fileCreated('myTitle'))
 			);
 			const state2 = deepFreeze(
 				reducers(
 					state1,
 					setOptionValue('songFormatting', 'chartFormat', 'chordPro'),
-					{ ui: { editorMode: 'screen' } }
+					{
+						ui: { editorMode: 'screen' },
+						fileManager: { selected: fileId },
+					}
 				)
 			);
 			clock.mockReturnValue('later');
@@ -441,8 +440,6 @@ describe('db/files: reducers', () => {
 		});
 
 		test('should add formatting options for Editor mode value', () => {
-			getSelectedId.mockReturnValue(fileId);
-
 			const expected = {
 				allFiles: {
 					[fileId]: {
@@ -475,14 +472,17 @@ describe('db/files: reducers', () => {
 			const state1 = deepFreeze(
 				reducers(
 					{ ...initialState, ui: { editorMode: 'edit' } },
-					actions.createFile('myTitle')
+					fileCreated('myTitle')
 				)
 			);
 			const state2 = deepFreeze(
 				reducers(
 					state1,
 					setOptionValue('songPreferences', 'transposeValue', 5),
-					{ ui: { editorMode: 'edit' } }
+					{
+						ui: { editorMode: 'edit' },
+						fileManager: { selected: fileId },
+					}
 				)
 			);
 			clock.mockReturnValue('later');
@@ -527,7 +527,7 @@ describe('db/files: reducers', () => {
 	describe('editorModeChanged', () => {
 		const fileId = 'myUUID';
 
-		test('should copy only relevant options from source mode to destination mode', () => {
+		test('should copy only relevant options from source mode to destination mode', async () => {
 			const state = {
 				db: {
 					files: {
@@ -545,15 +545,15 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'print' },
+				fileManager: { selected: fileId },
 			};
 
 			clock.mockReturnValue('now');
-			getSelectedId.mockReturnValue(fileId);
 
-			const result = reducers(state.db.files, editorModeChanged('play'), {
-				...state,
-				ui: { editorMode: 'play' },
-			});
+			const result = reducers(
+				state.db.files,
+				await dispatchThunk(state, () => editorModeChanged('play'))
+			);
 
 			expect(result.allFiles[fileId].options.play).toBeDefined();
 			expect(result.allFiles[fileId].options.play.updatedAt).toBe('now');
@@ -563,7 +563,7 @@ describe('db/files: reducers', () => {
 			).not.toBeDefined();
 		});
 
-		test('should not copy anything if destination mode already have options', () => {
+		test('should not copy anything if destination mode already have options', async () => {
 			const state = {
 				db: {
 					files: {
@@ -585,15 +585,14 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'print' },
+				fileManager: { selected: fileId },
 			};
 
 			clock.mockReturnValue('now');
-			getSelectedId.mockReturnValue(fileId);
 
 			const result = reducers(
 				state.db.files,
-				editorModeChanged('play'),
-				state
+				await dispatchThunk(state, () => editorModeChanged('play'))
 			);
 
 			expect(result.allFiles[fileId].options.play).toBeDefined();
@@ -604,7 +603,7 @@ describe('db/files: reducers', () => {
 			).not.toBeDefined();
 		});
 
-		test('should get the latest defined options if previous mode does not have anything defined', () => {
+		test('should get the latest defined options if previous mode does not have anything defined', async () => {
 			const state = {
 				db: {
 					files: {
@@ -628,15 +627,14 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'edit' },
+				fileManager: { selected: fileId },
 			};
 
 			clock.mockReturnValue('now');
-			getSelectedId.mockReturnValue(fileId);
 
 			const result = reducers(
 				state.db.files,
-				editorModeChanged('export'),
-				{ ...state, ui: { editorMode: 'export' } }
+				await dispatchThunk(state, () => editorModeChanged('export'))
 			);
 
 			const fileOptions = result.allFiles[fileId].options;
@@ -646,7 +644,7 @@ describe('db/files: reducers', () => {
 			expect(fileOptions.export.autoRepeatChords).toBe('1');
 		});
 
-		test('should not copy anything if no mode already have options', () => {
+		test('should not copy anything if no mode already have options', async () => {
 			const state = {
 				db: {
 					files: {
@@ -658,19 +656,16 @@ describe('db/files: reducers', () => {
 					},
 				},
 				ui: { editorMode: 'print' },
+				fileManager: { selected: fileId },
 			};
-
-			getSelectedId.mockReturnValue(fileId);
 
 			const result = reducers(
 				state.db.files,
-				editorModeChanged('play'),
-				state
+				await dispatchThunk(state, () => editorModeChanged('play'))
 			);
 
 			expect(result.allFiles[fileId].options.print).not.toBeDefined();
 			expect(result.allFiles[fileId].options.play).not.toBeDefined();
 		});
 	});
-    */
 });
