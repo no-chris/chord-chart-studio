@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {
 	DB_FILES_CREATE,
 	DB_FILES_IMPORT,
 	DB_FILES_DELETE,
 } from '../../../db/files/actionsTypes';
+import { getSelectedId } from '../../../fileManager/_state/selectors';
 
 const initialState = {
 	isLeftBarCollapsed: false,
@@ -11,8 +12,10 @@ const initialState = {
 	editorMode: 'edit',
 };
 
+const sliceName = 'ui';
+
 const uiSlice = createSlice({
-	name: 'ui',
+	name: sliceName,
 	initialState,
 	reducers: {
 		leftBarToggled(state) {
@@ -21,20 +24,21 @@ const uiSlice = createSlice({
 		rightBarToggled(state) {
 			state.isRightBarCollapsed = !state.isRightBarCollapsed;
 		},
-		editorModeChanged(state, action) {
-			state.editorMode = action.payload;
-		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(DB_FILES_CREATE, (state) => {
-			state.editorMode = 'edit';
-		});
-		builder.addCase(DB_FILES_IMPORT, (state) => {
-			state.editorMode = 'edit';
-		});
-		builder.addCase(DB_FILES_DELETE, (state) => {
-			state.editorMode = 'edit';
-		});
+		builder
+			.addCase(editorModeChanged.fulfilled, (state, action) => {
+				state.editorMode = action.payload.mode;
+			})
+			.addCase(DB_FILES_CREATE, (state) => {
+				state.editorMode = 'edit';
+			})
+			.addCase(DB_FILES_IMPORT, (state) => {
+				state.editorMode = 'edit';
+			})
+			.addCase(DB_FILES_DELETE, (state) => {
+				state.editorMode = 'edit';
+			});
 	},
 	selectors: {
 		isLeftBarCollapsed: (state) => state.isLeftBarCollapsed,
@@ -43,8 +47,18 @@ const uiSlice = createSlice({
 	},
 });
 
-export const { leftBarToggled, rightBarToggled, editorModeChanged } =
-	uiSlice.actions;
+export const editorModeChanged = createAsyncThunk(
+	sliceName + '/editorModeChanged',
+	(mode, thunkAPI) => {
+		const payload = {
+			mode,
+			fileId: getSelectedId(thunkAPI.getState()),
+		};
+		return Promise.resolve(payload);
+	}
+);
+
+export const { leftBarToggled, rightBarToggled } = uiSlice.actions;
 
 export const { isLeftBarCollapsed, isRightBarCollapsed, getEditorMode } =
 	uiSlice.selectors;
