@@ -7,7 +7,7 @@ import reducers from '../../../../src/db/options/reducers';
 import * as actions from '../../../../src/db/options/actions';
 import * as actionTypes from '../../../../src/db/options/actionsTypes';
 
-import { editorModeChanged } from '../../../../src/ui/layout/app/reducers';
+import { editorModeChanged } from '../../../../src/ui/layout/app/uiSlice';
 import { FILE_MANAGER_SELECT_FILE } from '../../../../src/fileManager/_state/actionsTypes';
 
 import { getSelectedId } from '../../../../src/fileManager/_state/selectors';

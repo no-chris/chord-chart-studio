@@ -5,7 +5,7 @@ import { getCategoryOptions, getLatestModeOptions } from '../files/selectors';
 
 import { FILE_MANAGER_SELECT_FILE } from '../../fileManager/_state/actionsTypes';
 import { getSelectedId } from '../../fileManager/_state/selectors';
-import { getEditorMode } from '../../ui/layout/app/reducers';
+import { getEditorMode } from '../../ui/layout/app/uiSlice';
 import { getOptionsDefaults } from './selectors';
 import allEditorModeOptions from './editorModeOptions';
 

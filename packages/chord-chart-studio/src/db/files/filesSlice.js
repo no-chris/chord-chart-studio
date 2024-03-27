@@ -7,9 +7,8 @@ import clock from '../../core/clock';
 import editorModeOptions from '../options/editorModeOptions';
 import { getCategoryOptions, getLatestModeOptions } from './selectors';
 
-import { editorModeChanged, getEditorMode } from '../../ui/layout/app/uiSlice';
-import { getSelectedId } from '../../fileManager/_state/selectors';
-import { DB_OPTION_SET_OPTION_VALUE } from '../options/actionsTypes';
+import { optionValueChanged } from '../options/optionsSlice';
+import { editorModeChanged } from '../../ui/layout/app/uiSlice';
 
 const initialState = {
 	allFiles: {},
@@ -72,40 +71,26 @@ function fileDeletedReducer(state, action) {
  * - for the current editing mode if it is a formatting option
  * - in the preferences otherwise
  */
-function setOptionValueReducer(state, action) {
-	const { context, key, value } = action.payload;
-	const id = getSelectedId(fullState);
-	const allFiles = { ...state.allFiles };
+function optionValueChangedReducer(state, action) {
+	const { context, key, value, fileId, editorMode } = action.payload;
 
 	if (
 		['songFormatting', 'songPreferences'].includes(context) &&
-		allFiles[id]
+		state.allFiles[fileId]
 	) {
-		const editorMode = getEditorMode(fullState);
 		const optionCategory =
 			context === 'songPreferences' ? 'preferences' : editorMode;
 
-		allFiles[id] = addOption(allFiles[id], optionCategory, key, value);
-		return {
-			...state,
-			allFiles,
-		};
+		if (!state.allFiles[fileId].options) {
+			state.allFiles[fileId].options = {};
+		}
+		if (!state.allFiles[fileId].options[optionCategory]) {
+			state.allFiles[fileId].options[optionCategory] = {};
+		}
+		state.allFiles[fileId].options[optionCategory].updatedAt = clock();
+		state.allFiles[fileId].options[optionCategory][key] = value;
 	}
 	return state;
-}
-
-function addOption(fileState, category, key, value) {
-	return {
-		...fileState,
-		options: {
-			...fileState.options,
-			[category]: {
-				...(fileState.options || {})[category],
-				updatedAt: clock(),
-				[key]: value,
-			},
-		},
-	};
 }
 
 /**
@@ -113,8 +98,7 @@ function addOption(fileState, category, key, value) {
  * we apply the latest saved settings (all modes merged) for a better user flow
  */
 function editorModeChangedReducer(state, action) {
-	const fileId = action.payload.fileId;
-	const nextMode = action.payload.mode;
+	const { fileId, mode: nextMode } = action.payload;
 
 	const hasOptionsForNextMode = !!getCategoryOptions(state, fileId, nextMode);
 
@@ -126,20 +110,11 @@ function editorModeChangedReducer(state, action) {
 
 		if (Object.keys(previousModeOptions).length) {
 			previousModeOptions.updatedAt = clock();
-			const allFiles = { ...state.allFiles };
+			if (!state.allFiles[fileId].options) {
+				state.allFiles[fileId].options = {};
+			}
 
-			allFiles[fileId] = {
-				...allFiles[fileId],
-				options: {
-					...allFiles[fileId].options,
-					[nextMode]: previousModeOptions,
-				},
-			};
-
-			return {
-				...state,
-				allFiles,
-			};
+			state.allFiles[fileId].options[nextMode] = previousModeOptions;
 		}
 	}
 	return state;
@@ -148,24 +123,24 @@ function editorModeChangedReducer(state, action) {
 const uiSlice = createSlice({
 	name: 'files',
 	initialState,
-	reducers: {
-		fileCreated: {
-			reducer: fileCreatedReducer,
-			prepare: fileCreatedAction,
-		},
-		fileImported: {
-			reducer: fileCreatedReducer,
-			prepare: fileCreatedAction,
-		},
-		fileUpdated: {
-			reducer: fileUpdatedReducer,
-			prepare: fileUpdatedAction,
-		},
-		fileDeleted: fileDeletedReducer,
-	},
+	reducers: (create) => ({
+		fileCreated: create.preparedReducer(
+			fileCreatedAction,
+			fileCreatedReducer
+		),
+		fileImported: create.preparedReducer(
+			fileCreatedAction,
+			fileCreatedReducer
+		),
+		fileUpdated: create.preparedReducer(
+			fileUpdatedAction,
+			fileUpdatedReducer
+		),
+		fileDeleted: create.reducer(fileDeletedReducer),
+	}),
 	extraReducers: (builder) => {
 		builder
-			.addCase(DB_OPTION_SET_OPTION_VALUE, setOptionValueReducer)
+			.addCase(optionValueChanged.fulfilled, optionValueChangedReducer)
 			.addCase(editorModeChanged.fulfilled, editorModeChangedReducer);
 	},
 });

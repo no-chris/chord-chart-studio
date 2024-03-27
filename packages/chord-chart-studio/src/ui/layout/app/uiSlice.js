@@ -5,6 +5,8 @@ import {
 	DB_FILES_DELETE,
 } from '../../../db/files/actionsTypes';
 import { getSelectedId } from '../../../fileManager/_state/selectors';
+import { getOptionsDefaults } from '../../../db/options/selectors';
+import { getModeOptions } from '../../../db/files/selectors';
 
 const initialState = {
 	isLeftBarCollapsed: false,
@@ -15,9 +17,14 @@ const initialState = {
 const sliceName = 'ui';
 
 export const editorModeChangedAction = (mode, thunkAPI) => {
+	const state = thunkAPI.getState();
+	const fileId = getSelectedId(state);
 	const payload = {
 		mode,
-		fileId: getSelectedId(thunkAPI.getState()),
+		fileId,
+		//todo: add tests
+		modeOptions: getModeOptions(state, fileId, mode),
+		optionsDefaults: getOptionsDefaults(state, 'songFormatting'),
 	};
 	return Promise.resolve(payload);
 };
