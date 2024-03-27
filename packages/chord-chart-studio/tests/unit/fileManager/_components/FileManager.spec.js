@@ -25,7 +25,7 @@ describe('FileManager', () => {
 	const enableRename = jest.fn();
 	const updateFile = jest.fn();
 	const startImport = jest.fn();
-	const setEditorMode = jest.fn();
+	const editorModeChanged = jest.fn();
 
 	window.getSelection = () => ({
 		removeAllRanges: jest.fn(),
@@ -52,7 +52,7 @@ describe('FileManager', () => {
 			enableRename,
 			updateFile,
 			startImport,
-			setEditorMode,
+			editorModeChanged,
 		};
 
 		selectFile.mockReset();
@@ -61,7 +61,7 @@ describe('FileManager', () => {
 		enableRename.mockReset();
 		updateFile.mockReset();
 		startImport.mockReset();
-		setEditorMode.mockReset();
+		editorModeChanged.mockReset();
 	});
 
 	describe('Action list', () => {
@@ -385,8 +385,8 @@ describe('FileManager', () => {
 				fireEvent.click(exportButton);
 			});
 
-			expect(setEditorMode).toHaveBeenCalledTimes(1);
-			expect(setEditorMode).toHaveBeenCalledWith('export');
+			expect(editorModeChanged).toHaveBeenCalledTimes(1);
+			expect(editorModeChanged).toHaveBeenCalledWith('export');
 			await waitFor(() =>
 				expect(exportSelectedFileAsText).toHaveBeenCalledTimes(1)
 			);
@@ -402,8 +402,8 @@ describe('FileManager', () => {
 				fireEvent.click(printButton);
 			});
 
-			expect(setEditorMode).toHaveBeenCalledTimes(1);
-			expect(setEditorMode).toHaveBeenCalledWith('print');
+			expect(editorModeChanged).toHaveBeenCalledTimes(1);
+			expect(editorModeChanged).toHaveBeenCalledWith('print');
 			await waitFor(() => expect(window.print).toHaveBeenCalledTimes(1));
 		});
 	});
@@ -433,8 +433,8 @@ describe('FileManager', () => {
 			expect(createFile).toHaveBeenCalledTimes(1);
 			expect(enableRename).toHaveBeenCalledTimes(0);
 			expect(deleteFile).toHaveBeenCalledTimes(0);
-			expect(setEditorMode).toHaveBeenCalledTimes(0);
-			expect(setEditorMode).toHaveBeenCalledTimes(0);
+			expect(editorModeChanged).toHaveBeenCalledTimes(0);
+			expect(editorModeChanged).toHaveBeenCalledTimes(0);
 		});
 	});
 });

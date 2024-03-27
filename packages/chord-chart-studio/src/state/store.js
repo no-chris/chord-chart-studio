@@ -1,8 +1,6 @@
 import _defaultsDeep from 'lodash/defaultsDeep';
 
-import { createStore as createReduxStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunkMiddleware from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
 
 import { loadState, saveState } from './localStorage';
 import allReducers from './reducers';
@@ -11,10 +9,6 @@ import seed from './seed';
 let store;
 
 export function createStore() {
-	const storeEnhancers = composeWithDevTools(
-		applyMiddleware(thunkMiddleware)
-	);
-
 	const persistedState = loadState();
 
 	// store migrations
@@ -35,7 +29,10 @@ export function createStore() {
 
 	const initialState = _defaultsDeep(persistedState, seed);
 
-	store = createReduxStore(allReducers, initialState, storeEnhancers);
+	store = configureStore({
+		reducer: allReducers,
+		preloadedState: initialState,
+	});
 
 	store.subscribe(() => {
 		saveState(store.getState());

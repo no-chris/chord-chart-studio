@@ -2,7 +2,9 @@ import _map from 'lodash/map';
 import _cloneDeep from 'lodash/cloneDeep';
 import _isEqual from 'lodash/isEqual';
 import _sortBy from 'lodash/sortBy';
+import _pick from 'lodash/pick';
 
+import allEditorModeOptions from '../options/editorModeOptions'; //fixme: duh!
 import { createSelectorCreator, defaultMemoize } from 'reselect';
 
 // create a "selector creator" that uses lodash.isEqual instead of ===
@@ -19,8 +21,23 @@ export const getOne = (state, id) => {
 	return state.db.files.allFiles[id];
 };
 
+// Get defined options for a mode, either because they exist for the given mode,
+// or building them from options stored in the other modes
+export function getModeOptions(state, fileId, mode) {
+	let editorModeOptions = getCategoryOptions(state.db.files, fileId, mode);
+
+	if (!editorModeOptions) {
+		editorModeOptions = getLatestModeOptions(state.db.files, fileId) || {};
+	}
+	delete editorModeOptions.updatedAt;
+
+	// take only relevant options for the mode
+	return _pick(editorModeOptions, allEditorModeOptions[mode]);
+}
+
+// todo: not a selector anymore!
 export const getCategoryOptions = (state, id, category) => {
-	const file = state.db.files.allFiles[id];
+	const file = state.allFiles[id];
 
 	if (!file) return;
 
@@ -33,8 +50,9 @@ export const getCategoryOptions = (state, id, category) => {
 	}
 };
 
+// todo: not a selector anymore!
 export const getLatestModeOptions = (state, id) => {
-	const file = state.db.files.allFiles[id];
+	const file = state.allFiles[id];
 
 	if (!file) return;
 

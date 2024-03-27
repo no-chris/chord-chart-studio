@@ -4,8 +4,7 @@ import clock from '../../core/clock';
 import * as actionTypes from './actionsTypes';
 
 import { DB_OPTION_SET_OPTION_VALUE } from '../options/actionsTypes';
-import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../ui/layout/app/_state/actionsTypes';
-import { getEditorMode } from '../../ui/layout/app/_state/selectors';
+import { getEditorMode } from '../../ui/layout/app/uiSlice';
 import { getSelectedId } from '../../fileManager/_state/selectors';
 import { getLatestModeOptions, getCategoryOptions } from './selectors';
 import editorModeOptions from '../options/editorModeOptions';
@@ -116,7 +115,7 @@ function addOption(fileState, category, key, value) {
  */
 function setEditorMode(state, action, fullState) {
 	const fileId = getSelectedId(fullState);
-	const nextMode = action.payload.mode;
+	const nextMode = action.payload;
 
 	const hasOptionsForNextMode = !!getCategoryOptions(
 		fullState,
@@ -162,7 +161,7 @@ export default (state = initialState, action = {}, fullState = {}) => {
 			return deleteFile(state, action);
 		case DB_OPTION_SET_OPTION_VALUE:
 			return updateFileOption(state, action, fullState);
-		case UI_LAYOUT_APP_SET_EDITOR_MODE:
+		case 'ui/editorModeChanged':
 			return setEditorMode(state, action, fullState);
 	}
 	return state;

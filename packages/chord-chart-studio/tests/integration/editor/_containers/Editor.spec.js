@@ -11,7 +11,7 @@ import userEvent from '@testing-library/user-event';
 import Editor from '../../../../src/editor/_containers/Editor';
 import { createFile, updateFile } from '../../../../src/db/files/actions';
 import { selectFile } from '../../../../src/fileManager/_state/actions';
-import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
+import { editorModeChanged } from '../../../../src/ui/layout/app/reducers';
 
 import { v4 as uuidv4 } from 'uuid';
 uuidv4.mockReturnValue('myId');
@@ -42,7 +42,7 @@ describe('Editor', () => {
 		});
 
 		test('Edit', () => {
-			dispatch(setEditorMode('edit'));
+			dispatch(editorModeChanged('edit'));
 
 			const { getAllByText } = render(withStore(<Editor />));
 
@@ -51,7 +51,7 @@ describe('Editor', () => {
 		});
 
 		test('Play', () => {
-			dispatch(setEditorMode('play'));
+			dispatch(editorModeChanged('play'));
 
 			const { getAllByText } = render(withStore(<Editor />));
 
@@ -61,7 +61,7 @@ describe('Editor', () => {
 		test('Print', async () => {
 			let result = {};
 
-			dispatch(setEditorMode('print'));
+			dispatch(editorModeChanged('print'));
 
 			await act(async () => {
 				result = render(withStore(<Editor />));
@@ -73,7 +73,7 @@ describe('Editor', () => {
 		});
 
 		test('Export', () => {
-			dispatch(setEditorMode('export'));
+			dispatch(editorModeChanged('export'));
 
 			const { getAllByText } = render(withStore(<Editor />));
 
@@ -81,7 +81,7 @@ describe('Editor', () => {
 		});
 
 		test('In export mode, "Select all" only select export content', async () => {
-			dispatch(setEditorMode('export'));
+			dispatch(editorModeChanged('export'));
 
 			const selection = window.getSelection();
 

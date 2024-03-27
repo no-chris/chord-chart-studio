@@ -9,7 +9,7 @@ import {
 
 import { createFile, updateFile, deleteFile } from '../../db/files/actions';
 import { startImport } from '../../songImporter/_state/actions';
-import { setEditorMode } from '../../ui/layout/app/_state/actions';
+import { editorModeChanged } from '../../ui/layout/app/reducers';
 
 import { getAllTitles } from '../../db/files/selectors';
 
@@ -29,7 +29,7 @@ export default connect(
 		deleteFile,
 		updateFile,
 		enableRename,
-		setEditorMode,
+		editorModeChanged,
 		startImport,
 	}
 )(FileManager);

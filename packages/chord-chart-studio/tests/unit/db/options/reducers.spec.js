@@ -1,4 +1,3 @@
-jest.mock('../../../../src/ui/layout/app/_state/selectors');
 jest.mock('../../../../src/fileManager/_state/selectors');
 jest.mock('../../../../src/db/options/selectors');
 
@@ -8,12 +7,10 @@ import reducers from '../../../../src/db/options/reducers';
 import * as actions from '../../../../src/db/options/actions';
 import * as actionTypes from '../../../../src/db/options/actionsTypes';
 
-import { setEditorMode } from '../../../../src/ui/layout/app/_state/actions';
-import { UI_LAYOUT_APP_SET_EDITOR_MODE } from '../../../../src/ui/layout/app/_state/actionsTypes';
+import { editorModeChanged } from '../../../../src/ui/layout/app/uiSlice';
 import { FILE_MANAGER_SELECT_FILE } from '../../../../src/fileManager/_state/actionsTypes';
 
 import { getSelectedId } from '../../../../src/fileManager/_state/selectors';
-import { getEditorMode } from '../../../../src/ui/layout/app/_state/selectors';
 import { getOptionsDefaults } from '../../../../src/db/options/selectors';
 import { selectFile } from '../../../../src/fileManager/_state/actions';
 
@@ -76,7 +73,7 @@ describe('db/options: reducers', () => {
 		});
 	});
 
-	describe(UI_LAYOUT_APP_SET_EDITOR_MODE, () => {
+	describe('ui/editorModeChanged', () => {
 		const fileId = 'myUUID';
 		const defaultFormattingOptions = {
 			columnsCount: 1,
@@ -122,11 +119,10 @@ describe('db/options: reducers', () => {
 					},
 				},
 			};
-			const state = reducers(
-				initialState,
-				setEditorMode(nextMode),
-				fullState
-			);
+			const state = reducers(initialState, editorModeChanged(nextMode), {
+				...fullState,
+				ui: { editorMode: nextMode },
+			});
 			expect(state).toEqual(expected);
 		});
 
@@ -172,11 +168,10 @@ describe('db/options: reducers', () => {
 					},
 				},
 			};
-			const state = reducers(
-				initialState,
-				setEditorMode(nextMode),
-				fullState
-			);
+			const state = reducers(initialState, editorModeChanged(nextMode), {
+				...fullState,
+				ui: { editorMode: nextMode },
+			});
 			expect(state).toEqual(expected);
 		});
 
@@ -225,11 +220,10 @@ describe('db/options: reducers', () => {
 					},
 				},
 			};
-			const state = reducers(
-				initialState,
-				setEditorMode(nextMode),
-				fullState
-			);
+			const state = reducers(initialState, editorModeChanged(nextMode), {
+				...fullState,
+				ui: { editorMode: nextMode },
+			});
 			expect(state).toEqual(expected);
 		});
 
@@ -267,7 +261,7 @@ describe('db/options: reducers', () => {
 			};
 			const state = reducers(
 				initialState,
-				setEditorMode(nextMode),
+				editorModeChanged(nextMode),
 				fullState
 			);
 			expect(state).toEqual(expected);
@@ -296,7 +290,6 @@ describe('db/options: reducers', () => {
 
 		test('should load saved preferences and formatting on file change', () => {
 			const previousMode = 'play';
-			getEditorMode.mockReturnValue(previousMode);
 
 			const fullState = {
 				db: {
@@ -318,6 +311,7 @@ describe('db/options: reducers', () => {
 						},
 					},
 				},
+				ui: { editorMode: previousMode },
 			};
 			const expected = {
 				songFormatting: {
@@ -344,7 +338,6 @@ describe('db/options: reducers', () => {
 
 		test('should load formatting options from other modes if not defined on destination mode', () => {
 			const previousMode = 'export';
-			getEditorMode.mockReturnValue(previousMode);
 
 			const fullState = {
 				db: {
@@ -371,6 +364,7 @@ describe('db/options: reducers', () => {
 						},
 					},
 				},
+				ui: { editorMode: previousMode },
 			};
 			const expected = {
 				songFormatting: {
@@ -397,7 +391,6 @@ describe('db/options: reducers', () => {
 
 		test('should load default values if no options are defined for any mode', () => {
 			const previousMode = 'export';
-			getEditorMode.mockReturnValue(previousMode);
 
 			const fullState = {
 				db: {
@@ -409,6 +402,7 @@ describe('db/options: reducers', () => {
 						},
 					},
 				},
+				ui: { editorMode: previousMode },
 			};
 			const expected = {
 				songFormatting: {

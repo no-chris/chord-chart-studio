@@ -13,9 +13,9 @@ afterEach(cleanup);
 
 describe('App', () => {
 	let props = {};
-	const toggleLeftBar = jest.fn();
-	const toggleRightBar = jest.fn();
-	const setEditorMode = jest.fn();
+	const leftBarToggled = jest.fn();
+	const rightBarToggled = jest.fn();
+	const editorModeChanged = jest.fn();
 
 	beforeEach(() => {
 		resetStore();
@@ -24,17 +24,17 @@ describe('App', () => {
 			isLeftBarCollapsed: false,
 			isRightBarCollapsed: false,
 			editorMode: 'edit',
-			toggleLeftBar,
-			toggleRightBar,
-			setEditorMode,
+			leftBarToggled,
+			rightBarToggled,
+			editorModeChanged,
 
 			leftBar: <div>leftBarDiv</div>,
 			rightBar: <div>rightBarDiv</div>,
 			activeRoute: 'play',
 		};
 
-		toggleLeftBar.mockClear();
-		toggleRightBar.mockClear();
+		leftBarToggled.mockClear();
+		rightBarToggled.mockClear();
 	});
 
 	test('should render components passed as props', () => {
@@ -53,7 +53,7 @@ describe('App', () => {
 
 		fireEvent.click(leftBar);
 
-		expect(toggleLeftBar).toHaveBeenCalledTimes(1);
+		expect(leftBarToggled).toHaveBeenCalledTimes(1);
 	});
 
 	test('should close left bar if open by clicking on left bar collapser', () => {
@@ -65,7 +65,7 @@ describe('App', () => {
 
 		fireEvent.click(leftBarCollapser);
 
-		expect(toggleLeftBar).toHaveBeenCalledTimes(1);
+		expect(leftBarToggled).toHaveBeenCalledTimes(1);
 	});
 
 	test('should open right bar if closed by clicking on right bar', () => {
@@ -77,7 +77,7 @@ describe('App', () => {
 
 		fireEvent.click(rightBar);
 
-		expect(toggleRightBar).toHaveBeenCalledTimes(1);
+		expect(rightBarToggled).toHaveBeenCalledTimes(1);
 	});
 
 	test('should close right bar if open by clicking on right bar collapser', () => {
@@ -89,6 +89,6 @@ describe('App', () => {
 
 		fireEvent.click(rightBarCollapser);
 
-		expect(toggleRightBar).toHaveBeenCalledTimes(1);
+		expect(rightBarToggled).toHaveBeenCalledTimes(1);
 	});
 });
