@@ -1,5 +1,7 @@
 # Tech debt
 
+replace uuid by nanoid
+
 ## Build & tooling
 
 -   host React on CDN

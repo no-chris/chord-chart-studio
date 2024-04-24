@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Icon from '../../../_components/Icon.jsx';
 
 function NavEntry(props) {
-	const { label, icon, editorMode, setEditorMode, isActive, isDisabled } =
+	const { label, icon, editorMode, editorModeChanged, isActive, isDisabled } =
 		props;
 
 	const classNames = ['mainNavEntry'];
@@ -17,7 +17,7 @@ function NavEntry(props) {
 	}
 
 	function handleClick() {
-		if (!isDisabled) setEditorMode(editorMode);
+		if (!isDisabled) editorModeChanged(editorMode);
 	}
 
 	return (
@@ -34,7 +34,7 @@ NavEntry.propTypes = {
 	label: PropTypes.string.isRequired,
 	icon: PropTypes.string.isRequired,
 	editorMode: PropTypes.string.isRequired,
-	setEditorMode: PropTypes.func.isRequired,
+	editorModeChanged: PropTypes.func.isRequired,
 	isActive: PropTypes.bool.isRequired,
 	isDisabled: PropTypes.bool.isRequired,
 };

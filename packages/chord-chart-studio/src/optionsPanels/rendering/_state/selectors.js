@@ -1,7 +1,7 @@
 import _difference from 'lodash/difference';
 
 import editorModeOptions from '../../../db/options/editorModeOptions'; // duh!
-import { getEditorMode } from '../../../ui/layout/app/_state/selectors';
+import { getEditorMode } from '../../../ui/layout/app/reducers';
 import { getSelectedId } from '../../../fileManager/_state/selectors';
 import {
 	getOptionsDefaults,
