@@ -8255,7 +8255,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/trusted-types@npm:^2.0.2":
+"@types/trusted-types@npm:^2.0.2, @types/trusted-types@npm:^2.0.7":
   version: 2.0.7
   resolution: "@types/trusted-types@npm:2.0.7"
   checksum: 4c4855f10de7c6c135e0d32ce462419d8abbbc33713b31d294596c0cc34ae1fa6112a2f9da729c8f7a20707782b0d69da3b1f8df6645b0366d08825ca1522e0c
@@ -10250,9 +10250,9 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.3.0"
     "@testing-library/react": "npm:^14.1.2"
     "@testing-library/user-event": "npm:^14.5.2"
-    chord-mark: "npm:^0.16.2"
-    chord-mark-converters: "npm:^0.16.2"
-    chord-mark-themes: "npm:^0.16.2"
+    chord-mark: "npm:^0.18.0"
+    chord-mark-converters: "npm:^0.18.0"
+    chord-mark-themes: "npm:^0.18.0"
     chord-symbol: "npm:^4.0.0"
     chord-symbol-ultimateguitar: "npm:^4.0.0"
     combine-section-reducers: "npm:^1.0.6"
@@ -10290,35 +10290,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"chord-mark-converters@npm:^0.16.2":
-  version: 0.16.2
-  resolution: "chord-mark-converters@npm:0.16.2"
+"chord-mark-converters@npm:^0.18.0":
+  version: 0.18.0
+  resolution: "chord-mark-converters@npm:0.18.0"
   dependencies:
-    chord-mark: "npm:^0.16.2"
+    chord-mark: "npm:^0.18.0"
     chord-symbol: "npm:4.0.0"
     chord-symbol-ultimateguitar: "npm:4.0.0"
-    dompurify: "npm:^3.0.8"
-  checksum: 1194cf8bac48592a717c2501106d2dd9868cc81e11e97a6a7da86c3bf257fccdab9d9ec67fe6ab3ebeba880fbbc6b872e82d0febb82f54191d59814bab5c790a
+    striptags: "npm:^3.2.0"
+  checksum: e8a0ddbf08611ce74b914934a98c7c3abfee0679118db0c4fe21a2b598200df5a1efaa1a6f50fcd46f6bd18df727589d660fb34a4a9f672dec055e62c9205882
   languageName: node
   linkType: hard
 
-"chord-mark-themes@npm:^0.16.2":
-  version: 0.16.2
-  resolution: "chord-mark-themes@npm:0.16.2"
+"chord-mark-themes@npm:^0.18.0":
+  version: 0.18.0
+  resolution: "chord-mark-themes@npm:0.18.0"
   dependencies:
-    chord-mark: "npm:^0.16.2"
-  checksum: 7b62a3b3838dcd6cf43f3e5bda19944bb8c1d94ac284949382f9ab339da7975f746e0362afcab13de9d5b4599d3e8354e22bfd255e39197fc090d560b6615be8
+    chord-mark: "npm:^0.18.0"
+  checksum: 2ed9e923a88c50be78cbae136efcb627f17ba1f4a3668869758e6c01cdb2ef184a093909dee9627888b84e152bc11920b17053afc8e6f7a3816c86e4983658d4
   languageName: node
   linkType: hard
 
-"chord-mark@npm:^0.16.2":
-  version: 0.16.2
-  resolution: "chord-mark@npm:0.16.2"
+"chord-mark@npm:^0.18.0":
+  version: 0.18.0
+  resolution: "chord-mark@npm:0.18.0"
   dependencies:
     chord-symbol: "npm:4.0.0"
-    dompurify: "npm:^3.0.8"
-    lodash: "npm:^4.17.21"
-  checksum: 715e7b09488d009d2c37ee08808c5a7eff851387b7fc716b9d4b88a2eb6d11cf5f12e6b70a0de437ae924334f9ed9fd7b628746239153fcbacf6f2ff72e22835
+    dompurify: "npm:^3.3.3"
+    lodash: "npm:^4.17.23"
+  checksum: 2eb00d20c00dc652d2f0498812decc95eb34f1f6260794dedbc077e358003268bd3f91935b592108f9e61866f4a451f19905e146db1a1fabd3ae99b694de22ec
   languageName: node
   linkType: hard
 
@@ -12000,8 +12000,8 @@ __metadata:
     "@docusaurus/preset-classic": "npm:^3.1.1"
     "@mdx-js/react": "npm:^3.0.0"
     "@svgr/webpack": "npm:^8.1.0"
-    chord-mark: "npm:^0.16.2"
-    chord-mark-themes: "npm:^0.16.2"
+    chord-mark: "npm:^0.18.0"
+    chord-mark-themes: "npm:^0.18.0"
     clsx: "npm:^2.1.0"
     docusaurus-plugin-sass: "npm:^0.2.5"
     dompurify: "npm:^3.0.8"
@@ -12110,6 +12110,18 @@ __metadata:
   version: 3.0.9
   resolution: "dompurify@npm:3.0.9"
   checksum: 4da4b86e4010822d01392e25f0686367a4f1e1048a4681178c725de9a817410c5650c17b326c08a018f79437b3177a4bdc7faf4c37b0cf2547bc280aa2038a16
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^3.3.3":
+  version: 3.4.12
+  resolution: "dompurify@npm:3.4.12"
+  dependencies:
+    "@types/trusted-types": "npm:^2.0.7"
+  dependenciesMeta:
+    "@types/trusted-types":
+      optional: true
+  checksum: 127a13817353d4e20e75a991a9022a04c3af12af7479f68e2b8bee6dbc7330a96edfb8f4ebff96f4f0f24cd43e8dbba46214131f510c3aa87a843bd8b610d0ab
   languageName: node
   linkType: hard
 
@@ -17391,6 +17403,13 @@ __metadata:
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
+  languageName: node
+  linkType: hard
+
+"lodash@npm:^4.17.23":
+  version: 4.18.1
+  resolution: "lodash@npm:4.18.1"
+  checksum: 757228fc68805c59789e82185135cf85f05d0b2d3d54631d680ca79ec21944ec8314d4533639a14b8bcfbd97a517e78960933041a5af17ecb693ec6eecb99a27
   languageName: node
   linkType: hard
 
@@ -24235,6 +24254,13 @@ __metadata:
   version: 2.0.1
   resolution: "strip-json-comments@npm:2.0.1"
   checksum: b509231cbdee45064ff4f9fd73609e2bcc4e84a4d508e9dd0f31f70356473fde18abfb5838c17d56fb236f5a06b102ef115438de0600b749e818a35fbbc48c43
+  languageName: node
+  linkType: hard
+
+"striptags@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "striptags@npm:3.2.0"
+  checksum: 72c8eea03c04ca8522511caf44ffd2bde4b5f36cbeb5d43140906c0a7ee19e98b3341bf96370ccb643e55972587eafac772d4a3f7f526d3045c2cf36270511e6
   languageName: node
   linkType: hard
 
