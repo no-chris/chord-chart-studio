@@ -2,19 +2,11 @@ Source code:
 
 ---------- Result ------------
 
-<<<<<<< HEAD
-            Physical :  7124
-              Source :  5920
-             Comment :  172
- Single-line comment :  80
-       Block comment :  92
-=======
             Physical :  7129
               Source :  5924
              Comment :  173
  Single-line comment :  80
        Block comment :  93
->>>>>>> ced3fa5e7a6c763864a8742849597863b9675da4
                Mixed :  14
  Empty block comment :  0
                Empty :  1046
@@ -46,19 +38,11 @@ Total:
 
 ---------- Result ------------
 
-<<<<<<< HEAD
-            Physical :  14462
-              Source :  11945
-             Comment :  241
- Single-line comment :  142
-       Block comment :  99
-=======
             Physical :  14467
               Source :  11949
              Comment :  242
  Single-line comment :  142
        Block comment :  100
->>>>>>> ced3fa5e7a6c763864a8742849597863b9675da4
                Mixed :  25
  Empty block comment :  0
                Empty :  2301
